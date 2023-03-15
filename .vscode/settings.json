@@ -1,0 +1,17 @@
+{
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/qoria-theme/css",
+            "savePathReplacementPairs": null
+        },
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/qoria-theme/css",
+            "savePathReplacementPairs": null
+        }
+    ],
+    "liveSassCompile.settings.compileOnWatch": true
+}
