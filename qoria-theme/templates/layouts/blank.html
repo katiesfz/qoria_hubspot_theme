@@ -1,0 +1,20 @@
+<!--
+    templateType: none
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ require_css(get_asset_url('/ySafe22/ySafe Theme/css/ysafe-bootstrap.min.css')) }}
+    {{ standard_header_includes }}
+  </head>
+  <body>
+
+    {% block body %}
+    {% endblock body %}
+   
+    {{ standard_footer_includes }}
+  </body>
+</html>

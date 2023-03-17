@@ -1,43 +1,120 @@
 <!--
-  templateType: global_partial
-  label: Footer
+templateType: global_partial
+label: Footer
+description: "Footer section including address, footer navigation menu and social links."
+screenshotPath: ../images/section-previews/screenshot_Footer.png
 -->
-<footer class="footer">
-  {% dnd_area "footer"
-    label="Footer",
-    class="footer__container content-wrapper"
-  %}
 
-    {# Social follow and copyright #}
+<footer class="footer px-0 text-light pt-4 pb-4 bg-gradient-primary">
+  <div class="container-wide">
+    <div class="row-fluid row-cols-1 row-cols-sm-2 row-cols-md-3 text-center text-sm-start">
+      <div class="col mb-4">
+        <div class="d-flex flex-sm-nowrap flex-wrap justify-content-center align-items-center mb-4">
+          <div class="pe-3 mb-3">
+            {% module "Logo"
+            path="@hubspot/logo",
+            offset=0,
+            width=12,
+            horizontal_alignment="LEFT"
+            %}
 
-    {% dnd_section %}
-      {% dnd_column %}
-        {% dnd_row %}
-          {% dnd_module path="../../modules/social-follow" %}
-            {% module_attribute "social_link" is_json=True %}
-              [
-                {"social_account": "facebook-f"},
-                {"social_account": "linkedin-in"},
-                {"social_account": "twitter"},
-                {"social_account": "instagram"}
-              ]
-            {% end_module_attribute %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-        {% dnd_row
-          margin={
-            "top": 12,
-            "bottom": 12
-          }
+          </div>
+          <div class="col mb-4">
+            {% module "Menu"
+            path="/qoria-theme/modules/menu-columns",
+            offset=0,
+            width=12,
+            menu=50449265089
+            %}
+          </div>
+        </div>
+        {% module "Social header"
+        path="@hubspot/header",
+        offset=0,
+        width=12,
+        header_tag="h5",
+        value="Get social with us!"
         %}
-          {% dnd_module
-            path="@hubspot/rich_text",
-            html='<div style="text-align: center; font-size: 0.7rem;"><span>© {{ year }} All rights reserved.</span></div>'
-          %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
 
-  {% end_dnd_area %}
+        {% module "Social links"
+        path="/ySafe22/ySafe Theme/modules/social-follow",
+        offset=0,
+        width=12,
+        social_links=[ {
+        "accessibility" : {
+        "title" : "Follow us on Facebook"
+        },
+        "social_account" : "facebook",
+        "social_link" : {
+        "no_follow" : false,
+        "open_in_new_tab" : true,
+        "url" : {
+        "href" : "https://www.facebook.com/ysafesolutions",
+        "type" : "EXTERNAL"
+        }
+        }
+        }, {
+        "accessibility" : {
+        "title" : "Follow us on Instagram"
+        },
+        "social_account" : "instagram",
+        "social_link" : {
+        "no_follow" : false,
+        "open_in_new_tab" : true,
+        "url" : {
+        "href" : "https://www.instagram.com/ysafeaustralia/",
+        "type" : "EXTERNAL"
+        }
+        }
+        }, {
+        "accessibility" : {
+        "title" : "Follow us on LinkedIn"
+        },
+        "social_account" : "linkedin",
+        "social_link" : {
+        "no_follow" : false,
+        "open_in_new_tab" : true,
+        "url" : {
+        "href" : "https://www.linkedin.com/company/ysafe/",
+        "type" : "EXTERNAL"
+        }
+        }
+        }, {
+        "accessibility" : {
+        "title" : "Follow us on YouTube"
+        },
+        "social_account" : "youtube",
+        "social_link" : {
+        "no_follow" : false,
+        "open_in_new_tab" : true,
+        "url" : {
+        "href" : "https://www.youtube.com/channel/UCs-tyNrDcMN6lAdfBPsKjKw",
+        "type" : "EXTERNAL"
+        }
+        }
+        } ],
+        styles={
+        "alignment" : {
+        "alignment" : {
+        "horizontal_align" : "LEFT"
+        }
+        },
+        "fill" : {
+        "color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+        }
+        },
+        "size" : {
+        "size" : 30
+        },
+        "spacing" : {
+        "space_between_icons" : 10
+        }
+        }
+        %}
+      </div>
+    </div>
+
+  </div>
 </footer>

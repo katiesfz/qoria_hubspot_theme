@@ -1,0 +1,76 @@
+[ {
+  "id" : "menu",
+  "name" : "menu",
+  "display_width" : null,
+  "label" : "Menu",
+  "required" : false,
+  "locked" : false,
+  "type" : "menu",
+  "default" : 49654849016
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2265521d-7925-7ded-cca7-dbae1c2742ee",
+    "name" : "colour",
+    "display_width" : null,
+    "label" : "Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "dark", "Dark" ], [ "light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : "light"
+  }, {
+    "id" : "c0247f18-6fd9-ac2d-baad-b9bde527a973",
+    "name" : "columns_mobile",
+    "display_width" : null,
+    "label" : "Columns (Mobile)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "step" : 1,
+    "type" : "number",
+    "default" : 1
+  }, {
+    "id" : "b45fe488-df77-a2f1-0ab6-dd2a2c381c54",
+    "name" : "columns_tablet",
+    "display_width" : null,
+    "label" : "Columns (Tablet)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "step" : 1,
+    "type" : "number",
+    "default" : 2
+  }, {
+    "id" : "5a5794ec-d7fe-35f4-bc31-727081c43bd3",
+    "name" : "columns_desktop",
+    "display_width" : null,
+    "label" : "Columns (Desktop)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "step" : 1,
+    "type" : "number",
+    "default" : 2
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "colour" : "light",
+    "columns_mobile" : 1,
+    "columns_tablet" : 2,
+    "columns_desktop" : 2
+  }
+} ]

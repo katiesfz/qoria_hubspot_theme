@@ -1,17 +1,18 @@
 {
+    "liveSassCompile.settings.excludeList": [
+        "/.vscode/**"
+    ],
+    "liveSassCompile.settings.forceBaseDirectory": "/node_modules/bootstrap",
     "liveSassCompile.settings.formats": [
         {
             "format": "expanded",
             "extensionName": ".css",
             "savePath": "/qoria-theme/css",
             "savePathReplacementPairs": null
-        },
-        {
-            "format": "compressed",
-            "extensionName": ".min.css",
-            "savePath": "/qoria-theme/css",
-            "savePathReplacementPairs": null
         }
     ],
-    "liveSassCompile.settings.compileOnWatch": true
+    "liveSassCompile.settings.includeItems": [
+        "/scss/qoria-theme.scss"
+    ],
+    "liveSassCompile.settings.generateMap": false
 }
