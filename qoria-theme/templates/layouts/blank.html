@@ -7,8 +7,9 @@
     <meta charset="utf-8">
     <title>{{ content.html_title }}</title>
     <meta name="description" content="{{ content.meta_description }}">
-    {{ require_css(get_asset_url('/ySafe22/ySafe Theme/css/ysafe-bootstrap.min.css')) }}
+    {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css')) }}
     {{ standard_header_includes }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   </head>
   <body>
 
@@ -16,5 +17,6 @@
     {% endblock body %}
    
     {{ standard_footer_includes }}
+    {{ require_js(get_asset_url('/q-theme/js/bootstrap.bundle.min.js')) }}
   </body>
 </html>

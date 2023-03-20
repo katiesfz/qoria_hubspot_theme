@@ -1,0 +1,53 @@
+<section class="hero-{{module.hero_type}}">
+
+{%if module.hero_type == "full-video" %}
+
+  <!-- The HTML5 video element that will create the background video on the header -->
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="{{module.video}}" type="video/mp4">
+  </video>
+
+  <!-- The header content -->
+<div class="container h-100">
+    <div class="row h-100 justify-content-end flex-column">
+        <div class="col-12 pb-5">
+        {% if module.pre_header %}<h5 class="fw-bold text-white ms-4">{{module.pre_header}}</h5> {% endif %}
+        <h1 class="heading-bg-gradient bg-gradient-primary text-white">{{module.header}}</h1>
+        </div>
+        {%if module.cta|length > 0%}
+        <div class="col-12 pb-5">
+            {%for cta in module.cta %}
+                <!-- run macro with link, label, style, colour? -->
+
+                <a href="{{cta.cta_link.url.href}}" class="btn {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
+                </a>
+            {%endfor%}
+        </div>
+        {%endif%}
+        {% if module.show_share_price %}
+            <div class="text-white">
+            <hr class="opacity-100">
+            </div>
+        <div class="col-12 pb-5 text-white text-end">
+            <p>Stock price: FZO (ASX) A$0.30 -0.01 (-3.17%)</p>
+        </div>
+        {%endif%}
+        {%if module.page_contents.length > 0%}
+        <div class="col-12 pb-5">
+
+        </div>
+        {%endif%}
+    </div>
+</div>
+
+  {%elif module.hero_type == "full-image"%}
+
+  {%endif%}
+
+</section>
+
+{%if module.show_share_price%}
+    <script>
+
+    </script>
+{%endif%}

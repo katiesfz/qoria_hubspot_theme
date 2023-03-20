@@ -7,24 +7,25 @@
     <meta charset="utf-8">
     <title>{{ content.html_title }}</title>
     <meta name="description" content="{{ content.meta_description }}">
+    {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css')) }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rqn26AG5Pj86AF4SO72RK5fyefcQ/x32DNQfChxWvbXIyXFePlEktwD18fEz+kQU" crossorigin="anonymous">
     {{ standard_header_includes }}
   </head>
   <body>
     
     {% block header %}
-    {% module "module_global_menu_top_au" path='/ySafe22/ySafe Theme/modules/global/top-navigation-global', label="Navigation", no_wrapper=True %}
+    {% global_partial path='../partials/header.html', label="Header" %}
     {% endblock header %}
 
     {% block body %}
     {% endblock body %}
     
-    {% global_partial path="/ySafe22/ySafe Theme/templates/partials/contact-modal.html" %}
-    
     {% block footer %}
-    {% global_partial path='/ySafe22/ySafe Theme/templates/partials/footer-2.html', label="Footer" %}
+    {% global_partial path='../partials/footer.html', label="Footer" %}
     {% endblock footer %}
 
     {{ standard_footer_includes }}
+    {{ require_js(get_asset_url('/q-theme/js/bootstrap.bundle.min.js')) }}
   </body>
 </html>

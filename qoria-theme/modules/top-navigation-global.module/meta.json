@@ -1,0 +1,21 @@
+{
+  "global" : true,
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 106848485942,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../../css/ysafe-bootstrap.min.css",
+    "name" : "ysafe-bootstrap.min.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../../js/bootstrap.bundle.min.js",
+    "name" : "bootstrap.bundle.min.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../../js/typewriter-core.js",
+    "name" : "typewriter-core.js"
+  } ],
+  "is_available_for_new_content" : true
+}

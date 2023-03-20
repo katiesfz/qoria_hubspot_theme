@@ -1,0 +1,91 @@
+{% set globalNumStudents = "600,000" %}
+{% set globalNumParents = "300,000" %}
+{% set globalNumStaff = "80,000" %}
+{% set globalNumSchools = "600" %}
+
+{% set breakpoint = "lg" %}
+
+{% set notificationBars = [] %}
+
+{% for item in module.notification_bar %}
+  {% set notificationBarObj = {} %}
+	{% if item.notification_bar %}
+    {% if item.targeting_options.targeting == "inclusion" %}
+      {% if content_id is within item.targeting_options.pages %}
+        {% do notificationBarObj.update({"show" : "true"}) %}
+      {% endif %}
+      {% for pageUrl in item.targeting_options.url %}
+        {% if request.full_url is string_containing pageUrl %}
+          {% do notificationBarObj.update({"show" : "true"}) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if item.targeting_options.targeting == "exclusion" %}
+      {% do notificationBarObj.update({"show" : "true"}) %}
+      {% if content_id is within item.targeting_options.pages %}
+        {% do notificationBarObj.update({"show" : "false"}) %}
+      {% endif %}
+      {% for pageUrl in item.targeting_options.url %}
+        {% if request.full_url is string_containing pageUrl %}
+          {% do notificationBarObj.update({"show" : "false"}) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if notificationBarObj.show == "true" %}
+      {% set href = item.button.button_link.url.href %}
+      {% if item.button.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set buttonExtras = "" %}
+		  {% if item.button.button_link.open_in_new_tab %}
+        {% set buttonExtras = buttonExtras ~ ' target="_blank"' %}
+      {% endif %}
+		  {% if item.button.button_link.rel %}
+        {% set buttonExtras = buttonExtras ~ 'rel="' ~ item.button.button_link.rel ~ '"' %}
+      {% endif %}
+      {% do notificationBarObj.update({"content" : item.copy, "theme" : item.theme, "button_label" : item.button.button_label, "button_href" : href, "button_extras" : buttonExtras }) %}
+      <!-- {{ notificationBarObj|pprint }} -->    
+    {% endif %}
+    {% do notificationBars.append(notificationBarObj) %}
+	{% endif %}
+{% endfor %}
+
+{% for notificationBarObj in notificationBars %}
+  {% if notificationBarObj.show == "true" %}
+  <!-- Show notification bar -->
+  <div id="notificationBar" class="w-100 shadow sticky-top notification-bar">
+    <div class="w-100 py-2 text-center d-flex flex-column flex-md-row justify-content-center align-items-center small {{ notificationBarObj.theme }}">
+      {{ notificationBarObj.content }}
+      {% if notificationBarObj.button_label %}
+        <a href="{{notificationBarObj.button_href}}" class="btn btn-sm btn-light mx-2">{{ notificationBarObj.button_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+
+<nav class="navbar navbar-expand-{{breakpoint}} navbar-dark bg-dark">
+  <div class="container-lg px-0 px-{{breakpoint}}-2 align-items-stretch">
+    <a class="navbar-brand" href="{{ company_domain }}">
+      {% if module.logo.src %}
+        {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}
+        {% if module.logo.size_type == 'auto' %}
+          {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif module.logo.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.logo.max_width }}" height="{{ module.logo.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading }}"' : '' %}
+        <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% else %}
+      <img src="{{brand_settings.logos[0].src}}">
+      {% endif %}
+    </a>
+  </div>
+</nav>
+
+<script>
+  const bar = document.getElementById('notificationBar');
+  setTimeout(() => {
+    bar.style.maxHeight = '200px';
+  }, 2000);
+</script>

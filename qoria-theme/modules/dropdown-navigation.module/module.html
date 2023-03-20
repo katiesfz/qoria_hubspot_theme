@@ -1,0 +1,93 @@
+{% set breakpoint = module.breakpoint %}
+  {% set max_levels = module.max_levels %}
+
+    {% if breakpoint == "always" %}
+        {% set navbarExpand = "" %}
+    {% elif breakpoint == "never" %}
+        {% set navbarExpand = "navbar-expand" %}
+    {% else %}
+        {% set navbarExpand = "navbar-expand-" + breakpoint %}
+    {% endif %}
+  
+  
+  {# Module styles #}
+  
+  {% require_css %}
+    <style>
+      {% scope_css %}
+  
+  
+      {% end_scope_css %}
+    </style>
+  {% end_require_css %}
+  
+  {# Menu items #}
+  
+  {% macro menu_items() %}
+  
+    {% set menu = menu(module.menu, "site_root").children %}
+  
+    {% macro render_link_item(link, depth) %}
+      {% if link.children and depth < module.max_levels %}
+        {% if link.url %}
+          {# dropdown with link #}
+          <a class="nav-link" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
+          <a class="nav-link dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" data-bs-auto-close="outside"  aria-haspopup="true" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown for {{ link.label }}</span>
+          </a>
+        {% else %}     
+          {# dropdown without link #}     
+          <a class="nav-link {{ "dropdown dropdown-toggle" if link.children and depth < module.max_levels }} {{ "active" if link.activeBranch }} {{ "active" if link.activeNode }}" href="{{ link.url }}" {{ 'aria-current="page"' if link.activeNode }} {{ 'target="_blank" rel="noopener"' if link.linkTarget }} aria-haspopup="true"  data-bs-auto-close="outside" aria-expanded="false" data-bs-toggle="dropdown" >{{ link.label|replace(" ","&nbsp;") }}</a>
+        {% endif %}
+      {% else %}          
+        {% if link.url %}
+          <a class="nav-link {{ "active" if link.activeBranch }} {{ "active" if link.activeNode }}" href="{{ link.url }}" {{ 'aria-current="page"' if link.activeNode }} {{ 'target="_blank" rel="noopener"' if link.linkTarget }}>{{ link.label }}</a>
+        {% else %}
+          <span class="nav-link">{{ link.label|replace(" ","&nbsp;") }}</span>
+        {% endif %}
+      {% endif %}
+      
+      {% if link.children %}
+        {% if depth and depth < module.max_levels %}
+          <ul class="dropdown-menu dropdown-menu--level-{{ depth + 1 }} {{"dropdown-menu-{{breakpoint}}-end" if loop.last}}">
+          {% set depth = depth + 1 %}
+          {% for sublink in link.children %}
+              {{ render_dropdown_links(sublink, depth, loop.last) }}
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endif %}
+    {% endmacro %}
+
+  {% macro render_dropdown_links(link, depth, last) %}
+    <li>
+      {% if link.children %}
+        <div class="dropdown {{" dropend" if last == true}}">
+          <a type="button" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ link.label|replace(" ","&nbsp;") }}
+          </a>
+          <ul class="dropdown-menu">
+            {% for child in link.children %}
+              <li><a class="dropdown-item {% if child.activeNode %} active{% endif %}" href="{{child.url}}">{{ child.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% else %}
+        <a class="dropdown-item {% if link.activeNode %} active{% endif %}" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
+      {% endif %}
+    </li>
+  {%endmacro%}
+  
+    {% for link in menu %}      
+        <li class="nav-item  {{ "btn-group" if link.children and 1 < max_levels }} hs-skip-lang-url-rewrite">
+            {{ render_link_item(link, 1) }}
+        </li>
+    {% endfor %}
+  
+  {% endmacro %}
+  
+  {# Desktop menu #}
+
+      <ul class="navbar-nav ms-auto">   
+      {{ menu_items() }}
+      </ul>

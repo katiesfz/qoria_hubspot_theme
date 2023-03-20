@@ -25,6 +25,7 @@
     "choices" : [ [ "dark", "Dark" ], [ "light", "Light" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "light"
   }, {

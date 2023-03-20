@@ -1,0 +1,12 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 106848486499,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/custom-functions.js",
+    "name" : "custom-functions.js"
+  } ],
+  "label" : "Dropdown navigation",
+  "is_available_for_new_content" : true
+}

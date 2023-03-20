@@ -1,0 +1,23 @@
+<!-- module html  -->
+{% if module.override_default_logo %}
+  {% if module.custom_image %}
+  <a href="{{ module.link_url.href }}" class="{{ module.expert_settings.custom_classes }}">
+    {% if module.logo.src %}
+    {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}
+    {% if module.logo.size_type == 'auto' %}
+    {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}" style="max-width: 100%; height: auto;"' %}
+    {% elif module.logo.size_type == 'auto_custom_max' %}
+    {% set sizeAttrs = 'width="{{ module.logo.max_width }}" height="{{ module.logo.max_height }}" style="max-width: 100%; height: auto;"' %}
+    {% endif %}
+    {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading }}"' : '' %}
+    <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </a>
+  {% else %}
+<!-- insert logo here -->
+  {% endif %}
+{% else %}
+  <a href="{{brand_settings.primaryLogo.link}}" class="{{ module.expert_settings.custom_classes }}">
+    <img src="{{brand_settings.primaryLogo.src}}" alt="{{brand_settings.primaryLogo.alt}}" width="{{brand_settings.primaryLogo.width}}" height="{{brand_settings.primaryLogo.height}}">
+  </a>
+{% endif %}

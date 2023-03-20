@@ -3,17 +3,18 @@
   "name" : "hero_type",
   "display_width" : null,
   "label" : "Hero Type",
-  "required" : false,
+  "required" : true,
   "locked" : false,
   "display" : "select",
-  "choices" : [ [ "full_image", "Full-size image" ], [ "full_video", "Full-size video" ] ],
+  "choices" : [ [ "full-image", "Full-size image" ], [ "full-video", "Full-size video" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
-  "default" : "full_video"
+  "default" : "full-video"
 }, {
-  "id" : "ddbcbc43-0a01-b106-11ac-5b55a8578507",
+  "picker" : "video",
+  "id" : "7adf73dc-2bcc-2b2e-d150-33af30f3b737",
   "name" : "video",
   "display_width" : null,
   "label" : "Video",
@@ -22,16 +23,13 @@
   "visibility" : {
     "controlling_field" : null,
     "controlling_field_path" : "hero_type",
-    "controlling_value_regex" : "full_video",
+    "controlling_value_regex" : "full-video",
     "property" : null,
     "operator" : "EQUAL",
     "access" : null,
     "hidden_subfields" : null
   },
-  "resizable" : false,
-  "show_preview" : true,
-  "show_advanced_options" : false,
-  "type" : "videoplayer"
+  "type" : "file"
 }, {
   "id" : "445691a3-91f2-5f93-7b78-49a79051835b",
   "name" : "image",
@@ -42,7 +40,7 @@
   "visibility" : {
     "controlling_field" : null,
     "controlling_field_path" : "hero_type",
-    "controlling_value_regex" : "full_image",
+    "controlling_value_regex" : "full-image",
     "property" : null,
     "operator" : "EQUAL",
     "access" : null,
@@ -181,12 +179,12 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "basic", "Basic" ], [ "outline", "Outline" ] ],
+    "choices" : [ [ "-", "Basic" ], [ "-outline-", "Outline" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : "basic"
+    "default" : "-"
   }, {
     "id" : "6a163ac8-a1ec-0aef-0e9c-d656bf607e69",
     "name" : "colour",
@@ -195,12 +193,24 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], ["light","Light"], ["dark", "Dark"], ["link","Link"] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
     "default" : "primary"
+  },{
+    "name" : "size",
+    "display_width" : null,
+    "label" : "Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "btn-sm", "Small" ], [ " ", "Standard" ], [ "btn-lg", "Large" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : " "
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
