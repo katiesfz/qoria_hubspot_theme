@@ -20,5 +20,8 @@
     "liveSassCompile.settings.includeItems": [
         "/scss/qoria-theme.scss"
     ],
-    "liveSassCompile.settings.generateMap": false
+    "liveSassCompile.settings.generateMap": false,
+    "files.associations": {
+        "*.html": "html-hubl"
+    }
 }

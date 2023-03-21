@@ -44,3 +44,147 @@
 //    });
 //})(bootstrap);
 //
+
+// Set all carousel items to the same height
+function normaliseSlideHeights() {
+    $('.carousel-normalise').each(function(){
+      var items = $('.carousel-item', this);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    })
+  }
+  
+  // Set all selected items to the same height
+  function normaliseHeights(classString) {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+  }
+  
+  // responsive equal heights
+  var mediaXs = window.matchMedia("(max-width: 575px)");
+  var mediaSm = window.matchMedia("(min-width: 576px)");
+  var mediaMd = window.matchMedia("(min-width: 768px)");
+  var mediaLg = window.matchMedia("(min-width: 992px)");
+  var mediaXl = window.matchMedia("(min-width: 1200px)");
+  var mediaXxl = window.matchMedia("(min-width: 1400px)");
+  
+  function normaliseHeightsXs(classString) {
+    if (mediaXs.matches) {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    } else {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+    }
+  }
+  
+  function normaliseHeightsSm(classString) {
+    if (mediaSm.matches) {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    } else {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+    }
+  }
+  
+  function normaliseHeightsMd(classString) {
+    if (mediaMd.matches) {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    } else {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+    }
+  }
+  
+  function normaliseHeightsLg(classString) {
+    if (mediaLg.matches) {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    } else {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+    }
+  }
+  
+  function normaliseHeightsXl(classString) {
+    if (mediaXl.matches) {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    } else {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+    }
+  }
+  
+  function normaliseHeightsXxl(classString) {
+    if (mediaXxl.matches) {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+                                     items.map(function(){
+        return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    } else {
+      var items = $(classString);
+      // reset the height
+      items.css('min-height', 0);
+    }
+  }
+  
+  
+  // play video
+  function playVideo(videoId) {
+    document.getElementById(videoId).play();
+    document.getElementById(videoId).controls = "controls";
+    document.getElementById(videoId).parentNode.getElementsByClassName("play-button")[0].remove();
+  };

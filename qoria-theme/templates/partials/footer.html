@@ -6,113 +6,46 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
 -->
 
 <footer class="footer px-0 text-light pt-4 pb-4 bg-gradient-primary">
-  <div class="container-wide">
-    <div class="row-fluid row-cols-1 row-cols-sm-2 row-cols-md-3 text-center text-sm-start">
-      <div class="col mb-4">
-        <div class="d-flex flex-sm-nowrap flex-wrap justify-content-center align-items-center mb-4">
-          <div class="pe-3 mb-3">
-            {% module "Logo"
-            path="@hubspot/logo",
-            offset=0,
-            width=12,
-            horizontal_alignment="LEFT"
-            %}
-
-          </div>
-          <div class="col mb-4">
-            {% module "Menu"
-            path="/qoria-theme/modules/menu-columns",
-            offset=0,
-            width=12,
-            menu=50449265089
-            %}
-          </div>
+  <div class="container"><hr class="opacity-100">
+    <div class="row text-start">
+      <div class="col-12 col-lg-2 mb-4">
+          {% module "module_16793700538024" path="/q-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('../../images/qoria/Qoria_Logo_White.svg')}}", "size_type" : "auto_custom_max", "max_width" : "128"} %}
+      </div>
+      <div class="col-12 col-sm-5 col-lg-4 mb-4">
+            <h6 class="mb-3">
+            {% text "address_heading" label="Address heading", value="Registered office", no_wrapper=True %}
+            </h6>
+            {% text "address_line_1" label="Address Line 1", value="945 Wellington Street, West Perth", export_to_template_context=True %}
+            {% text "address_line_2" label="Address Line 2", value="WA, Australia, 6005", export_to_template_context=True %}
+            {% text "phone_number" label="Phone", value="08 9322 7600", export_to_template_context=True %}
+            {% text "email" label="Email", value="info@qoria.com", export_to_template_context=True %}
+            <p>
+            {% if widget_data.address_line_1.value != "" %}
+              {{widget_data.address_line_1.value}}
+            {% endif %}
+            {% if widget_data.address_line_2.value != "" %}
+              <br>{{widget_data.address_line_2.value}}
+            {% endif %}
+            </p>
+            {{ "<p>" if (widget_data.phone_number.value != "" && widget_data.email.value != "") }}
+              {% if widget_data.phone_number.value != "" %}
+                Phone: {{widget_data.phone_number.value}}
+              {% endif %}
+              {{ "<br>" if (widget_data.phone_number.value != "" && widget_data.email.value != "") }}
+              {% if widget_data.email.value != "" %}
+                Email: {{widget_data.email.value}}
+              {% endif %}
+            {{ "</p>" if (widget_data.phone_number.value != "" && widget_data.email.value != "") }}
+            <p>Registered in Australia<br>Company No. 0000000</p>
+      </div>
+      <div class="col-12 col-sm-4 col-lg-4 mb-4">
+      <h6 class="mb-3">{% text "menu_heading" label="Menu heading", value="Useful Links", no_wrapper=True %}</h6>
+      {% menu "Useful Links" %}
+      </div>
+      <div class="col-12 col-sm-3  col-lg-2 mb-4">
+        <h6 class="mb-3">{% text "social_heading" label="Social heading", value="Follow us", no_wrapper=True %}</h6>
+          {% module "module_16793732914955" path="/q-theme/modules/social-follow", label="social-follow" %}
         </div>
-        {% module "Social header"
-        path="@hubspot/header",
-        offset=0,
-        width=12,
-        header_tag="h5",
-        value="Get social with us!"
-        %}
-
-        {% module "Social links"
-        path="/ySafe22/ySafe Theme/modules/social-follow",
-        offset=0,
-        width=12,
-        social_links=[ {
-        "accessibility" : {
-        "title" : "Follow us on Facebook"
-        },
-        "social_account" : "facebook",
-        "social_link" : {
-        "no_follow" : false,
-        "open_in_new_tab" : true,
-        "url" : {
-        "href" : "https://www.facebook.com/ysafesolutions",
-        "type" : "EXTERNAL"
-        }
-        }
-        }, {
-        "accessibility" : {
-        "title" : "Follow us on Instagram"
-        },
-        "social_account" : "instagram",
-        "social_link" : {
-        "no_follow" : false,
-        "open_in_new_tab" : true,
-        "url" : {
-        "href" : "https://www.instagram.com/ysafeaustralia/",
-        "type" : "EXTERNAL"
-        }
-        }
-        }, {
-        "accessibility" : {
-        "title" : "Follow us on LinkedIn"
-        },
-        "social_account" : "linkedin",
-        "social_link" : {
-        "no_follow" : false,
-        "open_in_new_tab" : true,
-        "url" : {
-        "href" : "https://www.linkedin.com/company/ysafe/",
-        "type" : "EXTERNAL"
-        }
-        }
-        }, {
-        "accessibility" : {
-        "title" : "Follow us on YouTube"
-        },
-        "social_account" : "youtube",
-        "social_link" : {
-        "no_follow" : false,
-        "open_in_new_tab" : true,
-        "url" : {
-        "href" : "https://www.youtube.com/channel/UCs-tyNrDcMN6lAdfBPsKjKw",
-        "type" : "EXTERNAL"
-        }
-        }
-        } ],
-        styles={
-        "alignment" : {
-        "alignment" : {
-        "horizontal_align" : "LEFT"
-        }
-        },
-        "fill" : {
-        "color" : {
-        "color" : "#FFFFFF",
-        "opacity" : 100
-        }
-        },
-        "size" : {
-        "size" : 30
-        },
-        "spacing" : {
-        "space_between_icons" : 10
-        }
-        }
-        %}
       </div>
     </div>
 

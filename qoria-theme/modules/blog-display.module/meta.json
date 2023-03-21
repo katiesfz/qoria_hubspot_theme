@@ -2,6 +2,6 @@
   "global" : false,
   "host_template_types" : [ "PAGE" ],
   "module_id" : 106831987309,
-  "is_available_for_new_content" : true,
-  "label" : "Blog Display"
+  "label" : "Blog Display",
+  "is_available_for_new_content" : true
 }

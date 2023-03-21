@@ -1,0 +1,16 @@
+<section class="{{ module.style.background_colour if module.style.background_colour != "none" }}{{" mt-n5 position-relative" if module.style.overlay }}{{" section-shadow" if module.style.shadow }}">
+    <div class="container-fluid g-0">
+        {% for row in module.row %}
+            <div class="row g-0">
+                {% for col in row.column %}
+                    <div class="col p-3 {{ col.column_styles.background_colour }}{{ " bg-q-tail-1" if col.column_styles.background_image == "q-tail-1" }}">
+                        {{"<h5>{{ col.pre_heading }}</h5>" if col.pre_heading }}
+                        {{"<h3>{{ col.heading }}</h3>" if col.heading }}
+                        {{'<span class="{{col.statistic_font_size}}">{{ col.statistic }}</span>' if col.statistic }}
+                        {{ col.text }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

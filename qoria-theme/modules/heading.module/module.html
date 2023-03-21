@@ -1,5 +1,5 @@
 {% if module.heading_tag == "h1" %}
-<h2 class="h1">{{module.heading}}</h2>
+<h2 class="h1 {{ "text-decoration-partial-underline" if module.heading_underline }}">{{module.heading}}</h2>
 {% else %}
-<{{module.heading_tag}}>{{module.heading}}</{{module.heading_tag}}>
+<{{module.heading_tag}} {{ "class='text-decoration-partial-underline'" if module.heading_underline }}>{{module.heading}}</{{module.heading_tag}}>
 {% endif %}
