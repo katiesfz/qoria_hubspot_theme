@@ -4,5 +4,30 @@
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
   "module_id" : 106706246229,
   "label" : "Social follow",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : true,
+  "css_assets": [{ 
+    "path": "../../assets/fontawesome6/css/brands.min.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/brands.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/fontawesome.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/fontawesome.min.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/solid.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/solid.min.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/regular.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/regular.min.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/light.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/light.min.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/thin.css" 
+    },{ 
+    "path": "../../assets/fontawesome6/css/thin.min.css" 
+    }]
 }

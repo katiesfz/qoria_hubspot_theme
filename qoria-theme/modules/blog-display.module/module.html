@@ -1,0 +1,41 @@
+{% if module.post_type == "popular" %}
+    {% set blog_posts = blog_popular_posts(module.blog_field, 10, module.tag_field, module.timeframe) %}
+{% elif module.post_type == "latest" %}
+    {% if module.tag_field %}
+        {% set blog_posts = blog_recent_tag_posts(module.blog_field, module.tag_field, 10) %}
+    {% else %}
+        {% set blog_posts = blog_recent_posts(module.blog_field, 10) %}
+    {% endif %}
+{% endif %}
+
+{# split to 2 columns/arrays #}
+{% set numPerCol = (blog_posts|length / 2)|round(0, "ceil") %}
+
+<div class="container-fluid g-0">
+    <div class="row row-cols-md-2 row-cols-1 g-3">
+        {% for column in blog_posts|slice(numPerCol, " ") %}
+            <div class="col">
+                <div class="col-inner px-5 bg-white">
+                {% for blog in column %}
+                    {% if blog != " " %}
+                        <div class="blog py-5 {{"border-bottom" if not loop.last}}">
+                            <div class="row align-items-stretch">
+                                <div class="col d-flex flex-column justify-content-end">
+                                <h5 class="fw-semibold">{{ blog.name }}</h5>
+                                <p class="small fw-semibold">{{ (blog.tag_list[0] + " | ") if blog.tag_list }}{{blog.published_at|format_date('MMMM yyyy')}}</p>
+                                </div>
+                                {% if blog.featured_image %}
+                                    <div class="col-5">
+                                    <img src="{{blog.featured_image}}" class="img-fluid">
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <p>{{blog.post_summary|striptags}}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

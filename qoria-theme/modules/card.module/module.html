@@ -2,7 +2,7 @@
   <style>
   .card-header-cap:after {
     content: "";
-    background-image: url({{ get_asset_url('../../images/qoria/q_tail_01.svg') }});
+    background-image: url({{ get_asset_url('/q-theme/images/qoria/q_tail_01.svg') }});
     background-position: calc(100% + 34px) calc(100% + 32px);
     background-repeat: no-repeat;
     position: absolute;
@@ -14,7 +14,7 @@
 }
   </style>
 {% end_require_css %}
-<div class="container-fluid">
+<div class="container-fluid g-0">
 <div class="row row-cols-{{module.styles.responsive.breakpoints.mobile}} row-cols-md-{{module.styles.responsive.breakpoints.tablet}} row-cols-lg-{{module.styles.responsive.breakpoints.desktop}} g-3">
   {% for card in module.card %}
 
@@ -22,11 +22,11 @@
       <div class="card shadow {{ "h-100" if module.styles.equal_heights }}">
         {% if card.image.src %}
           <img src="{{ card.image.src }}" class="card-img-top" alt="{{ card.image.alt }}">
-          <div class="card-header {{card.accent_colour}}">{{card.title}}</div>
+          <div class="card-header h5 {{card.accent_colour}}">{{card.title}}</div>
         {% else %}
           <div class="ratio ratio-16x9 {{card.accent_colour}}">
             <div class="card-header card-header-cap d-flex border-0 align-items-end">
-              <h3>
+              <p class="fs-1 lh-sm">
                 {{card.title}}
               </h3>
             </div>
@@ -36,6 +36,9 @@
         
           {% if card.text %}
             <p class="card-text">{{ card.text }}</p>
+          {% endif %}
+          {% if card.link.url.href %}
+            <a href="{{card.link.url.href}}" class="{{ "stretched-link" if card.stretched_link }} text-reset text-decoration-none">{{card.link_label}}</a>
           {% endif %}
         </div>
       </div>

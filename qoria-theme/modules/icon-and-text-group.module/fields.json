@@ -1,0 +1,249 @@
+[ {
+  "id" : "7758ed15-5be1-499a-e6a7-b9850b17ca11",
+  "name" : "icon_and_text",
+  "display_width" : null,
+  "label" : "Icon and Text",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "b57b4e4a-0e68-9ff5-bec4-fcecb2e91bd8",
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "36ae9b31-746f-01fc-61d9-78ba04413521",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "3ba0ff69-eca3-0bed-7d3e-9ad21ec579a1",
+      "name" : "icon_field",
+      "display_width" : null,
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "icon_set" : "fontawesome-5.14.0",
+      "type" : "icon",
+      "default" : {
+        "name" : "Check Circle",
+        "unicode" : "f058",
+        "type" : "REGULAR"
+      }
+    }, {
+      "id" : "be41a944-dc0d-aa60-07cd-2db48f9b3f63",
+      "name" : "icon_code",
+      "display_width" : null,
+      "label" : "Icon Code",
+      "help_text" : "Icon selection not working? Enter the icon name here. e.g. address-book",
+      "inline_help_text" : "Find icons at https://fontawesome.com/v5/search",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "6fe23315-7dd6-1694-9638-559b81e24222",
+      "name" : "icon_style",
+      "display_width" : null,
+      "label" : "Icon Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fad", "Duotone" ], [ "fa fa-brands fab ", "Brand" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "type" : "choice",
+      "default" : "fal"
+    }, {
+      "id" : "b79fc9d3-be37-b607-0784-de535cb9a20e",
+      "name" : "icon_shape",
+      "display_width" : null,
+      "label" : "Icon shape",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "rounded", "Square" ], [ "rounded-circle", "Circle" ], [ "blob-1", "Blob 1" ], [ "blob-2", "Blob 2" ], [ "blob-3", "Blob 3" ], [ "blob-4", "Blob 4" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "type" : "choice",
+      "default" : "rounded"
+    }, {
+      "id" : "4d44bfe1-1a93-2bb2-bfd8-a1445d57b474",
+      "name" : "icon_size",
+      "display_width" : null,
+      "label" : "Icon size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "type" : "choice",
+      "default" : "fa-3x"
+    }, {
+      "id" : "80d352cf-8c20-f50a-f69a-0a99aaedb12b",
+      "name" : "max_width",
+      "display_width" : null,
+      "label" : "Max width",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 50,
+      "max" : 500,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 84
+    }, {
+      "id" : "ec748a02-33b6-e860-cee2-e45c63271a17",
+      "name" : "custom_image",
+      "display_width" : null,
+      "label" : "Custom Image",
+      "required" : false,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "1ee9a359-5f07-6ec3-1c8d-bb266ad6db45",
+      "name" : "icon_colour",
+      "display_width" : null,
+      "label" : "Icon colour",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "teal-300", "Teal 30" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "type" : "choice",
+      "default" : "primary"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "icon_field" : {
+        "name" : "Check Circle",
+        "unicode" : "f058",
+        "type" : "REGULAR"
+      },
+      "icon_code" : "",
+      "icon_style" : "fal",
+      "icon_shape" : "rounded",
+      "icon_size" : "fa-3x",
+      "max_width" : 84,
+      "custom_image" : {
+        "size_type" : "auto",
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      },
+      "icon_colour" : "primary"
+    }
+  }, {
+    "id" : "b57b4e4a-0e68-9ff5-bec4-fcecb2e91bd8",
+    "name" : "text",
+    "display_width" : null,
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4>Screen time</h4>\n<p class=\"m-0\">Young Australians are spending more than seven hours a day on screen time.</p>"
+  }, {
+    "id" : "c65582d4-0a6c-1b76-cea8-6d612bbea8e4",
+    "name" : "icon_alignment",
+    "display_width" : null,
+    "label" : "Icon Alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-items-start", "Top" ], [ "align-items-center", "Center" ], [ "align-items-end", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : "align-items-center"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "icon" : {
+      "icon_field" : {
+        "name" : "Check Circle",
+        "unicode" : "f058",
+        "type" : "REGULAR"
+      },
+      "icon_code" : "",
+      "icon_style" : "fal",
+      "icon_shape" : "rounded",
+      "icon_size" : "fa-3x",
+      "max_width" : 84,
+      "custom_image" : {
+        "size_type" : "auto",
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      },
+      "icon_colour" : "primary"
+    },
+    "text" : "<h4>Screen time</h4>\n<p class=\"m-0\">Young Australians are spending more than seven hours a day on screen time.</p>",
+    "icon_alignment" : "align-items-center"
+  }
+}, {
+  "id" : "b5fc53fb-8126-3712-ce16-cff465669912",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "f33c21d9-c9fb-5036-b3c4-985c311e4fbf",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 8,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 8,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacing_field" : {
+      "margin" : {
+        "top" : {
+          "value" : 8,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 8,
+          "units" : "px"
+        }
+      }
+    }
+  }
+} ]

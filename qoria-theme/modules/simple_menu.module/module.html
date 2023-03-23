@@ -1,0 +1,9 @@
+{% if module.menu_tree %}
+    <ul class="{{ "list-inline" if module.orientation == "horizontal" }} list-unstyled">
+{% for link in module.menu_tree %}
+        <li class="mb-3">
+            <a href="{{link.url}}" class="text-decoration-none text-reset">{{ link.linkLabel }}</a>
+        </li>
+{% endfor %}
+    </ul>
+{% endif %}

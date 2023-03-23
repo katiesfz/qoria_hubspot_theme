@@ -141,7 +141,7 @@
       "required" : false,
       "locked" : false,
       "type" : "richtext",
-      "default" : "Across three continents",
+      "default" : "<p class='fs-6 fw-bold'>Across three continents</p>",
       "enabled_features" : ["bold","link"]
     }, {
       "id" : "989e0bde-a735-330e-90ed-7e93efd63501",

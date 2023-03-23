@@ -3,6 +3,13 @@ templateType: global_partial
 label: Website header
 -->
 
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+
 {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
 {% set breakpoint = widget_data.navigation.breakpoint %}
     {% if breakpoint == "always" %}
@@ -15,9 +22,9 @@ label: Website header
   
 {% module "module_16790276570878" path="/q-theme/modules/notification-bar", label="Notifications", no_wrapper=True %}
 
-<header class="header bg-white">
+<header class="header bg-white py-4">
     <nav class="navbar {{navbarExpand}}">
-  <div class="container-fluid"> 
+  <div class="container-xxl"> 
     {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"}, no_wrapper=True %}
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fal fa-bars"></i>
@@ -33,8 +40,21 @@ label: Website header
                         no_wrapper=True
                       %}
           </div>
+          <div class="search-button">
+            <button class="btn btn-link text-decoration-none text-reset px-0 ms-{{breakpoint}}-6"><i class="fa-solid fa-lg fa-magnifying-glass"></i></button>
+          </div>
+          <form class="d-none" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+            {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
+            {% if widget_data.cta.link.url != "" %}
+              <div class="d-flex ms-{{breakpoint}}-6">
+              {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
+
+              </div>
+            {% endif %}
       </div>
   </div>
     </nav>
 </header>
-

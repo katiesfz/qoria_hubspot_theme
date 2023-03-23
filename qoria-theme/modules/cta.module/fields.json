@@ -1,10 +1,140 @@
 [ {
-  "id" : "text",
-  "name" : "text",
+  "name" : "alignment",
   "display_width" : null,
-  "label" : "Rich text field",
+  "label" : "Alignment",
   "required" : false,
   "locked" : false,
-  "type" : "richtext",
-  "default" : "<h1>Hello, world!</h1>"
+  "display" : "select",
+  "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "type" : "choice"
+}, {
+  "name" : "link",
+  "display_width" : null,
+  "label" : " Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "www.hubspot.com",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "name" : "button_text",
+  "display_width" : null,
+  "label" : "Button text",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Add a button link here"
+}, {
+  "name" : "button_colour",
+  "display_width" : null,
+  "label" : "Button Colour",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "success", "Success" ], [ "danger", "Danger" ], [ "warning", "Warning" ], [ "info", "Info" ], [ "light", "Light" ], [ "dark", "Dark" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "type" : "choice",
+  "default" : "primary"
+}, {
+  "name" : "button_style",
+  "display_width" : null,
+  "label" : "Button Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "-", "Normal" ], [ "-outline-", "Outline" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "type" : "choice",
+  "default" : "-"
+}, {
+  "name" : "text_colour",
+  "display_width" : null,
+  "label" : "Text colour",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "button_style",
+    "controlling_value_regex" : "-",
+    "property" : null,
+    "operator" : "NOT_EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "text-white", "Light" ], [ "text-dark", "Dark" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "type" : "choice",
+  "default" : "text-dark"
+}, {
+  "name" : "button_size",
+  "display_width" : null,
+  "label" : "Button Size",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "btn-sm", "Small" ], [ " ", "Standard" ], [ "btn-lg", "Large" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "type" : "choice",
+  "default" : " "
+}, {
+  "name" : "advanced",
+  "display_width" : null,
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "name" : "additional_classes",
+    "display_width" : null,
+    "label" : "Additional Classes",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "name" : "trigger_modal",
+    "display_width" : null,
+    "label" : "Trigger modal",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "name" : "modal_id",
+    "display_width" : null,
+    "label" : "Modal ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "trigger_modal" : false
+  }
 } ]

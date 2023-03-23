@@ -82,8 +82,7 @@
 
 {# Social links #}
 
-<div class="social-links">
-
+  <ul class="list-unstyled">
   {# Loops through each social link in the social links repeater #}
 
   {% for item in module.social_links %}
@@ -110,21 +109,42 @@
       {% set social_icon = item.custom_icon.name %}
     {% endif %}
 
-    {# Icon #}
+    {# Set the labels #}
+    {% if item.social_account == "facebook-f" %}
+      {% set itemLabel = "Facebook" %}
+    {% elif item.social_account == "twitter" %}
+      {% set itemLabel = "Twitter" %}
+    {% elif item.social_account == "instagram" %}
+      {% set itemLabel = "Instagram" %}
+    {% elif item.social_account == "linkedin-in" %}
+      {% set itemLabel = "LinkedIn" %}
+    {% elif item.social_account == "youtube" %}
+      {% set itemLabel = "YouTube" %}
+    {% elif item.social_account == "custom_icon" %}
+      {% set itemLabel = item.custom_label %}
+    {% endif %}
 
-    <a class="social-links__link" href="{{ href }}"
+    {# Icon #}
+    <li class="mb-3">
+    <a class="text-decoration-none text-reset" href="{{ href }}"
     {% if item.social_link.open_in_new_tab %}target="_blank"{% endif %}
     {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
-      {% icon
-        extra_classes="social-links__icon",
-        name="{{ social_icon }}",
-        purpose="semantic",
-        style="SOLID",
-        title="{{ item.accessibility.title }}",
-        unique_in_loop=True
-      %}
+      {% if item.social_account == "custom_icon" %}
+        {% set sizeAttrs = 'width="{{ module.icon.custom_image.width }}" height="{{ module.icon.custom_image.height }}"' %}
+        {% if module.icon.custom_image.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.icon.custom_image.width }}" height="{{ module.icon.custom_image.height }}" style="max-width: 100%; height: auto;"' %}
+        {% elif module.icon.custom_image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.icon.custom_image.max_width }}" height="{{ module.icon.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = module.icon.custom_image.loading != 'disabled' ? 'loading="{{ module.icon.custom_image.loading }}"' : '' %}
+        <img src="{{ module.icon.custom_image.src }}" alt="{{ module.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}> 
+     {% else %}
+        {% set iconCode = "fa-" ~ item.social_account %}
+          <i class="fa-fw {{ module.styles.icon_style }} {{ module.styles.icon_size }} {{ iconCode }}"></i> {{ itemLabel }}
+     {% endif %}
+     
+     
     </a>
-
+    </li>
   {% endfor %}
-
-</div>
+  </ul>

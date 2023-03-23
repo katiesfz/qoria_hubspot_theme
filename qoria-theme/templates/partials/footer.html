@@ -5,13 +5,13 @@ description: "Footer section including address, footer navigation menu and socia
 screenshotPath: ../images/section-previews/screenshot_Footer.png
 -->
 
-<footer class="footer px-0 text-light pt-4 pb-4 bg-gradient-primary">
-  <div class="container"><hr class="opacity-100">
+<footer class="footer px-0 text-light pb-4 bg-gradient-primary">
+  <div class="container-xxl"><hr class="opacity-100 my-6">
     <div class="row text-start">
       <div class="col-12 col-lg-2 mb-4">
           {% module "module_16793700538024" path="/q-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('../../images/qoria/Qoria_Logo_White.svg')}}", "size_type" : "auto_custom_max", "max_width" : "128"} %}
       </div>
-      <div class="col-12 col-sm-5 col-lg-4 mb-4">
+      <div class="col-12 col-sm-5 col-lg-4 mb-5">
             <h6 class="mb-3">
             {% text "address_heading" label="Address heading", value="Registered office", no_wrapper=True %}
             </h6>
@@ -38,13 +38,72 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
             {{ "</p>" if (widget_data.phone_number.value != "" && widget_data.email.value != "") }}
             <p>Registered in Australia<br>Company No. 0000000</p>
       </div>
-      <div class="col-12 col-sm-4 col-lg-4 mb-4">
+      <div class="col-12 col-sm-4 col-lg-4 mb-5">
       <h6 class="mb-3">{% text "menu_heading" label="Menu heading", value="Useful Links", no_wrapper=True %}</h6>
-      {% menu "Useful Links" %}
+        {% module_block module "module_16795362141501" path="/q-theme/modules/simple_menu", orientation="vertical", label="Useful Links", no_wrapper=True %}
+          {% module_attribute "menu_tree" is_json=True %}[
+            {
+                "contentType": null,
+                "subCategory": null,
+                "pageLinkName": null,
+                "pageLinkId": null,
+                "isPublished": false,
+                "categoryId": null,
+                "linkParams": null,
+                "linkLabel": "Privacy Policy",
+                "linkTarget": null,
+                "linkUrl": "/privacy",
+                "children": [],
+                "isDeleted": false
+            },
+            {
+                "contentType": null,
+                "subCategory": null,
+                "pageLinkName": null,
+                "pageLinkId": null,
+                "isPublished": false,
+                "categoryId": null,
+                "linkParams": null,
+                "linkLabel": "Terms & Conditions",
+                "linkTarget": null,
+                "linkUrl": "/terms",
+                "children": [],
+                "isDeleted": false
+            },
+            {
+                "contentType": null,
+                "subCategory": null,
+                "pageLinkName": null,
+                "pageLinkId": null,
+                "isPublished": false,
+                "categoryId": null,
+                "linkParams": null,
+                "linkLabel": "Site Map",
+                "linkTarget": null,
+                "linkUrl": "/site-map",
+                "children": [],
+                "isDeleted": false
+            },
+            {
+                "contentType": null,
+                "subCategory": null,
+                "pageLinkName": null,
+                "pageLinkId": null,
+                "isPublished": false,
+                "categoryId": null,
+                "linkParams": null,
+                "linkLabel": "Contact Us",
+                "linkTarget": null,
+                "linkUrl": "/contact",
+                "children": [],
+                "isDeleted": false
+            }
+        ]{% end_module_attribute %}
+        {% end_module_block %}
       </div>
-      <div class="col-12 col-sm-3  col-lg-2 mb-4">
+      <div class="col-12 col-sm-3  col-lg-2 mb-5">
         <h6 class="mb-3">{% text "social_heading" label="Social heading", value="Follow us", no_wrapper=True %}</h6>
-          {% module "module_16793732914955" path="/q-theme/modules/social-follow", label="social-follow" %}
+          {% module "module_16793732914955" path="/q-theme/modules/social-follow", label="social-follow", no_wrapper=True %}
         </div>
       </div>
     </div>

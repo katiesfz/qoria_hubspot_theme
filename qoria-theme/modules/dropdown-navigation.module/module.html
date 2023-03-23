@@ -62,7 +62,7 @@
   {% macro render_dropdown_links(link, depth, last) %}
     <li>
       {% if link.children %}
-        <div class="dropdown {{" dropend" if last == true}}">
+        <div class="dropdown {{" dropstart" if last == true}}">
           <a type="button" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               {{ link.label|replace(" ","&nbsp;") }}
           </a>

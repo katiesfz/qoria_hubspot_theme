@@ -3,8 +3,8 @@
         {% for row in module.row %}
             <div class="row g-0">
                 {% for col in row.column %}
-                    <div class="col p-3 {{ col.column_styles.background_colour }}{{ " bg-q-tail-1" if col.column_styles.background_image == "q-tail-1" }}">
-                        {{"<h5>{{ col.pre_heading }}</h5>" if col.pre_heading }}
+                    <div class="col p-4 {{ col.column_styles.background_colour }}{{ " bg-q-tail-1" if col.column_styles.background_image == "q-tail-1" }}">
+                        {{"<h5><strong>{{ col.pre_heading }}</strong></h5>" if col.pre_heading }}
                         {{"<h3>{{ col.heading }}</h3>" if col.heading }}
                         {{'<span class="{{col.statistic_font_size}}">{{ col.statistic }}</span>' if col.statistic }}
                         {{ col.text }}

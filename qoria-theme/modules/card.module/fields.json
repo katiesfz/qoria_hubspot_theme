@@ -33,7 +33,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ] ],
+    "choices" : [ [ "none", "None" ],[ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -59,7 +59,45 @@
     "enabled_features" : [ "emoji", "lists", "font_size", "standard_emphasis", "block", "font_family", "alignment", "advanced_emphasis" ],
     "type" : "richtext",
     "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
-  } ],
+  },{
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "type" : "link",
+    "show_advanced_rel_options" : false,
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  },{
+    "name" : "link_label",
+    "label" : "Link Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+  "name" : "stretched_link",
+  "label" : "Stretched link",
+  "required" : false,
+  "locked" : false,
+  "type" : "boolean",
+  "display":"checkbox",
+  "inline_help_text" : "Applies link to the whole card",
+  "default" : false
+}],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",

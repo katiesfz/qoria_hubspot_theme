@@ -1,4 +1,4 @@
-.hero-full-video {
+.hero-full-video, .hero-full-image {
     position: relative;
     background-color: black;
     padding-top: 30rem;
@@ -21,7 +21,7 @@
     transform: translateX(-50%) translateY(-50%);
   }
   
-  .hero-full-video .container {
+  .hero-full-video .container, .hero-full-video .container-fluid, .hero-full-video .container-xxl, .hero-full-video .container-xl, .hero-full-video .container-lg, .hero-full-video .container-md, .hero-full-video .container-sm {
     position: relative;
     z-index: 2;
   }

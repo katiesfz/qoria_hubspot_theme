@@ -19,19 +19,22 @@
     "required" : true,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "facebook-f", "Facebook" ], [ "twitter", "Twitter" ], [ "instagram", "Instagram" ], [ "linkedin-in", "LinkedIn" ], [ "youtube", "YouTube" ], [ "pinterest-p", "Pinterest" ], [ "envelope", "Email" ], [ "link", "Website" ], [ "whatsapp", "Whatsapp" ], [ "custom_icon", "Custom icon" ] ],
+    "choices" : [ [ "facebook-f", "Facebook" ], [ "twitter", "Twitter" ], [ "instagram", "Instagram" ], [ "linkedin-in", "LinkedIn" ], [ "youtube", "YouTube" ], [ "custom_icon", "Custom" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
     "default" : "facebook-f"
-  }, {
-    "id" : "social_links.custom_icon",
-    "name" : "custom_icon",
+  },{
+    "id" : "custom_social",
+    "name" : "custom_social",
     "display_width" : null,
-    "label" : "Custom icon",
-    "required" : true,
+    "label" : "Custom social link",
+    "required" : false,
     "locked" : false,
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
     "visibility" : {
       "controlling_field" : "social_account",
       "controlling_field_path" : null,
@@ -41,21 +44,90 @@
       "access" : null,
       "hidden_subfields" : null
     },
-    "icon_set" : "fontawesome-5.0.10",
-    "type" : "icon",
-    "default" : {
-      "name" : "arrow-alt-circle-up",
-      "type" : "SOLID",
-      "unicode" : "f35b"
-    }
-  }, {
+    "children" : [
+      {
+        "name" : "icon",
+        "display_width" : null,
+        "label" : "Icon",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "name" : "icon_field",
+          "display_width" : null,
+          "label" : "Icon",
+          "required" : false,
+          "locked" : false,
+          "icon_set" : "fontawesome-5.14.0",
+          "type" : "icon",
+          "default" : {
+            "name" : "Check Circle",
+            "unicode" : "f058",
+            "type" : "REGULAR"
+            }
+          }, {
+          "name" : "icon_code",
+          "display_width" : null,
+          "label" : "Icon Code",
+          "help_text" : "Can't find the icon you want? Icon selection not working for you? Enter the icon name here. e.g. address-book",
+          "inline_help_text" : "Find icons at https://fontawesome.com/v6/search",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : ""
+          }, {
+          "name" : "custom_image",
+          "display_width" : null,
+          "label" : "Custom Image",
+          "required" : false,
+          "locked" : false,
+          "responsive" : true,
+          "resizable" : true,
+          "show_loading" : false,
+          "type" : "image",
+          "default" : {
+            "size_type" : "auto",
+            "src" : "",
+            "alt" : null,
+            "loading" : "lazy"
+            }
+          }, {
+          "name" : "icon_colour",
+          "display_width" : null,
+          "label" : "Icon colour",
+          "required" : false,
+          "locked" : false,
+          "display" : "select",
+          "choices" : [ [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ], [ "fill-light", "Light" ] ],
+          "multiple" : false,
+          "reordering_enabled" : true,
+          "type" : "choice",
+          "default" : "fill-dark"
+          } 
+        ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+    },{
+        "id" : "social_links.custom_label",
+        "name" : "custom_label",
+        "display_width" : null,
+        "label" : "Custom label",
+        "required" : false,
+        "locked" : false,
+        "type" : "text"
+      }
+    ]
+  },{
     "id" : "social_links.social_link",
     "name" : "social_link",
     "display_width" : null,
     "label" : "Social link",
     "required" : true,
     "locked" : false,
-    "supported_types" : [ "EXTERNAL", "EMAIL_ADDRESS" ],
+    "supported_types" : [ "EXTERNAL" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
     "default" : {
@@ -123,32 +195,18 @@
       "title" : "Follow us on LinkedIn"
     }
   }, {
-    "social_account" : "twitter",
+    "social_account" : "youtube",
     "social_link" : {
       "no_follow" : false,
       "open_in_new_tab" : true,
       "url" : {
         "content_id" : null,
-        "href" : "https://www.twitter.com",
+        "href" : "https://www.youtube.com",
         "type" : "EXTERNAL"
       }
     },
     "accessibility" : {
-      "title" : "Follow us on Twitter"
-    }
-  }, {
-    "social_account" : "instagram",
-    "social_link" : {
-      "no_follow" : false,
-      "open_in_new_tab" : true,
-      "url" : {
-        "content_id" : null,
-        "href" : "https://www.instagram.com",
-        "type" : "EXTERNAL"
-      }
-    },
-    "accessibility" : {
-      "title" : "Follow us on Instagram"
+      "title" : "Subscribe to our YouTube channel"
     }
   } ]
 }, {
@@ -158,165 +216,52 @@
   "label" : "Styles",
   "required" : false,
   "locked" : false,
-  "children" : [ {
-    "id" : "styles.fill",
-    "name" : "fill",
+  "children" : [{
+    "name" : "icon_size",
     "display_width" : null,
-    "label" : "Fill",
+    "label" : "Icon size (Relative)",
     "required" : false,
     "locked" : false,
-    "children" : [ {
-      "id" : "styles.fill.color",
-      "name" : "color",
-      "display_width" : null,
-      "label" : "Color",
-      "required" : false,
-      "locked" : false,
-      "visibility" : {
-        "controlling_field" : null,
-        "controlling_field_path" : null,
-        "controlling_value_regex" : null,
-        "property" : null,
-        "operator" : null,
-        "access" : null,
-        "hidden_subfields" : {
-          "opacity" : true
-        }
-      },
-      "type" : "color",
-      "default" : {
-        "color" : null,
-        "opacity" : null
-      }
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "type" : "group"
-  }, {
-    "id" : "styles.size",
-    "name" : "size",
-    "display_width" : null,
-    "label" : "Size",
-    "required" : false,
-    "locked" : false,
-    "children" : [ {
-      "id" : "styles.size.size",
-      "name" : "size",
-      "display_width" : null,
-      "label" : "Size",
-      "required" : false,
-      "locked" : false,
-      "display" : "text",
-      "min" : 1,
-      "max" : 50,
-      "step" : 1,
-      "suffix" : "px",
-      "type" : "number"
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "type" : "group"
-  }, {
-    "id" : "styles.background",
-    "name" : "background",
-    "display_width" : null,
-    "label" : "Background",
-    "required" : false,
-    "locked" : false,
-    "children" : [ {
-      "id" : "styles.background.color",
-      "name" : "color",
-      "display_width" : null,
-      "label" : "Color",
-      "required" : false,
-      "locked" : false,
-      "type" : "color",
-      "default" : {
-        "color" : null,
-        "opacity" : null
-      }
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "type" : "group"
-  }, {
-    "id" : "styles.corner",
-    "name" : "corner",
-    "display_width" : null,
-    "label" : "Corner",
-    "required" : false,
-    "locked" : false,
-    "children" : [ {
-      "id" : "styles.corner.radius",
-      "name" : "radius",
-      "display_width" : null,
-      "label" : "Radius",
-      "required" : false,
-      "locked" : false,
-      "display" : "text",
-      "max" : 100,
-      "step" : 1,
-      "suffix" : "px",
-      "type" : "number"
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "type" : "group"
-  }, {
-    "id" : "styles.spacing",
-    "name" : "spacing",
-    "display_width" : null,
-    "label" : "Spacing",
-    "required" : false,
-    "locked" : false,
-    "children" : [ {
-      "id" : "styles.spacing.space_between_icons",
-      "name" : "space_between_icons",
-      "display_width" : null,
-      "label" : "Space between icons",
-      "required" : false,
-      "locked" : false,
-      "display" : "slider",
-      "min" : 0,
-      "max" : 50,
-      "step" : 5,
-      "suffix" : "px",
-      "type" : "number"
+    "display" : "select",
+    "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ "fa-md", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ], ["absolute","Literal Sizing"] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : "fa-lg"
     }, {
-      "id" : "styles.spacing.spacing",
-      "name" : "spacing",
-      "display_width" : null,
-      "label" : "Spacing",
-      "required" : false,
-      "locked" : false,
-      "type" : "spacing",
-      "default" : { }
-    } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "type" : "group"
-  }, {
-    "id" : "styles.alignment",
-    "name" : "alignment",
+    "name" : "max_width",
     "display_width" : null,
-    "label" : "Alignment",
+    "label" : "Literal Sizing",
     "required" : false,
     "locked" : false,
-    "children" : [ {
-      "id" : "styles.alignment.alignment",
-      "name" : "alignment",
-      "display_width" : null,
-      "label" : "Alignment",
-      "required" : false,
-      "locked" : false,
-      "alignment_direction" : "HORIZONTAL",
-      "type" : "alignment",
-      "default" : { }
+    "display" : "select",
+    "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ], ["absolute","Absolute sizing"] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : "fa-2x",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "styles.icon_size",
+      "controlling_value_regex" : "absolute",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+      }
+  },{
+    "name" : "icon_style",
+    "display_width" : null,
+    "label" : "Icon Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fad", "Duotone" ], [ "fa fa-brands fab ", "Brand" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : "fa fa-brands fab "
     } ],
-    "tab" : "STYLE",
-    "expanded" : false,
-    "type" : "group"
-  } ],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"

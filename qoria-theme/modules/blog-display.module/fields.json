@@ -7,4 +7,69 @@
   "locked" : false,
   "type" : "blog",
   "default" : ""
-} ]
+},{
+  "name" : "post_type",
+  "label" : "Sort by",
+  "required" : false,
+  "locked" : false,
+  "multiple":"false",
+  "display" : "select",
+  "choices" : [ [ "latest", "Latest" ], [ "popular", "Popular" ]],
+  "type" : "choice",
+  "default" : "latest"
+}, {
+   "type": "choice",
+   "id": "71332912-7c3f-65ed-ef14-142040e45d36",
+   "display": "select",
+   "choices": [
+    [
+     "popular_all_time",
+     "All time"
+    ],
+    [
+     "popular_past_year",
+     "Past year"
+    ],
+    [
+     "popular_past_six_months",
+     "Past 6 months"
+    ],
+    [
+     "popular_past_month",
+     "Past month"
+    ]
+   ],
+   "label": "Timeframe",
+   "name": "timeframe",
+   "default": "popular_all_time",
+   "visibility": {
+    "operator": "EQUAL",
+    "controlling_field_path": "post_type",
+    "controlling_value_regex": "popular"
+   }
+  }, {
+    "type": "tag",
+    "id": "7ca79761-01e4-03e3-696e-9732aa5bb712",
+    "tag_value": "SLUG",
+    "label": "Filter by tag",
+    "name": "tag_field",
+    "default": "",
+    "required": false,
+    "visibility": null,
+    "occurrence": {}
+   },{
+    "name" : "number_of_posts",
+    "label" : "Number of posts",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 1,
+    "max" : 10,
+    "step" : 1,
+    "type" : "number",
+    "prefix": "",
+    "suffix" : "",
+    "default" : "10",
+    "placeholder": "10"
+   }
+]

@@ -1,0 +1,7 @@
+{
+  "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "icon": "../img/icon/edited-menu-1.svg",
+  "is_available_for_new_content": true,
+  "smart_type": "NOT_SMART",
+  "label": "Simple Menu"
+}

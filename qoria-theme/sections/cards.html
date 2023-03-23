@@ -5,55 +5,182 @@
   screenshotPath: ../images/section-previews/cards.png
   description: "Middle centered heading above three cards, containing an image and text each."
 -->
-{% dnd_section %}
-  {% dnd_column %}
-    {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/rich_text",
-        html={{ context.content or '<div style="text-align: center;"><h1>Contact us</h1></div>' }}
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-    {% dnd_row %}
-      {% dnd_module
-        path="../modules/card",
-        card=[
-          {
-            "image": {
-              "alt": context.card_one_image_alt or "Phone number",
-              "loading": context.card_one_image_loading or "disabled",
-              "max_height": context.card_one_image_height or 230,
-              "max_width": context.card_one_image_width or 230,
-              "size_type": "auto_custom_max",
-              "src": context.card_one_image or get_asset_url("../images/phone.png")
-            },
-            "text": context.card_one_content or "<p>(887) 929-0687</p>"
-          },
-          {
-            "image": {
-              "alt": context.card_two_image_alt or "Email",
-              "loading": context.card_two_image_loading or "disabled",
-              "max_height": context.card_two_image_height or 230,
-              "max_width": context.card_two_image_width or 230,
-              "size_type": "auto_custom_max",
-              "src": context.card_two_image or get_asset_url("../images/email.png")
-            },
-            "text": context.card_two_content or "<p>contact@business.com</p>"
-          },
-          {
-            "image": {
-              "alt": context.card_three_image_alt or "Address",
-              "loading": context.card_three_image_loading or "disabled",
-              "max_height": context.card_three_image_height or 230,
-              "max_width": context.card_three_image_width or 230,
-              "size_type": "auto_custom_max",
-              "src": context.card_three_image or get_asset_url("../images/location.png")
-            },
-            "text": context.card_three_content or "<p>2 Canal Park, Cambridge, MA 02141</p>"
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "top" : "80px"
+    }
+  }
+%}
+    {% dnd_column
+      offset=0,
+      width=12
+    %}
+      {% dnd_row %}
+        {% dnd_column
+          offset=0,
+          width=4,
+          padding={
+            "default" : {
+              "right" : "30px"
+            }
           }
-        ]
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-  {% end_dnd_column %}
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/heading",
+              offset=0,
+              width=12,
+              heading_tag="h1",
+              heading_underline=true
+            %}
+              {% module_attribute "heading" %}
+                Meet our <br><strong>Qoria family</strong>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan.</p>
+                <p>Read more &gt;</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=4,
+          width=8,
+          padding={
+            "default" : {
+              "left" : "5px",
+              "bottom" : "40px"
+            }
+          }
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/card",
+              offset=0,
+              width=12,
+              card=[ {
+                "accent_colour" : "bg-indigo text-white",
+                "image" : {
+                  "alt" : "iStock-489592905 RT",
+                  "height" : 859,
+                  "loading" : "lazy",
+                  "max_height" : 859,
+                  "max_width" : 1288,
+                  "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-489592905%20RT.jpg",
+                  "width" : 1288
+                },
+                "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+                "title" : "<strong>Linewize</strong> (North America)"
+              }, {
+                "accent_colour" : "bg-indigo text-white",
+                "image" : {
+                  "alt" : "iStock-500428859 RT",
+                  "height" : 859,
+                  "loading" : "lazy",
+                  "max_height" : 859,
+                  "max_width" : 1288,
+                  "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-500428859%20RT.jpg",
+                  "width" : 1288
+                },
+                "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+                "title" : "<strong>Linewize</strong> (Asia Pacific)"
+              } ],
+              styles={
+                "responsive" : {
+                  "breakpoints" : {
+                    "desktop" : 2
+                  }
+                }
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_row%}
+      {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/card",
+              offset=0,
+              width=12,
+              card=[ {
+                "accent_colour" : "bg-teal text-white",
+                "card_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "sponsored" : false,
+                  "url" : {
+                    "content_id" : 106706114610,
+                    "type" : "CONTENT"
+                  },
+                  "user_generated_content" : false
+                },
+                "image" : {
+                  "alt" : "iStock-539271099 RT",
+                  "height" : 859,
+                  "loading" : "lazy",
+                  "max_height" : 859,
+                  "max_width" : 1288,
+                  "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-539271099%20RT.jpg",
+                  "width" : 1288
+                },
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "sponsored" : false,
+                  "url" : {
+                    "content_id" : 106706114610,
+                    "type" : "CONTENT"
+                  },
+                  "user_generated_content" : false
+                },
+                "link_label" : "Visit website >",
+                "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+                "title" : "<strong>Smoothwall</strong>"
+              }, {
+                "accent_colour" : "bg-orange text-white",
+                "image" : {
+                  "alt" : "iStock-1346503979 RT",
+                  "height" : 1288,
+                  "loading" : "lazy",
+                  "max_height" : 1288,
+                  "max_width" : 1932,
+                  "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-1346503979%20RT.jpg",
+                  "width" : 1932
+                },
+                "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+                "title" : "<strong>Qustodio</strong>"
+              }, {
+                "accent_colour" : "bg-red text-white",
+                "image" : {
+                  "alt" : "iStock-1065215684 RT",
+                  "height" : 471,
+                  "max_height" : 471,
+                  "max_width" : 707,
+                  "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-1065215684%20RT.jpg",
+                  "width" : 707
+                },
+                "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+                "title" : "<strong>ySafe</strong>"
+              } ],
+              styles={
+                "responsive" : {
+                  "breakpoints" : {
+                    "tablet" : 3
+                  }
+                }
+              }
+            %}
+            {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
 {% end_dnd_section %}

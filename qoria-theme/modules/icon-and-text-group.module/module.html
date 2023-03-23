@@ -1,0 +1,52 @@
+<div class="d-flex flex-column">
+{% for item in module.icon_and_text %}
+  <div class="d-flex {{ item.icon_alignment }}" style="{{ module.style.spacing_field.css }}">
+  <div class="ratio ratio-1x1 {{ item.icon.icon_shape }} {% if (item.icon.icon_shape == "rounded") || (item.icon.icon_shape == "rounded-circle") %} bg-{{item.icon.icon_colour}} {% endif %} text-dark flex-shrink-0" style="max-width: {{ item.icon.max_width }}px; max-height: {{ item.icon.max_width }}px;">
+    {% if item.icon.icon_shape == "blob-1" %}
+      <svg class="icon-shape ps-1 pt-1" width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="fill-{{item.icon.icon_colour}}" d="M32.2733 0.0522095C40.9619 -0.441424 49.6908 2.56881 55.8998 8.93667C62.1601 15.3572 65.0211 24.4517 64.9999 33.6161C64.9788 42.757 62.3442 52.1246 55.786 58.1766C49.5209 63.9581 40.6158 64.3764 32.2733 63.8165C24.5775 63.3 17.3436 60.5861 11.5998 55.211C5.48167 49.4856 0.102574 42.1957 0.00144548 33.6161C-0.100568 24.9613 5.21241 17.5898 11.0843 11.4828C16.9404 5.39228 24.0217 0.521015 32.2733 0.0522095Z"/>
+      </svg>
+    {% endif %}  
+    {% if item.icon.icon_shape == "blob-2" %}
+      <svg class="icon-shape pt-2" width="69" height="50" viewBox="0 0 69 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="fill-{{item.icon.icon_colour}}" d="M9.44164 7.64368C6.0616 10.0158 2.98951 13.0269 1.28849 16.809C-0.412523 20.5912 -0.551831 25.2106 1.6111 28.743C3.59806 31.9964 7.15407 33.8838 10.5854 35.5289C21.4757 40.7453 32.7941 45.0132 44.4151 48.2854C50.0021 49.857 56.2636 51.1348 61.396 48.4102C66.5284 45.6856 69.0506 39.5607 68.9992 33.7736C68.9112 23.492 62.9284 6.42458 52.2823 2.73789C38.6009 -1.97695 21.4147 -0.7652 9.44164 7.64368Z"/>
+      </svg>
+    {% endif %}
+    {% if item.icon.icon_shape == "blob-3" %}
+      <svg class="icon-shape ps-2" width="63" height="51" viewBox="0 0 63 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="fill-{{item.icon.icon_colour}}" d="M35.7978 2.07213C44.483 2.04245 55.2018 -3.31986 60.8307 3.32576C66.4845 10.0007 59.4482 19.808 58.1632 28.4773C57.1968 34.9972 59.0282 42.496 54.341 47.1084C49.6756 51.6994 42.3235 50.2395 35.7978 50.4858C28.8439 50.7481 21.7365 52.2226 15.8075 48.5623C8.31041 43.9338 1.099 37.2665 0.148624 28.4773C-0.865711 19.0966 3.37521 9.0954 10.9345 3.49625C17.8807 -1.64874 27.1682 2.10162 35.7978 2.07213Z"/>
+      </svg>
+    {% endif %}
+    {% if item.icon.icon_shape == "blob-4" %}
+      <svg class="icon-shape p-1" width="73" height="66" viewBox="0 0 73 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="fill-{{item.icon.icon_colour}}" d="M0.106296 44.7548C-0.226266 42.0651 0.22542 39.3363 1.40656 36.8999C2.58771 34.4635 4.44741 32.4244 6.75965 31.0304C11.1069 28.5035 16.8839 28.3528 20.251 24.6088C23.2721 21.2588 23.2721 16.2629 23.6296 11.7654C23.987 7.26789 25.4284 2.0749 29.6257 0.452094C33.823 -1.17071 38.5507 1.87785 42.183 4.7989L65.7524 23.7974C70.0189 27.2748 74.7581 32.5373 72.3482 37.4753C70.4455 41.3816 65.3258 42.1119 61.6935 44.4302C55.755 48.2902 54.083 56.4042 48.9171 61.261C43.9357 65.8976 36.3137 66.8713 29.6603 65.3065C20.5969 63.1968 1.5938 55.4421 0.106296 44.7548Z"/>
+      </svg>
+    {% endif %}
+      {% if item.icon.custom_image.src %}
+        {% set sizeAttrs = 'width="{{ item.icon.custom_image.width }}" height="{{ item.icon.custom_image.height }}"' %}
+        {% if item.icon.custom_image.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ item.icon.custom_image.width }}" height="{{ item.icon.custom_image.height }}" style="max-width: 100%; height: auto;"' %}
+        {% elif item.icon.custom_image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ item.icon.custom_image.max_width }}" height="{{ item.icon.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = item.icon.custom_image.loading != 'disabled' ? 'loading="{{ item.icon.custom_image.loading }}"' : '' %}
+        <img src="{{ item.icon.custom_image.src }}" alt="{{ item.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+     {% else %}
+       <div style="content-sizing: border-box;" class="p-3 d-flex justify-content-center align-items-center">
+         {% if item.icon.icon_code %}
+          {% set iconCode = "fa-" ~ item.icon.icon_code %}
+         {% else %}
+           {% set iconCode = "fa-" ~ item.icon.icon_field.name|lower|replace(" ", "-") %}
+         {% endif %}
+          <i class="{{ item.icon.icon_style }} {{ item.icon.icon_size }} {{ iconCode }}"></i>
+       </div>
+     {% endif %}
+    </div>
+    {% if item.text != "" %}
+    <div class="px-3">
+      {{ item.text }}
+    </div>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
