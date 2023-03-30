@@ -1,0 +1,5 @@
+{% if module.heading_tag == "h1" %}
+    <h2 class="h1 text-cursive text-tilted">{{module.heading}}</h2>
+    {% else %}
+    <{{module.heading_tag}} class="text-cursive text-tilted">{{module.heading}}</{{module.heading_tag}}>
+    {% endif %}

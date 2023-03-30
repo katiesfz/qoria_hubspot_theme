@@ -1,0 +1,66 @@
+[{
+  "name" : "team_member",
+  "display_width" : null,
+  "label" : "Team member",
+  "required" : false,
+  "locked" : false,
+  "children" : [{
+    "name" : "person_name",
+    "display_width" : null,
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  },{
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Photo",
+      "required" : false,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      }
+    },{
+      "name" : "title",
+      "display_width" : null,
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    },{
+      "name" : "full_profile",
+      "display_width" : null,
+      "label" : "Full profile",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "richtext",
+      "enabled_features" : []
+    }],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "person_name",
+    "default" : null
+  },
+  "default" : { }
+}
+]

@@ -1,0 +1,25 @@
+[ {
+  "id" : "heading_tag",
+  "name" : "heading_tag",
+  "display_width" : null,
+  "label" : "Heading Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "h2"
+}, {
+  "id" : "heading",
+  "name" : "heading",
+  "display_width" : null,
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "enabled_features" : ["alignment"],
+  "type" : "richtext",
+  "default" : "Closing the gaps that children fall through"
+} ]

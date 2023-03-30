@@ -1,0 +1,170 @@
+<style>
+.timeline-slide, .timeline-arrow-container {
+  display: grid !important;
+  grid-template-rows: 1fr 140px 1fr;
+}
+
+.timeline-container {
+  display: grid !important;
+  grid-template-columns: 60px 1fr 60px;
+  padding-bottom: 2rem;
+}
+
+
+.timeline-indicators {
+    position: absolute;
+    right: 0;
+    top: 100% !important;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-right: 15%;
+    margin-bottom: 1rem;
+    margin-left: 15%;
+    list-style: none;
+}
+
+.timeline-indicators li button {
+    font-size: 0;
+    line-height: 9px;
+    display: block;
+    width: 9px;
+    height: 9px;
+    margin: 2px;
+    padding: 2px;
+    cursor: pointer;
+    color: transparent;
+    box-sizing: content-box;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.timeline-indicators li button::before {
+    content: "\f111";
+    font-family: "Font Awesome 6 Pro";
+    font-weight: 900;
+    font-size: 9px;
+    color: var(--q-gray-400);
+}
+
+.timeline-indicators li.slick-active button::before {
+    color: var(--q-gray-700);
+}
+
+</style>
+
+{% macro timelineSlide(item, location)  %}
+    <div class="timeline-slide px-2">
+    {% if location == "top" %}
+        <div class="timeline-slide-top {{item.background_colour}} p-4 arrow-down shadow rounded-3">
+            {% if item.date%}<h2>{{item.date}}</h2>{%endif%}
+            {% if item.milestone%}<p><strong>{{item.milestone}}</strong></p>{%endif%}
+            {% if item.description%}<p>{{item.description}}</p>{%endif%}
+        </div>
+    {%elif location == "bottom"%}
+        <div class="timeline-slide-top d-flex justify-content-center align-items-end">
+        <p class="mb-n4">{{item.date_timeline}}</p>
+        </div>
+    {%endif%}
+    <div class="middle align-self-center mx-n2 py-6 position-relative">
+        <hr class="border-4 opacity-100 border-dark {{'w-50 position-absolute start-0 m-0 translate-middle-y' if loop.last}}">
+        {{ '<hr class="border-4 opacity-25 w-50 border-dark position-absolute end-0 m-0 translate-middle-y">' if loop.last}}
+        <span class="fa-stack fa-2x fs-4 position-absolute top-50 start-50 translate-middle">
+          <i class="fa-solid fa-circle fa-stack-2x"></i>
+          <i class="fal fa-calendar-days fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    {% if location == "bottom" %}
+        <div class="timeline-slide-bottom {{item.background_colour}} p-4 arrow-up shadow rounded-3">
+            {% if item.date%}<h2>{{item.date}}</h2>{%endif%}
+            {% if item.milestone%}<p><strong>{{item.milestone}}</strong></p>{%endif%}
+            {% if item.description%}<p>{{item.description}}</p>{%endif%}
+        </div>
+    {% elif location == "top" %}
+        <div class="timeline-slide-bottom d-flex justify-content-center align-items-start">
+        <p class="mt-n4">{{item.date_timeline}}</p>
+        </div>
+    {% endif %}
+    </div>
+{% endmacro %}
+
+{#-- {% from '/q-theme/assets/macros.html' import timelineSlide %} --/#}
+<div class="timeline-container">
+<div class="timeline-arrow-container">
+    <div class="timeline-slide-top"></div>
+    <div class="middle align-self-center position-relative text-center">
+        <a class="" aria-label="Previous" type="button" style="" aria-disabled="false" id="prevArrow">
+            <span class="fa-stack fa-2x fs-6 text-dark">
+            <i class="fal fa-circle fa-stack-2x"></i>
+            <i class="fas fa-chevron-left fa-stack-1x"></i>
+            </span>
+        </a>
+    </div>
+    <div class="timeline-slide-bottom"></div>
+</div>
+<div class="timeline-slider {{module.style.dark_or_light}}" id="{{module.unique_carousel_name}}">
+{% for item in module.slide %}
+    {% if loop.index is even %}
+            {{ timelineSlide(item, "bottom") }}
+        {% else %}
+            {{ timelineSlide(item, "top") }}
+    {% endif %}
+{% endfor %}
+</div>
+<div class="timeline-arrow-container">
+<div class="timeline-slide-top"></div>
+<div class="middle align-self-center position-relative text-center">
+<a class="" aria-label="Next" type="button" style="" aria-disabled="false" id="nextArrow">
+<span class="fa-stack fa-2x fs-6 text-dark">
+<i class="fal fa-circle fa-stack-2x"></i>
+<i class="fas fa-chevron-right fa-stack-1x"></i>
+</span>
+</a>
+</div>
+<div class="timeline-slide-bottom"></div>
+</div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+        var smallBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-sm');
+        var largeBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-lg');
+    $('#{{module.unique_carousel_name}}').slick({
+        dots: {{ module.style.indicators }},
+        speed: 300,
+        infinite: false,
+        prevArrow: '#prevArrow',
+        nextArrow: '#nextArrow',
+        dotsClass: "timeline-indicators",
+        autoplay: {{ module.style.autoplay }},
+        {% if module.style.autoplay %} autoplaySpeed: {{ module.style.interval }}, {% endif %}
+        arrows: {{ module.style.controls }},
+        slidesToShow: {{ module.style.responsive.desktop.slides_to_display }},
+        slidesToScroll: {{ module.style.responsive.desktop.slides_to_slide }},
+        responsive: [
+            {
+                breakpoint: parseInt(largeBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.responsive.tablet.slides_to_display }},
+                    slidesToScroll: {{ module.style.responsive.tablet.slides_to_slide }}
+                }
+            },
+            {
+                breakpoint: parseInt(smallBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.responsive.mobile.slides_to_display }},
+                    slidesToScroll: {{ module.style.responsive.mobile.slides_to_slide }}
+                }
+            }
+        ]
+    });
+
+    
+    normaliseHeights(".timeline-slide-bottom");
+    normaliseHeights(".timeline-slide-top");
+});
+
+
+</script>

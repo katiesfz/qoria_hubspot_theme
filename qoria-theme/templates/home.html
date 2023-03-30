@@ -18,9 +18,118 @@ class="main p-0 overflow-hidden"
   {# Hero banner #}
   {% include_dnd_partial path="../sections/hero-banner.html" context={} %}
 
-  {# Two column image right #}
+    {% dnd_section
+    background_color="rgba(235, 235, 235, 1)"
+  %}
+    {% dnd_column
+      offset=0,
+      width=12
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/pullout",
+          offset=0,
+          width=12,
+          row=[ {
+            "column" : [ {
+              "column_styles" : {
+                "background_colour" : "bg-gradient-primary text-white",
+                "background_image" : "q-tail-1"
+              },
+              "expert_use" : { },
+              "pre_heading" : "Young lives helped:",
+              "statistic" : "127,000",
+              "statistic_font_size" : "display-1",
+              "text" : "<p><strong>In 2,637 schools in 16 countries</strong></p>"
+            }, {
+              "column_styles" : {
+                "background_colour" : "bg-red text-white",
+                "background_image" : "q-tail-1"
+              },
+              "expert_use" : { },
+              "pre_heading" : "Schools supported:",
+              "statistic" : "13,000",
+              "statistic_font_size" : "display-1",
+              "text" : "<p>Across three continents</p>"
+            }, {
+              "column_styles" : {
+                "background_colour" : "bg-orange text-white",
+                "background_image" : "q-tail-1"
+              },
+              "expert_use" : { },
+              "pre_heading" : "Impact:",
+              "statistic" : "A vulnerable child identified every 5&nbsp;minutes",
+              "statistic_font_size" : "display-6",
+              "text" : ""
+            } ],
+            "expert_use" : { }
+          } ],
+          style={
+            "background_colour" : "none"
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-  {% include_dnd_partial path="../sections/multi-row-content.html" %}
+  {% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "80px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=4
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline=true
+      %}
+        {% module_attribute "heading" %}
+          Welcome to <br><strong>Qoria</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=4,
+    width=8,
+    background_color="rgba(255, 255, 255, 1)",
+    padding={
+      "default" : {
+        "bottom" : "50px",
+        "left" : "50px",
+        "right" : "50px",
+        "top" : "50px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h4 style="font-weight: bold;">Our mission is to close the digital wellbeing gaps that children fall through.</h4>
+          <p class="lead">We do it by harnessing the power of connection to ensure children are seamlessly supported on all sides; at school, at home and everywhere in between. Our connections define us.</p>
+          <p class="lead"><img src="{{ get_asset_url('/q-theme/images/qoria/Q-Colour.svg') }}" alt="Qoria_Logo_White" width="84" loading="lazy" style="height: auto; max-width: 100%; width: 84px; float: right; margin: 0px 0px 0px 10px;">We’re uniting stakeholders to advance child digital wellbeing to levels never before seen. <span style="font-weight: bold;">Because none of us is as powerful as all of us.</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
 
   {# Two column image left #}
 

@@ -1,8 +1,23 @@
 .hero-full-video, .hero-full-image {
     position: relative;
     background-color: black;
-    padding-top: 30rem;
     width: 100%;
+  /*  overflow: hidden; */
+  }
+
+  .video-bg-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
     overflow: hidden;
   }
   
@@ -21,7 +36,20 @@
     transform: translateX(-50%) translateY(-50%);
   }
   
-  .hero-full-video .container, .hero-full-video .container-fluid, .hero-full-video .container-xxl, .hero-full-video .container-xl, .hero-full-video .container-lg, .hero-full-video .container-md, .hero-full-video .container-sm {
+  .hero-full-video .container, 
+  .hero-full-video .container-fluid, 
+  .hero-full-video .container-xxl, 
+  .hero-full-video .container-xl, 
+  .hero-full-video .container-lg, 
+  .hero-full-video .container-md, 
+  .hero-full-video .container-sm,
+  .hero-full-image .container, 
+  .hero-full-image .container-fluid, 
+  .hero-full-image .container-xxl, 
+  .hero-full-image .container-xl, 
+  .hero-full-image .container-lg, 
+  .hero-full-image .container-md, 
+  .hero-full-image .container-sm  {
     position: relative;
     z-index: 2;
   }
@@ -50,3 +78,8 @@
       display: none;
     }
   }
+
+  
+.page-contents.arrow-down:after {
+    left: 43px;
+}

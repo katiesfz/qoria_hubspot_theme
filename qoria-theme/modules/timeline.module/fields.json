@@ -1,0 +1,305 @@
+[ {
+  "name" : "unique_carousel_name",
+  "display_width" : null,
+  "label" : "Unique Carousel Name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "[a-zA-Z0-9]*",
+  "validation_error_message" : "Only alphanumeric characters allowed! No spaces, either.",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+}, {
+  "name" : "slide",
+  "display_width" : null,
+  "label" : "Slide",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "date",
+    "default" : null
+  },
+  "children" : [ {
+    "name" : "date_timeline",
+    "display_width" : null,
+    "label" : "Date (timeline)",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "2016"
+  },{
+    "name" : "date",
+    "display_width" : null,
+    "label" : "Date (slide heading)",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "2016"
+  },{
+    "name" : "milestone",
+    "display_width" : null,
+    "label" : "Milestone name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Australia launch"
+  },{
+    "name" : "description",
+    "display_width" : null,
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "Family Zone is launched to the Australian public.",
+    "enabled_features" : ["bold", "link", "nonbreaking_space"]
+  },{
+    "name" : "background_colour",
+    "display_width" : null,
+    "label" : "Background colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "bg-gradient-primary text-white arrow-primary", "Primary Gradient" ], [ "bg-primary text-white arrow-primary", "Primary" ], [ "bg-secondary text-white arrow-secondary", "Secondary" ], [ "bg-teal text-white arrow-teal", "Teal" ], [ "bg-indigo text-white arrow-indigo", "Indigo" ], [ "bg-orange text-white arrow-orange", "Orange" ], [ "bg-red text-white arrow-red", "Red" ], [ "bg-dark text-white arrow-dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : "bg-primary text-white arrow-primary"
+  },{
+    "name" : "custom_interval",
+    "display_width" : null,
+    "label" : "Custom interval (optional)",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "ms",
+    "type" : "number",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.autoplay",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+  }
+}, {
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "name" : "dark_or_light",
+    "display_width" : null,
+    "label" : "Dark or Light",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "text-dark", "Dark" ], [ "text-light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "type" : "choice",
+    "default" : "text-light"
+  }, {
+    "name" : "controls",
+    "display_width" : null,
+    "label" : "Controls",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "name" : "indicators",
+    "display_width" : null,
+    "label" : "Indicators",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "name" : "normalise_heights",
+    "display_width" : null,
+    "label" : "Normalise heights",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  },{
+    "name" : "autoplay",
+    "display_width" : null,
+    "label" : "Autoplay",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "name" : "interval",
+    "display_width" : null,
+    "label" : "Interval",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "ms",
+    "type" : "number",
+    "default" : 5000,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.autoplay",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null,
+      "hidden_subfields" : null
+    }
+  },{
+  "name" : "responsive",
+  "display_width" : null,
+  "label" : "Responsive settings",
+  "required" : false,
+  "locked" : false,
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "children" : [{
+    "name" : "desktop",
+    "display_width" : null,
+    "label" : "Desktop",
+    "required" : false,
+    "locked" : false,
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group",
+    "children" : [{
+        "name" : "slides_to_display",
+        "display_width" : null,
+        "label" : "Slides to display",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 1,
+        "max" : 4,
+        "step" : 1,
+        "type" : "number",
+        "default" : 1
+      }, {
+        "name" : "slides_to_slide",
+        "display_width" : null,
+        "label" : "Slides to slide",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 1,
+        "max" : 4,
+        "step" : 1,
+        "type" : "number",
+        "default" : 1
+      }]
+    },{
+      "name" : "tablet",
+      "display_width" : null,
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group",
+      "children" : [{
+          "name" : "slides_to_display",
+          "display_width" : null,
+          "label" : "Slides to display",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 4,
+          "step" : 1,
+          "type" : "number",
+          "default" : 1
+        }, {
+          "name" : "slides_to_slide",
+          "display_width" : null,
+          "label" : "Slides to slide",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 4,
+          "step" : 1,
+          "type" : "number",
+          "default" : 1
+        }]
+      },{
+        "name" : "mobile",
+        "display_width" : null,
+        "label" : "Mobile",
+        "required" : false,
+        "locked" : false,
+        "tab" : "STYLE",
+        "expanded" : false,
+        "type" : "group",
+        "children" : [{
+            "name" : "slides_to_display",
+            "display_width" : null,
+            "label" : "Slides to display",
+            "required" : false,
+            "locked" : false,
+            "display" : "text",
+            "min" : 1,
+            "max" : 4,
+            "step" : 1,
+            "type" : "number",
+            "default" : 1
+          }, {
+            "name" : "slides_to_slide",
+            "display_width" : null,
+            "label" : "Slides to slide",
+            "required" : false,
+            "locked" : false,
+            "display" : "text",
+            "min" : 1,
+            "max" : 4,
+            "step" : 1,
+            "type" : "number",
+            "default" : 1
+          }]
+        }]
+  }],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "dark_or_light" : "text-light",
+    "controls" : true,
+    "indicators" : true,
+    "infinite_scrolling" : true,
+    "normalise_heights" : true,
+    "interval" : 5000,
+    "autoplay" : true,
+    "slides_to_display" : 4
+  }
+} ]

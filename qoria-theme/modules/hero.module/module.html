@@ -1,11 +1,121 @@
+{% require_css %}
+    <style>
+      {% scope_css %}
+            {% if module.style.heading_location == "bottom-left" %}
+  
+            .hero-full-video .container, 
+            .hero-full-video .container-fluid, 
+            .hero-full-video .container-xxl, 
+            .hero-full-video .container-xl, 
+            .hero-full-video .container-lg, 
+            .hero-full-video .container-md, 
+            .hero-full-video .container-sm,
+            .hero-full-image .container, 
+            .hero-full-image .container-fluid, 
+            .hero-full-image .container-xxl, 
+            .hero-full-image .container-xl, 
+            .hero-full-image .container-lg, 
+            .hero-full-image .container-md, 
+            .hero-full-image .container-sm  {
+            padding-top: 30rem;
+            }
+
+            {% elif module.style.heading_location == "25-left"%}
+
+                .hero-full-video .container, 
+                .hero-full-video .container-fluid, 
+                .hero-full-video .container-xxl, 
+                .hero-full-video .container-xl, 
+                .hero-full-video .container-lg, 
+                .hero-full-video .container-md, 
+                .hero-full-video .container-sm,
+                .hero-full-image .container, 
+                .hero-full-image .container-fluid, 
+                .hero-full-image .container-xxl, 
+                .hero-full-image .container-xl, 
+                .hero-full-image .container-lg, 
+                .hero-full-image .container-md, 
+                .hero-full-image .container-sm  {
+                padding-top: 10rem;
+                padding-bottom: 20rem;
+                }
+            {% elif module.style.heading_location == "middle-left" %}
+
+                .hero-full-video .container, 
+                .hero-full-video .container-fluid, 
+                .hero-full-video .container-xxl, 
+                .hero-full-video .container-xl, 
+                .hero-full-video .container-lg, 
+                .hero-full-video .container-md, 
+                .hero-full-video .container-sm,
+                .hero-full-image .container, 
+                .hero-full-image .container-fluid, 
+                .hero-full-image .container-xxl, 
+                .hero-full-image .container-xl, 
+                .hero-full-image .container-lg, 
+                .hero-full-image .container-md, 
+                .hero-full-image .container-sm  {
+                padding-top: 15rem;
+                padding-bottom: 15rem;
+                }
+    
+            {% elif module.style.heading_location == "top-left"%}
+
+                .hero-full-video .container, 
+                .hero-full-video .container-fluid, 
+                .hero-full-video .container-xxl, 
+                .hero-full-video .container-xl, 
+                .hero-full-video .container-lg, 
+                .hero-full-video .container-md, 
+                .hero-full-video .container-sm,
+                .hero-full-image .container, 
+                .hero-full-image .container-fluid, 
+                .hero-full-image .container-xxl, 
+                .hero-full-image .container-xl, 
+                .hero-full-image .container-lg, 
+                .hero-full-image .container-md, 
+                .hero-full-image .container-sm  {
+                padding-bottom: 30rem;
+                }
+    
+    
+                {% elif module.style.heading_location == "75-left"%}
+
+                    .hero-full-video .container, 
+                    .hero-full-video .container-fluid, 
+                    .hero-full-video .container-xxl, 
+                    .hero-full-video .container-xl, 
+                    .hero-full-video .container-lg, 
+                    .hero-full-video .container-md, 
+                    .hero-full-video .container-sm,
+                    .hero-full-image .container, 
+                    .hero-full-image .container-fluid, 
+                    .hero-full-image .container-xxl, 
+                    .hero-full-image .container-xl, 
+                    .hero-full-image .container-lg, 
+                    .hero-full-image .container-md, 
+                    .hero-full-image .container-sm  {
+                    padding-top: 20rem;
+                    padding-bottom: 10rem;
+                    }
+
+            {% endif %}
+      {% end_scope_css %}
+    </style>
+  {% end_require_css %}
+
+
+
 <section class="hero-{{module.hero_type}}">
 
 {% if module.hero_type == "full-video" %}
 
-  <!-- The HTML5 video element that will create the background video on the header -->
-  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="{{module.video}}" type="video/mp4">
-  </video>
+    <div class="video-bg-container">
+        <!-- The HTML5 video element that will create the background video on the header -->
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="{{module.video}}" type="video/mp4">
+        </video>
+  </div>
 {% elif module.hero_type == "full-image" %}
 {% require_css %}
     <style>
@@ -20,8 +130,17 @@
 {% endif %}
   <!-- The header content -->
 <div class="container-xxl g-0 h-100">
+    {% if module.show_breadcrumbs %}
+        <div class="row">
+        <div class="col-12 text-end pt-5 position-absolute top-0 end-0 text-white">
+            {% set breadcrumbsMenu = module.menu %}
+            {% from '/q-theme/assets/macros.html' import breadcrumbs %}
+            {{ breadcrumbs(breadcrumbsMenu, "", true) }}
+        </div>
+        </div>
+    {% endif %}
     <div class="row h-100 justify-content-end flex-column">
-        <div class="col-12 pb-5">
+        <div class="col-12 py-5">
         {% if module.pre_header %}<h5 class="fw-bold text-white ms-4">{{module.pre_header}}</h5> {% endif %}
         <h1 class="heading-bg-gradient bg-gradient-primary text-white">{{module.header}}</h1>
         </div>
@@ -44,10 +163,16 @@
         </div>
         {%endif%}
         {%if module.page_contents|length > 0%}
-        <div class="col-12 pb-5">
-
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 position-relative section-shadow mb-n4 z-3">
+            <div class="page-contents bg-white p-3 arrow-down text-white">
+                <div class="list-group list-group-flush" id="pageContents">
+                    {% for contents in module.page_contents %}
+                        <a href="{{contents.anchor}}" class="fw-semibold list-group-item list-group-item-action {{"active" if loop.first}}">{{contents.content_label}}</a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        {%endif%}
+        {% endif %}
     </div>
 </div>
 

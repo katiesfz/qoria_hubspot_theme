@@ -1,0 +1,43 @@
+<div class="{{module.style.dark_or_light}}" id="{{module.unique_carousel_name}}">
+{% for item in module.slide %}
+    <div class="slide">
+	{% for item2 in item.column %}
+        <div class="{{ item2.column_classes }}">
+		{{ item2.content }}
+        </div>
+	{% endfor %}
+    </div>
+{% endfor %}
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+        var smallBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-sm');
+        var largeBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-lg');
+    $('#{{module.unique_carousel_name}}').slick({
+        dots: {{ module.style.indicators }},
+        infinite: {{ module.style.infinite_scrolling }},
+        speed: 300,
+        autoplay: {{ module.style.autoplay }},
+        {% if module.style.autoplay %} autoplaySpeed: {{ module.style.interval }}, {% endif %}
+        arrows: {{ module.style.controls }},
+        slidesToShow: {{ module.style.responsive.desktop.slides_to_display }},
+        slidesToScroll: {{ module.style.responsive.desktop.slides_to_slide }},
+        responsive: [
+            {
+                breakpoint: parseInt(largeBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.responsive.tablet.slides_to_display }},
+                    slidesToScroll: {{ module.style.responsive.tablet.slides_to_slide }}
+                }
+            },
+            {
+                breakpoint: parseInt(smallBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.responsive.mobile.slides_to_display }},
+                    slidesToScroll: {{ module.style.responsive.mobile.slides_to_slide }}
+                }
+            }
+        ]
+    });
+});
+</script>

@@ -1,0 +1,58 @@
+{% macro breadcrumbs(menu_id, classes, includeHomeLink)  %}
+
+{% set node = menu(menu_id,"breadcrumb") %}
+
+{% if node != null %}
+    <nav aria-label="breadcrumb" class="d-inline-block">
+        <ol class="breadcrumb {{ classes }}">
+    
+    {% if includeHomeLink %}
+        {% if node.level > '0' %}
+            <li class="breadcrumb-item"><a class="text-reset text-decoration-none" href="/">Home</a></li>
+        {% endif %}
+    {% endif %}
+    
+    {%  if node.level > '1' %}
+        <li class="breadcrumb-item"><a class="text-reset text-decoration-none" href="{{node.parentNode.url}}">{{node.parentNode.label}}</a></li>
+    {% endif %}
+
+    <li class="breadcrumb-item {{"active" if node.activeNode}}">{{node.label}}</li>
+    </ol>
+    </nav>
+    {% endif %}
+
+{% endmacro %}
+
+{% macro timelineSlide(item, location)  %}
+
+    {% set node = menu(menu_id,"breadcrumb") %}
+    
+    {% if node != null %}
+        <nav aria-label="breadcrumb" class="d-inline-block">
+            <ol class="breadcrumb {{ classes }}">
+        
+        {% if includeHomeLink %}
+            {% if node.level > '0' %}
+                <li class="breadcrumb-item"><a class="text-reset text-decoration-none" href="/">Home</a></li>
+            {% endif %}
+        {% endif %}
+        
+        {%  if node.level > '1' %}
+            <li class="breadcrumb-item"><a class="text-reset text-decoration-none" href="{{node.parentNode.url}}">{{node.parentNode.label}}</a></li>
+        {% endif %}
+    
+        <li class="breadcrumb-item {{"active" if node.activeNode}}">{{node.label}}</li>
+        </ol>
+        </nav>
+        {% endif %}
+    
+    {% endmacro %}
+<div class="timeline-slide">
+<div class="top">
+</div>
+<div class="middle align-self-center">
+    <hr>
+</div>
+<div class="bottom">
+</div>
+</div>
