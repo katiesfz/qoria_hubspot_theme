@@ -1,0 +1,107 @@
+{
+  "name": {
+    "message": "ตัวแบ่ง",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.default.horizontal_align": {
+    "message": "ตรงกลาง",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.label": {
+    "message": "การจัดแนว",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.label": {
+    "message": "การจัดแนว",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.label": {
+    "message": "รูปแบบ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.color.label": {
+    "message": "สี",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.label": {
+    "message": "บรรทัด",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dashed": {
+    "message": "เส้นประ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dotted": {
+    "message": "จุดไข่ปลา",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.solid": {
+    "message": "เข้ม",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.label": {
+    "message": "รูปแบบ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.thickness.label": {
+    "message": "ความหนา",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.label": {
+    "message": "ขนาด",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.help_text": {
+    "message": "เปอร์เซ็นต์พื้นที่ที่ตัวแบ่งทำการแบ่งไว้",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.label": {
+    "message": "ความกว้าง",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.label": {
+    "message": "เว้นวรรค",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.units": {
+    "message": "พิกเซล",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.units": {
+    "message": "พิกเซล",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.label": {
+    "message": "เว้นวรรค",
+    "description": "",
+    "placeholders": null
+  }
+}

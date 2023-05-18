@@ -1,0 +1,15 @@
+<section class="position-relative {{module.style.background_colour}} {{" section-shadow" if module.style.shadow }}  {{ module.advanced.additional_classes }}" style="transform-style: preserve-3d; {{module.style.spacing_field.css}}">
+   <div class="container-fluid g-0">
+        {% for item in module.row %}
+            <div class="row {{ item.advanced.additional_classes }}">
+            {% for item2 in item.column %}
+                <div class="col {{ item2.advanced.additional_classes }}">
+                <div class="h-100 w-100 css-col-count-lg-{{ item2.responsive.desktop.columns }} css-col-count-sm-{{ item2.responsive.tablet.columns }} css-col-count-{{ item2.responsive.mobile.columns }}">
+                    {{ item2.text }}
+                </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% endfor %}
+   </div>
+</section>

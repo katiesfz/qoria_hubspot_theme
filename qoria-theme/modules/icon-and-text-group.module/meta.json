@@ -1,7 +1,8 @@
 {
   "global" : false,
+  "icon" : "../../images/module-icons/icons.svg",
   "host_template_types" : [ "PAGE" ],
-  "module_id" : 55104781557,
+  "module_id" : 107596684153,
   "label" : "Icon and Text Group",
   "is_available_for_new_content" : true
 }

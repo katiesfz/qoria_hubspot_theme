@@ -22,14 +22,34 @@
   "enabled_features" : [ "bold" ],
   "type" : "richtext",
   "default" : "Welcome to <strong>Qoria</strong>"
-},{
-  "id" : "heading.underline",
-  "name" : "heading_underline",
+}, {
+  "id" : "style",
+  "name" : "style",
   "display_width" : null,
-  "label" : "Heading Underline",
+  "label" : "Style",
   "required" : false,
   "locked" : false,
-  "display" : "toggle",
-  "type" : "boolean",
-  "default" : false
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : { }
+  }, {
+    "id" : "heading.underline",
+    "name" : "heading_underline",
+    "display_width" : null,
+    "label" : "Heading Underline",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
 } ]

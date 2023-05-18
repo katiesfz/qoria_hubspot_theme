@@ -41,7 +41,7 @@
         {% endif %}
       {% else %}          
         {% if link.url %}
-          <a class="nav-link {{ "active" if link.activeBranch }} {{ "active" if link.activeNode }}" href="{{ link.url }}" {{ 'aria-current="page"' if link.activeNode }} {{ 'target="_blank" rel="noopener"' if link.linkTarget }}>{{ link.label }}</a>
+          <a class="nav-link {{ "active" if link.activeBranch }} {{ "active" if link.activeNode }}" href="{{ link.url }}" {{ 'aria-current="page"' if link.activeNode }} {{ 'target="_blank" rel="noopener"' if link.linkTarget }}>{{ link.label|replace(" ","&nbsp;") }}</a>
         {% else %}
           <span class="nav-link">{{ link.label|replace(" ","&nbsp;") }}</span>
         {% endif %}
@@ -88,6 +88,6 @@
   
   {# Desktop menu #}
 
-      <ul class="navbar-nav ms-auto">   
+      <ul class="navbar-nav hide-on-search ms-auto">   
       {{ menu_items() }}
       </ul>

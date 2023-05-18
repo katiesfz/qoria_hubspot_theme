@@ -1,0 +1,12 @@
+
+{% if module.image.src != "" %}
+
+<img src="{{module.image.src}}" style="{{ module.style.spacing_field.css }}" class="w-100 {{ 'filter-grayscale' if module.style.greyscale_filter }}">
+
+{% else %}
+
+    {% if is_in_page_editor %}
+        {% editor_placeholder %}
+    {% endif %}
+
+{% endif %}

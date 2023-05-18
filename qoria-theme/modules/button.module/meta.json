@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 106706246224,
   "label" : "Button",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

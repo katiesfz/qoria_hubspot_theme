@@ -1,0 +1,107 @@
+{
+  "name": {
+    "message": "分隔線",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.default.horizontal_align": {
+    "message": "置中",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.label": {
+    "message": "對齊方式",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.label": {
+    "message": "對齊方式",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.label": {
+    "message": "樣式",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.color.label": {
+    "message": "顏色",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.label": {
+    "message": "折線圖",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dashed": {
+    "message": "虛線",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dotted": {
+    "message": "點線",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.solid": {
+    "message": "實線",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.label": {
+    "message": "樣式",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.thickness.label": {
+    "message": "厚度",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.label": {
+    "message": "尺寸",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.help_text": {
+    "message": "放置分隔線區域的百分比。",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.label": {
+    "message": "寬度",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.label": {
+    "message": "間距",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.units": {
+    "message": "px",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.units": {
+    "message": "px",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.label": {
+    "message": "間距",
+    "description": "",
+    "placeholders": null
+  }
+}

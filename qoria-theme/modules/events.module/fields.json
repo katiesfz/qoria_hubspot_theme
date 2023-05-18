@@ -1,0 +1,60 @@
+[ {
+  "id" : "event",
+  "name" : "event",
+  "display_width" : null,
+  "label" : "Event",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "event_name",
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "event.event_name",
+    "name" : "event_name",
+    "display_width" : null,
+    "label" : "Name/Location",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "event.event_date",
+    "name" : "event_date",
+    "display_width" : null,
+    "label" : "Event Date",
+    "required" : false,
+    "locked" : false,
+    "type" : "date",
+    "default" : 1577854800000
+  }, {
+    "id" : "event.event_site_label",
+    "name" : "event_site_label",
+    "display_width" : null,
+    "label" : "More Information Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "event.url",
+    "name" : "url",
+    "display_width" : null,
+    "label" : "More Information URL",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE" ],
+    "type" : "url",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

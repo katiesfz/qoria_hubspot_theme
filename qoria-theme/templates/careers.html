@@ -1,0 +1,109 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Careers
+  screenshotPath: ../images/template-previews/home.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+{# hero banner #}
+{% include_dnd_partial path="../sections/hero-banner.html"
+context={
+  "heroType": "full-image",
+  "imageSrc": get_asset_url("../images/qoria/photos/careers.jpg"),
+  "header": "Welcome to <br><strong>Qoria People</strong>",
+  "preHeader": "Careers:",
+  "headingLocation": "66-left"
+} %}
+
+
+{# pullout #}
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path='/q-theme/modules/global/pullout-careers',
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{# intro #}
+{% include_dnd_partial path="../sections/introduction.html" %}
+
+{# overview #}
+{% include_dnd_partial path="../sections/overview.html" context={
+    "sectionSpacing" : {
+      "default" : {
+        "bottom" : "0px",
+        "top" : "80px"
+      }
+    },
+    "heading": "<strong>Overview</strong>",
+    "summary": "",
+    "rowClasses": "align-items-center",
+    "cols": [{
+            "advanced" : {
+            "additional_classes" : "col-12 col-md-6"
+            },
+            "responsive" : {
+            "desktop" : { },
+            "mobile" : { },
+            "tablet" : { }
+            },
+            "text" : '<p class="lead fw-normal">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie.</p><p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>'
+        }, {
+            "advanced" : {
+            "additional_classes" : "col-12 col-md-6"
+            },
+            "responsive" : {
+            "desktop" : { },
+            "mobile" : { },
+            "tablet" : { }
+            },
+            "text" : '<img src="{{get_asset_url("../../images/qoria/photos/iStock-1180357593_RT.jpg")}}" alt="Overview" loading="lazy" style="height: auto; max-width: 100%; width: 100%; margin-left: auto; margin-right: auto; display: block;">'
+        }],
+    "script": '<div style="text-align: center;">Make an impact. A career with purpose.</div>',
+    "scriptStyle": {
+      "spacing_field" : {
+        "margin" : {
+          "bottom" : {
+            "units" : "px",
+            "value" : 80
+          },
+          "top" : {
+            "units" : "px",
+            "value" : 80
+          }
+        }
+      }
+    }
+
+}%}
+
+
+{# testimonials #}
+{% include_dnd_partial path="../sections/testimonials.html" %}
+
+{# cards #}
+{% include_dnd_partial path="../sections/cards-with-headers.html" %}
+
+{% end_dnd_area %}
+{% endblock body %}

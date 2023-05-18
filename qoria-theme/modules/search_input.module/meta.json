@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "../../images/module-icons/search-module-icon.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 111314895799,
+  "label" : "Site Search Input",
+  "is_available_for_new_content" : true
+}

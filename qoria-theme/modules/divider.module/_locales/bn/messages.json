@@ -1,0 +1,107 @@
+{
+  "name": {
+    "message": "ডিভাইডার",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.default.horizontal_align": {
+    "message": "কেন্দ্র",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.label": {
+    "message": "সরলরেখায় বিন্যাসকরণ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.label": {
+    "message": "সরলরেখায় বিন্যাসকরণ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.label": {
+    "message": "শৈলী",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.color.label": {
+    "message": "রঙ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.label": {
+    "message": "লাইন",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dashed": {
+    "message": "ড্যাশযুক্ত ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dotted": {
+    "message": "ডটযুক্ত",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.solid": {
+    "message": "সলিড",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.label": {
+    "message": "শৈলী",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.thickness.label": {
+    "message": "পুরুত্ব",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.label": {
+    "message": "আকার ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.help_text": {
+    "message": "বিভাজকটি যে এলাকায় স্থাপন করা হয়েছে তার শতাংশ।",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.label": {
+    "message": "প্রস্থ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.label": {
+    "message": "স্পেসিং",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.units": {
+    "message": "px",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.units": {
+    "message": "px",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.label": {
+    "message": "স্পেসিং",
+    "description": "",
+    "placeholders": null
+  }
+}

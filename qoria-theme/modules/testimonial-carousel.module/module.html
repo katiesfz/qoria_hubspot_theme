@@ -1,1 +1,206 @@
-<!-- module html  -->
+
+{% require_css %}
+    <style>
+    {% scope_css %}
+        {% if module.style.carousel %}
+            .testimonial-container {
+            display: grid !important;
+            {% if module.style.carousel_settings.controls %}
+            grid-template-columns: 60px 1fr 60px;
+            margin: 0 -60px;
+            {%else%}
+                grid-template-columns: 1fr;
+            {%endif%}
+            {%if module.style.carousel_settings.indicators %}
+            padding-bottom: 2rem;
+            {% endif %}
+            }
+        {% endif %}
+
+        svg.testimonial-quote {
+            max-width: 80%;
+            width: 20%;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-photo {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+    {% end_scope_css %}
+    </style>
+{% end_require_css %}
+
+<div class="testimonial-container {{ "collapse" if module.style.collapse && not is_in_page_editor }}" id="testimonial-container-{{name}}">
+{% if module.style.carousel %}
+    {% if module.style.carousel_settings.controls %}
+    <div class="slider-arrow-container align-self-center text-center">
+        <a class="" aria-label="Previous" type="button" style="" aria-disabled="false" id="prevArrow-{{name}}">
+            <span class="fa-stack fa-2x fs-6 {{module.style.carousel_settings.dark_or_light}}">
+            <i class="fal fa-circle fa-stack-2x"></i>
+            <i class="fas fa-chevron-left fa-stack-1x"></i>
+            </span>
+        </a>
+    </div>
+    {%endif%}
+
+    <div class="testimonial-slider " id="testimonial-{{name}}">
+    {% for item in module.slide %}
+        <div class="slide p-2">
+            <div class="bg-{{ item.accent_colour }}">
+                <div class="row g-0 align-items-start testimonial-header">
+                    <div class="col-6 mb-n4 align-self-stretch filter-grayscale" style="background-image: url('{{item.image.src}}'); background-size: cover; background-position: center;">
+
+                    </div>
+                    {% if item.accent_colour == "none" %}
+                        {% set authorColour = "text-dark" %}
+                    {% else %}
+                        {% set authorColour = "text-light" %}
+                    {% endif %}
+                    <div class="col-6 p-4 {{authorColour}} pt-7">
+                    {%if item.author %} <p class="fs-6 fw-semibold mb-0 lh-sm">{{item.author}}</p> {%endif%}
+                        {% if item.role%}<p class="fs-6 mt-3 mb-0 lh-sm">{{item.role}}</p> {%endif%}
+                    </div>
+                </div>
+                <div class="row g-0 px-4 pb-4">
+                    <div class="col-12 bg-white p-4 position-relative testimonial-quote-container">
+                        <!-- quote graphic -->
+                            <?xml version="1.0" encoding="utf-8"?>
+                            <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2;" xml:space="preserve">
+                            <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                            c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
+                            <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                            c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
+                            </svg>
+                        <!-- end quote graphic -->
+                        {{item.quote}}
+                    {% if item.read_more_url.href %}
+                        <br>
+                        <a href="{{ item.read_more_url.href }}" class="text-reset text-decoration-none fw-bold d-block mt-2">More +</a>
+                    {% endif %}
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    {% if module.style.carousel_settings.controls %}
+    <div class="slider-arrow-container align-self-center text-center">
+        <a class="" aria-label="Next" type="button" style="" aria-disabled="false" id="nextArrow-{{name}}">
+            <span class="fa-stack fa-2x fs-6 {{module.style.carousel_settings.dark_or_light}}">
+            <i class="fal fa-circle fa-stack-2x"></i>
+            <i class="fas fa-chevron-right fa-stack-1x"></i>
+            </span>
+        </a>
+    </div>
+    {% endif %}
+{% else %}
+
+    <div class="container-fluid g-0" style="{{module.styles.spacing_field.css}}" id="testimonial-{{name}}">
+        <div class="row row-cols-{{module.style.cards_settings.cards_responsive.mobile.cards}} row-cols-md-{{module.style.cards_settings.cards_responsive.tablet.cards}} row-cols-lg-{{module.style.cards_settings.cards_responsive.desktop.cards}} g-3">
+
+            {% for item in module.slide %}
+                <div class="col p-2">
+                    <div class="bg-gray-200 shadow-sm">
+                        <div class="row g-0 align-items-start testimonial-header">
+                            <div class="col-6 mb-n4 align-self-stretch  filter-grayscale" style="background-image: url('{{item.image.src}}'); background-size: cover; background-position: center;">
+
+                            </div>
+                            <div class="col-6 p-4 text-dark pt-7">
+                            {%if item.author %} <p class="fs-6 fw-bold mb-0 lh-sm">{{item.author}}</p> {%endif%}
+                                {% if item.role%}<p class="fs-6 mt-3 mb-0 lh-sm">{{item.role}}</p> {%endif%}
+                            </div>
+                        </div>
+                        <div class="row g-0 px-4 pb-4">
+                            <div class="col-12 bg-white p-4 position-relative testimonial-quote-container">
+                                <!-- quote graphic -->
+                                    <?xml version="1.0" encoding="utf-8"?>
+                                    <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                    <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2;" xml:space="preserve">
+                                    <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                                    c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
+                                    <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                                    c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
+                                    </svg>
+                                <!-- end quote graphic -->
+                                {{item.quote}}
+                            {% if item.read_more_url.href %}
+                                <br>
+                                <a href="{{ item.read_more_url.href }}" class="text-reset text-decoration-none fw-bold d-block mt-2">More +</a>
+                            {% endif %}
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endif %}
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+        var smallBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-sm');
+        var largeBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-lg');
+        {% if module.style.carousel %}
+            $('#testimonial-{{name}}').slick({
+                dots: {{ module.style.carousel_settings.indicators }},
+                speed: 300,
+                infinite: {{ module.style.carousel_settings.infinite }},
+                prevArrow: '#prevArrow-{{name}}',
+                nextArrow: '#nextArrow-{{name}}',
+                dotsClass: "slider-indicators",
+                autoplay: {{ module.style.carousel_settings.autoplay }},
+                {% if module.style.carousel_settings.autoplay %} autoplaySpeed: {{ module.style.carousel_settings.interval }}, {% endif %}
+                arrows: {{ module.style.carousel_settings.controls }},
+                slidesToShow: {{ module.style.carousel_settings.responsive.desktop.slides_to_display }},
+                slidesToScroll: {{ module.style.carousel_settings.responsive.desktop.slides_to_slide }},
+                responsive: [
+                    {
+                        breakpoint: parseInt(largeBreakpoint),
+                        settings: {
+                            slidesToShow: {{ module.style.carousel_settings.responsive.tablet.slides_to_display }},
+                            slidesToScroll: {{ module.style.carousel_settings.responsive.tablet.slides_to_slide }}
+                        }
+                    },
+                    {
+                        breakpoint: parseInt(smallBreakpoint),
+                        settings: {
+                            slidesToShow: {{ module.style.carousel_settings.responsive.mobile.slides_to_display }},
+                            slidesToScroll: {{ module.style.carousel_settings.responsive.mobile.slides_to_slide }}
+                        }
+                    }
+                ]
+            });
+            {% else %}
+
+        {% endif %}
+
+        {% if module.style.collapse %}
+            const collapse{{name|replace("-","_")}} = document.getElementById('testimonial-container-{{name}}')
+            collapse{{name|replace("-","_")}}.addEventListener('shown.bs.collapse', event => {
+                normaliseHeights("#testimonial-{{name}} .testimonial-header");
+                normaliseHeights("#testimonial-{{name}} .testimonial-quote-container");
+            })
+        {% endif %}
+
+        $(window).on(
+        'load resize orientationchange', function () {
+        normaliseHeights("#testimonial-{{name}} .testimonial-header");
+        normaliseHeights("#testimonial-{{name}} .testimonial-quote-container");
+        });
+        
+    
+});
+
+
+</script>

@@ -2,14 +2,17 @@
   templateType: section
   label: Cards
   isAvailableForNewContent: true
-  screenshotPath: ../images/section-previews/cards.png
-  description: "Middle centered heading above three cards, containing an image and text each."
+  screenshotPath: ../images/section-previews/cards.jpg
+  description: "Two rows with a heading and 5 cards"
 -->
+
 {% dnd_section
   background_color="rgba(235, 235, 235, 1)",
+  max_width=1280,
   padding={
     "default" : {
-      "top" : "80px"
+      "top" : "80px",
+      "bottom" : "80px"
     }
   }
 %}
@@ -33,7 +36,10 @@
               offset=0,
               width=12,
               heading_tag="h1",
-              heading_underline=true
+              heading_underline=true,
+              style={
+                "heading_underline" : true
+              }
             %}
               {% module_attribute "heading" %}
                 Meet our <br><strong>Qoria family</strong>
@@ -97,8 +103,8 @@
               } ],
               styles={
                 "responsive" : {
-                  "breakpoints" : {
-                    "desktop" : 2
+                  "desktop" : {
+                    "cards" : 2
                   }
                 }
               }
@@ -171,14 +177,8 @@
                 },
                 "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
                 "title" : "<strong>ySafe</strong>"
-              } ],
-              styles={
-                "responsive" : {
-                  "breakpoints" : {
-                    "tablet" : 3
-                  }
-                }
-              }
+              } ]
+              styles={ }
             %}
             {% end_dnd_module %}
       {% end_dnd_row %}

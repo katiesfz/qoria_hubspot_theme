@@ -2,7 +2,7 @@
   templateType: section
   label: Video
   isAvailableForNewContent: true
-  screenshotPath: ../images/section-previews/cards.png
+  screenshotPath: ../images/section-previews/video.jpg
   description: "Full-sized video panel"
 -->
 {% dnd_section
@@ -11,7 +11,8 @@
       "bottom" : "80px",
       "top" : "80px"
     }
-  }
+  },
+  max_width=1280
 %}
   {% dnd_column
     offset=0,
@@ -23,10 +24,13 @@
         offset=0,
         width=12,
         heading_tag="h1",
-        heading_underline=true
+        heading_underline=true,
+        style={
+          "heading_underline" : true
+        }
       %}
         {% module_attribute "heading" %}
-          Who <strong>we are</strong>
+          {{ context.heading || "Who <strong>we are</strong>" }}
         {% end_module_attribute %}
       {% end_dnd_module %}
     {% end_dnd_row %}
@@ -35,7 +39,7 @@
         path="/q-theme/modules/video",
         offset=0,
         width=12,
-        video_file="https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-1337197059-RT.mp4"
+        video_file={{context.videoSrc || get_asset_url("../videos/iStock-1337197059-RT.mp4") }}
       %}
       {% end_dnd_module %}
     {% end_dnd_row %}

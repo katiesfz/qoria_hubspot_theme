@@ -1,4 +1,5 @@
 [ {
+  "id" : "unique_carousel_name",
   "name" : "unique_carousel_name",
   "display_width" : null,
   "label" : "Unique Carousel Name",
@@ -11,6 +12,7 @@
   "type" : "text",
   "default" : ""
 }, {
+  "id" : "slide",
   "name" : "slide",
   "display_width" : null,
   "label" : "Slide",
@@ -23,6 +25,7 @@
     "default" : null
   },
   "children" : [ {
+    "id" : "slide.date_timeline",
     "name" : "date_timeline",
     "display_width" : null,
     "label" : "Date (timeline)",
@@ -33,7 +36,8 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : "2016"
-  },{
+  }, {
+    "id" : "slide.date",
     "name" : "date",
     "display_width" : null,
     "label" : "Date (slide heading)",
@@ -44,7 +48,8 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : "2016"
-  },{
+  }, {
+    "id" : "slide.milestone",
     "name" : "milestone",
     "display_width" : null,
     "label" : "Milestone name",
@@ -55,16 +60,18 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : "Australia launch"
-  },{
+  }, {
+    "id" : "slide.description",
     "name" : "description",
     "display_width" : null,
     "label" : "Description",
     "required" : false,
     "locked" : false,
+    "enabled_features" : [ "link", "nonbreaking_space", "bold" ],
     "type" : "richtext",
-    "default" : "Family Zone is launched to the Australian public.",
-    "enabled_features" : ["bold", "link", "nonbreaking_space"]
-  },{
+    "default" : "Family Zone is launched to the Australian public."
+  }, {
+    "id" : "slide.background_colour",
     "name" : "background_colour",
     "display_width" : null,
     "label" : "Background colour",
@@ -74,18 +81,16 @@
     "choices" : [ [ "bg-gradient-primary text-white arrow-primary", "Primary Gradient" ], [ "bg-primary text-white arrow-primary", "Primary" ], [ "bg-secondary text-white arrow-secondary", "Secondary" ], [ "bg-teal text-white arrow-teal", "Teal" ], [ "bg-indigo text-white arrow-indigo", "Indigo" ], [ "bg-orange text-white arrow-orange", "Orange" ], [ "bg-red text-white arrow-red", "Red" ], [ "bg-dark text-white arrow-dark", "Dark" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "bg-primary text-white arrow-primary"
-  },{
+  }, {
+    "id" : "slide.custom_interval",
     "name" : "custom_interval",
     "display_width" : null,
     "label" : "Custom interval (optional)",
     "required" : false,
     "locked" : false,
-    "display" : "text",
-    "step" : 1,
-    "suffix" : "ms",
-    "type" : "number",
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "style.autoplay",
@@ -94,20 +99,25 @@
       "operator" : "EQUAL",
       "access" : null,
       "hidden_subfields" : null
-    }
+    },
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "ms",
+    "type" : "number"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
-  "default" : {
-  }
+  "default" : { }
 }, {
+  "id" : "style",
   "name" : "style",
   "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
+    "id" : "style.dark_or_light",
     "name" : "dark_or_light",
     "display_width" : null,
     "label" : "Dark or Light",
@@ -117,9 +127,11 @@
     "choices" : [ [ "text-dark", "Dark" ], [ "text-light", "Light" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "text-light"
   }, {
+    "id" : "style.controls",
     "name" : "controls",
     "display_width" : null,
     "label" : "Controls",
@@ -129,6 +141,7 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "style.indicators",
     "name" : "indicators",
     "display_width" : null,
     "label" : "Indicators",
@@ -138,6 +151,7 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "style.normalise_heights",
     "name" : "normalise_heights",
     "display_width" : null,
     "label" : "Normalise heights",
@@ -146,7 +160,8 @@
     "display" : "toggle",
     "type" : "boolean",
     "default" : true
-  },{
+  }, {
+    "id" : "style.autoplay",
     "name" : "autoplay",
     "display_width" : null,
     "label" : "Autoplay",
@@ -156,17 +171,12 @@
     "type" : "boolean",
     "default" : true
   }, {
+    "id" : "style.interval",
     "name" : "interval",
     "display_width" : null,
     "label" : "Interval",
     "required" : false,
     "locked" : false,
-    "display" : "text",
-    "min" : 0,
-    "step" : 1,
-    "suffix" : "ms",
-    "type" : "number",
-    "default" : 5000,
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "style.autoplay",
@@ -175,26 +185,29 @@
       "operator" : "EQUAL",
       "access" : null,
       "hidden_subfields" : null
-    }
-  },{
-  "name" : "responsive",
-  "display_width" : null,
-  "label" : "Responsive settings",
-  "required" : false,
-  "locked" : false,
-  "tab" : "STYLE",
-  "expanded" : false,
-  "type" : "group",
-  "children" : [{
-    "name" : "desktop",
+    },
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "ms",
+    "type" : "number",
+    "default" : 5000
+  }, {
+    "id" : "style.responsive",
+    "name" : "responsive",
     "display_width" : null,
-    "label" : "Desktop",
+    "label" : "Responsive settings",
     "required" : false,
     "locked" : false,
-    "tab" : "STYLE",
-    "expanded" : false,
-    "type" : "group",
-    "children" : [{
+    "children" : [ {
+      "id" : "style.responsive.desktop",
+      "name" : "desktop",
+      "display_width" : null,
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "style.responsive.desktop.slides_to_display",
         "name" : "slides_to_display",
         "display_width" : null,
         "label" : "Slides to display",
@@ -207,6 +220,7 @@
         "type" : "number",
         "default" : 1
       }, {
+        "id" : "style.responsive.desktop.slides_to_slide",
         "name" : "slides_to_slide",
         "display_width" : null,
         "label" : "Slides to slide",
@@ -218,77 +232,89 @@
         "step" : 1,
         "type" : "number",
         "default" : 1
-      }]
-    },{
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "style.responsive.tablet",
       "name" : "tablet",
       "display_width" : null,
       "label" : "Tablet",
       "required" : false,
       "locked" : false,
-      "tab" : "STYLE",
-      "expanded" : false,
-      "type" : "group",
-      "children" : [{
-          "name" : "slides_to_display",
-          "display_width" : null,
-          "label" : "Slides to display",
-          "required" : false,
-          "locked" : false,
-          "display" : "text",
-          "min" : 1,
-          "max" : 4,
-          "step" : 1,
-          "type" : "number",
-          "default" : 1
-        }, {
-          "name" : "slides_to_slide",
-          "display_width" : null,
-          "label" : "Slides to slide",
-          "required" : false,
-          "locked" : false,
-          "display" : "text",
-          "min" : 1,
-          "max" : 4,
-          "step" : 1,
-          "type" : "number",
-          "default" : 1
-        }]
-      },{
-        "name" : "mobile",
+      "children" : [ {
+        "id" : "style.responsive.tablet.slides_to_display",
+        "name" : "slides_to_display",
         "display_width" : null,
-        "label" : "Mobile",
+        "label" : "Slides to display",
         "required" : false,
         "locked" : false,
-        "tab" : "STYLE",
-        "expanded" : false,
-        "type" : "group",
-        "children" : [{
-            "name" : "slides_to_display",
-            "display_width" : null,
-            "label" : "Slides to display",
-            "required" : false,
-            "locked" : false,
-            "display" : "text",
-            "min" : 1,
-            "max" : 4,
-            "step" : 1,
-            "type" : "number",
-            "default" : 1
-          }, {
-            "name" : "slides_to_slide",
-            "display_width" : null,
-            "label" : "Slides to slide",
-            "required" : false,
-            "locked" : false,
-            "display" : "text",
-            "min" : 1,
-            "max" : 4,
-            "step" : 1,
-            "type" : "number",
-            "default" : 1
-          }]
-        }]
-  }],
+        "display" : "text",
+        "min" : 1,
+        "max" : 4,
+        "step" : 1,
+        "type" : "number",
+        "default" : 1
+      }, {
+        "id" : "style.responsive.tablet.slides_to_slide",
+        "name" : "slides_to_slide",
+        "display_width" : null,
+        "label" : "Slides to slide",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 1,
+        "max" : 4,
+        "step" : 1,
+        "type" : "number",
+        "default" : 1
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "style.responsive.mobile",
+      "name" : "mobile",
+      "display_width" : null,
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "style.responsive.mobile.slides_to_display",
+        "name" : "slides_to_display",
+        "display_width" : null,
+        "label" : "Slides to display",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 1,
+        "max" : 4,
+        "step" : 1,
+        "type" : "number",
+        "default" : 1
+      }, {
+        "id" : "style.responsive.mobile.slides_to_slide",
+        "name" : "slides_to_slide",
+        "display_width" : null,
+        "label" : "Slides to slide",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 1,
+        "max" : 4,
+        "step" : 1,
+        "type" : "number",
+        "default" : 1
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group",

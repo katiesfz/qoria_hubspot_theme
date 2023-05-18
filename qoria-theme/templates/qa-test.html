@@ -214,51 +214,47 @@
         "top": 35
         }
       %}
-        {% dnd_module path="../modules/card" %}
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-
-      {# Two column #}
-
-      {% dnd_row
-        padding={
-        "top": 35
+        
+      {% dnd_module
+      path="/q-theme/modules/card",
+      offset=0,
+      width=12,
+      card=[ {
+        "accent_colour" : "bg-indigo text-white",
+        "image" : {
+          "alt" : "iStock-489592905 RT",
+          "height" : 859,
+          "loading" : "lazy",
+          "max_height" : 859,
+          "max_width" : 1288,
+          "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-489592905%20RT.jpg",
+          "width" : 1288
+        },
+        "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+        "title" : "<strong>Linewize</strong> (North America)"
+      }, {
+        "accent_colour" : "bg-indigo text-white",
+        "image" : {
+          "alt" : "iStock-500428859 RT",
+          "height" : 859,
+          "loading" : "lazy",
+          "max_height" : 859,
+          "max_width" : 1288,
+          "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-500428859%20RT.jpg",
+          "width" : 1288
+        },
+        "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+        "title" : "<strong>Linewize</strong> (Asia Pacific)"
+      } ],
+      styles={
+        "responsive" : {
+          "desktop" : {
+            "cards" : 2
+          }
         }
-      %}
-        {% dnd_module path="../modules/card",
-          offset=0,
-          width=6
-        %}
-        {% end_dnd_module %}
-        {% dnd_module path="../modules/card",
-          offset=6,
-          width=6
-        %}
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-
-      {# Three column #}
-
-      {% dnd_row
-        padding={
-        "top": 35
-        }
-      %}
-        {% dnd_module path="../modules/card",
-          offset=0,
-          width=4
-        %}
-        {% end_dnd_module %}
-        {% dnd_module path="../modules/card",
-          offset=4,
-          width=4
-        %}
-        {% end_dnd_module %}
-        {% dnd_module path="../modules/card",
-          offset=8,
-          width=4
-        %}
-        {% end_dnd_module %}
+      }
+    %}
+    {% end_dnd_module %}
       {% end_dnd_row %}
 
       {# Button #}
@@ -282,7 +278,7 @@
         "top": 35
         }
       %}
-        {% dnd_module path="../modules/button" %}
+        {% dnd_module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
         {% end_dnd_module %}
       {% end_dnd_row %}
 

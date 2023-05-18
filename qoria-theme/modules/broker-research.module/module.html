@@ -1,0 +1,33 @@
+{% set table = hubdb_table_rows(module.hubdb, queryparam)%}
+    
+<div class="row" style="{{module.styles.spacing_field.css}}">
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            {% for row in table|sort(True, False, "date") %}
+                <tr class="position-relative">
+                    <td class="px-4"><a class="text-reset text-decoration-none stretched-link" download="{{row.date|format_date('dd/MM/yyyy')}} - {{row.broker}} - {{row.name}}" href="{{row.url}}">{{row.date|format_date('dd/MM/yyyy')}} - {{row.broker}} | {{row.name}}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% if is_in_editor %}
+{% else %}
+  <div class="modal modal-lg" id="disclaimerModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{module.disclaimer_heading}}</h5>
+        </div>
+        <div class="modal-body">
+          {{module.disclaimer}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

@@ -16,26 +16,17 @@ label="Body"
 class="main p-0 overflow-hidden"
 %}
 
-  {# Hero banner #}
-
   {% include_dnd_partial
     path="../sections/hero-banner.html"
-    context={
-      "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>"
-    }
   %}
 
-  {# Three column image with text #}
-
   {% include_dnd_partial
-    path="../sections/multi-column-content.html",
-    context={
-      "background_color": "#FFFFFF"
-    }
+    path="../sections/introduction.html"
   %}
 
 {% end_dnd_area %}
 {% endblock body %}
 
 {% block footer %}
+  {% global_partial path="./partials/footer.html" %}
 {% endblock footer %}

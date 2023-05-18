@@ -1,105 +1,7 @@
 {% require_css %}
     <style>
       {% scope_css %}
-            {% if module.style.heading_location == "bottom-left" %}
-  
-            .hero-full-video .container, 
-            .hero-full-video .container-fluid, 
-            .hero-full-video .container-xxl, 
-            .hero-full-video .container-xl, 
-            .hero-full-video .container-lg, 
-            .hero-full-video .container-md, 
-            .hero-full-video .container-sm,
-            .hero-full-image .container, 
-            .hero-full-image .container-fluid, 
-            .hero-full-image .container-xxl, 
-            .hero-full-image .container-xl, 
-            .hero-full-image .container-lg, 
-            .hero-full-image .container-md, 
-            .hero-full-image .container-sm  {
-            padding-top: 30rem;
-            }
 
-            {% elif module.style.heading_location == "25-left"%}
-
-                .hero-full-video .container, 
-                .hero-full-video .container-fluid, 
-                .hero-full-video .container-xxl, 
-                .hero-full-video .container-xl, 
-                .hero-full-video .container-lg, 
-                .hero-full-video .container-md, 
-                .hero-full-video .container-sm,
-                .hero-full-image .container, 
-                .hero-full-image .container-fluid, 
-                .hero-full-image .container-xxl, 
-                .hero-full-image .container-xl, 
-                .hero-full-image .container-lg, 
-                .hero-full-image .container-md, 
-                .hero-full-image .container-sm  {
-                padding-top: 10rem;
-                padding-bottom: 20rem;
-                }
-            {% elif module.style.heading_location == "middle-left" %}
-
-                .hero-full-video .container, 
-                .hero-full-video .container-fluid, 
-                .hero-full-video .container-xxl, 
-                .hero-full-video .container-xl, 
-                .hero-full-video .container-lg, 
-                .hero-full-video .container-md, 
-                .hero-full-video .container-sm,
-                .hero-full-image .container, 
-                .hero-full-image .container-fluid, 
-                .hero-full-image .container-xxl, 
-                .hero-full-image .container-xl, 
-                .hero-full-image .container-lg, 
-                .hero-full-image .container-md, 
-                .hero-full-image .container-sm  {
-                padding-top: 15rem;
-                padding-bottom: 15rem;
-                }
-    
-            {% elif module.style.heading_location == "top-left"%}
-
-                .hero-full-video .container, 
-                .hero-full-video .container-fluid, 
-                .hero-full-video .container-xxl, 
-                .hero-full-video .container-xl, 
-                .hero-full-video .container-lg, 
-                .hero-full-video .container-md, 
-                .hero-full-video .container-sm,
-                .hero-full-image .container, 
-                .hero-full-image .container-fluid, 
-                .hero-full-image .container-xxl, 
-                .hero-full-image .container-xl, 
-                .hero-full-image .container-lg, 
-                .hero-full-image .container-md, 
-                .hero-full-image .container-sm  {
-                padding-bottom: 30rem;
-                }
-    
-    
-                {% elif module.style.heading_location == "75-left"%}
-
-                    .hero-full-video .container, 
-                    .hero-full-video .container-fluid, 
-                    .hero-full-video .container-xxl, 
-                    .hero-full-video .container-xl, 
-                    .hero-full-video .container-lg, 
-                    .hero-full-video .container-md, 
-                    .hero-full-video .container-sm,
-                    .hero-full-image .container, 
-                    .hero-full-image .container-fluid, 
-                    .hero-full-image .container-xxl, 
-                    .hero-full-image .container-xl, 
-                    .hero-full-image .container-lg, 
-                    .hero-full-image .container-md, 
-                    .hero-full-image .container-sm  {
-                    padding-top: 20rem;
-                    padding-bottom: 10rem;
-                    }
-
-            {% endif %}
       {% end_scope_css %}
     </style>
   {% end_require_css %}
@@ -129,7 +31,7 @@
 
 {% endif %}
   <!-- The header content -->
-<div class="container-xxl g-0 h-100">
+<div class="container-xxl g-0 h-100 heading-location-{{module.style.heading_location}}">
     {% if module.show_breadcrumbs %}
         <div class="row">
         <div class="col-12 text-end pt-5 position-absolute top-0 end-0 text-white">
@@ -149,7 +51,7 @@
             {%for cta in module.cta %}
                 <!-- run macro with link, label, style, colour? -->
 
-                <a href="{{cta.cta_link.url.href}}" class="btn {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
+                <a href="{{cta.cta_link.url.href}}" class="btn {{"ms-4" if loop.first}} {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
                 </a>
             {%endfor%}
         </div>
@@ -159,7 +61,7 @@
             <hr class="opacity-100">
             </div>
         <div class="col-12 pb-5 text-white text-end">
-            <p>Stock price: FZO (ASX) A$0.30 -0.01 (-3.17%)</p>
+            <p>Stock price: A${{module.stock_name.columns.price}} {{module.stock_name.columns.change|format}} ({{module.stock_name.columns.change_percent}}%)</p>
         </div>
         {%endif%}
         {%if module.page_contents|length > 0%}

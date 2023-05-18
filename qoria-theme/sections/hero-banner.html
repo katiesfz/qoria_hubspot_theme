@@ -2,8 +2,8 @@
   templateType: section
   label: Hero banner
   isAvailableForNewContent: true
-  screenshotPath: ../images/section-previews/hero-banner.png
-  description: "Full size background image section separated in two columns. Left column has heading and text and right column has a form."
+  screenshotPath: ../images/section-previews/hero.jpg
+  description: "Full size background image/video section with heading, pre-heading, description, breadcrumbs, CTAs, and contents list."
 -->
 
 {% dnd_section %}
@@ -16,24 +16,31 @@
         path="/q-theme/modules/hero",
         offset=0,
         width=12,
-        cta=[ {
-          "colour" : "light",
-          "cta_label" : "Read our story",
-          "cta_link" : {
-            "no_follow" : false,
-            "open_in_new_tab" : false,
-            "url" : {
-              "href" : "/our-story",
-              "type" : "EXTERNAL"
-            }
-          },
-          "size" : "btn-lg",
-          "style" : "-outline-"
-        } ],
-        header="Helping every child to <br><strong>thrive in their digital life</strong>",
-        pre_header="Our purpose:",
-        show_share_price=true,
-        video="https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-1337197059-RT.mp4"
+        pre_header={{context.preHeader || ""}},
+        header={{context.header || "Our Story"}},
+        hero_type={{context.heroType||"full-image"}},
+        image={
+          "alt" : "Banner Image",
+          "height" : 1080,
+          "loading" : "disabled",
+          "max_height" : 1080,
+          "max_width" : 1920,
+          "size_type" : "auto",
+          "src" : context.imageSrc || get_asset_url("../images/qoria/photos/iStock-1253508097-RT.jpg"),
+          "width" : 1920,
+        },
+        video={{context.videoSrc || ""}},
+        menu=115248177746,
+        cta={{context.cta || []}},
+        page_contents={{context.pageContents || []}},
+        show_breadcrumbs={{context.breadcrumbs || true}},
+        show_share_price={{context.sharePrice || false}},
+        stock_name={
+          "id" : 108988838577
+        },
+        style={
+          "heading_location" : context.headingLocation || "bottom-left"
+        },
       %}
       {% end_dnd_module %}
     {% end_dnd_row %}

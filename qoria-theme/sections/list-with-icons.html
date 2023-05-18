@@ -1,0 +1,343 @@
+<!--
+  templateType: section
+  label: List with icons
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/list-with-icons.png
+  description: "A section with 2 columns of list items with customiseable icons."
+-->
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "80px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+        {% dnd_module
+            path="/q-theme/modules/anchor",
+            offset=0,
+            width=12,
+            anchor={{context.anchor || "benefits" }}
+        %}
+        {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_underline=true,
+        style={
+          "heading_underline" : true
+        }
+      %}
+        {% module_attribute "heading" %}
+          Benefits to <strong>our customers</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead">The Wellbeing Framework empowers each stakeholder to exceed their safety and wellbeing duty of care.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "30px",
+          "top" : "30px"
+        }
+      }
+    %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=0,
+        width=6,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "none",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "far",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<h6>Student safety:</h6>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        } ],
+        style={
+          "absolute_icon_size" : "fa-2x",
+          "icon_alignment" : "align-items-start",
+          "relative_icon_size" : "fa-2xl",
+          "sizing" : "absolute"
+        }
+      %}
+      {% end_dnd_module %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=6,
+        width=6,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "none",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "far",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<h6>Student outcomes:</h6>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
+        } ],
+        style={
+          "absolute_icon_size" : "fa-2x",
+          "icon_alignment" : "align-items-start",
+          "relative_icon_size" : "fa-2xl",
+          "sizing" : "absolute"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

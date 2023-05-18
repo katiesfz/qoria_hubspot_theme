@@ -1,0 +1,292 @@
+[ {
+  "id" : "style",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "style.nav_styles",
+    "name" : "nav_styles",
+    "display_width" : null,
+    "label" : "Navigation",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.nav_styles.appearance",
+      "name" : "appearance",
+      "display_width" : null,
+      "label" : "Appearance",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "External" ], [ "nav-tabs", "Tabs" ], [ "nav-pills", "Pills" ], [ "nav-underline", "Underline" ], [ " ", "Plain" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : " "
+    }, {
+      "id" : "style.nav_styles.horizontal_vertical",
+      "name" : "horizontal_vertical",
+      "display_width" : null,
+      "label" : "Horizontal/Vertical",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ " ", "Horizontal" ], [ "flex-column", "Vertical" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : " "
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+}, {
+  "id" : "content_block",
+  "name" : "content_block",
+  "display_width" : null,
+  "label" : "Content block",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "link_label",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "content_block.link_label",
+    "name" : "link_label",
+    "display_width" : null,
+    "label" : "Link Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "row",
+    "name" : "row",
+    "display_width" : null,
+    "label" : "Row",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "row.column",
+      "name" : "column",
+      "display_width" : null,
+      "label" : "Column",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : null,
+        "max" : null,
+        "sorting_label_field" : null,
+        "default" : null
+      },
+      "children" : [ {
+        "id" : "row.column.text",
+        "name" : "text",
+        "display_width" : null,
+        "label" : "Body text",
+        "required" : false,
+        "locked" : false,
+        "type" : "richtext",
+        "default" : "<p>Across three continents</p>"
+      }, {
+        "id" : "row.column.advanced",
+        "name" : "advanced",
+        "display_width" : null,
+        "label" : "Advanced",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "row.column.advanced.additional_classes",
+          "name" : "additional_classes",
+          "display_width" : null,
+          "label" : "Additional classes",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : { }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : { }
+    }, {
+      "id" : "row.column.responsive",
+      "name" : "responsive",
+      "display_width" : null,
+      "label" : "Responsive settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "row.column.responsive.desktop",
+        "name" : "desktop",
+        "display_width" : null,
+        "label" : "Desktop",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "row.column.responsive.desktop.columns",
+          "name" : "columns",
+          "display_width" : null,
+          "label" : "Columns",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 5,
+          "step" : 1,
+          "type" : "number"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+      }, {
+        "id" : "row.column.responsive.tablet",
+        "name" : "tablet",
+        "display_width" : null,
+        "label" : "Tablet",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "row.column.responsive.tablet.columns",
+          "name" : "columns",
+          "display_width" : null,
+          "label" : "Columns",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 5,
+          "step" : 1,
+          "type" : "number"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+      }, {
+        "id" : "row.column.responsive.mobile",
+        "name" : "mobile",
+        "display_width" : null,
+        "label" : "Mobile",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "row.column.responsive.mobile.columns",
+          "name" : "columns",
+          "display_width" : null,
+          "label" : "Columns",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 5,
+          "step" : 1,
+          "type" : "number"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "row.advanced",
+      "name" : "advanced",
+      "display_width" : null,
+      "label" : "Advanced",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "row.advanced.additional_classes",
+        "name" : "additional_classes",
+        "display_width" : null,
+        "label" : "Additional classes",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : { }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "content_block.advanced",
+    "name" : "advanced",
+    "display_width" : null,
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "content_block.advanced.additional_classes",
+      "name" : "additional_classes",
+      "display_width" : null,
+      "label" : "Additional classes",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
+} ]

@@ -1,0 +1,36 @@
+<!-- module html  -->
+{% macro menu_items2() %}
+  
+    {% set menu = menu(module.menu, "site_root").children %}
+  
+    {% macro render_link_item(link) %}
+        <a class="h4" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
+      
+        {% if link.children %}
+            <ul class="list-unstyled ms-4">
+            {% for sublink in link.children %}
+                {{ render_dropdown_links(sublink) }}
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endmacro %}
+
+  {% macro render_dropdown_links(link) %}
+    <li>
+        <a class="h5" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
+    </li>
+  {%endmacro%}
+  
+    {% for link in menu %}
+        <li class="hs-skip-lang-url-rewrite">
+            {{ render_link_item(link) }}
+        </li>
+    {% endfor %}
+  
+  {% endmacro %}
+  
+  {# Desktop menu #}
+
+      <ul class="list-unstyled">   
+      {{ menu_items2() }}
+      </ul>

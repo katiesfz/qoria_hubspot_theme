@@ -1,0 +1,107 @@
+{
+  "name": {
+    "message": "Розділювач",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.default.horizontal_align": {
+    "message": "ПО ЦЕНТРУ",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.label": {
+    "message": "Вирівнювання",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.label": {
+    "message": "Вирівнювання",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.label": {
+    "message": "Стилі",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.color.label": {
+    "message": "Колір",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.label": {
+    "message": "Рядок",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dashed": {
+    "message": "Штрихова лінія",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dotted": {
+    "message": "Пунктирна лінія",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.solid": {
+    "message": "Заливка",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.label": {
+    "message": "Стиль",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.thickness.label": {
+    "message": "Товщина",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.label": {
+    "message": "Розмір",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.help_text": {
+    "message": "Відсоток площі, у якій розміщено роздільник.",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.label": {
+    "message": "Ширина",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.label": {
+    "message": "Інтервал",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.units": {
+    "message": "пікс.",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.units": {
+    "message": "пікс.",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.label": {
+    "message": "Інтервал",
+    "description": "",
+    "placeholders": null
+  }
+}

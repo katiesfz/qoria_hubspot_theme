@@ -1,13 +1,13 @@
 {
   "global" : false,
+  "icon" : "../../images/module-icons/insert-video-icon.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST" ],
-  "module_id" : 54670138316,
+  "module_id" : 107284549262,
   "js_assets" : [ {
     "autoload" : true,
     "path" : "../../js/custom-functions.js",
     "name" : "custom-functions.js"
   } ],
   "label" : "Video",
-  "is_available_for_new_content" : true,
-  "icon" : "../../images/module-icons/insert-video-icon.svg"
+  "is_available_for_new_content" : true
 }

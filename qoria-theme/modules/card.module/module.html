@@ -14,31 +14,41 @@
 }
   </style>
 {% end_require_css %}
-<div class="container-fluid g-0">
-<div class="row row-cols-{{module.styles.responsive.breakpoints.mobile}} row-cols-md-{{module.styles.responsive.breakpoints.tablet}} row-cols-lg-{{module.styles.responsive.breakpoints.desktop}} g-3">
+<div class="container-fluid g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}" id="cards-{{name}}">
+<div class="row row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3">
   {% for card in module.card %}
 
     <div class="col">
       <div class="card shadow {{ "h-100" if module.styles.equal_heights }}">
         {% if card.image.src %}
           <img src="{{ card.image.src }}" class="card-img-top" alt="{{ card.image.alt }}">
-          <div class="card-header h5 {{card.accent_colour}}">{{card.title}}</div>
+          {% if module.styles.card_style == "1" %}
+            <div class="card-header h5 {{card.accent_colour}}">{{card.title}}</div>
+            {% else %}
+              <div class="{{card.accent_colour}}"><div style="display: block; height: 1em;"></div></div>
+          {% endif %}
         {% else %}
-          <div class="ratio ratio-16x9 {{card.accent_colour}}">
-            <div class="card-header card-header-cap d-flex border-0 align-items-end  fs-1 lh-sm">
+          <div class="{{card.accent_colour}} position-relative" style="">
+          {% if module.styles.card_style == "1" %}
+            <div class="card-header card-header-cap d-flex border-0 align-items-end  fs-1 lh-sm" style="padding-top: 15%;">
               <div>
                 {{card.title}}
                 </div>
             </div>
+            {% else %}
+              <div style="display: block; height: 1em;"></div>
+          {% endif %}
           </div>
         {% endif %}
-        <div class="card-body">
-        
+        <div class="card-body {{ "bg-light" if module.styles.card_style == "2" }}">
+          {% if module.styles.card_style != "1" %}
+              <h5>{{ card.title }}</h5>
+          {% endif %}
           {% if card.text %}
             <p class="card-text">{{ card.text }}</p>
           {% endif %}
           {% if card.link.url.href %}
-            <a href="{{card.link.url.href}}" class="{{ "stretched-link" if card.stretched_link }} text-reset text-decoration-none">{{card.link_label}}</a>
+            <a href="{{card.link.url.href}}" class="{{ "stretched-link" if card.stretched_link }} text-reset text-decoration-none fw-semibold">{{card.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
           {% endif %}
         </div>
       </div>
@@ -47,3 +57,12 @@
 </div>
 
 </div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  $(window).on(
+      'load resize orientationchange', 
+      normaliseHeights("#cards-{{name}} .card-header"));
+});
+</script>

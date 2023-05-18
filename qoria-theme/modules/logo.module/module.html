@@ -13,7 +13,8 @@
     {% endif %}
   </a>
 {% else %}
-  <a href="{{brand_settings.primaryLogo.link}}" class="{{ module.expert_settings.custom_classes }}">
-    <img src="{{brand_settings.primaryLogo.src}}" alt="{{brand_settings.primaryLogo.alt}}" width="{{brand_settings.primaryLogo.width}}" height="{{brand_settings.primaryLogo.height}}">
+  <a href="{{brand_settings.logos[0].link}}" class="{{ module.expert_settings.custom_classes }}">
+    <img src="{{brand_settings.logos[0].src}}" alt="{{brand_settings.logos[0].alt}}" width="{{brand_settings.logos[0].width}}" height="{{brand_settings.logos[0].height}}">
   </a>
+  <div class="d-none">{{brand_settings|pprint}}</div>
 {% endif %}

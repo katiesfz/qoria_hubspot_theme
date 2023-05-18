@@ -1,34 +1,151 @@
 <!--
   templateType: error_page
   isAvailableForNewContent: true
-  label: Boilerplate - 404 error
+  label: Qoria - 404 error
   screenshotPath: ../../images/template-previews/404.png
 -->
-{% set template_css = "../../css/templates/system.css" %}
-{% extends "../layouts/base.html" %}
-{# pageTitle is used on system templates for setting a value for the title tag #}
+
+{% extends "../layouts/system-base.html" %}
+
+
+{% block header %}
+  <div class="header-wrapper">
+{% global_partial path='../partials/header.html', label="Header" %}
+  </div>
+{% endblock header %}
+
 {% set pageTitle = "Error 404 | Page not found" %}
 
 {% block body %}
-<section class="content-wrapper">
-  <div class="error-page" data-error="404">
-    {% module "content"
-      path="@hubspot/rich_text",
-      html="<h1>Page not found.</h1>"
-    %}
-    {% module "button"
-      path="../../modules/button",
-      button_text="Go Home"
-      link={
-        "url":
-          {
-            "type": "EXTERNAL",
-            "href": "/"
+
+{# hero banner #}
+
+{% module "Header"
+  path="/q-theme/modules/hero",
+  offset=0,
+  width=12,
+  cta=[ ],
+  header="<strong>404</strong>",
+  hero_type="full-image",
+  image={
+    "alt" : "404 banner",
+    "height" : 1080,
+    "loading" : "disabled",
+    "max_height" : 1080,
+    "max_width" : 1920,
+    "size_type" : "auto",
+    "src" : get_asset_url("../../images/qoria/photos/404_banner.jpg"),
+    "width" : 1920
+  },
+  page_contents=[],
+  pre_header="",
+  show_share_price=false,
+  show_breadcrumbs=false
+%}
+
+<section style=" padding-top: 80px; padding-bottom: 80px;">
+  <div class="container-xxl">
+    {% module "Heading"
+    path="/q-theme/modules/heading",
+    heading ="Looks like that page can't be found",
+    style={
+      "spacing_field" : {
+        "margin" : {
+          "bottom" : {
+            "units" : "px",
+            "value" : 50
           },
-          "open_in_new_tab": false,
-          "no_follow": false
+          "top" : { }
+        }
       }
+    }
     %}
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        {% module "Rich Text"
+        path="@hubspot/rich_text",
+        html="<p class=\"lead fw-semibold\">Don't worry, it's easy to get lost in the digital environment.</p><p class=\"lead\">Let's get you back on track.</p>"
+        %}
+
+        
+        {% module "CTA"
+        path="/q-theme/modules/cta",
+        alignment="start",
+        button_text="Return home",
+        link={
+          "no_follow" : false,
+          "open_in_new_tab" : false,
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : "/"
+          }
+        },
+        styles={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 30
+              }
+            }
+          }
+        }
+      %}
+      </div>
+      <div class="col-12 col-lg-4">
+      </div>
+    </div>
   </div>
 </section>
+<div class="d-none">
+{{brand_settings|pprint}}
+</div>
+<div class="d-none">
+{{content|pprint}}
+</div>
+<section class="bg-light" style=" padding-top: 80px; padding-bottom: 80px;">
+  <div class="container-xxl">
+    {% module "Heading"
+    path="/q-theme/modules/heading",
+    heading ="Can't find what you're looking for?",
+    style={
+      "spacing_field" : {
+        "margin" : {
+          "bottom" : {
+            "units" : "px",
+            "value" : 50
+          },
+          "top" : { }
+        }
+      }
+    }
+    %}
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        {% module "Rich Text"
+        path="@hubspot/rich_text",
+        html="<p style=\"font-weight: bold;\"><a class=\"text-reset text-decoration-none\" href=\"/solutions\" rel=\"noopener\">Our solutions</a></p><p style=\"font-weight: bold;\"><a class=\"text-reset text-decoration-none\" href=\"/investors#downloads\" rel=\"noopener\">Publications for investors</a></p><p style=\"font-weight: bold;\"><a class=\"text-reset text-decoration-none\" href=\"/contact\" rel=\"noopener\">Contact us</a></p>"
+        %}
+
+      </div>
+      <div class="col-12 col-lg-4">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock body %}
+
+
+
+{% block footer %}
+  <div class="footer-wrapper">
+{% global_partial path='../partials/footer.html', label="Footer" %}
+  </div>
+{% endblock footer %}

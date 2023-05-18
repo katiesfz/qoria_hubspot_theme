@@ -1,4 +1,5 @@
 [ {
+  "id" : "alignment",
   "name" : "alignment",
   "display_width" : null,
   "label" : "Alignment",
@@ -8,8 +9,10 @@
   "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
+  "preset" : null,
   "type" : "choice"
 }, {
+  "id" : "link",
   "name" : "link",
   "display_width" : null,
   "label" : " Link",
@@ -28,6 +31,7 @@
     "no_follow" : false
   }
 }, {
+  "id" : "button_text",
   "name" : "button_text",
   "display_width" : null,
   "label" : "Button text",
@@ -39,18 +43,21 @@
   "type" : "text",
   "default" : "Add a button link here"
 }, {
+  "id" : "button_colour",
   "name" : "button_colour",
   "display_width" : null,
   "label" : "Button Colour",
   "required" : false,
   "locked" : false,
   "display" : "select",
-  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "success", "Success" ], [ "danger", "Danger" ], [ "warning", "Warning" ], [ "info", "Info" ], [ "light", "Light" ], [ "dark", "Dark" ] ],
+  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
+  "preset" : null,
   "type" : "choice",
   "default" : "primary"
 }, {
+  "id" : "button_style",
   "name" : "button_style",
   "display_width" : null,
   "label" : "Button Style",
@@ -60,9 +67,11 @@
   "choices" : [ [ "-", "Normal" ], [ "-outline-", "Outline" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
+  "preset" : null,
   "type" : "choice",
   "default" : "-"
 }, {
+  "id" : "text_colour",
   "name" : "text_colour",
   "display_width" : null,
   "label" : "Text colour",
@@ -81,9 +90,11 @@
   "choices" : [ [ "text-white", "Light" ], [ "text-dark", "Dark" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
+  "preset" : null,
   "type" : "choice",
   "default" : "text-dark"
 }, {
+  "id" : "button_size",
   "name" : "button_size",
   "display_width" : null,
   "label" : "Button Size",
@@ -93,15 +104,18 @@
   "choices" : [ [ "btn-sm", "Small" ], [ " ", "Standard" ], [ "btn-lg", "Large" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
+  "preset" : null,
   "type" : "choice",
   "default" : " "
 }, {
+  "id" : "advanced",
   "name" : "advanced",
   "display_width" : null,
   "label" : "Advanced",
   "required" : false,
   "locked" : false,
   "children" : [ {
+    "id" : "advanced.additional_classes",
     "name" : "additional_classes",
     "display_width" : null,
     "label" : "Additional Classes",
@@ -112,6 +126,7 @@
     "show_emoji_picker" : false,
     "type" : "text"
   }, {
+    "id" : "advanced.trigger_modal",
     "name" : "trigger_modal",
     "display_width" : null,
     "label" : "Trigger modal",
@@ -121,6 +136,7 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "advanced.modal_id",
     "name" : "modal_id",
     "display_width" : null,
     "label" : "Modal ID",
@@ -137,4 +153,35 @@
   "default" : {
     "trigger_modal" : false
   }
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
 } ]

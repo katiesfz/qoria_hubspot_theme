@@ -6,6 +6,26 @@
   "required" : false,
   "locked" : false,
   "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
     "id" : "0fb56238-2cad-f53c-f1ad-f0db0e049ecb",
     "name" : "background_colour",
     "display_width" : null,
@@ -13,7 +33,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ] ],
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -107,8 +127,8 @@
       "label" : "Heading",
       "required" : false,
       "locked" : false,
-      "type" : "richtext",
-      "enabled_features" : ["bold","link"]
+      "enabled_features" : [ "link", "bold" ],
+      "type" : "richtext"
     }, {
       "id" : "d89c84ed-50ce-25a5-9366-2daf004efc12",
       "name" : "statistic",
@@ -128,7 +148,7 @@
       "required" : false,
       "locked" : false,
       "display" : "select",
-      "choices" : [ [ "display-6", "Small" ], [ "display-4", "Regular" ] , [ "display-1", "Large" ] ],
+      "choices" : [ [ "display-6", "Small" ], [ "display-4", "Regular" ], [ "display-1", "Large" ] ],
       "multiple" : false,
       "reordering_enabled" : true,
       "preset" : null,
@@ -140,9 +160,52 @@
       "label" : "Body text",
       "required" : false,
       "locked" : false,
+      "enabled_features" : [ "link", "bold" ],
       "type" : "richtext",
-      "default" : "<p class='fs-6 fw-bold'>Across three continents</p>",
-      "enabled_features" : ["bold","link"]
+      "default" : "<p class='fs-6 fw-bold'>Across three continents</p>"
+    }, {
+      "id" : "link",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      }
+    }, {
+      "id" : "link_label",
+      "name" : "link_label",
+      "display_width" : null,
+      "label" : "Link Label",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    },{
+      "id" : "link_stretched",
+      "name" : "link_stretched",
+      "display_width" : null,
+      "label" : "Stretched Link",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
     }, {
       "id" : "989e0bde-a735-330e-90ed-7e93efd63501",
       "name" : "column_styles",
@@ -158,7 +221,7 @@
         "required" : false,
         "locked" : false,
         "display" : "select",
-        "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ] ],
+        "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ], [ "bg-white-20 text-dark", "Semi-transparent white" ] ],
         "multiple" : false,
         "reordering_enabled" : true,
         "preset" : null,
@@ -186,9 +249,9 @@
       }
     }, {
       "id" : "8876fed4-374b-c04a-d6e7-7f811d14bf8f",
-      "name" : "expert_use",
+      "name" : "advanced",
       "display_width" : null,
-      "label" : "Expert use",
+      "label" : "Advanced",
       "required" : false,
       "locked" : false,
       "children" : [ {
@@ -216,13 +279,13 @@
       "column_styles" : {
         "background_colour" : "none"
       },
-      "expert_use" : { }
+      "advanced" : { }
     }
   }, {
     "id" : "e542494d-0a99-be46-b594-dd2c2ff2c8ba",
-    "name" : "expert_use",
+    "name" : "advanced",
     "display_width" : null,
-    "label" : "Expert use",
+    "label" : "Advanced",
     "required" : false,
     "locked" : false,
     "children" : [ {
@@ -251,8 +314,8 @@
       "column_styles" : {
         "background_colour" : "none"
       },
-      "expert_use" : { }
+      "advanced" : { }
     },
-    "expert_use" : { }
+    "advanced" : { }
   }
 } ]

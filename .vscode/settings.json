@@ -18,10 +18,14 @@
         }
     ],
     "liveSassCompile.settings.includeItems": [
-        "/scss/qoria-theme.scss"
+        "/scss/qoria-theme.scss",
+        "/scss/smart-recruiters-styles.scss"
     ],
     "liveSassCompile.settings.generateMap": false,
     "files.associations": {
         "*.html": "html-hubl"
-    }
+    },
+    "liveSassCompile.settings.autoprefix": [
+    
+    ]
 }

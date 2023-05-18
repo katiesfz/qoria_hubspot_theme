@@ -19,7 +19,38 @@
   "label" : "Heading",
   "required" : false,
   "locked" : false,
-  "enabled_features" : ["alignment"],
+  "enabled_features" : [ "alignment" ],
   "type" : "richtext",
   "default" : "Closing the gaps that children fall through"
+}, {
+  "id" : "style",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 100,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
 } ]

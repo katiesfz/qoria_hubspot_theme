@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{ content.html_title }}</title>
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
     <meta name="description" content="{{ content.meta_description }}">
     {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css')) }}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-rqn26AG5Pj86AF4SO72RK5fyefcQ/x32DNQfChxWvbXIyXFePlEktwD18fEz+kQU" crossorigin="anonymous">
@@ -14,14 +14,20 @@
   <body data-bs-spy="scroll" data-bs-target="#pageContents">
     
     {% block header %}
+      <div class="header-wrapper">
     {% global_partial path='../partials/header.html', label="Header" %}
+      </div>
     {% endblock header %}
 
+    <div class="content-wrapper">
     {% block body %}
     {% endblock body %}
+    </div>
     
     {% block footer %}
+      <div class="footer-wrapper">
     {% global_partial path='../partials/footer.html', label="Footer" %}
+      </div>
     {% endblock footer %}
 
     {{ standard_footer_includes }}

@@ -1,5 +1,6 @@
 {
   "global" : false,
+  "icon" : "../../images/module-icons/square-quote.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
   "module_id" : 107311296279,
   "label" : "Pullout",

@@ -1,4 +1,5 @@
 [ {
+  "id" : "unique_carousel_name",
   "name" : "unique_carousel_name",
   "display_width" : null,
   "label" : "Unique Carousel Name",
@@ -11,6 +12,7 @@
   "type" : "text",
   "default" : ""
 }, {
+  "id" : "slide",
   "name" : "slide",
   "display_width" : null,
   "label" : "Slide",
@@ -23,6 +25,7 @@
     "default" : null
   },
   "children" : [ {
+    "id" : "slide.column",
     "name" : "column",
     "display_width" : null,
     "label" : "Column",
@@ -35,6 +38,7 @@
       "default" : null
     },
     "children" : [ {
+      "id" : "slide.column.content",
       "name" : "content",
       "display_width" : null,
       "label" : "Content",
@@ -42,6 +46,7 @@
       "locked" : false,
       "type" : "richtext"
     }, {
+      "id" : "slide.column.column_classes",
       "name" : "column_classes",
       "display_width" : null,
       "label" : "Column classes",
@@ -60,6 +65,7 @@
       "column_classes" : "col"
     }
   }, {
+    "id" : "slide.vertical_alignment",
     "name" : "vertical_alignment",
     "display_width" : null,
     "label" : "Vertical alignment",
@@ -69,9 +75,11 @@
     "choices" : [ [ "align-items-start", "Top" ], [ "align-items-center", "Middle" ], [ "align-items-end", "Bottom" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "align-items-center"
   }, {
+    "id" : "slide.custom_interval",
     "name" : "custom_interval",
     "display_width" : null,
     "label" : "Custom interval (optional)",
@@ -92,12 +100,14 @@
     "vertical_alignment" : "align-items-center"
   }
 }, {
+  "id" : "style",
   "name" : "style",
   "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
+    "id" : "style.dark_or_light",
     "name" : "dark_or_light",
     "display_width" : null,
     "label" : "Dark or Light",
@@ -107,9 +117,11 @@
     "choices" : [ [ "carousel-dark", "Dark" ], [ "text-light", "Light" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "text-light"
   }, {
+    "id" : "style.controls",
     "name" : "controls",
     "display_width" : null,
     "label" : "Controls",
@@ -119,6 +131,7 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "style.indicators",
     "name" : "indicators",
     "display_width" : null,
     "label" : "Indicators",
@@ -128,6 +141,7 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "style.infinite_scrolling",
     "name" : "infinite_scrolling",
     "display_width" : null,
     "label" : "Infinite scrolling",
@@ -137,6 +151,7 @@
     "type" : "boolean",
     "default" : true
   }, {
+    "id" : "style.normalise_heights",
     "name" : "normalise_heights",
     "display_width" : null,
     "label" : "Normalise heights",
@@ -146,6 +161,7 @@
     "type" : "boolean",
     "default" : true
   }, {
+    "id" : "style.interval",
     "name" : "interval",
     "display_width" : null,
     "label" : "Interval",
@@ -158,6 +174,7 @@
     "type" : "number",
     "default" : 5000
   }, {
+    "id" : "style.autoplay",
     "name" : "autoplay",
     "display_width" : null,
     "label" : "Autoplay",
@@ -167,9 +184,11 @@
     "choices" : [ [ "carousel", "Autoplay on load" ], [ "true", "Autoplay after first cycle" ], [ "false", "No autoplay" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "carousel"
   }, {
+    "id" : "style.slide_or_fade",
     "name" : "slide_or_fade",
     "display_width" : null,
     "label" : "Slide or fade",
@@ -179,8 +198,10 @@
     "choices" : [ [ "carousel-slide", "Slide" ], [ "carousel-fade", "Fade" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice"
   }, {
+    "id" : "style.slides_to_display",
     "name" : "slides_to_display",
     "display_width" : null,
     "label" : "Slides to display",

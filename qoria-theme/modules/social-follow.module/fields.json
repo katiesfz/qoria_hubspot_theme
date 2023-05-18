@@ -25,16 +25,13 @@
     "preset" : null,
     "type" : "choice",
     "default" : "facebook-f"
-  },{
+  }, {
     "id" : "custom_social",
     "name" : "custom_social",
     "display_width" : null,
     "label" : "Custom social link",
     "required" : false,
     "locked" : false,
-    "tab" : "CONTENT",
-    "expanded" : false,
-    "type" : "group",
     "visibility" : {
       "controlling_field" : "social_account",
       "controlling_field_path" : null,
@@ -44,83 +41,92 @@
       "access" : null,
       "hidden_subfields" : null
     },
-    "children" : [
-      {
-        "name" : "icon",
+    "children" : [ {
+      "id" : "social_links.custom_social.icon",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "social_links.custom_social.icon.icon_field",
+        "name" : "icon_field",
         "display_width" : null,
         "label" : "Icon",
         "required" : false,
         "locked" : false,
-        "children" : [ {
-          "name" : "icon_field",
-          "display_width" : null,
-          "label" : "Icon",
-          "required" : false,
-          "locked" : false,
-          "icon_set" : "fontawesome-5.14.0",
-          "type" : "icon",
-          "default" : {
-            "name" : "Check Circle",
-            "unicode" : "f058",
-            "type" : "REGULAR"
-            }
-          }, {
-          "name" : "icon_code",
-          "display_width" : null,
-          "label" : "Icon Code",
-          "help_text" : "Can't find the icon you want? Icon selection not working for you? Enter the icon name here. e.g. address-book",
-          "inline_help_text" : "Find icons at https://fontawesome.com/v6/search",
-          "required" : false,
-          "locked" : false,
-          "validation_regex" : "",
-          "allow_new_line" : false,
-          "show_emoji_picker" : false,
-          "type" : "text",
-          "default" : ""
-          }, {
-          "name" : "custom_image",
-          "display_width" : null,
-          "label" : "Custom Image",
-          "required" : false,
-          "locked" : false,
-          "responsive" : true,
-          "resizable" : true,
-          "show_loading" : false,
-          "type" : "image",
-          "default" : {
-            "size_type" : "auto",
-            "src" : "",
-            "alt" : null,
-            "loading" : "lazy"
-            }
-          }, {
-          "name" : "icon_colour",
-          "display_width" : null,
-          "label" : "Icon colour",
-          "required" : false,
-          "locked" : false,
-          "display" : "select",
-          "choices" : [ [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ], [ "fill-light", "Light" ] ],
-          "multiple" : false,
-          "reordering_enabled" : true,
-          "type" : "choice",
-          "default" : "fill-dark"
-          } 
-        ],
-        "tab" : "CONTENT",
-        "expanded" : false,
-        "type" : "group"
-    },{
-        "id" : "social_links.custom_label",
-        "name" : "custom_label",
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : {
+          "name" : "Check Circle",
+          "unicode" : "f058",
+          "type" : "REGULAR"
+        }
+      }, {
+        "id" : "social_links.custom_social.icon.icon_code",
+        "name" : "icon_code",
         "display_width" : null,
-        "label" : "Custom label",
+        "label" : "Icon Code",
+        "help_text" : "Can't find the icon you want? Icon selection not working for you? Enter the icon name here. e.g. address-book",
+        "inline_help_text" : "Find icons at https://fontawesome.com/v6/search",
         "required" : false,
         "locked" : false,
-        "type" : "text"
-      }
-    ]
-  },{
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : ""
+      }, {
+        "id" : "social_links.custom_social.icon.custom_image",
+        "name" : "custom_image",
+        "display_width" : null,
+        "label" : "Custom Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "auto",
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }, {
+        "id" : "social_links.custom_social.icon.icon_colour",
+        "name" : "icon_colour",
+        "display_width" : null,
+        "label" : "Icon colour",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ], [ "fill-light", "Light" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "fill-dark"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "social_links.custom_label",
+      "name" : "custom_label",
+      "display_width" : null,
+      "label" : "Custom label",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group"
+  }, {
     "id" : "social_links.social_link",
     "name" : "social_link",
     "display_width" : null,
@@ -216,30 +222,27 @@
   "label" : "Styles",
   "required" : false,
   "locked" : false,
-  "children" : [{
+  "children" : [ {
+    "id" : "styles.icon_size",
     "name" : "icon_size",
     "display_width" : null,
     "label" : "Icon size (Relative)",
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ "fa-md", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ], ["absolute","Literal Sizing"] ],
+    "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ "fa-md", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ], [ "absolute", "Literal Sizing" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "fa-lg"
-    }, {
+  }, {
+    "id" : "styles.max_width",
     "name" : "max_width",
     "display_width" : null,
     "label" : "Literal Sizing",
     "required" : false,
     "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ], ["absolute","Absolute sizing"] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "type" : "choice",
-    "default" : "fa-2x",
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "styles.icon_size",
@@ -248,8 +251,16 @@
       "operator" : "EQUAL",
       "access" : null,
       "hidden_subfields" : null
-      }
-  },{
+    },
+    "display" : "select",
+    "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ], [ "absolute", "Absolute sizing" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fa-2x"
+  }, {
+    "id" : "styles.icon_style",
     "name" : "icon_style",
     "display_width" : null,
     "label" : "Icon Style",
@@ -259,9 +270,10 @@
     "choices" : [ [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fad", "Duotone" ], [ "fa fa-brands fab ", "Brand" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "fa fa-brands fab "
-    } ],
+  } ],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"

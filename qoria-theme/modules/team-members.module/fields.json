@@ -1,10 +1,18 @@
-[{
+[ {
+  "id" : "team_member",
   "name" : "team_member",
   "display_width" : null,
   "label" : "Team member",
   "required" : false,
   "locked" : false,
-  "children" : [{
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "person_name",
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "team_member.person_name",
     "name" : "person_name",
     "display_width" : null,
     "label" : "Name",
@@ -14,53 +22,172 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text"
-  },{
-      "name" : "image",
-      "display_width" : null,
-      "label" : "Photo",
-      "required" : false,
-      "locked" : false,
-      "responsive" : true,
-      "resizable" : true,
-      "show_loading" : false,
-      "type" : "image",
-      "default" : {
-        "size_type" : "auto",
-        "src" : "",
-        "alt" : null,
-        "loading" : "lazy"
-      }
-    },{
-      "name" : "title",
-      "display_width" : null,
-      "label" : "Title",
-      "required" : false,
-      "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text"
-    },{
-      "name" : "full_profile",
-      "display_width" : null,
-      "label" : "Full profile",
-      "required" : false,
-      "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "richtext",
-      "enabled_features" : []
-    }],
+  }, {
+    "id" : "team_member.image",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Photo",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "team_member.title",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "team_member.full_profile",
+    "name" : "full_profile",
+    "display_width" : null,
+    "label" : "Full profile",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext"
+  } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : "person_name",
-    "default" : null
-  },
   "default" : { }
-}
-]
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "styles.responsive",
+    "name" : "responsive",
+    "display_width" : null,
+    "label" : "Responsive Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.desktop",
+      "name" : "desktop",
+      "display_width" : null,
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.desktop.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "3"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.tablet",
+      "name" : "tablet",
+      "display_width" : null,
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.tablet.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "2"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.mobile",
+      "name" : "mobile",
+      "display_width" : null,
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.mobile.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "1"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "responsive" : {
+      "mobile" : {
+        "cards" : "1"
+      },
+      "tablet" : {
+        "cards" : "2"
+      },
+      "desktop" : {
+        "cards" : "3"
+      }
+    }
+  }
+} ]

@@ -1,0 +1,287 @@
+<!--
+  templateType: section
+  label: Statistic Section
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/statistic-section.png
+  description: "Two rows of statistics with customiseable icons."
+-->
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "80px"
+    }
+  },
+  max_width=1280
+%}
+{% dnd_column
+  offset=0,
+  width=12
+%}
+  {% dnd_row %}
+    {% dnd_module
+      path="/q-theme/modules/heading",
+      offset=0,
+      width=12,
+      style={
+        "spacing_field" : {
+          "margin" : {
+            "bottom" : {
+              "units" : "px",
+              "value" : 80
+            },
+            "top" : { }
+          }
+        }
+      }
+    %}
+      {% module_attribute "heading" %}
+        Global <strong>impact</strong>
+      {% end_module_attribute %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_module
+      path="/q-theme/modules/statistic",
+      offset=0,
+      width=12,
+      statistic=[ {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 500,
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      }, {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 68,
+        "unit" : "%",
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      }, {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 100,
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      }, {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 50,
+        "unit" : "%",
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      }, {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 1000,
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      }, {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 72,
+        "unit" : "%",
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      }, {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 250,
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      }, {
+        "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "icon" : {
+          "absolute_icon_size" : "fa-3x",
+          "custom_image" : {
+            "loading" : "lazy",
+            "size_type" : "auto",
+            "src" : ""
+          },
+          "icon_code" : "users",
+          "icon_colour" : "inherit",
+          "icon_field" : {
+            "name" : "Wired Network",
+            "type" : "SOLID",
+            "unicode" : "f6ff"
+          },
+          "icon_shape" : "icon-only",
+          "icon_style" : "fal",
+          "max_width" : 84,
+          "relative_icon_size" : " ",
+          "sizing" : "inherit"
+        },
+        "stat_colour" : "inherit",
+        "number" : 67,
+        "unit" : "%",
+        "statistic_description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
+        "statistic_header" : "Statistic header"
+      } ],
+      style={
+        "icon_colour" : "dark",
+        "responsive" : {
+          "desktop" : {
+            "stats" : 4
+          },
+          "mobile" : {
+            "stats" : 2
+          },
+          "tablet" : {
+            "stats" : 3
+          }
+        },
+        "sizing" : "absolute",
+        "spacing_field" : {
+          "margin" : {
+            "bottom" : { },
+            "top" : { }
+          }
+        }
+      }
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}

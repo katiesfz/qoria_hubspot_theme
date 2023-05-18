@@ -128,7 +128,31 @@
   "display" : "toggle",
   "type" : "boolean",
   "default" : false
-},{
+}, {
+  "id" : "66747b10-b49c-af00-b447-cf0f08088ff0",
+  "name" : "stock_name",
+  "display_width" : null,
+  "label" : "Stock name",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "show_share_price",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "table_name_or_id" : "6041469",
+  "columns_to_fetch" : [ "ticket", "price", "change", "name", "change_percent" ],
+  "display_columns" : [ "name" ],
+  "type" : "hubdbrow",
+  "default" : {
+    "id" : 108963035793
+  }
+}, {
+  "id" : "show_breadcrumbs",
   "name" : "show_breadcrumbs",
   "display_width" : null,
   "label" : "Show breadcrumbs",
@@ -137,15 +161,13 @@
   "display" : "toggle",
   "type" : "boolean",
   "default" : true
-},{
+}, {
   "id" : "menu",
   "name" : "menu",
   "display_width" : null,
   "label" : "Menu",
   "required" : false,
   "locked" : false,
-  "type" : "menu",
-  "default" : 49654849016,
   "visibility" : {
     "controlling_field" : null,
     "controlling_field_path" : "show_breadcrumbs",
@@ -154,7 +176,9 @@
     "operator" : "EQUAL",
     "access" : null,
     "hidden_subfields" : null
-  }
+  },
+  "type" : "menu",
+  "default" : 115248177746
 }, {
   "id" : "a053550e-283a-3a2c-73dc-0bd8fda0397c",
   "name" : "cta",
@@ -257,20 +281,22 @@
     "style" : "basic",
     "colour" : "primary"
   }
-},{
+}, {
+  "id" : "style",
   "name" : "style",
   "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
+    "id" : "style.heading_location",
     "name" : "heading_location",
     "display_width" : null,
     "label" : "Heading Location",
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "top-left", "Top Left" ],[ "33-left", "33% Left" ], [ "middle-left", "Middle Left" ],[ "33-left", "33% Left" ], [ "bottom-left", "Bottom Left" ] ],
+    "choices" : [ [ "top-left", "Top Left" ], [ "33-left", "33% Left" ], [ "middle-left", "Middle Left" ], [ "66-left", "66% Left" ], [ "bottom-left", "Bottom Left" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,

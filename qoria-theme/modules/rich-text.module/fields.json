@@ -1,0 +1,249 @@
+[ {
+  "id" : "style",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "style.background_colour",
+    "name" : "background_colour",
+    "display_width" : null,
+    "label" : "Background Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+}, {
+  "id" : "row",
+  "name" : "row",
+  "display_width" : null,
+  "label" : "Row",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "row.column",
+    "name" : "column",
+    "display_width" : null,
+    "label" : "Column",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "row.column.text",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Body text",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p>Across three continents</p>"
+    }, {
+      "id" : "row.column.responsive",
+      "name" : "responsive",
+      "display_width" : null,
+      "label" : "Responsive settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "row.column.responsive.desktop",
+        "name" : "desktop",
+        "display_width" : null,
+        "label" : "Desktop",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "row.column.responsive.desktop.columns",
+          "name" : "columns",
+          "display_width" : null,
+          "label" : "Columns",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 5,
+          "step" : 1,
+          "type" : "number"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+      }, {
+        "id" : "row.column.responsive.tablet",
+        "name" : "tablet",
+        "display_width" : null,
+        "label" : "Tablet",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "row.column.responsive.tablet.columns",
+          "name" : "columns",
+          "display_width" : null,
+          "label" : "Columns",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 5,
+          "step" : 1,
+          "type" : "number"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+      }, {
+        "id" : "row.column.responsive.mobile",
+        "name" : "mobile",
+        "display_width" : null,
+        "label" : "Mobile",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "row.column.responsive.mobile.columns",
+          "name" : "columns",
+          "display_width" : null,
+          "label" : "Columns",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "min" : 1,
+          "max" : 5,
+          "step" : 1,
+          "type" : "number"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "row.column.advanced",
+      "name" : "advanced",
+      "display_width" : null,
+      "label" : "Advanced",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "row.column.advanced.additional_classes",
+        "name" : "additional_classes",
+        "display_width" : null,
+        "label" : "Additional classes",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : { }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  }, {
+    "id" : "row.advanced",
+    "name" : "advanced",
+    "display_width" : null,
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "row.advanced.additional_classes",
+      "name" : "additional_classes",
+      "display_width" : null,
+      "label" : "Additional classes",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
+}, {
+  "id" : "advanced",
+  "name" : "advanced",
+  "display_width" : null,
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "advanced.additional_classes",
+    "name" : "additional_classes",
+    "display_width" : null,
+    "label" : "Additional classes",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

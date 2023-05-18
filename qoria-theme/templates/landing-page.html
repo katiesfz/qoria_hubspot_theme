@@ -16,8 +16,6 @@ label="Body"
 class="main p-0 overflow-hidden"
 %}
 
-  {# Hero banner #}
-
   {% include_dnd_partial
     path="../sections/hero-banner.html"
     context={
@@ -25,13 +23,8 @@ class="main p-0 overflow-hidden"
     }
   %}
 
-  {# Three column image with text #}
-
   {% include_dnd_partial
-    path="../sections/multi-column-content.html",
-    context={
-      "background_color": "#FFFFFF"
-    }
+    path="../sections/introduction.html"
   %}
 
 {% end_dnd_area %}

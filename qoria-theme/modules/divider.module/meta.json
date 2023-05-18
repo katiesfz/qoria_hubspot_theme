@@ -1,0 +1,6 @@
+{
+  "label": "Divider",
+  "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "icon": "../img/icon/divider.svg",
+  "smart_type": "NOT_SMART"
+}

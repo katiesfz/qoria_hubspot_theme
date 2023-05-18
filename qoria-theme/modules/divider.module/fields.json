@@ -1,0 +1,142 @@
+[
+  {
+    "label": "Styles",
+    "name": "styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "label": "Line",
+        "name": "line",
+        "type": "group",
+        "children": [
+          {
+            "label": "Color",
+            "name": "color",
+            "type": "color",
+            "required": true,
+            "aliases_mapping" : {
+              "property_aliases_paths" : {
+                "color": ["color"]
+              }
+            },
+            "default": {
+              "color": "#000000",
+              "opacity": 100
+            }
+          },
+          {
+            "label": "Style",
+            "name": "style",
+            "type": "choice",
+            "choices": [
+              ["solid", "Solid"],
+              ["dotted", "Dotted"],
+              ["dashed", "Dashed"]
+            ],
+            "display": "select",
+            "required": true,
+            "aliases_mapping" : {
+              "property_aliases_paths" : {
+                "style": ["line_type"]
+              }
+            },
+            "default": "solid"
+          },
+          {
+            "label": "Thickness",
+            "name": "thickness",
+            "type": "number",
+            "display": "text",
+            "max": 10,
+            "min": 1,
+            "required": true,
+            "step": 1,
+            "suffix": "px",
+            "aliases_mapping" : {
+              "property_aliases_paths" : {
+                "thickness": ["height"]
+              }
+            },
+            "default": 1
+          }
+        ]
+      },
+      {
+        "label": "Size",
+        "name": "size",
+        "type": "group",
+        "children": [
+          {
+            "label": "Width",
+            "name": "width",
+            "id": "styles.size.width",
+            "type": "number",
+            "help_text": "Percentage of the area the divider is placed into.",
+            "max": 100,
+            "min": 1,
+            "required": true,
+            "step": 1,
+            "suffix": "%",
+            "aliases_mapping" : {
+              "property_aliases_paths" : {
+                "width": ["width"]
+              }
+            },
+            "default": 50
+          }
+        ]
+      },
+      {
+        "label": "Alignment",
+        "name": "alignment",
+        "type": "group",
+        "visibility": {
+          "controlling_field": "styles.size.width",
+          "controlling_value_regex": "100",
+          "operator": "NOT_EQUAL"
+        },
+        "children": [
+          {
+            "label": "Alignment",
+            "name": "alignment",
+            "type": "alignment",
+            "alignment_direction": "HORIZONTAL",
+            "default": {
+              "horizontal_align": "CENTER"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Spacing",
+        "name": "spacing",
+        "type": "group",
+        "children": [
+          {
+            "label": "Spacing",
+            "name": "spacing",
+            "type": "spacing",
+            "visibility": {
+              "hidden_subfields": {
+                "padding": true
+              }
+            },
+            "default": {
+              "margin": {
+                "top": {
+                  "value": "10",
+                  "units": "px"
+                },
+                "bottom": {
+                  "value": "10",
+                  "units": "px"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

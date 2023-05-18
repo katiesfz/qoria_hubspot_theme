@@ -20,33 +20,20 @@ label: Website header
         {% set navbarExpand = "navbar-expand-" + breakpoint %}
     {% endif %}
   
-{% module "module_16790276570878" path="/q-theme/modules/notification-bar", label="Notifications", no_wrapper=True %}
+{# {% module "module_16790276570878" path="/q-theme/modules/notification-bar", label="Notifications", no_wrapper=True %} -#}
 
-<header class="header bg-white py-4">
+<header class="header bg-white py-3">
     <nav class="navbar {{navbarExpand}}">
   <div class="container-xxl"> 
-    {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"}, no_wrapper=True %}
+    {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fal fa-bars"></i>
+          <i class="far fa-xl fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
-          <div class="d-none" role="search"> 
-            {% module "site_search"
-                        path="@hubspot/search_input",
-                        label="Search",
-                        field_label="Search",
-                        placeholder="",
-                        no_wrapper=True
-                      %}
-          </div>
-          <div class="search-button">
-            <button class="btn btn-link text-decoration-none text-reset px-0 ms-{{breakpoint}}-6"><i class="fa-solid fa-lg fa-magnifying-glass"></i></button>
-          </div>
-          <form class="d-none" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
+            <div class="navbar-search d-flex ms-{{breakpoint}}-6 mb-3 mb-{{breakpoint}}-0">
+              {% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}
+            </div>
             {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
             {% if widget_data.cta.link.url != "" %}
               <div class="d-flex ms-{{breakpoint}}-6">

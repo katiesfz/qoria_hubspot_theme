@@ -65,7 +65,7 @@ function normaliseSlideHeights() {
       // reset the height
       items.css('min-height', 0);
       // set the height
-      var maxHeight = Math.max.apply(null, 
+      let maxHeight = Math.max.apply(null, 
                                      items.map(function(){
         return $(this).outerHeight()}).get() );
       items.css('min-height', maxHeight + 'px');
@@ -188,3 +188,84 @@ function normaliseSlideHeights() {
     document.getElementById(videoId).controls = "controls";
     document.getElementById(videoId).parentNode.getElementsByClassName("play-button")[0].remove();
   };
+
+// popups
+function showPopup(hoverElems, popupElem, breakpoint=mediaMd){
+  var count = 0;
+  var tolerance = 0;
+    $(hoverElems).mouseenter(function(){
+      if (breakpoint.matches) {
+        console.log("breakpoint matches");
+        count++;
+        $(popupElem).fadeIn(400);
+      }
+    }).mouseleave(function(){
+      
+      if (breakpoint.matches) {
+        count--;
+        setTimeout(function () {
+            if (!count) {
+                $(popupElem).fadeOut(100);
+            }
+        }, tolerance);
+      }
+    });
+}
+
+// counter
+function counterAnim(qSelector, start = 0, end, duration = 1000){
+  let target = document.querySelector(qSelector);
+  let startTimestamp = null;
+  let floorEnd = Math.floor(end);
+  let ceilEnd = Math.ceil(end);
+  let step = (timestamp) => {
+   if (!startTimestamp) startTimestamp = timestamp;
+   let progress = Math.min((timestamp - startTimestamp) / duration, 1);
+   if (floorEnd == Math.floor(progress * (end - start) + start)){
+    target.innerText = end;
+   } else {
+    target.innerText = Math.floor(progress * (end - start) + start);
+   }
+   if (progress < 1) {
+    window.requestAnimationFrame(step);
+   }
+  };
+  window.requestAnimationFrame(step);
+ };
+
+ // run function when element is in window
+
+ function whenInViewport(elementId, callback){
+  var run = false, element = document.querySelector(elementId);
+
+  $(window).on('scroll', function(){
+    if ( run ) {
+      return;
+    }
+    if (element) {
+      if (element.offsetTop <= (window.scrollY + (window.innerHeight/2) + (element.offsetHeight))){
+        run = true;
+        callback();
+      }
+    }
+  })
+ }
+
+
+ //reset legal/privacy documents styling
+
+function resetLegalStyles(){    
+  
+  var legalReset = document.querySelectorAll(".legal-reset");
+
+  var allHeadings = document.querySelectorAll(".legal-reset h1, .legal-reset h2, .legal-reset h3, .legal-reset h4, .legal-reset h5, .legal-reset h6");
+  var allSpans    = document.querySelectorAll(".legal-reset span");
+  var allTables   = document.querySelectorAll(".legal-reset table");
+  var allCells    = document.querySelectorAll(".legal-reset td, .legal-reset th");
+
+  $(allHeadings).each(function(i){this.style=""});
+  $(allSpans).each(function(i){this.style=""});
+  $(allTables).each(function(i){this.classList.add("table", "table-striped"); this.style="";});
+  $(allCells).each(function(i){this.style=""});
+
+}

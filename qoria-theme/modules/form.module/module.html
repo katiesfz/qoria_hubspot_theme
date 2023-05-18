@@ -1,0 +1,33 @@
+{% if module.title is truthy %}
+	{% set no_title = False %}
+{% else %}
+	{% set no_title = True %}
+{% endif %}
+
+{% if module.form.form_id %}
+
+  <div id="{{name}}">
+
+  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+  <script>
+    hbspt.forms.create({
+      portalId: "{{hub_id}}",
+      formId: "{{module.form.form_id}}",
+      target: "#{{name}}",
+      {% if module.form.response_type == "redirect" %}
+        redirectUrl: "{{module.form.redirect_url}}",
+      {% else %}
+        inlineMessage: "{{module.form.message}}",
+      {% endif %}
+      submitButtonClass: "btn btn-{{module.style.button_colour}} {{"d-block mx-auto" if module.style.button_alignment == "center"}} {{"d-block ms-auto" if module.style.button_alignment == "right"}}",
+      cssClass: 'hs-form'
+    });
+  </script>
+
+  </div>
+{% else %}
+	{% form
+    title='{{ module.title }}',
+    no_title='{{ no_title }}',
+  %}
+{% endif %}

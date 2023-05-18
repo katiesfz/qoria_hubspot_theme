@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "../../images/module-icons/image-module-icon.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 109258665066,
+  "label" : "Fancy Image",
+  "is_available_for_new_content" : true
+}

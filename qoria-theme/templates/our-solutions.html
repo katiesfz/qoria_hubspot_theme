@@ -1,0 +1,70 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Our Solutions
+  screenshotPath: ../images/template-previews/home.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+{# hero banner #}
+{% include_dnd_partial path="../sections/hero-banner.html"
+context={
+  "heroType": "full-image",
+  "imageSrc": get_asset_url("../images/qoria/photos/iStock-539271099_RT.jpg"),
+  "header": "Our <strong>Solutions</strong>",
+  "pageContents": [ {
+    "anchor" : "solutions",
+    "content_label" : "Solutions overview"
+    }, {
+    "anchor" : "wellbeing",
+    "content_label" : "Wellbeing framework"
+    }, {
+    "anchor" : "benefits",
+    "content_label" : "Benefits to our customers"
+    } ]
+} %}
+
+{# intro #}
+{% include_dnd_partial path="../sections/introduction.html" context={
+  "content": '<p class="fs-3 fw-semibold">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><p class="fs-3">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>',
+  "anchor" : ""
+  }%}
+
+{# overview #}
+  {% include_dnd_partial path="../sections/overview.html" context={
+    "anchor": "solutions",
+    "script": "",
+    "heading": "Solutions <strong>overview</strong>",
+    "summary": "",
+    "cols": [{
+      "advanced" : { },
+      "responsive" : {
+        "desktop" : {
+          "columns" : 2
+        },
+        "mobile" : {
+          "columns" : 1
+        },
+        "tablet" : {
+          "columns" : 2
+        }
+      },
+      "text" : '<p class="lead fw-semibold">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie.</p><p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p><p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>'
+    } ]
+  } %}
+
+{# wellbeing framework #}
+{% include_dnd_partial path="../sections/wellbeing-framework.html" %}
+
+{# benefits #}
+{% include_dnd_partial path="../sections/list-with-icons.html" %}
+
+{% end_dnd_area %}
+{% endblock body %}

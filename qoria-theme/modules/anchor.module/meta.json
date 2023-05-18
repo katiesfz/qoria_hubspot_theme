@@ -1,7 +1,8 @@
 {
   "global" : false,
+  "icon" : "../../images/module-icons/anchor.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 54129661165,
+  "module_id" : 108121777565,
   "label" : "Anchor",
   "is_available_for_new_content" : true
 }

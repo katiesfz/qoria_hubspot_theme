@@ -1,29 +1,22 @@
 {
-  "label": "Timeline Slider",
-  "css_assets": [{
+  "global" : false,
+  "icon" : "../../images/module-icons/timeline.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 108428199052,
+  "css_assets" : [ {
     "autoload" : true,
     "path" : "../../js/slick/slick.css",
     "name" : "slick.css"
-  }],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE",
-    "BLOG_POST",
-    "BLOG_LISTING"
-  ],
-  "js_assets": [{
+  } ],
+  "js_assets" : [ {
     "autoload" : true,
     "path" : "../../js/jquery/jquery-3.6.4.min.js",
     "name" : "jquery-3.6.4.min.js"
-  },{
+  }, {
     "autoload" : true,
     "path" : "../../js/slick/slick.min.js",
     "name" : "slick.min.js"
-  }],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  } ],
+  "label" : "Timeline Slider",
+  "is_available_for_new_content" : true
 }

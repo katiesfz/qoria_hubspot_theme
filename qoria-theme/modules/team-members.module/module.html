@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row row-cols-{{module.styles.responsive.mobile.cards}} row-cols-sm-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}}" style="{{module.styles.spacing_field.css}}">
     {% for person in module.team_member %}
-        <div class="col-6  col-sm-4 col-md-3 col-lg-2 col-xl-2">
+        <div class="col">
             {% if person.image.src %}
                 <img src="{{person.image.src}}" class="img-fluid w-100 mb-4">
             {% endif %}
@@ -9,5 +9,5 @@
         </div>
     {% endfor %}
 </div>
-<hr class="mt-6 mb-4">
-<a href="#" class="fw-semibold text-decoration-none text-reset fs-6">View full profiles +</a>
+<!--<hr class="mt-6 mb-4"> -->
+<!-- <a href="#" class="fw-semibold text-decoration-none text-reset fs-6">View full profiles +</a> -->

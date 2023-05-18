@@ -1,0 +1,49 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Our Story
+  screenshotPath: ../images/template-previews/home.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+{# hero banner #}
+
+
+{% include_dnd_partial path="../sections/hero-banner.html"
+context={
+  "heroType": "full-image",
+  "imageSrc": get_asset_url("../images/qoria/photos/iStock-1253508097-RT.jpg"),
+  "header": "Our <strong>Story</strong>",
+  "pageContents": [ {
+    "anchor" : "#intro",
+    "content_label" : "Intro"
+    }, {
+    "anchor" : "#ourStory",
+    "content_label" : "Our story"
+    }, {
+    "anchor" : "#ourJourney",
+    "content_label" : "Our journey so far"
+    } ]
+} %}
+
+{# intro #}
+{% include_dnd_partial path="../sections/introduction.html" context={
+  "content": '<p class="fs-3"><strong>In 2015 we were four parents with nothing more than a slide deck and a determined desire to make the internet a safer place for our kids.</strong> Today our technologies protect 12 million students and 345,000 families - around the world. This is our story.</p>',
+  "anchor" : "intro"
+  }%}
+
+{# overview #}
+{% include_dnd_partial path="../sections/overview.html" context={"anchor": "ourStory"} %}
+
+{# timeline #}
+{% include_dnd_partial path="../sections/timeline.html" context={"anchor": "ourJourney"} %}  
+
+{% end_dnd_area %}
+{% endblock body %}
