@@ -1,0 +1,60 @@
+<div class="modal fade" id="{{ module.modal_id }}" tabindex="-1" aria-labelledby="{{ module.modal_id }}Modal" aria-hidden="true">
+  <div class="modal-dialog {{module.style.modal_size}} modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {% if module.heading %}
+          <h3 class="mb-0">
+            {{ module.heading}}
+          </h3>
+          {% endif %}
+          {% if module.sub_heading %}
+          <p class="lead">
+            {{ module.sub_heading }}
+          </p>
+          {% endif %}
+          {% if module.sub_heading || module.heading %}
+          <hr class="bg-turquoise-600 opacity-100 w-50" size="6">
+          {% endif %}
+          {{ module.modal_body }}
+
+        </div>
+      </div>
+  </div>
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+//  const modal{{ module.modal_id }} = document.getElementById('{{ module.modal_id }}');
+//  modal{{ module.modal_id }}.addEventListener('hide.bs.modal', event => {
+//    var modalVideo{{ module.modal_id }} = document.querySelector('#{{ module.modal_id }} video');
+//
+//    modalVideo{{ module.modal_id }}.pause();
+//    modalVideo{{ module.modal_id }}.currentTime = 0;
+//  });
+
+  const modal{{ module.modal_id }} = document.getElementById('{{ module.modal_id }}');
+  const modalBody = modal{{ module.modal_id }}.querySelector('.modal-body');
+  var modalContent{{module.modal_id}} = null;
+  if (modal{{ module.modal_id }}) {
+      let gotVideoCode = false;
+      modal{{ module.modal_id }}.addEventListener('shown.bs.modal', event => {
+          if (!gotVideoCode) {
+            modalContent{{ module.modal_id }} = modalBody.innerHTML;
+            gotVideoCode = true;
+          } else {
+            modalBody.innerHTML = modalContent{{ module.modal_id }};
+          }
+      });
+      modal{{ module.modal_id }}.addEventListener('hidden.bs.modal', event => {
+        modalBody.innerHTML = "";
+      });
+  }
+
+
+});
+
+</script>

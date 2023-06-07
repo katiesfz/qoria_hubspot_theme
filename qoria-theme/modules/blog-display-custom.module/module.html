@@ -1,7 +1,7 @@
 
 {% set blog_posts = [] %}
 {% for blog in module.blog_posts %}
-{% set blog_item = {"blog_title": blog.blog_title|render, "blog_description": blog.blog_description, "blog_tag": blog.blog_tag, "blog_image": blog.blog_image.src|render, "blog_url":blog.blog_link.url.href} %}
+{% set blog_item = {"blog_title": blog.blog_title|render, "blog_description": blog.blog_description, "blog_tag": blog.blog_tag, "blog_image": blog.blog_image.src|render, "blog_url":blog.blog_link.url.href, "blog_target":blog.blog_link.open_in_new_tab} %}
 {% do blog_posts.append(blog_item) %}
 {% endfor %}
 
@@ -37,7 +37,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <a href="{{blog.blog_url}}" class="text-reset fw-semibold text-decoration-none">Read more +</a>
+                                <a href="{{blog.blog_url}}" {% if blog.blog_target == true %}target="_blank"{% endif %} {% if item.blog_link.rel %}rel="{{ item.blog_link.rel }}"{% endif %} class="text-reset fw-semibold text-decoration-none">Read more +</a>
                             </div>
                         </div>
                     </div>

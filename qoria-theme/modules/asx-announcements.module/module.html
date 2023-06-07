@@ -76,7 +76,17 @@
                         <img src="{{get_asset_url('../../images/qoria/photos/iStock-1430627347-LR.jpg')}}" class="card-img-top" alt="Stock value card header">
                         <div class="card-body text-start">
                             <h5 class="card-text">Stock price: </h5>
-                            <p class="card-text fs-6 mb-0">{{module.stock_name.columns.name}} A${{module.stock_name.columns.price}} {{module.stock_name.columns.change|format}} ({{module.stock_name.columns.change_percent}}%)</p>
+
+                            {% set foundRow = [] %}
+                            {% for row in hubdb_table_rows(module.stock_db, queryparam) %}
+                                {% if row.price|string != "0" and foundRow == [] %}
+                                    {% do foundRow.append(row.hs_id) %}
+                                {% endif %}
+                            {% endfor %}
+                
+                            {% set stockRow = hubdb_table_row(module.stock_db, foundRow[0]) %}
+                
+                            <p class="card-text fs-6 mb-0">{{stockRow.name}} A${{stockRow.price}} {{stockRow.change|format}} ({{stockRow.change_percent}}%)</p>
                             <p class="card-text small fst-italic">Stock price updated twice daily</p>
                             <h5 class="card-text">Registered office:</h5>
                             <p class="card-text">{{module.registered_office|replace("\n", "<br>")}}</p>
@@ -88,7 +98,7 @@
                         <div class="card-body text-start">
                         <h5 class="card-text">Rights to receive documents</h5>
                         <p class="card-text">Notice of rights of members in connection with certain documents.</p>
-                        <a href="" class="btn btn-link text-reset text-decoration-none p-0 fw-semibold">Download here <i class="fas ms-2 fa-arrow-down-to-bracket"></i></a>
+                        <a href="{{module.rights_to_receive}}" download="Rights-to-receive" target="_blank" class="btn btn-link text-reset text-decoration-none p-0 fw-semibold">Download here <i class="fas ms-2 fa-arrow-down-to-bracket"></i></a>
                         </div>
                     </div>
                 
@@ -121,7 +131,7 @@
 
 var docsListUnfiltered = [];
 {% for row in table|sort(True, False, "date") %}
-    var date = new Date('{{row.date|format_date('yyyy, MM, dd')}}');
+    var date = new Date('{{row.date|format_date('yyyy-MM-dd')}}');
     {% set rowTypes = [] %}
     {% if row.type %}
         {% for type in row.type %}

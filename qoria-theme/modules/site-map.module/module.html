@@ -4,10 +4,15 @@
     {% set menu = menu(module.menu, "site_root").children %}
   
     {% macro render_link_item(link) %}
-        <a class="h4" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
+        {% if link.url %}
+        <a class="h6 mb-2" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
+        {% else %}
+            
+        <h6 class="mb-2">{{ link.label|replace(" ","&nbsp;") }}</h6>
+        {% endif %}
       
         {% if link.children %}
-            <ul class="list-unstyled ms-4">
+            <ul class="list-unstyled">
             {% for sublink in link.children %}
                 {{ render_dropdown_links(sublink) }}
             {% endfor %}
@@ -16,21 +21,20 @@
     {% endmacro %}
 
   {% macro render_dropdown_links(link) %}
-    <li>
-        <a class="h5" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
+    <li class="mb-2">
+        <a class="p" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
     </li>
   {%endmacro%}
   
     {% for link in menu %}
-        <li class="hs-skip-lang-url-rewrite">
+        <div class="col pb-4">
             {{ render_link_item(link) }}
-        </li>
+        </div>
     {% endfor %}
   
   {% endmacro %}
   
   {# Desktop menu #}
-
-      <ul class="list-unstyled">   
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
       {{ menu_items2() }}
-      </ul>
+      </div>

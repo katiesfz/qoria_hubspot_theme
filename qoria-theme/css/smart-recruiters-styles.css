@@ -21,7 +21,6 @@
 }
 
 .smartWidget .srJobListTitles {
-  background: linear-gradient(45deg, #515ba5 0%, #58b78e 63%);
   color: #fff;
 }
 .smartWidget .srJobList {
@@ -39,8 +38,6 @@
   margin: 0;
   padding: 12px 10px;
   border: none;
-  /*background: #969696 url(./widget_list_bg.png) repeat-x top left;*/
-  background: none;
   color: #fff;
   text-align: left;
   font-family: "Quicksand", Arial, sans-serif;
@@ -86,10 +83,15 @@
 .smartWidget tr.srJobListJobEven, .smartWidget tr.srJobListJobOdd {
   cursor: pointer;
 }
+.smartWidget th.srJobListJobTitle {
+  background: linear-gradient(45deg, #515ba5 0%, #58b78e 63%);
+}
+.smartWidget th.srJobListLocation {
+  background-color: #58b78e;
+}
 .smartWidget .srJobListJobTitle {
   width: auto;
   min-width: 94px;
-  background: transparent;
 }
 .smartWidget .srJobListTypeOfEmployment {
   width: auto;

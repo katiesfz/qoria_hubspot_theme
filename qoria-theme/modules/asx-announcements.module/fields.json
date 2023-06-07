@@ -6,22 +6,16 @@
   "required" : false,
   "locked" : false,
   "type" : "hubdbtable",
-  "default" : 6276876
-
-}, {
-  "id" : "stock_name",
-  "name" : "stock_name",
+  "default": 6276876
+},  {
+  "id" : "stock_db",
+  "name" : "stock_db",
   "display_width" : null,
-  "label" : "Stock name",
+  "label" : "Stock Data HubDB",
   "required" : false,
   "locked" : false,
-  "table_name_or_id" : 6270539,
-  "columns_to_fetch" : [ "ticket", "price", "change", "name", "change_percent" ],
-  "display_columns" : [ "name" ],
-  "type" : "hubdbrow",
-  "default" : {
-    "id" : 114906835623
-  }
+  "type" : "hubdbtable",
+  "default": 6270539
 }, {
   "id" : "registered_office",
   "name" : "registered_office",

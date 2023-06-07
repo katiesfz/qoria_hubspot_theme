@@ -10,7 +10,7 @@
         <p class="fs-3 mb-0 fw-light">{{event.date|format_date('MMMM YYYY')}}</p>
         {% endif %}
         {% if event.url.href %}
-        <a href="{{event.url.href}}" class="text-decoration-none fs-6 mt-3 d-inline-block">{{event.event_site_label}} <i class="fal fa-arrow-right"></i></a>
+        <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 d-inline-block">{{event.event_site_label}} <i class="fal fa-arrow-right"></i></a>
         {% endif %}
     </div>
 {% endfor %}

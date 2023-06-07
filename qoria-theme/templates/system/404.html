@@ -7,15 +7,55 @@
 
 {% extends "../layouts/system-base.html" %}
 
-
-{% block header %}
-  <div class="header-wrapper">
-{% global_partial path='../partials/header.html', label="Header" %}
-  </div>
-{% endblock header %}
-
 {% set pageTitle = "Error 404 | Page not found" %}
 
+
+{% block header %}
+  <div class="header-wrapper sticky-top shadow-sm">
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+    
+    {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+    {% set breakpoint = widget_data.navigation.breakpoint %}
+        {% if breakpoint == "always" %}
+            {% set navbarExpand = "" %}
+        {% elif breakpoint == "never" %}
+            {% set navbarExpand = "navbar-expand" %}
+        {% else %}
+            {% set navbarExpand = "navbar-expand-" + breakpoint %}
+        {% endif %}
+      
+    <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
+        <nav class="navbar {{navbarExpand}}">
+      <div class="container-xxl"> 
+        {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="far fa-xl fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+    
+            {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", menu="115248177746" no_wrapper=True %}
+    
+                <div class="navbar-search d-flex ms-{{breakpoint}}-6 mb-3 mb-{{breakpoint}}-0">
+                  {% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}
+                </div>
+                {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
+                {% if widget_data.cta.link.url != "" %}
+                  <div class="d-flex ms-{{breakpoint}}-6">
+                  {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+    
+                  </div>
+                {% endif %}
+          </div>
+      </div>
+        </nav>
+    </header>
+  </div>
+{% endblock header %}
 {% block body %}
 
 {# hero banner #}
@@ -143,9 +183,3 @@
 {% endblock body %}
 
 
-
-{% block footer %}
-  <div class="footer-wrapper">
-{% global_partial path='../partials/footer.html', label="Footer" %}
-  </div>
-{% endblock footer %}

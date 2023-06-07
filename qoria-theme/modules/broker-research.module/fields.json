@@ -5,9 +5,7 @@
   "label" : "Broker Research HubDB",
   "required" : false,
   "locked" : false,
-  "type" : "hubdbtable",
-  "default" : 6310840
-
+  "type" : "hubdbtable"
 },{
   "id": "disclaimer_heading",
   "name": "disclaimer_heading",

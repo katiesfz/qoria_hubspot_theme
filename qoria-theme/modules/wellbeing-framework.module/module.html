@@ -1482,13 +1482,12 @@
 
             <div class="accordion-item ">
             <h6 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{item.hover_element}}" aria-expanded="false" aria-controls="collapse{{item.hover_element}}">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{item.hover_element}}" aria-expanded="false" aria-controls="collapse{{item.hover_element}}">
                 {{ item.heading }}
               </button>
             </h6>
             <div id="collapse{{item.hover_element}}" class="accordion-collapse collapse" data-bs-parent="#accordion{{group.grouper}}">
-              <div class="accordion-body py-0 {{ "border-primary border-start border-3" if item.colour == "bg-primary" }}{{ "border-secondary border-start border-3" if item.colour == "bg-secondary" }}{{ "border-gray-700 border-start border-3" if item.colour == "bg-gray-700" }}">
-                <strong>{{ item.heading }}</strong>
+              <div class="accordion-body py-0 {{ "border-primary border-start border-3" if item.colour == "bg-primary" }}{{ "border-secondary border-start border-3" if item.colour == "bg-secondary" }}{{ "border-dark border-start border-3" if item.colour == "bg-gray-700" }}">
                 <div class="">{{ item.description }}</div>
               </div>
             </div>

@@ -1766,9 +1766,9 @@
 
 	<div class="position-absolute d-none d-{{module.style.breakpoint}}-block py-1 px-2 bg-gradient-primary {{ alignment }} text-white gradient-tooltip-small {{ location.direction }} q-location" id="locationPopup{{loop.index}}" style="top: {{ location.y_position }}%; left: {{ location.x_position }}%; {{transform}}">
 		<p class="fw-semibold mb-1 d-none">{{ location.location_name }}</p>
-		<a class="fw-semibold mb-0 small text-nowrap text-reset text-decoration-none"  href="{{location.website.href}}">{{ location.business_name }}</a>
+		<a class="fw-semibold mb-0 small text-nowrap text-reset text-decoration-none" target="_blank" href="{{location.website.href}}">{{ location.business_name }}</a>
 		{% if location.website.href != "" %}
-		<a class="fw-light mb-0 text-reset text-decoration-none d-none" href="{{location.website.href}}">Visit website <i class="fa fa-arrow-right"></i></a>
+		<a class="fw-light mb-0 text-reset text-decoration-none d-none" target="_blank" href="{{location.website.href}}">Visit website <i class="fa fa-arrow-right"></i></a>
 		{% endif %}
 	</div>
 	{% endfor %}
@@ -1813,7 +1813,7 @@
 				<p class="fw-semibold mb-1">{{ location.location_name }}</p>
 				<p class="mb-0 text-reset text-decoration-none">{{ location.business_name }}
 				{% if location.website.href != "" %}
-					<br><a class="mb-0 text-decoration-none" href="{{location.website.href}}">Visit website</a>
+					<br><a class="mb-0 text-decoration-none" target="_blank" href="{{location.website.href}}">Visit website</a>
 				{% endif %}
 				</p>
 				</div>

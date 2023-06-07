@@ -61,7 +61,18 @@
             <hr class="opacity-100">
             </div>
         <div class="col-12 pb-5 text-white text-end">
-            <p>Stock price: A${{module.stock_name.columns.price}} {{module.stock_name.columns.change|format}} ({{module.stock_name.columns.change_percent}}%)</p>
+        
+            {% set foundRow = [] %}
+            {% for row in hubdb_table_rows(module.stock_db, queryparam) %}
+                {% if row.price|string != "0" and foundRow == [] %}
+                    {% do foundRow.append(row.hs_id) %}
+                {% endif %}
+            {% endfor %}
+
+            {% set stockRow = hubdb_table_row(module.stock_db, foundRow[0]) %}
+
+
+            <p>Stock price: A${{stockRow.price}} {{stockRow.change|format}} ({{stockRow.change_percent}}%)</p>
         </div>
         {%endif%}
         {%if module.page_contents|length > 0%}

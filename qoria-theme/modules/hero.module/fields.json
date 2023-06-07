@@ -129,12 +129,14 @@
   "type" : "boolean",
   "default" : false
 }, {
-  "id" : "66747b10-b49c-af00-b447-cf0f08088ff0",
-  "name" : "stock_name",
+  "id" : "stock_db",
+  "name" : "stock_db",
   "display_width" : null,
-  "label" : "Stock name",
+  "label" : "Stock Data HubDB",
   "required" : false,
   "locked" : false,
+  "type" : "hubdbtable",
+  "default" : 6270539,
   "visibility" : {
     "controlling_field" : null,
     "controlling_field_path" : "show_share_price",
@@ -143,13 +145,6 @@
     "operator" : "EQUAL",
     "access" : null,
     "hidden_subfields" : null
-  },
-  "table_name_or_id" : "6041469",
-  "columns_to_fetch" : [ "ticket", "price", "change", "name", "change_percent" ],
-  "display_columns" : [ "name" ],
-  "type" : "hubdbrow",
-  "default" : {
-    "id" : 108963035793
   }
 }, {
   "id" : "show_breadcrumbs",
