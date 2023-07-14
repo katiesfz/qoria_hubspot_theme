@@ -38,8 +38,7 @@
       "controlling_value_regex" : "custom_icon",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "children" : [ {
       "id" : "social_links.custom_social.icon",
@@ -249,8 +248,7 @@
       "controlling_value_regex" : "absolute",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "select",
     "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ], [ "absolute", "Absolute sizing" ] ],

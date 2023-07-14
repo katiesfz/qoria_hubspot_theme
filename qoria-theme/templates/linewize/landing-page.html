@@ -1,0 +1,34 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize Landing page
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block header %}
+  {% global_partial path="./partials/header-no-navigation.html" %}
+{% endblock header %}
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+  {% include_dnd_partial
+    path="../../sections/hero-banner.html"
+    context={
+      "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>"
+    }
+  %}
+
+  {% include_dnd_partial
+    path="../../sections/introduction.html"
+  %}
+
+{% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+{% endblock footer %}

@@ -5,7 +5,7 @@
   "label" : "Style",
   "required" : false,
   "locked" : false,
-  "children" : [{
+  "children" : [ {
     "id" : "style.modal_size",
     "name" : "modal_size",
     "display_width" : null,
@@ -19,7 +19,7 @@
     "preset" : null,
     "type" : "choice",
     "default" : " "
-  }],
+  } ],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group",
@@ -115,8 +115,7 @@
       "controlling_value_regex" : "^((?!\\\"form_type\\\":\\\"TICKET_FORM\\\").)*$",
       "property" : null,
       "operator" : "MATCHES_REGEX",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "checkbox",
     "type" : "boolean",
@@ -134,8 +133,7 @@
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "MATCHES_REGEX",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "allow_custom_email_addresses" : false,
     "type" : "email"
@@ -169,8 +167,7 @@
         "access" : {
           "operator" : "HAS_ALL",
           "scopes" : [ "email-marketing-product-access" ]
-        },
-        "hidden_subfields" : null
+        }
       } ],
       "children" : [ {
         "boolean_operator" : "OR",
@@ -184,8 +181,7 @@
             "operator" : "HAS_NONE",
             "scopes" : [ ],
             "gates" : [ "ContextualAutomation:FormsEmailsAccess" ]
-          },
-          "hidden_subfields" : null
+          }
         } ],
         "children" : [ {
           "boolean_operator" : "AND",
@@ -195,16 +191,14 @@
             "controlling_value_regex" : null,
             "property" : null,
             "operator" : "NOT_EMPTY",
-            "access" : null,
-            "hidden_subfields" : null
+            "access" : null
           }, {
             "controlling_field" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
             "controlling_field_path" : null,
             "controlling_value_regex" : "true",
             "property" : null,
             "operator" : "EQUAL",
-            "access" : null,
-            "hidden_subfields" : null
+            "access" : null
           } ],
           "children" : [ ]
         } ]
@@ -229,8 +223,7 @@
         "controlling_value_regex" : "true",
         "property" : null,
         "operator" : "EQUAL",
-        "access" : null,
-        "hidden_subfields" : null
+        "access" : null
       }, {
         "controlling_field" : null,
         "controlling_field_path" : null,
@@ -241,8 +234,7 @@
           "operator" : "HAS_ALL",
           "scopes" : [ ],
           "gates" : [ "ContextualAutomation:FormsEmailsAccess" ]
-        },
-        "hidden_subfields" : null
+        }
       } ],
       "children" : [ ]
     },

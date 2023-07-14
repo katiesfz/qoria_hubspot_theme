@@ -1,5 +1,5 @@
 <div class="position-relative">
-    <video id="{{ module.unique_video_name }}" width="100%" class="rounded-3" preload="{{ module.style.preload }}" {% if module.style.loop %}loop{% endif %}{% if module.style.autoplay %} autoplay{% endif %}{% if module.style.muted %} muted{% endif %}{% if module.custom_thumbnail.src %} poster="{{ module.custom_thumbnail.src }}"{% endif %}>
+    <video id="{{ module.unique_video_name }}" width="100%" class="{{ "rounded-3" if module.style.rounded_corners }}" preload="{{ module.style.preload }}" {% if module.style.loop %}loop{% endif %}{% if module.style.autoplay %} autoplay{% endif %}{% if module.style.muted %} muted{% endif %}{% if module.custom_thumbnail.src %} poster="{{ module.custom_thumbnail.src }}"{% endif %}>
       {% set videoUrl = module.video_file|lower %}
       {% if videoUrl is string_containing ".mp4" %}
       {% set type = 'type="video/mp4"' %}
@@ -26,7 +26,12 @@
 
   <style>
   .play-button {
-  background-image: url({{ get_asset_url('../../images/qoria/play-button.svg') }});
+  {% if module.style.play_button_colour == "light" %}
+    background-image: url({{ get_asset_url('../../images/qoria/play-button.svg') }});
+    mix-blend-mode: screen;
+  {% else %}
+    background-image: url({{ get_asset_url('../../images/qoria/play-button-dark.svg') }});
+  {% endif %}
   }
   </style>
 

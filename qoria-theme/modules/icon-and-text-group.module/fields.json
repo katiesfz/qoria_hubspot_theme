@@ -101,8 +101,7 @@
         "controlling_value_regex" : "absolute",
         "property" : null,
         "operator" : "EQUAL",
-        "access" : null,
-        "hidden_subfields" : null
+        "access" : null
       },
       "display" : "select",
       "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ] ],
@@ -124,8 +123,7 @@
         "controlling_value_regex" : "relative",
         "property" : null,
         "operator" : "EQUAL",
-        "access" : null,
-        "hidden_subfields" : null
+        "access" : null
       },
       "display" : "select",
       "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ " ", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ] ],
@@ -147,8 +145,7 @@
         "controlling_value_regex" : "icon-only",
         "property" : null,
         "operator" : "NOT_EQUAL",
-        "access" : null,
-        "hidden_subfields" : null
+        "access" : null
       },
       "display" : "text",
       "min" : 50,
@@ -297,13 +294,21 @@
     "preset" : null,
     "type" : "choice",
     "default" : "inline"
-  },{
+  }, {
     "id" : "styles.responsive",
     "name" : "responsive",
     "display_width" : null,
     "label" : "Responsive Styles",
     "required" : false,
     "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.icon_arrangement",
+      "controlling_value_regex" : "stacked",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
     "children" : [ {
       "id" : "styles.responsive.desktop",
       "name" : "desktop",
@@ -379,16 +384,7 @@
     } ],
     "tab" : "STYLE",
     "expanded" : false,
-    "type" : "group",
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "style.icon_arrangement",
-      "controlling_value_regex" : "stacked",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
-    }
+    "type" : "group"
   }, {
     "id" : "style.icon_colour",
     "name" : "icon_colour",
@@ -430,8 +426,7 @@
       "controlling_value_regex" : "absolute",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "select",
     "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ] ],
@@ -453,8 +448,7 @@
       "controlling_value_regex" : "relative",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "select",
     "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ " ", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ] ],

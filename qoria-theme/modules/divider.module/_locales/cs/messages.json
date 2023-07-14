@@ -1,107 +1,107 @@
 {
-  "name": {
-    "message": "Rozdělovač",
-    "description": "",
-    "placeholders": null
+  "name" : {
+    "message" : "Rozdělovač",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.default.horizontal_align": {
-    "message": "NA STŘED",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.default.horizontal_align" : {
+    "message" : "NA STŘED",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.label": {
-    "message": "Zarovnání",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.label" : {
+    "message" : "Zarovnání",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.label": {
-    "message": "Zarovnání",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.label" : {
+    "message" : "Zarovnání",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.label": {
-    "message": "Styly",
-    "description": "",
-    "placeholders": null
+  "styles.label" : {
+    "message" : "Styly",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.color.label": {
-    "message": "Barva",
-    "description": "",
-    "placeholders": null
+  "styles.line.color.label" : {
+    "message" : "Barva",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.label": {
-    "message": "Čára",
-    "description": "",
-    "placeholders": null
+  "styles.line.label" : {
+    "message" : "Čára",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dashed": {
-    "message": "Čárkovaná",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dashed" : {
+    "message" : "Čárkovaná",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dotted": {
-    "message": "Tečkovaná",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dotted" : {
+    "message" : "Tečkovaná",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.solid": {
-    "message": "Plná",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.solid" : {
+    "message" : "Plná",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.label": {
-    "message": "Styl",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.label" : {
+    "message" : "Styl",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.thickness.label": {
-    "message": "Tloušťka",
-    "description": "",
-    "placeholders": null
+  "styles.line.thickness.label" : {
+    "message" : "Tloušťka",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.label": {
-    "message": "Velikost",
-    "description": "",
-    "placeholders": null
+  "styles.size.label" : {
+    "message" : "Velikost",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.help_text": {
-    "message": "Procento plochy, do které je rozdělovač umístěn.",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.help_text" : {
+    "message" : "Procento plochy, do které je rozdělovač umístěn.",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.label": {
-    "message": "Šířka",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.label" : {
+    "message" : "Šířka",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.label": {
-    "message": "Rozestupy",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.label" : {
+    "message" : "Rozestupy",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.label": {
-    "message": "Rozestupy",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.label" : {
+    "message" : "Rozestupy",
+    "description" : "",
+    "placeholders" : null
   }
 }

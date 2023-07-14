@@ -1,142 +1,182 @@
-[
-  {
-    "label": "Styles",
-    "name": "styles",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "label": "Line",
-        "name": "line",
-        "type": "group",
-        "children": [
-          {
-            "label": "Color",
-            "name": "color",
-            "type": "color",
-            "required": true,
-            "aliases_mapping" : {
-              "property_aliases_paths" : {
-                "color": ["color"]
-              }
-            },
-            "default": {
-              "color": "#000000",
-              "opacity": 100
-            }
-          },
-          {
-            "label": "Style",
-            "name": "style",
-            "type": "choice",
-            "choices": [
-              ["solid", "Solid"],
-              ["dotted", "Dotted"],
-              ["dashed", "Dashed"]
-            ],
-            "display": "select",
-            "required": true,
-            "aliases_mapping" : {
-              "property_aliases_paths" : {
-                "style": ["line_type"]
-              }
-            },
-            "default": "solid"
-          },
-          {
-            "label": "Thickness",
-            "name": "thickness",
-            "type": "number",
-            "display": "text",
-            "max": 10,
-            "min": 1,
-            "required": true,
-            "step": 1,
-            "suffix": "px",
-            "aliases_mapping" : {
-              "property_aliases_paths" : {
-                "thickness": ["height"]
-              }
-            },
-            "default": 1
-          }
-        ]
+[ {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.line",
+    "name" : "line",
+    "display_width" : null,
+    "label" : "Line",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.line.color",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color",
+      "required" : true,
+      "locked" : false,
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "color" : [ "color" ]
+        }
       },
-      {
-        "label": "Size",
-        "name": "size",
-        "type": "group",
-        "children": [
-          {
-            "label": "Width",
-            "name": "width",
-            "id": "styles.size.width",
-            "type": "number",
-            "help_text": "Percentage of the area the divider is placed into.",
-            "max": 100,
-            "min": 1,
-            "required": true,
-            "step": 1,
-            "suffix": "%",
-            "aliases_mapping" : {
-              "property_aliases_paths" : {
-                "width": ["width"]
-              }
-            },
-            "default": 50
-          }
-        ]
-      },
-      {
-        "label": "Alignment",
-        "name": "alignment",
-        "type": "group",
-        "visibility": {
-          "controlling_field": "styles.size.width",
-          "controlling_value_regex": "100",
-          "operator": "NOT_EQUAL"
-        },
-        "children": [
-          {
-            "label": "Alignment",
-            "name": "alignment",
-            "type": "alignment",
-            "alignment_direction": "HORIZONTAL",
-            "default": {
-              "horizontal_align": "CENTER"
-            }
-          }
-        ]
-      },
-      {
-        "label": "Spacing",
-        "name": "spacing",
-        "type": "group",
-        "children": [
-          {
-            "label": "Spacing",
-            "name": "spacing",
-            "type": "spacing",
-            "visibility": {
-              "hidden_subfields": {
-                "padding": true
-              }
-            },
-            "default": {
-              "margin": {
-                "top": {
-                  "value": "10",
-                  "units": "px"
-                },
-                "bottom": {
-                  "value": "10",
-                  "units": "px"
-                }
-              }
-            }
-          }
-        ]
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
       }
-    ]
-  }
-]
+    }, {
+      "id" : "styles.line.style",
+      "name" : "style",
+      "display_width" : null,
+      "label" : "Style",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "style" : [ "line_type" ]
+        }
+      },
+      "choices" : [ [ "solid", "Solid" ], [ "dotted", "Dotted" ], [ "dashed", "Dashed" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "solid"
+    }, {
+      "id" : "styles.line.thickness",
+      "name" : "thickness",
+      "display_width" : null,
+      "label" : "Thickness",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "thickness" : [ "height" ]
+        }
+      },
+      "min" : 1,
+      "max" : 10,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 1
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.size",
+    "name" : "size",
+    "display_width" : null,
+    "label" : "Size",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.size.width",
+      "name" : "width",
+      "display_width" : null,
+      "label" : "Width",
+      "help_text" : "Percentage of the area the divider is placed into.",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "width" : [ "width" ]
+        }
+      },
+      "min" : 1,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "%",
+      "type" : "number",
+      "default" : 50
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.alignment",
+    "name" : "alignment",
+    "display_width" : null,
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "styles.size.width",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "100",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "styles.alignment.alignment",
+      "name" : "alignment",
+      "display_width" : null,
+      "label" : "Alignment",
+      "required" : false,
+      "locked" : false,
+      "alignment_direction" : "HORIZONTAL",
+      "type" : "alignment",
+      "default" : {
+        "horizontal_align" : "CENTER"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.spacing",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.spacing.spacing",
+      "name" : "spacing",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : null,
+        "access" : null,
+        "hidden_subfields" : {
+          "padding" : true
+        }
+      },
+      "type" : "spacing",
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : "10",
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : "10",
+            "units" : "px"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+} ]

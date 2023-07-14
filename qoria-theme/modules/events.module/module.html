@@ -3,15 +3,78 @@
         {% editor_placeholder %}
     {% endif %}
 {% else %}
+  {% if module.style.event_style == "1" %}
     {% for event in module.event %}
-    <div class="{{ 'border-bottom' if not loop.last }} py-3">    
-        <p class="fs-3 fw-semibold mb-0">{{event.event_name}}</p>
-        {% if event.date %}
-        <p class="fs-3 mb-0 fw-light">{{event.date|format_date('MMMM YYYY')}}</p>
-        {% endif %}
-        {% if event.url.href %}
-        <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 d-inline-block">{{event.event_site_label}} <i class="fal fa-arrow-right"></i></a>
-        {% endif %}
-    </div>
-{% endfor %}
+      <div class="{{ 'border-bottom' if not loop.last }} py-3">    
+          <p class="fs-3 fw-semibold mb-0">{{event.event_name}}</p>
+          {% if event.event_date %}
+          <p class="fs-5 mb-0">{{event.event_date}}</p>
+          {% endif %}
+          {% if event.url.href %}
+          <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 d-inline-block">{{event.event_site_label}} <i class="fal fa-arrow-right"></i></a>
+          {% endif %}
+      </div>
+    {% endfor %}
+  {% elif module.style.event_style == "2" %}
+    {% for event in module.event %}
+      <div class="bg-light px-4 py-3 mb-3">
+          <p class="fs-5 fw-bold mb-0">{{event.event_name}}</p>
+          {% if event.event_date %}
+          <p class="fs-4 mb-0">{{event.event_date}}</p>
+          {% endif %}
+          
+          {% if event.calendar_object.title && event.calendar_object.description && event.calendar_object.location && event.calendar_object.event_start && event.calendar_object.event_end %}
+            {% set calendarItem = true %}
+          {% else %}
+            {% set calendarItem = false %}
+          {% endif %}
+
+          {% if calendarItem %}
+            <div class="dropdown d-inline-block">
+            
+              <a class="p-0 text-decoration-none fs-6 mt-3 fw-semibold text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Add to diary <i class="fas fa-2xs fa-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{event.calendar_object.title|urlencode}}&details={{event.calendar_object.description|urlencode}}&dates={{ event.calendar_object.event_start|format_datetime("yyyyMMdd'T'HHmmss") }}/{{ event.calendar_object.event_end|format_datetime("yyyyMMdd'T'HHmmss") }}&location={{event.calendar_object.location|urlencode}}">Google Calendar</a></li>
+                <li><a class="dropdown-item" target="_blank" href="https://outlook.live.com/calendar/0/deeplink/compose?subject={{event.calendar_object.title|urlencode}}&body={{event.calendar_object.description|urlencode}}&startdt={{ event.calendar_object.event_start|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx")|urlencode }}&enddt={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx")|urlencode }}&location={{event.calendar_object.location|urlencode}}&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent">Outlook.com</a></li>
+                <li><a class="dropdown-item" target="_blank" href="https://outlook.office.com/calendar/0/deeplink/compose?subject={{event.calendar_object.title|urlencode}}&body={{event.calendar_object.description|urlencode}}&startdt={{ event.calendar_object.event_start|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&enddt={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&location={{event.calendar_object.location|urlencode}}&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent">Office 365</a></li>
+                <li><a class="dropdown-item" target="_blank" href="https://calendar.yahoo.com/?desc={{event.calendar_object.description|urlencode}}&dur=&et={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&in_loc={{event.calendar_object.location|urlencode}}&st={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&title={{event.calendar_object.title|urlencode}}&v=60">Yahoo Calendar</a></li>
+                <li><a class="dropdown-item" href="#" id="downloadICS-{{loop.index}}">Download ICS File</a></li>
+              </ul>
+            </div>
+
+            {% if event.url.href %}<span class="d-inline-block mx-2 fs-6 mt-3 fw-semibold text-secondary">|</span>{% endif %}
+          {% endif %}
+          
+          {% if event.url.href %}
+          <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}} <i class="fas fa-2xs fa-chevron-right"></i></a>
+          {% endif %}
+      </div>
+    
+    {% if calendarItem %}
+      <script>
+
+      
+        document.getElementById('downloadICS-{{loop.index}}').addEventListener('click', () => {
+        
+        createDownloadICSFile(
+          "Western_Australia/Perth",
+          new Date("{{ event.calendar_object.event_start|format_datetime("MMM d, yyyy HH:mm") }} GMT+08:00"),
+          new Date("{{ event.calendar_object.event_end|format_datetime("MMM d, yyyy HH:mm") }} GMT+08:00"),
+          "{{event.calendar_object.title|render|escapejs}}",
+          "{{event.calendar_object.description|render|escapejs}}",
+          "{{event.calendar_object.location|escape}}"
+        );  
+        event.preventDefault();
+        });
+
+
+      </script>
+  {% endif %}
+
+    {% endfor %}
+  {% endif %}
 {% endif %}
+
+

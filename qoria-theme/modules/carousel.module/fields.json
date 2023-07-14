@@ -199,7 +199,22 @@
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
-    "type" : "choice"
+    "type" : "choice",
+    "default" : "carousel-slide"
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "None" ], [ "shadow-sm", "Small shadow" ], [ "shadow", "Medium shadow" ], [ "shadow-lg", "Large shadow" ], [ "section-shadow", "Section shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
   }, {
     "id" : "style.slides_to_display",
     "name" : "slides_to_display",

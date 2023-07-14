@@ -63,8 +63,7 @@
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "type" : "page"
   } ],
@@ -94,8 +93,7 @@
       "access" : {
         "operator" : "HAS_ALL",
         "scopes" : [ "sitepages-access" ]
-      },
-      "hidden_subfields" : null
+      }
     },
     "display" : "checkbox",
     "type" : "boolean",
@@ -136,8 +134,7 @@
       "access" : {
         "operator" : "HAS_ALL",
         "scopes" : [ "service-knowledge-access" ]
-      },
-      "hidden_subfields" : null
+      }
     },
     "display" : "checkbox",
     "type" : "boolean",

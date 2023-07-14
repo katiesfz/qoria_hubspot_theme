@@ -1,107 +1,107 @@
 {
-  "name": {
-    "message": "Razdjelnik",
-    "description": "",
-    "placeholders": null
+  "name" : {
+    "message" : "Razdjelnik",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.default.horizontal_align": {
-    "message": "CENTAR",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.default.horizontal_align" : {
+    "message" : "CENTAR",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.label": {
-    "message": "Poravnanje",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.label" : {
+    "message" : "Poravnanje",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.label": {
-    "message": "Poravnanje",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.label" : {
+    "message" : "Poravnanje",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.label": {
-    "message": "Stilovi",
-    "description": "",
-    "placeholders": null
+  "styles.label" : {
+    "message" : "Stilovi",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.color.label": {
-    "message": "Boja",
-    "description": "",
-    "placeholders": null
+  "styles.line.color.label" : {
+    "message" : "Boja",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.label": {
-    "message": "Linija",
-    "description": "",
-    "placeholders": null
+  "styles.line.label" : {
+    "message" : "Linija",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dashed": {
-    "message": "Isprekidano",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dashed" : {
+    "message" : "Isprekidano",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dotted": {
-    "message": "Točkasto",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dotted" : {
+    "message" : "Točkasto",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.solid": {
-    "message": "Ispunjeno",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.solid" : {
+    "message" : "Ispunjeno",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.label": {
-    "message": "Stil",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.label" : {
+    "message" : "Stil",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.thickness.label": {
-    "message": "Debljina",
-    "description": "",
-    "placeholders": null
+  "styles.line.thickness.label" : {
+    "message" : "Debljina",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.label": {
-    "message": "Veličina",
-    "description": "",
-    "placeholders": null
+  "styles.size.label" : {
+    "message" : "Veličina",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.help_text": {
-    "message": "Postotak područja u koje je umetnut razdjeljivač.",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.help_text" : {
+    "message" : "Postotak područja u koje je umetnut razdjeljivač.",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.label": {
-    "message": "Širina",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.label" : {
+    "message" : "Širina",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.label": {
-    "message": "Razmak",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.label" : {
+    "message" : "Razmak",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.label": {
-    "message": "Razmak",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.label" : {
+    "message" : "Razmak",
+    "description" : "",
+    "placeholders" : null
   }
 }

@@ -3,7 +3,7 @@
   "smart_type" : "NOT_SMART",
   "icon" : "../../images/module-icons/location-dot.svg",
   "host_template_types" : [ "PAGE" ],
-  "module_id" : 109781378625,
+  "module_id" : 114968409123,
   "js_assets" : [ {
     "autoload" : true,
     "path" : "../../js/custom-functions.js",

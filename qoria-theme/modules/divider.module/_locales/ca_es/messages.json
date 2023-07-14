@@ -1,107 +1,107 @@
 {
-  "name": {
-    "message": "Divisor",
-    "description": "",
-    "placeholders": null
+  "name" : {
+    "message" : "Divisor",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.default.horizontal_align": {
-    "message": "CENTRE",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.default.horizontal_align" : {
+    "message" : "CENTRE",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.label": {
-    "message": "Alineació",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.label" : {
+    "message" : "Alineació",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.label": {
-    "message": "Alineació",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.label" : {
+    "message" : "Alineació",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.label": {
-    "message": "Estils",
-    "description": "",
-    "placeholders": null
+  "styles.label" : {
+    "message" : "Estils",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.color.label": {
-    "message": "Color",
-    "description": "",
-    "placeholders": null
+  "styles.line.color.label" : {
+    "message" : "Color",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.label": {
-    "message": "Línia",
-    "description": "",
-    "placeholders": null
+  "styles.line.label" : {
+    "message" : "Línia",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dashed": {
-    "message": "Discontínua",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dashed" : {
+    "message" : "Discontínua",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dotted": {
-    "message": "De punts",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dotted" : {
+    "message" : "De punts",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.solid": {
-    "message": "Sòlid",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.solid" : {
+    "message" : "Sòlid",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.label": {
-    "message": "Estil",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.label" : {
+    "message" : "Estil",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.thickness.label": {
-    "message": "Gruix",
-    "description": "",
-    "placeholders": null
+  "styles.line.thickness.label" : {
+    "message" : "Gruix",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.label": {
-    "message": "Mida",
-    "description": "",
-    "placeholders": null
+  "styles.size.label" : {
+    "message" : "Mida",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.help_text": {
-    "message": "Percentatge de l'àrea a la qual està situat el divisor.",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.help_text" : {
+    "message" : "Percentatge de l'àrea a la qual està situat el divisor.",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.label": {
-    "message": "Amplada",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.label" : {
+    "message" : "Amplada",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.label": {
-    "message": "Espaiat",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.label" : {
+    "message" : "Espaiat",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.label": {
-    "message": "Espaiat",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.label" : {
+    "message" : "Espaiat",
+    "description" : "",
+    "placeholders" : null
   }
 }

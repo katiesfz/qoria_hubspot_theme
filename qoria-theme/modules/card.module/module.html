@@ -1,5 +1,6 @@
 {% require_css %}
   <style>
+  .card-header-cap {position: relative;}
   .card-header-cap:after {
     content: "";
     background-image: url({{ get_asset_url('/q-theme/images/qoria/q_tail_01.svg') }});
@@ -14,43 +15,178 @@
 }
   </style>
 {% end_require_css %}
+
+
+{% macro card_body()  %}
+
+  {% if card.multiple_text %}
+
+    {% for text in card.text_group %}
+
+      <div class="py-3">
+
+      {% if text.text %}
+        {{ text.text }}
+      {% endif %}
+
+      {% if text.link.url.href %}
+
+
+        {% if text.cta_style %}
+          {% if text.cta_style != "text-" %}
+            {% set textCtaClasses = text.cta_style ~ text.cta_colour ~ " mt-3" %}
+          {% else %}
+            {% set textCtaClasses = "text-" ~ text.cta_colour ~ " text-decoration-none fw-semibold" %}
+          {% endif %}
+        {% else %}
+          {% set textCtaClasses = "text-reset text-decoration-none fw-semibold" %}
+        {% endif %}
+
+
+        <a href="{{text.link.url.href}}" class="{{ "stretched-link" if text.stretched_link }} {{textCtaClasses}}">{{text.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
+      {% endif %}
+
+      </div>
+
+      {% if !loop.last %}
+        <hr class="my-5">
+      {% endif %}
+
+    {% endfor %}
+
+  {% else %}
+  
+    {% if card.text %}
+      <div class="card-text">
+      {{ card.text }}
+      </div>
+    {% endif %}
+    {% if card.link.url.href %}
+      {% if card.cta_style %}
+        {% if card.cta_style != "text-" %}
+          {% set ctaClasses = card.cta_style ~ card.cta_colour ~ " mt-3" %}
+        {% else %}
+          {% set ctaClasses = "text-" ~ card.cta_colour ~ " text-decoration-none fw-semibold" %}
+        {% endif %}
+      {% else %}
+        {% set ctaClasses = "text-reset text-decoration-none fw-semibold" %}
+      {% endif %}
+      <a href="{{card.link.url.href}}" class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}">{{card.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
+    {% endif %}
+  
+  {% endif %}
+
+{% endmacro %}
+
+
+
+
 <div class="container-fluid g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}" id="cards-{{name}}">
 <div class="row row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3">
   {% for card in module.card %}
 
     <div class="col">
-      <div class="card shadow {{ "h-100" if module.styles.equal_heights }}">
-        {% if card.image.src %}
-          <img src="{{ card.image.src }}" class="card-img-top" alt="{{ card.image.alt }}">
-          {% if module.styles.card_style == "1" %}
-            <div class="card-header h5 {{card.accent_colour}}">{{card.title}}</div>
-            {% else %}
-              <div class="{{card.accent_colour}}"><div style="display: block; height: 1em;"></div></div>
-          {% endif %}
-        {% else %}
-          <div class="{{card.accent_colour}} position-relative" style="">
-          {% if module.styles.card_style == "1" %}
-            <div class="card-header card-header-cap d-flex border-0 align-items-end  fs-1 lh-sm" style="padding-top: 15%;">
-              <div>
-                {{card.title}}
-                </div>
+      <div class="card {{ module.styles.card_colour }} {{ module.styles.shadow }} {{ "h-100" if module.styles.equal_heights }}">
+
+        {% if module.styles.card_style == "1" %}
+
+          {% if card.title != "" %}
+            <div class="{{card.accent_colour}} position-relative {{ "pb-{{card.overlap}}" if card.image_overlap == "true" }}" style="">
+              <div class="card-header card-header-cap d-flex border-0 align-items-end justify-content-{{ module.styles.textalignment }} {{ "{{ card.title_size }}" if card.title_size else "fs-1" }} lh-sm text-{{ module.styles.textalignment }} " style="padding-top: 15%;">
+                <div>
+                  {{card.title}}
+                  </div>
+              </div>
             </div>
-            {% else %}
-              <div style="display: block; height: 1em;"></div>
           {% endif %}
+          
+          
+          <div class="card-body text-{{ module.styles.textalignment }} {{ "pt-0" if card.image_overlap == "true" }}">
+
+          {% if card.image.src %}
+            <img src="{{ card.image.src }}" class="img-fluid mb-5 {{ "position-relative mt-n{{card.overlap}}" if card.image_overlap == "true" }}" alt="{{ card.image.alt }}">
+          {% endif %}
+
+
+          {{ card_body() }}
+
           </div>
+
+
+        {% elif module.styles.card_style == "2" %}
+
+          {% if module.styles.image_header && module.styles.image_header_fit == "cover" %}
+            {% if card.image.src %}
+              <img src="{{ card.image.src }}" class="card-img-top" alt="{{ card.image.alt }}">
+            {% endif %}
+          {% endif %}
+
+
+
+
+          {% if module.styles.title_accent %}
+
+            <div class="card-header {{ "card-header-cap" if module.styles.q_accent }} {{ "card-image-overlap card-image-overlap-padding" if card.image_overlap }} d-flex border-0 align-items-end justify-content-{{ module.styles.textalignment }} {{ "pt-7" if !card.image_overlap && module.styles.q_accent }} {{ card.title_size if card.title_size else "h5" }} {{card.accent_colour}} text-{{ module.styles.textalignment }} lh-sm" style="{{ "padding-bottom: calc(var(--q-card-cap-padding-y) + " ~ card.overlap ~ "rem);" if card.image_overlap }}">
+            {{ "<div class='py-3'>" if card.image_overlap }}{{card.title}}{{ "</div>" if card.image_overlap }}
+            </div>
+
+          {% else %}
+           <div class="{{card.accent_colour}}"><div style="display: block; height: 1em;"></div></div>
+          {% endif %}
+           
+
+           <div class="card-body {{ module.styles.card_colour }} text-{{ module.styles.textalignment }} {{ "pt-0" if card.image_overlap }}">
+           
+          {% if module.styles.image_header && module.styles.image_header_fit == "contain" %}
+            {% if card.image.src %}
+              
+              <img src="{{ card.image.src }}" class="img-fluid mb-3" alt="{{ card.image.alt }}">
+              
+            {% endif %}
+          {% endif %}
+
+          
+          {% if !module.styles.title_accent %}
+            {% if card.title != "" %}
+                <h5 class="text-{{module.styles.textalignment}} mb-3 {{ card.title_size if card.title_size else "h5" }}">{{ card.title }}</h5>
+            {% endif %}
+          {% endif %}
+
+          {% if !module.styles.image_header %}
+            {% if card.image.src %}
+              <div>
+                <img src="{{ card.image.src }}" class="img-fluid mb-3 {{ "position-relative card-image-overlap card-image-overlap-margin" if card.image_overlap }}" alt="{{ card.image.alt }}" style="{{ "margin-top: -" ~ card.overlap ~ "rem;" if card.image_overlap }}">
+              </div>
+            {% endif %}
+          {% endif %}
+               
+              {{ card_body() }}
+
+         </div>
+ 
+
+        {% elif module.styles.card_style == "3" %}
+
+          {% if card.image.src %}
+            <img src="{{ card.image.src }}" class="card-img-top" alt="{{ card.image.alt }}">
+          {% endif %}
+
+          {% if card.title != "" %}
+              <div class="card-header h5 {{card.accent_colour}}  text-{{ module.styles.textalignment }}">{{card.title}}</div>
+          {% endif %}
+
+              <div class="card-body {{ module.styles.card_colour }} text-{{module.styles.textalignment}}">
+              
+              {{ card_body() }}
+
+              </div>
+    
+
+
         {% endif %}
-        <div class="card-body {{ "bg-light" if module.styles.card_style == "2" }}">
-          {% if module.styles.card_style != "1" %}
-              <h5>{{ card.title }}</h5>
-          {% endif %}
-          {% if card.text %}
-            <p class="card-text">{{ card.text }}</p>
-          {% endif %}
-          {% if card.link.url.href %}
-            <a href="{{card.link.url.href}}" class="{{ "stretched-link" if card.stretched_link }} text-reset text-decoration-none fw-semibold">{{card.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
-          {% endif %}
-        </div>
+
+
+
       </div>
     </div>
   {%endfor%}
@@ -61,8 +197,9 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", () => {
-  $(window).on(
-      'load resize orientationchange', 
-      normaliseHeights("#cards-{{name}} .card-header"));
+  $(window).on('load resize orientationchange', normaliseHeights("#cards-{{name}} .card-header"));
+
+      
+  
 });
 </script>

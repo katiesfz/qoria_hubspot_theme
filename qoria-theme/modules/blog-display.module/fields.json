@@ -34,8 +34,7 @@
     "controlling_value_regex" : "popular",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "display" : "select",
   "choices" : [ [ "popular_all_time", "All time" ], [ "popular_past_year", "Past year" ], [ "popular_past_six_months", "Past 6 months" ], [ "popular_past_month", "Past month" ] ],

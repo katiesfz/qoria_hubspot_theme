@@ -16,6 +16,30 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "style.rounded_corners",
+    "name" : "rounded_corners",
+    "display_width" : null,
+    "label" : "Rounded corners",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "style.play_button_colour",
+    "name" : "play_button_colour",
+    "display_width" : null,
+    "label" : "Play button colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "light", "Light" ], [ "dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "light"
+  }, {
     "id" : "b3d8f1f0-cab9-bd54-c7ce-4d20da2d42e1",
     "name" : "autoplay",
     "display_width" : null,

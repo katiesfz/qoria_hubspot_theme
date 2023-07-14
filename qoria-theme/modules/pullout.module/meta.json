@@ -2,7 +2,7 @@
   "global" : false,
   "icon" : "../../images/module-icons/square-quote.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 107311296279,
+  "module_id" : 114968409132,
   "label" : "Pullout",
   "is_available_for_new_content" : true
 }

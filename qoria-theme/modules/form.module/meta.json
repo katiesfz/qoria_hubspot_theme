@@ -4,7 +4,7 @@
   "master_language" : "en",
   "icon" : "../../images/module-icons/form-module-icon.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 111675326357,
+  "module_id" : 114969642031,
   "label" : "Form",
   "is_available_for_new_content" : true
 }

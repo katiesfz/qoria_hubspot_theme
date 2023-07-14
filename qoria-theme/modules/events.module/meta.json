@@ -6,7 +6,16 @@
   },
   "icon" : "../../images/module-icons/calendar-module-icon.svg",
   "host_template_types" : [ "PAGE" ],
-  "module_id" : 109425563166,
+  "module_id" : 114968409101,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/jquery/jquery-3.6.4.min.js",
+    "name" : "jquery-3.6.4.min.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/custom-functions.js",
+    "name" : "custom-functions.js"
+  } ],
   "label" : "Events",
   "is_available_for_new_content" : true
 }

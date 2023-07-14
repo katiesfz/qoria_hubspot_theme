@@ -260,12 +260,86 @@ function resetLegalStyles(){
 
   var allHeadings = document.querySelectorAll(".legal-reset h1, .legal-reset h2, .legal-reset h3, .legal-reset h4, .legal-reset h5, .legal-reset h6");
   var allSpans    = document.querySelectorAll(".legal-reset span");
+  var allLinks    = document.querySelectorAll(".legal-reset a");
   var allTables   = document.querySelectorAll(".legal-reset table");
   var allCells    = document.querySelectorAll(".legal-reset td, .legal-reset th");
 
   $(allHeadings).each(function(i){this.style=""});
   $(allSpans).each(function(i){this.style=""});
+  $(allLinks).each(function(i){this.style=""});
   $(allTables).each(function(i){this.classList.add("table", "table-striped"); this.style="";});
   $(allCells).each(function(i){this.style=""});
 
+}
+
+
+// Create and download a file
+// Create an ICS file (for calendars)
+// https://codepen.io/posterchild/pen/LYVqabP
+
+
+function downloadWithBody(filename, fileBody) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(fileBody));
+  element.setAttribute('download', filename);
+  element.setAttribute('target', '_blank');
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+
+/**
+* Returns a date/time in ICS format
+* @params {Object} dateTime - A date object you want to get the ICS format for.
+* @returns {string} String with the date in ICS format
+*/
+function convertToICSDate(dateTime) {
+  const year = dateTime.getFullYear().toString();
+  const month = (dateTime.getMonth() + 1) < 10 ? "0" + (dateTime.getMonth() + 1).toString() : (dateTime.getMonth() + 1).toString();
+  const day = dateTime.getDate() < 10 ? "0" + dateTime.getDate().toString() : dateTime.getDate().toString();
+  const hours = dateTime.getHours() < 10 ? "0" + dateTime.getHours().toString() : dateTime.getHours().toString();
+  const minutes = dateTime.getMinutes() < 10 ? "0" +dateTime.getMinutes().toString() : dateTime.getMinutes().toString();
+
+  return year + month + day + "T" + hours + minutes + "00";
+}
+
+
+/**
+* Creates and downloads an ICS file
+* @params {string} timeZone - In the format America/New_York
+* @params {object} startTime - Valid JS Date object in the event timezone
+* @params {object} endTime - Valid JS Date object in the event timezone
+* @params {string} title
+* @params {string} description
+* @params {string} location
+*/
+function createDownloadICSFile(timezone, startTime, endTime, title, description, location) {
+const icsBody = 'BEGIN:VCALENDAR\n' +
+'VERSION:2.0\n' +
+'PRODID:Calendar\n' +
+'CALSCALE:GREGORIAN\n' +
+'METHOD:PUBLISH\n' +
+'BEGIN:VTIMEZONE\n' +
+'TZID:' + timezone + '\n' +
+'END:VTIMEZONE\n' +
+'BEGIN:VEVENT\n' +
+'SUMMARY:' + title + '\n' +
+'UID:@Default\n' +
+'SEQUENCE:0\n' +
+'STATUS:CONFIRMED\n' +
+'TRANSP:TRANSPARENT\n' +
+'DTSTART;TZID=' + timezone + ':' + convertToICSDate(startTime) + '\n' +
+'DTEND;TZID=' + timezone + ':' + convertToICSDate(endTime)+ '\n' +
+'DTSTAMP:'+ convertToICSDate(new Date()) + '\n' +
+'LOCATION:' + location + '\n' +
+'DESCRIPTION:' + description + '\n' +
+'END:VEVENT\n' +
+'END:VCALENDAR\n';
+
+downloadWithBody(title + '.ics', icsBody);
 }

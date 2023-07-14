@@ -97,8 +97,7 @@
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "text",
     "step" : 1,
@@ -183,8 +182,7 @@
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "text",
     "min" : 0,

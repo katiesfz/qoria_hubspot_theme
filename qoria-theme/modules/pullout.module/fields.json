@@ -73,6 +73,78 @@
     "display" : "toggle",
     "type" : "boolean",
     "default" : true
+  }, {
+    "id" : "style.icon_colour",
+    "name" : "icon_colour",
+    "display_width" : null,
+    "label" : "Icon colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "indigo", "Indigo" ], [ "teal", "Teal" ], [ "red", "Red" ], [ "orange", "Orange" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "primary"
+  }, {
+    "id" : "style.sizing",
+    "name" : "sizing",
+    "display_width" : null,
+    "label" : "Icon Sizing",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "relative", "Custom - Relative" ], [ "absolute", "Custom - Absolute" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "relative"
+  }, {
+    "id" : "style.absolute_icon_size",
+    "name" : "absolute_icon_size",
+    "display_width" : null,
+    "label" : "Icon size",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.sizing",
+      "controlling_value_regex" : "absolute",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fa-3x"
+  }, {
+    "id" : "style.relative_icon_size",
+    "name" : "relative_icon_size",
+    "display_width" : null,
+    "label" : "Icon size",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.sizing",
+      "controlling_value_regex" : "relative",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ " ", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
   } ],
   "tab" : "STYLE",
   "expanded" : false,
@@ -106,10 +178,206 @@
     "occurrence" : {
       "min" : null,
       "max" : null,
-      "sorting_label_field" : null,
+      "sorting_label_field" : "text",
       "default" : null
     },
     "children" : [ {
+      "id" : "row.column.icon",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "row.column.icon.icon",
+        "name" : "icon_field",
+        "display_width" : null,
+        "label" : "Icon",
+        "required" : false,
+        "locked" : false,
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : {
+          "name" : "Check Circle",
+          "unicode" : "f058",
+          "type" : "REGULAR"
+        }
+      }, {
+        "id" : "row.column.icon.code",
+        "name" : "icon_code",
+        "display_width" : null,
+        "label" : "Icon Code",
+        "help_text" : "Icon selection not working? Enter the icon name here. e.g. address-book",
+        "inline_help_text" : "Find icons at https://fontawesome.com/search",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : ""
+      }, {
+        "id" : "row.column.icon.style",
+        "name" : "icon_style",
+        "display_width" : null,
+        "label" : "Icon Style",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fa fa-brands fab ", "Brand" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "fal"
+      }, {
+        "id" : "row.column.icon.shape",
+        "name" : "icon_shape",
+        "display_width" : null,
+        "label" : "Icon shape",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "rounded", "Square" ], [ "rounded-circle", "Circle" ], [ "icon-only", "None" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "icon-only"
+      }, {
+        "id" : "row.column.icon.sizing",
+        "name" : "sizing",
+        "display_width" : null,
+        "label" : "Sizing",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "inherit", "Inherited" ], [ "relative", "Custom - Relative" ], [ "absolute", "Custom - Absolute" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "inherit"
+      }, {
+        "id" : "row.column.icon.absolute_icon_size",
+        "name" : "absolute_icon_size",
+        "display_width" : null,
+        "label" : "Icon size",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "row.column.icon.sizing",
+          "controlling_value_regex" : "absolute",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "display" : "select",
+        "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "fa-3x"
+      }, {
+        "id" : "row.column.icon.relative_icon_size",
+        "name" : "relative_icon_size",
+        "display_width" : null,
+        "label" : "Icon size",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "row.column.icon.sizing",
+          "controlling_value_regex" : "relative",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "display" : "select",
+        "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ " ", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ] ],
+        "multiple" : false,
+        "reordering_enabled" : false,
+        "preset" : null,
+        "type" : "choice",
+        "default" : " "
+      }, {
+        "id" : "row.column.icon.max_width",
+        "name" : "max_width",
+        "display_width" : null,
+        "label" : "Max width",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "row.column.icon.icon_shape",
+          "controlling_value_regex" : "icon-only",
+          "property" : null,
+          "operator" : "NOT_EQUAL",
+          "access" : null
+        },
+        "display" : "text",
+        "min" : 50,
+        "max" : 500,
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number",
+        "default" : 84
+      }, {
+        "id" : "row.column.icon.custom",
+        "name" : "custom_image",
+        "display_width" : null,
+        "label" : "Custom Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "auto",
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }, {
+        "id" : "1ee9a359-5f07-6ec3-1c8d-bb266ad6db45",
+        "name" : "icon_colour",
+        "display_width" : null,
+        "label" : "Icon colour",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "inherit", "Inherit" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "indigo", "Indigo" ], [ "teal", "Teal" ], [ "red", "Red" ], [ "orange", "Orange" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "inherit"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "icon_field" : {
+          "name" : "Check Circle",
+          "unicode" : "f058",
+          "type" : "REGULAR"
+        },
+        "icon_code" : "",
+        "icon_style" : "fal",
+        "icon_shape" : "rounded",
+        "max_width" : 84,
+        "custom_image" : {
+          "size_type" : "auto",
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        },
+        "icon_colour" : "primary"
+      }
+    }, {
       "id" : "8fc75ae8-4780-0f98-8fc3-f0056a78d5dd",
       "name" : "pre_heading",
       "display_width" : null,
@@ -196,7 +464,7 @@
       "show_emoji_picker" : false,
       "type" : "text",
       "default" : ""
-    },{
+    }, {
       "id" : "link_stretched",
       "name" : "link_stretched",
       "display_width" : null,

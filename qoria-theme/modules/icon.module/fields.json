@@ -74,8 +74,7 @@
       "controlling_value_regex" : "absolute",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "text",
     "min" : 0,

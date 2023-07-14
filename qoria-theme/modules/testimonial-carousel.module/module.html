@@ -17,12 +17,26 @@
             }
         {% endif %}
 
+        {% if module.style.testimonial_style && module.style.testimonial_style == "2" %}
+
+            svg.testimonial-quote {
+            min-width: 80px;
+            width: 20%;
+            max-width: 150px;
+            display: block;
+            margin-bottom: 32px;
+        }
+
+        {% else %}
+
         svg.testimonial-quote {
             max-width: 80%;
             width: 20%;
             display: block;
             margin-bottom: 10px;
         }
+
+        {% endif %}
 
         .testimonial-photo {
             width: 100%;
@@ -32,6 +46,96 @@
     {% end_scope_css %}
     </style>
 {% end_require_css %}
+
+{% macro testimonial()  %}
+
+    <div class="col p-2">
+    <div class="bg-gray-200 shadow-sm">
+        <div class="row g-0 align-items-start testimonial-header">
+            <div class="col-6 mb-n4 align-self-stretch  {{ "filter-grayscale" if module.style.greyscale_images }}" style="background-image: url('{{item.image.src}}'); background-size: cover; background-position: center;">
+
+            </div>
+            <div class="col-6 p-4 text-dark pt-7">
+            {%if item.author %} <p class="fs-6 fw-bold mb-0 lh-sm">{{item.author}}</p> {%endif%}
+                {% if item.role%}<p class="fs-6 mt-3 mb-0 lh-sm">{{item.role}}</p> {%endif%}
+            </div>
+        </div>
+        <div class="row g-0 px-4 pb-4">
+            <div class="col-12 bg-white p-4 position-relative testimonial-quote-container">
+                <!-- quote graphic -->
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2;" xml:space="preserve">
+                    <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                    c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
+                    <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                    c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
+                    </svg>
+                <!-- end quote graphic -->
+                {{item.quote}}
+            {% if item.read_more_url.href %}
+                <br>
+                <a href="{{ item.read_more_url.href }}" class="text-reset text-decoration-none fw-bold d-block mt-2">More +</a>
+            {% endif %}
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endmacro %}
+
+
+
+{% macro testimonialStyle2()  %}
+
+    <div class="col p-2">
+        <div class="row align-items-center">
+        <div class="col-12 col-md-3 order-md-2 text-center">
+        
+		{% if item.image.size_type == 'auto' %}
+			{% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}" style="max-width: 100%; height: auto;"' %}
+		{% elif item.image.size_type == 'auto_custom_max' %}
+			{% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+		{% endif %}
+            <img src="{{item.image.src}}" class="img-fluid {{ "filter-grayscale" if module.style.greyscale_images }}" {{ sizeAttrs }}>
+        </div>
+        <div class="col-12 col-md-9 order-md-1">
+                <!-- quote graphic -->
+                <?xml version="1.0" encoding="utf-8"?>
+                <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2; transform: scale(-1, 1);" xml:space="preserve">
+                <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
+                <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
+                </svg>
+            <!-- end quote graphic -->
+            
+            <div class="fs-5 mb-5">{{item.quote}}
+            
+            {% if item.read_more_url.href %}
+                <br>
+                <a href="{{ item.read_more_url.href }}" class="text-reset fs-5 text-decoration-none fw-bold d-block mt-2">More +</a>
+            {% endif %}
+            </div>
+            
+            {%if item.author %} <p class="small fw-bold mb-0 lh-sm">{{item.author}}</p> {%endif%}
+            {% if item.role%}<p class="small mb-0 lh-sm">{{item.role}}</p> {%endif%}
+            
+        </div>
+    </div>
+
+
+{% endmacro %}
+
+
+
+
+
+
 
 <div class="testimonial-container {{ "collapse" if module.style.collapse && not is_in_page_editor }}" id="testimonial-container-{{name}}">
 {% if module.style.carousel %}
@@ -47,47 +151,22 @@
     {%endif%}
 
     <div class="testimonial-slider " id="testimonial-{{name}}">
-    {% for item in module.slide %}
-        <div class="slide p-2">
-            <div class="bg-{{ item.accent_colour }}">
-                <div class="row g-0 align-items-start testimonial-header">
-                    <div class="col-6 mb-n4 align-self-stretch filter-grayscale" style="background-image: url('{{item.image.src}}'); background-size: cover; background-position: center;">
+        {% for item in module.slide %}
 
-                    </div>
-                    {% if item.accent_colour == "none" %}
-                        {% set authorColour = "text-dark" %}
-                    {% else %}
-                        {% set authorColour = "text-light" %}
-                    {% endif %}
-                    <div class="col-6 p-4 {{authorColour}} pt-7">
-                    {%if item.author %} <p class="fs-6 fw-semibold mb-0 lh-sm">{{item.author}}</p> {%endif%}
-                        {% if item.role%}<p class="fs-6 mt-3 mb-0 lh-sm">{{item.role}}</p> {%endif%}
-                    </div>
-                </div>
-                <div class="row g-0 px-4 pb-4">
-                    <div class="col-12 bg-white p-4 position-relative testimonial-quote-container">
-                        <!-- quote graphic -->
-                            <?xml version="1.0" encoding="utf-8"?>
-                            <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                            <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2;" xml:space="preserve">
-                            <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
-                            c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
-                            <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
-                            c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
-                            </svg>
-                        <!-- end quote graphic -->
-                        {{item.quote}}
-                    {% if item.read_more_url.href %}
-                        <br>
-                        <a href="{{ item.read_more_url.href }}" class="text-reset text-decoration-none fw-bold d-block mt-2">More +</a>
-                    {% endif %}
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
+            {% if module.style.testimonial_style && module.style.testimonial_style == "1" %}
+
+                {{ testimonial()  }}
+            
+            {% elif module.style.testimonial_style && module.style.testimonial_style == "2" %}
+
+                {{ testimonialStyle2()  }}
+
+            {% else %}
+
+                {{ testimonial()  }}
+
+            {% endif %}
+        {% endfor %}
     </div>
 
     {% if module.style.carousel_settings.controls %}
@@ -105,42 +184,22 @@
     <div class="container-fluid g-0" style="{{module.styles.spacing_field.css}}" id="testimonial-{{name}}">
         <div class="row row-cols-{{module.style.cards_settings.cards_responsive.mobile.cards}} row-cols-md-{{module.style.cards_settings.cards_responsive.tablet.cards}} row-cols-lg-{{module.style.cards_settings.cards_responsive.desktop.cards}} g-3">
 
-            {% for item in module.slide %}
-                <div class="col p-2">
-                    <div class="bg-gray-200 shadow-sm">
-                        <div class="row g-0 align-items-start testimonial-header">
-                            <div class="col-6 mb-n4 align-self-stretch  filter-grayscale" style="background-image: url('{{item.image.src}}'); background-size: cover; background-position: center;">
+        {% for item in module.slide %}
 
-                            </div>
-                            <div class="col-6 p-4 text-dark pt-7">
-                            {%if item.author %} <p class="fs-6 fw-bold mb-0 lh-sm">{{item.author}}</p> {%endif%}
-                                {% if item.role%}<p class="fs-6 mt-3 mb-0 lh-sm">{{item.role}}</p> {%endif%}
-                            </div>
-                        </div>
-                        <div class="row g-0 px-4 pb-4">
-                            <div class="col-12 bg-white p-4 position-relative testimonial-quote-container">
-                                <!-- quote graphic -->
-                                    <?xml version="1.0" encoding="utf-8"?>
-                                    <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                    <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2;" xml:space="preserve">
-                                    <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
-                                    c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
-                                    <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
-                                    c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
-                                    </svg>
-                                <!-- end quote graphic -->
-                                {{item.quote}}
-                            {% if item.read_more_url.href %}
-                                <br>
-                                <a href="{{ item.read_more_url.href }}" class="text-reset text-decoration-none fw-bold d-block mt-2">More +</a>
-                            {% endif %}
-                            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+            {% if module.style.testimonial_style && module.style.testimonial_style == "1" %}
+
+                {{ testimonial()  }}
+            
+            {% elif module.style.testimonial_style && module.style.testimonial_style == "2" %}
+
+                {{ testimonialStyle2()  }}
+
+            {% else %}
+
+                {{ testimonial()  }}
+
+            {% endif %}
+        {% endfor %}
         </div>
     </div>
 

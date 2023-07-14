@@ -1,107 +1,107 @@
 {
-  "name": {
-    "message": "Διαχωριστικό",
-    "description": "",
-    "placeholders": null
+  "name" : {
+    "message" : "Διαχωριστικό",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.default.horizontal_align": {
-    "message": "CENTER",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.default.horizontal_align" : {
+    "message" : "CENTER",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.label": {
-    "message": "Στοίχιση",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.label" : {
+    "message" : "Στοίχιση",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.label": {
-    "message": "Στοίχιση",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.label" : {
+    "message" : "Στοίχιση",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.label": {
-    "message": "Στυλ",
-    "description": "",
-    "placeholders": null
+  "styles.label" : {
+    "message" : "Στυλ",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.color.label": {
-    "message": "Χρώμα",
-    "description": "",
-    "placeholders": null
+  "styles.line.color.label" : {
+    "message" : "Χρώμα",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.label": {
-    "message": "Γραμμή",
-    "description": "",
-    "placeholders": null
+  "styles.line.label" : {
+    "message" : "Γραμμή",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dashed": {
-    "message": "Με παύλες",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dashed" : {
+    "message" : "Με παύλες",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dotted": {
-    "message": "Διάστικτη",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dotted" : {
+    "message" : "Διάστικτη",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.solid": {
-    "message": "Συμπαγής",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.solid" : {
+    "message" : "Συμπαγής",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.label": {
-    "message": "Στυλ",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.label" : {
+    "message" : "Στυλ",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.thickness.label": {
-    "message": "Πάχος",
-    "description": "",
-    "placeholders": null
+  "styles.line.thickness.label" : {
+    "message" : "Πάχος",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.label": {
-    "message": "Μέγεθος",
-    "description": "",
-    "placeholders": null
+  "styles.size.label" : {
+    "message" : "Μέγεθος",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.help_text": {
-    "message": "Ποσοστό της περιοχής εντός της οποίας τοποθετείται το διαχωριστικό",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.help_text" : {
+    "message" : "Ποσοστό της περιοχής εντός της οποίας τοποθετείται το διαχωριστικό",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.label": {
-    "message": "Πλάτος",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.label" : {
+    "message" : "Πλάτος",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.label": {
-    "message": "Διάκενο",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.label" : {
+    "message" : "Διάκενο",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.label": {
-    "message": "Διάκενο",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.label" : {
+    "message" : "Διάκενο",
+    "description" : "",
+    "placeholders" : null
   }
 }

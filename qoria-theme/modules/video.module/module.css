@@ -1,6 +1,5 @@
 .play-button {
   cursor: pointer;
-  mix-blend-mode: screen;
   width: 10%;
   background-size: contain;
   background-position: center;

@@ -14,6 +14,19 @@
   padding-bottom: 2rem;
   {% endif %}
 }
+
+{% if module.style.normalise_heights %}
+
+.slick-initialized .slick-slide {
+    /* display: block; */
+    display: flex;
+    align-items: {{module.style.vertical_align}};
+    justify-content: {{module.style.horizontal_align}};
+}
+
+{% endif %}
+
+
 {% end_scope_css %}
 </style>
 {% end_require_css %}
@@ -27,7 +40,7 @@
 
 {% endif %}
 
-    <div class="carousel-container">
+    <div class="carousel-container " id="slick-{{name}}">
 
     {% if module.style.controls %}
         <div class="slider-arrow-container align-self-center text-center">
@@ -40,14 +53,16 @@
         </div>
         {%endif%}
         
-    <div class="{{module.style.dark_or_light}} carousel-slider" id="carousel_{{name}}">
+    <div class="{{module.style.dark_or_light}} carousel-slider {{ "section-shadow" if module.style.shadow == "section-shadow" }}" style="{{ "transform-style: preserve-3d; position: relative; z-index: 2;" if module.style.shadow == "section-shadow" }}" id="carousel_{{name}}">
     {% for item in module.slide %}
         <div class="slide">
-        {% for item2 in item.column %}
-            <div class="{{ item2.column_classes }}">
-            {{ item2.content }}
+            <div class="row">
+                {% for item2 in item.column %}
+                    <div class="{{ item2.column_classes }}">
+                    {{ item2.content }}
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
         </div>
     {% endfor %}
     </div>
@@ -77,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {% if module.style.autoplay %} autoplaySpeed: {{ module.style.interval }}, {% endif %}
         arrows: {{ module.style.controls }},
         prevArrow: '#prevArrow-{{name}}',
+        adaptiveHeight: {{ module.style.adaptive_height }},
         nextArrow: '#nextArrow-{{name}}',
         dotsClass: "slider-indicators",
         slidesToShow: {{ module.style.responsive.desktop.slides_to_display }},
@@ -98,5 +114,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         ]
     });
+
+    {% if module.style.normalise_heights %}
+        
+        $(window).on(
+        'load resize orientationchange', function () {
+        normaliseHeights('#slick-{{ name }} .slick-slide');
+        });
+
+    {% endif %}
+
 });
 </script>

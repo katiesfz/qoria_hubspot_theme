@@ -3,7 +3,7 @@
   "smart_type" : "NOT_SMART",
   "icon" : "../../../images/module-icons/square-quote.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 115094061900,
+  "module_id" : 115232787102,
   "label" : "Pullout - Privacy Navigation",
   "is_available_for_new_content" : true
 }

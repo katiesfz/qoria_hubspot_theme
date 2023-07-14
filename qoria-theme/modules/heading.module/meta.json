@@ -2,7 +2,7 @@
   "global" : false,
   "icon" : "../../images/module-icons/high-header.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING", "EMAIL" ],
-  "module_id" : 107164043604,
+  "module_id" : 114968373777,
   "label" : "Heading",
   "is_available_for_new_content" : true
 }

@@ -20,7 +20,7 @@
         inlineMessage: "{{module.form.message}}",
       {% endif %}
       submitButtonClass: "btn btn-{{module.style.button_colour}} {{"d-block mx-auto" if module.style.button_alignment == "center"}} {{"d-block ms-auto" if module.style.button_alignment == "right"}}",
-      cssClass: 'hs-form'
+      cssClass: 'hs-form {{module.advanced.additional_classes}}'
     });
   </script>
 

@@ -2,7 +2,7 @@
   "global" : false,
   "icon" : "../../images/module-icons/info-circle-solid.svg",
   "host_template_types" : [ "PAGE" ],
-  "module_id" : 106704873508,
+  "module_id" : 114969642022,
   "js_assets" : [ {
     "autoload" : true,
     "path" : "../../js/jquery/jquery-3.6.4.min.js",

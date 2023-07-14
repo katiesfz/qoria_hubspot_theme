@@ -83,8 +83,7 @@
     "controlling_value_regex" : "-",
     "property" : null,
     "operator" : "NOT_EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "display" : "select",
   "choices" : [ [ "text-white", "Light" ], [ "text-dark", "Dark" ] ],

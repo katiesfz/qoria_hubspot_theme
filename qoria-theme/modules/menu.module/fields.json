@@ -35,8 +35,7 @@
     "controlling_value_regex" : "list",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "display" : "text",
   "min" : 1,

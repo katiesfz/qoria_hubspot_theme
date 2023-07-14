@@ -1,10 +1,12 @@
 [ {
+  "id" : "style",
   "name" : "style",
   "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : true,
   "children" : [ {
+    "id" : "style.spacing_field",
     "name" : "spacing_field",
     "display_width" : null,
     "label" : "Spacing",
@@ -13,6 +15,7 @@
     "type" : "spacing",
     "default" : { }
   }, {
+    "id" : "style.background_colour",
     "name" : "background_colour",
     "display_width" : null,
     "label" : "Background Colour",
@@ -26,6 +29,7 @@
     "type" : "choice",
     "default" : "bg-gradient-primary text-white"
   }, {
+    "id" : "style.background_image",
     "name" : "background_image",
     "display_width" : null,
     "label" : "Background Image",
@@ -37,8 +41,9 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default": "none"
+    "default" : "none"
   }, {
+    "id" : "style.overlay",
     "name" : "overlay",
     "display_width" : null,
     "label" : "Overlay",
@@ -48,6 +53,7 @@
     "type" : "boolean",
     "default" : true
   }, {
+    "id" : "style.shadow",
     "name" : "shadow",
     "display_width" : null,
     "label" : "Shadow",
@@ -67,6 +73,7 @@
     "shadow" : true
   }
 }, {
+  "id" : "row",
   "name" : "row",
   "display_width" : null,
   "label" : "Row",
@@ -79,6 +86,7 @@
     "default" : 1
   },
   "children" : [ {
+    "id" : "row.column",
     "name" : "column",
     "display_width" : null,
     "label" : "Column",
@@ -91,6 +99,7 @@
       "default" : 3
     },
     "children" : [ {
+      "id" : "row.column.pre_heading",
       "name" : "pre_heading",
       "display_width" : null,
       "label" : "Pre-heading",
@@ -101,6 +110,7 @@
       "show_emoji_picker" : false,
       "type" : "text"
     }, {
+      "id" : "row.column.heading",
       "name" : "heading",
       "display_width" : null,
       "label" : "Heading",
@@ -109,6 +119,7 @@
       "enabled_features" : [ "link", "bold" ],
       "type" : "richtext"
     }, {
+      "id" : "row.column.statistic",
       "name" : "statistic",
       "display_width" : null,
       "label" : "Statistic",
@@ -119,6 +130,7 @@
       "show_emoji_picker" : false,
       "type" : "text"
     }, {
+      "id" : "row.column.statistic_font_size",
       "name" : "statistic_font_size",
       "display_width" : null,
       "label" : "Statistic font size",
@@ -131,6 +143,7 @@
       "preset" : null,
       "type" : "choice"
     }, {
+      "id" : "row.column.text",
       "name" : "text",
       "display_width" : null,
       "label" : "Body text",
@@ -139,6 +152,7 @@
       "enabled_features" : [ "link", "bold" ],
       "type" : "richtext"
     }, {
+      "id" : "row.column.link",
       "name" : "link",
       "display_width" : null,
       "label" : "Link",
@@ -159,6 +173,7 @@
         "user_generated_content" : false
       }
     }, {
+      "id" : "row.column.link_label",
       "name" : "link_label",
       "display_width" : null,
       "label" : "Link Label",
@@ -180,12 +195,14 @@
       "type" : "boolean",
       "default" : false
     }, {
+      "id" : "row.column.column_styles",
       "name" : "column_styles",
       "display_width" : null,
       "label" : "Column styles",
       "required" : false,
       "locked" : false,
       "children" : [ {
+        "id" : "row.column.column_styles.background_colour",
         "name" : "background_colour",
         "display_width" : null,
         "label" : "Background colour",
@@ -198,6 +215,7 @@
         "preset" : null,
         "type" : "choice"
       }, {
+        "id" : "row.column.column_styles.background_image",
         "name" : "background_image",
         "display_width" : null,
         "label" : "Background image",
@@ -214,12 +232,14 @@
       "expanded" : false,
       "type" : "group"
     }, {
+      "id" : "row.column.advanced",
       "name" : "advanced",
       "display_width" : null,
       "label" : "Advanced",
       "required" : false,
       "locked" : false,
       "children" : [ {
+        "id" : "row.column.advanced.additional_classes",
         "name" : "additional_classes",
         "display_width" : null,
         "label" : "Additional classes",
@@ -238,12 +258,14 @@
     "expanded" : false,
     "type" : "group"
   }, {
+    "id" : "row.advanced",
     "name" : "advanced",
     "display_width" : null,
     "label" : "Advanced",
     "required" : false,
     "locked" : false,
     "children" : [ {
+      "id" : "row.advanced.additional_classes",
       "name" : "additional_classes",
       "display_width" : null,
       "label" : "Additional classes",
@@ -261,74 +283,71 @@
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
-  "default" : [{
-      "column" : [ {
-        "column_styles" : {
-          "background_colour" : "none",
-          "background_image" : "none"
-        },
-        "advanced" : {
-          "additional_classes" : "p-4"
-        },
-        "heading" : "<strong>Discover Qoria</strong>",
-        "pre_heading" : "",
-        "statistic" : "",
-        "statistic_font_size" : "display-1",
-        "text" : "<p>Find out more about who we are, our locations, what we do and why.</p>",
-        "link": {
-          "url" : {
+  "default" : [ {
+    "column" : [ {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "p-4"
+      },
+      "heading" : "<strong>Discover Qoria</strong>",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "<p>Find out more about who we are, our locations, what we do and why.</p>",
+      "link" : {
+        "url" : {
           "content_id" : null,
           "type" : "EXTERNAL",
           "href" : "/careers/discover-qoria"
-          }
-        },
-        "link_label" : "More +"
-      }, {
-        "column_styles" : {
-          "background_colour" : "none",
-          "background_image" : "none"
-        },
-        "advanced" : {
-          "additional_classes" : "p-4"
-        },
-        "heading" : "<strong>Life at Qoria</strong>",
-        "pre_heading" : "",
-        "statistic" : "",
-        "statistic_font_size" : "display-1",
-        "text" : "<p>Find out what it’s like to work here from the people shaping our culture.</p>",
-        "link": {
-          "url" : {
+        }
+      },
+      "link_label" : "More +"
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "p-4"
+      },
+      "heading" : "<strong>Life at Qoria</strong>",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "<p>Find out what it’s like to work here from the people shaping our culture.</p>",
+      "link" : {
+        "url" : {
           "content_id" : null,
           "type" : "EXTERNAL",
           "href" : "/careers/life-at-qoria"
-          }
-        },
-        "link_label" : "More +"
-      }, {
-        "column_styles" : {
-          "background_colour" : "none",
-          "background_image" : "none"
-        },
-        "advanced" : {
+        }
+      },
+      "link_label" : "More +"
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
         "additional_classes" : "p-4"
       },
-        "heading" : "<strong>Search vacancies</strong>",
-        "pre_heading" : "",
-        "statistic" : "",
-        "statistic_font_size" : "display-6",
-        "text" : "<p>Search our global vacancies on LinkedIn and find your happy.</p>",
-        "link": {
-          "url" : {
+      "heading" : "<strong>Search vacancies</strong>",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-6",
+      "text" : "<p>Search our global vacancies on LinkedIn and find your happy.</p>",
+      "link" : {
+        "url" : {
           "content_id" : null,
           "type" : "EXTERNAL",
           "href" : "#opportunities"
-          }
-        },
-        "link_label" : "More +"
-      } ],
-      "advanced" : {
-      }
-    }]
-  } 
-]
-
+        }
+      },
+      "link_label" : "More +"
+    } ],
+    "advanced" : { }
+  } ]
+} ]

@@ -26,8 +26,7 @@
     "controlling_value_regex" : "full-video",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "type" : "file"
 }, {
@@ -43,8 +42,7 @@
     "controlling_value_regex" : "full-image",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "responsive" : true,
   "resizable" : false,
@@ -87,7 +85,7 @@
   "locked" : false,
   "occurrence" : {
     "min" : null,
-    "max" : 4,
+    "max" : 5,
     "sorting_label_field" : "8fa7aaf5-aedb-2ff2-bc91-f9cdd44ef6d0",
     "default" : 3
   },
@@ -135,17 +133,16 @@
   "label" : "Stock Data HubDB",
   "required" : false,
   "locked" : false,
-  "type" : "hubdbtable",
-  "default" : 6270539,
   "visibility" : {
     "controlling_field" : null,
     "controlling_field_path" : "show_share_price",
     "controlling_value_regex" : "true",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
-  }
+    "access" : null
+  },
+  "type" : "hubdbtable",
+  "default" : 6270539
 }, {
   "id" : "show_breadcrumbs",
   "name" : "show_breadcrumbs",
@@ -169,8 +166,7 @@
     "controlling_value_regex" : "true",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "type" : "menu",
   "default" : 115248177746

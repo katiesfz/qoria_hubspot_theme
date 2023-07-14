@@ -21,8 +21,7 @@
     "controlling_value_regex" : "true",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "responsive" : true,
   "resizable" : true,
@@ -47,8 +46,7 @@
     "controlling_value_regex" : "true",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "supported_types" : [ "EXTERNAL", "CONTENT" ],
   "type" : "url",

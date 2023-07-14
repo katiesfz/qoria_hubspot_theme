@@ -113,8 +113,7 @@
     "controlling_value_regex" : "custom_link",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "supported_types" : [ "EXTERNAL", "CONTENT" ],
   "show_advanced_rel_options" : false,
@@ -139,8 +138,7 @@
     "controlling_value_regex" : "payment_link",
     "property" : null,
     "operator" : "EQUAL",
-    "access" : null,
-    "hidden_subfields" : null
+    "access" : null
   },
   "type" : "payment",
   "default" : { }
@@ -160,16 +158,14 @@
       "controlling_value_regex" : "payment_link",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     }, {
       "controlling_field" : "payment_link",
       "controlling_field_path" : null,
       "controlling_value_regex" : "id\":\\d+",
       "property" : null,
       "operator" : "MATCHES_REGEX",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     } ],
     "children" : [ ]
   },
@@ -572,8 +568,7 @@
           "controlling_value_regex" : "color",
           "property" : null,
           "operator" : "EQUAL",
-          "access" : null,
-          "hidden_subfields" : null
+          "access" : null
         },
         "type" : "color",
         "default" : {
@@ -593,8 +588,7 @@
           "controlling_value_regex" : "gradient",
           "property" : null,
           "operator" : "EQUAL",
-          "access" : null,
-          "hidden_subfields" : null
+          "access" : null
         },
         "type" : "gradient",
         "default" : { }
@@ -611,8 +605,7 @@
           "controlling_value_regex" : "image",
           "property" : null,
           "operator" : "EQUAL",
-          "access" : null,
-          "hidden_subfields" : null
+          "access" : null
         },
         "type" : "backgroundimage",
         "default" : {

@@ -1,107 +1,107 @@
 {
-  "name": {
-    "message": "Dividir",
-    "description": "",
-    "placeholders": null
+  "name" : {
+    "message" : "Dividir",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.default.horizontal_align": {
-    "message": "CENTRO",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.default.horizontal_align" : {
+    "message" : "CENTRO",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.alignment.label": {
-    "message": "Alinhamento",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.alignment.label" : {
+    "message" : "Alinhamento",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.alignment.label": {
-    "message": "Alinhamento",
-    "description": "",
-    "placeholders": null
+  "styles.alignment.label" : {
+    "message" : "Alinhamento",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.label": {
-    "message": "Estilos",
-    "description": "",
-    "placeholders": null
+  "styles.label" : {
+    "message" : "Estilos",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.color.label": {
-    "message": "Cor",
-    "description": "",
-    "placeholders": null
+  "styles.line.color.label" : {
+    "message" : "Cor",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.label": {
-    "message": "Linha",
-    "description": "",
-    "placeholders": null
+  "styles.line.label" : {
+    "message" : "Linha",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dashed": {
-    "message": "Tracejado",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dashed" : {
+    "message" : "Tracejado",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.dotted": {
-    "message": "Pontilhado",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.dotted" : {
+    "message" : "Pontilhado",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.choices.solid": {
-    "message": "Sólido",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.choices.solid" : {
+    "message" : "Sólido",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.style.label": {
-    "message": "Estilo",
-    "description": "",
-    "placeholders": null
+  "styles.line.style.label" : {
+    "message" : "Estilo",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.line.thickness.label": {
-    "message": "Espessura",
-    "description": "",
-    "placeholders": null
+  "styles.line.thickness.label" : {
+    "message" : "Espessura",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.label": {
-    "message": "Tamanho",
-    "description": "",
-    "placeholders": null
+  "styles.size.label" : {
+    "message" : "Tamanho",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.help_text": {
-    "message": "Percentagem da área em que o divisor é colocado.",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.help_text" : {
+    "message" : "Percentagem da área em que o divisor é colocado.",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.size.width.label": {
-    "message": "Largura",
-    "description": "",
-    "placeholders": null
+  "styles.size.width.label" : {
+    "message" : "Largura",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.label": {
-    "message": "Espaçamento",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.label" : {
+    "message" : "Espaçamento",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.bottom.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.bottom.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.units": {
-    "message": "px",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.default.margin.top.value": {
-    "message": "10",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.default.margin.top.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
   },
-  "styles.spacing.spacing.label": {
-    "message": "Espaçamento",
-    "description": "",
-    "placeholders": null
+  "styles.spacing.spacing.label" : {
+    "message" : "Espaçamento",
+    "description" : "",
+    "placeholders" : null
   }
 }

@@ -103,8 +103,7 @@
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "display" : "text",
     "step" : 1,
@@ -149,15 +148,29 @@
     "type" : "boolean",
     "default" : true
   }, {
-    "id" : "style.collapse",
-    "name" : "collapse",
+    "id" : "style.testimonial_style",
+    "name" : "testimonial_style",
     "display_width" : null,
-    "label" : "Collapse",
+    "label" : "Testimonial style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "Card" ], [ "2", "Inline" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "1"
+  }, {
+    "id" : "style.greyscale_images",
+    "name" : "greyscale_images",
+    "display_width" : null,
+    "label" : "Greyscale Images",
     "required" : false,
     "locked" : false,
     "display" : "toggle",
     "type" : "boolean",
-    "default" : false
+    "default" : true
   }, {
     "id" : "style.cards_settings",
     "name" : "cards_settings",
@@ -171,8 +184,7 @@
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "NOT_EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "children" : [ {
       "id" : "style.cards_normalise_heights",
@@ -318,8 +330,7 @@
       "controlling_value_regex" : "true",
       "property" : null,
       "operator" : "EQUAL",
-      "access" : null,
-      "hidden_subfields" : null
+      "access" : null
     },
     "children" : [ {
       "id" : "style.dark_or_light",
@@ -398,8 +409,7 @@
         "controlling_value_regex" : "true",
         "property" : null,
         "operator" : "EQUAL",
-        "access" : null,
-        "hidden_subfields" : null
+        "access" : null
       },
       "display" : "text",
       "min" : 0,

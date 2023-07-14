@@ -4,7 +4,24 @@
     {% for row in table|sort(True, False, "date") %}
         {% do dates.append(row.date|format_date('yyyy')) %}
     {% endfor %}
-    {% set uniqueYears = dates|unique %}
+ {#   {% set uniqueYears = dates|unique %}   #}
+
+
+{# get fiscal years #}
+    {% set fiscalYears = [] %}
+    {% for row in table|sort(True, False, "date") %}
+         {% set previousYear = row.date|format_date('yyyy')|int - 1 %}
+         {% set nextYear = row.date|format_date('yyyy')|int + 1 %}
+         {% if row.date|format_date("M") < 7 %}
+          {% set fiscalYear = previousYear ~ "/" ~ row.date|format_date('yyyy') %}
+         {% else %}
+          {% set fiscalYear = row.date|format_date('yyyy') ~ "/" ~ nextYear %}
+         {% endif %}
+        {% do fiscalYears.append(fiscalYear) %}
+    {% endfor %}
+    {% set uniqueYears = fiscalYears|unique %}
+
+
         
     {% set typeCol = hubdb_table_column(module.hubdb, "type") %}
     {% set docTypes = [] %}
@@ -79,7 +96,7 @@
 
                             {% set foundRow = [] %}
                             {% for row in hubdb_table_rows(module.stock_db, queryparam) %}
-                                {% if row.price|string != "0" and foundRow == [] %}
+                                {% if row.price != 0 and foundRow == [] %}
                                     {% do foundRow.append(row.hs_id) %}
                                 {% endif %}
                             {% endfor %}
@@ -147,25 +164,53 @@ function checkYear(doc) {
     let selected = this;
     return itemYear == selected;
   }
+   
+function checkFiscalYear(doc) {
+    let itemDate = new Date(doc.date);
+    let itemYear = itemDate.getFullYear();
+    let itemMonth = itemDate.getMonth();
+    let selectedYears = this.split("/");
+   if ((itemYear == selectedYears[0]) && (itemMonth > 5)){
+      return true;
+   } else if ((itemYear == selectedYears[1]) && (itemMonth < 6)){
+      return true;
+   } else {return false;}
+  }
 
-function checkQ3(doc) {
+function checkQ1(doc) {
 let itemMonth = new Date(doc.date).getMonth();
 return (6 <= itemMonth && itemMonth <= 8);
 }
 
-function checkQ4(doc) {
+function checkQ2(doc) {
 let itemMonth = new Date(doc.date).getMonth();
 return (9 <= itemMonth && itemMonth <= 11);
 }
 
-function checkQ1(doc) {
+function checkQ3(doc) {
 let itemMonth = new Date(doc.date).getMonth();
 return (0 <= itemMonth && itemMonth <= 2);
 }
-function checkQ2(doc) {
+function checkQ4(doc) {
 let itemMonth = new Date(doc.date).getMonth();
 return (3 <= itemMonth && itemMonth <= 5);
 }
+
+   function checkCurQuarter() {
+      var today = new Date();
+      var curMonth = today.getMonth();
+      var curQuarter = 0;
+      if (curMonth < 3) {
+         curQuarter = 3;
+      } else if (curMonth < 6) {
+         curQuarter = 4;
+      } else if (curMonth < 9) {
+         curQuarter = 1;
+      } else if (curMonth < 12) {
+         curQuarter = 2;
+      };
+      return curQuarter;
+   }
 
 function checkDocType(doc) {
     let selected = this;
@@ -180,7 +225,7 @@ function filterDocType(listToFilter, docType) {
   }
 
 function filterYear(listToFilter, year) {
-    return listToFilter.filter(checkYear, year);
+    return listToFilter.filter(checkFiscalYear, year);
   }
 
 function printQuarters(listToFilter) {
@@ -273,6 +318,21 @@ if ((document.getElementById("docTypeSelect").value != "All announcements") && (
 window.onload = function(){
 let filteredYear = filterYear(docsListUnfiltered, document.getElementById("yearSelect").value);
 printQuarters(filteredYear, document.getElementById("yearSelect").value);
+   
+let q1Tab = document.getElementById("q1-tab");
+let q2Tab = document.getElementById("q2-tab");
+let q3Tab = document.getElementById("q3-tab");
+let q4Tab = document.getElementById("q4-tab");
+   
+   if (checkCurQuarter() == 1){
+      q1Tab.click();
+   } else if (checkCurQuarter() == 2){
+      q2Tab.click();
+   } else if (checkCurQuarter() == 3){
+      q3Tab.click();
+   } else if (checkCurQuarter() == 4){
+      q4Tab.click();
+   }
 };
 
 </script>
