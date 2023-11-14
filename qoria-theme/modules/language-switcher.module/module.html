@@ -1,0 +1,63 @@
+
+
+{% if content.translations|length == 1 %}
+    {# language button is a toggler #}
+    
+    {% for translation in content.translations %}
+
+        <a class="btn p-1 btn-link text-reset text-decoration-none d-flex flex-row align-items-center" href="{{translation.absolute_url}}" type="button" title="{{ locale_name(translation.language, translation.language) }}">
+            <i class="fa far fa-globe me-2"></i>
+            <div class="small">
+            {{ locale_name(translation.language, translation.language) }}
+            </div>
+        </a>
+    {% endfor %}
+
+{% else %}
+    {# language button is a dropdown #}
+    
+    {% set languages = [] %}
+
+        {# Collect languages #}
+    
+    {% do languages.append({
+        "language": content.language,
+        "url": content.absolute_url
+        })  %}
+    
+    {% for translation in content.translations %}
+        {% do languages.append({
+        "language": translation.language,
+        "url": translation.absolute_url
+        })  %}
+    {% endfor %}
+
+    <div class="dropdown-center">
+    <button class="btn p-1 btn-link text-reset text-decoration-none dropdown-toggle d-flex flex-row align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Choose language">
+      <i class="fa far fa-globe"></i>
+      {% if module.include_button_label %}
+  
+          {% if content.language == "es" %}
+          <div class="small text-start ms-2">Cambiar <br>idioma</div>
+          {% else %}
+          <div class="small text-start ms-2">Choose <br>language</div>
+          {% endif %}
+      {% endif %}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+    {% for language in languages %}
+      <li><a class="dropdown-item" data-language="{{language.language}}" lang="{{language.language}}" href="{{language.url}}">
+          {% if module.display_mode == "localized" %}
+              {{ locale_name(language.language, language.language) }}
+          {% elif module.display_mode == "pagelang" %}
+              {{ locale_name(language.language, content.language) }}
+          {% elif module.display_mode == "hybrid" %}
+              {{ locale_name(language.language, content.language) }}/{{ locale_name(language.language, language.language) }}
+          {% endif %}
+          </a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+
+{% endif %}

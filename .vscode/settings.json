@@ -19,13 +19,16 @@
     ],
     "liveSassCompile.settings.includeItems": [
         "/scss/qoria-theme.scss",
-        "/scss/smart-recruiters-styles.scss"
+        "/scss/smart-recruiters-styles.scss",
+        "/scss/easy-webinar-styles.scss"
     ],
     "liveSassCompile.settings.generateMap": false,
     "files.associations": {
-        "*.html": "html-hubl"
+        "*.html": "html-hubl",
+        "*.css": "css-hubl"
     },
     "liveSassCompile.settings.autoprefix": [
+
     
     ]
 }

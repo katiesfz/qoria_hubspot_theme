@@ -53,10 +53,5 @@
     "message" : "E-pošta",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Naslov obrazca",
-    "description" : "",
-    "placeholders" : null
   }
 }

@@ -1,6 +1,5 @@
 {
-  "global" : true,
-  "smart_type" : "NOT_SMART",
+  "global" : false,
   "host_template_types" : [ "PAGE" ],
   "module_id" : 116084842311,
   "label" : "Site Map",

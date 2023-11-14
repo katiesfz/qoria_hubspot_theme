@@ -53,10 +53,5 @@
     "message" : "이메일",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "양식 제목",
-    "description" : "",
-    "placeholders" : null
   }
 }

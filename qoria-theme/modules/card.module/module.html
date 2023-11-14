@@ -34,16 +34,26 @@
 
         {% if text.cta_style %}
           {% if text.cta_style != "text-" %}
-            {% set textCtaClasses = text.cta_style ~ text.cta_colour ~ " mt-3" %}
+            {% set textCtaClasses = text.cta_style ~ text.cta_colour ~ "mt-3" %}
           {% else %}
-            {% set textCtaClasses = "text-" ~ text.cta_colour ~ " text-decoration-none fw-semibold" %}
+            {% set textCtaClasses = "text-" ~ text.cta_colour ~ " text-decoration-none fw-semibold d-inline-block mt-3" %}
           {% endif %}
         {% else %}
-          {% set textCtaClasses = "text-reset text-decoration-none fw-semibold" %}
+          {% set textCtaClasses = "text-reset text-decoration-none fw-semibold d-inline-block mt-3" %}
         {% endif %}
 
 
-        <a href="{{text.link.url.href}}" class="{{ "stretched-link" if text.stretched_link }} {{textCtaClasses}}">{{text.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
+        <a href="{{text.link.url.href}}" 
+        class="{{ "stretched-link" if text.stretched_link }} {{textCtaClasses}}"
+        {% if text.link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if text.download %}
+          {% if text.download_file %}
+            download="{{text.download_file}}"
+          {% else %}
+              download
+          {% endif %}
+        {% endif %}
+        >{{text.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
       {% endif %}
 
       </div>
@@ -57,7 +67,7 @@
   {% else %}
   
     {% if card.text %}
-      <div class="card-text">
+      <div class="card-text flex-grow-1">
       {{ card.text }}
       </div>
     {% endif %}
@@ -66,12 +76,29 @@
         {% if card.cta_style != "text-" %}
           {% set ctaClasses = card.cta_style ~ card.cta_colour ~ " mt-3" %}
         {% else %}
-          {% set ctaClasses = "text-" ~ card.cta_colour ~ " text-decoration-none fw-semibold" %}
+          {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-2 text-decoration-none fw-semibold" %}
         {% endif %}
       {% else %}
-        {% set ctaClasses = "text-reset text-decoration-none fw-semibold" %}
+        {% set ctaClasses = "text-reset text-decoration-none fw-semibold mt-2" %}
       {% endif %}
-      <a href="{{card.link.url.href}}" class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}">{{card.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
+      {% if module.styles.textalignment == "center" %}
+        {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+      {% elif module.styles.textalignment == "end" %}
+        {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+      {% elif module.styles.textalignment == "start" %}
+        {% set ctaClasses = ctaClasses ~ " me-auto" %}
+      {% endif %}
+      <a href="{{card.link.url.href}}" 
+      class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
+      {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+      {% if card.download %}
+        {% if card.download_file %}
+          download="{{card.download_file}}"
+        {% else %}
+            download
+        {% endif %}
+      {% endif %}
+      >{{card.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
     {% endif %}
   
   {% endif %}
@@ -86,34 +113,8 @@
   {% for card in module.card %}
 
     <div class="col">
-      <div class="card {{ module.styles.card_colour }} {{ module.styles.shadow }} {{ "h-100" if module.styles.equal_heights }}">
+      <div class="card {{ module.styles.card_colour }} {{ module.styles.shadow }} {{ "h-100 d-flex flex-column" if module.styles.equal_heights }}">
 
-        {% if module.styles.card_style == "1" %}
-
-          {% if card.title != "" %}
-            <div class="{{card.accent_colour}} position-relative {{ "pb-{{card.overlap}}" if card.image_overlap == "true" }}" style="">
-              <div class="card-header card-header-cap d-flex border-0 align-items-end justify-content-{{ module.styles.textalignment }} {{ "{{ card.title_size }}" if card.title_size else "fs-1" }} lh-sm text-{{ module.styles.textalignment }} " style="padding-top: 15%;">
-                <div>
-                  {{card.title}}
-                  </div>
-              </div>
-            </div>
-          {% endif %}
-          
-          
-          <div class="card-body text-{{ module.styles.textalignment }} {{ "pt-0" if card.image_overlap == "true" }}">
-
-          {% if card.image.src %}
-            <img src="{{ card.image.src }}" class="img-fluid mb-5 {{ "position-relative mt-n{{card.overlap}}" if card.image_overlap == "true" }}" alt="{{ card.image.alt }}">
-          {% endif %}
-
-
-          {{ card_body() }}
-
-          </div>
-
-
-        {% elif module.styles.card_style == "2" %}
 
           {% if module.styles.image_header && module.styles.image_header_fit == "cover" %}
             {% if card.image.src %}
@@ -126,16 +127,20 @@
 
           {% if module.styles.title_accent %}
 
+            {% if card.title != "" %}
             <div class="card-header {{ "card-header-cap" if module.styles.q_accent }} {{ "card-image-overlap card-image-overlap-padding" if card.image_overlap }} d-flex border-0 align-items-end justify-content-{{ module.styles.textalignment }} {{ "pt-7" if !card.image_overlap && module.styles.q_accent }} {{ card.title_size if card.title_size else "h5" }} {{card.accent_colour}} text-{{ module.styles.textalignment }} lh-sm" style="{{ "padding-bottom: calc(var(--q-card-cap-padding-y) + " ~ card.overlap ~ "rem);" if card.image_overlap }}">
-            {{ "<div class='py-3'>" if card.image_overlap }}{{card.title}}{{ "</div>" if card.image_overlap }}
+            <div {{ "class='py-3'" if card.image_overlap }}>{{card.title}}</div>
             </div>
+            {% endif %}
 
           {% else %}
+            {% unless card.accent_colour == "none" %}
            <div class="{{card.accent_colour}}"><div style="display: block; height: 1em;"></div></div>
+            {% endunless %}
           {% endif %}
            
 
-           <div class="card-body {{ module.styles.card_colour }} text-{{ module.styles.textalignment }} {{ "pt-0" if card.image_overlap }}">
+           <div class="card-body {{ module.styles.card_colour }} text-{{ module.styles.textalignment }} {{ "pt-0" if card.image_overlap }} {{ "d-flex flex-column" if module.styles.equal_heights }}">
            
           {% if module.styles.image_header && module.styles.image_header_fit == "contain" %}
             {% if card.image.src %}
@@ -164,28 +169,6 @@
 
          </div>
  
-
-        {% elif module.styles.card_style == "3" %}
-
-          {% if card.image.src %}
-            <img src="{{ card.image.src }}" class="card-img-top" alt="{{ card.image.alt }}">
-          {% endif %}
-
-          {% if card.title != "" %}
-              <div class="card-header h5 {{card.accent_colour}}  text-{{ module.styles.textalignment }}">{{card.title}}</div>
-          {% endif %}
-
-              <div class="card-body {{ module.styles.card_colour }} text-{{module.styles.textalignment}}">
-              
-              {{ card_body() }}
-
-              </div>
-    
-
-
-        {% endif %}
-
-
 
       </div>
     </div>

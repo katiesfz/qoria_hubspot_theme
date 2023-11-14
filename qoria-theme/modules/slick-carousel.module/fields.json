@@ -31,6 +31,7 @@
       "label" : "Content",
       "required" : false,
       "locked" : false,
+      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
       "type" : "richtext"
     }, {
       "id" : "slide.column.column_classes",
@@ -154,12 +155,6 @@
     "label" : "Vertical alignment",
     "required" : false,
     "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "start", "Top" ], [ "center", "Center" ] , [ "end", "Bottom" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "style.normalise_heights",
@@ -168,6 +163,12 @@
       "operator" : "EQUAL",
       "access" : null
     },
+    "display" : "select",
+    "choices" : [ [ "start", "Top" ], [ "center", "Center" ], [ "end", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
     "default" : "center"
   }, {
     "id" : "style.horizontal_align",
@@ -176,11 +177,6 @@
     "label" : "Horizontal alignment",
     "required" : false,
     "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "start", "Left" ], [ "center", "Center" ] , [ "end", "Right" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "style.normalise_heights",
@@ -189,6 +185,11 @@
       "operator" : "EQUAL",
       "access" : null
     },
+    "display" : "select",
+    "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
     "type" : "choice",
     "default" : "center"
   }, {
@@ -283,7 +284,7 @@
         "locked" : false,
         "display" : "text",
         "min" : 1,
-        "max" : 4,
+        "max" : 5,
         "step" : 1,
         "type" : "number",
         "default" : 1
@@ -296,7 +297,7 @@
         "locked" : false,
         "display" : "text",
         "min" : 1,
-        "max" : 4,
+        "max" : 5,
         "step" : 1,
         "type" : "number",
         "default" : 1
@@ -320,7 +321,7 @@
         "locked" : false,
         "display" : "text",
         "min" : 1,
-        "max" : 4,
+        "max" : 5,
         "step" : 1,
         "type" : "number",
         "default" : 1
@@ -333,7 +334,7 @@
         "locked" : false,
         "display" : "text",
         "min" : 1,
-        "max" : 4,
+        "max" : 5,
         "step" : 1,
         "type" : "number",
         "default" : 1
@@ -357,7 +358,7 @@
         "locked" : false,
         "display" : "text",
         "min" : 1,
-        "max" : 4,
+        "max" : 5,
         "step" : 1,
         "type" : "number",
         "default" : 1
@@ -370,7 +371,7 @@
         "locked" : false,
         "display" : "text",
         "min" : 1,
-        "max" : 4,
+        "max" : 5,
         "step" : 1,
         "type" : "number",
         "default" : 1

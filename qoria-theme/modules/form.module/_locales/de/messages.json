@@ -53,10 +53,5 @@
     "message" : "E-Mail",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Formulartitel",
-    "description" : "",
-    "placeholders" : null
   }
 }

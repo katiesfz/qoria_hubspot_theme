@@ -1758,10 +1758,10 @@
 		{% set alignment = "text-center" %}
 	{% elif location.direction == "gradient-tooltip-left" %}
 		{% set transform = "transform: translate(0%, -50%);" %}
-		{% set alignment = "text-end" %}
+		{% set alignment = "text-start" %}
 	{% elif location.direction == "gradient-tooltip-right" %}
 		{% set transform = "transform: translate(-100%, -50%);" %}
-		{% set alignment = "text-start" %}
+		{% set alignment = "text-end" %}
 	{% endif %}
 
 	<div class="position-absolute d-none d-{{module.style.breakpoint}}-block py-1 px-2 bg-gradient-primary {{ alignment }} text-white gradient-tooltip-small {{ location.direction }} q-location" id="locationPopup{{loop.index}}" style="top: {{ location.y_position }}%; left: {{ location.x_position }}%; {{transform}}">
@@ -1789,17 +1789,20 @@
 	</script>
 
 	</div>
+
+
+
 	<div class="key p-3">
 		<div class="px-2 py-2 bg-{{ module.style.map_colour_selected }}  d-inline-block align-middle me-2"></div>
-		<span>Our customers</span>
+		<span>{{module.our_customers}}</span>
 		<br>
 		<div class="d-none d-{{module.style.breakpoint}}-block">
 			<div class="px-2 py-2 bg-gradient-primary  d-inline-block align-middle me-2"></div>
-				<span>Qoria offices</span>
+				<span>{{module.qoria_offices}}</span>
 		</div>
 		<div class="d-block d-{{module.style.breakpoint}}-none">
 			<div class="px-2 py-2 bg-indigo  d-inline-block align-middle me-2"></div>
-				<span>Qoria offices</span>
+				<span>{{module.qoria_offices}}</span>
 		</div>
 	</div>
 	<div class="offices p-3 d-block d-{{module.style.breakpoint}}-none">

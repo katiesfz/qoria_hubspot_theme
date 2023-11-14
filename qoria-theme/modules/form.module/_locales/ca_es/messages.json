@@ -53,10 +53,5 @@
     "message" : "Correu electrònic",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Títol del formulari",
-    "description" : "",
-    "placeholders" : null
   }
 }

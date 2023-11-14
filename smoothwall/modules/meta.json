@@ -2,6 +2,6 @@
   "global" : false,
   "host_template_types" : [ "EMAIL" ],
   "module_id" : 119303416907,
-  "label" : "Newsletter Article",
+  "label" : "Newsletter Article - Smoothwall",
   "is_available_for_new_content" : true
 }

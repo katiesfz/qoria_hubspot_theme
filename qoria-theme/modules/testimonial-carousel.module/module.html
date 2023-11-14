@@ -18,14 +18,23 @@
         {% endif %}
 
         {% if module.style.testimonial_style && module.style.testimonial_style == "2" %}
-
-            svg.testimonial-quote {
-            min-width: 80px;
-            width: 20%;
-            max-width: 150px;
-            display: block;
-            margin-bottom: 32px;
-        }
+            {% if module.style.quote_size %}
+                svg.testimonial-quote {
+                min-width: {{module.style.quote_size / 2}}px;
+                width: 20%;
+                max-width: {{module.style.quote_size}}px;
+                display: block;
+                margin-bottom: 32px;
+            }
+            {% else %}
+                svg.testimonial-quote {
+                min-width: 80px;
+                width: 20%;
+                max-width: 150px;
+                display: block;
+                margin-bottom: 32px;
+            }
+            {% endif %}
 
         {% else %}
 
@@ -52,9 +61,29 @@
     <div class="col p-2">
     <div class="bg-gray-200 shadow-sm">
         <div class="row g-0 align-items-start testimonial-header">
-            <div class="col-6 mb-n4 align-self-stretch  {{ "filter-grayscale" if module.style.greyscale_images }}" style="background-image: url('{{item.image.src}}'); background-size: cover; background-position: center;">
+            {% if item.image_fit == "contain" %}
+                <div class="col-6 p-4 align-self-stretch d-flex align-items-center justify-content-center">
+                
+                    {% if item.image.src != "" %}
 
-            </div>
+                        {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
+                        {% if item.image.size_type == 'auto' %}
+                            {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
+                            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+                        {% elif item.image.size_type == 'auto_custom_max' %}
+                            {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}"' %}
+                            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+                        {% endif %}
+                        {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+
+                    <img src="{{item.image.src}}" alt="{{ item.image.alt }}" style=" {{ sizeCSS }}" class="{{ "filter-grayscale" if module.style.greyscale_images }}" {{ loadingAttr }} {{ sizeAttrs }}>
+
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="col-6 mb-n4 align-self-stretch {{ "filter-grayscale" if module.style.greyscale_images }}" style="background-image: url('{{item.image.src}}'); background-size: cover; background-position: center;">
+                </div>
+            {% endif %}
             <div class="col-6 p-4 text-dark pt-7">
             {%if item.author %} <p class="fs-6 fw-bold mb-0 lh-sm">{{item.author}}</p> {%endif%}
                 {% if item.role%}<p class="fs-6 mt-3 mb-0 lh-sm">{{item.role}}</p> {%endif%}
@@ -92,39 +121,42 @@
 
     <div class="col p-2">
         <div class="row align-items-center">
-        <div class="col-12 col-md-3 order-md-2 text-center">
-        
-		{% if item.image.size_type == 'auto' %}
-			{% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}" style="max-width: 100%; height: auto;"' %}
-		{% elif item.image.size_type == 'auto_custom_max' %}
-			{% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
-		{% endif %}
-            <img src="{{item.image.src}}" class="img-fluid {{ "filter-grayscale" if module.style.greyscale_images }}" {{ sizeAttrs }}>
-        </div>
-        <div class="col-12 col-md-9 order-md-1">
-                <!-- quote graphic -->
-                <?xml version="1.0" encoding="utf-8"?>
-                <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2; transform: scale(-1, 1);" xml:space="preserve">
-                <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
-                c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
-                <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
-                c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
-                </svg>
-            <!-- end quote graphic -->
-            
-            <div class="fs-5 mb-5">{{item.quote}}
-            
-            {% if item.read_more_url.href %}
-                <br>
-                <a href="{{ item.read_more_url.href }}" class="text-reset fs-5 text-decoration-none fw-bold d-block mt-2">More +</a>
+            {% if item.image.src != "" %}
+                <div class="col-12 col-md-4 order-md-2 text-center">
+                
+                {% if item.image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}" style="max-width: 100%; height: auto;"' %}
+                {% elif item.image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                    <img src="{{item.image.src}}" class="img-fluid d-inline-block {{ "filter-grayscale" if module.style.greyscale_images }}" {{ sizeAttrs }}>
+                </div>
             {% endif %}
+            <div class="col-12 {{ "col-md-8" if item.image.src != "" }} order-md-1">
+                    <!-- quote graphic -->
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" class="testimonial-quote" id="quote" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 80 47.2" style="enable-background:new 0 0 80 47.2; transform: scale(-1, 1);" xml:space="preserve">
+                    <path class="fill-{{ item.accent_colour }}" d="M12.8,1.1c-1.5-1.4-3.9-1.4-5.4,0L1.1,7.3c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                    c1.5-1.4,1.5-3.8,0-5.2L12.8,1.1z"/>
+                    <path class="fill-{{ item.accent_colour }}" d="M44.5,1.1c-1.5-1.4-3.9-1.4-5.4,0l-6.4,6.2c-1.5,1.4-1.5,3.8,0,5.2l34.4,33.6c1.5,1.4,3.9,1.4,5.4,0l6.4-6.2
+                    c1.5-1.4,1.5-3.8,0-5.2L44.5,1.1z"/>
+                    </svg>
+                <!-- end quote graphic -->
+                
+                <div class="fs-4 mb-5 fw-light lh-sm">{{item.quote}}
+                
+                {% if item.read_more_url.href %}
+                    <br>
+                    <a href="{{ item.read_more_url.href }}" class="text-reset fs-5 text-decoration-none fw-bold d-block mt-2">More +</a>
+                {% endif %}
+                </div>
+                
+                {%if item.author %} <p class="fw-semibold mb-1 lh-sm">{{item.author}}</p> {%endif%}
+                {% if item.role%}<p class="mb-0 lh-sm">{{item.role}}</p> {%endif%}
+                
             </div>
-            
-            {%if item.author %} <p class="small fw-bold mb-0 lh-sm">{{item.author}}</p> {%endif%}
-            {% if item.role%}<p class="small mb-0 lh-sm">{{item.role}}</p> {%endif%}
-            
         </div>
     </div>
 
@@ -150,9 +182,9 @@
     </div>
     {%endif%}
 
-    <div class="testimonial-slider " id="testimonial-{{name}}">
+    <div class="testimonial-slider {{module.style.dark_or_light}} {{ "section-shadow" if module.style.shadow == "section-shadow" }}" style="{{ "transform-style: preserve-3d; position: relative; z-index: 2;" if module.style.shadow == "section-shadow" }}" id="testimonial-{{name}}">
         {% for item in module.slide %}
-
+            <div class="slide">
             {% if module.style.testimonial_style && module.style.testimonial_style == "1" %}
 
                 {{ testimonial()  }}
@@ -166,6 +198,7 @@
                 {{ testimonial()  }}
 
             {% endif %}
+            </div>
         {% endfor %}
     </div>
 

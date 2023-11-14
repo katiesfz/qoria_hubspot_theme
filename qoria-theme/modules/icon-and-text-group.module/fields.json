@@ -214,6 +214,7 @@
     "label" : "Text",
     "required" : false,
     "locked" : false,
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "link", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
     "type" : "richtext",
     "default" : "<h4>Screen time</h4>\n<p class=\"m-0\">Young Australians are spending more than seven hours a day on screen time.</p>"
   }, {

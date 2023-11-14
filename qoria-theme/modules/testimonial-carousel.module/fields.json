@@ -29,6 +29,28 @@
       "loading" : "lazy"
     }
   }, {
+    "id" : "slide.image_fit",
+    "name" : "image_fit",
+    "display_width" : null,
+    "label" : "Image fit",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "style.testimonial_style",
+      "controlling_field_path" : "style.testimonial_style",
+      "controlling_value_regex" : "1",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "contain", "Contain" ], [ "cover", "Cover" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "cover"
+  }, {
     "id" : "slide.author",
     "name" : "author",
     "display_width" : null,
@@ -161,6 +183,28 @@
     "preset" : null,
     "type" : "choice",
     "default" : "1"
+  }, {
+    "id" : "style.quote_size",
+    "name" : "quote_size",
+    "display_width" : null,
+    "label" : "Quotation Mark Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "150", "Regular" ], [ "80", "Small" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "150",
+    "visibility" : {
+      "controlling_field" : "style.testimonial_style",
+      "controlling_field_path" : "style.testimonial_style",
+      "controlling_value_regex" : "2",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
   }, {
     "id" : "style.greyscale_images",
     "name" : "greyscale_images",

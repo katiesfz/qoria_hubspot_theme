@@ -2,7 +2,7 @@
     {% for person in module.team_member %}
         <div class="col">
             {% if person.image.src %}
-                <img src="{{person.image.src}}" class="img-fluid w-100 mb-4">
+                <img src="{{person.image.src}}" class="img-fluid w-100 mb-4 {{ "filter-grayscale" if module.styles.greyscale_filter }}">
             {% endif %}
             <p class="fs-6 fw-semibold mb-2">{{person.person_name}}</p>
             <p class="fs-6  mb-4">{{person.title}}</p>

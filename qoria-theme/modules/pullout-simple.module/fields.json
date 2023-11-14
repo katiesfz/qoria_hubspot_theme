@@ -80,12 +80,6 @@
     "label" : "Shadow style",
     "required" : false,
     "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "shadow-sm", "Small" ], [ "shadow", "Medium" ], [ "shadow-lg", "Large" ], [ "section-shadow", "Pullout shadow" ], [ "section-shadow-sm", "Small pullout shadow" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "style.shadow",
@@ -94,9 +88,14 @@
       "operator" : "EQUAL",
       "access" : null
     },
+    "display" : "select",
+    "choices" : [ [ "shadow-sm", "Small" ], [ "shadow", "Medium" ], [ "shadow-lg", "Large" ], [ "section-shadow", "Pullout shadow" ], [ "section-shadow-sm", "Small pullout shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
     "default" : "section-shadow"
-  }
-],
+  } ],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group",
@@ -151,6 +150,7 @@
       "label" : "Body text",
       "required" : false,
       "locked" : false,
+      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
       "type" : "richtext",
       "default" : "<p class='fs-6 fw-bold'>Across three continents</p>"
     }, {
@@ -225,17 +225,61 @@
         "required" : false,
         "locked" : false,
         "display" : "select",
-        "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ] ],
+        "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ], [ "custom", "Custom" ] ],
         "multiple" : false,
         "reordering_enabled" : true,
         "preset" : null,
         "type" : "choice"
-      } ],
+      },{
+        "id" : "col.background_image_file",
+        "name" : "background_image_file",
+        "display_width" : null,
+        "label" : "Background Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : true,
+        "type" : "image",
+        "visibility" : {
+          "controlling_field" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "default" : {
+          "loading" : "lazy"
+        }
+     },{
+      "name" : "background_size",
+      "display_width" : null,
+      "label" : "Background size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ]],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "visibility" : {
+        "controlling_field" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "default" : "cover"
+    } ],
       "tab" : "CONTENT",
       "expanded" : false,
       "type" : "group",
       "default" : {
-        "background_colour" : "none"
+        "background_colour" : "none",
+        "background_size" : "cover"
       }
     }, {
       "id" : "8876fed4-374b-c04a-d6e7-7f811d14bf8f",
@@ -276,7 +320,7 @@
     "expanded" : false,
     "type" : "group",
     "default" : {
-      "text" : "<p class='fs-6 fw-bold'>Across three continents</p>",
+      "text" : "<p>Across three continents</p>",
       "link" : {
         "url" : {
           "content_id" : null,
@@ -324,7 +368,7 @@
   "type" : "group",
   "default" : {
     "column" : {
-      "text" : "<p class='fs-6 fw-bold'>Across three continents</p>",
+      "text" : "<p>Across three continents</p>",
       "link" : {
         "url" : {
           "content_id" : null,

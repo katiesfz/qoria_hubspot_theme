@@ -53,10 +53,5 @@
     "message" : "Wiadomość e-mail",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Tytuł formularza",
-    "description" : "",
-    "placeholders" : null
   }
 }

@@ -32,6 +32,19 @@
     "type" : "spacing",
     "default" : { }
   }, {
+    "id" : "style.alignment",
+    "name" : "alignment",
+    "display_width" : null,
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "alignment_direction" : "HORIZONTAL",
+    "type" : "alignment",
+    "default" : {
+      "horizontal_align" : "CENTER",
+      "vertical_align" : "MIDDLE"
+    }
+  }, {
     "id" : "style.greyscale_filter",
     "name" : "greyscale_filter",
     "display_width" : null,

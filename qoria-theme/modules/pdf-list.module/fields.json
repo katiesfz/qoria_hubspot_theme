@@ -1,0 +1,329 @@
+[ {
+  "id" : "card",
+  "name" : "card",
+  "display_width" : null,
+  "label" : "Card",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "card.title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "card.image",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "card.title",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Document type",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "standard_emphasis" ],
+    "type" : "richtext",
+    "default" : "Whitepaper"
+  }, {
+    "id" : "card.text",
+    "name" : "text",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+    "type" : "richtext",
+    "default" : "Creating powerful parent partnerships in online safety"
+  }, {
+    "id" : "card.description",
+    "name" : "description",
+    "display_width" : null,
+    "label" : "Description (optional)",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+    "type" : "richtext",
+    "default" : ""
+  }, {
+    "id" : "card.link",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "id" : "card.link_label",
+    "name" : "link_label",
+    "display_width" : null,
+    "label" : "Link Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Download PDF >"
+  }, {
+    "id" : "card.open_in_new_window",
+    "name" : "open_in_new_window",
+    "display_width" : null,
+    "label" : "Open in a new window/tab",
+    "required" : false,
+    "locked" : true,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "card.download_link",
+    "name" : "download_link",
+    "display_width" : null,
+    "label" : "Download link",
+    "inline_help_text" : "Download the linked resource instead of opening in browser.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "card.stretched_link",
+    "name" : "stretched_link",
+    "display_width" : null,
+    "label" : "Stretched link",
+    "inline_help_text" : "Applies link to the whole card",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "default": [],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "styles.responsive",
+    "name" : "responsive",
+    "display_width" : null,
+    "label" : "Responsive Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.desktop",
+      "name" : "desktop",
+      "display_width" : null,
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.desktop.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "3"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.tablet",
+      "name" : "tablet",
+      "display_width" : null,
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.tablet.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "2"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.mobile",
+      "name" : "mobile",
+      "display_width" : null,
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.mobile.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "1"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.equal_heights",
+    "name" : "equal_heights",
+    "display_width" : null,
+    "label" : "Equal Heights",
+    "inline_help_text" : "Keep cards at equal heights regardless of content.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "card.title_size",
+    "name" : "title_size",
+    "display_width" : null,
+    "label" : "Title Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "h5"
+  }, {
+    "id" : "card.title_position",
+    "name" : "title_position",
+    "display_width" : null,
+    "label" : "Title Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "above", "Above" ], [ "below", "Below" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "above"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "responsive" : {
+      "mobile" : {
+        "cards" : "1"
+      },
+      "tablet" : {
+        "cards" : "2"
+      },
+      "desktop" : {
+        "cards" : "3"
+      }
+    },
+    "equal_heights" : true
+  }
+}, {
+  "id" : "advanced",
+  "name" : "advanced",
+  "display_width" : null,
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "advanced.additional_classes",
+    "name" : "additional_classes",
+    "display_width" : null,
+    "label" : "Additional classes",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "advanced.additional_row_classes",
+    "name" : "additional_row_classes",
+    "display_width" : null,
+    "label" : "Additional row classes",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

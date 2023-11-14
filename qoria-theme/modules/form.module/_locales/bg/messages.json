@@ -53,10 +53,5 @@
     "message" : "Имейл",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Заглавие на формуляр",
-    "description" : "",
-    "placeholders" : null
   }
 }

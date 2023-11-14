@@ -1,0 +1,112 @@
+{% if module.region == "nz" %}
+    {% set brandName = "Linewize New Zealand" %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
+    {% set footerText = module.nz_footer_copy %}
+{% elif module.region == "au" %}
+    {% set brandName = "Linewize Australia" %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
+    {% set footerText = module.au_footer_copy %}
+{% elif module.region == "us" %}
+    {% set brandName = "Linewize US" %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
+    {% set footerText = module.us_footer_copy %}
+{% elif module.region == "uk" %}
+    {% set brandName = "Smoothwall" %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-smoothwall__byqoria_white.png') %}
+    {% set footerText = module.uk_footer_copy %}
+{% elif module.region == "global" %}
+    {% set brandName = "Qoria" %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/Qoria_Logo_White.png') %}
+    {% set footerText = module.global_footer_copy %}
+{% endif %}
+
+{% if module.region == "us" || module.region == "au" %}
+    {% set bgSrc = "" %}
+    {% set bgColour = "#0075db" %}
+{% else %}
+{% set bgSrc = get_asset_url('../../images/backgrounds/email-footer-bg-qoria.png') %}
+{% set bgColour = "#58b78e" %}
+{% endif %}
+
+{% set Qicon = get_asset_url('../../images/qoria/Q-Colour.png') %}
+
+<div style="background-color:{{bgColour}}; width: 100%;">
+<!--[if gte mso 9]>
+<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+<v:fill type="tile" src="{{ bgSrc }}" color="{{bgColour}}"/>
+</v:background>
+<![endif]-->
+<table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+  <tr>
+    <td valign="top" align="center" background="{{ bgSrc }}" style="background-image:url('{{ bgSrc }}');background-size: cover;background-position: center right;padding: 0 32px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt; font-family: Quicksand, Verdana, sans-serif;">
+
+      <div style="color: #fff; max-width: 700px; text-align: center;">
+        <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+            <tr>
+                <td>
+                    <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+                        <tr>
+                            <td style="padding-top: 24px; vertical-align: middle; text-align: left; font-family: Quicksand, Verdana, sans-serif;">
+                                <img src="{{logoWhiteSrc}}" width="180" height="auto" style="width: 100%;max-width: 180px;height: auto;display: inline-block;color: #ffffff;vertical-align: bottom;-ms-interpolation-mode: bicubic;">
+                            </td>
+                            {% if module.region == "nz" %}
+                            <td style="padding-top: 24px; padding-left: 16px; vertical-align: middle; text-align: right; font-family: Quicksand, Verdana, sans-serif;">
+                            </td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                </td>
+            </tr> 
+            <tr>
+                <td style=" font-family: Quicksand, Verdana, sans-serif; color: #FFFFFF; font-size: 20px; font-weight: 300; font-family: Quicksand, Verdana, sans-serif; text-align: left; line-height: 1.2em;"> 
+                    <hr style="margin: 24px 0; border: 0; border-top: 1px solid #ffffff;">
+                        {{ footerText }}
+                    <hr style="margin: 24px 0 16px; border: 0; border-top: 1px solid #ffffff;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+                        <tr>
+                            <td style="vertical-align: middle; color: #ffffff; padding-bottom: 16px; font-family: Quicksand, Verdana, sans-serif; text-align: left;">
+                                    {% if module.social_links %}
+                                        {% for link in module.social_links %}
+                                            {% if link.social_account == "li" %}
+                                                {% set iconSrc = get_asset_url('../../images/qoria/email/linkedin-in-20.png') %}
+                                            {% elif link.social_account == "fb" %}
+                                                {% set iconSrc = get_asset_url('../../images/qoria/email/facebook-f-20.png') %}
+                                            {% elif link.social_account == "tw" %}
+                                                {% set iconSrc = get_asset_url('../../images/qoria/email/twitter-x-20.png') %}
+                                            {% elif link.social_account == "in" %}
+                                                {% set iconSrc = get_asset_url('../../images/qoria/email/instagram-20.png') %}
+                                            {% elif link.social_account == "yt" %}
+                                                {% set iconSrc = get_asset_url('../../images/qoria/email/youtube-20.png') %}
+                                            {% elif link.social_account == "custom_icon" %}
+                                                {% set iconSrc = link.custom_image.src %}
+                                            {% endif %}
+                                            <a href="{{link.social_link.url.href}}" target="_blank" style="display: inline-block; margin-right: 5px;"><img src="{{iconSrc}}" width="16" height="16" style="height: 16px; width: auto; max-width: 24px; object-fit: contain; vertical-align: bottom; object-position: bottom;"></a>
+                                        {% endfor %}
+                                    {% endif %}
+                            </td>     
+                            <td style="padding-left: 16px; vertical-align: middle;">
+                                <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
+                                    <tr>         
+                                        <td style="vertical-align: middle; color: #ffffff; padding-bottom: 16px; font-family: Quicksand, Verdana, sans-serif; text-align: right;">
+                                            <p style="font-size: 12px;">{{brandName}} is part of Qoria</p>
+                                        </td>                            
+                                        <td style="vertical-align: middle; color: #ffffff; padding-bottom: 16px; width: 28px; font-family: Quicksand, Verdana, sans-serif; text-align: right;">
+                                            <img src="{{ Qicon }}" width="20" style="width: 20px; display: inline-block; vertical-align: middle;">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>  
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+</div>

@@ -22,7 +22,7 @@
 {% require_css %}
     <style>
         .hero-full-image {
-            background: url("{{module.image.src}}");
+            background: url("{{resize_image_url(module.image.src, 1500)}}");
             background-size: cover;
             background-position: center;
         }
@@ -34,7 +34,7 @@
 <div class="container-xxl g-0 h-100 heading-location-{{module.style.heading_location}}">
     {% if module.show_breadcrumbs %}
         <div class="row">
-        <div class="col-12 text-end pt-5 position-absolute top-0 end-0 text-white">
+        <div class="col-12 text-end pt-5 position-absolute top-0 end-0 text-white shadow-filter">
             {% set breadcrumbsMenu = module.menu %}
             {% from '/q-theme/assets/macros.html' import breadcrumbs %}
             {{ breadcrumbs(breadcrumbsMenu, "", true) }}
@@ -43,8 +43,12 @@
     {% endif %}
     <div class="row h-100 justify-content-end flex-column">
         <div class="col-12 py-5">
-        {% if module.pre_header %}<h5 class="fw-bold text-white ms-4">{{module.pre_header}}</h5> {% endif %}
+        {% if module.pre_header %}<h5 class="fw-bold text-white shadow-filter ms-4">{{module.pre_header}}</h5> {% endif %}
+        {% if module.header_level == "h2" %}
+            <h2 class="heading-bg-gradient bg-gradient-primary text-white h1">{{module.header}}</h2>
+        {% else %}
         <h1 class="heading-bg-gradient bg-gradient-primary text-white">{{module.header}}</h1>
+        {% endif %}
         </div>
         {%if module.cta|length > 0%}
         <div class="col-12 pb-5">

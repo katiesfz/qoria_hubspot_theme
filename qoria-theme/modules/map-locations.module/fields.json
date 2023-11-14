@@ -437,4 +437,28 @@
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"
+},{
+  "id" : "our_customers",
+  "name" : "our_customers",
+  "display_width" : null,
+  "label" : "\"Our Customers\" Key",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Our customers"
+},{
+  "id" : "qoria_offices",
+  "name" : "qoria_offices",
+  "display_width" : null,
+  "label" : "\"Qoria offices\" Key",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Qoria offices"
 } ]

@@ -27,7 +27,7 @@
   {%endmacro%}
   
     {% for link in menu %}
-        <div class="col pb-4">
+        <div class="pb-4" style="-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; ">
             {{ render_link_item(link) }}
         </div>
     {% endfor %}
@@ -35,6 +35,10 @@
   {% endmacro %}
   
   {# Desktop menu #}
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+<div class="row row-cols-1 row-cols-md-1 row-cols-lg-1">
+<div class="col css-col-count-1 css-col-count-md-2 css-col-count-lg-3">
+
+
       {{ menu_items2() }}
+      </div>
       </div>

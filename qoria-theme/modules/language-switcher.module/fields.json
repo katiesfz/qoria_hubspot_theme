@@ -1,0 +1,38 @@
+
+[
+  {
+    "name": "display_mode",
+    "label": "Display mode",
+    "help_text": "The language of the text in the language switcher. PageLang means the names of languages will display in the language of the page the switcher is on. Localized means the name of each language will display in that language. Hybrid is a combination of the two.",
+    "sortable": false,
+    "required": true,
+    "locked": false,
+    "display": "select",
+    "placeholder": "Search",
+    "choices": [
+      ["localized", "Localized"],
+      ["pagelang", "PageLang"],
+      ["hybrid", "Hybrid"]
+    ],
+    "type": "choice",
+    "default": "localized"
+  },{
+    "name" : "breakpoint",
+    "label" : "Breakpoint",
+    "required" : false,
+    "locked" : true,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "md"
+  },{
+    "name" : "include_button_label",
+    "label" : "Include button label",
+    "required" : false,
+    "locked" : false,
+    "type" : "boolean",
+    "display":"checkbox",
+    "default" : true
+  }
+]

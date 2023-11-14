@@ -53,10 +53,5 @@
     "message" : "E-post",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Skjematittel",
-    "description" : "",
-    "placeholders" : null
   }
 }

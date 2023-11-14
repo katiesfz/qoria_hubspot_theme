@@ -53,10 +53,5 @@
     "message" : "Эл. почта",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Заголовок формы",
-    "description" : "",
-    "placeholders" : null
   }
 }

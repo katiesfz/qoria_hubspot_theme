@@ -53,10 +53,5 @@
     "message" : "電子郵件",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "表單標題",
-    "description" : "",
-    "placeholders" : null
   }
 }

@@ -149,4 +149,61 @@
     "blog_posts" : true,
     "knowledge_articles" : false
   }
+}, {
+  "id" : "domains",
+  "name" : "domains",
+  "display_width" : null,
+  "label" : "Domains",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "www.linewize.io",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  }
+}, {
+  "id" : "languages",
+  "name" : "languages",
+  "display_width" : null,
+  "label" : "Languages",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  }
+}, {
+  "id" : "blogs",
+  "name" : "blogs",
+  "display_width" : null,
+  "label" : "Blogs",
+  "required" : false,
+  "locked" : false,
+  "type" : "blog",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : "7535615c-ed26-2e34-87ef-21c5c87ccbcb",
+    "controlling_field_path" : "content_types.blog_posts",
+    "controlling_value_regex" : true,
+    "property" : null,
+    "operator" : "EQUAL"
+  }
 } ]

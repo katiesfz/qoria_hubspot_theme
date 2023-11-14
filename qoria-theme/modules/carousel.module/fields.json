@@ -1,17 +1,4 @@
-[ {
-  "id" : "unique_carousel_name",
-  "name" : "unique_carousel_name",
-  "display_width" : null,
-  "label" : "Unique Carousel Name",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "[a-zA-Z0-9]*",
-  "validation_error_message" : "Only alphanumeric characters allowed! No spaces, either.",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : ""
-}, {
+[{
   "id" : "slide",
   "name" : "slide",
   "display_width" : null,
@@ -44,6 +31,7 @@
       "label" : "Content",
       "required" : false,
       "locked" : false,
+      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
       "type" : "richtext"
     }, {
       "id" : "slide.column.column_classes",

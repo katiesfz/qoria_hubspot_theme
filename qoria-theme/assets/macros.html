@@ -17,7 +17,13 @@
     {% endif %}
     
     {%  if node.level > '1' %}
-        <li class="breadcrumb-item"><a class="text-reset text-decoration-none" href="{{node.parentNode.url}}">{{node.parentNode.label}}</a></li>
+        <li class="breadcrumb-item">
+        {% if node.parentNode.url %}
+        <a class="text-reset text-decoration-none" href="{{node.parentNode.url}}">{{node.parentNode.label}}</a>
+        {% else %}
+            {{node.parentNode.label}}
+        {% endif %}
+        </li>
     {% endif %}
 
     <li class="breadcrumb-item {{"active" if node.activeNode}}">{{node.label}}</li>

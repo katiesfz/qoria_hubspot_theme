@@ -53,10 +53,5 @@
     "message" : "Електронне повідомлення",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Заголовок форми",
-    "description" : "",
-    "placeholders" : null
   }
 }

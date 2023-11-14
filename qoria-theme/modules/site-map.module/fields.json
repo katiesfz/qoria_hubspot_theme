@@ -4,6 +4,6 @@
   "display_width" : null,
   "label" : "Menu",
   "required" : false,
-  "locked" : true,
+  "locked" : false,
   "type" : "menu"
 } ]

@@ -2,7 +2,7 @@
   templateType: section
   label: Testimonials - Cards
   isAvailableForNewContent: true
-  screenshotPath: ../images/section-previews/testimonials.jpg
+  screenshotPath: ../images/section-previews/testimonials-cards.png
   description: "Cards of testimonials."
 -->
 
@@ -10,12 +10,17 @@
 {% dnd_section
   padding={
     "default" : {
-      "bottom" : "80px",
-      "left" : "0px",
-      "right" : "0px",
-      "top" : "0px"
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
     }
   },
+  full_width=false,
   max_width=1280
 %}
   {% dnd_column
@@ -24,57 +29,59 @@
   %}
     {% dnd_row %}
       {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="testimonials"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
         path="/q-theme/modules/heading",
         offset=0,
         width=12,
-        heading_underline=true,
+        heading_tag="h2",
+        heading_underline="true",
         style={
+          "heading_underline" : true,
           "spacing_field" : {
             "margin" : {
-              "bottom" : {
-                "units" : "px",
-                "value" : 60
-              },
+              "bottom" : { },
               "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          What our <strong>customers say</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h4",
+        style={
+          "heading_underline" : false,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
             }
           }
         }
       %}
         {% module_attribute "heading" %}
-          Our culture - <strong>tech with purpose</strong>
+          <strong>Testimonials:</strong>
         {% end_module_attribute %}
       {% end_dnd_module %}
-    {% end_dnd_row %}
-    {% dnd_row %}
-      {% dnd_column
-        offset=0,
-        width=5
-      %}
-        {% dnd_row %}
-          {% dnd_module
-            path="@hubspot/rich_text",
-            offset=0,
-            width=12
-          %}
-            {% module_attribute "html" %}
-              <p class="lead fw-normal">Our people are at the heart of our story so far, and they’re driving and shaping our future. Here’s why they say they choose to work for us.</p>
-            {% end_module_attribute %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-      {% dnd_column
-        offset=5,
-        width=7
-      %}
-        {% dnd_row %}
-          {% dnd_module
-            path="@hubspot/horizontal_spacer",
-            offset=0,
-            width=12
-          %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
     {% end_dnd_row %}
     {% dnd_row %}
       {% dnd_module
@@ -82,81 +89,77 @@
         offset=0,
         width=12,
         slide=[ {
+          "accent_colour" : "primary",
+          "author" : "Allison",
+          "image" : {
+            "alt" : "allison2",
+            "height" : 434,
+            "loading" : "lazy",
+            "max_height" : 434,
+            "max_width" : 452,
+            "size_type" : "auto",
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/allison2.png",
+            "width" : 452
+          },
+          "quote" : "Qustodio gives me the peace of mind that I have been looking for to ensure my kids are safe online.",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Mum of two"
+        }, {
+          "accent_colour" : "secondary",
+          "author" : "Courtney",
+          "image" : {
+            "alt" : "courtney",
+            "height" : 1322,
+            "loading" : "lazy",
+            "max_height" : 1322,
+            "max_width" : 1820,
+            "size_type" : "auto",
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/courtney.jpg",
+            "width" : 1820
+          },
+          "quote" : "With Qustodio, I don't have to struggle to balance my daughter’s online independence with her safety.",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Mum of one"
+        }, {
           "accent_colour" : "orange",
-          "author" : "Rohan Deshpande",
+          "author" : "Theresa",
           "image" : {
-            "alt" : "rohan-deshpande-sq",
-            "height" : 1000,
+            "alt" : "group-6-1",
+            "height" : 184,
             "loading" : "lazy",
-            "max_height" : 1000,
-            "max_width" : 1000,
+            "max_height" : 184,
+            "max_width" : 256,
             "size_type" : "auto",
-            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/rohan-deshpande-sq.jpg",
-            "width" : 1000
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/group-6-1.png",
+            "width" : 256
           },
-          "quote" : "<span>I have lived through Linewize by Family Zone’s entire journey. When I first started, we had no products for use in schools. One of my major projects was to help build that product. I felt empowered - I got to develop a system that could potentially save a child’s life.</span>",
+          "quote" : "We're a highly digital family but we really value screen-free time—Qustodio helps us get that balance.",
           "read_more_url" : {
-            "href" : "/careers/rohan-deshpande",
+            "href" : "",
             "type" : "EXTERNAL"
           },
-          "role" : "Principal Engineer"
-        }, {
-          "accent_colour" : "red",
-          "author" : "Silas Sales",
-          "image" : {
-            "alt" : "silas-sales-sq",
-            "height" : 1000,
-            "loading" : "lazy",
-            "max_height" : 1000,
-            "max_width" : 1000,
-            "size_type" : "auto",
-            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/silas-sales-sq.jpg",
-            "width" : 1000
-          },
-          "quote" : "<span>I wanted to work for an organisation that had a positive social impact. We are different; we have a mission, and we are dedicated to achieving it.</span>",
-          "read_more_url" : {
-            "href" : "/careers/silas-sales",
-            "type" : "EXTERNAL"
-          },
-          "role" : "Senior Software Engineer"
-        }, {
-          "accent_colour" : "teal",
-          "author" : "Jennifer Capps",
-          "image" : {
-            "alt" : "Jennifer-Capps_sq",
-            "height" : 600,
-            "loading" : "lazy",
-            "max_height" : 600,
-            "max_width" : 600,
-            "size_type" : "auto",
-            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/Jennifer-Capps_sq.jpg",
-            "width" : 600
-          },
-          "quote" : "The work I was doing really interested me, so I knew I wanted to become a Project Manager. There wasn’t an opportunity for me to progress in that organisation, so when I saw the job posting for a Project Manager at Smoothwall, I knew it was exactly what I wanted.",
-          "read_more_url" : {
-            "href" : "/careers/jennifer-capps",
-            "type" : "EXTERNAL"
-          },
-          "role" : "Head of Onboarding and Projects"
+          "role" : "Mum of three"
         } ],
         style={
-          "autoplay" : false,
           "carousel" : false,
-          "controls" : false,
-          "dark_or_light" : "text-dark",
-          "infinite" : false,
-          "normalise_heights" : false,
-          "responsive" : {
-            "desktop" : {
-              "slides_to_display" : 3
-            },
-            "mobile" : {
-              "slides_to_display" : 2
-            },
-            "tablet" : {
-              "slides_to_display" : 1
+          "carousel_settings" : {
+            "controls" : false,
+            "responsive" : {
+              "desktop" : {
+                "slides_to_slide" : 1
+              },
+              "tablet" : {
+                "slides_to_display" : 3
+              }
             }
-          }
+          },
+          "greyscale_images" : false
         }
       %}
       {% end_dnd_module %}

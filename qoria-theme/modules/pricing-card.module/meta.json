@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 114968185190,
   "label" : "Pricing card",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

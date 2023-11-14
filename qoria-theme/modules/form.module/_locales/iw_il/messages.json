@@ -53,10 +53,5 @@
     "message" : "דוא\"ל",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "כותרת טופס",
-    "description" : "",
-    "placeholders" : null
   }
 }

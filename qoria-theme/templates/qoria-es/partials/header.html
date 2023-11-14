@@ -1,0 +1,83 @@
+<!--
+templateType: global_partial
+label: Qustodio Header
+-->
+{% if content.language == "es" %}
+    <!-- resize the top nav - only for Qoria Spain (ES) -->
+    <style>
+    .navbar-nav .nav-link {
+      --q-nav-link-font-size: 15px;
+      --q-navbar-nav-link-padding-x: 0.8rem;
+    }
+
+    .navbar-nav .nav-link.active:after {
+      width: calc(100% - 1.6em) !important;
+      }
+  </style>
+
+{% endif %}
+  <!-- end resize code -->
+
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+
+  {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+  {% set breakpoint = widget_data.navigation.breakpoint %}
+      {% if breakpoint == "always" %}
+          {% set navbarExpand = "" %}
+      {% elif breakpoint == "never" %}
+          {% set navbarExpand = "navbar-expand" %}
+      {% else %}
+          {% set navbarExpand = "navbar-expand-" + breakpoint %}
+      {% endif %}
+    
+  {# {% module "module_16790276570878" path="/q-theme/modules/notification-bar", label="Notifications", no_wrapper=True %} -#}
+
+  <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
+    <nav class="navbar {{navbarExpand}}">
+      <div class="container-xxl position-relative"> 
+        {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+        <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
+        {% if content.translated_content.values()|selectattr('published')|length || is_listing_view && group.translations %}
+          <div class="d-flex d-{{breakpoint}}-none">          
+          {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False %}
+          </div>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="far fa-xl fa-bars"></i>
+        </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="{{breakpoint}}", no_wrapper=True %}
+            <div class="navbar-search d-flex ms-{{breakpoint}}-3 mb-3 mb-{{breakpoint}}-0">
+              {% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}
+            </div>
+            {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
+
+            {% if widget_data.cta.link.url != "" %}
+              <div class="d-flex d-{{breakpoint}}-none">
+              {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
+    
+              </div>
+            {% endif %}
+
+        </div>
+        {% if widget_data.cta.link.url != "" %}
+          <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
+          {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
+
+          </div>
+        {% endif %}
+        
+        {% if content.translated_content.values()|selectattr('published')|length || is_listing_view && group.translations %}
+          <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">          
+          {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}" %}
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+  </header>

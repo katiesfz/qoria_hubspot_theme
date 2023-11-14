@@ -95,18 +95,6 @@
     "preload" : "auto"
   }
 }, {
-  "id" : "700a248e-5c47-c715-3709-3821a70cafad",
-  "name" : "unique_video_name",
-  "display_width" : null,
-  "label" : "Unique video name",
-  "required" : false,
-  "locked" : false,
-  "validation_regex" : "[a-zA-Z0-9]*",
-  "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text",
-  "default" : "uniqueName"
-}, {
   "picker" : "video",
   "id" : "00dddd19-743d-a442-5d0d-6474457cda85",
   "name" : "video_file",

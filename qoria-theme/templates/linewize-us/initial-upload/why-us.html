@@ -1,0 +1,1045 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize US Why Us
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+{% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ ],
+        header="Why us",
+        hero_type="full-image",
+        image={
+          "alt" : "linewize-nz-whyusbanner",
+          "height" : 1414,
+          "loading" : "disabled",
+          "max_height" : 1333.3333333333333,
+          "max_width" : 2000,
+          "size_type" : "auto_custom_max",
+          "src" : "https://qoria.com/hubfs/linewize-nz-whyusbanner.jpg",
+          "width" : 2121
+        },
+        menu=123441695658,
+        page_contents=[ {
+          "anchor" : "#intro",
+          "content_label" : "Intro"
+        }, {
+          "anchor" : "#experts",
+          "content_label" : "Global experts"
+        }, {
+          "anchor" : "#help",
+          "content_label" : "How Linewize can help"
+        }, {
+          "anchor" : "#testimonials",
+          "content_label" : "What our customers say"
+        }, {
+          "anchor" : "#furtherReading",
+          "content_label" : "Further reading"
+        } ],
+        pre_header="",
+        show_breadcrumbs=true,
+        show_share_price=false,
+        style={
+          "heading_location" : "bottom-left"
+        },
+        video=""
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=2
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=2,
+    width=8
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="intro"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p style="text-align: center; font-size: 24px;">When it comes to helping our schools raise the bar for student digital safety and wellbeing we understand the challenges they face. We work together to address them head-on, both strategically and practically. But we don't work alone.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=10,
+    width=2
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="experts"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=3
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=3,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h3",
+            heading_underline="true",
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px"
+                  },
+                  "left" : {
+                    "units" : "px"
+                  },
+                  "right" : {
+                    "units" : "px"
+                  },
+                  "top" : {
+                    "units" : "px"
+                  }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              <p>Every school benefits from a global team of <strong>student safety and wellbeing experts.</strong></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=9,
+        width=3
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=2,
+        width=8
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/rich-text",
+            offset=0,
+            width=12,
+            row=[ {
+              "advanced" : {
+                "additional_classes" : ""
+              },
+              "column" : [ {
+                "advanced" : {
+                  "additional_classes" : ""
+                },
+                "responsive" : {
+                  "desktop" : {
+                    "columns" : 1
+                  },
+                  "mobile" : {
+                    "columns" : 1
+                  },
+                  "tablet" : {
+                    "columns" : 1
+                  }
+                },
+                "text" : "<p style='text-align: center; font-size: 16px;'>Our colleagues include some of the world’s leading digital safety engineers, product developers, digital wellbeing experts. They in turn are supported by our child psychologists, ex police officers, teachers and former school IT leaders.</p>\n<p style='text-align: center; font-size: 16px;'>Together we help our schools address some of their most pressing concerns.<br><br></p>"
+              } ]
+            }, {
+              "advanced" : {
+                "additional_classes" : ""
+              },
+              "column" : [ {
+                "advanced" : {
+                  "additional_classes" : "fw-bold"
+                },
+                "responsive" : {
+                  "desktop" : {
+                    "columns" : 1
+                  },
+                  "mobile" : {
+                    "columns" : 1
+                  },
+                  "tablet" : {
+                    "columns" : 1
+                  }
+                },
+                "text" : "<ol style='list-style-position: inside; margin: 0; padding: 0;'>\n<li style='text-align: center;'>\n<p class='d-inline-block'>How are our students really&nbsp;doing?</p>\n</li>\n<li style='text-align: center;'>\n<p class='d-inline-block'>Are we spotting vulnerable children quickly enough?</p>\n</li>\n<li style='text-align: center;'>\n<p class='d-inline-block'>How can we engage our community better?</p>\n</li>\n<li style='text-align: center;'>\n<p class='d-inline-block'>How can we optimise digital learning?</p>\n</li>\n<li style='text-align: center;'>Should we look to advance beyond our free provision?</li>\n</ol>"
+              } ]
+            } ],
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=10,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cursive-heading",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 16
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 60
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <div style="text-align: center;">Raising the bar - together</div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "left" : "16px",
+      "right" : "16px"
+    },
+    "mobile" : {
+      "bottom" : "32px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/video",
+        offset=0,
+        width=12,
+        custom_thumbnail={
+          "alt" : "Video Thumbnail (2)",
+          "height" : 1440,
+          "loading" : "lazy",
+          "max_height" : 1125,
+          "max_width" : 2000,
+          "size_type" : "auto_custom_max",
+          "src" : "https://qoria.com/hubfs/Video%20Thumbnail%20(2).png",
+          "width" : 2560
+        },
+        video_file="https://qoria.com/hubfs/Success%20is%20not%20the%20work%20of%20one%20but%20the%20work%20of%20the%20many.mp4"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="help"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h2",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          How Linewize <strong>can help</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/rich-text",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            },
+            "text" : "<p class='intro fs-4' style='text-align: center;'>We take a strategic approach to help our schools understand the sufficiency of their digital wellbeing provision and invest only where needed.</p>"
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "align-items-center mt-4"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_classes" : "col-12 col-md"
+            },
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            },
+            "text" : "<p class='lead'><strong class='fw-semibold'>We use our Digital Safety &amp; Wellbeing Framework to guide us. It helps our schools to stand back, assess their gaps&nbsp; and discuss their priorities.</strong></p>\n<p>It also helps them to better understand the types of solutions available to them in the market.</p>\n<p>And it shows the world-leading solutions Linewize can provide, the strategic role each plays, how they harmonise support genuine cultural transformation.</p>\n<p>Click to learn more about the <a href='/solutions' rel='noopener' target='_blank'>Linewize Digital Safety and Wellbeing Framework.</a></p>"
+          }, {
+            "advanced" : {
+              "additional_classes" : "col-12 col-md"
+            },
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            },
+            "text" : "<p class='intro' style='text-align: center;'><strong><img src='https://qoria.com/hubfs/Qoria/NZ-Impact-Framework-infographic-Outlined.png' width='550' height='551' loading='lazy' alt='NZ-Impact-Framework-infographic-Outlined' style='height: auto; max-width: 100%; width: 550px;'></strong></p>"
+          } ]
+        } ],
+        style={
+          "shadow" : false,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "32px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "16px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="help"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "32px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=2,
+        width=8
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h4",
+            style={
+              "heading_underline" : false,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : { },
+                  "left" : { },
+                  "right" : {
+                    "units" : "px"
+                  },
+                  "top" : { }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              <p>Our Framework is used by schools around the world to help them achieve key objectives.&nbsp;</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=10,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h5>Education Leaders</h5>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/icon-and-text-group",
+            offset=0,
+            width=12,
+            icon_and_text=[ {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Improve student outcomes</h6>\n<p style='font-size: 16px;'><span style='color: #000000;'>Significantly reduce the digital risks and distractions that impede learning. Better wellbeing equals better academic achievement.</span></p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Create a safer school</h6>\n<p><span style='font-size: 16px;'><span style='color: #000000;'>Spot risks quickly for earlier intervention. Create more ways for students to speak up. </span><span style='color: #000000;'>Identify and close safety and wellbeing gaps. </span></span></p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Ensure cost efficiency</h6>\n<p style='font-size: 16px;'><span style='color: #000000;'>A framework view helps better targeting of resources, as well as streamlining existing operations for efficiency and cost savings.</span></p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Support staff mental health</h6>\n<p style='font-size: 16px;'><span style='color: #000000;'>Achieve a more balanced distribution of safety and wellbeing responsibility. Avoid the stresses caused by disproportionate loads. Ensure everyone has the tools and support to play their part.</span></p>"
+            } ],
+            style={
+              "absolute_icon_size" : "fa-2x",
+              "icon_alignment" : "align-items-start",
+              "relative_icon_size" : "fa-2xl",
+              "sizing" : "absolute"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <h5>Pastoral and Wellbeing Staff</h5>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/icon-and-text-group",
+            offset=0,
+            width=12,
+            icon_and_text=[ {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Engage and uplift students</h6>\n<p>Increase opportunities for vulnerable students to speak up. Increase student awareness and promote peer to peer education. Decrease numbers of students requiring intensive support.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Decrease pressures on staff time</h6>\n<p><span style='font-size: 16px; color: #000000;'>Easier, quicker and more accurate visibility of students at risk. Intervene earlier for reduced escalation and need for longer term support. </span></p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Build a more engaged stakeholder community</h6>\n<p><span style='font-size: 16px; color: #000000;'>Empower teachers and parents/carers with the tools and confidence to ensure digital safety and wellbeing in school and at home. </span></p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<h6>Exceed minimum compliance</h6>\n<p>Identify and close safety and wellbeing gaps. Supplement existing approaches and demonstrate a proactive strategy across the whole school community.&nbsp;</p>"
+            } ],
+            style={
+              "absolute_icon_size" : "fa-2x",
+              "icon_alignment" : "align-items-start",
+              "relative_icon_size" : "fa-2xl",
+              "sizing" : "absolute"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "64px",
+      "right" : "64px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="testimonials"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_underline="true",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          What <strong>our customers say</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="lead mb-0" style="font-weight: bold;">Testimonials:</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/testimonial-carousel",
+        offset=0,
+        width=12,
+        slide=[ {
+          "accent_colour" : "orange",
+          "author" : "Tony Biddick",
+          "image" : {
+            "alt" : "Henderson Primary School Logo-1",
+            "height" : 48,
+            "loading" : "lazy",
+            "max_height" : 48,
+            "max_width" : 206,
+            "size_type" : "auto",
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/Henderson%20Primary%20School%20Logo-1.png",
+            "width" : 206
+          },
+          "image_fit" : "contain",
+          "quote" : "<p>Linewize has proven invaluable to keep students safe and focused while they're learning. &nbsp;Our teachers use Classwize to keep tamariki on track during lessons, and I'm able to use School Manager to protect the devices and identify risky behaviours for timely intervention and support.</p>\n<p><strong>Henderson Primary School</strong></p>",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Tumuaki"
+        }, {
+          "accent_colour" : "red",
+          "author" : "Brendan Pitman",
+          "image" : {
+            "alt" : "NZ-schoollogos-greybg-Wellesley-College",
+            "height" : 200,
+            "loading" : "lazy",
+            "max_height" : 140,
+            "max_width" : 140,
+            "size_type" : "auto_custom_max",
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ-schoollogos-greybg-Wellesley-College.png",
+            "width" : 200
+          },
+          "image_fit" : "contain",
+          "quote" : "<p>Our goal is to protect every student from online harm while still allowing them to take advantage of the incredible possibilities the Internet has opened up. That’s why we partnered with Linewize.</p>\n<p><strong>Wellesley College</strong></p>",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Former Principal"
+        } ],
+        style={
+          "autoplay" : false,
+          "carousel" : true,
+          "carousel_settings" : {
+            "autoplay" : false,
+            "controls" : true,
+            "responsive" : {
+              "desktop" : {
+                "slides_to_display" : 2
+              }
+            }
+          },
+          "collapse" : false,
+          "controls" : false,
+          "dark_or_light" : "text-dark",
+          "greyscale_images" : false,
+          "infinite" : false,
+          "normalise_heights" : false,
+          "responsive" : {
+            "desktop" : {
+              "slides_to_display" : 3
+            },
+            "mobile" : {
+              "slides_to_display" : 2
+            },
+            "tablet" : {
+              "slides_to_display" : 1
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+
+
+
+{% end_dnd_area %}
+{% global_partial path="../partials/lets-connect.html" %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

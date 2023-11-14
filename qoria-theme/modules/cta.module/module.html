@@ -24,6 +24,13 @@
           data-bs-target="#{{ module.advanced.modal_id }}"
         {% endif %}
         {% if module.link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.download %}
+          {% if module.download_file %}
+            download="{{module.download_file}}"
+          {% else %}
+              download
+          {% endif %}
+        {% endif %}
         rel="{{ rel }}">
       {{ module.button_text }}
     </a>

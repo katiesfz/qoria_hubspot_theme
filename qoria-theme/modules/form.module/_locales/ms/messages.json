@@ -53,10 +53,5 @@
     "message" : "E-mel",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Tajuk Borang",
-    "description" : "",
-    "placeholders" : null
   }
 }

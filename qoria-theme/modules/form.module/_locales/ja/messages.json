@@ -53,10 +53,5 @@
     "message" : "Eメール",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "フォームタイトル",
-    "description" : "",
-    "placeholders" : null
   }
 }

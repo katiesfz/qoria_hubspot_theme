@@ -57,6 +57,7 @@
     "label" : "Full profile",
     "required" : false,
     "locked" : false,
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
     "type" : "richtext"
   } ],
   "tab" : "CONTENT",
@@ -90,6 +91,16 @@
         }
       }
     }
+  }, {
+    "id" : "styles.greyscale_filter",
+    "name" : "greyscale_filter",
+    "display_width" : null,
+    "label" : "Greyscale Filter",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
   }, {
     "id" : "styles.responsive",
     "name" : "responsive",

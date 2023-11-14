@@ -53,10 +53,5 @@
     "message" : "电邮",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "表单标题",
-    "description" : "",
-    "placeholders" : null
   }
 }

@@ -1,0 +1,54 @@
+<section class="{{ module.style.shadow_style if module.style.shadow }}" style="transform-style: preserve-3d; {{module.style.spacing_field.css}}">
+    <div class="container-fluid p-5 {{ module.style.background_colour if module.style.background_colour != "none" }}{{ " bg-q-tail-1" if module.style.background_image == "q-tail-1" }}">
+        <div class="row g-5 align-items-center">
+        {% if module.image.src != "" %}
+            <div class="col-auto">
+                {% set imgSrc = module.image.src %}
+                {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
+                    {% if module.image.size_type == 'auto' %}
+                        {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
+                        {% set sizeCSS = "max-width: 100%; height: auto;" %}
+                        {% set imgSrc = resize_image_url(module.image.src, module.image.width, module.image.height) %}
+                    {% elif module.image.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.image.max_width }}" height="{{ module.image.max_height }}"' %}
+                        {% set sizeCSS = "max-width: 100%; height: auto;" %}
+                        {% set imgSrc = resize_image_url(module.image.src, module.image.max_width, module.image.max_height) %}
+                    {% endif %}
+                    {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading }}"' : '' %}
+                
+                        {% if module.style.alignment %}
+                            {% if module.style.alignment.horizontal_align == "CENTER" %}
+                                {% set alignmentCSS = " margin: 0 auto; display: block;" %}
+                            {% elif module.style.alignment.horizontal_align == "LEFT" %}
+                                {% set alignmentCSS = " " %}
+                            {% elif module.style.alignment.horizontal_align == "RIGHT" %}
+                                {% set alignmentCSS = " margin: 0 0 0 auto; display: block;" %}
+                            {% endif %}
+                            
+                        {% endif %}
+                
+                <img src="{{imgSrc}}" alt="{{ module.image.alt }}" style="{{ alignmentCSS }} {{ sizeCSS }}" class="" {{ loadingAttr }} {{ sizeAttrs }}>
+            </div>
+        {% endif %}
+            <div class="col {{ "position-relative" if module.link_stretched }}">
+                <div class="content-container ">
+                {{ module.text }}
+                {% if (module.link.url.href) && (module.link_label) %}
+                    <a href="{{ module.link.url.href }}" 
+                    class="{{ "stretched-link" if module.link_stretched }} btn btn{{ module.button_style }}{{module.button_colour}} {{ "p-0 text-reset text-decoration-none fw-semibold " if module.button_colour == "link" }} mt-3"
+                    {% if module.link.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.download %}
+                        {% if module.download_file %}
+                        download="{{module.download_file}}"
+                        {% else %}
+                            download
+                        {% endif %}
+                    {% endif %}
+                    >
+                    {{ module.link_label }}</a>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

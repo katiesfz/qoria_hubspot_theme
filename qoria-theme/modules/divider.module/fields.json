@@ -13,23 +13,6 @@
     "required" : false,
     "locked" : false,
     "children" : [ {
-      "id" : "styles.line.color",
-      "name" : "color",
-      "display_width" : null,
-      "label" : "Color",
-      "required" : true,
-      "locked" : false,
-      "aliases_mapping" : {
-        "property_aliases_paths" : {
-          "color" : [ "color" ]
-        }
-      },
-      "type" : "color",
-      "default" : {
-        "color" : "#000000",
-        "opacity" : 100
-      }
-    }, {
       "id" : "styles.line.style",
       "name" : "style",
       "display_width" : null,
@@ -42,13 +25,78 @@
           "style" : [ "line_type" ]
         }
       },
-      "choices" : [ [ "solid", "Solid" ], [ "dotted", "Dotted" ], [ "dashed", "Dashed" ] ],
+      "choices" : [ [ "solid", "Solid" ], [ "dotted", "Dotted" ], [ "dashed", "Dashed" ],[ "gradient", "Primary Gradient" ] ],
       "multiple" : false,
       "reordering_enabled" : true,
       "preset" : null,
       "type" : "choice",
       "default" : "solid"
     }, {
+      "id" : "styles.line.color",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color",
+      "required" : true,
+      "locked" : false,
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "color" : [ "color" ]
+        }
+      },
+      "visibility" : {
+        "controlling_field" : "styles.line.style",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "styles.line.gradient",
+      "name" : "gradient",
+      "display_width" : null,
+      "label" : "Gradient",
+      "required" : true,
+      "locked" : true,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary > Secondary" ], [ "primary-transparent", "Primary" ], [ "secondary-transparent", "Secondary" ] ],
+      "multiple" : false,
+      "visibility" : {
+        "controlling_field" : "styles.line.style",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary"
+    }, {
+      "id" : "styles.line.reverse_gradient",
+      "name" : "reverse_gradient",
+      "display_width" : null,
+      "label" : "Reverse gradient",
+      "visibility" : {
+        "controlling_field" : "styles.line.style",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    },{
       "id" : "styles.line.thickness",
       "name" : "thickness",
       "display_width" : null,
@@ -62,7 +110,7 @@
         }
       },
       "min" : 1,
-      "max" : 10,
+      "max" : 30,
       "step" : 1,
       "suffix" : "px",
       "type" : "number",

@@ -281,8 +281,7 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
-  "type" : "group",
-  "default" : { }
+  "type" : "group"
 }, {
   "id" : "style",
   "name" : "style",
@@ -315,6 +314,20 @@
     "preset" : null,
     "type" : "choice",
     "default" : "primary"
+  }, {
+    "id" : "style.stat_size",
+    "name" : "stat_size",
+    "display_width" : null,
+    "label" : "Statistic Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ], [ "5", "5" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "1"
   }, {
     "id" : "style.icon_colour",
     "name" : "icon_colour",

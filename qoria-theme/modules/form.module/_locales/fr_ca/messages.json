@@ -53,10 +53,5 @@
     "message" : "Courriel",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Titre du formulaire",
-    "description" : "",
-    "placeholders" : null
   }
 }

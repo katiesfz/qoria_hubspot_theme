@@ -53,10 +53,5 @@
     "message" : "E-mail",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Titolo del modulo",
-    "description" : "",
-    "placeholders" : null
   }
 }

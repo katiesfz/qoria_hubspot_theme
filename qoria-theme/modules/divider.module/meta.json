@@ -1,6 +1,6 @@
 {
   "global" : false,
-  "icon" : "../img/icon/divider.svg",
+  "icon" : "../images/module-icons/divider.svg",
   "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
   "module_id" : 115262393771,
   "label" : "Divider",

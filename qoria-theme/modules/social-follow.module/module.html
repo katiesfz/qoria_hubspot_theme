@@ -126,8 +126,7 @@
 
     {# Icon #}
     <li class="mb-3">
-    <a class="text-decoration-none text-reset" href="{{ href }}"
-    {% if item.social_link.open_in_new_tab %}target="_blank"{% endif %}
+    <a class="text-decoration-none text-reset" href="{{ href }}" target="_blank"
     {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
       {% if item.social_account == "custom_icon" %}
         {% set sizeAttrs = 'width="{{ module.icon.custom_image.width }}" height="{{ module.icon.custom_image.height }}"' %}
@@ -139,8 +138,13 @@
          {% set loadingAttr = module.icon.custom_image.loading != 'disabled' ? 'loading="{{ module.icon.custom_image.loading }}"' : '' %}
         <img src="{{ module.icon.custom_image.src }}" alt="{{ module.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}> 
      {% else %}
+      {% if item.social_account == "twitter" %}
+        {% set iconCode = "fa-x-twitter" %}
+      {% else %}
         {% set iconCode = "fa-" ~ item.social_account %}
-          <i class="fa-fw {{ module.styles.icon_style }} {{ module.styles.icon_size }} {{ iconCode }}"></i> {{ itemLabel }}
+      {% endif %}
+          <div class="fa-fw d-inline-block me-2 text-start">
+          <i class="{{ module.styles.icon_style }} {{ module.styles.icon_size }} {{ iconCode }}"></i></div> {{ itemLabel }}
      {% endif %}
      
      

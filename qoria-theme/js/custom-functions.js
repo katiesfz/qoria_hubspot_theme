@@ -186,7 +186,13 @@ function normaliseSlideHeights() {
   function playVideo(videoId) {
     document.getElementById(videoId).play();
     document.getElementById(videoId).controls = "controls";
-    document.getElementById(videoId).parentNode.getElementsByClassName("play-button")[0].remove();
+    if (document.getElementById(videoId).parentNode.getElementsByClassName("play-button").length > 0) {
+      document.getElementById(videoId).parentNode.getElementsByClassName("play-button")[0].remove();
+    }
+  };
+  // pause video
+  function pauseVideo(videoId) {
+    document.getElementById(videoId).pause();
   };
 
 // popups
@@ -213,8 +219,9 @@ function showPopup(hoverElems, popupElem, breakpoint=mediaMd){
 }
 
 // counter
-function counterAnim(qSelector, start = 0, end, duration = 1000){
-  let target = document.querySelector(qSelector);
+function counterAnim(element, start = 0, end, duration = 1000, region = "en-US"){
+ // let targetOld = document.querySelector(qSelector);
+  let target = element;
   let startTimestamp = null;
   let floorEnd = Math.floor(end);
   let ceilEnd = Math.ceil(end);
@@ -222,9 +229,10 @@ function counterAnim(qSelector, start = 0, end, duration = 1000){
    if (!startTimestamp) startTimestamp = timestamp;
    let progress = Math.min((timestamp - startTimestamp) / duration, 1);
    if (floorEnd == Math.floor(progress * (end - start) + start)){
-    target.innerText = end;
+    target.innerText = new Intl.NumberFormat(region).format(end);
    } else {
-    target.innerText = Math.floor(progress * (end - start) + start);
+    let number = Math.floor(progress * (end - start) + start);
+    target.innerText = new Intl.NumberFormat(region).format(number);
    }
    if (progress < 1) {
     window.requestAnimationFrame(step);
@@ -235,8 +243,8 @@ function counterAnim(qSelector, start = 0, end, duration = 1000){
 
  // run function when element is in window
 
- function whenInViewport(elementId, callback){
-  var run = false, element = document.querySelector(elementId);
+ function whenInViewport(element, callback){
+  var run = false;
 
   $(window).on('scroll', function(){
     if ( run ) {
@@ -343,3 +351,224 @@ const icsBody = 'BEGIN:VCALENDAR\n' +
 
 downloadWithBody(title + '.ics', icsBody);
 }
+
+// scroll to top
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+function updateHeight(containerId) {
+
+  var container = document.getElementById(containerId).getElementsByClassName("pages-container")[0];
+  
+  var activePage = container.getElementsByClassName("paginated-page active")[0];
+  var containerHeight = activePage.offsetHeight;
+
+  container.style.height = containerHeight + "px";
+
+}
+
+function goToPage(containerId, num){
+    pagesContainer = document.getElementById(containerId);
+    pagesList = pagesContainer.getElementsByClassName("paginated-page");
+
+    Array.from(pagesList).forEach((item, index) => {
+    item.classList.add("d-none");
+    item.classList.remove("active");
+    if (index + 1 == num) {
+      item.classList.remove("d-none");
+      item.classList.add("active");
+    }
+  });
+
+  pagination(containerId, num);
+  updateHeight(containerId);
+
+}
+
+function goNext(containerId, curPage){
+    goToPage(containerId, curPage+1);
+    return curPage++;
+}
+
+function goPrev(containerId, curPage){
+    goToPage(containerId, curPage-1);
+    return curPage--;
+}
+
+function pagination(containerId, curPage) {
+
+  const pagesContainer = document.getElementById(containerId);
+  const paginationContainer = pagesContainer.getElementsByClassName("pagination-container")[0];
+  const pagesList = pagesContainer.getElementsByClassName("paginated-page");
+  const total = pagesList.length;
+  const numPadding = 2;
+
+  const paginationUl = document.createElement("ul");
+
+  paginationUl.classList.add("pagination", "justify-content-center");
+
+  const prevLi = document.createElement("li");
+  prevLi.classList.add("page-item")
+
+  const prevLink = document.createElement("a");
+  prevLink.classList.add("page-link");
+  prevLink.id = "previousLink";
+  prevLink.href="#";
+  prevLink.innerHTML = '<i class="fa far fa-chevrons-left fa-2xs"></i> Previous';
+
+  prevLi.appendChild(prevLink);
+
+  if (curPage != 1) {
+      paginationUl.appendChild(prevLi);
+  }
+
+  var firstEllipses = false;
+  var secondEllipses = false;
+
+  for (i=0; i < total; i++){
+      
+      if (((curPage - numPadding) <= (i+1) && (i+1) <= (curPage + numPadding)) || (i == 0) || (i + 1 == total)) {
+          const newPageLi = document.createElement("li");
+          newPageLi.classList.add("page-item");
+          if (i + 1 == curPage){
+              newPageLi.ariaCurrent = "page";
+              newPageLi.classList.add("active");
+          }
+
+          const newLink = document.createElement("a");
+          newLink.classList.add("page-link", "page-link-number");
+          newLink.innerHTML = i+1;
+          newLink.dataset.destination = i+1;
+          newLink.href = "#";
+          
+          newPageLi.appendChild(newLink);
+
+          paginationUl.appendChild(newPageLi);
+      } else {
+
+          if (!firstEllipses) {
+              if (1 < (i + 1) && (i + 1) < (curPage - numPadding)) {
+              const ellipsesLi = document.createElement("li");
+              ellipsesLi.classList.add("page-item","first-ellipses");
+
+              const ellipses = document.createElement("span");
+              ellipses.classList.add("page-link");
+              ellipses.innerHTML = "...";
+              
+              ellipsesLi.appendChild(ellipses);
+
+              paginationUl.appendChild(ellipsesLi);
+
+
+                  firstEllipses = true;
+                  continue;
+              }
+          }
+
+          if (!secondEllipses) {
+              if ((curPage + numPadding) < (i + 1) && (i + 1) < total) {
+                  const ellipsesLi = document.createElement("li");
+                  ellipsesLi.classList.add("page-item","second-ellipses");
+
+                  const ellipses = document.createElement("span");
+                  ellipses.classList.add("page-link");
+                  ellipses.innerHTML = "...";
+                  
+                  ellipsesLi.appendChild(ellipses);
+
+                  paginationUl.appendChild(ellipsesLi);
+
+                  secondEllipses = true;
+                  continue;
+              }
+          }
+      }
+  }
+
+  const nextLi = document.createElement("li");
+  nextLi.classList.add("page-item")
+
+
+  const nextLink = document.createElement("a");
+  nextLink.classList.add("page-link");
+  nextLink.id = "nextLink";
+  nextLink.href="#";
+  
+  nextLink.innerHTML = 'Next <i class="fa far fa-chevrons-right fa-2xs"></i>';
+
+  nextLi.appendChild(nextLink);
+  
+  if (curPage != total) {
+      paginationUl.appendChild(nextLi);
+  }
+
+  paginationContainer.innerHTML = '';
+  paginationContainer.appendChild(paginationUl);
+
+  const paginationNumbers = paginationContainer.getElementsByClassName("page-link-number");
+  const prevButton = document.getElementById("previousLink");
+  const nextButton = document.getElementById("nextLink");
+
+  if (prevButton) {
+      prevButton.addEventListener("click", () => {
+          event.preventDefault();
+          goPrev(containerId, curPage);
+          curPage--;
+      });
+  }
+
+  if (nextButton) {
+      nextButton.addEventListener("click", () => {
+          event.preventDefault();
+          console.log("next");
+          goNext(containerId, curPage);
+          curPage++;
+          console.log("current page: " + curPage);
+      });
+  }
+
+  Array.from(paginationNumbers).forEach((item, index) => {
+      let pageIndex = Number(item.dataset.destination);
+      if (pageIndex) {
+          item.addEventListener("click", () => {
+              event.preventDefault();
+              goToPage(containerId, pageIndex);
+              curPage = pageIndex;
+          });
+      }
+  });
+
+}
+
+
+function downloadFile(fileUrl, fileName, target) {
+  var element = document.createElement('a');
+  element.setAttribute('href', fileUrl);
+  element.setAttribute('download', fileName);
+  element.setAttribute('target', target);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  //element.click();
+
+  //document.body.removeChild(element);
+}
+
+// function downloadFile(url, fileName){
+//   fetch(url, { method: 'get', mode: 'no-cors', referrerPolicy: 'no-referrer' })
+//     .then(res => res.blob())
+//     .then(res => {
+//       const aElement = document.createElement('a');
+//       aElement.setAttribute('download', fileName);
+//       const href = URL.createObjectURL(res);
+//       aElement.href = href;
+//       // aElement.setAttribute('href', href);
+//       aElement.setAttribute('target', '_blank');
+//       aElement.click();
+//       URL.revokeObjectURL(href);
+//     });
+// };

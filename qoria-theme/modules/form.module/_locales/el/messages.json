@@ -53,10 +53,5 @@
     "message" : "Email",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Τίτλος φόρμας",
-    "description" : "",
-    "placeholders" : null
   }
 }

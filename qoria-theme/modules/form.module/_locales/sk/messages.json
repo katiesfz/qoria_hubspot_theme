@@ -53,10 +53,5 @@
     "message" : "E-mail",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Názov formulára",
-    "description" : "",
-    "placeholders" : null
   }
 }

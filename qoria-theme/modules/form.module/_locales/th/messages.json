@@ -53,10 +53,5 @@
     "message" : "อีเมล",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "ชื่อแบบฟอร์ม",
-    "description" : "",
-    "placeholders" : null
   }
 }

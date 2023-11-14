@@ -9,7 +9,9 @@
       border: 0 none;
       border-bottom-width: {{ module.styles.line.thickness ~ "px" }};
       border-bottom-style: {{ module.styles.line.style }};
+      {% if module.styles.line.color %}
       border-bottom-color: rgba({{ module.styles.line.color.color|convert_rgb }}, {{ module.styles.line.color.opacity / 100 }});
+      {% endif %}
       margin-left: {{ "auto" if (module.styles.alignment.alignment.horizontal_align == "CENTER" or module.styles.alignment.alignment.horizontal_align == "RIGHT") else "0" }};
       margin-right: {{ "auto" if (module.styles.alignment.alignment.horizontal_align == "CENTER" or module.styles.alignment.alignment.horizontal_align == "LEFT") else "0" }};
       {% if module.styles.spacing.spacing.css %}
@@ -22,5 +24,17 @@
 {% end_require_css %}
 
 {# Divider #}
-
-<hr>
+{% if module.styles.line.style == "gradient" %}
+  <div class="bg-gradient-primary{{"-reverse" if module.styles.line.reverse_gradient}}" 
+  style="
+  width: {{ module.styles.size.width ~ "%" }}; 
+  height: {{ module.styles.line.thickness ~ "px" }}; 
+  {% if module.styles.spacing.spacing.css %}
+    {{ module.styles.spacing.spacing.css }};
+  {% endif %}
+  margin-left: {{ "auto" if (module.styles.alignment.alignment.horizontal_align == "CENTER" or module.styles.alignment.alignment.horizontal_align == "RIGHT") else "0" }};
+  margin-right: {{ "auto" if (module.styles.alignment.alignment.horizontal_align == "CENTER" or module.styles.alignment.alignment.horizontal_align == "LEFT") else "0" }};
+  "></div>
+{% else %}
+  <hr>
+{% endif %}

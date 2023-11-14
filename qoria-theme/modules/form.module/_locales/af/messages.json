@@ -53,10 +53,5 @@
     "message" : "E-pos",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Vormtitel",
-    "description" : "",
-    "placeholders" : null
   }
 }

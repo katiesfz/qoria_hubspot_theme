@@ -56,7 +56,7 @@
     <div class="{{module.style.dark_or_light}} carousel-slider {{ "section-shadow" if module.style.shadow == "section-shadow" }}" style="{{ "transform-style: preserve-3d; position: relative; z-index: 2;" if module.style.shadow == "section-shadow" }}" id="carousel_{{name}}">
     {% for item in module.slide %}
         <div class="slide">
-            <div class="row">
+            <div class="row g-0 w-100">
                 {% for item2 in item.column %}
                     <div class="{{ item2.column_classes }}">
                     {{ item2.content }}

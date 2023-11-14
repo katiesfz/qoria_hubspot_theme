@@ -1,0 +1,151 @@
+[{
+  "name" : "region",
+  "label" : "Region",
+  "required" : false,
+  "locked" : false,
+  "multiple":"false",
+  "display" : "select",
+  "choices" : [[ "au", "Australia" ], [ "nz", "New Zealand" ], [ "uk", "United Kingdom" ], [ "us", "United States" ], [ "global", "Global" ] ],
+  "type" : "choice",
+  "default" : "global"
+},{
+  "name" : "nz_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "visibility" : {
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "nz",
+    "property": "",
+    "operator" : "EQUAL"
+     },
+  "default" : "<p style='color: inherit'><strong>Call us on 0000 000000</strong> for an informal chat, <a href='mailto:enquiries@linewize.co.nz' style='color: inherit;'>email us</a> or <a href='https://linewize.co.nz/' style='color: inherit;'>visit our website</a> for more information.</p>"
+},{
+  "name" : "au_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "visibility" : {
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "au",
+    "property": "",
+    "operator" : "EQUAL"
+     },
+  "default" : "<p style='color: inherit'><strong>Call us on 1300 687 052</strong> for an informal chat, <a href='mailto:enquiries@linewize.io' style='color: inherit;'>email us</a> or <a href='https://linewize.io/' style='color: inherit;'>visit our website</a> for more information.</p>"
+},{
+  "name" : "uk_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "visibility" : {
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "uk",
+    "property": "",
+    "operator" : "EQUAL"
+     },
+  "default" : "<p style='color: inherit'><strong>Call us on 0000 000000</strong> for an informal chat, <a href='mailto:enquiries@smoothwall.com' style='color: inherit;'>email us</a> or <a href='https://smoothwall.com/' style='color: inherit;'>visit our website</a> for more information.</p>"
+},{
+  "name" : "us_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "visibility" : {
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "us",
+    "property": "",
+    "operator" : "EQUAL"
+     },
+  "default" : "<p style='color: inherit'><strong>Call us on 844 SAFEWEB (844-723-3932)</strong> for an informal chat, or <a href='https://www.linewize.com/' style='color: inherit;'>visit our website</a> for more information.</p>"
+},{
+  "name" : "global_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "visibility" : {
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "global",
+    "property": "",
+    "operator" : "EQUAL"
+     },
+  "default" : "<p style='color: inherit'><strong>Call us on 0000 000000</strong> for an informal chat, <a href='mailto:enquiries@qoria.com' style='color: inherit;'>email us</a> or <a href='https://qoria.com/' style='color: inherit;'>visit our website</a> for more information.</p>"
+},{
+  "id" : "social_links",
+  "name" : "social_links",
+  "display_width" : null,
+  "label" : "Social links",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [{
+    "id" : "social_links.social_account",
+    "name" : "social_account",
+    "display_width" : null,
+    "label" : "Social account",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fb", "Facebook" ], [ "tw", "Twitter" ], [ "in", "Instagram" ], [ "li", "LinkedIn" ], [ "yt", "YouTube" ], [ "custom_icon", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fb"
+  }, {
+        "id" : "social_links.custom_image",
+        "name" : "custom_image",
+        "display_width" : null,
+        "label" : "Custom Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : false,
+        "type" : "image",
+        "visibility" : {
+          "controlling_field" : "social_links.social_account",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom_icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "default" : {
+          "size_type" : "auto",
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }, {
+    "id" : "social_links.social_link",
+    "name" : "social_link",
+    "display_width" : null,
+    "label" : "Social link",
+    "required" : true,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.facebook.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  }],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
+}]

@@ -16,7 +16,8 @@ screenshotPath: ../../../images/section-previews/screenshot_Footer.png
             {% text "address_heading" label="Address heading", value="Registered Office", no_wrapper=True %}
             </h6>
             {% text "address_line_1" label="Address Line 1", value="945 Wellington Street, West Perth", export_to_template_context=True %}
-            {% text "address_line_2" label="Address Line 2", value="WA, Australia, 6005", export_to_template_context=True %}
+            {% text "address_line_2" label="Address Line 2", value="WA, Australia, 6005", export_to_template_context=True %}            
+            {% module "address_multiline" path="../../../modules/plaintext-multiline", label="Address Multi-line", export_to_template_context=True %}
             {% text "phone_number" label="Phone", value="08 9322 7600", export_to_template_context=True %}
             {% text "email" label="Email", value="info@qoria.com", export_to_template_context=True %}
             {# Prevent the auto-linking of phone numbers on iPhone #}
@@ -32,14 +33,13 @@ screenshotPath: ../../../images/section-previews/screenshot_Footer.png
               {% endfor %}
             {% endif %}
             <p>
-            {% if widget_data.address_line_1.value != "" %}
-              {{widget_data.address_line_1.value}}
-            {% endif %}
-            {% if widget_data.address_line_2.value != "" %}
-              <br>{{widget_data.address_line_2.value}}
+            {% if widget_data.address_multiline.plaintext_multiline != "" %}
+              {% for line in widget_data.address_multiline.plaintext_multiline %}
+                  {{line}}{{"<br>" if !loop.last}}
+              {% endfor %}
             {% endif %}
             </p>
-            {{ "<p>" if (widget_data.phone_number.value != "" && widget_data.email.value != "") }}
+            {{ "<p>" if (widget_data.phone_number.value != "" || widget_data.email.value != "") }}
               {% if widget_data.phone_number.value != "" %}
                 Phone: {{newPhone|join}}
               {% endif %}
@@ -47,7 +47,7 @@ screenshotPath: ../../../images/section-previews/screenshot_Footer.png
               {% if widget_data.email.value != "" %}
                 Email: {{widget_data.email.value}}
               {% endif %}
-            {{ "</p>" if (widget_data.phone_number.value != "" && widget_data.email.value != "") }}
+            {{ "</p>" if (widget_data.phone_number.value != "" || widget_data.email.value != "") }}
             <p>Registered in Australia<br>ABN 331 675 09177</p>
       </div>
       <div class="col-12 col-sm-4 col-lg-3 mb-5">

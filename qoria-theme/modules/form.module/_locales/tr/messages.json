@@ -53,10 +53,5 @@
     "message" : "E-posta adresi",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Form başlığı",
-    "description" : "",
-    "placeholders" : null
   }
 }

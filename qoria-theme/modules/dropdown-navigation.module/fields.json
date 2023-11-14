@@ -33,4 +33,60 @@
   "preset" : null,
   "type" : "choice",
   "default" : "lg"
+}, {
+  "id" : "megamenu",
+  "name" : "megamenu",
+  "display_width" : null,
+  "label" : "Megamenu",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "megamenu_descriptions",
+  "name" : "megamenu_descriptions",
+  "display_width" : null,
+  "label" : "Megamenu Descriptions",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "megamenu_descriptions.description",
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "megamenu",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "megamenu_descriptions.match_label",
+    "name" : "match_label",
+    "display_width" : null,
+    "label" : "Match label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "megamenu_descriptions.description",
+    "name" : "description",
+    "display_width" : null,
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
 } ]

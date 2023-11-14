@@ -77,6 +77,20 @@
   "show_emoji_picker" : false,
   "type" : "text"
 }, {
+  "id" : "header_level",
+  "name" : "header_level",
+  "display_width" : null,
+  "label" : "Header Level",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h1", "Primary Title" ], [ "h2", "Secondary Title" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "h1"
+}, {
   "id" : "15f774bc-2db9-9b9d-29bf-dba26a553686",
   "name" : "page_contents",
   "display_width" : null,
@@ -126,7 +140,21 @@
   "display" : "toggle",
   "type" : "boolean",
   "default" : false
-}, {
+},{
+  "id" : "stock_database_source",
+  "name" : "stock_database_source",
+  "display_width" : null,
+  "label" : "Stock Data HubDB Source",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "local", "Local" ], [ "external", "External" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "local"
+},  {
   "id" : "stock_db",
   "name" : "stock_db",
   "display_width" : null,

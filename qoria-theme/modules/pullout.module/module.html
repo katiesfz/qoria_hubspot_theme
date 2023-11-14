@@ -1,7 +1,7 @@
 
 
-<section class="{{" section-shadow" if module.style.shadow }}" style="transform-style: preserve-3d; {{"position: relative; z-index: 2; margin-bottom: -24px; transform: translateY(-24px);" if module.style.overlay }} {{module.style.spacing_field.css}}">
-    <div class="container-fluid g-0 {{ module.style.background_colour if module.style.background_colour != "none" }}">
+<section class="{{" section-shadow" if module.style.shadow }}" style="transform-style: preserve-3d; {{"position: relative; z-index: 2; margin-top: -24px;" if module.style.overlay }}">
+    <div class="container-fluid g-0 {{ module.style.background_colour if module.style.background_colour != "none" }}{{ " bg-q-tail-1" if module.style.background_image == "q-tail-1" }}" style=" {{module.style.spacing_field.css}}">
         {% for row in module.row %}
             <div class="row g-0 {{row.advanced.additional_classes}}">
                 {% for col in row.column %}
@@ -30,7 +30,7 @@
                             {% set loadingAttr = col.icon.custom_image.loading != 'disabled' ? 'loading="{{ col.icon.custom_image.loading }}"' : '' %}
                             <img src="{{ col.icon.custom_image.src }}" alt="{{ col.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
                           {% else %}
-                            {% if col.icon.icon_code != "none" %}
+                            {% if (col.icon.icon_code != "" && col.icon.icon_code != "none" ) || col.icon.icon_field.name != "" %}
                                 <div style="content-sizing: border-box;" class="d-flex justify-content-center align-items-center mb-3">
                                     {% if col.icon.icon_code %}
                                         {% set iconCode = "fa-" ~ col.icon.icon_code %}

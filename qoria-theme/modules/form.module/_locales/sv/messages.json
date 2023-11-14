@@ -53,10 +53,5 @@
     "message" : "E-postmeddelande",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Formulärets titel",
-    "description" : "",
-    "placeholders" : null
   }
 }

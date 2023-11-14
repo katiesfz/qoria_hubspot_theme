@@ -1,5 +1,5 @@
-<section class="position-relative {{module.style.background_colour}} {{" section-shadow" if module.style.shadow }}  {{ module.advanced.additional_classes }}" style="transform-style: preserve-3d; {{module.style.spacing_field.css}}">
-   <div class="container-fluid g-0">
+<section class="position-relative {{" section-shadow" if module.style.shadow }}" style="transform-style: preserve-3d; -webkit-transform-style: preserve-3d;">
+   <div class="container-fluid g-0  {{module.style.background_colour}} {{ module.advanced.additional_classes }}" style="{{module.style.spacing_field.css}}">
         {% for item in module.row %}
             <div class="row {{ item.advanced.additional_classes }}">
             {% for item2 in item.column %}

@@ -1,4 +1,4 @@
-[ {
+[{
   "id" : "event",
   "name" : "event",
   "display_width" : null,
@@ -97,21 +97,23 @@
     }, {
       "id" : "event.calendar_object.event_start",
       "name" : "event_start",
+      "display_width" : null,
       "label" : "Event Start",
       "inline_help_text" : "In UTC+08:00",
       "required" : false,
       "locked" : false,
-      "type" : "datetime",
-      "default" : null
+      "step" : 30,
+      "type" : "datetime"
     }, {
       "id" : "event.calendar_object.event_end",
       "name" : "event_end",
+      "display_width" : null,
       "label" : "Event End",
       "inline_help_text" : "In UTC+08:00",
       "required" : false,
       "locked" : false,
-      "type" : "datetime",
-      "default" : null
+      "step" : 30,
+      "type" : "datetime"
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
@@ -127,13 +129,25 @@
     "url" : { }
   }
 }, {
+  "id" : "add_to_diary",
+  "name" : "add_to_diary",
+  "display_width" : null,
+  "label" : "Add to diary label",
+  "required" : false,
+  "locked" : false,
+  "default" : "Add to diary",
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
   "id" : "style",
   "name" : "style",
   "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
-  "children" : [ {
+  "children" : [{
     "id" : "style.event_style",
     "name" : "event_style",
     "display_width" : null,
@@ -151,4 +165,4 @@
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"
-}]
+} ]

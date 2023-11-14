@@ -53,10 +53,5 @@
     "message" : "El. paštas",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Formos pavadinimas",
-    "description" : "",
-    "placeholders" : null
   }
 }

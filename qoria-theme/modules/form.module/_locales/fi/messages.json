@@ -53,10 +53,5 @@
     "message" : "Sähköposti",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Lomakeotsikko",
-    "description" : "",
-    "placeholders" : null
   }
 }

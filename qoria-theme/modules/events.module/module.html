@@ -33,7 +33,7 @@
             <div class="dropdown d-inline-block">
             
               <a class="p-0 text-decoration-none fs-6 mt-3 fw-semibold text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Add to diary <i class="fas fa-2xs fa-chevron-down"></i>
+                {{module.add_to_diary}} <i class="fas fa-2xs fa-chevron-down"></i>
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{event.calendar_object.title|urlencode}}&details={{event.calendar_object.description|urlencode}}&dates={{ event.calendar_object.event_start|format_datetime("yyyyMMdd'T'HHmmss") }}/{{ event.calendar_object.event_end|format_datetime("yyyyMMdd'T'HHmmss") }}&location={{event.calendar_object.location|urlencode}}">Google Calendar</a></li>
@@ -44,11 +44,15 @@
               </ul>
             </div>
 
-            {% if event.url.href %}<span class="d-inline-block mx-2 fs-6 mt-3 fw-semibold text-secondary">|</span>{% endif %}
+            {% if event.event_site_label %}<span class="d-inline-block mx-2 fs-6 mt-3 fw-semibold text-secondary">|</span>{% endif %}
           {% endif %}
           
-          {% if event.url.href %}
-          <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}} <i class="fas fa-2xs fa-chevron-right"></i></a>
+          {% if event.event_site_label %}
+            {% if event.url.href %} 
+              <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}} <i class="fas fa-2xs fa-chevron-right"></i></a> 
+            {% else %}              
+              <span class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}}</span> 
+            {% endif %}
           {% endif %}
       </div>
     

@@ -1,5 +1,5 @@
 <div class="position-relative">
-    <video id="{{ module.unique_video_name }}" width="100%" class="{{ "rounded-3" if module.style.rounded_corners }}" preload="{{ module.style.preload }}" {% if module.style.loop %}loop{% endif %}{% if module.style.autoplay %} autoplay{% endif %}{% if module.style.muted %} muted{% endif %}{% if module.custom_thumbnail.src %} poster="{{ module.custom_thumbnail.src }}"{% endif %}>
+    <video id="video_{{ name }}" width="100%" class="d-block {{ "rounded-3" if module.style.rounded_corners }}" preload="{{ module.style.preload }}" {% if module.style.loop %}loop{% endif %}{% if module.style.autoplay %} autoplay{% endif %}{% if module.style.muted %} muted{% endif %}{% if module.custom_thumbnail.src %} poster="{{ module.custom_thumbnail.src }}"{% endif %}  controlsList="nodownload noremoteplayback">
       {% set videoUrl = module.video_file|lower %}
       {% if videoUrl is string_containing ".mp4" %}
       {% set type = 'type="video/mp4"' %}
@@ -15,24 +15,52 @@
     Your browser does not support the video tag.
     </video>
 {% if module.style.controls %}
-    <div class="play-button position-absolute top-50 start-50 translate-middle">
-      <div class="w-100 h-100 position-absolute" onclick="playVideo('{{ module.unique_video_name }}')">
+    <div class="play-button play-button-{{module.style.play_button_colour}} position-absolute top-50 start-50 translate-middle">
+      <div class="w-100 h-100 position-absolute" onclick="playVideo('video_{{ name }}')">
         </div>
     </div>
 {% endif %}
 </div>
 
-{% require_css %}
+{% if is_in_blog_post_editor %}
+  
+  <script>
 
-  <style>
-  .play-button {
-  {% if module.style.play_button_colour == "light" %}
-    background-image: url({{ get_asset_url('../../images/qoria/play-button.svg') }});
-    mix-blend-mode: screen;
-  {% else %}
-    background-image: url({{ get_asset_url('../../images/qoria/play-button-dark.svg') }});
-  {% endif %}
-  }
-  </style>
+function getVideoDuration(el, id) {
+  const videoDurationEl = el;
+  var video = window.document.getElementById(id);
+  var duration = video.duration;
+  el.innerHTML = duration;
+  console.log("duration populated");
+}
 
-{% end_require_css %}
+window.document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    
+    // check for #video_duration
+    if (window.document.getElementById("video_duration")) {
+      console.log("span exists");
+      getVideoDuration(window.document.getElementById("video_duration"), "video_{{ name }}");
+    } else {
+      const newSpan = window.document.createElement("span");
+      newSpan.id = "video_duration";
+      newSpan.classList.add("d-none");
+      console.log("span created");
+      var video = window.document.getElementById("video_{{ name }}");
+      var duration = video.duration;
+      newSpan.innerHTML = duration;
+      console.log("duration populated");
+      const blogPostBody = window.document.getElementById("hs_cos_wrapper_post_body");
+      blogPostBody.appendChild(newSpan);
+      console.log("new span exists");
+ //     getVideoDuration(window.document.getElementById("video_duration"), "video_{{ name }}");
+    }
+
+  }, 4000);
+
+})
+
+
+  </script>
+
+{% endif %}

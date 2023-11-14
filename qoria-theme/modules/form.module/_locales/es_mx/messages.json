@@ -53,10 +53,5 @@
     "message" : "Correo electrónico",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "Título del formulario",
-    "description" : "",
-    "placeholders" : null
   }
 }

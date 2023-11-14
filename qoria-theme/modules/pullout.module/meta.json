@@ -3,6 +3,6 @@
   "icon" : "../../images/module-icons/square-quote.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
   "module_id" : 114968409132,
-  "label" : "Pullout",
+  "label" : "Pullout - Stats",
   "is_available_for_new_content" : true
 }

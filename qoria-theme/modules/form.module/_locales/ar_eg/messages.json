@@ -53,10 +53,5 @@
     "message" : "البريد الإلكتروني",
     "description" : "",
     "placeholders" : null
-  },
-  "title.label" : {
-    "message" : "عنوان النموذج",
-    "description" : "",
-    "placeholders" : null
   }
 }

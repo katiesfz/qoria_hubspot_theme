@@ -1,0 +1,183 @@
+[ {
+  "id" : "b9667813-6178-64a4-c228-4f2ad0571474",
+  "name" : "popup",
+  "display_width" : null,
+  "label" : "Popup",
+  "required" : false,
+  "locked" : true,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "5dc05b46-65d1-4b4e-4577-5a785629c1c2",
+    "default" : 11
+  },
+  "children" : [ {
+    "id" : "5dc05b46-65d1-4b4e-4577-5a785629c1c2",
+    "name" : "hover_element",
+    "display_width" : null,
+    "label" : "Hover Element",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "parent_element",
+    "name" : "parent_element",
+    "display_width" : null,
+    "label" : "Parent Element",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "popup.framework_level",
+    "name" : "framework_level",
+    "display_width" : null,
+    "label" : "Framework Level",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "primary"
+  }, {
+    "id" : "popup.heading",
+    "name" : "heading",
+    "display_width" : null,
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "78c46e0c-267e-3af0-0223-5cd4c77cd2dd",
+    "name" : "description",
+    "display_width" : null,
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+    "type" : "richtext"
+  }, {
+    "id" : "c4afdefd-9f1f-207a-0a04-3eee91e298a8",
+    "name" : "colour",
+    "display_width" : null,
+    "label" : "Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "bg-primary", "Teal" ], [ "bg-secondary", "Indigo" ], [ "bg-gray-700", "Grey" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "bg-primary"
+  }, {
+    "id" : "ea628a94-168a-c498-6d2e-2b50ddc193f3",
+    "name" : "horizontal_position",
+    "display_width" : null,
+    "label" : "Horizontal Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "%",
+    "type" : "number"
+  }, {
+    "id" : "9c2139cc-9655-2546-5c9e-3baa21b63f2e",
+    "name" : "vertical_position",
+    "display_width" : null,
+    "label" : "Vertical Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "%",
+    "type" : "number"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "hover_element" : "Prevention",
+    "description" : "<h6>Prevention &amp; Enablement</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 34,
+    "vertical_position" : 39
+  }, {
+    "hover_element" : "ClassroomInternet",
+    "description" : "<h6>Classroom Internet&nbsp;<br>Management</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 37,
+    "vertical_position" : 18
+  }, {
+    "hover_element" : "ContentFiltering",
+    "description" : "<h6>Content Filtering</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 19,
+    "vertical_position" : 36
+  }, {
+    "hover_element" : "Firewall",
+    "description" : "<h6>Firewall</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 17,
+    "vertical_position" : 57
+  }, {
+    "hover_element" : "Education",
+    "description" : "<h6>Education &amp; Engagement</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 50,
+    "vertical_position" : 62
+  }, {
+    "hover_element" : "ParentalEmpowerment",
+    "description" : "<h6>Parental Empowerment</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 28,
+    "vertical_position" : 76
+  }, {
+    "hover_element" : "StaffEngagement",
+    "description" : "<h6>Staff Engagement</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 50,
+    "vertical_position" : 84
+  }, {
+    "hover_element" : "StudentEducation",
+    "description" : "<h6>Student Education</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 71,
+    "vertical_position" : 76
+  }, {
+    "hover_element" : "EarlyDetection",
+    "description" : "<h6>Early Detection</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-primary",
+    "horizontal_position" : 66,
+    "vertical_position" : 39
+  }, {
+    "hover_element" : "ProactiveRisk",
+    "description" : "<h6>Proactive Risk <br>Monitoring</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-primary",
+    "horizontal_position" : 68,
+    "vertical_position" : 20
+  }, {
+    "hover_element" : "RealtimeWellbeing",
+    "description" : "<h6>Realtime Wellbeing</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-primary",
+    "horizontal_position" : 84,
+    "vertical_position" : 50
+  }, {
+    "hover_element" : "Training",
+    "description" : "<h6>Training & Consultancy</h6><p>Lorem ipsum</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 50,
+    "vertical_position" : 90
+  } ]
+} ]

@@ -1,0 +1,233 @@
+[ {
+  "id" : "b9667813-6178-64a4-c228-4f2ad0571474",
+  "name" : "popup",
+  "display_width" : null,
+  "label" : "Popup",
+  "required" : false,
+  "locked" : true,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "5dc05b46-65d1-4b4e-4577-5a785629c1c2",
+    "default" : 11
+  },
+  "children" : [ {
+    "id" : "5dc05b46-65d1-4b4e-4577-5a785629c1c2",
+    "name" : "hover_element",
+    "display_width" : null,
+    "label" : "Hover Element",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "parent_element",
+    "name" : "parent_element",
+    "display_width" : null,
+    "label" : "Parent Element",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "popup.framework_level",
+    "name" : "framework_level",
+    "display_width" : null,
+    "label" : "Framework Level",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "tertiary", "Tertiary" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "primary"
+  }, {
+    "id" : "popup.heading",
+    "name" : "heading",
+    "display_width" : null,
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "78c46e0c-267e-3af0-0223-5cd4c77cd2dd",
+    "name" : "description",
+    "display_width" : null,
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+    "type" : "richtext"
+  }, {
+    "id" : "c4afdefd-9f1f-207a-0a04-3eee91e298a8",
+    "name" : "colour",
+    "display_width" : null,
+    "label" : "Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "bg-primary", "Teal" ], [ "bg-secondary", "Indigo" ], [ "bg-gray-700", "Grey" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "bg-primary"
+  }, {
+    "id" : "83366904-90aa-54b6-ae56-bc8dabe747e3",
+    "name" : "arrow_position",
+    "display_width" : null,
+    "label" : "Arrow Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "point-top-left", "Top Left" ], [ "point-top-right", "Top Right" ], [ "point-bottom-left", "Bottom Left" ], [ "point-bottom-right", "Bottom Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "point-top-left"
+  }, {
+    "id" : "ea628a94-168a-c498-6d2e-2b50ddc193f3",
+    "name" : "horizontal_position",
+    "display_width" : null,
+    "label" : "Horizontal Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "%",
+    "type" : "number"
+  }, {
+    "id" : "9c2139cc-9655-2546-5c9e-3baa21b63f2e",
+    "name" : "vertical_position",
+    "display_width" : null,
+    "label" : "Vertical Position",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "%",
+    "type" : "number"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "hover_element" : "Prevention",
+    "parent_element" : "GreyGroup",
+    "framework_level" : "primary",
+    "heading" : "Prevention & Enablement",
+    "description" : "<p>Our solutions here minimise exposure to known risks to prevent harms. They help decrease the need for intervention. They are the first step to a child-safe and healthy digital life.</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 34,
+    "vertical_position" : 39
+  }, {
+    "hover_element" : "ClassroomInternet",
+    "parent_element" : "GreyGroup",
+    "framework_level" : "secondary",
+    "heading" : "Classroom Internet Management",
+    "description" : "<p>Our digital classroom solutions give teachers full-screen visibility and control of school devices used in class. They help keep teachers teaching and students on-task and learning.</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 33,
+    "vertical_position" : 21
+  }, {
+    "hover_element" : "ContentFiltering",
+    "parent_element" : "GreyGroup",
+    "framework_level" : "secondary",
+    "heading" : "Content Filtering",
+    "description" : "<p>Our filter solutions are world-class. Providing real-time, content-aware and granular control capability they stop harmful content with no constraints on a rich learning experience for students.</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 16.5,
+    "vertical_position" : 51
+  }, {
+    "hover_element" : "Education",
+    "parent_element" : "IndigoGroup",
+    "framework_level" : "primary",
+    "heading" : "Education & Engagement",
+    "description" : "<p>Solutions here educate and raise awareness of concerns. They facilitate school community engagement and empower them to be a key partner in safety & wellbeing objectives.</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 50,
+    "vertical_position" : 62
+  }, {
+    "hover_element" : "ParentalEmpowerment",
+    "parent_element" : "IndigoGroup",
+    "framework_level" : "secondary",
+    "heading" : "Parental Empowerment",
+    "description" : "<p>Our ‘Qustodio’ app provides parents with visibility and reporting into what is happening on their child's devices. Our parental webinars guide parents towards informed and positive conversations with their children about online safety and wellbeing.</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 28,
+    "vertical_position" : 76
+  }, {
+    "hover_element" : "StaffEngagement",
+    "parent_element" : "IndigoGroup",
+    "framework_level" : "secondary",
+    "heading" : "Staff Engagement",
+    "description" : "<p>School staff are supported by our training and consultancy teams. Also by our Online Safety Hub. Packed with helpful resources on the latest topics, trends, guides, and best practice articles, it is a vital reference to anyone on the front line of student digital safety and wellbeing.</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 50,
+    "vertical_position" : 84
+  }, {
+    "hover_element" : "StudentEducation",
+    "parent_element" : "IndigoGroup",
+    "framework_level" : "secondary",
+    "heading" : "Student Education",
+    "description" : "<p>Students can learn about digital safety through our Digital Experts Academy. Quizzes, videos and practical exercises help them build awareness and resilience and pass on that understanding to their peers.</p>",
+    "colour" : "bg-secondary",
+    "horizontal_position" : 71,
+    "vertical_position" : 76
+  }, {
+    "hover_element" : "EarlyDetection",
+    "parent_element" : "TealGroup",
+    "framework_level" : "primary",
+    "heading" : "Early Detection",
+    "description" : "<p>Our solutions here help identify the early signs of safety and wellbeing issues. They enable prompt intervention and help prevent escalation of impacted learning as well as social, emotional, psychological or physical harm.</p>",
+    "colour" : "bg-primary",
+    "horizontal_position" : 66,
+    "vertical_position" : 39
+  }, {
+    "hover_element" : "GranularReporting",
+    "parent_element" : "TealGroup",
+    "framework_level" : "secondary",
+    "heading" : "Granular Reporting",
+    "description" : "<p>Our granular reporting includes trends emerging over time. School district and MAT leaders can report organisation-wide or per schools and provide support at every level.</p>",
+    "colour" : "bg-primary",
+    "horizontal_position" : 61,
+    "vertical_position" : 18
+  }, {
+    "hover_element" : "ProactiveRisk",
+    "parent_element" : "TealGroup",
+    "framework_level" : "secondary",
+    "heading" : "Proactive Risk Monitoring",
+    "description" : "<p>Our multi award-winning monitoring solution ‘Monitor’ works in real-time to alert pastoral teams to students at risk - based on their digital behaviours.</p>",
+    "colour" : "bg-primary",
+    "horizontal_position" : 78,
+    "vertical_position" : 31
+  }, {
+    "hover_element" : "RealtimeWellbeing",
+    "parent_element" : "TealGroup",
+    "framework_level" : "secondary",
+    "heading" : "Real-time Wellbeing",
+    "description" : "<p>Our 60-second weekly check-in tool ‘Pulse’ encourages students to speak up, and enables schools to spot those who need early or rapid intervention.</p>",
+    "colour" : "bg-primary",
+    "horizontal_position" : 84,
+    "vertical_position" : 50
+  }, {
+    "hover_element" : "Training",
+    "parent_element" : "TrainingConsultancy",
+    "framework_level" : "primary",
+    "heading" : "Training & Consultancy",
+    "description" : "<p>Our Training and Consultancy programs empower educators and their communities to better understand the digital landscape and the steps they can take to help children thrive online.</p>",
+    "colour" : "bg-gray-700",
+    "horizontal_position" : 50,
+    "vertical_position" : 90
+  }]
+} ]

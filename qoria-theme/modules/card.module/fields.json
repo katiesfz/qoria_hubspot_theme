@@ -35,14 +35,6 @@
     "locked" : false,
     "display" : "checkbox",
     "type" : "boolean",
-    "visibility" : {
-      "controlling_field" : "card.style",
-      "controlling_field_path" : "styles.card_style",
-      "controlling_value_regex" : "1",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
     "default" : false
   }, {
     "id" : "card.overlap",
@@ -51,12 +43,6 @@
     "label" : "Overlap Amount",
     "required" : false,
     "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "0", "None" ], [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ], [ "5", "5" ], [ "6", "6" ], [ "7", "7" ], [ "8", "8" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
     "visibility" : {
       "controlling_field" : "card.image_overlap",
       "controlling_field_path" : "card.image_overlap",
@@ -65,6 +51,12 @@
       "operator" : "EQUAL",
       "access" : null
     },
+    "display" : "select",
+    "choices" : [ [ "0", "None" ], [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ], [ "5", "5" ], [ "6", "6" ], [ "7", "7" ], [ "8", "8" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
     "default" : "0"
   }, {
     "id" : "card.accent_colour",
@@ -136,120 +128,200 @@
       "operator" : "EQUAL",
       "access" : null
     },
-    "children" : [{
-        "id" : "text_group.text",
-        "name" : "text",
-        "display_width" : null,
-        "label" : "Content",
-        "required" : false,
-        "locked" : false,
-        "type" : "richtext",
-        "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
-      }, {
-        "id" : "text_group.link",
-        "name" : "link",
-        "display_width" : null,
-        "label" : "Link",
-        "required" : false,
-        "locked" : false,
-        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
-        "show_advanced_rel_options" : false,
-        "type" : "link",
-        "default" : {
-          "url" : {
-            "content_id" : null,
-            "type" : "EXTERNAL",
-            "href" : ""
-          },
-          "open_in_new_tab" : false,
-          "no_follow" : false,
-          "sponsored" : false,
-          "user_generated_content" : false
-        }
-      }, {
-        "id" : "text_group.link_label",
-        "name" : "link_label",
-        "display_width" : null,
-        "label" : "Link Label",
-        "required" : false,
-        "locked" : false,
-        "validation_regex" : "",
-        "allow_new_line" : false,
-        "show_emoji_picker" : false,
-        "type" : "text",
-        "visibility_rules" : "ADVANCED",
-        "advanced_visibility" : {
-          "boolean_operator" : "AND",
-          "criteria" : [{
-            "controlling_field_path" : "card.multiple_text",
-            "controlling_value_regex" : "true",
-              "operator" : "EQUAL"
-            }]
+    "children" : [ {
+      "id" : "text_group.text",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Content",
+      "required" : false,
+      "locked" : false,
+      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+      "type" : "richtext",
+      "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+    }, {
+      "id" : "text_group.link",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
         },
-        "default" : ""
-      },{
-        "id" : "text_group.cta_style",
-        "name" : "cta_style",
-        "display_width" : null,
-        "label" : "CTA Style",
-        "required" : false,
-        "locked" : false,
-        "display" : "select",
-        "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
-        "multiple" : false,
-        "reordering_enabled" : true,
-        "preset" : null,
-        "type" : "choice",
-        "visibility_rules" : "ADVANCED",
-        "advanced_visibility" : {
-          "boolean_operator" : "AND",
-          "criteria" : [{
-            "controlling_field_path" : "card.multiple_text",
-            "controlling_value_regex" : "true",
-              "operator" : "EQUAL"
-            }]
-        },
-        "default" : "text-"
-      },{
-        "id" : "text_group.cta_colour",
-        "name" : "cta_colour",
-        "display_width" : null,
-        "label" : "CTA Colour",
-        "required" : false,
-        "locked" : false,
-        "display" : "select",
-        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ] ],
-        "multiple" : false,
-        "reordering_enabled" : true,
-        "preset" : null,
-        "type" : "choice",
-        "visibility_rules" : "ADVANCED",
-        "advanced_visibility" : {
-          "boolean_operator" : "AND",
-          "criteria" : [{
-            "controlling_field_path" : "card.multiple_text",
-            "controlling_value_regex" : "true",
-              "operator" : "EQUAL"
-            }]
-        },
-        "default" : "primary"
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
       }
-    ],
+    }, {
+      "id" : "text_group.download",
+      "name" : "download",
+      "display_width" : null,
+      "label" : "Download",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "OR",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.text_group.link",
+          "controlling_value_regex" : "EXTERNAL",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        },{
+          "controlling_field" : null,
+          "controlling_field_path" : "card.text_group.link",
+          "controlling_value_regex" : "FILE",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : []
+      },
+      "default" : false
+    },{
+      "id" : "text_group.download_file",
+      "name" : "download_file",
+      "display_width" : null,
+      "label" : "Download name",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.text_group.download",
+          "controlling_value_regex" : "true",
+          "property" : "",
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [{
+          "boolean_operator" : "OR",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.text_group.link",
+            "controlling_value_regex" : "EXTERNAL",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
+          },{
+            "controlling_field" : null,
+            "controlling_field_path" : "card.text_group.link",
+            "controlling_value_regex" : "FILE",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
+          }]
+        }]
+      },
+      "default" : ""
+    },{
+      "id" : "text_group.link_label",
+      "name" : "link_label",
+      "display_width" : null,
+      "label" : "Link Label",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [ ]
+      },
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "text_group.cta_style",
+      "name" : "cta_style",
+      "display_width" : null,
+      "label" : "CTA Style",
+      "required" : false,
+      "locked" : false,
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [ ]
+      },
+      "display" : "select",
+      "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "text-"
+    }, {
+      "id" : "text_group.cta_colour",
+      "name" : "cta_colour",
+      "display_width" : null,
+      "label" : "CTA Colour",
+      "required" : false,
+      "locked" : false,
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [ ]
+      },
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary"
+    } ],
     "tab" : "CONTENT",
     "expanded" : false,
     "type" : "group",
     "default" : { }
-}, {
+  }, {
     "id" : "card.text",
     "name" : "text",
     "display_width" : null,
     "label" : "Content",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "richtext",
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "card.multiple_text",
@@ -258,6 +330,8 @@
       "operator" : "EQUAL",
       "access" : null
     },
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+    "type" : "richtext",
     "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
   }, {
     "id" : "card.link",
@@ -266,9 +340,6 @@
     "label" : "Link",
     "required" : false,
     "locked" : false,
-    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
-    "show_advanced_rel_options" : false,
-    "type" : "link",
     "visibility" : {
       "controlling_field" : null,
       "controlling_field_path" : "card.multiple_text",
@@ -277,6 +348,9 @@
       "operator" : "EQUAL",
       "access" : null
     },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
     "default" : {
       "url" : {
         "content_id" : null,
@@ -288,11 +362,51 @@
       "sponsored" : false,
       "user_generated_content" : false
     }
-  }, {
-    "id" : "card.link_label",
-    "name" : "link_label",
+  },{
+    "id" : "download",
+    "name" : "download",
     "display_width" : null,
-    "label" : "Link Label",
+    "label" : "Download",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [{
+        "controlling_field" : null,
+        "controlling_field_path" : "card.multiple_text",
+        "controlling_value_regex" : "false",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null 
+        }],
+      "children" : [{
+        "boolean_operator" : "OR",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.link",
+          "controlling_value_regex" : "EXTERNAL",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        },{
+          "controlling_field" : null,
+          "controlling_field_path" : "card.link",
+          "controlling_value_regex" : "FILE",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        } ]
+      }]
+    },
+    "default" : false
+  },{
+    "id" : "download_file",
+    "name" : "download_file",
+    "display_width" : null,
+    "label" : "Download name",
     "required" : false,
     "locked" : false,
     "validation_regex" : "",
@@ -302,12 +416,65 @@
     "visibility_rules" : "ADVANCED",
     "advanced_visibility" : {
       "boolean_operator" : "AND",
-      "criteria" : [{
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.download",
+        "controlling_value_regex" : "true",
+        "property" : "",
+        "operator" : "EQUAL",
+        "access" : null
+      },{
+        "controlling_field" : null,
         "controlling_field_path" : "card.multiple_text",
         "controlling_value_regex" : "false",
-          "operator" : "EQUAL"
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null 
+        } ],
+      "children" : [{
+        "boolean_operator" : "OR",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.link",
+          "controlling_value_regex" : "EXTERNAL",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        },{
+          "controlling_field" : null,
+          "controlling_field_path" : "card.link",
+          "controlling_value_regex" : "FILE",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
         }]
+      }]
     },
+    "default" : ""
+  }, {
+    "id" : "card.link_label",
+    "name" : "link_label",
+    "display_width" : null,
+    "label" : "Link Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.multiple_text",
+        "controlling_value_regex" : "false",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
     "default" : ""
   }, {
     "id" : "card.cta_style",
@@ -316,44 +483,52 @@
     "label" : "CTA Style",
     "required" : false,
     "locked" : false,
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.multiple_text",
+        "controlling_value_regex" : "false",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    },
     "display" : "select",
     "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [{
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-          "operator" : "EQUAL"
-        }]
-    },
     "default" : "text-"
-  },{
+  }, {
     "id" : "card.cta_colour",
     "name" : "cta_colour",
     "display_width" : null,
     "label" : "CTA Colour",
     "required" : false,
     "locked" : false,
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.multiple_text",
+        "controlling_value_regex" : "false",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    },
     "display" : "select",
     "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [{
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-          "operator" : "EQUAL"
-        }]
-    },
     "default" : "primary"
   }, {
     "id" : "card.stretched_link",
@@ -363,23 +538,28 @@
     "inline_help_text" : "Applies link to the whole card",
     "required" : false,
     "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
     "visibility_rules" : "ADVANCED",
     "advanced_visibility" : {
       "boolean_operator" : "AND",
-      "criteria" : [{
+      "criteria" : [ {
+        "controlling_field" : null,
         "controlling_field_path" : "card.multiple_text",
         "controlling_value_regex" : "false",
-          "operator" : "EQUAL"
-        }, 
-        {
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      }, {
+        "controlling_field" : null,
         "controlling_field_path" : "card.link",
         "controlling_value_regex" : "",
-        "property" : "href",
-        "operator" : "EQUAL"
-        }]
+        "property" : "url.href",
+        "operator" : "NOT_EMPTY",
+        "access" : null
+      } ],
+      "children" : [ ]
     },
+    "display" : "checkbox",
+    "type" : "boolean",
     "default" : false
   } ],
   "tab" : "CONTENT",
@@ -414,7 +594,7 @@
   "label" : "Styles",
   "required" : false,
   "locked" : false,
-  "children" : [{
+  "children" : [ {
     "id" : "styles.spacing_field",
     "name" : "spacing_field",
     "display_width" : null,
@@ -453,22 +633,26 @@
     "inline_help_text" : "",
     "required" : false,
     "locked" : false,
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "styles.image_header",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    },
     "display" : "select",
     "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : "cover",
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [{
-        "controlling_field_path" : "styles.image_header",
-        "controlling_value_regex" : "true",
-          "operator" : "EQUAL"
-        }]
-    }
+    "default" : "cover"
   }, {
     "id" : "styles.title_accent",
     "name" : "title_accent",
@@ -586,20 +770,6 @@
     "type" : "boolean",
     "default" : true
   }, {
-    "id" : "card.style",
-    "name" : "card_style",
-    "display_width" : null,
-    "label" : "Card Style",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "1", "Style 1" ], [ "2", "Style 2" ], [ "3", "Style 3" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "1"
-  },{
     "id" : "card.shadow",
     "name" : "shadow",
     "display_width" : null,
@@ -613,7 +783,7 @@
     "preset" : null,
     "type" : "choice",
     "default" : "shadow"
-  },{
+  }, {
     "id" : "card.colour",
     "name" : "card_colour",
     "display_width" : null,
@@ -621,26 +791,27 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "bg-white", "White" ], [ "bg-light", "Light" ]],
+    "choices" : [ [ "bg-white", "White" ], [ "bg-light", "Light" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
     "default" : "bg-white"
   }, {
-    "type" : "choice",
-    "id": "card.alignment",
-    "label": "Card text alignment",
-    "name": "textalignment",
-    "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ]],
+    "id" : "card.alignment",
+    "name" : "textalignment",
+    "display_width" : null,
+    "label" : "Card text alignment",
     "required" : false,
     "locked" : false,
-    "multiple" : false,
-    "preset" : null,
-    "reordering_enabled" : false,
     "display" : "select",
-    "default": "start"
-   } ],
+    "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "start"
+  } ],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group",

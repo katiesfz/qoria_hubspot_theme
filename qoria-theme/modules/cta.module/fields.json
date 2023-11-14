@@ -31,6 +31,78 @@
     "no_follow" : false
   }
 }, {
+  "id" : "download",
+  "name" : "download",
+  "display_width" : null,
+  "label" : "Download",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "link",
+      "controlling_value_regex" : "EXTERNAL",
+      "property" : "url.type",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "link",
+      "controlling_value_regex" : "FILE",
+      "property" : "url.type",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : []
+  },
+  "default" : false
+},{
+  "id" : "download_file",
+  "name" : "download_file",
+  "display_width" : null,
+  "label" : "Download name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [{
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "EXTERNAL",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      },{
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "FILE",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      }]
+    }]
+  },
+  "default" : ""
+},  {
   "id" : "button_text",
   "name" : "button_text",
   "display_width" : null,

@@ -2,8 +2,8 @@
   "label": "Qoria Theme",
   "author": {
     "name": "Katie Sutcliffe",
-    "email": "marketing@familyzone.com",
-    "url": "familyzone.com"
+    "email": "marketing@qoria.com",
+    "url": "qoria.com"
 	},
   "documentation_url": "https://developers.hubspot.com/docs/cms/building-blocks/themes/hubspot-cms-boilerplate",
   "example_url": "https://boilerplate.hubspotcms.com",
@@ -19,5 +19,10 @@
         "value": 477
       }
     }
+  ],
+  "hidden_modules": [
+  "@hubspot/button",
+  "@hubspot/form",
+  "@hubspot/divider"
   ]
 }

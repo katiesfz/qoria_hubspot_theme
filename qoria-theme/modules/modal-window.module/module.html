@@ -1,7 +1,7 @@
 <div class="modal fade" id="{{ module.modal_id }}" tabindex="-1" aria-labelledby="{{ module.modal_id }}Modal" aria-hidden="true">
   <div class="modal-dialog {{module.style.modal_size}} modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header border-0">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -21,6 +21,48 @@
           {{ module.modal_body }}
 
         </div>
+        {% if module.cta %}
+          <div class="modal-footer border-0">
+            {% for cta in module.cta %}
+              {% if cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" ~ cta.link.url.href %}
+              {% else %}
+                {% unless (cta.link.url.href is string_containing "//") 
+                  or (!cta.link is string_startingwith "tel:") 
+                  or !cta.link.url.href 
+                %}
+                  {% set href = "//" ~ cta.link.url.href %}
+                {% else %}
+                  {% set href = cta.link.url.href || "" %}
+                {% endunless %}
+              {% endif %}
+
+              {% if cta.alignment == "start" %}
+                {% set alignment = "me-auto" %}
+              {% elif cta.alignment == "center" %}
+                {% set alignment = "mx-auto" %}
+              {% elif cta.alignment == "end" %}
+                {% set alignment = "ms-auto" %}
+              {% endif %}
+              
+              
+              {% set rel = (cta.link.open_in_new_tab ? "noopener " : null) ~ (cta.link.no_follow ? "nofollow" : null) %}
+                <a class="{{alignment}} btn btn{{ cta.button_style }}{{cta.button_colour}} {{cta.button_size}} {% if cta.button_style != "-" %}{{cta.text_colour}}{% endif %} {{ cta.advanced.additional_classes }}" href="{{ href }}"
+                    id="button_{{ name }}"
+                    {% if cta.link.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if cta.download %}
+                      {% if cta.download_file %}
+                        download="{{cta.download_file}}"
+                      {% else %}
+                          download
+                      {% endif %}
+                    {% endif %}
+                    rel="{{ rel }}">
+                  {{ cta.button_text }}
+                </a>
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
   </div>
 </div>

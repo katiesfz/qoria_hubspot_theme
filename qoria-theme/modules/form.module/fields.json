@@ -15,6 +15,8 @@
   "name" : "form",
   "display_width" : null,
   "label" : "Form",
+  "inline_help_text" : "Must be set to raw HTML for correct styling.",
+  "help_text" : "Styling options are managed in the form settings.",
   "required" : false,
   "locked" : false,
   "type" : "form",
@@ -25,6 +27,190 @@
     "redirect_id" : null,
     "redirect_url" : "http://www.google.com"
   }
+}, {
+    "id" : "download",
+    "name" : "download",
+    "display_width" : null,
+    "label" : "Download file on submit",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+},{
+  "picker" : "file",
+  "id" : "download_file",
+  "name" : "download_file",
+  "display_width" : null,
+  "label" : "File",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "supported_types" : [ "EXTERNAL", "FILE" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "open_in_new_tab" : true,
+    "no_follow" : true,
+    "sponsored" : false,
+    "user_generated_content" : false
+  }
+}, {
+  "id" : "download_name",
+  "name" : "download_name",
+  "display_width" : null,
+  "label" : "Download name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "type" : "text"
+},  {
+  "id" : "video",
+  "name" : "video",
+  "display_width" : null,
+  "label" : "Show video on submit",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+"picker" : "video",
+"type" : "file",
+"id" : "video_file",
+"name" : "video_file",
+"display_width" : null,
+"label" : "File",
+"required" : false,
+"locked" : false,
+"visibility_rules" : "ADVANCED",
+"advanced_visibility" : {
+  "boolean_operator" : "AND",
+  "criteria" : [ {
+    "controlling_field" : null,
+    "controlling_field_path" : "video",
+    "controlling_value_regex" : "true",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  }],
+  "children" : []
+}
+}, {
+  "id" : "subtitles",
+  "name" : "subtitles",
+  "display_width" : null,
+  "label" : "Subtitles",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "subtitle_label",
+    "default" : null
+  },
+  "children" : [ {
+    "picker" : "file",
+    "id" : "subtitle_file",
+    "name" : "subtitle_file",
+    "display_width" : null,
+    "label" : "Subtitle file",
+    "inline_help_text" : "must be a .VTT file",
+    "required" : false,
+    "locked" : false,
+    "type" : "file"
+  }, {
+    "id" : "subtitle_label",
+    "name" : "subs_label",
+    "display_width" : null,
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "video",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+},  {
+  "id" : "button_text",
+  "name" : "button_text",
+  "display_width" : null,
+  "label" : "Customise Button Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "video",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "type" : "text"
 }, {
   "id" : "style",
   "name" : "style",
@@ -52,6 +238,20 @@
         }
       }
     }
+  }, {
+    "id" : "style.form_style",
+    "name" : "form_style",
+    "display_width" : null,
+    "label" : "Form Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "Default" ], [ "form-underline", "Underline" ], [ "form-light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
   }, {
     "id" : "style.button_colour",
     "name" : "button_colour",
@@ -88,12 +288,26 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ] ],
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-gray-300 text-dark", "Grey-300" ], [ "bg-light text-dark", "Light" ], [ "bg-white text-dark", "White" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
     "default" : "none"
+  }, {
+    "id" : "style.rounded_corners",
+    "name" : "rounded_corners",
+    "display_width" : null,
+    "label" : "Rounded Corners",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "rounded-0", "None" ], [ "rounded-2", "All" ], [ "rounded-top-2", "Top" ], [ "rounded-bottom-2", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "rounded-0"
   } ],
   "tab" : "STYLE",
   "expanded" : false,
