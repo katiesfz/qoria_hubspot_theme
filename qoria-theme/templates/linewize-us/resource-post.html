@@ -1,7 +1,7 @@
 <!--
   templateType: blog_post
   isAvailableForNewContent: true
-  label: Linewize US - resource post
+  label: Linewize US - Resource Post
   screenshotPath: ../images/template-previews/blog-post.png
 -->
 
@@ -38,7 +38,7 @@
     "src" : get_asset_url("../../images/qoria/photos/iStock-1253508097-RT.jpg"),
     "width" : 1920,
   },
-  menu=115248177746,
+  menu=134668028025,
   cta=[],
   page_contents=[{
         "content_label" : "Featured article",
@@ -306,7 +306,7 @@
 <div class="main p-0 overflow-hidden">
 
 <section class="bg-light pt-7 pb-5">
-  <div class="container-xxl">
+  <div class="container-xxl blog-post">
     <div class="row">
       <div class="col-12 offset-0 col-xl-8 offset-xl-2 col-lg-9 offset-md-1 col-md-10 col-sm-11 {{ "pb-7" if content.featured_image }}">
         <h1 class="fw-bold">{{ content.name }}</h1>
@@ -333,7 +333,9 @@
             </div>
           </div>
           <div class="col text-secondary text-end">
-          <img src="{{ content.blog_post_author.avatar }}" class="me-2" alt="{{ content.blog_post_author.display_name }} Avatar" style="width: 56px; width: 56px; object-fit: cover;"><strong>By {{ content.blog_post_author.display_name }}</strong>
+          {# <img src="{{ content.blog_post_author.avatar }}" class="me-2 d-none" alt="{{ content.blog_post_author.display_name }} Avatar" style="width: 56px; width: 56px; object-fit: cover;">
+#}
+          <strong>By {{ content.blog_post_author.display_name }}</strong>
           </div>
         </div>
         <div class="row">
@@ -345,7 +347,7 @@
           <div class="col">
           {% if content.previous_post_name %}
             <p class="">
-            <a href="{{company_domain}}/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+            <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
             <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
             {{ content.previous_post_name }}
             </a>
@@ -355,7 +357,7 @@
           <div class="col text-end">
           {% if content.next_post_name %}
             <p class="">
-            <a href="{{company_domain}}/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
+            <a href="/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
             <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
             {{ content.next_post_name }}
             </a>
@@ -375,7 +377,7 @@
         <a id="trending" data-hs-anchor="true"></a>
         <h2 class="text-center"><strong>Trending topics</strong></h2>
         <hr class="opacity-25">
-        {% module "trending_topics" path="/q-theme/modules/region-specific/nz/trending-topics-nz" %}
+        {% module "trending_topics" path="/q-theme/modules/region-specific/us/trending-topics-us" %}
       </div>
     </div>
   </div>

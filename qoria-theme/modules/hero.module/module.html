@@ -1,7 +1,14 @@
 {% require_css %}
     <style>
       {% scope_css %}
-
+        .heading-bg-gradient br {
+            display: none !important;
+        }
+        @media (min-width: 768px) {
+            .heading-bg-gradient br {
+                display: block !important;
+            }
+        }
       {% end_scope_css %}
     </style>
   {% end_require_css %}
@@ -44,20 +51,24 @@
     <div class="row h-100 justify-content-end flex-column">
         <div class="col-12 py-5">
         {% if module.pre_header %}<h5 class="fw-bold text-white shadow-filter ms-4">{{module.pre_header}}</h5> {% endif %}
-        {% if module.header_level == "h2" %}
-            <h2 class="heading-bg-gradient bg-gradient-primary text-white h1">{{module.header}}</h2>
-        {% else %}
-        <h1 class="heading-bg-gradient bg-gradient-primary text-white">{{module.header}}</h1>
+        {% if module.header != "" && module.header %}
+            {% if module.header_level == "h2" %}
+                <h2 class="heading-bg-gradient bg-gradient-primary text-white h1">{{module.header}}</h2>
+            {% else %}
+            <h1 class="heading-bg-gradient bg-gradient-primary text-white">{{module.header}}</h1>
+            {% endif %}
         {% endif %}
         </div>
         {%if module.cta|length > 0%}
         <div class="col-12 pb-5">
-            {%for cta in module.cta %}
-                <!-- run macro with link, label, style, colour? -->
+            <div class="ms-4 ms-xxl-0">
+                {%for cta in module.cta %}
+                    <!-- run macro with link, label, style, colour? -->
 
-                <a href="{{cta.cta_link.url.href}}" class="btn {{"ms-4" if loop.first}} {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
-                </a>
-            {%endfor%}
+                    <a href="{{cta.cta_link.url.href}}" {% if cta.cta_link.open_in_new_tab %}target="_blank"{% endif %} class="btn mb-1 {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
+                    </a>
+                {%endfor%}
+            </div>
         </div>
         {%endif%}
         {% if module.show_share_price %}

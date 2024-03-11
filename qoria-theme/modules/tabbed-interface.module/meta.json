@@ -2,6 +2,7 @@
   "global" : false,
   "host_template_types" : [ "PAGE" ],
   "module_id" : 114974156975,
+  "icon" : "../../images/module-icons/folder.svg",
   "js_assets" : [ {
     "autoload" : true,
     "path" : "../../js/jquery/jquery-3.6.4.min.js",

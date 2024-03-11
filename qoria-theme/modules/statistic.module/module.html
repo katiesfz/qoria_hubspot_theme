@@ -1,5 +1,5 @@
 <!-- module html  -->
-
+<div>
 {%if module.style.sizing == "relative" %}
   {% set globalSizing = module.style.relative_icon_size %}
 {% elif module.style.sizing == "absolute" %}
@@ -52,7 +52,7 @@
               <p class="display-{{ module.style.stat_size if module.style.stat_size else "1" }} text-{{statColour}} fw-semibold text-sans-serif mb-0">{{("<span class='animate-from-0' data-value=" + item.number + " id='stat-" + name + "-" + loop.index + "'>") if item.animate_stat}}{{"0" if item.animate_stat else item.number}}{{"</span>" if item.animate_stat}}{{ item.unit }}</p>
           {% endif %}
           {% if item.statistic_header != "" %}
-              <p class="fs-4 text-{{statColour}} fw-semibold mb-2 lh-sm">{{ item.statistic_header }}</p>
+              <p class="fs-4 text-{{statColour}} fw-semibold mb-2 lh-1">{{ item.statistic_header }}</p>
           {%endif%}
           {% if item.description != "" %}
               <p>{{ item.description }}</p>
@@ -62,7 +62,7 @@
  </div>
 {% endfor %}
 </div>
-
+</div>
 <script>
 
 

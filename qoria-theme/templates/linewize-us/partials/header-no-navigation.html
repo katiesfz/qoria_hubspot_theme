@@ -1,6 +1,6 @@
 <!--
 templateType: global_partial
-label: Linewize US Header No Navigation
+label: Linewize US Header No Nav
 -->
 
 
@@ -11,6 +11,9 @@ label: Linewize US Header No Navigation
 {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
 {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
 
+  
+{% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
+
 {% set breakpoint = widget_data.navigation.breakpoint %}
     {% if breakpoint == "always" %}
         {% set navbarExpand = "" %}
@@ -19,20 +22,11 @@ label: Linewize US Header No Navigation
     {% else %}
         {% set navbarExpand = "navbar-expand-" + breakpoint %}
     {% endif %}
-  
 
 <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
   <nav class="navbar {{navbarExpand}}">
     <div class="container-xxl position-relative"> 
-      {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="far fa-xl fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="navbar-search d-flex ms-{{breakpoint}}-6 mb-3 mb-{{breakpoint}}-0">
-            {% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}
-          </div>
-      </div>
+      {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand me-auto"} override_default_logo=False, no_wrapper=True %}
     </div>
   </nav>
 </header>

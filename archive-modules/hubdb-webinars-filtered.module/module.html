@@ -1,0 +1,429 @@
+{# ==================================================================================================================== #}
+{# SECTION - 1 COLUMN / VARIABLE COLUMNS  #}
+{#
+
+This is a variable section where you can specify as many rows (minimum being 1) 
+and as many columns (minimum being 1) as you like. You can then use the rich 
+text editor within each one and add content to your liking.
+
+This module is designed to be super flexible and can be used in places where the 
+design might not yet be determined.
+
+Created by Allan Li @ Pais Media
+Contact ali@paismedia.com for support
+#}
+
+	{% set defaultQueryParam = "&orderBy=-hs_id" %}
+  {% set queryParamFilter = defaultQueryParam %}
+	{% set queryparamAllStates = "" %}
+  {% set productFilter = "" %}
+  {% set audienceFilter = "" %}
+  {% set regionFilter = "" %}
+  {% set themeFilter = "" %}
+
+{% if request.query_dict.product %}
+    {% set productFilter = queryParamFilter ~ "&product=" ~ request.query_dict.product|urlencode %}
+{% endif %}
+
+{% if request.query_dict.audience %}
+    {% set audienceFilter = queryParamFilter ~ "&audience__in=" ~ request.query_dict.audience|urlencode %}
+{% endif %}
+
+{% if request.query_dict.region %}
+    {% set regionFilter = queryParamFilter ~ "&region=" ~ request.query_dict.region|urlencode %}
+{% endif %}
+
+{% if request.query_dict.theme %}
+    {% set themeFilter = queryParamFilter ~ "&theme__in=" ~ request.query_dict.theme|urlencode %}
+{% endif %}
+
+{% if request.query_dict.format %}
+    {% set formatFilter = queryParamFilter ~ "&format=" ~ request.query_dict.format|urlencode %}
+{% endif %}
+
+{% if request.query_dict.v %}
+    {% set video = request.query_dict.v %}
+    
+    <script>
+      
+      
+      document.addEventListener("DOMContentLoaded", () => {
+        preClick();
+      });
+      
+      function preClick(){
+        let e = window.event;
+         $('a#{{video}}').click();
+      }
+</script>
+{% endif %}
+
+
+
+{% set productFilter = "&orderBy=priority&orderBy=product" %}
+{% if request.query_dict.product %}
+  {% if request.query_dict.product == "show-all" %}
+    {% set productFilter = productFilter %}
+  {% else %}
+    {% set productFilter = productFilter ~ "&product="~request.query_dict.product|urlencode %}
+  {% endif %}
+{% endif %}
+{% set themeFilter = "" %}
+{% if request.query_dict.theme %}
+  {% if request.query_dict.theme == "show-all" %}
+      {% set themeFilter = themeFilter %}
+  {% else %}
+      {% set themeFilter = themeFilter ~ "&theme__in="~request.query_dict.theme|urlencode %}
+  {% endif %}
+{% endif %}
+{% set audienceFilter = "" %}
+{% if request.query_dict.audience %}
+  {% if request.query_dict.audience == "show-all" %}
+      {% set audienceFilter = audienceFilter %}
+  {% else %}
+      {% set audienceFilter = audienceFilter ~ "&audience__in="~request.query_dict.audience|urlencode %}
+  {% endif %}
+{% endif %}
+{% set regionFilter = "" %}
+{% if request.query_dict.region %}
+  {% if request.query_dict.region == "show-all" %}
+      {% set regionFilter = regionFilter %}
+  {% else %}
+      {% set regionFilter = regionFilter ~ "&region__in="~request.query_dict.region|urlencode %}
+  {% endif %}
+{% endif %}
+{% set formatFilter = "" %}
+{% if request.query_dict.format %}
+  {% if request.query_dict.format == "show-all" %}
+      {% set formatFilter = formatFilter %}
+  {% else %}
+      {% set formatFilter = formatFilter ~ "&format="~request.query_dict.format|urlencode %}
+  {% endif %}
+{% endif %}
+
+
+
+{% if module.module_settings.show_this_section == "show" %}
+
+{% set badgeClasses = "badge-pill px-3 py-1 font-weight-normal" %}
+
+{% if dynamic_page_hubdb_row %}   
+<script>
+function historyBackWFallback(fallbackUrl) {
+ // console.log("click");
+  if (document.referrer.includes("/success-webinars")) {
+ // console.log("came from webinar page");
+  window.history.back();
+} else {
+//  console.log("came from somewhere else");
+    window.location.href = fallbackUrl;
+}
+};
+</script>
+
+<section class="section_col bg-light">
+  <div class="{{ module.module_settings.container_width }}">
+    <button id="backButton" class="small bg-transparent p-0 mb-4" onclick="historyBackWFallback('{{ request.scheme }}://{{ request.domain }}/{{ content.slug }}')"><i class="fa-solid fa-chevron-left mr-2"></i>Back to lessons</button>
+    <h2>
+      Lesson Details
+    </h2>
+    <div class="d-block py-4">
+      {% if dynamic_page_hubdb_row.product %}
+        {% for product in dynamic_page_hubdb_row.product %}
+          <span class="badge badge-primary {{badgeClasses}}"><i class="fal far fa-tools fa-lg mr-1"></i> {{ product.name }}</span>
+        {% endfor %}
+      {% endif %}
+      
+      {% if dynamic_page_hubdb_row.region %}
+        {% for region in dynamic_page_hubdb_row.region %}
+          <span class="badge badge-secondary {{badgeClasses}}"><i class="fa-light far fa-location fa-lg mr-1"></i> {{ region.name }}</span>
+        {% endfor %}
+      {% endif %}
+      
+      {% if dynamic_page_hubdb_row.duration %}
+          <span class="badge badge-info {{badgeClasses}}"><i class="fa-light far fa-stopwatch mr-1 fa-lg"></i> {{ dynamic_page_hubdb_row.duration }}</span>
+      {% endif %}
+          
+    </div>
+      {{ dynamic_page_hubdb_row.description }}
+    {% if dynamic_page_hubdb_row.resources %}
+      <h2>
+        Supporting Resources
+      </h2>
+    <ul class="fa-ul ">
+      {% for resource in dynamic_page_hubdb_row.resources %}
+      <li class="pb-2"><a href="{{ resource.url }}"><span class="fa-li"><i class="far fa-arrow-to-bottom"></i></span><u>{{ resource.name }}</u></a></li> 
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>
+
+
+<section class="section_col {{ module.module_settings.section_class }}">
+  <div class="{{ module.module_settings.container_width }}">
+    <div class="row">
+      <div class="col-12 col-md-9">
+        <div  id="videoContainer">
+          {% video_player "embed_player" player_id="{{dynamic_page_hubdb_row.video}}", play_button_color="#0075db" %}
+        </div>
+        <div class="row pt-4">
+          <div class="col-12 col-md-6">
+            {% if dynamic_page_hubdb_row.previous %}
+              <p class="font-weight-bold">
+                Previous Lesson
+              </p>
+              {% for previous in dynamic_page_hubdb_row.previous %}
+                <a href="/{{ content.slug }}/{{ previous.hs_path }}" class="d-block">
+                  <div class="bg-white rounded-lg shadow p-3 d-flex align-items-center">
+                    <div class="pr-3">
+                      <i class="fa-2xl fa-solid fa-play-circle text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="small font-weight-bold mb-0">{{previous.name}}</p>
+                      <p class="small mb-0">
+                        {{ previous.description|striptags|truncate(80, False) }}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div class="col-12 col-md-6">
+            {% if dynamic_page_hubdb_row.next %}
+              <p class="font-weight-bold">
+                Next Lesson
+              </p>
+              {% for next in dynamic_page_hubdb_row.next %}
+                <a href="/{{ content.slug }}/{{ next.hs_path }}" class="d-block">
+                  <div class="bg-white rounded-lg shadow p-3 d-flex align-items-center">
+                    <div class="pr-3">
+                      <i class="fa-2xl fa-solid fa-play-circle text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="small font-weight-bold mb-0">{{next.name}}</p>
+                      <p class="small mb-0">
+                        {{ next.description|striptags|truncate(80, False) }}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="row py-4">
+          <div class="col-12">           
+            <button id="backButton" class="small bg-transparent p-0 mb-4" onclick="historyBackWFallback('{{ request.scheme }}://{{ request.domain }}/{{ content.slug }}')"><i class="fa-solid fa-chevron-left mr-2"></i>Back to lessons</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div id="queryFormContainer" class="bg-white rounded-lg shadow p-3">
+
+        </div>
+        <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+        <script>
+          function showConfirmation() {
+            var alert = '<div class="alert alert-success fade show position-absolute" role="alert" id="confirmationAlert">{{ module.query_form.message }}</div>';
+            //  console.log('start confirmation');
+            $("#alertContainer").html(alert);
+            setTimeout(function(){
+              $("#alertContainer #confirmationAlert").alert('close');
+              //   console.log('close confirmation');
+            }, 5000);
+            //   console.log('end confirmation');
+          }
+
+          function replaceForm(){
+            console.log("replace form");
+            hbspt.forms.create({
+              portalId: "{{ hub_id }}",
+              formId: "{{ module.query_form.form_id }}",
+              target: "#queryFormContainer",
+              onFormSubmitted: function($form) {
+              replaceForm();
+              showConfirmation();
+            }
+                               });
+
+          }
+
+          hbspt.forms.create({
+            portalId: "{{ hub_id }}",
+            formId: "{{ module.query_form.form_id }}",
+            target: "#queryFormContainer", 
+            onFormSubmitted: function($form) {
+            replaceForm();
+            showConfirmation();
+          }
+                             });
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% elif dynamic_page_hubdb_table_id %}
+
+  
+    {% if module.header_content_settings.header %}
+    <div class="row section_col_header">
+      <div class="{{ module.header_content_settings.header_column_classes }}">
+        {{ module.header_content_settings.header }}
+      </div>
+    </div>
+    {% endif %}
+    
+    {% set events = hubdb_table_rows(dynamic_page_hubdb_table_id, productFilter + audienceFilter + regionFilter + themeFilter + formatFilter) %}
+    <div class="row pb-5">
+      <div class="col-12">
+        {% set allCategories = [] %}
+        
+            <form id="webinarFilter" method="get">
+                <div class="form-group  form-row">
+                  <div class="col col-12 col-sm-6 col-md mb-1">
+                    <select class="form-control" name="format" form="webinarFilter" onChange="this.form.submit()">
+                        <option value="show-all">Filter by format</option>
+                        <option value="show-all">Show All</option>
+                        {% set formats = hubdb_table_column(dynamic_page_hubdb_table_id, "format").options %}
+                        {% for choice in formats %}
+                            {% if choice.name == request.query_dict.format%}
+                                <option selected="selected" value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% else %}
+                                <option value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col col-12 col-sm-6 col-md mb-1">
+                    <select class="form-control" name="product" form="webinarFilter" onChange="this.form.submit()">
+                        <option value="show-all">Filter by product</option>
+                        <option value="show-all">Show All</option>
+                        {% set products = hubdb_table_column(dynamic_page_hubdb_table_id, "product").options %}
+                        {% for choice in products %}
+                            {% if choice.name == request.query_dict.product %}
+                                <option selected="selected" value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% else %}
+                                <option value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col col-12 col-sm-6 col-md mb-1">
+                    <select class="form-control" name="theme" form="webinarFilter" onChange="this.form.submit()">
+                        <option value="show-all">Filter by theme</option>
+                        <option value="show-all">Show All</option>
+                        {% set themes = hubdb_table_column(dynamic_page_hubdb_table_id, "theme").options %}
+                        {% for choice in themes %}
+                            {% if choice.name == request.query_dict.theme%}
+                                <option selected="selected" value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% else %}
+                                <option value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md col  mb-1">
+                    <select class="form-control" name="audience" form="webinarFilter" onChange="this.form.submit()">
+                        <option value="show-all">Filter by audience</option>
+                        <option value="show-all">Show All</option>
+                        {% set audience = hubdb_table_column(dynamic_page_hubdb_table_id, "audience").options %}
+                        {% for choice in audience %}
+                            {% if choice.name == request.query_dict.audience%}
+                                <option selected="selected" value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% else %}
+                                <option value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col col-12 col-sm-6 col-md mb-1">
+                    <select class="form-control" name="region" form="webinarFilter" onChange="this.form.submit()">
+                        <option value="show-all">Filter by region</option>
+                        <option value="show-all">Show All</option>
+                        {% set regions = hubdb_table_column(dynamic_page_hubdb_table_id, "region").options %}
+                        {% for choice in regions %}
+                            {% if choice.name == request.query_dict.region%}
+                                <option selected="selected" value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% else %}
+                                <option value="{{ choice.name }}">{{ choice.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+            </form>
+      </div>
+    </div>
+    {% if events == [] %}
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2 style="padding-top: 30px;">No webinars match your filters.</h2>
+      </div>
+    </div>
+    {% else %}
+    
+		<div class="row">
+			<div class="col-12">
+        <div class="row card-group section_body webinars_filtered {{ module.cards_appearance_settings.row_classes }}">
+				  {% for row in events %}
+            {% if row.custom_link && row.custom_link != "" %}
+              {% set cardLink = row.custom_link %}
+              {% set cardTarget = 'target="_blank"' %}
+              {% set externalLink = '<sup class="fa fa-external-link" style="font-size: .6em;" aria-hidden="true"></sup>' %}
+            {% else %}
+              {% set cardLink = request.path ~ "/" ~ row.hs_path %}
+              {% set cardTarget = '' %}
+              {% set externalLink = '' %}
+            {% endif %}
+            <div class="{{ module.cards_appearance_settings.column_classes }}">
+                <div class="card box_shadow box_shadow_light {% if module.cards_appearance_settings.add_card_hover %}card_hover{% endif %}">
+                  <img src="{{ row.thumbnail.url }}" class="card-img-top" alt="{{ row.name }}">
+                  <div class="card-body">
+                    <div>
+                      <h5 class="card-title">{{ row.name }}</h5>
+                      {% if row.description %}
+                      <p class="card-text text-dark">{{ row.description|striptags|truncate(200, False) }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="card-footer text-right text-uppercase text_tiny d-flex">
+                    
+                    {% if row.duration %}
+                        <span class="mr-auto badge badge-info {{badgeClasses}}"><i class="fa-light far fa-stopwatch mr-1 fa-lg"></i> {{ row.duration }}</span>
+                    {% endif %}
+                    
+                    <a id="{{row.hs_path}}" class="ml-auto stretched-link" href="{{request.path}}/{{row.hs_path}}">
+                      Watch video
+                    </a>
+                  </div>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+          
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if module.footer_content_settings.footer %}
+  <div class="row section_col_footer">
+    <div class="{{ module.footer_content_settings.footer_column_classes }}">
+      {{ module.footer_content_settings.footer }}
+    </div>
+  </div>
+  {% endif %}
+
+{% endif %}
+
+{% if module.custom_code.custom_css %}<style type="text/css">{{ module.custom_code.custom_css }}</style>{% endif %}
+{% if module.custom_code.custom_js %}<script>{{ module.custom_code.custom_js }}</script>{% endif %}
+
+{% endif %} {# if module.module_settings.show_this_section == "show" #}

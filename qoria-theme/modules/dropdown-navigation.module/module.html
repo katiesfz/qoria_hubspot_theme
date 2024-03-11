@@ -92,16 +92,6 @@
   {# Menu items #}
   
   {% macro megamenu_items() %}
-    <style>
-    .dropdown-toggle::after {
-        margin-left: 0;
-        vertical-align: 0;
-        border-top: 0;
-        border-right: 0;
-        border-bottom: 0;
-        border-left: 0;
-    }
-    </style>
 
   
     {% set menu = menu(module.menu, "site_root").children %}
@@ -112,11 +102,11 @@
           {# dropdown with link #}
           <a class="nav-link" href="{{link.url}}">{{ link.label|replace(" ","&nbsp;") }}</a>
           <a class="nav-link dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" data-bs-auto-close="true"  aria-haspopup="true" aria-expanded="false">
-            <i class='fa fa-xs fa-chevron-down'></i><span class="visually-hidden">Toggle Dropdown for {{ link.label }}</span>
+            <span class="visually-hidden">Toggle Dropdown for {{ link.label }}</span>
           </a>
         {% else %}     
           {# dropdown without link #}     
-          <a class="nav-link {{ "dropdown dropdown-toggle" if link.children and depth < module.max_levels }} {{ "active" if link.activeBranch }} {{ "active" if link.activeNode }}" href="#" {{ 'aria-current="page"' if link.activeNode }} {{ 'target="_blank" rel="noopener"' if link.linkTarget }} aria-haspopup="true"  data-bs-auto-close="true" aria-expanded="false" data-bs-toggle="dropdown" >{{ link.label|replace(" ","&nbsp;") }} {{ "<i class='fa fa-xs fa-chevron-down'></i>" if link.children and depth < module.max_levels }}</a>
+          <a class="nav-link {{ "dropdown dropdown-toggle" if link.children and depth < module.max_levels }} {{ "active" if link.activeBranch }} {{ "active" if link.activeNode }}" href="#" {{ 'aria-current="page"' if link.activeNode }} {{ 'target="_blank" rel="noopener"' if link.linkTarget }} aria-haspopup="true"  data-bs-auto-close="true" aria-expanded="false" data-bs-toggle="dropdown" >{{ link.label|replace(" ","&nbsp;") }}</a>
         {% endif %}
       {% else %}          
         {% if link.url %}
@@ -164,9 +154,9 @@
     {% endmacro %}
 
     {% macro render_dropdown_links(sublink, depth, first, colCount, parent) %}
-      <div class="mb-4 p-0 me-0 me-{{breakpoint}}-5" style="-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; {{"column-span: all;" if parent == "Solutions" && first}}">
+      <div class="mb-4 p-0 me-0 me-{{breakpoint}}-5" style="-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid; {{"column-span: all;" if (sublink.label == "Solutions Overview" || sublink.label == "Nuestras soluciones") && first}}">
         {% if sublink.children %}
-            <h6>
+            <h6 class="mb-1">
               {% if sublink.url %}
               <a class="close-dropdown text-decoration-none text-reset {% if sublink.activeNode %} active{% endif %}" href="{{sublink.url }}">
               {{ sublink.label|replace(" ","&nbsp;") }}
@@ -183,7 +173,7 @@
               {% endfor %}
             </ul>
         {% else %}
-          <h6><a class="close-dropdown text-decoration-none text-reset {% if sublink.activeNode %} active{% endif %}" href="{{sublink.url}}">{{ sublink.label|replace(" ","&nbsp;") }}</a></h6>
+          <h6 class="mb-0"><a class="close-dropdown text-decoration-none text-reset {% if sublink.activeNode %} active{% endif %}" href="{{sublink.url}}">{{ sublink.label|replace(" ","&nbsp;") }}</a></h6>
         {% endif %}
       </div>
     {%endmacro%}

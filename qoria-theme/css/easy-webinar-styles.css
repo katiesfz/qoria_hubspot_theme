@@ -15,9 +15,9 @@
   font-weight: 400;
   line-height: 1.066666667;
   color: var(--q-body-color);
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.04);
   background-clip: padding-box;
-  border: 0 solid rgba(0, 0, 0, 0.2);
+  border: 0 solid rgba(0, 0, 0, 0.04);
   appearance: none;
   border-radius: 0;
   box-shadow: 0 0 0 0;
@@ -36,7 +36,7 @@
 }
 .form-control:focus, .ewp-widget .widgetform-group input:focus {
   color: var(--q-body-color);
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.04);
   border-color: white;
   outline: 0;
   box-shadow: 0 0 0 0, 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
@@ -111,15 +111,20 @@
 }
 
 .form-control-lg {
-  min-height: calc(1.066666667em + 3rem);
-  padding: 1.5rem 3rem;
-  font-size: 1.125rem;
+  min-height: calc(1.066666667em + 2rem);
+  padding: 1rem 2rem;
+  font-size: calc(1.255rem + 0.06vw);
   border-radius: 10px;
 }
+@media (min-width: 1200px) {
+  .form-control-lg {
+    font-size: 1.3rem;
+  }
+}
 .form-control-lg::file-selector-button {
-  padding: 1.5rem 3rem;
-  margin: -1.5rem -3rem;
-  margin-inline-end: 3rem;
+  padding: 1rem 2rem;
+  margin: -1rem -2rem;
+  margin-inline-end: 2rem;
 }
 
 textarea.form-control {
@@ -129,7 +134,7 @@ textarea.form-control-sm {
   min-height: calc(1.066666667em + 1.4rem);
 }
 textarea.form-control-lg {
-  min-height: calc(1.066666667em + 3rem);
+  min-height: calc(1.066666667em + 2rem);
 }
 
 .form-control-color {
@@ -151,7 +156,7 @@ textarea.form-control-lg {
   height: calc(1.066666667em + 1.4rem);
 }
 .form-control-color.form-control-lg {
-  height: calc(1.066666667em + 3rem);
+  height: calc(1.066666667em + 2rem);
 }
 
 .form-select, .ewp-widget .widgetform-group select {
@@ -164,12 +169,12 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.066666667;
   color: var(--q-body-color);
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.04);
   background-image: var(--q-form-select-bg-img), var(--q-form-select-bg-icon, none);
   background-repeat: no-repeat;
   background-position: right 1em center;
   background-size: 16px 12px;
-  border: 0 solid rgba(0, 0, 0, 0.2);
+  border: 0 solid rgba(0, 0, 0, 0.04);
   border-radius: 0;
   box-shadow: inset 0 1px 2px rgba(var(--q-body-color-rgb), 0.075);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -206,11 +211,16 @@ textarea.form-control-lg {
 }
 
 .form-select-lg {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  padding-left: 3rem;
-  font-size: 1.125rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  font-size: calc(1.255rem + 0.06vw);
   border-radius: 10px;
+}
+@media (min-width: 1200px) {
+  .form-select-lg {
+    font-size: 1.3rem;
+  }
 }
 
 [data-bs-theme=dark] .form-select, [data-bs-theme=dark] .ewp-widget .widgetform-group select, .ewp-widget .widgetform-group [data-bs-theme=dark] select {
@@ -226,7 +236,7 @@ textarea.form-control-lg {
   --q-btn-line-height: 1.066666667;
   --q-btn-color: #1d1e1c;
   --q-btn-bg: transparent;
-  --q-btn-border-width: var(--q-border-width);
+  --q-btn-border-width: 2px;
   --q-btn-border-color: transparent;
   --q-btn-border-radius: 4px;
   --q-btn-hover-border-color: transparent;
@@ -241,7 +251,6 @@ textarea.form-control-lg {
   line-height: var(--q-btn-line-height);
   color: var(--q-btn-color);
   text-align: center;
-  text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
@@ -615,7 +624,7 @@ textarea.form-control-lg {
   --q-btn-disabled-border-color: transparent;
   --q-btn-box-shadow: none;
   --q-btn-focus-shadow-rgb: 113, 194, 159;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .btn-link:focus-visible {
   color: var(--q-btn-color);
@@ -625,10 +634,15 @@ textarea.form-control-lg {
 }
 
 .btn-lg {
-  --q-btn-padding-y: 1.5rem;
-  --q-btn-padding-x: 3rem;
-  --q-btn-font-size: 1.125rem;
-  --q-btn-border-radius: 0.4rem;
+  --q-btn-padding-y: 1rem;
+  --q-btn-padding-x: 2rem;
+  --q-btn-font-size: calc(1.255rem + 0.06vw);
+  --q-btn-border-radius: 4px;
+}
+@media (min-width: 1200px) {
+  .btn-lg {
+    --q-btn-font-size: 1.3rem;
+  }
 }
 
 .btn-sm {
@@ -657,11 +671,11 @@ textarea.form-control-lg {
   display: block;
 }
 .ewp-widget .widgetform-group input {
-  border: 0 solid rgba(0, 0, 0, 0.2) !important;
+  border: 0 solid rgba(0, 0, 0, 0.04) !important;
 }
 .ewp-widget .widgetform-group input {
   padding: 1em 1em !important;
-  border: 0 solid rgba(0, 0, 0, 0.2) !important;
+  border: 0 solid rgba(0, 0, 0, 0.04) !important;
 }
 .ewp-widget .widgetform-group.ewp_icon.recurr-date.ewp-cutom-select select {
   padding: 1em 1.5em 1em 1em !important;
@@ -671,9 +685,9 @@ textarea.form-control-lg {
 }
 .ewp-widget .ewp_popup_container .ew_webinar_dates, .ewp-widget .webinar_time_split, .ewp-widget .webinar_customfield_select {
   width: 100% !important;
-  border: 0 solid rgba(0, 0, 0, 0.2);
-  background: rgba(0, 0, 0, 0.1) var(--q-form-select-bg-img), var(--q-form-select-bg-icon, none) no-repeat right 1em center 16px 12px !important;
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  border: 0 solid rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.04) var(--q-form-select-bg-img), var(--q-form-select-bg-icon, none) no-repeat right 1em center 16px 12px !important;
+  background-color: rgba(0, 0, 0, 0.04) !important;
   background-image: var(--q-form-select-bg-img), var(--q-form-select-bg-icon, none) !important;
   background-repeat: no-repeat !important;
   background-position: right 1em center !important;

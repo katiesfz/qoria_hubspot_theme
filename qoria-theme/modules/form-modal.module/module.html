@@ -1,3 +1,8 @@
+{% if is_in_page_editor %}
+    {% editor_placeholder %}
+{% endif %}
+
+
 <div class="modal fade" id="{{module.unique_name}}" tabindex="-1" aria-labelledby="{{module.unique_name}}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-gradient-primary text-white">

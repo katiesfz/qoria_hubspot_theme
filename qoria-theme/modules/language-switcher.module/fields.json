@@ -1,6 +1,103 @@
 
 [
   {
+    "name": "language_selection",
+    "label": "Language selection",
+    "help_text": "How the module decides on what languages to show. Automatic shows the language options for the page within HubSpot settings. Manual allows you to select languages and decide on URLs manually. Combination includes both.",
+    "sortable": false,
+    "required": true,
+    "locked": false,
+    "display": "select",
+    "placeholder": "Search",
+    "choices": [
+      ["auto", "Automatic"],
+      ["manual", "Manual"],
+      ["combination", "Combination"]
+    ],
+    "type": "choice",
+    "default": "auto"
+  }, {
+    "name" : "manual_item",
+    "display_width" : null,
+    "label" : "Manual language",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "language",
+      "default" : null
+    },
+    "children" : [ {
+      "name": "region",
+      "label": "Region",
+      "sortable": false,
+      "required": false,
+      "locked": false,
+      "display": "select",
+      "placeholder": "Search",
+      "choices": [
+        ["global","Global"],["af","Afghanistan"],["al","Albania"],["dz","Algeria"],["ad","Andorra"],["ao","Angola"],["ai","Anguilla"],["ag","Antigua and Barbuda"],["ar","Argentina"],["am","Armenia"],["aw","Aruba"],["au","Australia"],["at","Austria"],["az","Azerbaijan"],["bs","Bahamas"],["bh","Bahrain"],["bd","Bangladesh"],["bb","Barbados"],["by","Belarus"],["be","Belgium"],["bz","Belize"],["bj","Benin"],["bm","Bermuda"],["bt","Bhutan"],["bo","Bolivia"],["ba","Bosnia and Herzegovina"],["bw","Botswana"],["br","Brazil"],["bn","Brunei Darussalam"],["bg","Bulgaria"],["bf","Burkina Faso"],["bi","Burundi"],["kh","Cambodia"],["cm","Cameroon"],["ca","Canada"],["cv","Cape Verde"],["ky","Cayman Islands"],["cf","Central African Republic"],["td","Chad"],["cl","Chile"],["cn","China"],["cx","Christmas Island"],["cc","Cocos (Keeling) Islands"],["co","Colombia"],["km","Comoros"],["cg","Congo"],["ck","Cook Islands"],["cr","Costa Rica"],["ci","Cote D'Ivoire (Ivory Coast)"],["hr","Croatia (Hrvatska)"],["cu","Cuba"],["cy","Cyprus"],["cz","Czech Republic"],["cd","Democratic Republic of the Congo"],["dk","Denmark"],["dj","Djibouti"],["dm","Dominica"],["do","Dominican Republic"],["ec","Ecuador"],["eg","Egypt"],["sv","El Salvador"],["gq","Equatorial Guinea"],["er","Eritrea"],["ee","Estonia"],["et","Ethiopia"],["fk","Falkland Islands (Malvinas)"],["fo","Faroe Islands"],["fm","Federated States of Micronesia"],["fj","Fiji"],["fi","Finland"],["fr","France"],["gf","French Guiana"],["pf","French Polynesia"],["tf","French Southern Territories"],["ga","Gabon"],["gm","Gambia"],["ge","Georgia"],["de","Germany"],["gh","Ghana"],["gi","Gibraltar"],["gb","Great Britain (UK)"],["gr","Greece"],["gl","Greenland"],["gd","Grenada"],["gp","Guadeloupe"],["gt","Guatemala"],["gn","Guinea"],["gw","Guinea-Bissau"],["gy","Guyana"],["ht","Haiti"],["hn","Honduras"],["hk","Hong Kong"],["hu","Hungary"],["is","Iceland"],["in","India"],["id","Indonesia"],["ir","Iran"],["iq","Iraq"],["ie","Ireland"],["il","Israel"],["it","Italy"],["jm","Jamaica"],["jp","Japan"],["jo","Jordan"],["kz","Kazakhstan"],["ke","Kenya"],["ki","Kiribati"],["kp","Korea (North)"],["kr","Korea (South)"],["kw","Kuwait"],["kg","Kyrgyzstan"],["la","Laos"],["lv","Latvia"],["lb","Lebanon"],["ls","Lesotho"],["lr","Liberia"],["ly","Libya"],["li","Liechtenstein"],["lt","Lithuania"],["lu","Luxembourg"],["mo","Macao"],["mk","Macedonia"],["mg","Madagascar"],["mw","Malawi"],["my","Malaysia"],["mv","Maldives"],["ml","Mali"],["mt","Malta"],["mh","Marshall Islands"],["mq","Martinique"],["mr","Mauritania"],["mu","Mauritius"],["yt","Mayotte"],["mx","Mexico"],["md","Moldova"],["mc","Monaco"],["mn","Mongolia"],["ms","Montserrat"],["ma","Morocco"],["mz","Mozambique"],["mm","Myanmar"],["na","Namibia"],["nr","Nauru"],["np","Nepal"],["nl","Netherlands"],["an","Netherlands Antilles"],["nc","New Caledonia"],["nz","New Zealand (Aotearoa)"],["ni","Nicaragua"],["ne","Niger"],["ng","Nigeria"],["nu","Niue"],["nf","Norfolk Island"],["nam", "North America"],["mp","Northern Mariana Islands"],["no","Norway"],["gg","NULL"],["om","Oman"],["pk","Pakistan"],["pw","Palau"],["ps","Palestinian Territory"],["pa","Panama"],["pg","Papua New Guinea"],["py","Paraguay"],["pe","Peru"],["ph","Philippines"],["pn","Pitcairn"],["pl","Poland"],["pt","Portugal"],["qa","Qatar"],["re","Reunion"],["ro","Romania"],["ru","Russian Federation"],["rw","Rwanda"],["gs","S. Georgia and S. Sandwich Islands"],["sh","Saint Helena"],["kn","Saint Kitts and Nevis"],["lc","Saint Lucia"],["pm","Saint Pierre and Miquelon"],["vc","Saint Vincent and the Grenadines"],["ws","Samoa"],["sm","San Marino"],["st","Sao Tome and Principe"],["sa","Saudi Arabia"],["sn","Senegal"],["sc","Seychelles"],["sl","Sierra Leone"],["sg","Singapore"],["sk","Slovakia"],["si","Slovenia"],["sb","Solomon Islands"],["so","Somalia"],["za","South Africa"],["es","Spain"],["lk","Sri Lanka"],["sd","Sudan"],["sr","Suriname"],["sj","Svalbard and Jan Mayen"],["sz","Swaziland"],["se","Sweden"],["ch","Switzerland"],["sy","Syria"],["tw","Taiwan"],["tj","Tajikistan"],["tz","Tanzania"],["th","Thailand"],["tg","Togo"],["tk","Tokelau"],["to","Tonga"],["tt","Trinidad and Tobago"],["tn","Tunisia"],["tr","Turkey"],["tm","Turkmenistan"],["tc","Turks and Caicos Islands"],["tv","Tuvalu"],["ug","Uganda"],["ua","Ukraine"],["ae","United Arab Emirates"],["us","United States of America"],["uy","Uruguay"],["uz","Uzbekistan"],["vu","Vanuatu"],["ve","Venezuela"],["vn","Viet Nam"],["vg","Virgin Islands (British)"],["vi","Virgin Islands (U.S.)"],["wf","Wallis and Futuna"],["eh","Western Sahara"],["ye","Yemen"],["zr","Zaire (former)"],["zm","Zambia"],["zw","Zimbabwe"]],
+      "type": "choice"
+    }, {
+      "name": "language",
+      "label": "Language",
+      "sortable": false,
+      "required": true,
+      "locked": false,
+      "display": "select",
+      "default": "en",
+      "placeholder": "Search",
+      "choices": [
+        ["ab","Abkhazian"],["aa","Afar"],["af","Afrikaans"],["sq","Albanian"],["am","Amharic"],["ar","Arabic"],["an","Aragonese"],["hy","Armenian"],["as","Assamese"],["ae","Avestan"],["ay","Aymara"],["az","Azerbaijani"],["ba","Bashkir"],["eu","Basque"],["be","Belarusian"],["bn","Bengali"],["bh","Bihari"],["bi","Bislama"],["bs","Bosnian"],["br","Breton"],["bg","Bulgarian"],["my","Burmese"],["ca","Catalan"],["ch","Chamorro"],["ce","Chechen"],["zh","Chinese"],["cu","Church Slavic; Slavonic; Old Bulgarian"],["cv","Chuvash"],["kw","Cornish"],["co","Corsican"],["hr","Croatian"],["cs","Czech"],["da","Danish"],["dv","Divehi; Dhivehi; Maldivian"],["nl","Dutch"],["dz","Dzongkha"],["en","English"],["eo","Esperanto"],["et","Estonian"],["fo","Faroese"],["fj","Fijian"],["fi","Finnish"],["fr","French"],["gd","Gaelic; Scottish Gaelic"],["gl","Galician"],["ka","Georgian"],["de","German"],["el","Greek, Modern (1453-)"],["gn","Guarani"],["gu","Gujarati"],["ht","Haitian; Haitian Creole"],["ha","Hausa"],["he","Hebrew"],["hz","Herero"],["hi","Hindi"],["ho","Hiri Motu"],["hu","Hungarian"],["is","Icelandic"],["io","Ido"],["id","Indonesian"],["ia","Interlingua (International Auxiliary Language Association)"],["ie","Interlingue"],["iu","Inuktitut"],["ik","Inupiaq"],["ga","Irish"],["it","Italian"],["ja","Japanese"],["jv","Javanese"],["kl","Kalaallisut"],["kn","Kannada"],["ks","Kashmiri"],["kk","Kazakh"],["km","Khmer"],["ki","Kikuyu; Gikuyu"],["rw","Kinyarwanda"],["ky","Kirghiz"],["kv","Komi"],["ko","Korean"],["kj","Kuanyama; Kwanyama"],["ku","Kurdish"],["lo","Lao"],["la","Latin"],["lv","Latvian"],["li","Limburgan; Limburger; Limburgish"],["ln","Lingala"],["lt","Lithuanian"],["lb","Luxembourgish; Letzeburgesch"],["mk","Macedonian"],["mg","Malagasy"],["ms","Malay"],["ml","Malayalam"],["mt","Maltese"],["gv","Manx"],["mi","Maori"],["mr","Marathi"],["mh","Marshallese"],["mo","Moldavian"],["mn","Mongolian"],["na","Nauru"],["nv","Navaho, Navajo"],["nd","Ndebele, North"],["nr","Ndebele, South"],["ng","Ndonga"],["ne","Nepali"],["se","Northern Sami"],["no","Norwegian"],["nb","Norwegian Bokmal"],["nn","Norwegian Nynorsk"],["ny","Nyanja; Chichewa; Chewa"],["oc","Occitan (post 1500); Provencal"],["or","Oriya"],["om","Oromo"],["os","Ossetian; Ossetic"],["pi","Pali"],["pa","Panjabi"],["fa","Persian"],["pl","Polish"],["pt","Portuguese"],["ps","Pushto"],["qu","Quechua"],["rm","Raeto-Romance"],["ro","Romanian"],["rn","Rundi"],["ru","Russian"],["sm","Samoan"],["sg","Sango"],["sa","Sanskrit"],["sc","Sardinian"],["sr","Serbian"],["sn","Shona"],["ii","Sichuan Yi"],["sd","Sindhi"],["si","Sinhala; Sinhalese"],["sk","Slovak"],["sl","Slovenian"],["so","Somali"],["st","Sotho, Southern"],["es","Spanish; Castilian"],["su","Sundanese"],["sw","Swahili"],["ss","Swati"],["sv","Swedish"],["tl","Tagalog"],["ty","Tahitian"],["tg","Tajik"],["ta","Tamil"],["tt","Tatar"],["te","Telugu"],["th","Thai"],["bo","Tibetan"],["ti","Tigrinya"],["to","Tonga (Tonga Islands)"],["ts","Tsonga"],["tn","Tswana"],["tr","Turkish"],["tk","Turkmen"],["tw","Twi"],["ug","Uighur"],["uk","Ukrainian"],["ur","Urdu"],["uz","Uzbek"],["vi","Vietnamese"],["vo","Volapuk"],["wa","Walloon"],["cy","Welsh"],["fy","Western Frisian"],["wo","Wolof"],["xh","Xhosa"],["yi","Yiddish"],["yo","Yoruba"],["za","Zhuang; Chuang"],["zu","Zulu"]      ],
+      "type": "choice"
+    }, {
+      "name" : "url",
+      "display_width" : null,
+      "label" : "URL",
+      "required" : true,
+      "default": "qoria.com",
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "language_selection",
+        "controlling_value_regex" : "manual",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },{
+        "controlling_field" : null,
+        "controlling_field_path" : "language_selection",
+        "controlling_value_regex" : "combination",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : []
+    },
+    "type" : "group"
+  }, {
+    "name": "cur_region",
+    "label": "Current region",
+    "sortable": false,
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "placeholder": "Search",
+    "choices": [
+      ["global","Global"],["af","Afghanistan"],["al","Albania"],["dz","Algeria"],["ad","Andorra"],["ao","Angola"],["ai","Anguilla"],["ag","Antigua and Barbuda"],["ar","Argentina"],["am","Armenia"],["aw","Aruba"],["au","Australia"],["at","Austria"],["az","Azerbaijan"],["bs","Bahamas"],["bh","Bahrain"],["bd","Bangladesh"],["bb","Barbados"],["by","Belarus"],["be","Belgium"],["bz","Belize"],["bj","Benin"],["bm","Bermuda"],["bt","Bhutan"],["bo","Bolivia"],["ba","Bosnia and Herzegovina"],["bw","Botswana"],["br","Brazil"],["bn","Brunei Darussalam"],["bg","Bulgaria"],["bf","Burkina Faso"],["bi","Burundi"],["kh","Cambodia"],["cm","Cameroon"],["ca","Canada"],["cv","Cape Verde"],["ky","Cayman Islands"],["cf","Central African Republic"],["td","Chad"],["cl","Chile"],["cn","China"],["cx","Christmas Island"],["cc","Cocos (Keeling) Islands"],["co","Colombia"],["km","Comoros"],["cg","Congo"],["ck","Cook Islands"],["cr","Costa Rica"],["ci","Cote D'Ivoire (Ivory Coast)"],["hr","Croatia (Hrvatska)"],["cu","Cuba"],["cy","Cyprus"],["cz","Czech Republic"],["cd","Democratic Republic of the Congo"],["dk","Denmark"],["dj","Djibouti"],["dm","Dominica"],["do","Dominican Republic"],["ec","Ecuador"],["eg","Egypt"],["sv","El Salvador"],["gq","Equatorial Guinea"],["er","Eritrea"],["ee","Estonia"],["et","Ethiopia"],["fk","Falkland Islands (Malvinas)"],["fo","Faroe Islands"],["fm","Federated States of Micronesia"],["fj","Fiji"],["fi","Finland"],["fr","France"],["gf","French Guiana"],["pf","French Polynesia"],["tf","French Southern Territories"],["ga","Gabon"],["gm","Gambia"],["ge","Georgia"],["de","Germany"],["gh","Ghana"],["gi","Gibraltar"],["gb","Great Britain (UK)"],["gr","Greece"],["gl","Greenland"],["gd","Grenada"],["gp","Guadeloupe"],["gt","Guatemala"],["gn","Guinea"],["gw","Guinea-Bissau"],["gy","Guyana"],["ht","Haiti"],["hn","Honduras"],["hk","Hong Kong"],["hu","Hungary"],["is","Iceland"],["in","India"],["id","Indonesia"],["ir","Iran"],["iq","Iraq"],["ie","Ireland"],["il","Israel"],["it","Italy"],["jm","Jamaica"],["jp","Japan"],["jo","Jordan"],["kz","Kazakhstan"],["ke","Kenya"],["ki","Kiribati"],["kp","Korea (North)"],["kr","Korea (South)"],["kw","Kuwait"],["kg","Kyrgyzstan"],["la","Laos"],["lv","Latvia"],["lb","Lebanon"],["ls","Lesotho"],["lr","Liberia"],["ly","Libya"],["li","Liechtenstein"],["lt","Lithuania"],["lu","Luxembourg"],["mo","Macao"],["mk","Macedonia"],["mg","Madagascar"],["mw","Malawi"],["my","Malaysia"],["mv","Maldives"],["ml","Mali"],["mt","Malta"],["mh","Marshall Islands"],["mq","Martinique"],["mr","Mauritania"],["mu","Mauritius"],["yt","Mayotte"],["mx","Mexico"],["md","Moldova"],["mc","Monaco"],["mn","Mongolia"],["ms","Montserrat"],["ma","Morocco"],["mz","Mozambique"],["mm","Myanmar"],["na","Namibia"],["nr","Nauru"],["np","Nepal"],["nl","Netherlands"],["an","Netherlands Antilles"],["nc","New Caledonia"],["nz","New Zealand (Aotearoa)"],["ni","Nicaragua"],["ne","Niger"],["ng","Nigeria"],["nu","Niue"],["nf","Norfolk Island"],["nam", "North America"],["mp","Northern Mariana Islands"],["no","Norway"],["gg","NULL"],["om","Oman"],["pk","Pakistan"],["pw","Palau"],["ps","Palestinian Territory"],["pa","Panama"],["pg","Papua New Guinea"],["py","Paraguay"],["pe","Peru"],["ph","Philippines"],["pn","Pitcairn"],["pl","Poland"],["pt","Portugal"],["qa","Qatar"],["re","Reunion"],["ro","Romania"],["ru","Russian Federation"],["rw","Rwanda"],["gs","S. Georgia and S. Sandwich Islands"],["sh","Saint Helena"],["kn","Saint Kitts and Nevis"],["lc","Saint Lucia"],["pm","Saint Pierre and Miquelon"],["vc","Saint Vincent and the Grenadines"],["ws","Samoa"],["sm","San Marino"],["st","Sao Tome and Principe"],["sa","Saudi Arabia"],["sn","Senegal"],["sc","Seychelles"],["sl","Sierra Leone"],["sg","Singapore"],["sk","Slovakia"],["si","Slovenia"],["sb","Solomon Islands"],["so","Somalia"],["za","South Africa"],["es","Spain"],["lk","Sri Lanka"],["sd","Sudan"],["sr","Suriname"],["sj","Svalbard and Jan Mayen"],["sz","Swaziland"],["se","Sweden"],["ch","Switzerland"],["sy","Syria"],["tw","Taiwan"],["tj","Tajikistan"],["tz","Tanzania"],["th","Thailand"],["tg","Togo"],["tk","Tokelau"],["to","Tonga"],["tt","Trinidad and Tobago"],["tn","Tunisia"],["tr","Turkey"],["tm","Turkmenistan"],["tc","Turks and Caicos Islands"],["tv","Tuvalu"],["ug","Uganda"],["ua","Ukraine"],["ae","United Arab Emirates"],["us","United States of America"],["uy","Uruguay"],["uz","Uzbekistan"],["vu","Vanuatu"],["ve","Venezuela"],["vn","Viet Nam"],["vg","Virgin Islands (British)"],["vi","Virgin Islands (U.S.)"],["wf","Wallis and Futuna"],["eh","Western Sahara"],["ye","Yemen"],["zr","Zaire (former)"],["zm","Zambia"],["zw","Zimbabwe"]],
+    "type": "choice"
+  }, {
     "name": "display_mode",
     "label": "Display mode",
     "help_text": "The language of the text in the language switcher. PageLang means the names of languages will display in the language of the page the switcher is on. Localized means the name of each language will display in that language. Hybrid is a combination of the two.",

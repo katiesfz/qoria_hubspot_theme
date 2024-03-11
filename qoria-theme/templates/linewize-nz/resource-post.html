@@ -1,7 +1,7 @@
 <!--
   templateType: blog_post
   isAvailableForNewContent: true
-  label: Linewize NZ - resource post
+  label: Linewize NZ - Resource post
   screenshotPath: ../images/template-previews/blog-post.png
 -->
 
@@ -135,7 +135,7 @@
           <div class="col">
           {% if content.previous_post_name %}
             <p class="">
-            <a href="{{company_domain}}/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+            <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
             <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
             {{ content.previous_post_name }}
             </a>
@@ -145,7 +145,7 @@
           <div class="col text-end">
           {% if content.next_post_name %}
             <p class="">
-            <a href="{{company_domain}}/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
+            <a href="/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
             <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
             {{ content.next_post_name }}
             </a>
@@ -345,7 +345,7 @@
           <div class="col">
           {% if content.previous_post_name %}
             <p class="">
-            <a href="{{company_domain}}/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+            <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
             <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
             {{ content.previous_post_name }}
             </a>
@@ -355,7 +355,7 @@
           <div class="col text-end">
           {% if content.next_post_name %}
             <p class="">
-            <a href="{{company_domain}}/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
+            <a href="/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
             <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
             {{ content.next_post_name }}
             </a>

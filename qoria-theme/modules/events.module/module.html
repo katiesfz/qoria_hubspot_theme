@@ -3,82 +3,109 @@
         {% editor_placeholder %}
     {% endif %}
 {% else %}
-  {% if module.style.event_style == "1" %}
-    {% for event in module.event %}
-      <div class="{{ 'border-bottom' if not loop.last }} py-3">    
-          <p class="fs-3 fw-semibold mb-0">{{event.event_name}}</p>
-          {% if event.event_date %}
-          <p class="fs-5 mb-0">{{event.event_date}}</p>
-          {% endif %}
-          {% if event.url.href %}
-          <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 d-inline-block">{{event.event_site_label}} <i class="fal fa-arrow-right"></i></a>
-          {% endif %}
-      </div>
-    {% endfor %}
-  {% elif module.style.event_style == "2" %}
-    {% for event in module.event %}
-      <div class="bg-light px-4 py-3 mb-3">
-          <p class="fs-5 fw-bold mb-0">{{event.event_name}}</p>
-          {% if event.event_date %}
-          <p class="fs-4 mb-0">{{event.event_date}}</p>
-          {% endif %}
-          
-          {% if event.calendar_object.title && event.calendar_object.description && event.calendar_object.location && event.calendar_object.event_start && event.calendar_object.event_end %}
-            {% set calendarItem = true %}
-          {% else %}
-            {% set calendarItem = false %}
-          {% endif %}
 
-          {% if calendarItem %}
-            <div class="dropdown d-inline-block">
-            
-              <a class="p-0 text-decoration-none fs-6 mt-3 fw-semibold text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{module.add_to_diary}} <i class="fas fa-2xs fa-chevron-down"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{event.calendar_object.title|urlencode}}&details={{event.calendar_object.description|urlencode}}&dates={{ event.calendar_object.event_start|format_datetime("yyyyMMdd'T'HHmmss") }}/{{ event.calendar_object.event_end|format_datetime("yyyyMMdd'T'HHmmss") }}&location={{event.calendar_object.location|urlencode}}">Google Calendar</a></li>
-                <li><a class="dropdown-item" target="_blank" href="https://outlook.live.com/calendar/0/deeplink/compose?subject={{event.calendar_object.title|urlencode}}&body={{event.calendar_object.description|urlencode}}&startdt={{ event.calendar_object.event_start|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx")|urlencode }}&enddt={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx")|urlencode }}&location={{event.calendar_object.location|urlencode}}&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent">Outlook.com</a></li>
-                <li><a class="dropdown-item" target="_blank" href="https://outlook.office.com/calendar/0/deeplink/compose?subject={{event.calendar_object.title|urlencode}}&body={{event.calendar_object.description|urlencode}}&startdt={{ event.calendar_object.event_start|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&enddt={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&location={{event.calendar_object.location|urlencode}}&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent">Office 365</a></li>
-                <li><a class="dropdown-item" target="_blank" href="https://calendar.yahoo.com/?desc={{event.calendar_object.description|urlencode}}&dur=&et={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&in_loc={{event.calendar_object.location|urlencode}}&st={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&title={{event.calendar_object.title|urlencode}}&v=60">Yahoo Calendar</a></li>
-                <li><a class="dropdown-item" href="#" id="downloadICS-{{loop.index}}">Download ICS File</a></li>
-              </ul>
-            </div>
+  
+  <div id="{{name}}">
+    {% if module.style.include_filter %}
+      {% if module.style.filter_type == "month" %}
 
-            {% if event.event_site_label %}<span class="d-inline-block mx-2 fs-6 mt-3 fw-semibold text-secondary">|</span>{% endif %}
-          {% endif %}
-          
-          {% if event.event_site_label %}
-            {% if event.url.href %} 
-              <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}} <i class="fas fa-2xs fa-chevron-right"></i></a> 
-            {% else %}              
-              <span class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}}</span> 
+        {# get list of months #}
+        {% set monthList = [] %}
+
+        {% for event in module.event %}
+          {% if event.calendar_object.event_start %}
+          {% set startDate = event.calendar_object.event_start|format_datetime("MMMM yyyy") %}
+            {% if monthList is not containing startDate  %}
+              {% do monthList.append(startDate) %}
             {% endif %}
           {% endif %}
+          {% if event.calendar_object.event_end %}
+            {% set endDate = event.calendar_object.event_end|format_datetime("MMMM yyyy") %}
+          {% if monthList is not containing endDate  %}
+              {% do monthList.append(endDate) %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+      <h4>Find an event</h4>
+      <div class="hs-form mb-6">
+        <select class="form-select hs-input" aria-label="Please select a month" id="{{name}}_selector">
+          <option selected value="event">Please select a month</option>
+          {% for month in monthList %}
+          <option value="{{month|lower|replace(" ","-")}}">{{month}}</option>
+          {% endfor %}
+        </select>
       </div>
-    
-    {% if calendarItem %}
-      <script>
-
-      
-        document.getElementById('downloadICS-{{loop.index}}').addEventListener('click', () => {
+      <h4 id="monthLabel" class="mb-4"></h4>
+      {% endif %}
+    {% endif %}
+    {% for event in module.event %}
+      {% if module.style.event_style == "1" %}
+        {% from '/q-theme/assets/macros.html' import eventStyle1 %}
         
-        createDownloadICSFile(
-          "Western_Australia/Perth",
-          new Date("{{ event.calendar_object.event_start|format_datetime("MMM d, yyyy HH:mm") }} GMT+08:00"),
-          new Date("{{ event.calendar_object.event_end|format_datetime("MMM d, yyyy HH:mm") }} GMT+08:00"),
-          "{{event.calendar_object.title|render|escapejs}}",
-          "{{event.calendar_object.description|render|escapejs}}",
-          "{{event.calendar_object.location|escape}}"
-        );  
-        event.preventDefault();
-        });
+          {{ eventStyle1(event) }}
 
-
-      </script>
-  {% endif %}
-
+      {% elif module.style.event_style == "2" %}
+        {% from '/q-theme/assets/macros.html' import eventStyle2 %}
+        
+          {{ eventStyle2(event) }}
+          
+      {% endif %}
     {% endfor %}
-  {% endif %}
+
+    {% if module.style.include_filter %}
+    <div class="event no-result">
+      <p>Sorry, there are no events this month.</p>
+    </div>
+    {% endif %}
+  </div>
 {% endif %}
+
+<script>
+
+var eventsModule  = document.getElementById("{{name}}");
+
+  function filter(container, parentClassToFilter, specificClassToShow, noResultsClass){
+    var allItems     = container.querySelectorAll("." + parentClassToFilter);
+    var filterItems  = container.querySelectorAll("." + specificClassToShow);
+    var noResults  = container.querySelectorAll("." + noResultsClass);
+
+    allItems.forEach((item) => {
+      item.style.display = "none";
+    });
+
+    if (filterItems.length > 0) {
+        filterItems.forEach((item) => {
+          item.style.display = "block";
+        });
+      } else {
+        noResults.forEach((item) => {
+          item.style.display = "block";
+        });
+      }
+  }
+
+  document.getElementById('{{name}}_selector').addEventListener('change', function() {
+    let monthCap = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+    document.getElementById("monthLabel").innerHTML = monthCap.replace("-", " ");
+    filter(eventsModule, "event", this.value, "no-result");
+  });
+
+  {% if module.style.include_filter %}
+    {% if module.style.filter_type == "month" %}
+      document.addEventListener("DOMContentLoaded", function() {
+      
+      var today = new Date();
+      today.setDate(today.getDate());
+      var month = today.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+      var monthClass = month.replace(" ","-").toLowerCase();
+      filter(eventsModule, "event", monthClass, "no-result");
+      let monthCap = month.charAt(0).toUpperCase() + month.slice(1);
+      document.getElementById("monthLabel").innerHTML = monthCap.replace("-"," ");
+      });
+    {% endif %}
+  {% endif %}
+
+</script>
 
 

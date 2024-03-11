@@ -1,4 +1,39 @@
 [ {
+  "id" : "selection",
+  "name" : "selection",
+  "display_width" : null,
+  "label" : "Selection",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "manual", "Manual" ], [ "auto", "Automatic" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "auto"
+}, {
+  "name" : "manual_selection",
+  "label" : "Posts (Manual selection)",
+  "required" : false,
+  "locked" : false,
+  "type" : "page",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "manual",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "default" : null
+}, {
   "id" : "blog_field",
   "name" : "blog_field",
   "display_width" : null,
@@ -6,6 +41,14 @@
   "required" : false,
   "locked" : false,
   "type" : "blog",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "auto",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
   "default" : ""
 }, {
   "id" : "post_type",
@@ -20,6 +63,14 @@
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "auto",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
   "default" : "latest"
 }, {
   "id" : "timeframe",
@@ -28,13 +79,24 @@
   "label" : "Timeframe",
   "required" : false,
   "locked" : false,
-  "visibility" : {
-    "controlling_field" : null,
-    "controlling_field_path" : "post_type",
-    "controlling_value_regex" : "popular",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "post_type",
+      "controlling_value_regex" : "popular",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "selection",
+      "controlling_value_regex" : "auto",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }]
   },
   "display" : "select",
   "choices" : [ [ "popular_all_time", "All time" ], [ "popular_past_year", "Past year" ], [ "popular_past_six_months", "Past 6 months" ], [ "popular_past_month", "Past month" ] ],
@@ -57,6 +119,14 @@
     "default" : null
   },
   "tag_value" : "SLUG",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "auto",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
   "type" : "tag",
   "default" : ""
 }, {
@@ -71,6 +141,14 @@
     "max" : null,
     "sorting_label_field" : null,
     "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "auto",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
   "tag_value" : "SLUG",
   "type" : "tag",
@@ -93,13 +171,17 @@
   "label" : "Number of posts",
   "required" : false,
   "locked" : false,
-  "visibility" : {
-    "controlling_field" : "custom_limit",
-    "controlling_field_path" : "custom_limit",
-    "controlling_value_regex" : "true",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : "custom_limit",
+      "controlling_field_path" : "custom_limit",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }]
   },
   "display" : "slider",
   "min" : 1,
@@ -115,6 +197,14 @@
   "label" : "Pullout Articles",
   "required" : false,
   "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "auto",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
   "occurrence" : {
     "min" : null,
     "max" : null,
@@ -241,7 +331,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "blog", "Blog" ], [ "video", "Video" ]],
+    "choices" : [ [ "card", "Card" ], [ "blog", "Blog" ], [ "video", "Video" ]],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -272,6 +362,20 @@
     "display" : "toggle",
     "type" : "boolean",
     "default" : true
+  }, {
+    "id" : "styles.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "No shadow" ], [ "var(--q-box-shadow-sm)", "Small shadow" ], [ "var(--q-box-shadow)", "Medium shadow" ], [ "var(--q-box-shadow-lg)", "Large shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
   }, {
     "id" : "styles.pagination",
     "name" : "pagination",

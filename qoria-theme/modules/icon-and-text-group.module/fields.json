@@ -47,19 +47,18 @@
       "type" : "text",
       "default" : ""
     }, {
-      "id" : "6fe23315-7dd6-1694-9638-559b81e24222",
       "name" : "icon_style",
       "display_width" : null,
       "label" : "Icon Style",
       "required" : false,
       "locked" : false,
       "display" : "select",
-      "choices" : [ [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fa fa-brands fab ", "Brand" ] ],
+      "choices" : [ [ "inherit", "Inherit" ], [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fa fa-brands fab ", "Brand" ] ],
       "multiple" : false,
       "reordering_enabled" : true,
       "preset" : null,
       "type" : "choice",
-      "default" : "fal"
+      "default" : "inherit"
     }, {
       "id" : "b79fc9d3-be37-b607-0784-de535cb9a20e",
       "name" : "icon_shape",
@@ -185,6 +184,37 @@
       "preset" : null,
       "type" : "choice",
       "default" : "inherit"
+    },{
+      "id" : "custom_icon_height",
+      "name" : "custom_icon_height",
+      "display_width" : null,
+      "label" : "Custom icon height",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "name" : "icon_height",
+      "display_width" : null,
+      "label" : "Icon height",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : null,
+      "max" : null,
+      "step" : 1,
+      "suffix" : "",
+      "type" : "number",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "icon_and_text.icon.custom_icon_height",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "default" : null
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
@@ -296,6 +326,16 @@
     "type" : "choice",
     "default" : "inline"
   }, {
+    "id" : "style.separators",
+    "name" : "separators",
+    "display_width" : null,
+    "label" : "Show separators",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
     "id" : "styles.responsive",
     "name" : "responsive",
     "display_width" : null,
@@ -387,6 +427,20 @@
     "expanded" : false,
     "type" : "group"
   }, {
+    "id" : "style.icon_style",
+    "name" : "icon_style",
+    "display_width" : null,
+    "label" : "Icon Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fa fa-brands fab ", "Brand" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "fal"
+  }, {
     "id" : "style.icon_colour",
     "name" : "icon_colour",
     "display_width" : null,
@@ -472,6 +526,24 @@
     "preset" : null,
     "type" : "choice",
     "default" : "align-items-center"
+  }, {
+    "id" : "style.display_as_list",
+    "name" : "display_as_list",
+    "display_width" : null,
+    "label" : "Display as a list?",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.icon_arrangement",
+      "controlling_value_regex" : "inline",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : false
   }, {
     "id" : "style.use_as_nav",
     "name" : "use_as_nav",

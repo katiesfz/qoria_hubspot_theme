@@ -1,0 +1,114 @@
+[{
+  "name" : "accordion",
+  "display_width" : null,
+  "label" : "Accordion",
+  "required" : false,
+  "locked" : false,
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "acc_label",
+    "default" : null
+  },
+  "children" : [  {
+    "id": "accordion.acc_label",
+    "name": "acc_label",
+    "default": "",
+    "label": "Accordion label",
+    "locked": false,
+    "required": false,
+    "type": "text",
+    "validation_regex": ""
+  }, {
+      "id": "accordion.content",
+      "default": "<h1>Hello, world!</h1>",
+      "label": "Accordion content",
+      "locked": false,
+      "name": "content",
+      "required": false,
+      "type": "richtext",
+      "validation_regex": ""
+  }],
+  "default": []
+}, {
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "style.shadow_style",
+    "name" : "shadow_style",
+    "display_width" : null,
+    "label" : "Shadow style",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.shadow",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "shadow-sm", "Small" ], [ "shadow", "Medium" ], [ "shadow-lg", "Large" ], [ "section-shadow", "Pullout shadow" ], [ "section-shadow-sm", "Small pullout shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "section-shadow"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacing_field" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    },
+    "shadow" : true,
+    "shadow_style" : "shadow-sm"
+  }
+}]

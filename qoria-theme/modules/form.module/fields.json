@@ -1,4 +1,14 @@
 [ {
+  "id" : "show_title",
+  "name" : "show_title",
+  "display_width" : null,
+  "label" : "Show form title",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+},{
   "id" : "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
   "name" : "title",
   "display_width" : null,
@@ -9,7 +19,97 @@
   "allow_new_line" : false,
   "show_emoji_picker" : false,
   "type" : "text",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
   "default" : ""
+}, {
+  "id" : "heading_tag",
+  "name" : "heading_tag",
+  "display_width" : null,
+  "label" : "Heading Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "default" : "h5"
+}, {
+  "id" : "heading.underline",
+  "name" : "heading_underline",
+  "display_width" : null,
+  "label" : "Heading Underline",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "default" : true
+}, {
+  "id" : "heading.alignment",
+  "name" : "textalignment",
+  "display_width" : null,
+  "label" : "Text alignment",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "type" : "choice",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "default" : "start"
 }, {
   "id" : "e4adbe47-d462-2396-c7e7-62d52c812966",
   "name" : "form",
@@ -253,6 +353,16 @@
     "type" : "choice",
     "default" : " "
   }, {
+    "id" : "hide_submit_button",
+    "name" : "hide_submit_button",
+    "display_width" : null,
+    "label" : "Hide submit button",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
     "id" : "style.button_colour",
     "name" : "button_colour",
     "display_width" : null,
@@ -308,6 +418,20 @@
     "preset" : null,
     "type" : "choice",
     "default" : "rounded-0"
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "No shadow" ], [ "shadow-sm", "Small shadow" ], [ "shadow", "Medium shadow" ], [ "shadow-lg", "Large shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
   } ],
   "tab" : "STYLE",
   "expanded" : false,

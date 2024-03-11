@@ -1,0 +1,806 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize ANZ Partner
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+    {% dnd_area "dnd_area"
+    label="Body"
+    class="main p-0 overflow-hidden"
+    %}
+
+
+    {% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ {
+          "colour" : "primary",
+          "cta_label" : "Portal login",
+          "cta_link" : {
+            "no_follow" : true,
+            "open_in_new_tab" : true,
+            "url" : {
+              "href" : "https://linewize.ziftone.com/#/login",
+              "type" : "EXTERNAL"
+            }
+          },
+          "size" : "btn-lg",
+          "style" : "-"
+        } ],
+        header="Linewize Partner program",
+        hero_type="full-image",
+        image={
+          "alt" : "US-Linewize-Banners-partner-program",
+          "height" : 1280,
+          "loading" : "disabled",
+          "max_height" : 1280,
+          "max_width" : 1920,
+          "size_type" : "auto_custom_max",
+          "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/US-Linewize-Banners-partner-program.jpg",
+          "width" : 1920
+        },
+        menu=144245053496,
+        page_contents=[ {
+          "anchor" : "#intro",
+          "content_label" : "About our Partner Program"
+        }, {
+          "anchor" : "#aboutlinewize",
+          "content_label" : "About Linewize"
+        }, {
+          "anchor" : "#apply",
+          "content_label" : "Apply to become a partner"
+        } ],
+        pre_header="",
+        show_breadcrumbs=true,
+        show_share_price="false",
+        style={
+          "heading_location" : "bottom-left"
+        },
+        video=""
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "80px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="intro"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "64px"
+        },
+        "mobile" : {
+          "bottom" : "32px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h1",
+            heading_underline="true",
+            style={
+              "heading_underline" : true,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px"
+                  },
+                  "left" : {
+                    "units" : "px"
+                  },
+                  "right" : {
+                    "units" : "px"
+                  },
+                  "top" : {
+                    "units" : "px"
+                  }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              <p>About our <strong>Partner Program</strong></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p style="text-align: center;" class="lead"><span>The Linewize Partner Program is designed to support your needs and help grow your Reseller, VAR, or MSP business. </span><span>As a Linewize reseller you’ll get access to technology, training, and personal support to help you sell our world-class student cyber safety portfolio.&nbsp; No matter your size, we'll help you stay competitive, expand your offerings, and grow your business.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=0,
+        width=12,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "alt" : "us-linewize-icons-dedicated-support",
+              "height" : 300,
+              "loading" : "lazy",
+              "max_height" : 150,
+              "max_width" : 150,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/US%20-%20Icons%20Qoria%20Brand/us-linewize-icons-dedicated-support.png",
+              "width" : 300
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h4 class='text-primary mb-4' style='text-align: center;'><strong>Dedicated support</strong></h4>\n<p class='m-0 fs-6' style='text-align: center;'>Personal team assisting <br>you throughout.</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 fs-6' style='text-align: center;'>Sales materials, co-branded marketing campaigns, event help and more.</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 fs-6' style='text-align: center;'>Outstanding value-add&nbsp; for customers including cyber safety education for staff and parents included.</p>\n<hr class='border-top border-2 border-dotted border-primary'>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "alt" : "us-linewize-icons-universal-program",
+              "height" : 300,
+              "loading" : "lazy",
+              "max_height" : 150,
+              "max_width" : 150,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/US%20-%20Icons%20Qoria%20Brand/us-linewize-icons-universal-program.png",
+              "width" : 300
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h4 class='text-primary mb-4' style='text-align: center;'><strong>Universal program</strong></h4>\n<p class='m-0 fs-6' style='text-align: center;'>No tiering. All partners benefit the same, regardless of size.</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 fs-6' style='text-align: center;'>We work with you through your residual business.</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 fs-6' style='text-align: center;'>Our solutions can be flexibly configured to suit settings of all sizes and requirements.</p>\n<hr class='border-top border-2 border-dotted border-primary'>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "alt" : "us-linewize-icons-full-customer-setup",
+              "height" : 300,
+              "loading" : "lazy",
+              "max_height" : 150,
+              "max_width" : 150,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/us-linewize-icons-full-customer-setup.png",
+              "width" : 300
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h4 class='text-primary mb-4' style='text-align: center;'><strong>Full customer setup</strong></h4>\n<p class='m-0 fs-6' style='text-align: center;'>We handle customer support, from pre-sale to rollout to maintenance.</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 fs-6' style='text-align: center;'>We keep you fully involved and updated at every stage.&nbsp;</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 fs-6' style='text-align: center;'>Best in class technical support for customers. Average 45 second response time.</p>\n<hr class='border-top border-2 border-dotted border-primary'>"
+        } ],
+        style={
+          "icon_arrangement" : "stacked",
+          "separators" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 16
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="aboutlinewize"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          About<strong> Linewize</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row
+          padding={
+            "default" : {
+              "bottom" : "64px"
+            },
+            "mobile" : {
+              "bottom" : "32px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=1
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=1,
+            width=10
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p class="lead" style="text-align: center;"><span>Our technologies help keep children safe and thriving in their digital lives. Used by schools and districts around the globe, our platforms leverage world-leading technology with specialist support and education to deliver unparalleled outcomes in cyber safety, digital citizenship and parental engagement.</span></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=11,
+            width=1
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/cursive-heading",
+            offset=0,
+            width=12,
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 83
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 29
+                  }
+                }
+              }
+            }
+          %}
+            {% module_attribute "heading" %}
+              <div style="text-align: center;">we're winning together</div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=1
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=1,
+            width=4,
+            padding={
+              "mobile" : {
+                "bottom" : "32px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/fancy-image",
+                offset=0,
+                width=12,
+                image={
+                  "alt" : "Framework Core EN",
+                  "height" : 556,
+                  "loading" : "lazy",
+                  "max_height" : 436,
+                  "max_width" : 400,
+                  "size_type" : "auto_custom_max",
+                  "src" : "https://www.linewize.com/hubfs/Wellbeing%20Framework/Framework%20Core%20EN.png",
+                  "width" : 510
+                },
+                style={
+                  "greyscale_filter" : false,
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : { },
+                      "top" : {
+                        "units" : "px",
+                        "value" : -36
+                      }
+                    }
+                  }
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=5,
+            width=6
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/heading",
+                offset=0,
+                width=12,
+                heading_tag="h4",
+                style={
+                  "heading_underline" : false,
+                  "spacing_field" : {
+                    "padding" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 0
+                      },
+                      "left" : {
+                        "units" : "px",
+                        "value" : 0
+                      },
+                      "right" : {
+                        "units" : "px",
+                        "value" : 40
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 0
+                      }
+                    }
+                  }
+                }
+              %}
+                {% module_attribute "heading" %}
+                  <p>Linewize Student Safety and Wellbeing Framework</p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p class="fs-6">We help schools expand and strengthen their provision across three fundamental pillars of a framework.</p>
+                  <p class="fs-6">&gt; Prevention &amp; Enablement<br>&gt; Early Detection &amp; Intervention<br>&gt; Education &amp; Engagement</p>
+                  <p class="fs-6">It helps them navigate their choices more easily and take a strategic, outcome-led approach to student digital safety.</p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/cta",
+                offset=0,
+                width=12,
+                alignment="start",
+                button_size=" ",
+                button_text="Learn more",
+                link={
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 146196693051,
+                    "type" : "CONTENT"
+                  }
+                },
+                styles={
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 0
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 32
+                      }
+                    }
+                  }
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=11,
+            width=1
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="apply"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 66
+              },
+              "top" : { }
+            },
+            "padding" : {
+              "bottom" : { },
+              "left" : { },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          <p>Apply to join our <strong>Partner Program</strong></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/form",
+        offset=0,
+        width=12,
+        advanced={
+          "additional_classes" : "p-5 p-md-7"
+        },
+        form={
+          "form_id" : "f2927ddb-899d-49e9-81a5-313233afbb12",
+          "form_type" : "HUBSPOT",
+          "redirect_url" : "https://linewize.ziftone.com/#/page/registration_completion",
+          "response_type" : "redirect"
+        },
+        style={
+          "background_colour" : "bg-white text-dark",
+          "shadow" : "shadow-lg"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "30rem"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "30rem"
+    }
+  },
+  margin={
+    "default" : {
+      "top" : "-30rem"
+    },
+    "mobile" : {
+      "top" : "-30rem"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_module
+    path="@hubspot/horizontal_spacer",
+    offset=0,
+    width=12,
+    hidden={
+      "mobile" : true
+    }
+  %}
+  {% end_dnd_module %}
+{% end_dnd_section %}
+
+
+
+
+
+    {% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

@@ -8,6 +8,8 @@
    {% set accentColour = "#fabd55" %}
 {% elif module.accent_colour == "blue" %}
    {% set accentColour = "#8dc9e6" %}
+{% elif module.accent_colour == "dark" %}
+   {% set accentColour = "#4d4d4d" %}
 {% endif %}
    <table width="100%" style="width: 100%;">
       {% if module.background_image.src %}
@@ -79,7 +81,7 @@
          {% endif %}
       {% endif %}
 
-      <tr>
+      <tr class="hs_cos_wrapper_type_rich_text">
          {% if module.content_image.src != "" %}
 
             <td style="font-size:0; padding-top: {{ module.content_padding.padding_y }}px; padding-bottom: {{ module.content_padding.padding_y }}px;" align="center" valign="top" {{ "dir='rtl'" if module.reverse == true }}>
@@ -150,7 +152,7 @@
                <![endif]-->
             </td>
          {% else %}
-         <td style="padding: {{ module.content_padding.padding_y }}px {{ module.content_padding.padding_x }}px;" class="mce-content-body">
+         <td style="padding: {{ module.content_padding.padding_y }}px {{ module.content_padding.padding_x }}px;" class="mce-content-body article">
            {{ module.content }}
             {% if module.link.url.href %}
             {% set href = module.link.url.href %}

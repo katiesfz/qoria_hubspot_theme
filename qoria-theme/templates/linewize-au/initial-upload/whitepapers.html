@@ -1,0 +1,586 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize ANZ Whitepapers
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+    {% dnd_area "dnd_area"
+    label="Body"
+    class="main p-0 overflow-hidden"
+    %}
+
+
+    
+{% dnd_section
+full_width=true
+%}
+{% dnd_column
+  offset=0,
+  width=12
+%}
+  {% dnd_row %}
+    {% dnd_module
+      path="/q-theme/modules/hero",
+      offset=0,
+      width=12,
+      cta=[ ],
+      header="Whitepapers",
+      hero_type="full-image",
+      image={
+        "alt" : "US-Linewize-Banners-Events",
+        "height" : 1280,
+        "loading" : "disabled",
+        "max_height" : 1280,
+        "max_width" : 1920,
+        "size_type" : "auto",
+        "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/US-Linewize-Banners-Events.jpg",
+        "width" : 1920
+      },
+      menu=115248177746,
+      page_contents=[ {
+        "anchor" : "#browse",
+        "content_label" : "Browse our papers"
+      }, {
+        "anchor" : "#connect",
+        "content_label" : "Let's connect"
+      } ],
+      pre_header="Resources:",
+      show_breadcrumbs=true,
+      show_share_price=false,
+      style={
+        "heading_location" : "bottom-left"
+      },
+      video=""
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "80px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="intro fs-4" style="text-align: center;">Browse through Linewize content filtering and classroom management whitepapers today. Learn more about K-12 technology in the modern classroom. This includes going beyond just web filtering, CDNs, VPNs, and more.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="browse"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Browse <strong>our whitepapers</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/pdf-list",
+            offset=0,
+            width=12,
+            card=[ {
+              "download_link" : false,
+              "image" : {
+                "alt" : "US_LNW_5 Indicators Your Filter Needs Updatingp_thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/Qoria%20Whitepaper%20Thumbnails%20-%20US/US_LNW_5%20Indicators%20Your%20Filter%20Needs%20Updatingp_thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://www.linewize.com/hubfs/Qoria%20Whitepapers%20-%20US/US_LNW_5%20Indicators%20Your%20Filter%20Needs%20Updating.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "<p>5 Indicators Your Filter Needs Updating</p>",
+              "title" : "Whitepaper"
+            }, {
+              "description" : "",
+              "download_link" : false,
+              "image" : {
+                "alt" : "US_LNW_2023_ A School’s Guide to Filter Avoidance_thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://www.linewize.com/hubfs/Qoria%20Whitepaper%20Thumbnails%20-%20US/US_LNW_2023_%20A%20School%E2%80%99s%20Guide%20to%20Filter%20Avoidance_thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://www.linewize.com/hubfs/Qoria%20Whitepapers%20-%20US/US_LNW_2023_%20A%20School%E2%80%99s%20Guide%20to%20Filter%20Avoidance.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : false,
+              "stretched_link" : true,
+              "text" : "<p style='line-height: 1.15;'>A Schools Guide to Filter Avoidance<br><br></p>",
+              "title" : "Whitepaper"
+            }, {
+              "description" : "",
+              "download_link" : false,
+              "image" : {
+                "alt" : "US_LNW_2023_Web Filtering in Schools- Hybrid or Cloud_-thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://www.linewize.com/hubfs/Qoria%20Whitepaper%20Thumbnails%20-%20US/US_LNW_2023_Web%20Filtering%20in%20Schools-%20Hybrid%20or%20Cloud_-thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://www.linewize.com/hubfs/Qoria%20Whitepapers%20-%20US/US_LNW_2023_Web%20Filtering%20in%20Schools-%20Hybrid%20or%20Cloud.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : false,
+              "stretched_link" : true,
+              "text" : "Web Filtering in Education. Cloud, On-Premise or Hybrid",
+              "title" : "Whitepaper"
+            }, {
+              "description" : "",
+              "download_link" : false,
+              "image" : {
+                "alt" : "US - LNW - 30 Questions to Ask Your Web Filter & Monitor Vendor - Thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://www.linewize.com/hubfs/Qoria%20Whitepaper%20Thumbnails%20-%20US/US%20-%20LNW%20-%2030%20Questions%20to%20Ask%20Your%20Web%20Filter%20&%20Monitor%20Vendor%20-%20Thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://www.linewize.com/hubfs/Qoria%20Whitepapers%20-%20US/US%20-%20LNW%20-%2030%20Questions%20to%20Ask%20Your%20Web%20Filter%20&%20Monitor%20Vendor.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : false,
+              "stretched_link" : true,
+              "text" : "30 Questions to Ask Your Web Filter &amp; Monitor Vendor",
+              "title" : "Whitepaper"
+            }, {
+              "description" : "",
+              "download_link" : false,
+              "image" : {
+                "alt" : "US_LNW_2023_ Monitor Without Surveillance _thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://www.linewize.com/hubfs/Qoria%20Whitepaper%20Thumbnails%20-%20US/US_LNW_2023_%20Monitor%20Without%20Surveillance%20_thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://www.linewize.com/hubfs/Qoria%20Whitepapers%20-%20US/US_LNW_2023_%20Monitor%20Without%20Surveillance.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : false,
+              "stretched_link" : true,
+              "text" : "How to Monitor Without Surveillance",
+              "title" : "Whitepaper"
+            }, {
+              "description" : "",
+              "download_link" : false,
+              "image" : {
+                "alt" : "US_LNW_2023_ Debunking 9 Student Privacy Concerns _thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://www.linewize.com/hubfs/Qoria%20Whitepaper%20Thumbnails%20-%20US/US_LNW_2023_%20Debunking%209%20Student%20Privacy%20Concerns%20_thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://www.linewize.com/hubfs/Qoria%20Whitepapers%20-%20US/US_LNW_2023_%20Debunking%209%20Student%20Privacy%20Concerns.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : false,
+              "stretched_link" : true,
+              "text" : "Debunking 9 Student Privacy Concerns Around Monitoring Systems",
+              "title" : "Whitepaper"
+            }, {
+              "description" : "",
+              "download_link" : false,
+              "image" : {
+                "alt" : "US-LNW-How to reduct Violence in Schools_Thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://www.linewize.com/hubfs/Qoria%20Whitepaper%20Thumbnails%20-%20US/US-LNW-How%20to%20reduct%20Violence%20in%20Schools_Thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://www.linewize.com/hubfs/Qoria%20Whitepapers%20-%20US/US_LNW_How%20to%20Reduce%20Violence%20In%20Schools.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : false,
+              "stretched_link" : true,
+              "text" : "Reduce Violence in Schools With Digital Monitoring",
+              "title" : "Whitepaper"
+            } ],
+            styles={
+              "card_style" : "2",
+              "responsive" : {
+                "desktop" : {
+                  "cards" : 2
+                },
+                "mobile" : {
+                  "cards" : 1
+                },
+                "tablet" : {
+                  "cards" : 1
+                }
+              },
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 0
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "32px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="connect"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Let's <strong>connect</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "p-5 row-cols-md-2 row-cols-1 g-5 g-md-0"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_classes" : "border-0 border-end-md pe-0 pe-md-5 border-bottom border-bottom-md-0 pb-5 pb-md-0 h-100"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h2 class=''><strong>Talk to us<img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/icon_webinar.png' alt='icon_webinar' width='100' height='92' loading='lazy' style='height: auto; max-width: 100%; width: 100px; float: right; opacity: 0.3; margin: 16px;'></strong></h2>\n<p class=''>Talk to an expert or book a demo. Our Digital Wellbeing experts are waiting to help.</p>\n<p class=''><a href='/contact' rel='noopener' class='btn btn-outline-light'>Contact us</a></p>"
+          }, {
+            "advanced" : {
+              "additional_classes" : "ps-0 ps-md-5"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h2 class=''><strong>Stay in touch<img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/icon_newsletter.png' alt='icon_newsletter' width='100' height='92' loading='lazy' style='height: auto; max-width: 100%; width: 100px; float: right; opacity: 0.3; margin: 16px;'></strong></h2>\n<p class=''>Sign up for our newsletter to get all the latest product information.</p>\n<p class=''><a href='#' data-bs-toggle='modal' data-bs-target='#newsletterSignup' rel='noopener' class='btn btn-outline-light'>Subscribe</a></p>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-secondary text-white",
+          "overlay" : false
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/form-modal",
+        offset=0,
+        width=12,
+        form={
+          "form_id" : "f3045ad5-2bc5-46bb-b87f-1ecd93cce900",
+          "form_type" : "HUBSPOT",
+          "message" : "Thanks for submitting the form.",
+          "response_type" : "inline"
+        },
+        heading="Subscribe to our newsletter"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+
+
+    {% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}
+
+
+
+
+

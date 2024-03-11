@@ -1,11 +1,14 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Linewize US Webpage with CTA
+  label: Qoria EU LP
   screenshotPath: ../../images/template-previews/landing-page.png
 -->
 {% extends "./layouts/base.html" %}
 
+{% block header %}
+  {% global_partial path="./partials/header-no-navigation.html" %}
+{% endblock header %}
 
 {% block body %}
 {% dnd_area "dnd_area"
@@ -15,17 +18,17 @@ class="main p-0 overflow-hidden"
 
   {% include_dnd_partial
     path="../../sections/hero-banner.html"
+    context={
+      "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>"
+    }
   %}
 
   {% include_dnd_partial
     path="../../sections/introduction.html"
   %}
 
-
 {% end_dnd_area %}
-{% global_partial path="./partials/lets-connect.html" %}
 {% endblock body %}
 
 {% block footer %}
-    {% global_partial path="./partials/footer.html" %}
 {% endblock footer %}

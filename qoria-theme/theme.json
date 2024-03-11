@@ -23,6 +23,7 @@
   "hidden_modules": [
   "@hubspot/button",
   "@hubspot/form",
-  "@hubspot/divider"
+  "@hubspot/divider",
+  "@hubspot/heading"
   ]
 }

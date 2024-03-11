@@ -1,0 +1,66 @@
+[
+  {
+    "default": "<h1>Hello, world!</h1>",
+    "label": "Top left content",
+    "locked": false,
+    "name": "top_left",
+    "required": false,
+    "type": "richtext",
+    "validation_regex": ""
+  },{
+    "default": "<h1>Hello, world!</h1>",
+    "label": "Top right content",
+    "locked": false,
+    "name": "top_right",
+    "required": false,
+    "type": "richtext",
+    "validation_regex": ""
+  },{
+    "default": "<h1>Hello, world!</h1>",
+    "label": "Bottom left content",
+    "locked": false,
+    "name": "bottom_left",
+    "required": false,
+    "type": "richtext",
+    "validation_regex": ""
+  },{
+    "default": "<h1>Hello, world!</h1>",
+    "label": "Bottom right content",
+    "locked": false,
+    "name": "bottom_right",
+    "required": false,
+    "type": "richtext",
+    "validation_regex": ""
+  },{
+    "id" : "styles",
+    "name" : "styles",
+    "display_width" : null,
+    "label" : "Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.spacing_field",
+      "name" : "spacing_field",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      }
+    }],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }
+]

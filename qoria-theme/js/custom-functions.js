@@ -523,10 +523,10 @@ function pagination(containerId, curPage) {
   if (nextButton) {
       nextButton.addEventListener("click", () => {
           event.preventDefault();
-          console.log("next");
+      //    console.log("next");
           goNext(containerId, curPage);
           curPage++;
-          console.log("current page: " + curPage);
+      //    console.log("current page: " + curPage);
       });
   }
 

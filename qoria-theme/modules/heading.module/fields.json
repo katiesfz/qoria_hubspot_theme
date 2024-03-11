@@ -19,7 +19,7 @@
   "label" : "Heading",
   "required" : false,
   "locked" : false,
-  "enabled_features" : [ "bold" ],
+  "enabled_features" : [ "bold", "nonbreaking_space", "charmap"],
   "type" : "richtext",
   "default" : "Welcome to <strong>Qoria</strong>"
 }, {
@@ -62,7 +62,22 @@
     "preset" : null,
     "type" : "choice",
     "default" : "start"
-  } ],
+  },{
+    "id" : "heading.colour",
+    "name" : "colour",
+    "display_width" : null,
+    "label" : "Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "Default" ], [ "light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
+  }
+],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"

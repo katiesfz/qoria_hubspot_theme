@@ -1,24 +1,26 @@
 <!--
   templateType: section
-  label: List with icons
+  label: List with icons and an image
   isAvailableForNewContent: true
-  screenshotPath: ../images/section-previews/list-with-icons.png
-  description: "A section with 2 columns of list items with customiseable icons."
+  screenshotPath: ../images/section-previews/list-image.png
+  description: "A section with 2 columns with list items and an image."
 -->
 
 {% dnd_section
-padding={
-  "default" : {
-    "bottom" : "64px",
-    "left" : "16px",
-    "right" : "16px",
-    "top" : "64px"
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
   },
-  "mobile" : {
-    "bottom" : "32px",
-    "top" : "32px"
-  }
-},
+  full_width=false,
   max_width=1280
 %}
   {% dnd_column
@@ -26,324 +28,215 @@ padding={
     width=12
   %}
     {% dnd_row %}
-        {% dnd_module
-            path="/q-theme/modules/anchor",
-            offset=0,
-            width=12,
-            anchor={{context.anchor || "benefits" }}
-        %}
-        {% end_dnd_module %}
-    {% end_dnd_row %}
-    {% dnd_row %}
       {% dnd_module
         path="/q-theme/modules/heading",
         offset=0,
         width=12,
-        heading_underline=true,
+        heading_underline="true",
         style={
-          "heading_underline" : true
+          "colour" : " ",
+          "heading_underline" : true,
+          "textalignment" : "center"
         }
       %}
         {% module_attribute "heading" %}
-          Benefits to <strong>our customers</strong>
+          Pursuing internet safety for students is a <strong>shared goal</strong>
         {% end_module_attribute %}
       {% end_dnd_module %}
     {% end_dnd_row %}
     {% dnd_row %}
       {% dnd_column
         offset=0,
-        width=6
+        width=12
       %}
         {% dnd_row %}
-          {% dnd_module
-            path="@hubspot/rich_text",
+          {% dnd_column
             offset=0,
-            width=12
+            width=6,
+            padding={
+              "default" : {
+                "right" : "16px"
+              }
+            }
           %}
-            {% module_attribute "html" %}
-              <p class="lead">The Wellbeing Framework empowers each stakeholder to exceed their safety and wellbeing duty of care.</p>
-            {% end_module_attribute %}
-          {% end_dnd_module %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/icon-and-text-group",
+                offset=0,
+                width=12,
+                icon_and_text=[ {
+                  "icon" : {
+                    "absolute_icon_size" : "fa-2x",
+                    "custom_image" : {
+                      "loading" : "lazy",
+                      "size_type" : "auto",
+                      "src" : ""
+                    },
+                    "icon_code" : "check",
+                    "icon_colour" : "inherit",
+                    "icon_field" : {
+                      "name" : "Check Circle",
+                      "type" : "REGULAR",
+                      "unicode" : "f058"
+                    },
+                    "icon_shape" : "icon-only",
+                    "icon_style" : "fas",
+                    "max_width" : 52,
+                    "relative_icon_size" : "fa-xl",
+                    "sizing" : "inherit"
+                  },
+                  "icon_alignment" : "align-items-center",
+                  "text" : "<p style='text-align: left;'><strong>For IT administrators</strong><br>Our School Manager web filter integrates with existing systems and puts control in the right hands.</p>"
+                }, {
+                  "icon" : {
+                    "absolute_icon_size" : "fa-2x",
+                    "custom_image" : {
+                      "loading" : "lazy",
+                      "size_type" : "auto",
+                      "src" : ""
+                    },
+                    "icon_code" : "check",
+                    "icon_colour" : "inherit",
+                    "icon_field" : {
+                      "name" : "Check Circle",
+                      "type" : "REGULAR",
+                      "unicode" : "f058"
+                    },
+                    "icon_shape" : "icon-only",
+                    "icon_style" : "fas",
+                    "max_width" : 52,
+                    "relative_icon_size" : "fa-xl",
+                    "sizing" : "inherit"
+                  },
+                  "icon_alignment" : "align-items-center",
+                  "text" : "<p style='text-align: left;'><strong>For teachers</strong><br>Classwize provides screen visibility that will help teachers maintain control in the classroom, and keep student learning on track.</p>"
+                }, {
+                  "icon" : {
+                    "absolute_icon_size" : "fa-2x",
+                    "custom_image" : {
+                      "loading" : "lazy",
+                      "size_type" : "auto",
+                      "src" : ""
+                    },
+                    "icon_code" : "check",
+                    "icon_colour" : "inherit",
+                    "icon_field" : {
+                      "name" : "Check Circle",
+                      "type" : "REGULAR",
+                      "unicode" : "f058"
+                    },
+                    "icon_shape" : "icon-only",
+                    "icon_style" : "fas",
+                    "max_width" : 52,
+                    "relative_icon_size" : "fa-xl",
+                    "sizing" : "inherit"
+                  },
+                  "icon_alignment" : "align-items-center",
+                  "text" : "<p style='text-align: left;'><strong>For communities</strong><br>The online safety hub helps districts educate their community on digital safety, enabling parents, students, and counselors to get involved.</p>"
+                }, {
+                  "icon" : {
+                    "absolute_icon_size" : "fa-2x",
+                    "custom_image" : {
+                      "loading" : "lazy",
+                      "size_type" : "auto",
+                      "src" : ""
+                    },
+                    "icon_code" : "check",
+                    "icon_colour" : "inherit",
+                    "icon_field" : {
+                      "name" : "Check Circle",
+                      "type" : "REGULAR",
+                      "unicode" : "f058"
+                    },
+                    "icon_shape" : "icon-only",
+                    "icon_style" : "fas",
+                    "max_width" : 52,
+                    "relative_icon_size" : "fa-xl",
+                    "sizing" : "inherit"
+                  },
+                  "icon_alignment" : "align-items-center",
+                  "text" : "<p style='text-align: left;'><strong>For school administration &amp; wellbeing staff</strong><br>Monitor is the most advanced student threat detection tool in K-12. Flag at-risk students based on what they do and say in their digital lives.</p>"
+                } ],
+                style={
+                  "absolute_icon_size" : "fa-2x",
+                  "icon_alignment" : "align-items-start",
+                  "icon_arrangement" : "inline",
+                  "icon_colour" : "secondary",
+                  "relative_icon_size" : "fa-2xl",
+                  "responsive" : {
+                    "desktop" : {
+                      "cards" : 4
+                    }
+                  },
+                  "sizing" : "absolute"
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/cta",
+                offset=0,
+                width=12,
+                alignment="start",
+                button_colour="secondary",
+                button_text="Request a demo",
+                link={
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "href" : "#form",
+                    "type" : "EXTERNAL"
+                  }
+                },
+                styles={
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 0
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 32
+                      }
+                    }
+                  }
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=6,
+            width=6,
+            padding={
+              "default" : {
+                "left" : "16px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/fancy-image",
+                offset=0,
+                width=12,
+                image={
+                  "alt" : "shutterstock_296378513 (1)",
+                  "height" : 3456,
+                  "loading" : "lazy",
+                  "max_height" : 1333.3333333333333,
+                  "max_width" : 2000,
+                  "size_type" : "auto_custom_max",
+                  "src" : "https://www.linewize.com/hubfs/shutterstock_296378513%20(1).jpg",
+                  "width" : 5184
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
         {% end_dnd_row %}
       {% end_dnd_column %}
-      {% dnd_column
-        offset=6,
-        width=6
-      %}
-        {% dnd_row %}
-          {% dnd_module
-            path="@hubspot/horizontal_spacer",
-            offset=0,
-            width=12
-          %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-    {% end_dnd_row %}
-    {% dnd_row
-      padding={
-        "default" : {
-          "bottom" : "30px",
-          "top" : "30px"
-        }
-      }
-    %}
-      {% dnd_module
-        path="/q-theme/modules/icon-and-text-group",
-        offset=0,
-        width=6,
-        icon_and_text=[ {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "none",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "far",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<h6>Student safety:</h6>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        } ],
-        style={
-          "absolute_icon_size" : "fa-2x",
-          "icon_alignment" : "align-items-start",
-          "relative_icon_size" : "fa-2xl",
-          "sizing" : "absolute"
-        }
-      %}
-      {% end_dnd_module %}
-      {% dnd_module
-        path="/q-theme/modules/icon-and-text-group",
-        offset=6,
-        width=6,
-        icon_and_text=[ {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "none",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "far",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<h6>Student outcomes:</h6>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        }, {
-          "icon" : {
-            "absolute_icon_size" : "fa-2x",
-            "custom_image" : {
-              "loading" : "lazy",
-              "size_type" : "auto",
-              "src" : ""
-            },
-            "icon_code" : "check",
-            "icon_colour" : "inherit",
-            "icon_field" : {
-              "name" : "Check Circle",
-              "type" : "REGULAR",
-              "unicode" : "f058"
-            },
-            "icon_shape" : "icon-only",
-            "icon_style" : "fas",
-            "max_width" : 52,
-            "relative_icon_size" : "fa-xl",
-            "sizing" : "inherit"
-          },
-          "icon_alignment" : "align-items-center",
-          "text" : "<p><strong>Screen time&nbsp;<br></strong>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&nbsp;</p>"
-        } ],
-        style={
-          "absolute_icon_size" : "fa-2x",
-          "icon_alignment" : "align-items-start",
-          "relative_icon_size" : "fa-2xl",
-          "sizing" : "absolute"
-        }
-      %}
-      {% end_dnd_module %}
     {% end_dnd_row %}
   {% end_dnd_column %}
 {% end_dnd_section %}

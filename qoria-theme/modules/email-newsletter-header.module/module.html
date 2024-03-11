@@ -4,7 +4,7 @@
       <tr>
         <td style="width: 50%; vertical-align: middle;">
           <h4 style="margin-bottom: 0;">
-            {{ module.date_field|format_date('MMM') + " &#8212; " + module.date_field|format_date('yyyy') if module.date_field }}
+            {{ module.date_field|format_date('MMMM yyyy') if module.date_field }}
           </h4>
         </td>
         <td style="width: 50%; text-align: right; vertical-align: middle;">

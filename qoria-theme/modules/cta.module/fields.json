@@ -102,7 +102,47 @@
     }]
   },
   "default" : ""
-},  {
+}, {
+  "id" : "download_on_page_load",
+  "name" : "download_on_page_load",
+  "display_width" : null,
+  "label" : "Download automatically",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [{
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "EXTERNAL",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      },{
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "FILE",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      }]
+    }]
+  },
+  "default" : false
+}, {
   "id" : "button_text",
   "name" : "button_text",
   "display_width" : null,

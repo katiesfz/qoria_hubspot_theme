@@ -205,11 +205,34 @@
 	<td align="center" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-repeat: no-repeat;background-size: 100% auto;background-position: top center;margin: 0;padding: 0;height: 100% !important;width: 100% !important;" valign="top">
 	<table border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 700px;-webkit-font-smoothing: antialiased;border-collapse: collapse !important;">
 	<tbody>
+
+  {{delimiter}}
+
+  {% case footer %}
+  
+  {% when 'This email is a service from Linewize.' %}  
+
+		<tr>
+      <td align="right" class="column" colspan="12" style="text-align: right;font-family: Quicksand, Verdana, sans-serif;font-size: 16px;line-height: 1.5em;color: #000000;padding: 32px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" valign="top" width="100.0%">
+        <img src="https://www.linewize.com/hubfs/Linewize%20Logos%20(2023)/Linewize_byqoria_teal.png" style="width: 100%;max-width: 140px;height: auto;display: inline-block;margin-bottom: 0px; vertical-align: bottom;-ms-interpolation-mode: bicubic;" /> 
+      </td>
+		</tr>
+  
+  {% when 'This email is a service from Smoothwall.' %}
+  
+
 		<tr>
       <td align="right" class="column" colspan="12" style="text-align: right;font-family: Quicksand, Verdana, sans-serif;font-size: 16px;line-height: 1.5em;color: #000000;padding: 32px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" valign="top" width="100.0%">
         <img src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall%20by%20Qoria_Logo/smoothwall__byqoria_teal.png" style="width: 100%;max-width: 140px;height: auto;display: inline-block;margin-bottom: 0px; vertical-align: bottom;-ms-interpolation-mode: bicubic;" /> 
       </td>
 		</tr>
+  
+  
+  {% else %}
+  
+    
+  {% endcase %}
+
 		<tr>
 		<td align="left" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding: 10px 20px;" valign="top">
         {{content}}
@@ -222,44 +245,110 @@
 	</table>
 	<!-- End Template Container --></td>
 	</tr>
-	<tr>
-	<td align="center" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding: 10px 20px;" valign="top">
-	<div style="background-color:#58b78e; width: 100%; max-width: 1000px;"><!--[if gte mso 9]>
-              <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
-              <v:fill type="tile" src="https://qoria.com/hubfs/images/Email%20Assets/qoria-footer-bg.png" color="#58b78e"/>
-              </v:background>
-              <![endif]-->
-	<table border="0" cellpadding="0" cellspacing="0" height="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;" width="100%">
-	<tbody>
-		<tr>
-		<td align="center" background="https://qoria.com/hubfs/images/Email%20Assets/qoria-footer-bg.png" style="background-size: cover;background-position: center right;padding: 32px 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" valign="top">
-		<div style="color: #fff; max-width: 700px; text-align: center;">
-        <img src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall%20by%20Qoria_Logo/smoothwall__byqoria_white_smoothwall__byqoria_white.png" style="width: 100%;max-width: 140px;height: auto;display: inline-block;margin-bottom: 16px; vertical-align: bottom;-ms-interpolation-mode: bicubic;" class="header-logo" /> 
-		<h4 style="text-align: center;color: #ffffff;margin-bottom: 5px;display: block;font-family: Quicksand, Verdana, sans-serif;font-weight: 300;line-height: 125%;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 1.2rem;">Create cyber-safe communities where students thrive.</h4>
 
-		<p class="small" style="color: #ffffff;text-align: center;margin-top: 0;font-weight: light;line-height: 125%;margin-bottom: 10px;font-size: 0.9rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Support student wellbeing. Powerful insights and analytics. Engage your school community.</p>
-		</div>
-		</td>
-		</tr>
-	</tbody>
-	</table>
-	</div>
-	</td>
-	</tr>
-	<tr>
-	<td align="center" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-	<p align="center" style="margin-bottom: 5px;line-height: 125%;font-size: 0.8rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Smoothwall Ltd</p>
 
-	<p align="center" style="line-height: 125%;margin-bottom: 10px;font-size: 0.8rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Second Floor, 2 Whitehall Quay<br />
-	Leeds <span style="color: #58b78e">|</span> LS1 4HR <span style="color: #58b78e">|</span> United Kingdom</p>
-	</td>
-	</tr>
-    <tr>	
-    <td align="left" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-        {{quoted_content}}
-    </td>
-    </tr>
-</tbody>
-</table>
-</div>
-</body></html>
+  {% case footer %}
+
+    {% when 'This email is a service from Linewize.' %}
+    
+
+      <tr>
+      <td align="center" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding: 10px 20px;" valign="top">
+      <div style="background-color:#58b78e; width: 100%; max-width: 1000px;"><!--[if gte mso 9]>
+                  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+                  <v:fill type="tile" src="https://qoria.com/hubfs/images/Email%20Assets/qoria-footer-bg.png" color="#58b78e"/>
+                  </v:background>
+                  <![endif]-->
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;" width="100%">
+      <tbody>
+        <tr>
+        <td align="center" background="https://qoria.com/hubfs/images/Email%20Assets/qoria-footer-bg.png" style="background-size: cover;background-position: center right;padding: 32px 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" valign="top">
+        <div style="color: #fff; max-width: 700px; text-align: center;">
+            <img src="https://www.linewize.com/hubfs/Linewize%20Logos%20(2023)/Linewize_byqoria_white_cropped.png" style="width: 100%;max-width: 140px;height: auto;display: inline-block;margin-bottom: 16px; vertical-align: bottom;-ms-interpolation-mode: bicubic;" class="header-logo" /> 
+        <h4 style="text-align: center;color: #ffffff;margin-bottom: 5px;display: block;font-family: Quicksand, Verdana, sans-serif;font-weight: 300;line-height: 125%;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 1.2rem;">Create cyber-safe communities where students thrive.</h4>
+    
+        <p class="small" style="color: #ffffff;text-align: center;margin-top: 0;font-weight: light;line-height: 125%;margin-bottom: 10px;font-size: 0.9rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Support student wellbeing. Powerful insights and analytics. Engage your school community.</p>
+        </div>
+        </td>
+        </tr>
+      </tbody>
+      </table>
+      </div>
+      </td>
+      </tr>
+      <tr>
+      <td align="center" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+      <p align="center" style="margin-bottom: 5px;line-height: 125%;font-size: 0.8rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Linewize</p>
+    
+      <p align="center" style="line-height: 125%;margin-bottom: 10px;font-size: 0.8rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">10803 Thornmint Rd
+      <br />
+      San Diego <span style="color: #58b78e">|</span> CA 92127 <span style="color: #58b78e">|</span> USA</p>
+      </td>
+      </tr>
+      <tr>	
+      <td align="left" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+          {{quoted_content}}
+      </td>
+      </tr>
+  </tbody>
+  </table>
+  </div>
+  </body></html>
+    
+    {% when 'This email is a service from Smoothwall.' %}
+    
+
+      <tr>
+      <td align="center" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;padding: 10px 20px;" valign="top">
+      <div style="background-color:#58b78e; width: 100%; max-width: 1000px;"><!--[if gte mso 9]>
+                  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+                  <v:fill type="tile" src="https://qoria.com/hubfs/images/Email%20Assets/qoria-footer-bg.png" color="#58b78e"/>
+                  </v:background>
+                  <![endif]-->
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;" width="100%">
+      <tbody>
+        <tr>
+        <td align="center" background="https://qoria.com/hubfs/images/Email%20Assets/qoria-footer-bg.png" style="background-size: cover;background-position: center right;padding: 32px 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" valign="top">
+        <div style="color: #fff; max-width: 700px; text-align: center;">
+            <img src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall%20by%20Qoria_Logo/smoothwall__byqoria_white_smoothwall__byqoria_white.png" style="width: 100%;max-width: 140px;height: auto;display: inline-block;margin-bottom: 16px; vertical-align: bottom;-ms-interpolation-mode: bicubic;" class="header-logo" /> 
+        <h4 style="text-align: center;color: #ffffff;margin-bottom: 5px;display: block;font-family: Quicksand, Verdana, sans-serif;font-weight: 300;line-height: 125%;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 1.2rem;">Create cyber-safe communities where students thrive.</h4>
+    
+        <p class="small" style="color: #ffffff;text-align: center;margin-top: 0;font-weight: light;line-height: 125%;margin-bottom: 10px;font-size: 0.9rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Support student wellbeing. Powerful insights and analytics. Engage your school community.</p>
+        </div>
+        </td>
+        </tr>
+      </tbody>
+      </table>
+      </div>
+      </td>
+      </tr>
+      <tr>
+      <td align="center" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+      <p align="center" style="margin-bottom: 5px;line-height: 125%;font-size: 0.8rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Smoothwall Ltd</p>
+    
+      <p align="center" style="line-height: 125%;margin-bottom: 10px;font-size: 0.8rem;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">Second Floor, 2 Whitehall Quay<br />
+      Leeds <span style="color: #58b78e">|</span> LS1 4HR <span style="color: #58b78e">|</span> United Kingdom</p>
+      </td>
+      </tr>
+      <tr>	
+      <td align="left" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+          {{quoted_content}}
+      </td>
+      </tr>
+  </tbody>
+  </table>
+  </div>
+  </body></html>
+    
+    {% else %}
+    
+      <tr>	
+      <td align="left" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+          {{quoted_content}}
+      </td>
+      </tr>
+  </tbody>
+  </table>
+  </div>
+  </body></html>
+    {% endcase %}

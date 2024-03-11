@@ -10,8 +10,15 @@
     {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css')) }}
     {{ standard_header_includes }}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    {% block head %}
+    {% endblock %}
   </head>
   <body data-bs-spy="scroll" data-bs-target="#pageContents">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8QZ3RJD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
     {% block body %}
     {% endblock body %}

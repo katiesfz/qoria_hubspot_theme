@@ -23,163 +23,84 @@
       "top" : "64px"
     }
   }
+  margin={
+    "default" : {
+      "bottom" : "-5rem"
+    },
+    "mobile" : {
+      "bottom" : "0"
+    }
+  }
   full_width=false,
   max_width=1280
 %}
-  {% dnd_column
-    offset=0,
-    width=2
-  %}
-    {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/horizontal_spacer",
-        offset=0,
-        width=12
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-  {% end_dnd_column %}
-  {% dnd_column
-    offset=2,
-    width=8
-  %}
-    {% dnd_row %}
-      {% dnd_module
-        path="/q-theme/modules/pullout-simple",
-        offset=0,
-        width=12,
-        row=[ {
-          "advanced" : {
-            "additional_classes" : "flex-md-row-reverse"
-          },
-          "column" : [ {
-            "advanced" : {
-              "additional_classes" : "p-5 pe-5 pe-md-0 pb-0 pb-md-5",
-              "additional_col_classes" : "col-12 col-md-5"
-            },
-            "column_styles" : {
-              "background_colour" : "none",
-              "background_image_file" : {
-                "loading" : "lazy"
-              },
-              "background_size" : "cover"
-            },
-            "link" : {
-              "no_follow" : false,
-              "open_in_new_tab" : false,
-              "sponsored" : false,
-              "url" : {
-                "href" : "",
-                "type" : "EXTERNAL"
-              },
-              "user_generated_content" : false
-            },
-            "link_label" : "",
-            "link_stretched" : false,
-            "text" : "<p><a href='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall%20by%20Qoria%20-%20Whitepapers%20(Rebranded)/Smoothwall%20-%20A%20Complete%20Guide%20to%20Digital%20Monitoring%20for%20Schools.pdf' rel='noopener' target='_blank'><img src='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Digital-Monitoring-Guide-for-Schools.png' width='250' height='310' loading='lazy' alt='Digital-Monitoring-Guide-for-Schools' style='max-width: 100%; margin-left: auto; margin-right: auto; display: block; width: 250px; height: auto;'></a></p>"
-          }, {
-            "advanced" : {
-              "additional_classes" : "",
-              "additional_col_classes" : "p-5"
-            },
-            "column_styles" : {
-              "background_colour" : "none",
-              "background_image_file" : {
-                "loading" : "lazy"
-              },
-              "background_size" : "cover"
-            },
-            "link" : {
-              "no_follow" : false,
-              "open_in_new_tab" : false,
-              "sponsored" : false,
-              "url" : {
-                "href" : "",
-                "type" : "EXTERNAL"
-              },
-              "user_generated_content" : false
-            },
-            "link_label" : "",
-            "link_stretched" : false,
-            "text" : "<h2><strong>Thank you!</strong></h2><p class='fs-4 lh-sm'>Please click on the download button to access your whitepaper.</p><p><a href='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall%20by%20Qoria%20-%20Whitepapers%20(Rebranded)/Smoothwall%20-%20A%20Complete%20Guide%20to%20Digital%20Monitoring%20for%20Schools.pdf' rel='noopener' target='_blank' class='btn btn-secondary my-3'>Download whitepaper</a></p><p><strong>Having trouble? <a href='/contact-us' rel='noopener' target='_blank' class='text-decoration-none'>Please get in touch.</a></strong></p><button type='button' class='btn btn-link text-decoration-none text-reset p-0' onclick='javascript:history.back()'>Go back</button>"
-          } ]
-        }, {
-          "advanced" : { },
-          "column" : [ {
-            "advanced" : { },
-            "column_styles" : {
-              "background_colour" : "none",
-              "background_image_file" : {
-                "loading" : "lazy"
-              },
-              "background_size" : "cover"
-            },
-            "link" : {
-              "no_follow" : false,
-              "open_in_new_tab" : false,
-              "sponsored" : false,
-              "url" : {
-                "href" : "",
-                "type" : "EXTERNAL"
-              },
-              "user_generated_content" : false
-            },
-            "link_label" : "",
-            "link_stretched" : false,
-            "text" : "<div class='bg-gradient-primary w-100' style='height: 12px;'>&nbsp;</div>"
-          } ]
-        } ],
-        style={
-          "background_colour" : "bg-white text-dark",
-          "overlay" : false,
-          "shadow" : true,
-          "shadow_style" : "section-shadow",
-          "spacing_field" : {
-            "margin" : {
-              "bottom" : {
-                "units" : "px",
-                "value" : 0
-              },
-              "top" : {
-                "units" : "px",
-                "value" : 0
-              }
-            },
-            "padding" : {
-              "bottom" : {
-                "units" : "px",
-                "value" : 0
-              },
-              "left" : {
-                "units" : "px",
-                "value" : 0
-              },
-              "right" : {
-                "units" : "px",
-                "value" : 0
-              },
-              "top" : {
-                "units" : "px",
-                "value" : 0
-              }
-            }
+{% dnd_column
+  offset=0,
+  width=2
+%}
+  {% dnd_row %}
+    {% dnd_module
+      path="@hubspot/horizontal_spacer",
+      offset=0,
+      width=12
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+{% end_dnd_column %}
+{% dnd_column
+  offset=2,
+  width=8
+%}
+  {% dnd_row %}
+    {% dnd_module
+      path="/q-theme/modules/pullout-download",
+      offset=0,
+      width=12,
+      cta={
+        "advanced" : {
+          "additional_classes" : "my-3"
+        },
+        "button_text" : "Download whitepaper",
+        "download" : true,
+        "download_file" : "Digital Monitoring for School",
+        "link" : {
+          "no_follow" : false,
+          "open_in_new_tab" : false,
+          "url" : {
+            "href" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall%20by%20Qoria%20-%20Whitepapers%20(Rebranded)/Smoothwall%20-%20A%20Complete%20Guide%20to%20Digital%20Monitoring%20for%20Schools.pdf",
+            "type" : "EXTERNAL"
           }
-        }
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-  {% end_dnd_column %}
-  {% dnd_column
-    offset=10,
-    width=2
-  %}
-    {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/horizontal_spacer",
-        offset=0,
-        width=12
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-  {% end_dnd_column %}
+        },
+        "link_stretched" : true
+      },
+      image={
+        "alt" : "Qoria-SEL Guide_Thumbnail",
+        "height" : 345,
+        "loading" : "lazy",
+        "max_height" : 345,
+        "max_width" : 250,
+        "size_type" : "auto_custom_max",
+        "src" : "https://www.linewize.com/hubfs/Qoria-SEL%20Guide_Thumbnail.png",
+        "width" : 250
+      }
+    %}
+      {% module_attribute "post_text" %}
+        <p class="mt-3"><strong>Having trouble? <a href="/contact-us" rel="noopener" target="_blank" class="text-decoration-none">Please get in touch.</a></strong></p>
+      {% end_module_attribute %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+{% end_dnd_column %}
+{% dnd_column
+  offset=10,
+  width=2
+%}
+  {% dnd_row %}
+    {% dnd_module
+      path="@hubspot/horizontal_spacer",
+      offset=0,
+      width=12
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+{% end_dnd_column %}
 {% end_dnd_section %}

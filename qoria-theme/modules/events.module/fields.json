@@ -55,6 +55,16 @@
     "type" : "url",
     "default" : { }
   }, {
+    "id" : "event.include_calendar_link",
+    "name" : "include_calendar_link",
+    "display_width" : null,
+    "label" : "Include calendar link",
+    "required" : true,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
     "id" : "event.calendar_object",
     "name" : "calendar_object",
     "display_width" : null,
@@ -102,7 +112,7 @@
       "inline_help_text" : "In UTC+08:00",
       "required" : false,
       "locked" : false,
-      "step" : 30,
+      "step" : 15,
       "type" : "datetime"
     }, {
       "id" : "event.calendar_object.event_end",
@@ -112,7 +122,7 @@
       "inline_help_text" : "In UTC+08:00",
       "required" : false,
       "locked" : false,
-      "step" : 30,
+      "step" : 15,
       "type" : "datetime"
     } ],
     "tab" : "CONTENT",
@@ -126,7 +136,8 @@
   "expanded" : false,
   "type" : "group",
   "default" : {
-    "url" : { }
+    "url" : { },
+    "include_calendar_link": false
   }
 }, {
   "id" : "add_to_diary",
@@ -161,7 +172,39 @@
     "preset" : null,
     "type" : "choice",
     "default" : "1"
-  } ],
+  }, {
+    "id" : "style.include_filter",
+    "name" : "include_filter",
+    "display_width" : null,
+    "label" : "Include filter",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "style.filter_type",
+    "name" : "filter_type",
+    "display_width" : null,
+    "label" : "Filter type",
+    "required" : false,
+    "locked" : true,
+    "display" : "select",
+    "choices" : [ [ "month", "Month" ], [ "state", "State" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.include_filter",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : "month"
+  }],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"

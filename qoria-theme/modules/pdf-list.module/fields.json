@@ -8,7 +8,7 @@
   "occurrence" : {
     "min" : 1,
     "max" : null,
-    "sorting_label_field" : "card.title",
+    "sorting_label_field" : "card.text",
     "default" : 3
   },
   "children" : [ {
@@ -23,7 +23,7 @@
     "show_loading" : true,
     "type" : "image",
     "default" : {
-      "loading" : "lazy"
+      "loading" : "eager"
     }
   }, {
     "id" : "card.title",
@@ -235,6 +235,20 @@
     "tab" : "STYLE",
     "expanded" : false,
     "type" : "group"
+  }, {
+    "id" : "styles.card_style",
+    "name" : "card_style",
+    "display_width" : null,
+    "label" : "Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "Style 1" ], [ "2", "Style 2" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "1"
   }, {
     "id" : "styles.equal_heights",
     "name" : "equal_heights",

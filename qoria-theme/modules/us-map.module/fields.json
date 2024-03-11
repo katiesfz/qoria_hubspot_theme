@@ -1,0 +1,206 @@
+[
+  {
+    "id" : "shaded_states",
+    "name" : "shaded_states",
+    "display_width" : null,
+    "label" : "Shaded States",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "choices": [["AL", "Alabama"],["AK", "Alaska"],["AZ", "Arizona"],["AR", "Arkansas"],["CA", "California"],["CO", "Colorado"],["CT", "Connecticut"],["DE", "Delaware"],["DC", "District of Columbia"],["FL", "Florida"],["GA", "Georgia"],["HI", "Hawaii"],["ID", "Idaho"],["IL", "Illinois"],["IN", "Indiana"],["IA", "Iowa"],["KS", "Kansas"],["KY", "Kentucky"],["LA", "Louisiana"],["ME", "Maine"],["MD", "Maryland"],["MA", "Massachusetts"],["MI", "Michigan"],["MN", "Minnesota"],["MS", "Mississippi"],["MO", "Missouri"],["MT", "Montana"],["NE", "Nebraska"],["NV", "Nevada"],["NH", "New Hampshire"],["NJ", "New Jersey"],["NM", "New Mexico"],["NY", "New York"],["NC", "North Carolina"],["ND", "North Dakota"],["OH", "Ohio"],["OK", "Oklahoma"],["OR", "Oregon"],["PA", "Pennsylvania"],["RI", "Rhode Island"],["SC", "South Carolina"],["SD", "South Dakota"],["TN", "Tennessee"],["TX", "Texas"],["UT", "Utah"],["VT", "Vermont"],["VA", "Virginia"],["WA", "Washington"],["WV", "West Virginia"],["WI", "Wisconsin"],["WY", "Wyoming"]  ],
+    "multiple" : true,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default": []
+  }, {
+    "id" : "location",
+    "name" : "location",
+    "display_width" : null,
+    "label" : "Location",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "location.zip",
+      "default" : null
+    },
+    "children" : [{
+        "id" : "location.state",
+        "name" : "state",
+        "display_width" : null,
+        "label" : "State",
+        "required" : false,
+        "locked" : false,
+        "display" : "selector",
+        "choices": [["AL", "Alabama"],["AK", "Alaska"],["AZ", "Arizona"],["AR", "Arkansas"],["CA", "California"],["CO", "Colorado"],["CT", "Connecticut"],["DE", "Delaware"],["DC", "District of Columbia"],["FL", "Florida"],["GA", "Georgia"],["HI", "Hawaii"],["ID", "Idaho"],["IL", "Illinois"],["IN", "Indiana"],["IA", "Iowa"],["KS", "Kansas"],["KY", "Kentucky"],["LA", "Louisiana"],["ME", "Maine"],["MD", "Maryland"],["MA", "Massachusetts"],["MI", "Michigan"],["MN", "Minnesota"],["MS", "Mississippi"],["MO", "Missouri"],["MT", "Montana"],["NE", "Nebraska"],["NV", "Nevada"],["NH", "New Hampshire"],["NJ", "New Jersey"],["NM", "New Mexico"],["NY", "New York"],["NC", "North Carolina"],["ND", "North Dakota"],["OH", "Ohio"],["OK", "Oklahoma"],["OR", "Oregon"],["PA", "Pennsylvania"],["RI", "Rhode Island"],["SC", "South Carolina"],["SD", "South Dakota"],["TN", "Tennessee"],["TX", "Texas"],["UT", "Utah"],["VT", "Vermont"],["VA", "Virginia"],["WA", "Washington"],["WV", "West Virginia"],["WI", "Wisconsin"],["WY", "Wyoming"]  ],
+        "multiple" : false,
+        "reordering_enabled" : false,
+        "preset" : null,
+        "type" : "choice",
+        "default": null
+      }, {
+        "id" : "location.zip",
+        "name" : "zip",
+        "display_width" : null,
+        "label" : "Zip code",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "766"
+      }, {
+        "id" : "location.popup_toggle",
+        "name" : "popup_toggle",
+        "display_width" : null,
+        "label" : "Pop-up toggle",
+        "required" : false,
+        "locked" : false,
+        "display" : "toggle",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "popup",
+        "name" : "popup",
+        "display_width" : null,
+        "label" : "Pop-up",
+        "required" : false,
+        "locked" : false,
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : "popup.author",
+          "default" : null
+        },
+        "children" : [{
+          "id" : "location.popup.author",
+          "name" : "author",
+          "display_width" : null,
+          "label" : "Author",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Karen Woodhead"
+        },  {
+          "id" : "location.popup.role",
+          "name" : "role",
+          "display_width" : null,
+          "label" : "Role",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "VP Marketing"
+        }, {
+          "id" : "location.popup.quote",
+          "name" : "quote",
+          "display_width" : null,
+          "label" : "Quote",
+          "required" : false,
+          "locked" : false,
+          "enabled_features" : [ "nonbreaking_space", "bold" ],
+          "type" : "richtext",
+          "default" : "I was a consumer customer of Linewize by Family Zone safety technology long before I became employed with them. When the opportunity arose to work here, I felt incredibly honoured to work for a company who has one of the most important charters in the 21st century."
+        },{
+          "id" : "location.popup.accent_colour",
+          "name" : "accent_colour",
+          "display_width" : null,
+          "label" : "Accent colour",
+          "required" : false,
+          "locked" : true,
+          "display" : "select",
+          "choices" : [ [ "none", "None" ], [ "gradient-primary", "Primary Gradient" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ] ],
+          "multiple" : false,
+          "reordering_enabled" : true,
+          "preset" : null,
+          "type" : "choice",
+          "default" : "primary"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : { }
+      }],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "location_label",
+    "name" : "location_label",
+    "display_width" : null,
+    "label" : "Location label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Locations"
+  }, {
+    "id" : "style",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "Style",
+    "required" : false,
+    "locked" : true,
+    "children" : [ {
+      "id" : "style.breakpoint",
+      "name" : "breakpoint",
+      "display_width" : null,
+      "label" : "Breakpoint",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "sm", "Small" ], [ "md", "Medium" ], [ "lg", "Large" ], [ "xl", "Extra Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "lg"
+    }, {
+      "id" : "style.map_colour",
+      "name" : "map_colour",
+      "display_width" : null,
+      "label" : "Map Colour",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "fill-white", "White" ], [ "fill-light", "Light" ], [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fill-white"
+    }, {
+      "id" : "style.map_colour_selected",
+      "name" : "map_colour_selected",
+      "display_width" : null,
+      "label" : "Map Colour - Selected",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "white", "White" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal-300", "Teal" ], [ "indigo-300", "Indigo" ], [ "orange-300", "Orange" ], [ "red-300", "Red" ], [ "dark", "Dark" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "teal-300"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }
+]
+
+
+
+
+

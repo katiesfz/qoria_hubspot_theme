@@ -1,0 +1,254 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize Bite Sized Learning Bridge
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "./layouts/base.html" %}
+
+
+{% block body %}
+  
+    {% if dynamic_page_hubdb_row %}
+       
+    {% dnd_area "dnd_area_single"
+    label="Body - Single"
+    class="main p-0 overflow-hidden"
+    %}
+        {% dnd_section
+        full_width=true
+    %}
+            {% dnd_column
+            offset=0,
+            width=12
+            %}
+                {% dnd_row %}
+            
+                    {% dnd_module
+                    "Hero"
+                    path="/q-theme/modules/hero",
+                    label="Single Page Hero",
+                    offset=0,
+                    overrideable=false, 
+                    width=12,
+                    cta=[ ],
+                    pre_header="Bite-sized Learning",
+                    header="{{dynamic_page_hubdb_row.name}}",
+                    hero_type="full-image",
+                    image={
+                    "alt" : "Bite-sized Learning",
+                    "height" : 1280,
+                    "loading" : "disabled",
+                    "max_height" : 1280,
+                    "max_width" : 1920,
+                    "size_type" : "auto_custom_max",
+                    "src" : "https://www.linewize.io/hubfs/AU%20-%20Web%20Header%20banners-product%20guides.jpg",
+                    "width" : 1920
+                    },
+                    menu=null,
+                    page_contents=[],
+                    show_breadcrumbs=false,
+                    show_share_price=false,
+                    style={
+                    "heading_location" : "bottom-left"
+                    },
+                    video=""
+                %}{% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_section %}
+
+
+        {% dnd_section
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "bottom" : "64px",
+            "left" : "16px",
+            "right" : "16px",
+            "top" : "64px"
+          },
+          "mobile" : {
+            "bottom" : "32px",
+            "top" : "32px"
+          }
+        },
+        full_width=false,
+        max_width=1280
+      %}
+        {% dnd_column
+          width=12
+        %}
+          {% dnd_row %}
+              {% dnd_module "Webinar Page" path="/q-theme/modules/hubdb-webinars-filtered", label="Webinar Page", overrideable=true %}{%end_dnd_module%}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+  
+    {% end_dnd_area %}
+  
+  
+  
+{% elif dynamic_page_hubdb_table_id %}
+
+    {% dnd_area "dnd_area_listing"
+    label="Body"
+    class="main p-0 overflow-hidden"
+    %}
+        {% dnd_section
+        full_width=true
+    %}
+            {% dnd_column
+            offset=0,
+            width=12
+            %}
+                {% dnd_row %}
+            
+                    {% dnd_module
+                    "Hero"
+                    path="/q-theme/modules/hero",
+                    label="Listing Page Hero",
+                    offset=0,
+                    overrideable=false, 
+                    width=12,
+                    cta=[ ],
+                    header="Bite-sized Learning",
+                    hero_type="full-image",
+                    image={
+                    "alt" : "Bite-sized Learning",
+                    "height" : 1280,
+                    "loading" : "disabled",
+                    "max_height" : 1280,
+                    "max_width" : 1920,
+                    "size_type" : "auto_custom_max",
+                    "src" : "https://www.linewize.io/hubfs/AU%20-%20Web%20Header%20banners-product%20guides.jpg",
+                    "width" : 1920
+                    },
+                    menu=null,
+                    page_contents=[],
+                    pre_header="",
+                    show_breadcrumbs=false,
+                    show_share_price=false,
+                    style={
+                    "heading_location" : "bottom-left"
+                    },
+                    video=""
+                %}{% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_section %}
+
+
+
+
+        {% dnd_section
+        background_color="rgba(235, 235, 235, 1)",
+        padding={
+          "default" : {
+            "bottom" : "64px",
+            "left" : "16px",
+            "right" : "16px",
+            "top" : "64px"
+          },
+          "mobile" : {
+            "bottom" : "32px",
+            "top" : "64px"
+          }
+        },
+        full_width=false,
+        max_width=1280
+      %}
+        {% dnd_column
+          offset=0,
+          width=1
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/horizontal_spacer",
+              offset=0,
+              width=12,
+              hidden={
+                "mobile" : true
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=1,
+          width=10
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="intro fs-4" style="text-align: center;">Short video lessons to help improve student digital wellbeing and learning outcomes with Linewize.</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=11,
+          width=1
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/horizontal_spacer",
+              offset=0,
+              width=12
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+
+
+
+      {% dnd_section
+      background_color="rgba(255, 255, 255, 1)",
+      padding={
+        "default" : {
+          "bottom" : "64px",
+          "left" : "16px",
+          "right" : "16px",
+          "top" : "64px"
+        },
+        "mobile" : {
+          "bottom" : "32px",
+          "top" : "32px"
+        }
+      },
+      full_width=false,
+      max_width=1280
+    %}
+      {% dnd_column
+        width=12
+      %}
+        {% dnd_row %}
+
+        {% dnd_module "Webinar Page" path="/q-theme/modules/hubdb-webinars-filtered", label="Webinar Page", overrideable=true %}{%end_dnd_module%}        
+      {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+
+{% end_dnd_area %}
+
+      
+  
+  
+  
+  
+  {% endif %}
+  
+
+
+  {% global_partial path="./partials/lets-connect.html" %}
+{% endblock body %}
+
+{% block footer %}
+  {% global_partial path="./partials/footer.html" %}
+{% endblock footer %}

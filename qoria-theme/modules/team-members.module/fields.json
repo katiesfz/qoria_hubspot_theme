@@ -102,6 +102,42 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "styles.card_colour",
+    "name" : "card_colour",
+    "display_width" : null,
+    "label" : "Card Body Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "None" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
+  }, {
+    "id" : "styles.card_shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "No shadow" ], [ "shadow-sm", "Small shadow" ], [ "shadow", "Medium shadow" ], [ "shadow-lg", "Large shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "visibility": {
+      "controlling_field" : null,
+      "controlling_field_path" : "styles.card_colour",
+      "controlling_value_regex" : " ",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "default" : " "
+  }, {
     "id" : "styles.responsive",
     "name" : "responsive",
     "display_width" : null,

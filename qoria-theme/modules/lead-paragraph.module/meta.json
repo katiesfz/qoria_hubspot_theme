@@ -1,0 +1,15 @@
+{
+  "label": "Lead Paragraph",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "",
+  "host_template_types": [
+    "PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "tags": [],
+  "icon" : "../../images/module-icons/richtext-module-icon.svg",
+  "is_available_for_new_content": true
+}

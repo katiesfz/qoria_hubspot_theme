@@ -1,0 +1,18 @@
+{% if module.accordion|length != 0 %}
+    <div class="accordion hs-allow-transition {{ module.style.shadow_style if module.style.shadow }}" style="{{module.style.spacing_field.css}}" id="accordion-{{name}}">
+        {% for accordion in module.accordion %}
+            <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="hs-allow-transition accordion-button {{ "collapsed" if !loop.first }}" type="button" data-bs-toggle="collapse" data-bs-target="#acc-{{name}}-{{loop.index}}" {{ 'aria-expanded="true"' if loop.first }} aria-controls="acc-{{name}}-{{loop.index}}">
+                        <div class="accordion-icon"></div>{{ accordion.acc_label }}
+                    </button>
+                    </h2>
+                    <div id="acc-{{name}}-{{loop.index}}" class="accordion-collapse collapse {{ "show" if loop.first }} hs-allow-transition" data-bs-parent="#accordion-{{name}}">
+                        <div class="accordion-body">
+                            {{accordion.content}}
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

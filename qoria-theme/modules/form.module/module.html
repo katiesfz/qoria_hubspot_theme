@@ -5,12 +5,18 @@
 {% endif %}
 
 {% if module.form.form_id %}
-<div class="form-container {{module.style.background_colour}} {{module.style.rounded_corners}}" style="{{module.style.spacing_field.css}};">
+<div class="form-container {{module.style.background_colour}} {{module.style.shadow}} {{module.style.rounded_corners}}" style="{{module.style.spacing_field.css}};">
+{% if module.show_title %}
+  <div id="form-heading ">
+    <h2 class="{{module.heading_tag}} text-{{module.textalignment}} {{ "text-decoration-partial-underline" if module.heading_underline else "mb-5" }} {{ "text-light" if module.style.form_style == "form-light" }}">{{ module.title }}</h2>
+  </div>
+{% endif %}
   <div id="{{name}}"></div>
   <div id="{{name}}-2"></div>
 </div>
   <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
   <script>
+
     hbspt.forms.create({
       portalId: "{{hub_id}}",
       formId: "{{module.form.form_id}}",
@@ -23,13 +29,16 @@
           {% endif %}
          {% else %}
             {% if module.form.response_type == "inline" %}
-              inlineMessage: "{{module.form.message}}",
+              inlineMessage: "{{module.form.message|escapejs}}",
             {% elif module.download %}
               inlineMessage: "Thank you for your interest, your download should start shortly.",
             {% endif %}
          {% endif %}
       {% if module.download %}
         onFormSubmitted: function($form, data) {
+          if (window.hsInEditor) {
+            return;
+          }
           buildDownloadButton();
           document.getElementById("downloadFile-{{name}}").click(function(){
          {% if module.form.response_type == "redirect" %}
@@ -44,6 +53,9 @@
       {% endif %}
       {% if module.video %}
         onFormSubmitted: function($form, data) {
+          if (window.hsInEditor) {
+            return;
+          }
           buildVideoButton();
           document.getElementById("modalToggle-{{name}}").click();
         },
@@ -51,8 +63,8 @@
         submitText: "{{module.button_text}}",
         {% endif %}
       {% endif %}
-      submitButtonClass: "btn mt-4 btn-{{module.style.button_colour}} {{"d-block mx-auto" if module.style.button_alignment == "center"}} {{"d-block ms-auto" if module.style.button_alignment == "right"}}",
-      cssClass: 'hs-form {{ module.style.form_style }} {{module.advanced.additional_classes}}'
+      submitButtonClass: "btn mt-4 btn-{{module.style.button_colour}} {{"d-block mx-auto" if module.style.button_alignment == "center"}} {{"d-block ms-auto" if module.style.button_alignment == "right"}} {{ "d-none" if module.style.hide_submit_button }}",
+      cssClass: 'hs-form {{ module.style.form_style if module.style.form_style != "form-underline" }} {{module.advanced.additional_classes}}'
     });
   </script>
 

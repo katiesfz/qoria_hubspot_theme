@@ -7,22 +7,22 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
 
 {% dnd_area "dnd_cta"
 label="CTA"
-class="main p-0 overflow-hidden"
+class="main p-0 overflow-hidden lets-connect"
 %}
     {% dnd_section
     background_color="rgba(255, 255, 255, 1)",
     padding={
         "default" : {
-        "bottom" : "80px",
+        "bottom" : "64px",
         "left" : "16px",
         "right" : "16px",
-        "top" : "40px"
+        "top" : "32px"
         },
         "mobile" : {
-        "bottom" : "40px",
+        "bottom" : "32px",
         "left" : "16px",
         "right" : "16px",
-        "top" : "24px"
+        "top" : "16px"
         }
     },
     max_width=1280
@@ -31,6 +31,15 @@ class="main p-0 overflow-hidden"
         offset=0,
         width=12
     %}
+        {% dnd_row %}
+            {% dnd_module
+                path="/q-theme/modules/anchor",
+                offset=0,
+                width=12,
+                anchor={{context.anchor || "letsconnect" }}
+            %}
+            {% end_dnd_module %}
+        {% end_dnd_row %}
         {% dnd_row %}
         {% dnd_module
             path="/q-theme/modules/heading",

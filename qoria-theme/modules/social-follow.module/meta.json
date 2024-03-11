@@ -3,55 +3,6 @@
   "icon" : "../../images/module-icons/social.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
   "module_id" : 114968409157,
-  "css_assets" : [ {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/brands.min.css",
-    "name" : "brands.min.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/brands.css",
-    "name" : "brands.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/fontawesome.css",
-    "name" : "fontawesome.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/fontawesome.min.css",
-    "name" : "fontawesome.min.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/solid.css",
-    "name" : "solid.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/solid.min.css",
-    "name" : "solid.min.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/regular.css",
-    "name" : "regular.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/regular.min.css",
-    "name" : "regular.min.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/light.css",
-    "name" : "light.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/light.min.css",
-    "name" : "light.min.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/thin.css",
-    "name" : "thin.css"
-  }, {
-    "autoload" : false,
-    "path" : "../../assets/fontawesome6/css/thin.min.css",
-    "name" : "thin.min.css"
-  } ],
   "label" : "Social follow",
   "is_available_for_new_content" : true
 }

@@ -1,3 +1,4 @@
+{%set href = "" %}
 {% if module.link.url.type is equalto "EMAIL_ADDRESS" %}
     {% set href = "mailto:" ~ module.link.url.href %}
   {% else %}
@@ -36,4 +37,14 @@
     </a>
   </div>
   
-  
+{% if !is_in_editor %}
+  {% if module.download_on_page_load %}
+    <script>
+      $(document).ready(function () {
+        setTimeout(function(){
+          document.getElementById("button_{{ name }}").click();
+        }, 2000);
+      });
+    </script>
+  {% endif %}
+{% endif %}

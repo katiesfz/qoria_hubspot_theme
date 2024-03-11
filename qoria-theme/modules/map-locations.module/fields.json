@@ -309,7 +309,7 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : [ ]
+    "default" : ["Algeria","Angola","Benin","Botswana","Burundi","Cape Verde","Central African Republic","Chad","Comoros","Djibouti","Egypt","Ethiopia","Gambia","Guinea","Ivory Coast","Kenya","Liberia","Madagascar","Mauritius","Morocco","Mozambique","Niger","Nigeria","Republic of the Congo","Rwanda","São Tomé and Príncipe","Senegal","Somalia","Tanzania","Togo","Uganda","Zambia","Zimbabwe"]
   }, {
     "id" : "shaded_countries.asia",
     "name" : "asia",
@@ -323,7 +323,7 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : [ ]
+    "default" : ["Taiwan","Bahrain","Brunei","Cambodia","Christmas Island","India","Iraq","Japan","Jordan","Malaysia","Mongolia","Myanmar Burma","North Korea","Philippines","Qatar","Saudi Arabia","Singapore","South Korea","Sri Lanka","Syria","Tajikistan","Thailand","Turkey","Turkmenistan","United Arab Emirates","Uzbekistan","Vietnam"]
   }, {
     "id" : "shaded_countries.north_america",
     "name" : "north_america",
@@ -337,7 +337,7 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : [ ]
+    "default" : ["Bahamas","Barbados","Belize","Bermuda","Canada","Costa Rica","Cuba","Dominica","Dominican Republic","El Salvador","Jamaica","Mexico","Panama","Saint Kitts and Nevis","Trinidad and Tobago","United States"]
   }, {
     "id" : "shaded_countries.south_america",
     "name" : "south_america",
@@ -351,7 +351,7 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : [ ]
+    "default" : ["Argentina","Bolivia","Brazil","Chile","Ecuador","Colombia","Falkland Islands","Guyana","Paraguay","Peru","Suriname","Venezuela"]
   }, {
     "id" : "shaded_countries.europe",
     "name" : "europe",
@@ -365,7 +365,7 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : [ ]
+    "default" : [ "Andorra","Austria","Belarus","Belgium","Croatia","Denmark","France","Germany","Greece","Hungary","Iceland","Ireland","Isle of Man","Italy","Malta","Moldova","Montenegro","Netherlands","Norway","Poland","Portugal","Romania","Russia","San Marino","Serbia","Slovakia","Slovenia","Spain","Sweden","Switzerland","Ukraine","United Kingdom"]
   }, {
     "id" : "shaded_countries.oceania",
     "name" : "oceania",
@@ -379,7 +379,7 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : [ ]
+    "default" : ["Australia","Fiji","Micronesia","New Zealand","Palau","Papua New Guinea","Tuvalu"]
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -413,7 +413,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "fill-white", "White" ], [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ] ],
+    "choices" : [ [ "fill-white", "White" ], [ "fill-light", "Light" ], [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,

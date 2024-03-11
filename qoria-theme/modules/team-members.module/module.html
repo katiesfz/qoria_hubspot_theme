@@ -1,13 +1,64 @@
 <div class="row row-cols-{{module.styles.responsive.mobile.cards}} row-cols-sm-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}}" style="{{module.styles.spacing_field.css}}">
     {% for person in module.team_member %}
-        <div class="col">
-            {% if person.image.src %}
-                <img src="{{person.image.src}}" class="img-fluid w-100 mb-4 {{ "filter-grayscale" if module.styles.greyscale_filter }}">
+        {% set card = false %}
+        {% if module.styles.card_colour && module.styles.card_colour != " " %}
+            {% set card = true %}
+        {% endif %}
+        <div class="col {{ "pb-4" if card }}">
+            {% if card %}
+                <div class="card {{module.styles.card_colour}} {{module.styles.shadow}} h-100">
+                    <div class="card-body {% if person.full_profile %}pb-0{% endif %}">
+                        {% if person.image.src %}
+                            <img src="{{person.image.src}}" class="img-fluid w-100 mb-4 {{ "filter-grayscale" if module.styles.greyscale_filter }}">
+                        {% endif %}
+                        <p class="fs-6 fw-semibold mb-2">{{person.person_name}}</p>
+                        <p class="fs-6  mb-4">{{person.title}}</p>
+                    </div>
+                    {% if person.full_profile %}
+                        <div class="card-footer bg-transparent">
+                            <a class="" href="#"
+                                    data-bs-toggle="modal"
+                                data-bs-target="#bio_{{ loop.index }}"
+                                rel="{{ rel }}">
+                                Read more +
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                {% if person.image.src %}
+                    <img src="{{person.image.src}}" class="img-fluid w-100 mb-4 {{ "filter-grayscale" if module.styles.greyscale_filter }}">
+                {% endif %}
+                <p class="fs-6 fw-semibold mb-2">{{person.person_name}}</p>
+                <p class="fs-6  mb-4">{{person.title}}</p>
+                {% if person.full_profile %}
+                        <a class="" href="#"
+                                data-bs-toggle="modal"
+                            data-bs-target="#bio_{{ loop.index }}"
+                            rel="{{ rel }}">
+                            Read more +
+                        </a>
+                {% endif %}
             {% endif %}
-            <p class="fs-6 fw-semibold mb-2">{{person.person_name}}</p>
-            <p class="fs-6  mb-4">{{person.title}}</p>
         </div>
     {% endfor %}
 </div>
-<!--<hr class="mt-6 mb-4"> -->
-<!-- <a href="#" class="fw-semibold text-decoration-none text-reset fs-6">View full profiles +</a> -->
+
+{% for person in module.team_member %}
+    {% if person.full_profile %}
+        <div class="modal fade" id="bio_{{ loop.index }}" tabindex="-1" aria-labelledby="Bio {{ loop.index }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                    <div class="modal-header border-0 p-3">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body px-5 py-4 pt-2">
+                    
+                    {{ person.full_profile }}
+
+                    </div>
+                </div>
+            </div>
+            </div>
+    {% endif %}
+{% endfor %}

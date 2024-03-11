@@ -7,7 +7,7 @@
     {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
     {% set footerText = module.au_footer_copy %}
 {% elif module.region == "us" %}
-    {% set brandName = "Linewize US" %}
+    {% set brandName = "Linewize" %}
     {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
     {% set footerText = module.us_footer_copy %}
 {% elif module.region == "uk" %}
@@ -20,13 +20,8 @@
     {% set footerText = module.global_footer_copy %}
 {% endif %}
 
-{% if module.region == "us" || module.region == "au" %}
-    {% set bgSrc = "" %}
-    {% set bgColour = "#0075db" %}
-{% else %}
 {% set bgSrc = get_asset_url('../../images/backgrounds/email-footer-bg-qoria.png') %}
 {% set bgColour = "#58b78e" %}
-{% endif %}
 
 {% set Qicon = get_asset_url('../../images/qoria/Q-Colour.png') %}
 

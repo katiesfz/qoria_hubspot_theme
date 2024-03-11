@@ -141,7 +141,7 @@
   "required" : false,
   "locked" : false,
   "display" : "select",
-  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "red", "Red" ], [ "orange", "Orange" ], [ "blue", "Blue" ] ],
+  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "red", "Red" ], [ "orange", "Orange" ], [ "blue", "Blue" ], [ "dark", "Dark" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
   "preset" : null,
