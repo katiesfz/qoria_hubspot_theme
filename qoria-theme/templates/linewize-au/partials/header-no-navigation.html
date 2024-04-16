@@ -25,6 +25,13 @@ label: Linewize AU Header - No navigation
     <div class="container-xxl position-relative"> 
       {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand me-auto"} override_default_logo=False, no_wrapper=True %}
       
+        {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
+          {% if widget_data.cta.link.url != "" %}
+            <div class="d-flex ms-{{breakpoint}}-6">
+            {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+
+            </div>
+          {% endif %}
     </div>
   </nav>
 </header>

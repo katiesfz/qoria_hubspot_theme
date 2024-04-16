@@ -55,6 +55,16 @@
     "loading" : "disabled"
   }
 }, {
+  "id" : "include_form",
+  "name" : "include_form",
+  "display_width" : null,
+  "label" : "Include a form",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
   "id" : "985e3378-74cf-4ceb-7c32-3ae51454fd09",
   "name" : "pre_header",
   "display_width" : null,
@@ -90,6 +100,87 @@
   "preset" : null,
   "type" : "choice",
   "default" : "h1"
+}, {
+  "id" : "copy",
+  "name" : "copy",
+  "display_width" : null,
+  "label" : "Copy",
+  "required" : false,
+  "locked" : false,
+  "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "link", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+  "type" : "richtext",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field_path" : "include_form",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL"
+    }],
+    "children" : [ ]
+  },
+  "default" : "<h4>Screen time</h4>\n<p class='m-0'>Young Australians are spending more than seven hours a day on screen time.</p>"
+}, {
+  "id" : "form_settings",
+  "name" : "form_settings",
+  "display_width" : null,
+  "label" : "Form settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ 
+    {
+      "id" : "form",
+      "name" : "form",
+      "display_width" : null,
+      "label" : "Form",
+      "inline_help_text" : "Must be set to raw HTML for correct styling.",
+      "help_text" : "Styling options are managed in the form settings.",
+      "required" : false,
+      "locked" : false,
+      "type" : "form",
+      "default" : {
+        "form_id" : ""
+      }
+    }, {
+      "id" : "button_text",
+      "name" : "button_text",
+      "display_width" : null,
+      "label" : "Customise Button Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "style.button_colour",
+      "name" : "button_colour",
+      "display_width" : null,
+      "label" : "Button Colour",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "White" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "secondary"
+    }
+   ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field_path" : "include_form",
+      "controlling_value_regex" : "true",
+      "operator" : "EQUAL"
+    }],
+    "children" : [ ]
+  }
 }, {
   "id" : "15f774bc-2db9-9b9d-29bf-dba26a553686",
   "name" : "page_contents",
@@ -128,6 +219,16 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field_path" : "include_form",
+      "controlling_value_regex" : "true",
+      "operator" : "NOT_EQUAL"
+    }],
+    "children" : [ ]
+  },
   "type" : "group",
   "default" : [ { }, { }, { } ]
 }, {
@@ -139,6 +240,16 @@
   "locked" : false,
   "display" : "toggle",
   "type" : "boolean",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field_path" : "include_form",
+      "controlling_value_regex" : "true",
+      "operator" : "NOT_EQUAL"
+    }],
+    "children" : [ ]
+  },
   "default" : false
 },{
   "id" : "stock_database_source",
@@ -153,6 +264,14 @@
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "show_share_price",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
   "default" : "local"
 },  {
   "id" : "stock_db",
@@ -321,6 +440,16 @@
     "preset" : null,
     "type" : "choice",
     "default" : "bottom-left"
+  },{
+    "id" : "style.filter_image",
+    "name" : "filter_image",
+    "display_width" : null,
+    "label" : "Convert background image",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
   } ],
   "tab" : "STYLE",
   "expanded" : false,

@@ -298,6 +298,17 @@
       "type" : "boolean",
       "default" : true
     }, {
+      "id" : "styles.card.normalise_image_headers",
+      "name" : "normalise_image_headers",
+      "display_width" : null,
+      "label" : "Normalise Image Headers",
+      "inline_help_text" : "Force image headers to be equal heights.",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
       "id" : "card.shadow",
       "name" : "shadow",
       "display_width" : null,

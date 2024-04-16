@@ -76,17 +76,27 @@
         {% if card.cta_style != "text-" %}
           {% set ctaClasses = card.cta_size ~ " " ~ card.cta_style ~ card.cta_colour ~ " mt-3" %}
         {% else %}
-          {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-2 text-decoration-none fw-semibold" %}
+          {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
         {% endif %}
       {% else %}
         {% set ctaClasses = "text-reset text-decoration-none fw-semibold mt-2" %}
       {% endif %}
-      {% if module.styles.textalignment == "center" %}
-        {% set ctaClasses = ctaClasses ~ " mx-auto" %}
-      {% elif module.styles.textalignment == "end" %}
-        {% set ctaClasses = ctaClasses ~ " ms-auto" %}
-      {% elif module.styles.textalignment == "start" %}
-        {% set ctaClasses = ctaClasses ~ " me-auto" %}
+      {% if (card.cta_alignment) && (card.cta_alignment != "inherit") %}
+        {% if card.cta_alignment == "center" %}
+          {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+        {% elif card.cta_alignment == "end" %}
+          {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+        {% elif card.cta_alignment == "start" %}
+          {% set ctaClasses = ctaClasses ~ " me-auto" %}
+        {% endif %}
+      {% else %}
+        {% if module.styles.textalignment == "center" %}
+          {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+        {% elif module.styles.textalignment == "end" %}
+          {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+        {% elif module.styles.textalignment == "start" %}
+          {% set ctaClasses = ctaClasses ~ " me-auto" %}
+        {% endif %}
       {% endif %}
       <a href="{{card.link.url.href}}" 
       class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
@@ -351,8 +361,11 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   $(window).on('load resize orientationchange', normaliseHeights("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-header"));
+  
+  {% if module.styles.normalise_image_headers %}
+  $(window).on('load resize orientationchange', normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top"));
+  {% endif %}
 
-      
   
 });
 </script>

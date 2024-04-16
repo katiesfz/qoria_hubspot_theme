@@ -572,3 +572,42 @@ function downloadFile(fileUrl, fileName, target) {
 //       URL.revokeObjectURL(href);
 //     });
 // };
+
+
+// Cookie functions
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let cookieList = document.cookie.split(';');
+  for(let i = 0; i < cookieList.length; i++) {
+    let cookie = cookieList[i];
+    while (cookie.charAt(0) == ' ') {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(name) == 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return "";
+}
+
+
+function checkCookie(cname, callback, callbackFalse) {
+  let cvalue = getCookie(cname);
+  if (cvalue != "") {   
+    if (callback && typeof(callback) === "function"){
+      callback();
+    }
+   } else {
+      if (callbackFalse && typeof(callbackFalse) === "function"){
+      callbackFalse();
+    }
+  }
+}

@@ -66,7 +66,7 @@
 
     <div class="{{ "card-video" if module.styles.card.overlay else "card" }} {{ cardColour }} {{ module.styles.card.shadow if module.styles.card.shadow != "section-shadow" && !module.styles.carousel }}">
         <div class="card-img-top">
-            <img src="{{ item.video_settings.custom_thumbnail.src }}" class="img-fluid">
+            <img src="{{ item.video_settings.custom_thumbnail.src }}" alt="{{ item.video_settings.custom_thumbnail.alt }}" class="img-fluid">
             <div class="play-button play-button-{{ item.video_settings.play_button_colour }}" data-bs-toggle="modal" data-bs-target="#videoModal-{{loop.index}}" onclick="playVideo('video{{loop.index}}')">
             </div>
         </div>

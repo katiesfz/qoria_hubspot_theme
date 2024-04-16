@@ -220,7 +220,8 @@
               <script>
                 hbspt.forms.create({
                   portalId: "7977292",
-                  formId: "d67f5cbc-c1c6-4ffc-86ad-c084d9ec7388"
+                  formId: "d67f5cbc-c1c6-4ffc-86ad-c084d9ec7388",
+                  cssClass: "form-single-field"
                 });
               </script>
             </div>
@@ -490,8 +491,9 @@
         <div class="col-12">
           <div class="card card_hover bg-primary shadow pb-3 border-0 position-relative">
             <div class="card-body text-center">
-              <h5 class="card-title text-white mb-3">Would you like some more information? Or a demo?</h5>
-              <a href="https://www.familyzone.io/contact-us" class="btn btn-outline-light btn-sm stretched-link">Get in touch</a>
+            <h5 class="card-title text-white mb-3">Would you like some more information? Or a demo?</h5>
+            {% set contact_page = content_by_id(154259747599) %}
+            <a href="{{ contact_page.absolute_url }}" class="btn btn-outline-light btn-sm stretched-link">Get in touch</a>
             </div>
           </div>
         </div>
@@ -509,8 +511,9 @@
               <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
               <script>
                 hbspt.forms.create({
-                  portalId: "5840292",
-                  formId: "f3045ad5-2bc5-46bb-b87f-1ecd93cce900"
+                  portalId: "7977292",
+                  formId: "d67f5cbc-c1c6-4ffc-86ad-c084d9ec7388",
+                  cssClass: "form-single-field"
                 });
               </script>
             </div>

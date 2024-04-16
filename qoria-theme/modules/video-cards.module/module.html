@@ -56,8 +56,8 @@
 
     <div class="{{ "card-video" if module.styles.card.overlay else "card" }} h-100 {{ cardColour }} {{ module.styles.card.shadow if module.styles.card.shadow != "section-shadow" && !module.styles.carousel }}">
         <div class="card-img-top">
-            <img src="{{ item.video_settings.custom_thumbnail.src }}" class="img-fluid">
-            <div class="play-button play-button-{{ item.video_settings.play_button_colour }}" data-bs-toggle="modal" data-bs-target="#videoModal-{{name}}-{{loop.index}}" onclick="playVideo('video{{name}}{{loop.index}}')">
+            <img src="{{ item.video_settings.custom_thumbnail.src }}" alt="{{ item.video_settings.custom_thumbnail.alt }}" class="img-fluid">
+            <div class="play-button play-button-{{ item.video_settings.play_button_colour }}" data-bs-toggle="modal" data-bs-target="#videoModal_{{name|replace("-","_")}}_{{loop.index}}" onclick="playVideo('video{{name|replace('-','_')}}{{loop.index}}')">
             </div>
         </div>
         <div class="{{ module.styles.card.body_colour if module.styles.card.overlay }} card-body">
@@ -86,12 +86,12 @@
             
             {% if item.link_label != "" %}
                 <div class="card-footer {{ module.styles.card.body_colour if module.styles.card.overlay }} ">
-                    <button type="button" class="btn btn-link p-0 text-reset fw-semibold text-decoration-none" data-bs-toggle="modal" data-bs-target="#videoModal-{{name}}-{{loop.index}}" onclick="playVideo('video{{name}}{{loop.index}}')">{{ item.link_label }}</button>
+                    <button type="button" class="btn btn-link p-0 text-reset fw-semibold text-decoration-none" data-bs-toggle="modal" data-bs-target="#videoModal_{{name|replace("-","_")}}_{{loop.index}}" onclick="playVideo('video{{name|replace('-','_')}}{{loop.index}}')">{{ item.link_label }}</button>
                 </div>
             {% endif %}
         {% else %}
                 <div class="card-footer {{ module.styles.card.body_colour if module.styles.card.overlay }} ">
-                    <button type="button" class="btn btn-link p-0 text-reset fw-semibold text-decoration-none" data-bs-toggle="modal" data-bs-target="#videoModal-{{name}}-{{loop.index}}" onclick="playVideo('video{{name}}{{loop.index}}')">Watch video ></button>
+                    <button type="button" class="btn btn-link p-0 text-reset fw-semibold text-decoration-none" data-bs-toggle="modal" data-bs-target="#videoModal_{{name|replace("-","_")}}_{{loop.index}}" onclick="playVideo('video{{name|replace('-','_')}}{{loop.index}}')">Watch video ></button>
                 </div>
         {% endif %}
     </div>
@@ -154,12 +154,12 @@
 
     {% for item in module.video_card %}
 
-        <div class="modal fade" id="videoModal-{{name}}-{{loop.index}}" tabindex="-1" aria-labelledby="videoModal-{{name}}-{{loop.index}}" aria-hidden="true">
+        <div class="modal fade" id="videoModal_{{name|replace("-","_")}}_{{loop.index}}" tabindex="-1" aria-labelledby="videoModal-{{name|replace("-","_")}}-{{loop.index}}" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content overflow-hidden">
                     <div class="modal-body p-0">
                         <div class="position-relative">
-                            <video id="video{{name}}{{ loop.index }}" width="100%" class="d-block" preload="{{ item.video_settings.preload }}" {% if item.video_settings.loop %}loop{% endif %}{% if item.video_settings.autoplay %} autoplay{% endif %}{% if item.video_settings.muted %} muted{% endif %}{% if item.video_settings.custom_thumbnail.src %} poster="{{ item.video_settings.custom_thumbnail.src }}"{% endif %}  controlsList="nodownload noremoteplayback">
+                            <video id="video{{name|replace("-","_")}}{{ loop.index }}" width="100%" class="d-block" preload="{{ item.video_settings.preload }}" {% if item.video_settings.loop %}loop{% endif %}{% if item.video_settings.autoplay %} autoplay{% endif %}{% if item.video_settings.muted %} muted{% endif %}{% if item.video_settings.custom_thumbnail.src %} poster="{{ item.video_settings.custom_thumbnail.src }}"{% endif %}  controlsList="nodownload noremoteplayback">
                             {% set videoUrl = item.video_settings.file|lower %}
                             {% if videoUrl is string_containing ".mp4" %}
                             {% set type = 'type="video/mp4"' %}
@@ -174,7 +174,7 @@
                             {% endfor %}
                             Your browser does not support the video tag.
                             </video>                        
-                            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" onclick="pauseVideo('video{{name}}{{loop.index}}')"></button>
+                            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" onclick="pauseVideo('video{{name|replace('-','_')}}{{loop.index}}')"></button>
 
                         </div>
                     </div>
@@ -236,11 +236,17 @@ document.addEventListener("DOMContentLoaded", () => {
     {% endif %}
 
     {% for item in module.video_card %}
-    const videoModal{{name}}{{loop.index}} = document.getElementById('videoModal-{{name}}-{{loop.index}}');
-    videoModal{{name}}{{loop.index}}.addEventListener('hide.bs.modal', event => {
-        pauseVideo('video{{name}}{{loop.index}}');
+    const videoModal{{name|replace("-","_")}}{{loop.index}} = document.getElementById('videoModal_{{name|replace("-","_")}}_{{loop.index}}');
+    videoModal{{name|replace("-","_")}}{{loop.index}}.addEventListener('hide.bs.modal', event => {
+        pauseVideo('video{{name|replace("-","_")}}{{loop.index}}');
     })
     {% endfor %}
 
+    {% if module.styles.card.normalise_image_headers %}
+        $(window).on('load resize orientationchange', normaliseHeightsMd("#videos-{{name}} .card-img-top .img-fluid"));
+    {% endif %}
+
 });
+
+
 </script>

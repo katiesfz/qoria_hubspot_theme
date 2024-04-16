@@ -78,6 +78,12 @@
     padding-top: 6.6rem;
     padding-bottom: 3.3rem;
     }
+
+    .hero-form {
+      padding-top: 7rem;
+    }
+
+
   @media (min-width: 768px) {
 
   
@@ -103,6 +109,10 @@
       .hero-full-video .heading-location-66-left, .hero-full-image .heading-location-66-left {
       padding-top: 20rem;
       padding-bottom: 10rem;
+      }
+
+      .hero-form {
+        padding-top: 10rem;
       }
     
   }

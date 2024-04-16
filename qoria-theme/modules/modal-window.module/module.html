@@ -1,13 +1,13 @@
 {% if is_in_page_editor %}
   {% editor_placeholder %}
 {% endif %}
-<div class="modal fade" id="{{ module.modal_id }}" tabindex="-1" aria-labelledby="{{ module.modal_id }}Modal" aria-hidden="true">
+<div class="modal fade" style="" id="{{ module.modal_id }}" tabindex="-1" aria-labelledby="{{ module.modal_id }}Modal" aria-hidden="true">
   <div class="modal-dialog {{module.style.modal_size}} modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header border-0">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-content {{ module.style.modal_background if module.style.modal_background != " "}}">
+        <div class="modal-header border-0 ">
+          <button type="button" class="btn-close {{"btn-close-white" if module.style.modal_background != " "}}" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body {{ "pt-md-{{module.style.modal_padding}} px-md-{{module.style.modal_padding}}" if module.style.modal_padding != " "}} {{ "pb-md-{{module.style.modal_padding}}" if !module.cta && module.style.modal_padding != " "}}">
           {% if module.heading %}
           <h3 class="mb-0">
             {{ module.heading}}
@@ -25,7 +25,7 @@
 
         </div>
         {% if module.cta %}
-          <div class="modal-footer border-0">
+          <div class="modal-footer border-0 pt-0 {{ "pb-md-{{module.style.modal_padding}} px-md-{{module.style.modal_padding}}" if module.style.modal_padding != " "}}">
             {% for cta in module.cta %}
               {% if cta.link.url.type is equalto "EMAIL_ADDRESS" %}
                 {% set href = "mailto:" ~ cta.link.url.href %}
@@ -40,6 +40,7 @@
                 {% endunless %}
               {% endif %}
 
+              {% set alignment = "" %}
               {% if cta.alignment == "start" %}
                 {% set alignment = "me-auto" %}
               {% elif cta.alignment == "center" %}
@@ -51,7 +52,7 @@
               
               {% set rel = (cta.link.open_in_new_tab ? "noopener " : null) ~ (cta.link.no_follow ? "nofollow" : null) %}
                 <a class="{{alignment}} btn btn{{ cta.button_style }}{{cta.button_colour}} {{cta.button_size}} {% if cta.button_style != "-" %}{{cta.text_colour}}{% endif %} {{ cta.advanced.additional_classes }}" href="{{ href }}"
-                    id="button_{{ name }}"
+                    id="button_{{ name }}_{{cta.index}}" {{cta.advanced.additional_code}}
                     {% if cta.link.open_in_new_tab %}target="_blank"{% endif %}
                     {% if cta.download %}
                       {% if cta.download_file %}

@@ -69,8 +69,11 @@
       <div class="footer-wrapper">
     {% global_partial path='../partials/footer.html', label="Footer" %}
       </div>
+      
+      
     {% endblock footer %}
 
+    {% global_partial path='../partials/region-select-popup.html', label="Region Select Modal" %}
     {{ standard_footer_includes }}
     {{ require_js(get_asset_url('/q-theme/js/bootstrap.bundle.min.js')) }}
   </body>

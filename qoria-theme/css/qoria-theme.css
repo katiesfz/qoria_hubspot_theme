@@ -279,6 +279,7 @@
   --q-gray-700-rgb: 77, 77, 77;
   --q-gray-800-rgb: 50, 51, 50;
   --q-gray-900-rgb: 29, 30, 28;
+  --q-filter-grayscale: grayscale(1) contrast(1.5) brightness(0.9);
 }
 
 *,
@@ -5282,6 +5283,12 @@ textarea.form-control-lg {
 .card .card-img-bottom {
   width: 100%;
   position: relative;
+  object-fit: cover;
+}
+.card .card-img .img-fluid,
+.card .card-img-top .img-fluid,
+.card .card-img-bottom .img-fluid {
+  object-fit: cover;
 }
 .card .card-img,
 .card .card-img-top {
@@ -5804,6 +5811,16 @@ textarea.form-control-lg {
 }
 .form-compact .hs-submit .hs-button {
   margin-top: 0.5rem;
+}
+
+.form-single-field .hs-form-field:not(:nth-last-of-type(2)) {
+  margin-bottom: 0.5rem;
+}
+.form-single-field .hs-form-field:nth-last-of-type(2) {
+  margin-bottom: 0.5rem;
+}
+.form-single-field .hs-submit .hs-button {
+  margin-top: 0;
 }
 
 .card-video {

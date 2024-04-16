@@ -22,5 +22,5 @@
     "name" : "custom-functions.js"
   } ],
   "label" : "Testimonial Sandbox",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

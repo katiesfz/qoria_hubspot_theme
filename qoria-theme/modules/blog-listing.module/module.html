@@ -2,7 +2,7 @@
     <div class="border {{module.styles.card_colour}} p-3 border-dark-subtle single-blog h-100 position-relative">
         {% if blog.use_featured_image %}
             <div class="featured-image-container mb-4 position-relative">
-                <img src="{{blog.featured_image}}" class="rounded featured-image object-fit-cover">
+                <img src="{{blog.featured_image}}" alt="{{ blog.name }}" class="rounded featured-image object-fit-cover">
                 <div class="content-type-tag {{typeColour}}">{{ blogType }}</div>
             </div>
         {% endif %}
@@ -31,7 +31,7 @@
     <div class="{{module.styles.card_colour}} p-4 single-blog h-100 position-relative">
         {% if blog.use_featured_image %}
             <div class="featured-image-container mb-4 position-relative">
-                <img src="{{blog.featured_image}}" class="rounded featured-image object-fit-cover">
+                <img src="{{blog.featured_image}}" alt="{{ blog.name }}" class="rounded featured-image object-fit-cover">
                 <div class="content-type-tag {{typeColour}}">{{ blogType }}</div>
             </div>
         {% endif %}
@@ -61,7 +61,7 @@
     <div class="{{ module.styles.card_colour }} position-relative">
         <div class="thumbnail position-relative mb-4">
             {% if blog.use_featured_image %}
-            <img src="{{ blog.featured_image }}" class="img-fluid featured-image object-fit-cover">
+            <img src="{{ blog.featured_image }}" alt="{{ blog.name }}" class="img-fluid featured-image object-fit-cover">
             <div class="play-button play-button-dark position-absolute top-50 start-50 translate-middle">
                 <div class="w-100 h-100 position-absolute" data-bs-toggle="modal" data-bs-target="#videoModal-{{blog.id}}" onclick="playVideo('video-{{blog.id}}')">
                 </div>

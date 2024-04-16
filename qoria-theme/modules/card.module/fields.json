@@ -837,6 +837,19 @@
     "preset" : null,
     "type" : "choice",
     "default" : " "
+  },{
+    "id" : "card.cta_alignment",
+    "name" : "cta_alignment",
+    "display_width" : null,
+    "label" : "CTA alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "type" : "choice",
+    "default" : "inherit"
   }, {
     "id" : "card.stretched_link",
     "name" : "stretched_link",
@@ -892,21 +905,24 @@
     },
     "accent_colour" : "bg-primary text-white",
     "title" : "<strong>Linewize</strong> (North America)",
-    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore."
+    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+    "cta_alignment" : "inherit"
   }, {
     "image" : {
       "loading" : "lazy"
     },
     "accent_colour" : "bg-primary text-white",
     "title" : "<strong>Linewize</strong> (North America)",
-    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore."
+    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+    "cta_alignment" : "inherit"
   }, {
     "image" : {
       "loading" : "lazy"
     },
     "accent_colour" : "bg-primary text-white",
     "title" : "<strong>Linewize</strong> (North America)",
-    "text" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+    "text" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>",
+    "cta_alignment" : "inherit"
   } ]
 }, {
   "id" : "styles",
@@ -947,6 +963,30 @@
     "type" : "boolean",
     "default" : true
   }, {
+    "id" : "styles.normalise_image_headers",
+    "name" : "normalise_image_headers",
+    "display_width" : null,
+    "label" : "Normalise Image Headers",
+    "inline_help_text" : "Force all image headers to be the same height",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "styles.image_header",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    },
+    "default" : false
+  },  {
     "id" : "styles.image_header_fit",
     "name" : "image_header_fit",
     "display_width" : null,
