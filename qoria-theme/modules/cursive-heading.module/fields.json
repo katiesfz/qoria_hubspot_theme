@@ -49,7 +49,21 @@
         }
       }
     }
-  } ],
+  },{
+    "id" : "style.colour",
+    "name" : "colour",
+    "display_width" : null,
+    "label" : "Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "text-white", "White" ], [ "text-dark", "Dark" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "text-dark"
+  }],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"

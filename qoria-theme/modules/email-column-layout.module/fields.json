@@ -1,0 +1,399 @@
+[
+  {
+   "display_width": null,
+   "expanded": false,
+   "group_occurrence_meta": null,
+   "label": "Column",
+   "locked": false,
+   "name": "column",
+   "occurrence": {
+    "default": 1,
+    "max": 4,
+    "min": 1,
+    "sorting_label_field": ""
+   },
+   "required": false,
+   "tab": "CONTENT",
+   "type": "group",
+   "children": [
+    {
+     "display_width": null,
+     "expanded": false,
+     "group_occurrence_meta": null,
+     "label": "Image",
+     "locked": false,
+     "name": "image",
+     "required": false,
+     "tab": "CONTENT",
+     "type": "group",
+     "children": [
+      {
+       "default": {
+        "src": "",
+        "alt": null,
+        "loading": "lazy"
+       },
+       "display_width": null,
+       "label": "Image",
+       "locked": false,
+       "name": "image_field",
+       "required": false,
+       "resizable": true,
+       "responsive": true,
+       "show_loading": false,
+       "type": "image"
+      },
+      {
+       "display": "text",
+       "display_width": null,
+       "label": "Border radius",
+       "locked": false,
+       "name": "border_radius",
+       "required": false,
+       "step": 1,
+       "type": "number"
+      },
+      {
+       "default": {
+        "url": {
+         "content_id": null,
+         "type": "EXTERNAL",
+         "href": ""
+        },
+        "open_in_new_tab": false,
+        "no_follow": false
+       },
+       "display_width": null,
+       "label": "Image Link",
+       "locked": false,
+       "name": "image_link",
+       "required": false,
+       "show_advanced_rel_options": false,
+       "supported_types": [
+        "EXTERNAL",
+        "CONTENT",
+        "FILE",
+        "EMAIL_ADDRESS",
+        "BLOG"
+       ],
+       "type": "link"
+      }
+     ],
+     "default": {
+      "image_field": {
+       "src": "",
+       "alt": null,
+       "loading": "lazy"
+      },
+      "image_link": {
+       "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
+       },
+       "open_in_new_tab": false,
+       "no_follow": false
+      }
+     }
+    },
+    {
+     "display_width": null,
+     "label": "Rich text",
+     "locked": false,
+     "name": "richtext_field",
+     "required": false,
+     "type": "richtext"
+    },
+    {
+     "default": {
+      "color": "#ffffff",
+      "opacity": 100
+     },
+     "display_width": null,
+     "label": "Background colour",
+     "locked": false,
+     "name": "background_colour",
+     "required": false,
+     "type": "color"
+    },
+    {
+     "default": {
+      "color": "#EEEEEE",
+      "opacity": 100
+     },
+     "display_width": null,
+     "label": "Border colour",
+     "locked": false,
+     "name": "border_colour",
+     "required": false,
+     "type": "color"
+    },
+    {
+     "default": 0,
+     "display": "text",
+     "display_width": null,
+     "label": "Border radius",
+     "locked": false,
+     "min": 0,
+     "name": "border_radius",
+     "required": false,
+     "step": 1,
+     "suffix": "px",
+     "type": "number"
+    },{
+      "name" : "custom_width",
+      "label" : "Customise width",
+      "required" : false,
+      "locked" : false,
+      "type" : "boolean",
+      "display":"checkbox",
+      "default" : false
+    },
+    {
+     "display": "text",
+     "display_width": null,
+     "label": "Width",
+     "locked": false,
+     "max": 100,
+     "min": 0,
+     "name": "width",
+     "required": false,
+     "step": 1,
+     "disabled_controls": {
+      "message": "This field is disabled",
+      "rules": {
+       "criteria": [
+        {
+         "controlling_field_path": "column.custom_width",
+         "operator" :"EQUAL",
+         "controlling_value_regex": true
+        }
+       ]
+      }
+    },
+     "suffix": "%",
+     "type": "number"
+    },
+    {
+     "default": 16,
+     "display": "text",
+     "display_width": null,
+     "label": "Padding X",
+     "locked": false,
+     "min": 0,
+     "max": 40,
+     "name": "padding_x",
+     "required": false,
+     "step": 1,
+     "suffix": "px",
+     "type": "number"
+    },
+    {
+     "default": 16,
+     "display": "text",
+     "display_width": null,
+     "label": "Padding Y",
+     "locked": false,
+     "min": 0,
+     "max": 40,
+     "name": "padding_y",
+     "required": false,
+     "step": 1,
+     "suffix": "px",
+     "type": "number"
+    },
+    {
+     "choices": [
+      [
+       "left",
+       "Left"
+      ],
+      [
+       "center",
+       "Center"
+      ],
+      [
+       "right",
+       "Right"
+      ]
+     ],
+     "default": "center",
+     "display": "select",
+     "display_width": null,
+     "label": "Alignment",
+     "locked": false,
+     "multiple": false,
+     "name": "alignment",
+     "preset": null,
+     "reordering_enabled": true,
+     "required": false,
+     "type": "choice"
+    },{
+      "name" : "shadow",
+      "label" : "Shadow",
+      "required" : false,
+      "locked" : false,
+      "type" : "boolean",
+      "display":"checkbox",
+      "default" : false
+    },
+    {
+     "allow_new_line": false,
+     "display_width": null,
+     "label": "Additional Column Styling",
+     "locked": false,
+     "name": "additional_column_styling",
+     "required": false,
+     "show_emoji_picker": false,
+     "type": "text",
+     "validation_regex": ""
+    }
+   ],
+   "default": [
+    {
+     "image": {
+      "image_field": {
+       "src": "",
+       "alt": null,
+       "loading": "lazy"
+      }
+     },
+     "alignment": "center"
+    }
+   ]
+  },
+  {
+   "display_width": null,
+   "expanded": false,
+   "group_occurrence_meta": null,
+   "label": "Module Styles",
+   "locked": false,
+   "name": "styles",
+   "required": false,
+   "tab": "STYLE",
+   "type": "group",
+   "children": [
+    {
+     "default": {
+      "color": "#ffffff",
+      "opacity": 100
+     },
+     "display_width": null,
+     "label": "Background colour",
+     "locked": false,
+     "name": "background_colour",
+     "required": false,
+     "type": "color"
+    },
+    {
+     "default": {
+      "color": "#EEEEEE",
+      "opacity": 100
+     },
+     "display_width": null,
+     "label": "Border colour",
+     "locked": false,
+     "name": "border_colour",
+     "required": false,
+     "type": "color"
+    },
+    {
+     "default": 0,
+     "display": "text",
+     "display_width": null,
+     "label": "Border radius",
+     "locked": false,
+     "min": 0,
+     "name": "border_radius",
+     "required": false,
+     "step": 1,
+     "suffix": "px",
+     "type": "number"
+    },
+    {
+     "display": "text",
+     "display_width": null,
+     "label": "Spacing",
+     "locked": false,
+     "name": "spacing",
+     "required": false,
+     "type": "spacing",
+      "limits": {
+        "padding": {
+        "top": { "max": 50, "units": ["px", "pt", "em"] },
+        "left": { "max": 50, "units": ["px", "pt", "em"] },
+        "bottom": { "max": 50, "units": ["px", "pt", "em"] },
+        "right": { "max": 50, "units": ["px", "pt", "em"] }
+        },
+        "margin": {
+        "top": { "max": 0, "min": 0, "units": ["px", "pt", "em"] },
+        "right": { "max": 0, "min": 0, "units": ["px", "pt", "em"] },
+        "bottom": { "max": 0, "min": 0, "units": ["px", "pt", "em"] },
+        "left": { "max": 0, "min": 0, "units": ["px", "pt", "em"] }
+        }
+      }
+    },
+    {
+     "default": 16,
+     "display": "text",
+     "display_width": null,
+     "label": "Gutter",
+     "locked": false,
+     "max": 40,
+     "min": 0,
+     "name": "gutter",
+     "required": false,
+     "step": 1,
+     "suffix": "px",
+     "type": "number"
+    },{
+      "name" : "shadow",
+      "label" : "Shadow",
+      "required" : false,
+      "locked" : false,
+      "type" : "boolean",
+      "display":"checkbox",
+      "default" : false
+    },
+    {
+     "default": 10,
+     "display": "text",
+     "display_width": null,
+     "label": "Space below columns",
+     "locked": false,
+     "name": "space_below",
+     "required": false,
+     "step": 1,
+     "suffix": "px",
+     "type": "number"
+    },
+    {
+     "default": 600,
+     "display": "text",
+     "display_width": null,
+     "label": "Email Body Width",
+     "locked": false,
+     "name": "email_body_width",
+     "required": false,
+     "step": 1,
+     "type": "number"
+    }
+   ],
+   "default": {
+    "column_background_colour": {
+     "color": "#ffffff",
+     "opacity": 100
+    },
+    "border_radius": 0,
+    "padding_x": 0,
+    "padding_y": 0,
+    "gutter": 16,
+    "space_below": 10,
+    "border_colour": {
+     "color": "#EEEEEE",
+     "opacity": 100
+    },
+    "email_body_width": 600
+   }
+  }
+ ]

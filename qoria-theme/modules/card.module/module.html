@@ -131,7 +131,8 @@
 
           {% if module.styles.image_header && module.styles.image_header_fit == "cover" %}
             {% if card.image.src %}
-              <img src="{{ card.image.src }}" class="card-img-top" alt="{{ card.image.alt }}">
+              {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
+              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="card-img-top" alt="{{ card.image.alt }}" {{loadingAttr}}>
             {% endif %}
           {% endif %}
 
@@ -278,7 +279,8 @@
           {% if module.styles.image_header && module.styles.image_header_fit == "contain" %}
             {% if card.image.src %}
               
-              <img src="{{ card.image.src }}" class="img-fluid mb-3" alt="{{ card.image.alt }}">
+              {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
+              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="img-fluid mb-3" alt="{{ card.image.alt }}" {{loadingAttr}}>
               
             {% endif %}
           {% endif %}
@@ -341,8 +343,9 @@
 
           {% if !module.styles.image_header %}
             {% if card.image.src %}
+              {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
               <div>
-                <img src="{{ card.image.src }}" class="img-fluid mb-3 {{ "position-relative card-image-overlap card-image-overlap-margin" if card.image_overlap }}" alt="{{ card.image.alt }}" style="{{ "margin-top: -" ~ card.overlap ~ "rem;" if card.image_overlap }}">
+                <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="img-fluid mb-3 {{ "position-relative card-image-overlap card-image-overlap-margin" if card.image_overlap }}" alt="{{ card.image.alt }}" style="{{ "margin-top: -" ~ card.overlap ~ "rem;" if card.image_overlap }}" {{loadingAttr}}>
               </div>
             {% endif %}
           {% endif %}

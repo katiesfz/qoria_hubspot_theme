@@ -18,12 +18,13 @@ label: Qoria EU Header
 {% endif %}
   <!-- end resize code -->
 
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+  
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css"),{"defer":true}) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css"),{"defer":true}) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css"),{"defer":true}) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css"),{"defer":true}) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css"),{"defer":true}) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css"),{"defer":true}) }} 
 
   {% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=True, no_wrapper=True, export_to_template_context=True %}
 

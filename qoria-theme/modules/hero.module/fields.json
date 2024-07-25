@@ -29,6 +29,31 @@
     "access" : null
   },
   "type" : "file"
+},{
+  "name" : "poster_image",
+  "display_width" : null,
+  "label" : "Video Poster Image",
+  "required" : false,
+  "inline_help_text" : "The image that shows in place of the video before the video is loaded",
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "hero_type",
+    "controlling_value_regex" : "full-video",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "disabled"
+  }
 }, {
   "id" : "445691a3-91f2-5f93-7b78-49a79051835b",
   "name" : "image",

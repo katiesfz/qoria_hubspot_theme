@@ -32,7 +32,10 @@
               download
           {% endif %}
         {% endif %}
-        rel="{{ rel }}">
+        rel="{{ rel }}"
+        {% if module.word_wrap %}
+          style="white-space: normal;"
+        {% endif %}>
       {{ module.button_text }}
     </a>
   </div>

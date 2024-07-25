@@ -3,15 +3,17 @@
 {% set article = content_by_id(module.blog_entry) %}
 
 <style>
-.bg-image-{{name}}{
+.bg-image-{{name}}:after{
     background-image: url("{{article.featured_image}}");
+    filter: grayscale(1) contrast(0.9) brightness(1.1);
     background-position: center center;
     background-size: cover;
-}
-.bg-image-faded.bg-image-{{name}}:after{
-    background-image: url("{{article.featured_image}}");
-    background-position: center center;
-    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
 }
 </style>
 
@@ -26,7 +28,7 @@
                     {% if article.post_body %}
                     <p class="mt-7"><i class="fa fas fa-pencil me-1"></i> {{ ((article.post_body|regex_replace("{%.*%}", "")|striptags|wordcount)/225)|round(0, "ceil") }} min read | By {{article.blog_post_author.display_name}}</p>
                     {% endif %}
-                    <div class="{{ module.heading_width }}"><h2><strong>{{article.title}}</strong></h2></div>
+                    <div class="{{ module.heading_width }}"><h2><strong>{{article.name}}</strong></h2></div>
                     <a href="{{ article.absolute_url }}" class="btn btn-outline-light mt-3">Read more</a>
                 </div>
             </div>

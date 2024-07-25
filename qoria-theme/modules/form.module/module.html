@@ -34,6 +34,13 @@
               inlineMessage: "Thank you for your interest, your download should start shortly.",
             {% endif %}
          {% endif %}
+       {% if module.override_values %}
+        onFormSubmit: function($form) {
+       {% for item in module.override_values %}
+          $('input[name="{{ item.property_id }}"]').val("{{ item.property_value }}").change();
+            {% endfor %}                     
+        },
+       {% endif %}
       {% if module.download %}
         onFormSubmitted: function($form, data) {
           if (window.hsInEditor) {

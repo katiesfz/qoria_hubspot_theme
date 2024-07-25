@@ -124,7 +124,8 @@
                 {% elif item.image.size_type == 'auto_custom_max' %}
                     {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
                 {% endif %}
-                    <img src="{{item.image.src}}" alt="{{item.image.alt}}" class="img-fluid d-inline-block {{ "filter-grayscale" if module.style.greyscale_images }}" {{ sizeAttrs }}>
+                {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+                    <img src="{{item.image.src}}" {{loadingAttr}} alt="{{item.image.alt}}" class="img-fluid d-inline-block {{ "filter-grayscale" if module.style.greyscale_images }}" {{ sizeAttrs }}>
                 </div>
             {% endif %}
             <div class="col-12 {{ "col-md-8" if item.image.src != "" }} order-md-1">

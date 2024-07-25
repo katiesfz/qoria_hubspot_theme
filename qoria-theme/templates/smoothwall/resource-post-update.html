@@ -1,0 +1,394 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Smoothwall - Resource Post V2
+  screenshotPath: ../images/template-previews/blog-post.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+{# {% choice "listing_page_style" label='Listing page style', value="regular", choices=[['regular', 'Regular'], ['gradient', 'Gradient overlay']], export_to_template_context=True %} #}
+
+  {% choice "blog_type" label='Blog type', value="regular", choices=[['regular', 'Regular'], ['case_study', 'Case study'], ['video', 'Video'], ['whitepaper', 'Whitepaper']], export_to_template_context=True %}
+
+ {#   {% text "video_duration" label='Video duration', overrideable=False, value=, export_to_template_context=True %}    #}
+
+
+    {% block body %}
+
+{% module "description" path="/q-theme/modules/blog-description", export_to_template_context=True %}
+
+{% if widget_data.blog_type.value == "case_study" %}
+
+  {% module "hero"
+  path="/q-theme/modules/hero",
+  offset=0,
+  width=12,
+  pre_header="",
+  header="Case Study",
+  header_level="h2",
+  hero_type="full-image",
+  image={
+    "alt" : "Banner Image",
+    "height" : 1080,
+    "loading" : "disabled",
+    "max_height" : 1080,
+    "max_width" : 1920,
+    "size_type" : "auto",
+    "src" : get_asset_url("../../images/qoria/photos/iStock-1253508097-RT.jpg"),
+    "width" : 1920,
+  },
+  menu=134668028025,
+  cta=[],
+  page_contents=[{
+        "content_label" : "Featured article",
+        "anchor": "#featured"
+    },{
+        "content_label" : "Most viewed this month",
+        "anchor": "#mostViewed"
+    },{
+        "content_label" : "Latest content",
+        "anchor": "#latest"
+    },{
+        "content_label" : "Trending topics",
+        "anchor": "#trending"
+    },{
+        "content_label" : "Latest videos",
+        "anchor": "#videos"
+    }],
+  show_breadcrumbs=false,
+  show_share_price=false,
+  style={
+    "heading_location" : "bottom-left"
+  },
+%}
+
+
+<div class="main p-0 overflow-hidden">
+
+<section class="bg-light pt-7 mb-n7">
+  <div class="container-xxl">
+    <div class="row">
+      <div class="col-12 offset-0 col-xl-8 offset-xl-2 col-lg-9 offset-md-1 col-md-10 col-sm-11">
+        
+        {% module "case_study_heading"
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "column" : [{
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image" : "none"
+            },
+            "advanced" : {
+              "additional_col_classes" : "col-12 col-md-1 col-xl-2"
+             },
+            "text" : ""
+          },{
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image" : "none"
+            },
+            "advanced" : { 
+            "additional_col_classes" : "col-12 col-md-10 col-xl-8"
+            },
+            "text" : "<h1 class='h2'>" + content.name + "</h1>"
+          },{
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image" : "none"
+            },
+            "advanced" : { 
+            "additional_col_classes" : "col-12 col-md-1 col-xl-2"
+            },
+            "text" : ""
+          }],
+          "advanced" : { 
+            "additional_classes" : "text-center py-3 py-md-6"
+            }
+        } ],
+        style={
+          "background_colour" : "bg-gradient-primary text-white",
+          "overlay" : false,
+          "shadow" : false,
+
+        }
+        %}
+
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white pb-7 pt-8">
+  <article class="container-xxl blog-post"  id="blog_post">
+    <div class="row">
+      <div class="col-12 offset-0 col-xl-8 offset-xl-2 col-lg-9 offset-md-1 col-md-10 col-sm-11">
+        <div class="row">
+          <div class="col">
+            {{ content.post_body }}
+          </div>
+        </div>
+        <div class="row py-5">
+          <div class="col">
+          {% if content.previous_post_name %}
+            <p class="">
+            <a href="{{company_domain}}/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+            <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
+            {{ content.previous_post_name }}
+            </a>
+            </p>
+          {% endif %}
+        </div>
+          <div class="col text-end">
+          {% if content.next_post_name %}
+            <p class="">
+            <a href="{{company_domain}}/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
+            <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
+            {{ content.next_post_name }}
+            </a>
+            </p>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light pt-7 pb-7">
+  <div class="container-xxl">
+    <div class="row">
+      <div class="col">
+        <a id="trending" data-hs-anchor="true"></a>
+        <h2 class="text-center"><strong>Trending topics</strong></h2>
+        <hr class="opacity-25">
+        {% module "trending_topics" path="/q-theme/modules/region-specific/nz/trending-topics-nz" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+{% global_partial path="./partials/lets-connect.html" %}
+  
+{% elif widget_data.blog_type.value == "archive" %}
+
+<div class="main p-0 overflow-hidden">
+
+  {# Blog post #}
+
+  <div class="content-wrapper">
+    <article class="blog-post">
+      <h1>{{ content.name }}</h1>
+      <div class="blog-post__meta">
+        <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}" rel="author">
+          {{ content.blog_post_author.display_name }}
+        </a>
+        <time datetime="{{ content.publish_date }}" class="blog-post__timestamp">
+          {{ content.publish_date_localized }}
+        </time>
+      </div>
+      <div class="blog-post__body">
+        {{ content.post_body }}
+      </div>
+      {% if content.tag_list %}
+        <div class="blog-post__tags">
+          {% icon
+            name="tag",
+            purpose="decorative",
+            style="SOLID"
+          %}
+          {% for tag in content.tag_list %}
+            <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}" rel="tag">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </article>
+    {% if group.allow_comments %}
+      <div class="blog-comments">
+        {% module "blog_comments"
+          path="@hubspot/blog_comments",
+          label="Blog comments"
+        %}
+      </div>
+    {% endif %}
+  </div>
+
+  {# Recent posts listing #}
+
+  {# This macro is used to format each recent post card and gets passed to the related_blog_posts HubL tag below #}
+
+  {% macro related_posts(post, count, total) %}
+    {% if count == 1 %}
+      <section class="blog-related-posts">
+        <div class="content-wrapper">
+          <h2>Read On</h2>
+          <div class="blog-related-posts__list">
+    {% endif %}
+            <article class="blog-related-posts__post" aria-label="Blog post summary: {{ post.name }}">
+              {% if post.featured_image %}
+                <a class="blog-related-posts__post-image-wrapper" href="{{ post.absolute_url }}" aria-label="{% if post.featured_image_alt_text %} Featured image: {{ post.featured_image_alt_text }} - {% endif %}Read full post: {{ post.name }}">
+                  <img class="blog-related-posts__image" src="{{ resize_image_url(post.featured_image, 800) }}" loading="lazy" width="352" alt="{{ post.featured_image_alt_text }}">
+                </a>
+              {% endif %}
+              <div class="blog-related-posts__content">
+                <h3 class="blog-related-posts__title">
+                  <a class="blog-related-posts__title-link" href="{{ post.absolute_url }}">{{ post.name }}</a></h3>
+                {{ post.post_summary|truncatehtml(100) }}
+              </div>
+            </article>
+      {% if count == total %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+  {% endmacro %}
+
+  {% related_blog_posts
+    limit=3,
+    no_wrapper=True,
+    post_formatter="related_posts"
+  %}
+
+</div>
+
+
+
+{% else %}
+  
+  {% module "hero"
+  path="/q-theme/modules/hero",
+  offset=0,
+  width=12,
+  pre_header="",
+  header="Resources",
+  header_level="h2",
+  hero_type="full-image",
+  image={
+    "alt" : "Banner Image",
+    "height" : 1080,
+    "loading" : "disabled",
+    "max_height" : 1080,
+    "max_width" : 1920,
+    "size_type" : "auto",
+    "src" : get_asset_url("../../images/qoria/photos/iStock-1253508097-RT.jpg"),
+    "width" : 1920,
+  },
+  menu=115248177746,
+  cta=[],
+  page_contents=[{
+        "content_label" : "Featured article",
+        "anchor": group.absolute_url + "#featured"
+    },{
+        "content_label" : "Most viewed this month",
+        "anchor": group.absolute_url + "#mostViewed"
+    },{
+        "content_label" : "Latest content",
+        "anchor": group.absolute_url + "#latest"
+    },{
+        "content_label" : "Trending topics",
+        "anchor": group.absolute_url + "#trending"
+    },{
+        "content_label" : "Latest videos",
+        "anchor": group.absolute_url + "#videos"
+    }],
+  show_breadcrumbs=false,
+  show_share_price=false,
+  style={
+    "heading_location" : "bottom-left"
+  },
+%}
+
+<div class="main p-0 overflow-hidden">
+
+<section class="bg-light pt-7 pb-5">
+  <div class="container-xxl blog-post">
+    <div class="row">
+      <div class="col-12 offset-0 col-xl-8 offset-xl-2 col-lg-9 offset-md-1 col-md-10 col-sm-11 {{ "pb-7" if content.featured_image }}">
+        <h1 class="fw-bold">{{ content.name }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white pb-7">
+  <article class="container-xxl blog-post" id="blog_post">
+    <div class="row">
+      <div class="col-12 offset-0 col-xl-8 offset-xl-2 col-lg-9 offset-md-1 col-md-10 col-sm-11">
+        {% if content.featured_image %}
+          <div class="row">
+            <div class="col">
+              <img src="{{ resize_image_url(content.featured_image, 800) }}" class="mt-n7 img-fluid filter-grayscale blog-featured-image">
+            </div>
+          </div>
+        {% endif %}
+        <div class="row align-items-center py-5">
+          <div class="col">
+            <div class="bg-secondary text-white p-3 d-inline-block">
+              <strong><i class="fa fas fa-pencil me-1"></i> {{ ((content.post_body|regex_replace("{%.*%}", "")|striptags|wordcount)/225)|round(0, "ceil") }} minute read</strong>
+            </div>
+          </div>
+          <div class="col text-secondary text-end">
+          {# <img src="{{ content.blog_post_author.avatar }}" class="me-2 d-none" alt="{{ content.blog_post_author.display_name }} Avatar" style="width: 56px; width: 56px; object-fit: cover;">
+#}
+          <strong>By {{ content.blog_post_author.display_name }}</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col blog-post-body">
+            {{ content.post_body }}
+          </div>
+        </div>
+        <div class="row py-5">
+          <div class="col">
+          {% if content.previous_post_name %}
+            <p class="">
+            <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+            <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
+            {{ content.previous_post_name }}
+            </a>
+            </p>
+          {% endif %}
+        </div>
+          <div class="col text-end">
+          {% if content.next_post_name %}
+            <p class="">
+            <a href="/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
+            <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
+            {{ content.next_post_name }}
+            </a>
+            </p>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light pt-7 pb-7">
+  <div class="container-xxl">
+    <div class="row">
+      <div class="col">
+        <a id="trending" data-hs-anchor="true"></a>
+        <h2 class="text-center"><strong>Trending topics</strong></h2>
+        <hr class="opacity-25">
+        {% module "trending_topics" path="/q-theme/modules/region-specific/uk/trending-topics-uk" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+</div>
+
+
+{% global_partial path="./partials/lets-connect.html" %}
+
+{% endif %}
+{% endblock body %}

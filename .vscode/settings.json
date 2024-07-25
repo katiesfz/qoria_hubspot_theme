@@ -19,6 +19,7 @@
     ],
     "liveSassCompile.settings.includeItems": [
         "/scss/qoria-theme.scss",
+        "/scss/qoria-theme-critical.scss",
         "/scss/smart-recruiters-styles.scss",
         "/scss/easy-webinar-styles.scss"
     ],

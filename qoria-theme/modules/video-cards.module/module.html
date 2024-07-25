@@ -56,7 +56,18 @@
 
     <div class="{{ "card-video" if module.styles.card.overlay else "card" }} h-100 {{ cardColour }} {{ module.styles.card.shadow if module.styles.card.shadow != "section-shadow" && !module.styles.carousel }}">
         <div class="card-img-top">
-            <img src="{{ item.video_settings.custom_thumbnail.src }}" alt="{{ item.video_settings.custom_thumbnail.alt }}" class="img-fluid">
+        
+            {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.width }}" height="{{ item.video_settings.custom_thumbnail.height }}"' %}
+                {% if item.video_settings.custom_thumbnail.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.width }}" height="{{ item.video_settings.custom_thumbnail.height }}"' %}
+                    {% set sizeCSS = "max-width: 100%; height: auto;" %}
+                    {% set imgSrc = resize_image_url(item.video_settings.custom_thumbnail.src, item.video_settings.custom_thumbnail.width) %}
+                {% elif item.video_settings.custom_thumbnail.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.max_width }}" height="{{ item.video_settings.custom_thumbnail.max_height }}"' %}
+                    {% set sizeCSS = "max-width: 100%; height: auto;" %}
+                    {% set imgSrc = resize_image_url(item.video_settings.custom_thumbnail.src, item.video_settings.custom_thumbnail.max_width) %}
+                {% endif %}
+            <img src="{{ imgSrc }}" {{sizeAttrs}} alt="{{ item.video_settings.custom_thumbnail.alt }}" class="img-fluid">
             <div class="play-button play-button-{{ item.video_settings.play_button_colour }}" data-bs-toggle="modal" data-bs-target="#videoModal_{{name|replace("-","_")}}_{{loop.index}}" onclick="playVideo('video{{name|replace('-','_')}}{{loop.index}}')">
             </div>
         </div>
@@ -85,12 +96,12 @@
         {% if item.link_label is defined %}
             
             {% if item.link_label != "" %}
-                <div class="card-footer {{ module.styles.card.body_colour if module.styles.card.overlay }} ">
+                <div class="card-footer {{ module.styles.card.body_colour if module.styles.card.overlay else "bg-transparent" }} ">
                     <button type="button" class="btn btn-link p-0 text-reset fw-semibold text-decoration-none" data-bs-toggle="modal" data-bs-target="#videoModal_{{name|replace("-","_")}}_{{loop.index}}" onclick="playVideo('video{{name|replace('-','_')}}{{loop.index}}')">{{ item.link_label }}</button>
                 </div>
             {% endif %}
         {% else %}
-                <div class="card-footer {{ module.styles.card.body_colour if module.styles.card.overlay }} ">
+                <div class="card-footer {{ module.styles.card.body_colour if module.styles.card.overlay else "bg-transparent" }} ">
                     <button type="button" class="btn btn-link p-0 text-reset fw-semibold text-decoration-none" data-bs-toggle="modal" data-bs-target="#videoModal_{{name|replace("-","_")}}_{{loop.index}}" onclick="playVideo('video{{name|replace('-','_')}}{{loop.index}}')">Watch video ></button>
                 </div>
         {% endif %}
@@ -231,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $(window).on(
         'load resize orientationchange', function () {
         normaliseHeights('#videos-{{ name }} .card-video ');
+        normaliseHeights('#videos-{{ name }} .card ');
         });
 
     {% endif %}

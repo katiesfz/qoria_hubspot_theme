@@ -13,7 +13,7 @@
     "size_type" : "auto",
     "src" : "",
     "alt" : null,
-    "loading" : "disabled"
+    "loading" : "lazy"
   }
 }, {
   "id" : "style",

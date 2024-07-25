@@ -17,7 +17,7 @@
     "path" : "../../js/slick/slick.min.js",
     "name" : "slick.min.js"
   }, {
-    "autoload" : true,
+    "autoload" : false,
     "path" : "../../js/custom-functions.js",
     "name" : "custom-functions.js"
   } ],

@@ -11,6 +11,7 @@ label: Linewize AU Header
   {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
   {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
 
+
   {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
   {% set breakpoint = widget_data.navigation.breakpoint %}
       {% if breakpoint == "always" %}

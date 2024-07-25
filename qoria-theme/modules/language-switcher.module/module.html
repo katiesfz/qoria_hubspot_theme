@@ -15,9 +15,11 @@
     {% set autoLangs = [] %}
 
     {# split current lang code to lang and region #}
-    {% set splitLang = content.language|split("-") %}
-    {% set contentLanguage = splitLang[0] %}
-    {% set contentRegion = splitLang[1] %}
+    {% if content.language %}
+        {% set splitLang = content.language|split("-") %}
+        {% set contentLanguage = splitLang[0] %}
+        {% set contentRegion = splitLang[1] %}
+    {% endif %}
 
     {# if there's no region code in the language, check for a manual region set in the module #}
     {% if !contentRegion %}
@@ -58,7 +60,10 @@
     {% endif %}
 
     {# combine the two #}
-    {% set comboLangs = autoLangs + manualLangs %}
+    {% set comboLangsAll = autoLangs + manualLangs %}
+
+    {# filter to unique language-region combinations #} 
+    {% set comboLangs = comboLangsAll|unique %}
 
 
     {% if module.language_selection == "auto" %}

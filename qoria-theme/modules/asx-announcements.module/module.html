@@ -27,14 +27,58 @@
     {% set docTypes = [] %}
     {% do docTypes.append("All announcements") %}
     {% for type in typeCol.options %}
-        {% do docTypes.append(type.name) %}
+        {% if (type.name != "Annual Reports") && (type.name != "Corporate Governance") %}
+            {% do docTypes.append(type.name) %}
+        {% endif %}
     {% endfor %}
 
     <div class="row" style="{{module.styles.spacing_field.css}}">
         <div class="col-12 col-lg-8 mb-4">
-            <div class="bg-gradient-primary p-5 text-light">
+        {% set annualReports = hubdb_table_rows(module.hubdb, "type__in=Annual Reports")%}
+            {% if annualReports %}
+                <div class="bg-gradient-primary p-5 text-light mb-4">
+                    <div class="row">
+                        <div class="col-12"><h2 class="fw-semibold mb-4">Annual reports</h2></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+
+                        <p class="mb-3">
+                        {{ module.description_reports }}
+                        </p>
+                        </div>
+                        <div class="col-12 col-lg-8">
+                            <div class="bg-white shadow-lg">
+                                
+                                <table class='table table-striped table-hover my-0 w-100'><tbody>
+                                {% for row in annualReports|sort(True, False, "date") %}
+
+                                        <tr class='position-relative'>
+                                            <td class='ps-4' style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>
+                                            {{row.date|format_datetime('dd/MM/yyyy')}}
+                                            </td>
+                                            <td class='pe-4'>
+                                                <a class='text-reset text-decoration-none stretched-link' style='' href='{{row.download_link}}' title='{{row.name}}'>
+                                                    <div class='d-table w-100' style='table-layout: fixed;'>
+                                                        <div class='d-table-row'>
+                                                            <div class='d-table-cell' style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>{{row.name}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody></table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="bg-white p-5">
                 <div class="row">
-                    <div class="col-12"><h2 class="fw-semibold mb-4">ASX announcements</h2></div>
+                    <div class="col-12"><h2 class="fw-semibold mb-4">ASX announcements & presentations</h2></div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-4">
@@ -42,14 +86,14 @@
                     <p class="mb-3">
                     {{ module.description }}
                     </p>
-                    <form class="form-light">
+                    <form class="form">
                         <fieldset>
-                            <select class="form-select fw-semibold bg-transparent text-white mb-3 border rounded-3 pe-7" aria-label="Select document type" id="docTypeSelect">
+                            <select class="form-select fw-semibold bg-transparent mb-3 border rounded-3 pe-7" aria-label="Select document type" id="docTypeSelect">
                                 {% for docType in docTypes %}
                                 <option class="text-dark" {{ "selected" if loop.first }} value="{{docType}}">{{docType}}</option>
                                 {% endfor %}
                             </select>
-                            <select class="form-select fw-semibold bg-transparent text-white mb-3 border rounded-3 pe-7" aria-label="Select year" id="yearSelect">
+                            <select class="form-select fw-semibold bg-transparent mb-3 border rounded-3 pe-7" aria-label="Select year" id="yearSelect">
                                 {% for year in uniqueYears %}
                                 <option class="text-dark" {{ "selected" if loop.first }} value="{{year}}">{{year}}</option>
                                 {% endfor %}
@@ -118,8 +162,41 @@
                         <a href="{{module.rights_to_receive}}" download="Rights-to-receive" target="_blank" class="btn btn-link text-reset text-decoration-none p-0 fw-semibold">Download here <i class="fas ms-2 fa-arrow-down-to-bracket"></i></a>
                         </div>
                     </div>
+                </div>
+                {% if module.corporate_governance %}
+                <div class="col-12 col-sm-6 col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body text-start">
+                        <h5 class="card-text mb-3">Corporate governance</h5>
+                        <ul class="fa-ul ms-4 mb-0">
+                        {% for doc in module.corporate_governance %}                                    
+                            <li class="mb-2"><a href="{{doc.cg_file}}" download="{{doc.cg_name}}" target="_blank" class="text-reset text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-down-to-bracket"></i></span>{{doc.cg_name}}</a></li>
+                        {% endfor %}
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    
+                    {% set corporateGovernance = hubdb_table_rows(module.hubdb, "type__in=Corporate Governance")%}
+                    {% if corporateGovernance %}
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="card mb-4">
+                                <div class="card-body text-start">
+                                <h5 class="card-text mb-3">Corporate governance</h5>
+                                <ul class="fa-ul ms-4 mb-0">
+                                {% for row in corporateGovernance %}
+                                    <li class="mb-2"><a href="{{row.download_link}}" download="{{row.name}}" target="_blank" class="text-reset text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-down-to-bracket"></i></span>{{row.name}}</a></li>
+                                {% endfor %}
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
                 
                 {% if module.newsletter_form.form_id %}
+                <div class="col-12 col-sm-6 col-lg-12">
                     <div class="card ">
                         <div class="card-body text-start">
                         <h5 class="card-text">Investor newsletter</h5>
@@ -135,9 +212,8 @@
                                 </script>
                         </div>
                     </div>
-                {% endif %}
-                
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -243,8 +319,12 @@ function printDocs(docList) {
     } else {
         let printString = "<table class='table table-striped table-hover my-0 w-100'><tbody>";
         for (i=0; i<docList.length; i++) {
-            printString += "<tr class='position-relative'><td class='ps-4' style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>" + docList[i].date.toLocaleDateString("en-GB") + "</td><td class='pe-4'><a class='text-reset text-decoration-none stretched-link' style='' href='" + docList[i].url + "' title='" + docList[i].name + "'><div class='d-table w-100' style='table-layout: fixed;'><div class='d-table-row'><div class='d-table-cell' style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>" + docList[i].name + "</div></div></div></a></td></tr>";
-        }
+            printString += "<tr class='position-relative'><td class='ps-4' style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>";
+                if (docList[i].date){
+                printString += docList[i].date.toLocaleDateString("en-GB") + "</td><td class='pe-4'>";
+                }
+            printString += "<a class='text-reset text-decoration-none stretched-link' style='' href='" + docList[i].url + "' title='" + docList[i].name + "'><div class='d-table w-100' style='table-layout: fixed;'><div class='d-table-row'><div class='d-table-cell' style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>" + docList[i].name + "</div></div></div></a></td></tr>";
+            }
         printString += "</tbody></table>";
         return printString;
     };

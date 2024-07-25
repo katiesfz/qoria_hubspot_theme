@@ -426,7 +426,13 @@
         {{ content.publish_date|datetimeformat('%B %e, %Y') }}
       </p>
       {% if content.post_list_summary_featured_image %}
-        <img src="{{ content.post_list_summary_featured_image }}" class="pb-4">
+        <figure class="figure pb-4">
+          <img src="{{ resize_image_url(content.post_list_summary_featured_image, 0, 0, 1500) }}" class="figure-img img-fluid" alt="{{ content.featured_image_alt_text}}">
+        {% text "featured_image_caption" label="Featured image caption" export_to_template_context=True value="" %}
+        {% if widget_data.featured_image_caption %}
+          <figcaption class="figure-caption">{{widget_data.featured_image_caption}}</figcaption>
+        {% endif %}
+        </figure>
       {% endif %}
 
       {{ content.post_body }}

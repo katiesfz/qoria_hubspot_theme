@@ -39,6 +39,18 @@
   "type" : "text",
   "default" : "Browse our list of announcements for all the latest ASX updates and insights."
 }, {
+  "id" : "description_reports",
+  "name" : "description_reports",
+  "display_width" : null,
+  "label" : "Annual Reports Description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Download and view our annual reports by clicking on the following links."
+}, {
   "picker" : "document",
   "id" : "rights_to_receive",
   "name" : "rights_to_receive",

@@ -222,6 +222,20 @@
     "type" : "choice",
     "default" : "inherit"
   }, {
+    "id" : "statistic.number_type",
+    "name" : "number_type",
+    "display_width" : null,
+    "label" : "Number type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "number", "Number" ], [ "variable", "Variable" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "number"
+  }, {
     "id" : "statistic.number",
     "name" : "number",
     "display_width" : null,
@@ -231,7 +245,35 @@
     "display" : "text",
     "step" : 1,
     "type" : "number",
-    "default" : "500"
+    "default" : "500",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "statistic.number_type",
+      "controlling_value_regex" : "number",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
+  }, {
+    "id" : "statistic.number_text",
+    "name" : "number_text",
+    "display_width" : null,
+    "label" : "Number variable",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "statistic.number_type",
+      "controlling_value_regex" : "variable",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
   }, {
     "id" : "statistic.unit",
     "name" : "unit",
@@ -268,7 +310,21 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-  }, {
+  },{
+    "id" : "statistic.alignment",
+    "name" : "alignment",
+    "display_width" : null,
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "inherit"
+  },  {
     "id" : "statistic.animate_stat",
     "name" : "animate_stat",
     "display_width" : null,
@@ -414,7 +470,21 @@
     "preset" : null,
     "type" : "choice",
     "default" : "align-items-center"
-  }, {
+  },{
+    "id" : "style.alignment",
+    "name" : "alignment",
+    "display_width" : null,
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  },   {
     "id" : "styles.responsive",
     "name" : "responsive",
     "display_width" : null,

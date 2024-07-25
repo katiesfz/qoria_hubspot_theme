@@ -7,8 +7,7 @@
   "help_text": "",
   "host_template_types": [
     "PAGE",
-    "BLOG_POST",
-    "EMAIL"
+    "BLOG_POST"
   ],
   "js_assets": [],
   "other_assets": [],

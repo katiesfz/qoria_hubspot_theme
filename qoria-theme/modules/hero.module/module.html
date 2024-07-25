@@ -18,18 +18,52 @@
 <section class="hero-{{module.hero_type}}">
 
 {% if module.hero_type == "full-video" %}
+    {% if module.poster_image.src %}
+        {% set sizeAttrs = 'width="{{ module.poster_image.width }}" height="{{ module.poster_image.height }}"' %}
+        {% if module.poster_image.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.poster_image.width }}" height="{{ module.poster_image.height }}"' %}
+            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+            {% set imgSrc = resize_image_url(module.poster_image.src, module.poster_image.width) %}
+        {% elif module.poster_image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.poster_image.max_width }}" height="{{ module.poster_image.max_height }}"' %}
+            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+            {% set imgSrc = resize_image_url(module.poster_image.src, module.poster_image.max_width) %}
+        {% endif %}
+    {% endif %}
+    {% require_css %}
+        <style>
+            {% if module.poster_image.src %}
+
+                /* This prevents the video from showing on mobiles */
+            @media (pointer: coarse) and (hover: none) {
+                .hero-full-video {
+                background: url('{{imgSrc}}') black no-repeat center center scroll;
+                background-size: cover;
+                }
+            
+                .hero-full-video video {
+                display: none;
+                }
+            } 
+            
+            {% endif %}
+        </style>
+    {% end_require_css %}
 
     <div class="video-bg-container">
         <!-- The HTML5 video element that will create the background video on the header -->
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-            <source src="{{module.video}}" type="video/mp4">
+        <video playsinline="playsinline"   autoplay="autoplay" muted="muted" loop="loop" {% if module.poster_image.src %}poster="{{imgSrc}}" {{sizeAttrs}}{% endif %}>
+            <source src="{{module.video}}" data-src="{{module.video}}" type="video/mp4">
         </video>
   </div>
 {% elif module.hero_type == "full-image" %}
+    {% require_head %}
+        <link rel="preload" href="{{resize_image_url(module.image.src, 0, 0, 1500)}}">
+    {% end_require_head %}
 {% require_css %}
     <style>
         .hero-full-image {
-            background: url("{{resize_image_url(module.image.src, 1500)}}");
+            background: url("{{resize_image_url(module.image.src, 0, 0, 1500)}}");
             background-size: cover;
             background-position: center;
         }
@@ -63,7 +97,7 @@
 <div class="container-xxl g-0 h-100 
 {% if module.include_form %}hero-form{% else %}heading-location-{{module.style.heading_location}}{% endif %}">
     {% if module.show_breadcrumbs %}
-        <div class="row">
+        <div class="row g-0">
         <div class="col-12 text-end pt-5 position-absolute top-0 end-0 text-white shadow-filter">
             {% set breadcrumbsMenu = module.menu %}
             {% from '/q-theme/assets/macros.html' import breadcrumbs %}
@@ -133,7 +167,7 @@
             </div>
         </div>
     {% else %}
-    <div class="row h-100 justify-content-end flex-column">
+    <div class="row h-100 gx-0 justify-content-end flex-column">
         <div class="col-12 py-5">
         {% if module.pre_header %}<h5 class="fw-bold text-white shadow-filter ms-4">{{module.pre_header}}</h5> {% endif %}
         {% if module.header != "" && module.header %}

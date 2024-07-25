@@ -43,12 +43,33 @@
   "required" : false,
   "locked" : false,
   "type" : "richtext",
-  "visibility" : {
-    "controlling_field_path" : "region",
-    "controlling_value_regex" : "au",
-    "property": "",
-    "operator" : "EQUAL"
-     },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "ysafe",
+      "property": "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "ysafe-2",
+      "property": "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
   "default" : "<p style='color: inherit'><strong>Call us on 1300 687 052</strong> for an informal chat, <a href='mailto:enquiries@linewize.io' style='color: inherit;'>email us</a> or <a href='https://linewize.io/' style='color: inherit;'>visit our website</a> for more information.</p>"
 },{
   "name" : "eu_footer_copy",
@@ -108,12 +129,38 @@
   "required" : false,
   "locked" : false,
   "type" : "richtext",
-  "visibility" : {
-    "controlling_field_path" : "region",
-    "controlling_value_regex" : "ysafe",
-    "property": "",
-    "operator" : "EQUAL"
-     },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : [
+      {
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "type",
+        "controlling_value_regex" : "ysafe",
+        "property": "",
+        "operator" : "EQUAL",
+        "access" : null
+      }, {
+        "controlling_field" : null,
+        "controlling_field_path" : "type",
+        "controlling_value_regex" : "ysafe-2",
+        "property": "",
+        "operator" : "EQUAL",
+        "access" : null
+      } ]
+      }
+    ]
+  },
   "default" : "<p style='color: inherit; font-size: 12px; Margin-top: 0; margin-top: 0;'>sales@ysafe.com.au<br>www.ysafe.com.au</p>"
 },{
   "id" : "profiles_ysafe",

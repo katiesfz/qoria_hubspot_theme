@@ -219,6 +219,16 @@
   "type" : "choice",
   "default" : " "
 }, {
+  "id" : "word_wrap",
+  "name" : "word_wrap",
+  "display_width" : null,
+  "label" : "Enable word wrap",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
   "id" : "advanced",
   "name" : "advanced",
   "display_width" : null,

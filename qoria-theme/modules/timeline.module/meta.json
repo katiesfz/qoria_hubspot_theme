@@ -4,16 +4,16 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 114968409167,
   "css_assets" : [ {
-    "autoload" : true,
+    "autoload" : false,
     "path" : "../../js/slick/slick.css",
     "name" : "slick.css"
   } ],
   "js_assets" : [ {
-    "autoload" : true,
+    "autoload" : false,
     "path" : "../../js/jquery/jquery-3.6.4.min.js",
     "name" : "jquery-3.6.4.min.js"
   }, {
-    "autoload" : true,
+    "autoload" : false,
     "path" : "../../js/slick/slick.min.js",
     "name" : "slick.min.js"
   } ],

@@ -39,6 +39,65 @@
   "type" : "text",
   "default" : "Browse our list of announcements for all the latest ASX updates and insights."
 }, {
+  "id" : "description_reports",
+  "name" : "description_reports",
+  "display_width" : null,
+  "label" : "Annual Reports Description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Download and view our annual reports by clicking on the following links."
+}, 
+{
+  "name" : "corporate_governance",
+  "display_width" : null,
+  "label" : "Corporate Governance",
+  "required" : false,
+  "locked" : false,
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "corporate_governance.cg_name",
+    "default" : null
+  },
+  "children" : [
+    {
+      "picker" : "document",
+      "id" : "corporate_governance.cg_file",
+      "name" : "cg_file",
+      "display_width" : null,
+      "label" : "File",
+      "required" : false,
+      "locked" : false,
+      "type" : "file"
+    }, {
+      "id" : "corporate_governance.cg_name",
+      "name" : "cg_name",
+      "display_width" : null,
+      "label" : "Name",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : true,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Corporate Governance"
+    }],
+  "default": []
+},
+
+
+
+
+
+
+{
   "picker" : "document",
   "id" : "rights_to_receive",
   "name" : "rights_to_receive",
