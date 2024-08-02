@@ -611,3 +611,14 @@ function checkCookie(cname, callback, callbackFalse) {
     }
   }
 }
+
+
+// Function to paginate an array
+
+function paginate(array, num){
+  const pages = [];
+  for (let i=0;i<array.length;i+=num){
+    pages.push(array.slice(i, i + num));
+  }
+  return pages;
+}
