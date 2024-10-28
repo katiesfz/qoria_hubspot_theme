@@ -1,4 +1,13 @@
 [{
+  "id": "unique_name",
+  "name": "unique_name",
+  "default": "",
+  "label": "Unique name",
+  "locked": false,
+  "required": false,
+  "type": "text",
+  "validation_regex": ""
+},{
   "name" : "accordion",
   "display_width" : null,
   "label" : "Accordion",
@@ -23,6 +32,15 @@
     "type": "text",
     "validation_regex": ""
   }, {
+    "id": "accordion.unique_name",
+    "name": "unique_name",
+    "default": "",
+    "label": "Unique name",
+    "locked": false,
+    "required": false,
+    "type": "text",
+    "validation_regex": ""
+  },{
       "id": "accordion.content",
       "default": "<h1>Hello, world!</h1>",
       "label": "Accordion content",

@@ -1,0 +1,14 @@
+{
+  "label": "Related Article Settings",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "",
+  "host_template_types": [
+    "BLOG_POST"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "tags": [],
+  "is_available_for_new_content": true
+}

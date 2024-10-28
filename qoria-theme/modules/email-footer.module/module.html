@@ -50,27 +50,23 @@
 
 <div style="background-color:{{bgColour}}; width: 100%;" class="footer">
 <!--[if gte mso 9]>
-<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
-<v:fill type="tile" src="{{ bgSrc }}" color="{{bgColour}}"/>
-</v:background>
+<v:rect style="width:540px;height:150px;" strokecolor="none">
+    <v:fill type="tile" color="{{bgColour}}" src="{{ bgSrc }}" /></v:fill>
+</v:rect>
+<v:shape id="FooterBG" style="position:absolute;width:540px;height:300px;">
 <![endif]-->
 <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
   <tr>
     <td valign="top" align="center" background="{{ bgSrc }}" style="background-image:url('{{ bgSrc }}');background-size: cover;background-position: center right;padding: 0 32px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt; font-family: Quicksand, Verdana, sans-serif;">
-
       <div style="color: #fff; max-width: 700px; text-align: center; padding-top: 24px;">
         <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
             {% if module.region == "au" && (module.type == "ysafe" || module.type == "success") %}
-
                 {% if module.type == "ysafe" %}
                     {% set profiles = module.profiles_ysafe %}
                 {% elif module.type == "success" %}
                     {% set profiles = module.profiles_success %}
                 {% endif %}
-
                 {% if profiles|length > 0 %}
-
-
                     <tr>
                     <td class="" style="font-size:0; text-align: left;" align="center" valign="top">
                     <!--[if (gte mso 9)|(IE)]>
@@ -78,9 +74,7 @@
                     <tr>
                     <![endif]-->
                     {% set colWidth = ((600 - 64) / profiles|length)|round(0, "floor") %}
-
                         {% for profile in profiles %}
-
                             <!--[if (gte mso 9)|(IE)]>
                             <td valign="top" style="width:{{colWidth}}px;">
                             <![endif]-->
@@ -113,25 +107,14 @@
                             <!--[if (gte mso 9)|(IE)]>
                             </td>
                             <![endif]-->
-
                         {% endfor %}
-
                     <!--[if (gte mso 9)|(IE)]>
                     </tr>
                     </table>
                     <![endif]-->
                  </td>
                 </tr>
-
-
-
-
-
-
-
                 {% endif %}
-
-
                 <tr>
                     <td>
                         <hr style="margin: 12px 0; border: 0; border-top: 1px solid #ffffff;">
@@ -248,4 +231,7 @@
     </td>
   </tr>
 </table>
+<!--[if gte mso 9]>
+</v:shape>
+<![endif]-->
 </div>

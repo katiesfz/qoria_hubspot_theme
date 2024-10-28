@@ -1,5 +1,5 @@
 {
-  "label": "US Map",
+  "label": "US Map with Locations",
   "css_assets": [],
   "icon" : "../../images/module-icons/location-dot.svg",
   "external_js": [],

@@ -103,8 +103,6 @@
       "type" : "image",
       "default" : {
         "size_type" : "auto",
-        "src" : "",
-        "alt" : null,
         "loading" : "lazy"
       }
     }, {
@@ -258,6 +256,16 @@
       }
     }
   }, {
+    "name": "card_alignment",
+    "label": "Cards Alignment",
+    "help_text":"",
+    "required": false,
+    "type": "alignment",
+    "default": {
+        "horizontal_align": "CENTER",
+        "vertical_align": "TOP"
+    }
+}, {
     "id" : "styles.card",
     "name" : "card",
     "display_width" : null,

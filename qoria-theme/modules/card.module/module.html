@@ -23,7 +23,7 @@
 
     {% for text in card.text_group %}
 
-      <div class="py-3">
+      <div class="py-3 {{ "position-relative" if text.stretched_link }}">
 
       {% if text.text %}
         {{ text.text }}
@@ -108,7 +108,15 @@
             download
         {% endif %}
       {% endif %}
-      >{{card.link_label|replace('->','<i class="fa fa-arrow-right"></i>')}}</a>
+      >
+      {% if (card.link_label|striptags) is string_containing "->" %}
+        {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
+      {% elif (card.link_label|striptags) is string_containing " >" %}
+        {% set linkLabel = card.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
+      {% else %}
+        {% set linkLabel = card.link_label %}
+      {% endif %}
+      {{linkLabel}}</a>
     {% endif %}
   
   {% endif %}
@@ -209,7 +217,7 @@
               {% elif card.accent_colour == "bg-red text-white" %}
                 {% set accentColour = "text-bg-red" %}
               {% elif card.accent_colour == "bg-gray-700 text-white" %}
-                {% set accentColour = "text-bg-dark" %}
+                {% set accentColour = "text-bg-dark bg-gray-700" %}
               {% else %}
                 {% set accentColour = card.accent_colour %}
               {% endif %}
@@ -280,12 +288,12 @@
             {% if card.image.src %}
               
               {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
-              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="img-fluid mb-3" alt="{{ card.image.alt }}" {{loadingAttr}}>
+              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="img-fluid mb-3 img-header" style="object-fit: contain;" alt="{{ card.image.alt }}" {{loadingAttr}}>
               
             {% endif %}
           {% endif %}
 
-          {% if !module.styles.title_accent || module.styles.accent == False  %}
+          {% if (!module.styles.title_accent || module.styles.accent == False) && ((card.preheader_toggle && card.pre_header != "") || (icon == true) || (card.title != ""))  %}
             <div class="d-flex justify-content-{{ module.styles.textalignment }} mb-3 align-items-center">
               <div>
                 {% if card.preheader_toggle && card.pre_header != "" %}
@@ -366,7 +374,11 @@ document.addEventListener("DOMContentLoaded", () => {
   $(window).on('load resize orientationchange', normaliseHeights("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-header"));
   
   {% if module.styles.normalise_image_headers %}
-  $(window).on('load resize orientationchange', normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top"));
+    {% if module.styles.image_header_fit == "cover" %}
+      $(window).on('load resize orientationchange', normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top"));
+    {% elif module.styles.image_header_fit == "contain" %}
+      $(window).on('load resize orientationchange', normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-body .img-header"));
+    {% endif %}
   {% endif %}
 
   

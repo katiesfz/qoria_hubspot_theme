@@ -6008,6 +6008,11 @@ textarea.form-control-lg {
 .card-video .card-img-bottom {
   position: relative;
 }
+.card-video .card-img img,
+.card-video .card-img-top img,
+.card-video .card-img-bottom img {
+  object-fit: cover;
+}
 .card-video .card-img,
 .card-video .card-img-top {
   border-top-left-radius: var(--q-card-inner-border-radius);
@@ -18920,11 +18925,11 @@ img.blog-featured-image {
 }
 /* Blog post styles */
 .blog-post h1, .blog-post .h1 {
-  font-size: calc(1.275rem + 0.3vw);
+  font-size: calc(1.425rem + 2.1vw);
 }
 @media (min-width: 1200px) {
   .blog-post h1, .blog-post .h1 {
-    font-size: 1.5rem;
+    font-size: 3rem;
   }
 }
 .blog-post h2, .blog-post .h2 {

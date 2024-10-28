@@ -15,7 +15,7 @@
   }, {
     "autoload" : true,
     "path" : "../../js/bootstrap/collapse.js",
-    "name" : "tabs.js"
+    "name" : "collapse.js"
   } ],
   "other_assets": [],
   "tags": [],

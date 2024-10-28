@@ -5,6 +5,9 @@
             {% set card = true %}
         {% endif %}
         <div class="col {{ "pb-4" if card }}">
+            {% if person.anchor %}
+                <a id="{{person.anchor}}" data-hs-anchor="true"></a>
+            {% endif %}
             {% if card %}
                 <div class="card {{module.styles.card_colour}} {{module.styles.shadow}} h-100">
                     <div class="card-body {% if person.full_profile %}pb-0{% endif %}">
@@ -13,6 +16,9 @@
                         {% endif %}
                         <p class="fs-6 fw-semibold mb-2">{{person.person_name}}</p>
                         <p class="fs-6  mb-4">{{person.title}}</p>
+                        {% if person.short_profile && person.short_profile != "" %}
+                            {{ person.short_profile }}
+                        {% endif %}
                     </div>
                     {% if person.full_profile %}
                         <div class="card-footer bg-transparent">
@@ -31,6 +37,9 @@
                 {% endif %}
                 <p class="fs-6 fw-semibold mb-2">{{person.person_name}}</p>
                 <p class="fs-6  mb-4">{{person.title}}</p>
+                {% if person.short_profile && person.short_profile != "" %}
+                    {{ person.short_profile }}
+                {% endif %}
                 {% if person.full_profile %}
                         <a class="" href="#"
                                 data-bs-toggle="modal"

@@ -1,0 +1,72 @@
+[ {
+    "id" : "link_format",
+    "name" : "link_format",
+    "display_width" : null,
+    "label" : "State link format",
+    "required" : false,
+    "locked" : false,
+    "inline_help_text": "Use {{name}} as a placeholder for state name and {{abbr}} as a placeholder for state abbreviations.",
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "#{{name}}{{abbr}}"
+  }, {
+    "id" : "onclick",
+    "name" : "link_onclick",
+    "display_width" : null,
+    "label" : "State link onclick event",
+    "required" : false,
+    "locked" : false,
+    "inline_help_text": "Use {{name}} as a placeholder for state name and {{abbr}} as a placeholder for state abbreviations.",
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "#{{name}}{{abbr}}"
+  }, {
+    "id" : "style",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "Style",
+    "required" : false,
+    "locked" : true,
+    "children" : [ {
+      "id" : "style.breakpoint",
+      "name" : "breakpoint",
+      "display_width" : null,
+      "label" : "Breakpoint",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "sm", "Small" ], [ "md", "Medium" ], [ "lg", "Large" ], [ "xl", "Extra Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "lg"
+    }, {
+      "id" : "style.map_colour",
+      "name" : "map_colour",
+      "display_width" : null,
+      "label" : "Map Colour",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "fill-white", "White" ], [ "fill-light", "Light" ], [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fill-white"
+    }],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }
+]
+
+
+
+
+

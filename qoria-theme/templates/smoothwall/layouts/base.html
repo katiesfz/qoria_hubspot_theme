@@ -16,7 +16,7 @@
     {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
     <meta name="description" content="{{ content.meta_description }}">
     {{ require_css(get_asset_url('/q-theme/css/qoria-theme-critical.min.css')) }}
-    {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css'),{ async: true; defer: true }) }}
+    {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css'),{ async: true, defer: true }) }}
 
 
     {{ standard_header_includes }}
@@ -45,18 +45,18 @@
     {% endblock footer %}
 
     {{ standard_footer_includes }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/alert.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/base-component.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/button.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/carousel.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/collapse.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/dropdown.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/modal.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/offcanvas.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/popover.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/scrollspy.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/tab.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/toast.js'), { position: "footer", defer:true }) }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap/tooltip.js'), { position: "footer", defer:true }) }}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/alert.js'), { position: "footer", defer:true }) }}    #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/base-component.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/button.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/carousel.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/collapse.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/dropdown.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/modal.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/offcanvas.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/popover.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/scrollspy.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/tab.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/toast.js'), { position: "footer", defer:true }) }}   #}
+{#    {{ require_js(get_asset_url('/q-theme/js/bootstrap/tooltip.js'), { position: "footer", defer:true }) }}    #}
   </body>
 </html>

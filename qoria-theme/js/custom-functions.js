@@ -69,6 +69,7 @@ function normaliseSlideHeights() {
                                      items.map(function(){
         return $(this).outerHeight()}).get() );
       items.css('min-height', maxHeight + 'px');
+    //  console.log("normalise run");
   }
   
   // responsive equal heights
@@ -542,6 +543,9 @@ function pagination(containerId, curPage) {
   });
 
 }
+
+
+
 
 
 function downloadFile(fileUrl, fileName, target) {

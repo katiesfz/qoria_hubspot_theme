@@ -590,6 +590,30 @@
       "preset" : null,
       "type" : "choice",
       "default" : "primary"
+    }, {
+      "id" : "text_group.stretched_link",
+      "name" : "stretched_link",
+      "display_width" : null,
+      "label" : "Stretched link",
+      "inline_help_text" : "Applies link to the whole text area",
+      "required" : false,
+      "locked" : false,
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [ ]
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
@@ -889,7 +913,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ] ],
+    "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ],[ "bg-secondary text-white", "Secondary" ],[ "bg-indigo text-white", "Indigo" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -1344,7 +1368,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ] ],
+    "choices" : [ [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-indigo text-white", "Indigo" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,

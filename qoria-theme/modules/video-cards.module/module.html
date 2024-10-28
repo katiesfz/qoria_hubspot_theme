@@ -57,17 +57,19 @@
     <div class="{{ "card-video" if module.styles.card.overlay else "card" }} h-100 {{ cardColour }} {{ module.styles.card.shadow if module.styles.card.shadow != "section-shadow" && !module.styles.carousel }}">
         <div class="card-img-top">
         
-            {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.width }}" height="{{ item.video_settings.custom_thumbnail.height }}"' %}
+            {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.width|escape_attr }}" height="{{ item.video_settings.custom_thumbnail.height|escape_attr }}"' %}
                 {% if item.video_settings.custom_thumbnail.size_type == 'auto' %}
-                    {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.width }}" height="{{ item.video_settings.custom_thumbnail.height }}"' %}
+                    {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.width|escape_attr }}" height="{{ item.video_settings.custom_thumbnail.height|escape_attr }}"' %}
                     {% set sizeCSS = "max-width: 100%; height: auto;" %}
-                    {% set imgSrc = resize_image_url(item.video_settings.custom_thumbnail.src, item.video_settings.custom_thumbnail.width) %}
+                    {% set imgSrc = resize_image_url(item.video_settings.custom_thumbnail.src, item.video_settings.custom_thumbnail.width|escape_attr, 0, 0) %}
                 {% elif item.video_settings.custom_thumbnail.size_type == 'auto_custom_max' %}
-                    {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.max_width }}" height="{{ item.video_settings.custom_thumbnail.max_height }}"' %}
+                    {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.max_width|escape_attr }}" height="{{ item.video_settings.custom_thumbnail.max_height|escape_attr }}"' %}
                     {% set sizeCSS = "max-width: 100%; height: auto;" %}
-                    {% set imgSrc = resize_image_url(item.video_settings.custom_thumbnail.src, item.video_settings.custom_thumbnail.max_width) %}
+                    {% set imgSrc = resize_image_url(item.video_settings.custom_thumbnail.src, item.video_settings.custom_thumbnail.max_width|escape_attr, 0, 0) %}
+                {% else %}                    
+                    {% set imgSrc = item.video_settings.custom_thumbnail.src %}
                 {% endif %}
-            <img src="{{ imgSrc }}" {{sizeAttrs}} alt="{{ item.video_settings.custom_thumbnail.alt }}" class="img-fluid">
+            <img src="{{ imgSrc }}" {{sizeAttrs}} alt="{{ item.video_settings.custom_thumbnail.alt }}" class="img-fluid w-100">
             <div class="play-button play-button-{{ item.video_settings.play_button_colour }}" data-bs-toggle="modal" data-bs-target="#videoModal_{{name|replace("-","_")}}_{{loop.index}}" onclick="playVideo('video{{name|replace('-','_')}}{{loop.index}}')">
             </div>
         </div>
@@ -147,7 +149,15 @@
 
         
         <div class="container-fluid g-0" style="{{module.styles.spacing_field.css}}">
-            <div class="row row-cols-{{ module.styles.responsive.mobile.slides_to_display }} row-cols-md-{{ module.styles.responsive.tablet.slides_to_display }} row-cols-lg-{{ module.styles.responsive.desktop.slides_to_display }} g-3">
+        {% if module.styles.alignment.horizontal|lower == "left" %}
+            {% set rowAlignment = "justify-content-start" %}
+        {% elif module.styles.alignment.horizontal|lower == "right" %}
+            {% set rowAlignment = "justify-content-end" %}
+        {% else %}
+            {% set rowAlignment = "justify-content-center" %}
+        {% endif %}
+
+            <div class="row row-cols-{{ module.styles.responsive.mobile.slides_to_display }} row-cols-md-{{ module.styles.responsive.tablet.slides_to_display }} row-cols-lg-{{ module.styles.responsive.desktop.slides_to_display }} g-3 {{ rowAlignment }}">
 
             {% for item in module.video_card %}
 

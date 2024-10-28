@@ -346,6 +346,33 @@
      "step": 1,
      "suffix": "px",
      "type": "number"
+    },
+    {
+     "choices": [
+      [
+       "left",
+       "Left"
+      ],
+      [
+       "center",
+       "Center"
+      ],
+      [
+       "right",
+       "Right"
+      ]
+     ],
+     "default": "center",
+     "display": "select",
+     "display_width": null,
+     "label": "Row alignment",
+     "locked": false,
+     "multiple": false,
+     "name": "row_alignment",
+     "preset": null,
+     "reordering_enabled": true,
+     "required": false,
+     "type": "choice"
     },{
       "name" : "shadow",
       "label" : "Shadow",

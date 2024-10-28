@@ -1,97 +1,3 @@
-{% macro single_blog_card() %}
-    <div class="{{module.styles.card_colour}} p-4 single-blog h-100 position-relative">
-        {% if blog.use_featured_image %}
-            <div class="featured-image-container mb-4 position-relative">
-                <img src="{{ resize_image_url(blog.featured_image, 800) }}" alt="{{ blog.name }}" class="rounded featured-image object-fit-cover">
-                <div class="content-type-tag {{typeColour}}">{{ blogType }}</div>
-            </div>
-        {% endif %}
-        <div class="row metadata mb-3">
-            <div class="col text-start">
-                <p class="small text-secondary fw-semibold"><i class="fa fas fa-pencil me-1"></i> {{ ((blog.post_body|regex_replace("{%.*%}", "")|striptags|wordcount)/225)|round(0, "ceil") }} minute read</p>
-            </div>
-            <div class="col text-end">
-            {% if blog.blog_post_author.display_name %}
-            <p class="small text-secondary fw-semibold">{{blog.blog_post_author.display_name}}</p>
-            {% endif %}
-            </div>
-        </div>
-        <h5 class="fw-semibold">{{ blog.name }}</h5>
-        {% if blog.widgets.description %}
-            <p class="mb-0">{{blog.widgets.description.body.text}}</p>
-        {% else %}
-            <p class="mb-0">{{blog.post_summary|regex_replace("{%.*%}", "")|striptags|truncate(180, "...")}}</p>
-        {% endif %}
-        <a href="{{blog.absolute_url}}" class="text-reset fw-semibold text-decoration-none stretched-link mt-3"></a>
-    </div>
-
-{% endmacro %}
-
-{% macro video_modal() %}
-
-    <div class="modal fade" id="videoModal-{{blog.id}}" tabindex="-1" aria-labelledby="videoModal-{{blog.id}}" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content overflow-hidden">
-                <div class="modal-body p-0">
-                    <div class="position-relative">
-                        <div id="videoContainer-{{blog.id}}">
-   
-                        </div>                   
-                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" onclick="pauseVideo('video-{{blog.id}}')"></button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-
-    window.addEventListener("load", function() {
-        if(document.readyState == 'complete') {
-            var postBody = "{{ blog.post_body|escape_jinjava|escapejs }}";
-            const regex = /(?!end_module_block)(?!video_file)https.*?(?=\")(?!end_module_block)/gi;
-            var videoURL = postBody.match(regex);
-            // console.log(videoURL);
-            var durSpan = document.getElementById("duration-{{blog.id}}");
-            
-            var videoContainer = document.getElementById("videoContainer-{{blog.id}}");
-
-            var fragment = new DocumentFragment;
-
-            var newVid = document.createElement("video");
-            newVid.id = "video-{{blog.id}}";
-            newVid.classList.add("d-block");
-            newVid.style.width = "100%";
-
-            var newSource = document.createElement("source");
-            newSource.src = videoURL;
-
-            newVid.append(newSource);
-            newVid.append("Your browser does not support the video tag.");
-
-            // console.log(newVid);
-
-            fragment.append(newVid);
-
-            videoContainer.append(fragment);
-
-            var newVideoEl = document.getElementById(newVid.id);
-            
-            newVideoEl.addEventListener('loadedmetadata', function () {
-                var duration = newVideoEl.duration;
-                durSpan.innerHTML = Math.ceil(duration/60);
-            });
-         
-        }
-    });
-
-    </script>
-
-{% endmacro %}
-
-
-
 {% if module.selection == "auto" %}
 
     {# select the blog #}
@@ -100,25 +6,26 @@
     {% else %}
         {% set blogId = "default" %}
     {% endif %}
+    {% set blog = blog_by_id(blogId)%}
 
     {% if module.post_type == "popular" %}
         {# get popular posts if sorting by popular #}
         {% set blog_posts = blog_popular_posts(blogId, module.tag_field, module.timeframe) %}
             <script>
-                console.log("tag_field is not null");
+               // console.log("tag_field is not null");
             </script>
     {% elif module.post_type == "latest" %}
         {# get latest posts if sorting by latest #}
-        {% if module.tag_field && module.tag_field|length != 0 %}
+        {% if (module.tag_field) && (module.tag_field|length > 0) %}
             {# if filtered by tag we can get them all with this function #}
             {% set blog_posts = blog_recent_tag_posts(blogId, module.tag_field) %}
                 <script>
-                    console.log("tag_field is not null");
+                  //  console.log("tag_field is not null");
                 </script>
         {% else %}
             {# we get all the posts if we're on the listing page, otherwise we get the most recent 200 #}
             {% set totalBlogCount = blog_total_post_count(blogId) %}
-                {% if totalBlogCount > 200 && is_listing_view %}
+                {% if is_listing_view %}
                     {% set blog_posts = contents %}
                 {% elif totalBlogCount > 200 %}
                     {% set blog_posts = blog_recent_posts(blogId, 200) %}
@@ -141,7 +48,6 @@
     {% else %}
         {% set blog_posts_tag_excluded = blog_posts %}
     {% endif %}
-
 
     {# include pullouts #}
     {% set pulloutIds = [] %}
@@ -210,69 +116,67 @@
      {% if module.custom_limit %}
          {% set postsPerPage = module.number_of_posts|int %}
      {% else %}
-         {% set postsPerPage = blog.posts_per_listing_page %}
+        {% set postsPerPage = blog.posts_per_listing_page %}
      {% endif %}
 
 <script>
-//console.log('{{blog_posts_filtered|string|escape_js}}');
-//console.log('{{blogId}}');
-//console.log('{{module.tag_field}}');
-//console.log('{{blog_posts|string|escape_js}}');
+// console.log('contents|string|escape_js');
+// console.log('blog|tojson|escape_js');
+// console.log('module.tag_field');
+// console.log('blog_posts_filtered.objects|string|escape_js');
 // build blogPosts object
 
-const blogPosts = [
-    {% for blog in blog_posts_filtered %}
+const blogPosts_{{name|replace("-","_")}} = [
+    {% for blog in blog_posts_filtered.objects %}
         {
             "name": "{{blog.name|escape_js}}",
-            {% if module.styles.card_style == "video" %}
+            {%- if module.styles.card_style == "video" %}
                 "card_style": "video",
             {% elif module.styles.card_style == "blog" %}
                 "card_style": "blog_post",
             {% elif module.styles.card_style == "card" %}
                 "card_style": "blog_card",
-            {% endif %}
-                {% if blog.pulloutType %}
+            {% endif -%}
+                {%- if blog.pulloutType %}
                 "pre_heading": "{{blog.preHeading}}",
                 "pullout_type": "{{blog.pulloutType}}",
                 "background_colour": "{{blog.backgroundColour}}", 
                 "background_image": "{{blog.backgroundImage.src}}",
                 "pullout": "true",
-                {% else %}
+                {%- else -%}
                     "pullout": "false",
-                {% endif %}
+                {% endif -%}
             "id": "{{blog.id|escape_js}}",
-            {% if blog.useFeaturedImage %}
+            {%- if blog.useFeaturedImage %}
                 "featured_image": "{{ resize_image_url(blog.featuredImage, 800)|escape_js }}",
-            {% endif %}
+            {% endif -%}
             "length": "{{ ((blog.postBody|regex_replace("{%.*%}", "")|striptags|wordcount)/225)|round(0, "ceil")|escape_js }}",
-            {% if blog.blogPostAuthor.displayName %}
+            {%- if blog.blogPostAuthor.displayName %}
                 "author_name": "{{blog.blogPostAuthor.displayName|escape_js}}",
-            {% endif %}
+            {% endif -%}
             "absolute_url": "{{blog.absoluteUrl|escape_js}}",
-            {% if blog.widgets.description %}
+            {%- if blog.widgets.description %}
                 "description": "{{blog.widgets.description.body.text|escape_js}}",
             {% else %}
                 "description": "{{blog.postSummary|regex_replace("{%.*%}", "")|striptags|truncate(180, "...")|escape_js}}",
-            {% endif %}
+            {% endif -%}
             "tags": [
-            {% for tag in blog.tagList %}
-                "{{tag|escape_js}}"{{"," if !loop.last }}
-            {% endfor %}
+            {%- for tag in blog.tagList -%}
+                "{{tag.name|escape_js}}"{{"," if !loop.last }}
+            {%- endfor -%}
             ],
             "tag_slugs": [
-            {% for tag in blog.tagList %}
+            {%- for tag in blog.tagList -%}
                 "{{tag.slug|escape_js}}"{{"," if !loop.last }}
-            {% endfor %}
+            {%- endfor -%}
             ],
-
-            // does the blog contain a video?
-             {% if (blog.post_body|escape_jinjava|string) is string_containing "video_file" %}
+            {# does the blog contain a video? #}
+             {%- if (blog.post_body|escape_jinjava|string) is string_containing "video_file" %}
                 "has_video": "true",
             {% else %}
                 "has_video": "false",
-            {% endif %}  
-
-            {% if blog.widgets.blogType.body.value == "case_study" %}
+            {% endif -%}  
+            {%- if blog.widgets.blogType.body.value == "case_study" %}
                 "type": "Case study",
                 "type_colour": "text-bg-primary",
             {% elif blog.widgets.blogType.body.value == "video" %}
@@ -284,19 +188,15 @@ const blogPosts = [
             {% else %}
                 "type": "Article",
                 "type_colour": "text-bg-secondary",
-            {% endif %}
-            },
+            {% endif -%}
+            }{{ "," if !loop.last }}
     {% endfor %}
     ]; 
     
-//console.log(blogPosts);
-
+console.log(blogPosts_{{name|replace("-","_")}});
 
 </script>
 
-
-
-{% if blog_pages != [] %}
     <div class="container-fluid blog-listing g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}  transition-property: height; transition-duration: 500ms;" id="bloglisting-{{name}}">
         {% if module.enable_tag_filtering %}    
         <div class="row">
@@ -309,62 +209,12 @@ const blogPosts = [
             </div>
         {% endif %}        
         <div class="row g-0">
-            <div class="col pages-container" id="pagesContainer" style="transition-property: height; transition-duration: 500ms; overflow: hidden; filter: drop-shadow({{module.styles.shadow}});">
-                <div id="blogsContainer" class="row flex-wrap row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3">
+            <div class="col" id="pagesContainer" style="transition-property: height; transition-duration: 500ms; overflow: hidden; filter: drop-shadow({{module.styles.shadow}});">
+                <div id="blogsContainer_{{name}}" class="row flex-wrap row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3 pages-container">
 
                 </div>
             </div>
         </div>
-        <!--
-        <div class="row g-0 d-none">
-            <div class="col pages-container" style="transition-property: height; transition-duration: 500ms; overflow: hidden; filter: drop-shadow({{module.styles.shadow}});">
-                    {% for blog_page in blog_pages %}
-                        {% if loop.index == 1 %}
-                            {% set printPage = true %}
-                        {% else %}
-                            {% if module.styles.pagination %}
-                                {% set printPage = true %}
-                            {% else %}
-                                {% set printPage = false %}
-                            {% endif %}
-                        {% endif %}
-                        {% if printPage == true %}
-                            <div id="bloglisting-{{name}}-{{loop.index}}" class="paginated-page {{ "d-none" if !loop.first else "active" }} row flex-wrap row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3">
-                                {% for blog in blog_page %}
-                                    {% if blog != "&nbsp;" %}
-                                        {% if blog.widgets.blog_type.body.value == "case_study" %}
-                                            {% set blogType = "Case study" %}
-                                            {% set typeColour = "text-bg-primary" %}
-                                        {% elif blog.widgets.blog_type.body.value == "video" %}
-                                            {% set blogType = "Video" %}
-                                            {% set typeColour = "text-bg-red" %}
-                                        {% elif blog.widgets.blog_type.body.value == "whitepaper" %}
-                                            {% set blogType = "Whitepaper" %}
-                                            {% set typeColour = "text-bg-blue" %}
-                                        {% else %}
-                                            {% set blogType = "Article" %}
-                                            {% set typeColour = "text-bg-secondary" %}
-                                        {% endif %}
-                                        <div class="col">
-                                        {% if blog.id is in pulloutIds %}
-                                                {{ pullout_post() }}
-                                        {% else %}
-                                            {% if module.styles.card_style == "video" %}
-                                            {% elif module.styles.card_style == "blog" %}
-                                            {{ single_blog_post() }}
-                                            {% elif module.styles.card_style == "card" %}
-                                            {{ single_blog_card() }}
-                                            {% endif %}
-                                        {% endif %}
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-            </div>
-        </div>
-        -->
         {% if module.styles.pagination %}
             <div class="row pt-4 mt-auto">
                 <div class="col text-center">
@@ -375,7 +225,6 @@ const blogPosts = [
             </div>
         {% endif %}
     </div>
-{% endif %}
 
 
 {# if video styles, then render the video popups here #}
@@ -448,10 +297,13 @@ const blogPosts = [
 <script>
 
  // init: 
-var contentsAll = blogPosts;
+var contentsAll = blogPosts_{{name|replace("-","_")}};
 var contents = contentsAll;
 var itemsPerPage = {{postsPerPage}};
-var elementContainer = document.getElementById("blogsContainer");
+var outerContainer = document.getElementById("bloglisting-{{name}}");
+var elementContainer = outerContainer.getElementsByClassName("pages-container")[0];
+var paginationContainer = outerContainer.getElementsByClassName("pagination-container")[0];
+var filtersContainer = outerContainer.getElementsByClassName("filter-tags-container")[0];
 var curPage = 1;
 
 // print single blog post
@@ -463,7 +315,7 @@ function itemTemplate(blog){
     const newPost = document.createElement("div");
     let newContent = "";
 
-    newPost.classList.add("p-3", "single-blog", "border", "border-dark-subtle", "h-100", "position-relative", {{"'" ~ module.styles.card_colour ~ "'" if module.styles.card_colour != " "}});
+    newPost.classList.add("p-3", "single-blog", "border", "border-dark-subtle", "h-100", "position-relative"{{", '" ~ module.styles.card_colour ~ "'" if (module.styles.card_colour) && (module.styles.card_colour != " ")}});
 
     // featured image
     if (blog.featured_image){
@@ -564,6 +416,77 @@ function pulloutTemplate(blog){
     return newCol;
 }
 
+// print blog in card style 
+function blogCardTemplate(blog) {
+
+    const newCol = document.createElement("div");
+    newCol.classList.add("col");
+
+    const newCard = document.createElement("div");
+    let newContent = "";
+
+
+    newCard.classList.add("position-relative", "p-4", "single-blog", "h-100");
+
+    {% if (module.styles.card_colour) && (module.styles.card_colour != " ") %}
+        newCard.classList.add("{{module.styles.card_colour|replace(' ', '", "')}}");
+    {% endif %}
+
+
+    // featured image container
+    if (blog.featured_image){
+    newContent += '<div class="featured-image-container mb-4 position-relative">';
+
+        
+        let featuredImage = document.createElement("img");
+        featuredImage.src = blog.featured_image;
+        featuredImage.classList.add("featured-image", "rounded", "object-fit-cover");
+        featuredImage.alt = blog.name;
+        newContent += featuredImage.outerHTML;
+
+        // tag
+        let contentTag = document.createElement("div");
+        contentTag.classList.add("content-type-tag", blog.type_colour);
+        contentTag.innerHTML = blog.type;
+        newContent += contentTag.outerHTML;
+
+    newContent += '</div>';
+    }
+
+    
+    // print metadata
+    newContent += '<div class="row metadata mb-3">';
+        newContent += '<div class="col text-start">';
+            newContent += '<p class="small text-secondary fw-semibold"><i class="fa fas fa-pencil me-1"></i>' + blog.length + ' minute read</p>';
+        newContent += '</div>';
+        if (blog.author_name) {
+        newContent += '<div class="col text-end">';
+            newContent += '<p class="small text-secondary fw-semibold">' + blog.author_name + '</p>';
+        newContent += '</div>';
+        }
+    newContent += '</div>';
+
+    // print name
+    newContent += '<h5 class="fw-semibold">' + blog.name + '</h5>';
+
+    // print description
+    if (blog.description){
+        newContent += '<p class="mb-0">' + blog.description + '</p>';
+    }
+
+    // print link
+    newContent += '<a href="' + blog.absolute_url + '" class="text-reset fw-semibold text-decoration-none stretched-link mt-3"></a>';
+
+
+
+    newCard.innerHTML = newContent;
+
+    newCol.append(newCard);
+
+    return newCol;
+}
+
+
 // print single video post
 function videoTemplate(blog) {
 
@@ -576,7 +499,7 @@ function videoTemplate(blog) {
 
     newVideo.classList.add("position-relative");
 
-    {% if module.styles.card_colour %}
+    {% if (module.styles.card_colour) && (module.styles.card_colour != " ") %}
         newVideo.classList.add("{{module.styles.card_colour|replace(' ', '", "')}}");
     {% endif %}
 
@@ -625,8 +548,6 @@ function videoTemplate(blog) {
 
 // pagination - 
 function pagination2(curPage) {
-
-    const paginationContainer = document.getElementById("pagination");
 
     // if the pagination container doesn't exist, don't bother continuing
     if (!paginationContainer) {
@@ -826,7 +747,7 @@ function blogFilter(){
             return
             }
             if (item.card_style == "blog_card") {
-            elementContainer.appendChild(itemTemplate(item));
+            elementContainer.appendChild(blogCardTemplate(item));
             return
             }
             if (item.card_style == "video") {
@@ -847,7 +768,9 @@ function blogFilter(){
 window.addEventListener("load", function() {
 
     if(document.readyState == 'complete') {
+    {% if module.enable_tag_filtering %}    
         blogFilter();
+    {% endif %}
         goToPage2(1);
     }
 });
