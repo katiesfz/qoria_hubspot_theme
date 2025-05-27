@@ -1,0 +1,2137 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize US Old School Campaign
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+  
+{% extends "../landing-page-no-navigation.html" %}
+
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+{% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ ],
+        header="<strong>Some things are better old-school.</Strong><br>Your web filter? Not so much",
+        hero_type="full-image",
+        image={
+          "alt" : "boy-with-camera",
+          "height" : 1006,
+          "loading" : "disabled",
+          "max_height" : 914.5454545454546,
+          "max_width" : 2000,
+          "size_type" : "auto_custom_max",
+          "src" : "https://www.linewize.com/hubfs/Retro%20ABM/boy-with-camera.jpg",
+          "width" : 2200
+        },
+        menu=144245053496,
+        page_contents=[ {
+          "anchor" : "#intro",
+          "content_label" : "Introducing: Linewize Filter"
+        }, {
+          "anchor" : "#nextgen",
+          "content_label" : "Next-Gen Filter Features "
+        }, {
+          "anchor" : "#challenges",
+          "content_label" : "K-12 Filter Challenges Today"
+        }, {
+          "anchor" : "#cam",
+          "content_label" : "Feature Spotlight: Real-Time Image Blurring"
+        } ],
+        pre_header="",
+        show_breadcrumbs=true,
+        show_share_price="false",
+        style={
+          "heading_location" : "middle-left"
+        },
+        video=""
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  margin={
+    "default" : {
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=6,
+    padding={
+      "default" : {
+        "bottom" : "0px",
+        "right" : "2rem"
+      },
+      "mobile" : {
+        "bottom" : "32px",
+        "right" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/rich-text",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            },
+            "text" : "<p><span>Let's face it: the Internet isn't what it used to be. </span></p>\n<p><span>Unfortunately, many IT teams still rely on filter strategies that go back as far as 2000, when CIPA was first mandated in schools. </span></p>\n<p><span>But legacy filters and tactics can’t keep up with today’s dynamic digital environment.&nbsp;<br><br>Our content-aware hybrid filter is designed to address modern challenges head-on — without straining your resources.</span></p>\n<p><span><a href='/demo' rel='noopener'><strong>Book a call with our team</strong></a> to to learn more about how Linewize can help your district stay ahead.&nbsp;</span></p>"
+          } ]
+        } ],
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/fancy-image",
+        offset=0,
+        width=12,
+        image={
+          "alt" : "the linewize team sig",
+          "height" : 108,
+          "loading" : "lazy",
+          "max_height" : 108,
+          "max_width" : 947,
+          "size_type" : "auto_custom_max",
+          "src" : "https://www.linewize.com/hubfs/the%20linewize%20team%20sig.png",
+          "width" : 947
+        },
+        style={
+          "alignment" : {
+            "horizontal_align" : "LEFT",
+            "vertical_align" : "MIDDLE"
+          },
+          "greyscale_filter" : false,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 16
+              }
+            },
+            "padding" : {
+              "bottom" : { },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 1
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=6,
+    width=6,
+    padding={
+      "default" : {
+        "left" : "2rem"
+      },
+      "mobile" : {
+        "left" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/video",
+        offset=0,
+        width=12,
+        video_file="https://www.linewize.com/hubfs/Linewize%20Filter%20-%20Retro%20AMB%202025.mp4"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="meeting"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cta",
+        offset=0,
+        width=12,
+        button_colour="secondary",
+        button_size=" ",
+        button_text="Book a meeting",
+        link={
+          "no_follow" : false,
+          "open_in_new_tab" : false,
+          "url" : {
+            "href" : "https://www.linewize.com/demo",
+            "type" : "EXTERNAL"
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "auto",
+    "image_url" : "https://www.linewize.com/hubfs/Retro%20ABM/old-celluloid-texture-off-white-stripe.jpg"
+  },
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "100px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cursive-heading",
+        offset=0,
+        width=12,
+        heading_tag="h2",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <div style="text-align: center;">Your next-generation filter is here.</div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="intro"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "top" : "80px"
+          },
+          "mobile" : {
+            "top" : "40px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=2
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=2,
+            width=8,
+            padding={
+              "default" : {
+                "bottom" : "32px"
+              },
+              "mobile" : {
+                "bottom" : "32px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/heading",
+                offset=0,
+                width=12,
+                heading_tag="h3",
+                style={
+                  "heading_underline" : true,
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : { },
+                      "top" : { }
+                    }
+                  },
+                  "textalignment" : "center"
+                }
+              %}
+                {% module_attribute "heading" %}
+                  <p><span style="font-weight: bold;">Linewize Filter is a content-aware, real-time hybrid filter </span><br>&nbsp;designed to adapt alongside your district<br>as the future of education evolves.</p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=10,
+            width=2
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_image={
+    "background_position" : "BOTTOM_CENTER",
+    "background_size" : "auto",
+    "image_url" : "https://www.linewize.com/hubfs/stripe-bg.png"
+  },
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="nextgen"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "64px"
+        },
+        "mobile" : {
+          "bottom" : "32px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=2,
+        width=8
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead" style="text-align: center;">Today’s tech-savvy students are racing ahead of the very solutions designed to keep them safe.&nbsp; In a digital world, modern solutions are the best way forward.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead" style="text-align: center;">&nbsp;</p>
+              <p class="lead" style="text-align: center; font-size: 26px;">Introducing the <span style="font-weight: bold;">next generation of filter features.</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=10,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "bg-primary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "multiple_text" : true,
+          "text" : "<p>Differentiate between harmful and harmless content to give your students a safer, balanced learning environment.</p>",
+          "text_group" : [ {
+            "cta_colour" : "primary",
+            "cta_size" : " ",
+            "cta_style" : "text-",
+            "download" : false,
+            "download_file" : "",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "text" : "<h5>Real-time filtering for a safer, balanced learning environment.</h5>"
+          }, {
+            "cta_colour" : "primary",
+            "cta_size" : " ",
+            "cta_style" : "text-",
+            "download" : false,
+            "download_file" : "",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "text" : "<p><strong>Prevent inappropriate content</strong> from slipping through the cracks with real-time image blurring (including AI-generated photos).</p><p><strong>See beyond the URL</strong> to assess the context behind every click to see the full picture.</p><p><strong>Dynamically analyze content</strong> to prevent over-filtering — without comprising safety.</p><p>&nbsp;</p>"
+          } ],
+          "title" : "<p><strong>Content-Aware </strong>Filtering</p>"
+        }, {
+          "accent_colour" : "bg-secondary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "multiple_text" : true,
+          "text" : "<p>Gain control of unmanaged devices and filter without the need for proxies, tunnels, or additional certificates.</p>",
+          "text_group" : [ {
+            "cta_colour" : "primary",
+            "cta_size" : " ",
+            "cta_style" : "text-",
+            "download" : false,
+            "download_file" : "",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "text" : "<h5>Combine timeless, reliable hardware with cloud flexibility.</h5>"
+          }, {
+            "cta_colour" : "primary",
+            "cta_size" : " ",
+            "cta_style" : "text-",
+            "download" : false,
+            "download_file" : "",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "text" : "<p><strong>Eliminate</strong> <strong>proxy problems,</strong>&nbsp; tunneled traffic, and<strong> </strong>middleman servers.</p>\n<p><strong>Get your inline appliance back</strong>, reducing network<strong> </strong>strain and ensuring continuity — even during outages or time of high traffic.<strong> </strong></p>\n<p><strong>Gain full visibility </strong>with a cloud-first approach to managed devices, paired with an appliance that handles unmanaged devices</p>\n<p>&nbsp;</p>"
+          } ],
+          "title" : "<p><strong>Hybrid</strong> Filtering</p>"
+        }, {
+          "accent_colour" : "bg-orange text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "multiple_text" : true,
+          "text" : "<p>Analyze websites instantly so inappropriate content doesn’t slip through the cracks. And filter at the browser level to block threats hidden behind the homepage.</p>",
+          "text_group" : [ {
+            "cta_colour" : "primary",
+            "cta_size" : " ",
+            "cta_style" : "text-",
+            "download" : false,
+            "download_file" : "",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "text" : "<h5>Block threats hidden beyond the homepage.</h5>"
+          }, {
+            "cta_colour" : "primary",
+            "cta_size" : " ",
+            "cta_style" : "text-",
+            "download" : false,
+            "download_file" : "",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "text" : "<p><strong>Analyze entire URLs</strong> — not just domain names — for greater, granular control beyond the slash.</p>\n<p><strong>&nbsp;Gain insights into all data streams</strong>, including non web-based traffic.</p>\n<p><strong>Prevent policy circumvention</strong> <strong>with greater accuracy, </strong>avoiding<strong> </strong>harmful filter workarounds.</p>"
+          } ],
+          "title" : "<p><strong>Full-Path</strong> Filtering</p>"
+        } ],
+        styles={
+          "responsive" : {
+            "breakpoints" : {
+              "mobile" : 1,
+              "tablet" : 3
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_linear_gradient={
+    "colors" : [ "rgba(81, 91, 165, 1)", "rgba(88, 183, 142, 1)" ],
+    "direction" : "to bottom left"
+  },
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="stats"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=7
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h2",
+            heading_underline="true",
+            style={
+              "colour" : "light",
+              "heading_underline" : false,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                }
+              },
+              "textalignment" : "start"
+            }
+          %}
+            {% module_attribute "heading" %}
+              Nearly <strong>20% of schools in the United States</strong> rely on Linewize filtering to maintain compliance and protect students at school, at home, and everywhere in between.
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=7,
+        width=5
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/statistic",
+            offset=0,
+            width=12,
+            statistic=[ {
+              "animate_stat" : true,
+              "description" : "",
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "graduation-cap",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "number" : 25,
+              "stat_colour" : "inherit",
+              "statistic_header" : "students",
+              "unit" : "m"
+            }, {
+              "animate_stat" : true,
+              "description" : "",
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "location-dot",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fal",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "number" : 25000,
+              "stat_colour" : "inherit",
+              "statistic_header" : "schools",
+              "unit" : "k"
+            } ],
+            style={
+              "icon_colour" : "light",
+              "responsive" : {
+                "desktop" : {
+                  "stats" : 2
+                },
+                "mobile" : {
+                  "stats" : 1
+                },
+                "tablet" : {
+                  "stats" : 1
+                }
+              },
+              "stat_colour" : "light",
+              "stat_size" : "3"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="challenges"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "34px"
+        },
+        "mobile" : {
+          "bottom" : "32px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=2,
+        width=8
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h2",
+            style={
+              "heading_underline" : true,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              <p>Navigate the most common web filter</p>
+              <p><strong>challenges in K-12 schools.</strong></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead" style="text-align: center;">The Internet isn’t what it used to be.&nbsp;<br><span style="font-weight: bold;">Linewize Filter helps districts address modern filtering problems:</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=10,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=0,
+        width=12,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "lightbulb-exclamation",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h6 style='text-align: center;'>Website Generation</h6>\n<p style='text-align: center;'>&nbsp;Websites are created &amp; modified faster than they can be categorized</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h6 style='text-align: center;'>Encrypted Traffic</h6>\n<p style='text-align: center;'>Encrypted traffic evades detection, buried beneath sites that appear safe</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h6 style='text-align: center;'>AI-Generated Content</h6>\n<p style='text-align: center;'>AI is generating content quicker than you can revise rules</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h6 style='text-align: center;'>Tech &amp; Youth</h6>\n<p style='text-align: center;'>The modern classroom is dynamic &amp; digital — just like your students.</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h6 style='text-align: center;'>Evolving Legislation</h6>\n<p style='text-align: center;'>&nbsp;Legislation changes quicker than you can prepare&nbsp; policies</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h6 style='text-align: center;'>Filter Circumvention</h6>\n<p style='text-align: center;'>Students are finding more sophisticated ways of getting around school filters</p>"
+        } ],
+        style={
+          "icon_arrangement" : "stacked",
+          "icon_style" : "fas",
+          "sizing" : "absolute",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 8
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 32
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "auto",
+    "image_url" : "https://www.linewize.com/hubfs/Retro%20ABM/old-celluloid-texture-off-white-stripe.jpg"
+  },
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "100px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "100px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cursive-heading",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 16
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <p style="text-align: center;">Your filter can't stay stuck in the past.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="lead" style="text-align: center;">The challenge isn't just about keeping up —<br><span style="font-weight: bold;">it's about getting ahead.</span></p>
+          <p class="lead" style="text-align: center;">Filters must evolve to meet today's dynamic demands head on.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="cam"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="lead" style="text-align: center; font-weight: normal;">FEATURE SPOTLIGHT</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h2",
+        heading_underline="true",
+        style={
+          "colour" : " ",
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          <strong>Content-aware Module: </strong>Image Blurring
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6,
+        padding={
+          "mobile" : {
+            "bottom" : "32px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h4",
+            style={
+              "heading_underline" : false,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 10
+                  },
+                  "left" : { },
+                  "right" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 5
+                  }
+                }
+              },
+              "textalignment" : "start"
+            }
+          %}
+            {% module_attribute "heading" %}
+              <strong>Blur inappropriate images</strong> on new, uncategorized, or proxy sites in real time.
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/icon-and-text-group",
+            offset=0,
+            width=12,
+            icon_and_text=[ {
+              "icon" : {
+                "absolute_icon_size" : "fa-2x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fas",
+                "max_width" : 52,
+                "relative_icon_size" : "fa-xl",
+                "sizing" : "inherit"
+              },
+              "icon_alignment" : "align-items-center",
+              "text" : "<h6>Block risky AI-generated images</h6>\n<p>Protect youth from creating or viewing harmful AI-generated photos.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-2x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fas",
+                "max_width" : 52,
+                "relative_icon_size" : "fa-xl",
+                "sizing" : "inherit"
+              },
+              "icon_alignment" : "align-items-center",
+              "text" : "<h6>Reinforce compliance &amp; reduce safety risks.</h6>\n<p>Prevent students from accessing inappropriate images on sites and searches.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-2x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fas",
+                "max_width" : 52,
+                "relative_icon_size" : "fa-xl",
+                "sizing" : "inherit"
+              },
+              "icon_alignment" : "align-items-center",
+              "text" : "<h6>Avoid over-censoring your academic environment</h6>\n<p>Customize 'blur' sensitivity levels across different safety categories.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-2x",
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "check",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "fas",
+                "max_width" : 52,
+                "relative_icon_size" : "fa-xl",
+                "sizing" : "inherit"
+              },
+              "icon_alignment" : "align-items-center",
+              "text" : "<h6>Support diverse curriculum needs</h6>\n<p>Use custom exclusion lists to allow access to pre-approved content.</p>"
+            } ],
+            style={
+              "absolute_icon_size" : "fa-2x",
+              "display_as_list" : true,
+              "icon_alignment" : "align-items-start",
+              "icon_arrangement" : "inline",
+              "icon_colour" : "primary",
+              "relative_icon_size" : "fa-2xl",
+              "responsive" : {
+                "desktop" : {
+                  "cards" : 4
+                }
+              },
+              "sizing" : "absolute",
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 8
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 8
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 6
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 0
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/cta",
+            offset=0,
+            width=12,
+            alignment="start",
+            button_colour="secondary",
+            button_text="Try the Content-aware Module",
+            link={
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "#meeting",
+                "type" : "EXTERNAL"
+              }
+            },
+            styles={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 10
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 8
+                  },
+                  "left" : { },
+                  "right" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 32
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/fancy-image",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "content-aware-mockup-animated",
+              "height" : 412,
+              "loading" : "lazy",
+              "max_height" : 383,
+              "max_width" : 650,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/Mockups/content-aware-mockup-animated.gif",
+              "width" : 700
+            },
+            style={
+              "alignment" : {
+                "horizontal_align" : "LEFT",
+                "vertical_align" : "MIDDLE"
+              },
+              "greyscale_filter" : false,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 0
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 16
+                  },
+                  "left" : { },
+                  "right" : { },
+                  "top" : { }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "auto",
+    "image_url" : "https://www.linewize.com/hubfs/Retro%20ABM/old-celluloid-texture-off-white-2.jpg"
+  },
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=6,
+    padding={
+      "default" : {
+        "bottom" : "0px",
+        "right" : "16px"
+      },
+      "mobile" : {
+        "bottom" : "32px",
+        "right" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h3",
+        style={
+          "colour" : " ",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <strong>Linewize Filter Mixtape</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="lead" style="font-size: 21px;">While your filter keeps you on your toes, have a little fun on your feet with your favorite past-time hits, remixed.&nbsp;</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=0,
+        width=6,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check",
+              "type" : "SOLID",
+              "unicode" : "f00c"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fal",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<p class='lead' style='font-size: 18px; text-align: left;'><strong>Every Click You Make</strong> <br>(The Police)</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check",
+              "type" : "SOLID",
+              "unicode" : "f00c"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fal",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<p class='lead' style='font-size: 18px; text-align: left;'><strong>I Don't Want to Fix A Thing </strong>(Aerosmith)</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check",
+              "type" : "SOLID",
+              "unicode" : "f00c"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fal",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<p class='lead' style='font-size: 18px; text-align: left;'><strong>Take Me Home, Encrypted Roads </strong>(J. Denver)</p>"
+        } ],
+        style={
+          "display_as_list" : true,
+          "relative_icon_size" : "fa-xl"
+        }
+      %}
+      {% end_dnd_module %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=6,
+        width=6,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check",
+              "type" : "SOLID",
+              "unicode" : "f00c"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fal",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<p class='lead' style='font-size: 18px; text-align: left;'><strong>Killing Me Softly With Proxies </strong>(The Fugees)</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check",
+              "type" : "SOLID",
+              "unicode" : "f00c"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fal",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<p class='lead' style='font-size: 18px; text-align: left;'><strong>COPPAcabana <br></strong>(Barry Manilow)</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check",
+              "type" : "SOLID",
+              "unicode" : "f00c"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fal",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<p class='lead' style='font-size: 18px; text-align: left;'><strong>A Host With No Name </strong>(America)</p>"
+        } ],
+        style={
+          "display_as_list" : true,
+          "relative_icon_size" : "fa-xl"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="lead" style="font-size: 21px;"><span style="background-color: transparent; text-align: var(--q-body-text-align);">Don't forget to s</span><span style="background-color: transparent; text-align: var(--q-body-text-align);">hare your filter remix when you <span style="font-weight: bold; color: #58b78e;"><a href="#meeting" rel="noopener">meet the team</a>!&nbsp;</span></span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=6,
+    width=6
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/fancy-image",
+        offset=0,
+        width=12,
+        image={
+          "alt" : "mixtape",
+          "height" : 1447,
+          "loading" : "lazy",
+          "max_height" : 1413.0859375,
+          "max_width" : 2000,
+          "size_type" : "auto_custom_max",
+          "src" : "https://www.linewize.com/hubfs/Retro%20ABM/mixtape.png",
+          "width" : 2048
+        },
+        style={
+          "greyscale_filter" : false
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=6,
+    padding={
+      "default" : {
+        "right" : "16px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="bloopers"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h2",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 26
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          Adam Lee's <strong>blooper reel</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "right" : "16px"
+          },
+          "mobile" : {
+            "right" : "0px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12,
+            padding={
+              "default" : {
+                "bottom" : "10px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p class="lead">We love sharing solutions with you in live demos.</p>
+                  <p class="lead">Sticking to a script? Not so easy.</p>
+                  <p class="lead">Book a meeting for a blooper-free convo about our filter and proof of concept program.</p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cta",
+        offset=0,
+        width=12,
+        alignment="start",
+        button_colour="secondary",
+        button_text="Book a meeting",
+        link={
+          "no_follow" : false,
+          "open_in_new_tab" : false,
+          "url" : {
+            "href" : "#meeting",
+            "type" : "EXTERNAL"
+          }
+        },
+        styles={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 20
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 20
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=6,
+    width=6
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/video",
+        offset=0,
+        width=12,
+        custom_thumbnail={
+          "alt" : "Screenshot 2025-01-31 at 2.24.42 PM",
+          "height" : 1046,
+          "max_height" : 1030.5418719211823,
+          "max_width" : 2000,
+          "size_type" : "auto_custom_max",
+          "src" : "https://www.linewize.com/hubfs/Screenshot%202025-01-31%20at%202.24.42%20PM.png",
+          "width" : 2030
+        },
+        video_file="https://www.linewize.com/hubfs/US_LWZ_2025_ABM_Retro_Adam_Blooper.mp4"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "cover",
+    "image_url" : "https://www.linewize.com/hubfs/Retro%20ABM/old-celluloid-texture-off-white-2.jpg"
+  },
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "64px",
+      "right" : "64px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "left" : "64px",
+      "right" : "64px",
+      "top" : "0px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="whatourcustomerssay"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          What our <strong>customers say</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h4",
+        style={
+          "heading_underline" : false,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <strong>Video case studies:</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/video-cards",
+        offset=0,
+        width=12,
+        styles={
+          "autoplay" : false,
+          "card" : {
+            "card_colour" : "bg-light",
+            "overlay" : false,
+            "shadow" : "shadow"
+          },
+          "carousel" : true,
+          "equal_heights" : true,
+          "responsive" : {
+            "desktop" : {
+              "slides_to_display" : 2
+            },
+            "tablet" : {
+              "slides_to_display" : 2
+            }
+          },
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        },
+        video_card=[ {
+          "description" : "<p><strong>Jamie Lewsadder<br></strong>Director of Technology, La Cañada Unified School District&nbsp;</p>",
+          "logo" : {
+            "alt" : "US-District-School-SQ-logo-la-canada-unified-1",
+            "height" : 205,
+            "loading" : "lazy",
+            "max_height" : 50,
+            "max_width" : 50,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.linewize.com/hubfs/School%20Logos/US-District-School-SQ-logo-la-canada-unified-1.png",
+            "width" : 205
+          },
+          "text" : "<p>See how Linewize provides the leadership team at Coomera with confidence by knowing that their students only engage with content appropriate for their age and stage of development.</p>",
+          "title" : "La Cañada Unified School District",
+          "video_settings" : {
+            "autoplay" : false,
+            "controls" : true,
+            "custom_thumbnail" : {
+              "alt" : "US_LWZ_Case-study-testimonials-thumbnails-LINSEY1",
+              "height" : 711,
+              "loading" : "lazy",
+              "max_height" : 711,
+              "max_width" : 1060,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/US%20-%20Web%20Thumbnails%20-%20Documents%20and%20Video/US_LWZ_Case-study-testimonials-thumbnails-LINSEY1.jpg",
+              "width" : 1060
+            },
+            "file" : "https://www.linewize.com/hubfs/US%20-%20Video%20tesitmonials/US-Linewize-Testimonial-School%20Manager.mp4",
+            "loop" : false,
+            "muted" : false,
+            "play_button_colour" : "dark",
+            "preload" : "auto",
+            "subtitles" : { }
+          }
+        }, {
+          "description" : "<p><strong>Eva Harvell, Ed.S, <br></strong>Director of Technology, Pascagoula-Gautier School District</p>",
+          "logo" : {
+            "alt" : "US_LWZ_School-district-logos-Pascagoula-Gautier-School-District",
+            "height" : 70,
+            "loading" : "lazy",
+            "max_height" : 50,
+            "max_width" : 276,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.linewize.com/hubfs/School%20Logos/US_LWZ_School-district-logos-Pascagoula-Gautier-School-District.png",
+            "width" : 387
+          },
+          "text" : "<p>See how Linewize provides the leadership team at Coomera with confidence by knowing that their students only engage with content appropriate for their age and stage of development.</p>",
+          "title" : "Pascagoula-Gautier School District",
+          "video_settings" : {
+            "autoplay" : false,
+            "controls" : true,
+            "custom_thumbnail" : {
+              "alt" : "US_LWZ_Case-study-testimonials-thumbnails-EVA2",
+              "height" : 711,
+              "loading" : "lazy",
+              "max_height" : 711,
+              "max_width" : 1060,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/US%20-%20Web%20Thumbnails%20-%20Documents%20and%20Video/US_LWZ_Case-study-testimonials-thumbnails-EVA2.jpg",
+              "width" : 1060
+            },
+            "file" : "https://www.linewize.com/hubfs/US%20-%20Video%20tesitmonials/US-Linewize-Testimonial-School%20Manager%202.mp4",
+            "loop" : false,
+            "muted" : false,
+            "play_button_colour" : "dark",
+            "preload" : "auto",
+            "subtitles" : { }
+          }
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

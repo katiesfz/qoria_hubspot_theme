@@ -66,12 +66,14 @@
 
 {% if !is_in_editor %}
     {% if module.cta.download_on_page_load && module.cta.download %}
-      <script>
-        $(document).ready(function () {
-          setTimeout(function(){
-            document.getElementById("button_{{ name }}").click();
-          }, 2000);
-        });
-      </script>
+        {% require_js %}
+            <script>
+                $(document).ready(function () {
+                setTimeout(function(){
+                    document.getElementById("button_{{ name }}").click();
+                }, 2000);
+                });
+            </script>
+        {% end_require_js %}
     {% endif %}
   {% endif %}

@@ -98,7 +98,7 @@
           {% set ctaClasses = ctaClasses ~ " me-auto" %}
         {% endif %}
       {% endif %}
-      <a href="{{card.link.url.href}}" 
+      <a href="{{ "#" if card.trigger_modal else card.link.url.href}}" 
       class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
       {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
       {% if card.download %}
@@ -108,6 +108,10 @@
             download
         {% endif %}
       {% endif %}
+      {% if card.trigger_modal %}
+           data-bs-toggle="modal"
+         data-bs-target="#{{ card.modal_id }}"
+       {% endif %}
       >
       {% if (card.link_label|striptags) is string_containing "->" %}
         {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
@@ -135,7 +139,7 @@
   {% for card in module.card %}
 
     <div class="col">
-      <div class="card {{ module.styles.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} {{ module.styles.shadow }} border-0 {{ "h-100 d-flex flex-column" if module.styles.equal_heights }}">
+      <div class="card {{"animate-card" if module.styles.animate_in }} {{ module.styles.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} {{ module.styles.shadow }} border-0 {{ "h-100 d-flex flex-column" if module.styles.equal_heights }}">
 
           {% if module.styles.image_header && module.styles.image_header_fit == "cover" %}
             {% if card.image.src %}
@@ -384,3 +388,24 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 </script>
+
+
+{% if module.styles.animate_in %}
+  <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+
+      {% if module.styles.no_animate_on_mobile != false %}
+          if (Math.max(window.screen.width, window.screen.height) > 768) {
+      {% endif %}
+          {% if module.styles.animate_in %}
+              cardAnimateHandler();
+          {% endif %}
+
+      {% if module.styles.no_animate_on_mobile != false %}
+          }
+      {% endif %}
+      });
+  </script>
+{% endif %}
+
+

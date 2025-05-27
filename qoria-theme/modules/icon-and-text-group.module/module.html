@@ -12,11 +12,53 @@
     background: #FFF;
 }
 
+{% if module.style.separators %}
+
+  {% if module.style.separator_style == "light" %}
+
+    .icon-and-text {
+      border-color: var(--q-light) !important;
+    }
+
+  {% elif module.style.separator_style == "dark" %}
+
+    .icon-and-text {
+      border-color: var(--q-dark) !important;
+    }
+  
+  {% elif module.style.separator_style == "primary" %}
+
+    .icon-and-text {
+      border-color: var(--q-primary) !important;
+    }
+  
+  {% elif module.style.separator_style == "secondary" %}
+
+    .icon-and-text {
+      border-color: var(--q-secondary) !important;
+    }
+  
+  {% elif module.style.separator_style == "transparent light" %}
+
+    .icon-and-text {
+      border-color: rgba(var(--q-light-rgb), 0.3) !important;
+    }
+  
+  {% elif module.style.separator_style == "transparent dark" %}
+
+    .icon-and-text {
+      border-color: rgba(var(--q-dark-rgb), 0.3) !important;
+    }
+
+  {% endif %}
+
+{% endif %}
+
   {% end_scope_css %}
   </style>
 {% end_require_css %}
 
-<div class="d-flex {{ "flex-column row" if module.style.icon_arrangement == "inline" else "row" }} {% if module.style.icon_arrangement == "stacked" %}row-cols-{{module.style.responsive.mobile.cards}} row-cols-md-{{module.style.responsive.tablet.cards}} row-cols-lg-{{module.style.responsive.desktop.cards}} justify-content-center{% endif %} {{ "nav" if module.style.use_as_nav }}">
+<div class="d-flex {{ "flex-column row m-0" if module.style.icon_arrangement == "inline" else "row" }} {% if module.style.icon_arrangement == "stacked" %}row-cols-{{module.style.responsive.mobile.cards}} row-cols-md-{{module.style.responsive.tablet.cards}} row-cols-lg-{{module.style.responsive.desktop.cards}} justify-content-center{% endif %} {{ "nav" if module.style.use_as_nav }}">
 {% for item in module.icon_and_text %}
   {% if item.icon.icon_colour != "inherit" %}
     {% set iconColour = item.icon.icon_colour %}
@@ -32,19 +74,19 @@
       {% set borderPosition = "end" %}
     {% endif %}
 
-    {% if loop.index is divisibleby module.style.responsive.desktop.cards|int %}
+    {% if loop.index is divisibleby module.style.responsive.desktop.cards|int && module.style.responsive.desktop.cards != "1" %}
       {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-lg-0" %}
     {% else %}
       {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-lg" %}
     {% endif %}
 
-    {% if loop.index is divisibleby module.style.responsive.tablet.cards|int %}
+    {% if loop.index is divisibleby module.style.responsive.tablet.cards|int && module.style.responsive.tablet.cards != "1" %}
       {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-md-0" %}
     {% else %}
       {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-md" %}
     {% endif %}
 
-    {% if loop.index is divisibleby module.style.responsive.mobile.cards|int %}
+    {% if loop.index is divisibleby module.style.responsive.mobile.cards|int && module.style.responsive.mobile.cards != "1" %}
       {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-0" %}
     {% else %}
       {% set borderClasses = borderClasses ~ " border-" ~ borderPosition %}
@@ -52,7 +94,7 @@
 
   {% endif %}
 <div class="d-flex icon-and-text {{loop.index}} cards-dt-{{module.style.responsive.desktop.cards}} cards-tab-{{module.style.responsive.tablet.cards}} cards-mob-{{module.style.responsive.mobile.cards}} {{ module.style.icon_alignment }}{{" text-light" if iconColour == "light"}} {% if module.style.icon_arrangement == "stacked" %} flex-column col {% else %} {{ "flex-row" if module.style.display_as_list else "flex-column flex-sm-row" }}{% endif %} {{ borderClasses }} {{ " active" if loop.first && item.additional_code is string_containing "data-bs-target" }}" style="{{ module.style.spacing_field.css }}" id="{{name}}-icon-{{ loop.index }}" {{item.additional_code}}>
-      <div class="{% if item.icon.icon_shape != "icon-only" %}ratio ratio-1x1 {{ item.icon.icon_shape }} bg-{{iconColour}} text-dark {% endif %} flex-shrink-0" {% if item.icon.icon_shape != "icon-only" %}style="max-width: {{ item.icon.max_width }}px; max-height: {{ item.icon.max_width }}px;"{%endif%}>
+      <div class="{% if item.icon.icon_shape != "icon-only" %}ratio ratio-1x1 {{ item.icon.icon_shape }} bg-{{iconColour}} text-dark {% endif %} flex-shrink-0 py-1" {% if item.icon.icon_shape != "icon-only" %}style="max-width: {{ item.icon.max_width }}px; max-height: {{ item.icon.max_width }}px;"{%endif%}>
         {% if item.icon.custom_image.src %}
           {% set sizeAttrs = 'width="{{ item.icon.custom_image.width }}" height="{{ item.icon.custom_image.height }}"' %}
           {% if item.icon.custom_image.size_type == 'auto' %}

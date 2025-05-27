@@ -1,40 +1,45 @@
-
-{% if !module.modal %}
-  
-  <div class="position-relative">
-    <video id="video_{{ name }}" width="100%" class="d-block {{ "rounded-3" if module.style.rounded_corners }}" preload="{{ module.style.preload }}" {% if module.style.loop %}loop{% endif %}{% if module.style.autoplay %} autoplay{% endif %}{% if module.style.muted %} muted{% endif %}{% if module.custom_thumbnail.src %} poster="{{ module.custom_thumbnail.src }}"{% endif %}  controlsList="nodownload noremoteplayback">
-      {% set videoUrl = module.video_file|lower %}
-      {% if videoUrl is string_containing ".mp4" %}
-      {% set type = 'type="video/mp4"' %}
-      {% elif videoUrl is string_containing ".ogg" %}
-      {% set type = 'type="video/ogg"' %}
-      {% elif videoUrl is string_containing ".webm" %}
-      {% set type = 'type="video/webm"' %}
-      {% endif %}
-      <source src="{{ module.video_file }}" {{ type }}>
-      {% for item in module.subtitles %}
-      <track label="{{ item.subs_label }}" kind="captions" src="{{ item.subtitle_file }}" {% if loop.first %}default{% endif %} />
-      {% endfor %}
-    Your browser does not support the video tag.
-    </video>
-{% if module.style.controls %}
-    <div class="play-button play-button-{{module.style.play_button_colour}} position-absolute top-50 start-50 translate-middle">
-      <div class="w-100 h-100 position-absolute" onclick="playVideo('video_{{ name }}')">
-        </div>
-    </div>
-{% endif %}
-</div>
-
-{% else %}
-
-  <div class="position-relative">
-    <img src="{{ module.custom_thumbnail.src }}" alt="{{ module.custom_thumbnail.alt }}" width="100%" class="d-block {{ "rounded-3" if module.style.rounded_corners }}">
-    {% if module.style.controls %}
-        <div class="play-button play-button-{{module.style.play_button_colour}} position-absolute top-50 start-50 translate-middle">
-            <div class="w-100 h-100 position-absolute" data-bs-toggle="modal" data-bs-target="#videoModal-{{name}}" onclick="playVideo('video{{name}}')"></div>
-        </div>
-    {% endif %}
+{% if module.video_source == "youtube" %}
+  <div class="ratio ratio-{{module.aspect_ratio}}">
+    {{module.embed_code}}
   </div>
+{% else %}
+  {% if module.modal != true %}
+    
+    <div class="position-relative">
+      <video id="video_{{ name }}" width="100%" class="d-block {{ "rounded-3" if module.style.rounded_corners }}" preload="{{ module.style.preload }}" {% if module.style.loop %}loop{% endif %}{% if module.style.autoplay %} autoplay{% endif %}{% if module.style.muted %} muted{% endif %}{% if module.custom_thumbnail.src %} poster="{{ module.custom_thumbnail.src }}"{% endif %}  controlsList="nodownload noremoteplayback">
+        
+        {% set videoUrl = module.video_file|lower %}
+        {% if videoUrl is string_containing ".mp4" %}
+        {% set type = 'type="video/mp4"' %}
+        {% elif videoUrl is string_containing ".ogg" %}
+        {% set type = 'type="video/ogg"' %}
+        {% elif videoUrl is string_containing ".webm" %}
+        {% set type = 'type="video/webm"' %}
+        {% endif %}
+        <source src="{{ module.video_file }}" {{ type }}>
+        {% for item in module.subtitles %}
+        <track label="{{ item.subs_label }}" kind="captions" src="{{ item.subtitle_file }}" {% if loop.first %}default{% endif %} />
+        {% endfor %}
+      Your browser does not support the video tag.
+      </video>
+      {% if module.style.controls %}
+          <div class="play-button play-button-{{module.style.play_button_colour}} position-absolute top-50 start-50 translate-middle">
+            <div class="w-100 h-100 position-absolute" onclick="playVideo('video_{{ name }}')">
+              </div>
+          </div>
+      {% endif %}
+    </div>
+
+  {% else %}
+
+    <div class="position-relative">
+      <img src="{{ module.custom_thumbnail.src }}" alt="{{ module.custom_thumbnail.alt }}" width="100%" class="d-block {{ "rounded-3" if module.style.rounded_corners }}">
+      {% if module.style.controls %}
+          <div class="play-button play-button-{{module.style.play_button_colour}} position-absolute top-50 start-50 translate-middle">
+              <div class="w-100 h-100 position-absolute" data-bs-toggle="modal" data-bs-target="#videoModal-{{name}}" onclick="playVideo('video{{name}}')"></div>
+          </div>
+      {% endif %}
+    </div>
 
     <div class="modal fade" id="videoModal-{{name}}" tabindex="-1" aria-labelledby="videoModal-{{name}}" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -64,7 +69,14 @@
         </div>
     </div>
 
+  {% endif %}
 {% endif %}
+
+<script>
+
+//  console.log("{{module.video_file|pprint}}");
+
+</script>
 
 {% if is_in_blog_post_editor %}
   

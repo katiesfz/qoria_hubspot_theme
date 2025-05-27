@@ -25,6 +25,9 @@
         {% else %}
             {# we get all the posts if we're on the listing page, otherwise we get the most recent 200 #}
             {% set totalBlogCount = blog_total_post_count(blogId) %}
+                <script>
+                    console.log("{{blog_total_post_count(blogId)}}");
+                </script>
                 {% if is_listing_view %}
                     {% set blog_posts = contents %}
                 {% elif totalBlogCount > 200 %}
@@ -51,7 +54,7 @@
 
     {# include pullouts #}
     {% set pulloutIds = [] %}
-    {% if module.pullouts != [] %}
+    {% if module.pullouts != [] && blog_posts_filtered != null %}
 
             {% for pullout in module.pullouts %}
                 {% do pulloutIds.append(pullout.blog_entry) %}
@@ -92,8 +95,6 @@
                 {% endif %}
             }
      </style>
-
-
             {% do blog_posts_filtered.insert((pullout.position - 1), pulloutBlog) %}
         {% endfor %}
 
@@ -109,7 +110,7 @@
     {% endif %}
 {% endif %}
 
- {% set blog_posts_filtered = blog_posts_filtered|tojson|fromjson %} 
+ {# set blog_posts_filtered = blog_posts_filtered|tojson|fromjson #} 
 
 
  {# set posts per page #}
@@ -126,7 +127,7 @@
 // console.log('blog_posts_filtered.objects|string|escape_js');
 // build blogPosts object
 
-const blogPosts_{{name|replace("-","_")}} = [
+ const blogPosts_{{name|replace("-","_")}} = [
     {% for blog in blog_posts_filtered.objects %}
         {
             "name": "{{blog.name|escape_js}}",
@@ -137,7 +138,7 @@ const blogPosts_{{name|replace("-","_")}} = [
             {% elif module.styles.card_style == "card" %}
                 "card_style": "blog_card",
             {% endif -%}
-                {%- if blog.pulloutType %}
+                {%- if module.pullouts != [] %}
                 "pre_heading": "{{blog.preHeading}}",
                 "pullout_type": "{{blog.pulloutType}}",
                 "background_colour": "{{blog.backgroundColour}}", 
@@ -186,7 +187,7 @@ const blogPosts_{{name|replace("-","_")}} = [
                 "type": "Whitepaper",
                 "type_colour": "text-bg-blue",
             {% else %}
-                "type": "Article",
+                "type": "{{'Artículo' if curLang is string_startingwith 'es' else 'Article'}}",
                 "type_colour": "text-bg-secondary",
             {% endif -%}
             }{{ "," if !loop.last }}
@@ -328,9 +329,11 @@ function itemTemplate(blog){
 
     // print metadata
     newContent += '<div class="row metadata mb-3">';
-        newContent += '<div class="col text-start">';
-            newContent += '<p class="small text-secondary fw-semibold"><i class="fa fas fa-pencil me-1"></i>' + blog.length + ' minute read</p>';
-        newContent += '</div>';
+        {% if (module.custom_min_read != true) || (module.custom_min_read == true && module.min_read != "") %}
+            newContent += '<div class="col text-start">';
+                newContent += '<p class="small text-secondary fw-semibold"><i class="fa fas fa-pencil me-1"></i>' + blog.length + ' {{module.min_read if module.custom_min_read == true else "minute read"}}</p>';
+            newContent += '</div>';
+        {% endif %}
         if (blog.author_name) {
         newContent += '<div class="col text-end">';
             newContent += '<p class="small text-secondary fw-semibold">' + blog.author_name + '</p>';
@@ -548,6 +551,9 @@ function videoTemplate(blog) {
 
 </script>
 <script>
+</script>
+<script>
+
 
 // pagination - 
 function pagination2(curPage) {

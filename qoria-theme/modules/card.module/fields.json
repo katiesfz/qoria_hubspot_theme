@@ -666,6 +666,35 @@
       "sponsored" : false,
       "user_generated_content" : false
     }
+  }, {
+    "id" : "card.trigger_modal",
+    "name" : "trigger_modal",
+    "display_width" : null,
+    "label" : "Trigger modal",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "card.modal_id",
+    "name" : "modal_id",
+    "display_width" : null,
+    "label" : "Modal ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "card.trigger_modal",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
   },{
     "id" : "download",
     "name" : "download",
@@ -1402,6 +1431,27 @@
     "preset" : null,
     "type" : "choice",
     "default" : "start"
+  }, {
+    "id" : "styles.animate_in",
+    "name" : "animate_in",
+    "display_width" : null,
+    "label" : "Animate in",
+    "inline_help_text" : "Animate the cards in on scroll",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  },{
+    "id" : "style.no_animate_on_mobile",
+    "name" : "no_animate_on_mobile",
+    "display_width" : null,
+    "label" : "Prevent animation on mobile",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
   } ],
   "tab" : "STYLE",
   "expanded" : false,
@@ -1460,7 +1510,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text"
-  } ],
+  }],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",

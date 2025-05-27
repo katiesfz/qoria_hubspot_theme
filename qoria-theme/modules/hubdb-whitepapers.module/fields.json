@@ -1,0 +1,469 @@
+[ {
+  "id" : "selection",
+  "name" : "selection",
+  "display_width" : null,
+  "label" : "Selection",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "manual", "Manual" ], [ "auto", "Automatic" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "auto"
+}, {
+  "name" : "source_table",
+  "label" : "Source Table",
+  "required" : false,
+  "locked" : false,
+  "inline_help_text" : "Leave blank for default",
+  "type" : "hubdbtable"
+},  {
+  "id" : "filter",
+  "name" : "filter",
+  "display_width" : null,
+  "label" : "Filters",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "filter_property",
+    "name" : "filter_property",
+    "display_width" : null,
+    "label" : "Filter Property",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  },  {
+    "id" : "filter_value",
+    "name" : "filter_value",
+    "display_width" : null,
+    "label" : "Filter Value",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "filter_operator",
+    "name" : "filter_operator",
+    "display_width" : null,
+    "label" : "Filter Operator",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "eq", "Equal" ], [ "ne", "Not equal" ], [ "contains", "Contains" ], [ "lt", "Less than" ], [ "lte", "Less than or equal" ], [ "gt", "Greater than" ], [ "gte", "Greater than or equal" ], [ "is_null", "Is null" ], [ "not_null", "Is not null" ], [ "like", "Like" ], [ "not_like", "Not like" ], [ "startswith", "Starts with" ], [ "in", "In" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "selection",
+      "controlling_value_regex" : "auto",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : "eq"
+  } ],
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "auto",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "filter_property",
+    "default" : null
+  },
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
+},{
+  "id" : "order_by",
+  "name" : "order_by",
+  "display_width" : null,
+  "label" : "Order by",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+},{
+  "id" : "reverse_order",
+  "name" : "reverse_order",
+  "display_width" : null,
+  "label" : "Reverse Order",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+},{
+  "id" : "row_id",
+  "name" : "row_id",
+  "display_width" : null,
+  "label" : "Row ID",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "selection",
+    "controlling_value_regex" : "manual",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "id" : "filter_options",
+  "name" : "filter_options",
+  "display_width" : null,
+  "label" : "Sub-filter options",
+  "inline_help_text" : "ID of the column to filter by",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  }
+},{
+  "id" : "link_label",
+  "name" : "link_label",
+  "display_width" : null,
+  "label" : "Link Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Download PDF >"
+},  {
+  "id" : "download",
+  "name" : "download",
+  "display_width" : null,
+  "label" : "Download",
+  "inline_help_text" : "Link downloads a file instead of loading a page",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  },{
+    "id" : "styles.stretched_link",
+    "name" : "stretched_link",
+    "display_width" : null,
+    "label" : "Stretched link",
+    "inline_help_text" : "Stretches link to cover the entire card",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  },{
+    "id" : "styles.alignment",
+    "name" : "textalignment",
+    "display_width" : null,
+    "label" : "Card text alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "start"
+  },{
+    "id" : "styles.card_colour",
+    "name" : "card_colour",
+    "display_width" : null,
+    "label" : "Card Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "bg-light", "Light" ], [ "bg-white", "White" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "bg-white"
+  }, {
+    "id" : "styles.border_colour",
+    "name" : "border_colour",
+    "display_width" : null,
+    "label" : "Border Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "border-primary", "Primary" ], [ "border-secondary", "Secondary" ], [ "border-teal", "Teal" ], [ "border-indigo", "Indigo" ], [ "border-orange", "Orange" ], [ "border-red", "Red" ], [ "border-blue", "Blue" ], [ "border-dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "border-primary"
+  },  {
+    "id" : "styles.cta_style",
+    "name" : "cta_style",
+    "display_width" : null,
+    "label" : "CTA Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "text-"
+  }, {
+    "id" : "styles.cta_size",
+    "name" : "cta_size",
+    "display_width" : null,
+    "label" : "CTA Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "btn-sm", "Small" ], [ " ", "Medium" ], [ "btn-lg", "Large" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
+  }, {
+    "id" : "styles.cta_colour",
+    "name" : "cta_colour",
+    "display_width" : null,
+    "label" : "CTA Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "primary"
+  }, {
+    "id" : "styles.equal_heights",
+    "name" : "equal_heights",
+    "display_width" : null,
+    "label" : "Equal Heights",
+    "inline_help_text" : "Keep cards at equal heights.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "styles.image_loading",
+    "name" : "image_loading",
+    "display_width" : null,
+    "label" : "Image Loading",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "", "Automatic" ], [ "lazy", "Lazy" ], [ "eager", "Eager" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "lazy"
+  }, {
+    "id" : "styles.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "No shadow" ], [ "var(--q-box-shadow-sm)", "Small shadow" ], [ "var(--q-box-shadow)", "Medium shadow" ], [ "var(--q-box-shadow-lg)", "Large shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "styles.pagination",
+    "name" : "pagination",
+    "display_width" : null,
+    "label" : "Pagination",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "styles.items_per_page",
+    "name" : "items_per_page",
+    "display_width" : null,
+    "label" : "Items per page",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 1,
+    "max" : 10,
+    "step" : 1,
+    "prefix" : "",
+    "suffix" : "",
+    "type" : "number"
+  }, {
+    "id" : "styles.responsive",
+    "name" : "responsive",
+    "display_width" : null,
+    "label" : "Responsive Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.desktop",
+      "name" : "desktop",
+      "display_width" : null,
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.desktop.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "3"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.tablet",
+      "name" : "tablet",
+      "display_width" : null,
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.tablet.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "2"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.mobile",
+      "name" : "mobile",
+      "display_width" : null,
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.mobile.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "1"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "responsive" : {
+      "mobile" : {
+        "cards" : "1"
+      },
+      "tablet" : {
+        "cards" : "2"
+      },
+      "desktop" : {
+        "cards" : "3"
+      }
+    }
+  }
+} ]

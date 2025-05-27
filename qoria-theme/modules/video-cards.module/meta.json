@@ -14,8 +14,8 @@
     "name" : "jquery-3.6.4.min.js"
   }, {
     "autoload" : false,
-    "path" : "../../js/slick/slick.min.js",
-    "name" : "slick.min.js"
+    "path" : "../../js/slick/slick.js",
+    "name" : "slick.js"
   } ],
   "is_available_for_new_content" : true
 }

@@ -89,4 +89,138 @@
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group"
+},{
+  "id" : "megamenu_custom_headings",
+  "name" : "megamenu_custom_headings",
+  "display_width" : null,
+  "label" : "Megamenu Custom Headings",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "megamenu_custom_headings.heading",
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "megamenu",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "megamenu_custom_headings.match_label",
+    "name" : "match_label",
+    "display_width" : null,
+    "label" : "Match label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "custom_headings.heading",
+    "name" : "heading",
+    "display_width" : null,
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4>This is a title</h4>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
+} ,{
+  "id" : "megamenu_custom_menu",
+  "name" : "megamenu_custom_menu",
+  "display_width" : null,
+  "label" : "Megamenu Custom Menu",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "megamenu_custom_menu.match_label",
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "megamenu",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "megamenu_custom_menu.match_label",
+    "name" : "match_label",
+    "display_width" : null,
+    "label" : "Match label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  },{
+    "id" : "megamenu_custom_menu_items",
+    "name" : "megamenu_custom_menu_items",
+    "display_width" : null,
+    "label" : "Menu items",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "megamenu_custom_menu_items.rich_text",
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "megamenu_custom_menu_items.rich_text",
+      "name" : "rich_text",
+      "display_width" : null,
+      "label" : "Link Content",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h4>This is a title</h4>"
+    }, {
+      "name": "link_field",
+      "display_width": null,
+      "label": "Link",
+      "required": false,
+      "locked": false,
+      "supported_types": [
+        "EXTERNAL",
+        "CONTENT",
+        "FILE",
+        "EMAIL_ADDRESS",
+        "BLOG"
+      ],
+      "show_advanced_rel_options": true,
+      "type": "link",
+      "default": {
+        "url": {
+          "content_id": null,
+          "type": "EXTERNAL",
+          "href": ""
+        },
+        "open_in_new_tab": false,
+        "no_follow": false
+      }
+    }
+  ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
 } ]

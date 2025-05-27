@@ -225,7 +225,40 @@
   "prefix" : "",
   "suffix" : "",
   "type" : "number"
+}, 
+
+{
+  "id" : "custom_min_read",
+  "name" : "custom_min_read",
+  "display_width" : null,
+  "label" : "Custom minute read",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
 }, {
+  "name" : "min_read",
+  "display_width" : null,
+  "label" : "Min read",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "minute read",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "custom_min_read",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, 
+
+{
   "id" : "pullouts",
   "name" : "pullouts",
   "display_width" : null,

@@ -80,8 +80,116 @@
       "sponsored" : false,
       "user_generated_content" : false
     }
+  }, {
+    "id" : "blog.badge",
+    "name" : "badge",
+    "display_width" : null,
+    "label" : "Badge",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "new_feature", "New Feature" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group"
-} ]
+},{
+"id" : "styles",
+"name" : "styles",
+"display_width" : null,
+"label" : "Styles",
+"required" : false,
+"locked" : false,
+"children":[{
+  "id" : "styles.responsive",
+  "name" : "responsive",
+  "display_width" : null,
+  "label" : "Responsive Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.responsive.desktop",
+    "name" : "desktop",
+    "display_width" : null,
+    "label" : "Desktop",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.desktop.columns",
+      "name" : "columns",
+      "display_width" : null,
+      "label" : "Columns",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "max" : 6,
+      "step" : 1,
+      "suffix" : " columns",
+      "type" : "number",
+      "default" : "2"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.responsive.tablet",
+    "name" : "tablet",
+    "display_width" : null,
+    "label" : "Tablet",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.tablet.columns",
+      "name" : "columns",
+      "display_width" : null,
+      "label" : "Columns",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "max" : 6,
+      "step" : 1,
+      "suffix" : " columns",
+      "type" : "number",
+      "default" : "2"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.responsive.mobile",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.mobile.columns",
+      "name" : "columns",
+      "display_width" : null,
+      "label" : "Columns",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "max" : 6,
+      "step" : 1,
+      "suffix" : " columns",
+      "type" : "number",
+      "default" : "1"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+}],
+"tab" : "STYLE",
+"expanded" : false,
+"type" : "group"
+}]

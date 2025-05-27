@@ -7,8 +7,19 @@
 {% extends "./layouts/base.html" %}
 
 {% block head %}
-  <meta name="robots" content="noindex">
 {% endblock %}
+
+{% block header %}
+
+  {% boolean "show_language_switcher", label="Show language switcher", overrideable=False, value=False, no_wrapper=True, export_to_template_context=True %}
+  {% boolean "show_search", label="Show search", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
+
+  <div class="header-wrapper sticky-top shadow-sm">
+    <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
+      {% global_partial path='./partials/header-test.html', label="Header" %}
+    </header>
+  </div>
+{% endblock header %}
 
 {% block body %}
 {% dnd_area "dnd_area"

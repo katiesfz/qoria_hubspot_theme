@@ -5,6 +5,7 @@
   screenshotPath: ../images/template-previews/blog-index.png
 -->
 
+
 {% extends "./layouts/base.html" %}
 
 {% block body %}
@@ -14,49 +15,24 @@ label="Body"
 class="main p-0 overflow-hidden"
 %}
 
-
-{# hero banner #}
-{% include_dnd_partial path="../../sections/hero-banner.html"
-context={
-  "heroType": "full-image",
-  "imageSrc": get_asset_url("../../images/qoria/photos/iStock-1430627347-LR.jpg"),
-  "header": "Resources",
-  "breadcrumbs": true,
-  "breadcrumbMenu": 115248177746,
-  "preHeader": "",
-  "headingLocation": "bottom-left",
-  "pageContents": [{
-        "content_label" : "Featured article",
-        "anchor": "#featured"
-    },{
-        "content_label" : "Most viewed this month",
-        "anchor": "#mostViewed"
-    },{
-        "content_label" : "Latest content",
-        "anchor": "#latest"
-    },{
-        "content_label" : "Trending topics",
-        "anchor": "#trending"
-    },{
-        "content_label" : "Latest videos",
-        "anchor": "#videos"
-    }],
-  "cta": []
-} %}
-
-{# Heading #}
-
-
 {% dnd_section
-  background_color="rgba(235, 235, 235, 1)",
+  background_image={
+    "background_position" : "MIDDLE_RIGHT",
+    "background_size" : "cover",
+    "image_url" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/us-blog-bg-2.jpg"
+  },
   padding={
     "default" : {
-      "bottom" : "5rem",
+      "bottom" : "80px",
       "left" : "16px",
       "right" : "16px",
       "top" : "80px"
+    },
+    "mobile" : {
+      "bottom" : "32px"
     }
   },
+  full_width=false,
   max_width=1280
 %}
   {% dnd_column
@@ -68,93 +44,77 @@ context={
         path="/q-theme/modules/heading",
         offset=0,
         width=12,
+        heading_tag="h1",
         style={
-          "textalignment" : "center"
+          "colour" : "light",
+          "textalignment" : "start"
         }
       %}
         {% module_attribute "heading" %}
-          Welcome to our <strong>resource centre</strong>
+          Welcome to our <strong>blogs</strong>
         {% end_module_attribute %}
       {% end_dnd_module %}
     {% end_dnd_row %}
     {% dnd_row %}
       {% dnd_column
         offset=0,
-        width=2
+        width=7
       %}
         {% dnd_row %}
-          {% dnd_module
-            path="@hubspot/horizontal_spacer",
+          {% dnd_column
             offset=0,
-            width=12
+            width=8
           %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-      {% end_dnd_column %}
-      {% dnd_column
-        offset=2,
-        width=8,
-        padding={
-          "default" : {
-            "bottom" : "80px"
-          }
-        }
-      %}
-        {% dnd_row %}
-          {% dnd_module
-            path="@hubspot/rich_text",
-            offset=0,
-            width=12
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p class="lead" style="text-align: left;"><span style="color: #ffffff;">Browse our articles to get the latest on all things student digital safety and wellbeing.</span></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=8,
+            width=4
           %}
-            {% module_attribute "html" %}
-              <p class="lead" style="text-align: center;">Our goal is to help you navigate the world of child digital safety and wellbeing - at school, home and everywhere in between. Browse articles, case studies, videos, whitepapers and podcasts curated by our digital wellbeing specialists.</p>
-            {% end_module_attribute %}
-          {% end_dnd_module %}
-        {% end_dnd_row %}
-        {% dnd_row %}
-          {% dnd_module
-            path="/q-theme/modules/cursive-heading",
-            offset=0,
-            width=12,
-            style={
-              "spacing_field" : {
-                "margin" : {
-                  "bottom" : {
-                    "units" : "px",
-                    "value" : 40
-                  },
-                  "top" : {
-                    "units" : "px",
-                    "value" : 64
-                  }
-                }
-              }
-            }
-          %}
-            {% module_attribute "heading" %}
-              <div style="text-align: center;">Stay in the know</div>
-            {% end_module_attribute %}
-          {% end_dnd_module %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
         {% end_dnd_row %}
         {% dnd_row %}
           {% dnd_module
             path="/q-theme/modules/search_input",
             offset=0,
             width=12,
-            blogs=[ 127634707973 ],
+            blogs=[ 9317211779 ],
             content_types={
               "blog_posts" : true,
               "website_pages" : false
             },
-            include_search_button=true,
-            placeholder=""
+            include_search_button=false,
+            placeholder="Looking for something specific?",
+            style={
+              "background_colour" : "white",
+              "baseline" : false,
+              "rounded_corners" : "rounded"
+            }
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}
       {% end_dnd_column %}
       {% dnd_column
-        offset=10,
-        width=2
+        offset=7,
+        width=5
       %}
         {% dnd_row %}
           {% dnd_module
@@ -170,19 +130,162 @@ context={
 {% end_dnd_section %}
 
 
-{# Featured article #}
+{# featured article #}
 {% dnd_section
+  background_color="rgba(244, 244, 244, 1)",
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "80px"
+    },
+    "mobile" : {
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10,
+    padding={
+      "default" : {
+        "right" : "0px"
+      },
+      "mobile" : {
+        "right" : "0px"
+      }
+    }
+  %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "64px"
+        },
+        "mobile" : {
+          "bottom" : "32px"
+        }
+      }
+    %}
+      {% dnd_module
+        path="/q-theme/modules/cursive-heading",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "css" : "margin-top: 0px;margin-bottom: 0px;",
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <div style="text-align: center;">Stay in the know</div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="featured"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/featured-article",
+            offset=0,
+            width=12,
+            advanced={
+              "additional_classes" : ""
+            },
+            blog_entry=184099071909,
+            heading_width="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8",
+            style={
+              "background_colour" : "bg-secondary text-white",
+              "heading_width" : "col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8",
+              "overlay" : false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{# blog listing #}
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
   padding={
     "default" : {
       "left" : "16px",
-      "right" : "16px"
+      "right" : "16px",
+      "top" : "14rem"
+    },
+    "mobile" : {
+      "top" : "7rem"
     }
   },
   margin={
     "default" : {
+      "top" : "-10rem"
+    },
+    "mobile" : {
       "top" : "-5rem"
     }
   },
+  full_width=false,
   max_width=1280
 %}
   {% dnd_column
@@ -191,72 +294,10 @@ context={
   %}
     {% dnd_row %}
       {% dnd_module
-        path="/q-theme/modules/featured-article",
+        path="/q-theme/modules/anchor",
         offset=0,
         width=12,
-        blog_entry=128229352880,
-        heading_width="col-12 col-sm-9 col-md-8 col-lg-7 col-xl-6",
-        style={
-          "background_colour" : "bg-secondary text-white",
-          "heading_width" : "col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8",
-          "overlay" : false
-        }
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-  {% end_dnd_column %}
-{% end_dnd_section %}
-
-
-{# most viewed #}
-{% dnd_section
-  padding={
-    "default" : {
-      "left" : "16px",
-      "right" : "16px"
-    }
-  },
-  max_width=1280
-%}
-  {% dnd_column
-    offset=0,
-    width=12,
-    padding={
-      "default" : {
-        "bottom" : "32px",
-        "top" : "32px"
-      }
-    }
-  %}
-    {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/rich_text",
-        offset=0,
-        width=12
-      %}
-        {% module_attribute "html" %}
-          <a id="mostViewed" data-hs-anchor="true"></a>
-          <h3 style="text-align: center;"><strong>Most viewed this month</strong></h3>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-    {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/divider",
-        offset=0,
-        width="100%",
-        color={
-          "color" : "#b0b0b0",
-          "opacity" : 100
-        },
-        padding={
-          "default" : {
-            "bottom" : "16px",
-            "left" : "0",
-            "right" : "0",
-            "top" : "16px"
-          }
-        }
+        anchor="latest"
       %}
       {% end_dnd_module %}
     {% end_dnd_row %}
@@ -265,86 +306,12 @@ context={
         path="/q-theme/modules/blog-listing",
         offset=0,
         width=12,
-        blog_field=31270472551,
-        number_of_posts=2,
-        post_type="popular",
-        styles={
-          "equal_height_img" : true,
-          "pagination" : false,
-          "responsive" : {
-            "desktop" : {
-              "cards" : 2
-            }
-          }
-        },
-        timeframe="popular_past_month"
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-  {% end_dnd_column %}
-{% end_dnd_section %}
-
-{# Latest content #}
-{% dnd_section
-  padding={
-    "default" : {
-      "left" : "16px",
-      "right" : "16px"
-    }
-  },
-  max_width=1280
-%}
-  {% dnd_column
-    offset=0,
-    width=12,
-    padding={
-      "default" : {
-        "bottom" : "32px",
-        "top" : "32px"
-      }
-    }
-  %}
-    {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/rich_text",
-        offset=0,
-        width=12
-      %}
-        {% module_attribute "html" %}
-          <a id="latest" data-hs-anchor="true"></a>
-          <h3 style="text-align: center;"><strong>Latest content</strong></h3>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-    {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/divider",
-        offset=0,
-        width="100%",
-        color={
-          "color" : "#b0b0b0",
-          "opacity" : 100
-        },
-        height=1,
-        padding={
-          "default" : {
-            "bottom" : "16px",
-            "left" : "0",
-            "right" : "0",
-            "top" : "16px"
-          }
-        }
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_row %}
-    {% dnd_row %}
-      {% dnd_module
-        path="/q-theme/modules/blog-listing",
-        offset=0,
-        width=12,
-        blog_field=31270472551,
+        blog_field=9317211779,
+        custom_limit=true,
+        enable_tag_filtering="true",
         number_of_posts=9,
         post_type="latest",
+        pullouts=[ ],
         styles={
           "equal_height_img" : true,
           "pagination" : true,
@@ -352,8 +319,36 @@ context={
             "desktop" : {
               "cards" : 3
             }
+          },
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
           }
         },
+        tag_field=[ ],
+        tag_filter_option=[ {
+          "id" : 10548558613,
+          "name" : "School Filtering",
+          "slug" : "school-filtering"
+        }, {
+          "id" : 10767877681,
+          "name" : "CTO",
+          "slug" : "cto"
+        }, {
+          "id" : 10767877532,
+          "name" : "Superintendent",
+          "slug" : "superintendent"
+        }, {
+          "id" : 10767939443,
+          "name" : "Network Admin",
+          "slug" : "network-admin"
+        }, {
+          "id" : 10551939630,
+          "name" : "BYOD",
+          "slug" : "byod"
+        }, null ],
         timeframe="popular_past_month"
       %}
       {% end_dnd_module %}
@@ -361,219 +356,64 @@ context={
   {% end_dnd_column %}
 {% end_dnd_section %}
 
-{# trending #}
+
+
+
 {% dnd_section
-  background_color="rgba(235, 235, 235, 1)",
   padding={
     "default" : {
-      "bottom" : "40px",
+      "bottom" : "0px",
       "left" : "16px",
       "right" : "16px",
-      "top" : "40px"
+      "top" : "32px"
+    },
+    "mobile" : {
+      "top" : "0px"
     }
   },
+  full_width=false,
   max_width=1280
 %}
-{% dnd_column
-  offset=0,
-  width=12
-%}
-  {% dnd_row %}
-    {% dnd_module
-      path="@hubspot/rich_text",
-      offset=0,
-      width=12
-    %}
-      {% module_attribute "html" %}
-        <a id="trending" data-hs-anchor="true"></a>
-        <h3 style="text-align: center;"><strong>Trending topics</strong></h3>
-      {% end_module_attribute %}
-    {% end_dnd_module %}
-  {% end_dnd_row %}
-  {% dnd_row %}
-    {% dnd_module
-      path="@hubspot/divider",
-      offset=0,
-      width="100%",
-      color={
-        "color" : "#b0b0b0",
-        "css" : "#b0b0b0",
-        "hex" : "#b0b0b0",
-        "opacity" : 100,
-        "rgb" : "rgb(176, 176, 176)",
-        "rgba" : "rgba(176, 176, 176, 1)"
-      },
-      height=1,
-      padding=20,
-      show_padding=false
-    %}
-    {% end_dnd_module %}
-  {% end_dnd_row %}
-  {% dnd_row %}
-    {% dnd_module
-      path="/q-theme/modules/region-specific/us/trending-topics-us"
-      offset=0,
-      width=12
-    %}
-    {% end_dnd_module %}
-  {% end_dnd_row %}
-  {% dnd_row %}
-    {% dnd_module
-      path="@hubspot/rich_text",
-      offset=0,
-      width=12
-    %}
-      {% module_attribute "html" %}
-        <a id="videos" data-hs-anchor="true"></a>
-        <h3 style="text-align: center;"><strong>Latest videos</strong></h3>
-      {% end_module_attribute %}
-    {% end_dnd_module %}
-  {% end_dnd_row %}
-  {% dnd_row %}
-    {% dnd_module
-      path="@hubspot/divider",
-      offset=0,
-      width="100%",
-      color={
-        "color" : "#b0b0b0",
-        "css" : "#b0b0b0",
-        "hex" : "#b0b0b0",
-        "opacity" : 100,
-        "rgb" : "rgb(176, 176, 176)",
-        "rgba" : "rgba(176, 176, 176, 1)"
-      },
-      height=1,
-      padding=20,
-      show_padding=false
-    %}
-    {% end_dnd_module %}
-  {% end_dnd_row %}
-  {% dnd_row %}
-
-
-
-
-    {% dnd_module
-      path="/q-theme/modules/video-cards",
-      offset=0,
-      width=12,
-      styles={
-        "card" : {
-          "card_colour" : " ",
-          "overlay" : false,
-          "shadow" : " ",
-          "title" : true
-        },
-        "carousel" : false,
-        "controls" : false,
-        "responsive" : {
-          "desktop" : {
-            "slides_to_display" : 3
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "color" : {
+              "color" : "#ebebeb",
+              "opacity" : 100
+            }
           },
-          "mobile" : {
-            "slides_to_display" : 1
+          "size" : {
+            "width" : 100
           },
-          "tablet" : {
-            "slides_to_display" : 2
+          "spacing" : {
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 32
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 32
+                }
+              }
+            }
           }
         }
-      },
-      video_card=[ {
-        "description" : "",
-        "link_label" : "",
-        "logo" : {
-          "loading" : "lazy",
-          "size_type" : "auto",
-          "src" : ""
-        },
-        "pre_heading" : "1 Feb • 5 min video",
-        "title" : "Coomera Anglican College",
-        "video_settings" : {
-          "autoplay" : false,
-          "controls" : true,
-          "custom_thumbnail" : {
-            "alt" : "NZ - iStock-901969240-BNW",
-            "height" : 2576,
-            "loading" : "lazy",
-            "max_height" : 1333.3333333333333,
-            "max_width" : 2000,
-            "size_type" : "auto_custom_max",
-            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20-%20iStock-901969240-BNW.jpg",
-            "width" : 3864
-          },
-          "file" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20Wellbeing%20Event%20Video.mp4",
-          "loop" : false,
-          "muted" : false,
-          "play_button_colour" : "dark",
-          "preload" : "auto",
-          "subtitles" : { }
-        }
-      }, {
-        "description" : "",
-        "link_label" : "",
-        "logo" : {
-          "loading" : "lazy",
-          "size_type" : "auto",
-          "src" : ""
-        },
-        "pre_heading" : "1 Feb • 5 min video",
-        "title" : "Coomera Anglican College",
-        "video_settings" : {
-          "autoplay" : false,
-          "controls" : true,
-          "custom_thumbnail" : {
-            "alt" : "NZ - iStock-901969240-BNW",
-            "height" : 2576,
-            "loading" : "lazy",
-            "max_height" : 1333.3333333333333,
-            "max_width" : 2000,
-            "size_type" : "auto_custom_max",
-            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20-%20iStock-901969240-BNW.jpg",
-            "width" : 3864
-          },
-          "file" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20Wellbeing%20Event%20Video.mp4",
-          "loop" : false,
-          "muted" : false,
-          "play_button_colour" : "dark",
-          "preload" : "auto",
-          "subtitles" : { }
-        }
-      }, {
-        "description" : "",
-        "link_label" : "",
-        "logo" : {
-          "loading" : "lazy",
-          "size_type" : "auto",
-          "src" : ""
-        },
-        "pre_heading" : "1 Feb • 5 min video",
-        "title" : "Coomera Anglican College",
-        "video_settings" : {
-          "autoplay" : false,
-          "controls" : true,
-          "custom_thumbnail" : {
-            "alt" : "NZ - iStock-901969240-BNW",
-            "height" : 2576,
-            "loading" : "lazy",
-            "max_height" : 1333.3333333333333,
-            "max_width" : 2000,
-            "size_type" : "auto_custom_max",
-            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20-%20iStock-901969240-BNW.jpg",
-            "width" : 3864
-          },
-          "file" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20Wellbeing%20Event%20Video.mp4",
-          "loop" : false,
-          "muted" : false,
-          "play_button_colour" : "dark",
-          "preload" : "auto",
-          "subtitles" : { }
-        }
-      } ]
-    %}
-    {% end_dnd_module %}
-  {% end_dnd_row %}
-{% end_dnd_column %}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
 {% end_dnd_section %}
+
 
 {% end_dnd_area %}
 {% global_partial path="./partials/lets-connect.html" %}

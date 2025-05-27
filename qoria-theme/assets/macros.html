@@ -208,3 +208,10 @@
         </script>
     {% endif %}
 {% endmacro %}
+
+{% macro languageObject() %}
+    {% set languageMap = {
+        "article":          {"en": "article",               "es":"artículo"},
+        "resources":        {"en": "resources",             "es":"recursos"}
+    } %}
+{% endmacro %}

@@ -207,6 +207,19 @@
     "children" : [ ]
   }
 }, {
+  "name" : "content_listing",
+  "display_width" : null,
+  "label" : "Page contents listing",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "custom", "Custom" ], [ "auto", "Automatic" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "custom"
+},{
   "id" : "15f774bc-2db9-9b9d-29bf-dba26a553686",
   "name" : "page_contents",
   "display_width" : null,
@@ -215,7 +228,7 @@
   "locked" : false,
   "occurrence" : {
     "min" : null,
-    "max" : 5,
+    "max" : 10,
     "sorting_label_field" : "8fa7aaf5-aedb-2ff2-bc91-f9cdd44ef6d0",
     "default" : 3
   },
@@ -249,6 +262,10 @@
     "boolean_operator" : "AND",
     "criteria" : [ {
       "controlling_field_path" : "include_form",
+      "controlling_value_regex" : "true",
+      "operator" : "NOT_EQUAL"
+    },{
+      "controlling_field_path" : "content_listing",
       "controlling_value_regex" : "true",
       "operator" : "NOT_EQUAL"
     }],
@@ -475,6 +492,17 @@
     "display" : "toggle",
     "type" : "boolean",
     "default" : false
+  },{
+    "id" : "style.parallax",
+    "name" : "parallax",
+    "display_width" : null,
+    "label" : "Parallax",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false,
+    "inline_help_text" : "Check all following page sections to ensure no transparent backgrounds if this is toggled on!"
   } ],
   "tab" : "STYLE",
   "expanded" : false,

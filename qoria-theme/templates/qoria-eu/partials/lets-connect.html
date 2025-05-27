@@ -113,20 +113,12 @@ class="main p-0 overflow-hidden"
         {% end_dnd_module %}
         {% end_dnd_row %}
         {% dnd_row %}
-        {% dnd_module
-            path="/q-theme/modules/form-modal",
-            offset=0,
-            width=12,
-            form={
-            "form_id" : "cc40c776-7a7f-4644-ae34-4f8d7564ec66",
-            "form_type" : "HUBSPOT",
-            "redirect_url" : "http://www.google.com",
-            "response_type" : "redirect"
-            },
-            heading="Subscribe to our Newsletter",
-            unique_name="newsletterModal"
-        %}
-        {% end_dnd_module %}
+            {% dnd_module
+              path="/q-theme/modules/region-specific/eu/newsletter-modal-eu",
+              offset=0,
+              width=12
+            %}
+            {% end_dnd_module %}
         {% end_dnd_row %}
     {% end_dnd_column %}
     {% end_dnd_section %}

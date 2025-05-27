@@ -336,6 +336,28 @@
     "type" : "boolean",
     "default" : false
   }, {
+    "id" : "style.separator_style",
+    "name" : "separator_style",
+    "display_width" : null,
+    "label" : "Separator style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "Default" ], [ "light", "Light" ], [ "dark", "Dark" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "transparent light", "Light semi-transparent" ], [ "transparent dark", "Dark semi-transparent" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.separators",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : " "
+  }, {
     "id" : "styles.responsive",
     "name" : "responsive",
     "display_width" : null,

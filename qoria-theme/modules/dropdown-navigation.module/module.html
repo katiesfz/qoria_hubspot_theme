@@ -14,8 +14,11 @@
   
   {% require_css %}
     <style>
+    :root {
+    --fa-li-margin: 1em;
+    --fa-li-width: 1em;
+    }
       {% scope_css %}
-  
   
       {% end_scope_css %}
     </style>
@@ -137,14 +140,50 @@
                     {% endif %}
                 {% endfor %}
                 {% if link.children|length > 4 %}
-                  {% do columns.append("column") %}
+                {% do columns.append("column") %}
                 {% endif %}
-                <div class="col-{{breakpoint}}-8 col-xl-9 p-0 p-lg-4 bg-white text-dark">
-                  <div class="css-col-count-{{breakpoint}}-{{ "2" if columns|length > 1 else "1" }}" style="width: fit-content;">
-                    {% set depth = depth + 1 %}
-                    {% for sublink in link.children %}
-                        {{ render_dropdown_links(sublink, depth, loop.first, columns|length, link.label) }}
-                    {% endfor %}
+                <div class="col-12 col-lg-8 col-xl-9 p-0 p-lg-4 bg-white text-dark">
+                  <div class="row gx-6">
+                    {% set customMenu = "false" %}
+                    {% if module.megamenu_custom_menu|length > 0 %}
+                      {% for custom_menu in module.megamenu_custom_menu %}
+                        {% if link.label == custom_menu.match_label %}
+                          
+                          {% do columns.pop(0) %}
+                          {% set customMenu = "true" %}
+                          <div class="col-12 col-{{breakpoint}}-5 border-end-{{breakpoint}} border-dark-subtle border-opacity-25">
+                          {% for item in custom_menu.megamenu_custom_menu_items %}
+                            {% if item.link_field.url.href != "" %}
+                              <a href="{{item.link_field.url.href}}" class="text-reset mb-3 d-block">
+                            {% endif %}
+                            {{item.rich_text}}
+                            {% if item.link_field.url.href != "" %}
+                              </a>
+                            {% endif %}
+                          {% endfor %}
+                          </div>
+                        {% else %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                    <div class="col-12
+                    {%- if module.megamenu_custom_menu|length > 0 -%}
+                      {%- for custom_menu in module.megamenu_custom_menu -%}
+                        {%- if link.label == custom_menu.match_label %} col-{{breakpoint}}-7{%- endif -%}{%- endfor -%}{%- endif -%}">
+                      <div class="css-col-count-{{breakpoint}}-{{ "2" if columns|length > 1 else "1" }}" style="width: fit-content;">
+                        {% if module.megamenu_custom_headings %} 
+                          {% for heading in module.megamenu_custom_headings %}
+                            {% if link.label == heading.match_label %}
+                                <div style="column-span: all;">{{heading.heading}}</div>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                        {% set depth = depth + 1 %}
+                        {% for sublink in link.children %}
+                            {{ render_dropdown_links(sublink, depth, loop.first, columns|length, link.label) }}
+                        {% endfor %}
+                      </div>
+                    </div>
                   </div>
                 </div>
             </div>
@@ -167,9 +206,9 @@
               </span>
             {% endif %}
               </h6>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled fa-ul">
               {% for child in sublink.children %}
-                <li><a class="close-dropdown text-decoration-none fs-6 text-reset {% if child.activeNode %} active{% endif %}" href="{{child.url}}"><i class="fa fa-2xs fa-chevron-right"></i> {{ child.label }}</a></li>
+                <li><a class="close-dropdown text-decoration-none fs-6 text-reset {% if child.activeNode %} active{% endif %}" href="{{child.url}}"><span class="fa-li"><i class="fa fa-2xs fa-chevron-right"></i></span> {{ child.label }}</a></li>
               {% endfor %}
             </ul>
         {% else %}

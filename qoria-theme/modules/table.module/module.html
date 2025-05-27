@@ -6,27 +6,27 @@
                     <thead>
                         <tr>
                             {% for cell in row.cell %}
-                                <th {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }}>
+                                <th {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }} {{ "style='" + cell.custom_styling + "'" if cell.custom_styling != ""}}>
                                     {{ cell.data }}
                                 </th>
                             {% endfor %}
                         </tr>
                     </thead>
                 {% endif %}
-            {% endfor %}            
+            {% endfor %}   
+            <tbody>         
             {% for row in module.row %}
-                <tbody>
                 {% if row.head != true %}
                     <tr>
                         {% for cell in row.cell %}
-                            <td {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }}>
+                            <td {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }} {{ "style='" + cell.custom_styling + "'" if cell.custom_styling != ""}}>
                                 {{ cell.data }}
                             </td>
                         {% endfor %}
-                    </tr>
-                {% endif %}
-                </tbody>
+                    </tr> 
+                {% endif %} 
             {% endfor %}
+            </tbody>
         </table>
     </div>
 {% endif %}

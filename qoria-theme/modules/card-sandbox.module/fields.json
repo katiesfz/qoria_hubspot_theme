@@ -66,7 +66,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-gradient-primary-reverse text-white", "Reverse Primary Gradient" ],  [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-gray-700 text-white", "Dark" ] ],
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-gradient-primary-reverse text-white", "Reverse Primary Gradient" ],  [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "text-bg-blue", "Blue" ], [ "bg-gray-700 text-white", "Dark" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -590,6 +590,30 @@
       "preset" : null,
       "type" : "choice",
       "default" : "primary"
+    }, {
+      "id" : "text_group.stretched_link",
+      "name" : "stretched_link",
+      "display_width" : null,
+      "label" : "Stretched link",
+      "inline_help_text" : "Applies link to the whole text area",
+      "required" : false,
+      "locked" : false,
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [ ]
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
@@ -837,6 +861,19 @@
     "preset" : null,
     "type" : "choice",
     "default" : " "
+  },{
+    "id" : "card.cta_alignment",
+    "name" : "cta_alignment",
+    "display_width" : null,
+    "label" : "CTA alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "type" : "choice",
+    "default" : "inherit"
   }, {
     "id" : "card.stretched_link",
     "name" : "stretched_link",
@@ -868,6 +905,20 @@
     "display" : "checkbox",
     "type" : "boolean",
     "default" : false
+  }, {
+    "id" : "card.override_colour",
+    "name" : "override_colour",
+    "display_width" : null,
+    "label" : "Override Card Body Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ],[ "bg-secondary text-white", "Secondary" ],[ "bg-indigo text-white", "Indigo" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
@@ -878,21 +929,24 @@
     },
     "accent_colour" : "bg-primary text-white",
     "title" : "<strong>Linewize</strong> (North America)",
-    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore."
+    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+    "cta_alignment" : "inherit"
   }, {
     "image" : {
       "loading" : "lazy"
     },
     "accent_colour" : "bg-primary text-white",
     "title" : "<strong>Linewize</strong> (North America)",
-    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore."
+    "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
+    "cta_alignment" : "inherit"
   }, {
     "image" : {
       "loading" : "lazy"
     },
     "accent_colour" : "bg-primary text-white",
     "title" : "<strong>Linewize</strong> (North America)",
-    "text" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+    "text" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>",
+    "cta_alignment" : "inherit"
   } ]
 }, {
   "id" : "styles",
@@ -933,6 +987,30 @@
     "type" : "boolean",
     "default" : true
   }, {
+    "id" : "styles.normalise_image_headers",
+    "name" : "normalise_image_headers",
+    "display_width" : null,
+    "label" : "Normalise Image Headers",
+    "inline_help_text" : "Force all image headers to be the same height",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "styles.image_header",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    },
+    "default" : false
+  },  {
     "id" : "styles.image_header_fit",
     "name" : "image_header_fit",
     "display_width" : null,
@@ -1290,7 +1368,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ] ],
+    "choices" : [ [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-indigo text-white", "Indigo" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,

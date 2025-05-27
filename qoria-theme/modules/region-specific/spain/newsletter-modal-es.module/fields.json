@@ -9,7 +9,7 @@
   "allow_new_line" : false,
   "show_emoji_picker" : false,
   "type" : "text",
-  "default" : "Subscribe to our Newsletter"
+  "default" : "Subscribe to our newsletter"
 }, {
   "id" : "sub_heading",
   "name" : "sub_heading",

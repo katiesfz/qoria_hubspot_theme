@@ -1,0 +1,11 @@
+[
+  {
+    "name": "file_field",
+    "label": "File",
+    "required": false,
+    "locked": false,
+    "type": "file",
+    "picker": "file",
+    "default": null
+  }
+]

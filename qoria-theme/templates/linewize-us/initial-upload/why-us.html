@@ -1,10 +1,17 @@
 <!--
   templateType: page
-  isAvailableForNewContent: false
+  isAvailableForNewContent: true
   label: Linewize US Why Us
   screenshotPath: ../../images/template-previews/landing-page.png
 -->
 {% extends "../layouts/base.html" %}
+
+
+{% block header %}
+  <div class="header-wrapper sticky-top shadow-sm">
+    {% global_partial path='../partials/header-test.html', label="Header" %}
+  </div>
+{% endblock header %}
 
 
 {% block body %}

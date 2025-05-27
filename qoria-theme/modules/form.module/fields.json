@@ -474,7 +474,29 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text"
-  } ],
+  },  {
+    "name" : "on_form_ready",
+    "display_width" : null,
+    "label" : "OnFormReady code",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : true,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  },  {
+    "name" : "on_before_form_submit",
+    "display_width" : null,
+    "label" : "onBeforeFormSubmit code",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : true,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }  ],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",

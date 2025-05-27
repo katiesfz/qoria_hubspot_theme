@@ -34,12 +34,20 @@
               inlineMessage: "Thank you for your interest, your download should start shortly.",
             {% endif %}
          {% endif %}
-       {% if module.override_values %}
+       {% if module.advanced.on_before_form_submit || module.override_values %}
         onFormSubmit: function($form) {
-       {% for item in module.override_values %}
-          $('input[name="{{ item.property_id }}"]').val("{{ item.property_value }}").change();
-            {% endfor %}                     
-        },
+            {{module.advanced.on_before_form_submit}}
+            {% if module.override_values %}
+              {% for item in module.override_values %}
+                $('input[name="{{ item.property_id }}"]').val("{{ item.property_value }}").change();
+              {% endfor %}       
+            {% endif %}
+          },
+       {% endif %}
+       {% if module.advanced.on_form_ready %}
+        onFormReady: function($form) {
+            {{module.advanced.on_form_ready}}
+          },
        {% endif %}
       {% if module.download %}
         onFormSubmitted: function($form, data) {

@@ -71,6 +71,18 @@ function normaliseSlideHeights() {
       items.css('min-height', maxHeight + 'px');
     //  console.log("normalise run");
   }
+
+  // Set all selected items to the same as the smallest height
+  function normaliseHeightsMin(classString) {
+      var items = $(classString);
+      // reset the height
+      items.css('max-height', '');
+      // set the height
+      let maxHeight = Math.min.apply(null, 
+                                     items.map(function(){return $(this).outerHeight()}).get());
+      items.css('max-height', maxHeight + 'px');
+    //  console.log("normalise run");
+  }
   
   // responsive equal heights
   var mediaXs = window.matchMedia("(max-width: 575px)");
@@ -625,4 +637,316 @@ function paginate(array, num){
     pages.push(array.slice(i, i + num));
   }
   return pages;
+}
+
+
+// check if element is in the viewport
+
+function isInViewport(element, percentageScroll = 100) {
+  const rect = element.getBoundingClientRect();
+  return (
+      rect.bottom >= (0 * (percentageScroll/100))  &&
+   //   rect.left >= 0 &&
+      rect.top <= ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100)) //&&
+   //   rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+// check if element is fully in the viewport
+
+function isAllInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+      rect.top >= 0  &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+const lerp = (x, y, a) => x * (1 - a) + y * a;
+const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
+const invlerp = (x, y, a) => clamp((a - x) / (y - x));
+const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
+
+
+
+
+function fadeInHandler() {
+
+  const fadingElements = document.querySelectorAll(".animate-fade");
+
+  fadingElements.forEach((el) => {
+    // check if element is already visible
+    if (isInViewport(el, 80)) {
+      el.classList.add("animated", "faded"); 
+    } else {
+      // otherwise hide it
+          el.style.opacity = 0;
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    
+    fadingElements.forEach((el) => {
+
+        // check if already animated
+        if (!el.classList.contains("animated")) {
+
+          // when element is in screen
+          if (isInViewport(el, 50)) {
+              // move it to the final position
+              el.style.removeProperty("opacity");
+              el.classList.add("faded", "animated");
+          }
+        }
+      });
+  })
+  
+}
+
+
+
+function slideInHandler(slideFrom) {
+
+  const slidingElements = document.querySelectorAll(".animate-slide");
+
+  slidingElements.forEach((el) => {
+    // check if element is already visible
+    if (isInViewport(el, 80)) {
+      el.classList.add("animated", "slid"); 
+    } else {
+      // otherwise move it off screen
+      
+      if (slideFrom == "right") {
+          const translateX = (window.innerWidth - el.getBoundingClientRect().left) + 150;
+          //console.log(translateX);
+          el.style.transform = "translateX(" + translateX + "px)";
+      }
+
+      if (slideFrom == "left") {
+        const translateX = -(el.getBoundingClientRect().right - 150);
+        //console.log(translateX);
+        el.style.transform = "translateX(" + translateX + "px)";
+      }
+
+      if (slideFrom == "bottom") {
+        const translateY = (Math.max(el.getBoundingClientRect().height, 150));
+        //console.log(translateY);
+        el.style.transform = "translateY(" + translateY + "px)";
+      }
+
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    
+    slidingElements.forEach((el) => {
+
+        // check if already animated
+        if (!el.classList.contains("animated")) {
+
+          // when element is in screen
+          if (isInViewport(el, 50)) {
+              // move it to the final position
+              el.style.removeProperty("transform");
+              el.classList.add("slid", "animated");
+          }
+        }
+      });
+  })
+  
+}
+
+
+function cardAnimateHandler() {
+
+  const cardElements = document.querySelectorAll(".animate-card");
+
+  cardElements.forEach((el) => {
+    // check if element is already visible
+    if (isInViewport(el, 80)) {
+      el.classList.add("animated", "slid"); 
+    } else {
+
+      el.dataset.offsetLeft = el.getBoundingClientRect().left;
+
+
+      // otherwise hide it
+        const translateX = -150;
+        //console.log(translateX);
+          el.style.opacity = 0;
+          el.style.transform = "translateX(" + translateX + "px)";
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    
+    cardElements.forEach((el) => {
+
+        // check if already animated
+        if (!el.classList.contains("animated")) {
+
+          // when element is in screen
+          if (isInViewport(el, 90)) {
+            // duration for the entire animation
+            let duration = 600;
+            // delay based on the distance from the left edge of the screen
+            let elOffsetLeft = el.dataset.offsetLeft;
+            let windowWidth = window.screen.width;
+            let timePercentage = elOffsetLeft / windowWidth;
+
+       //     console.log(elOffsetLeft);
+       //     console.log(windowWidth);
+       //     console.log(timePercentage);
+
+            // therefore the delay on the card is the duration times the percent of the distance from the left 
+            let delay = duration * timePercentage;
+
+            setTimeout(() => {
+              // move it to the final position
+              el.style.removeProperty("opacity");
+              el.style.removeProperty("transform");
+              el.classList.add("slid", "animated");
+            }, delay);
+          }
+        }
+      });
+  })
+  
+}
+
+
+
+
+
+
+function fetchRSS(rssURL, limit = 5){
+
+  var xmlhttp;
+ 
+  if (window.XMLHttpRequest)
+  {// For IE7 and above, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// For IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET",rssURL,false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML;
+
+
+// iterate through var x=xmlDoc.getElementsByTagName("item"); items
+
+// <item>s contain
+// <guid>
+// <title>
+// <description>
+// <author>?
+// <pubDate>
+// <enclosure> e.g.  <enclosure length="64948464" type="audio/mpeg" url="https://pdst.fm/e/dts.podtrac.com/redirect.mp3/tracking.swap.fm/track/0bDcdoop59bdTYSfajQW/stitcher.simplecastaudio.com/4ca28c43-1b5a-4fc4-bc21-fc9e79754a3a/episodes/de7efe44-aa91-45ce-a532-e77bf704eda0/audio/128/default.mp3?aid=rss_feed&awCollectionId=4ca28c43-1b5a-4fc4-bc21-fc9e79754a3a&awEpisodeId=de7efe44-aa91-45ce-a532-e77bf704eda0&feed=dCXMIpJz"/>
+// <itunes:image> href for episodic images?
+// <itunes:duration>
+// <itunes:episode>?
+
+var feedJson = {};
+
+var feedJsonItems = [];
+
+var items=xmlDoc.getElementsByTagName("item");
+
+console.log(items);
+
+for (let i=0; i<limit; i++) {
+  let newItem = {
+    "title": items[i].getElementsByTagName('title')[0].childNodes[0].textContent,
+    "description": items[i].getElementsByTagName('description')[0].childNodes[0].textContent
+   // "episode": items[i].getElementsByTagName('episode')[0].childNodes[0].textContent
+  };
+
+  if (items[i].getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd','image')[0]) {
+    newItem.image = items[i].getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd','image')[0].attributes.getNamedItem("href").textContent;
+  } else {
+    newItem.image = xmlDoc.getElementsByTagName("channel")[0].getElementsByTagName("image")[0].getElementsByTagName("url")[0].textContent;
+  }
+
+  feedJsonItems.push(newItem);
+}
+
+feedJson.items = feedJsonItems;
+
+
+console.log(feedJson);
+
+return feedJson;
+
+var strBuffer= "";
+strBuffer = strBuffer +"<div class='container-fluid padding_top_10' style='max-width: 350px;'>";
+var x=xmlDoc.getElementsByTagName("item");
+for (i=0;i<x.length;i++)
+  {
+      var description = (x[i].getElementsByTagName('description')[0].childNodes[0].nodeValue);
+    
+      var descriptionText = (x[i].getElementsByTagName('description')[0].childNodes[0].textContent);
+      var imgUrl = $(descriptionText).find('img').attr('src');
+    
+      var categories = (x[i].getElementsByTagName("category"));
+    
+      var loopCount = 0;
+      var categoryList = "";
+      
+      if (categories.length != 0) {
+        if (categories.length <= 4) {
+          for (j=0;j<categories.length;j++) {
+            loopCount = loopCount + 1;
+            if (j+1 == categories.length) {
+              categoryList = categoryList + "<small class='last-small'>" + categories[j].childNodes[0].textContent + "</small>";      
+            } else {
+              categoryList = categoryList + "<small>" + categories[j].childNodes[0].textContent + "</small>";      
+            }
+          }
+        } else {
+          for (j=0;j<4;j++) {
+            loopCount = loopCount + 1;
+            if (j == 3) {
+              categoryList = categoryList + "<small class='last-small'>" + categories[j].childNodes[0].textContent + "</small>";      
+            } else {
+              categoryList = categoryList + "<small>" + categories[j].childNodes[0].textContent + "</small>";      
+            }
+          }
+        }
+      };
+    
+    
+    
+      strBuffer = strBuffer + "<div class='row'><div class='col-sm-12 blog_post_listing mb-3'><div class='card'>";
+      strBuffer = strBuffer + "<div class='card-header' style='background-image:url(" + imgUrl + ")'>&nbsp;</div>";
+      strBuffer = strBuffer + "<div class='card-body'>" + categoryList + "<h5 class='card-title'><a href='";
+      strBuffer = strBuffer + (x[i].getElementsByTagName('link')[0].childNodes[0].nodeValue);
+      strBuffer = strBuffer + "' class='stretched-link'>" + (x[i].getElementsByTagName('title')[0].childNodes[0].nodeValue) + "</a></h5>";
+      strBuffer = strBuffer + (x[i].getElementsByTagName('description')[0].childNodes[0].nodeValue) + "</div>";
+      strBuffer = strBuffer + "<div class='card-footer text-right'><a class='button_readmore pr-0 stretched-link' href='";
+      strBuffer = strBuffer + (x[i].getElementsByTagName('link')[0].childNodes[0].nodeValue) + "'>Read more</a></div>";
+      strBuffer = strBuffer +"</div></div></div>";
+      if(i==10){
+        break;
+      }
+  }
+strBuffer = strBuffer +"</div>";
+
+
+ // callback(feed);
+
+
+  document.getElementById(containerId).innerHTML =strBuffer;
+  $(".blog_post_listing p").addClass("card-text text-left"); 
+// standard on load code goes here with $ prefix
+// note: the $ is setup inside the anonymous function of the ready command
+
+
+
+
+
 }

@@ -17,7 +17,7 @@
   {% endif %}
   
   {% set rel = (module.link.open_in_new_tab ? "noopener " : null) ~ (module.link.no_follow ? "nofollow" : null) %}
-  <div class="d-block text-md-{{ module.alignment }} text-center" style="{{module.styles.spacing_field.css}}">
+  <div class="d-block {{"text-" ~ module.small_alignment if module.small_alignment != "default" else "text-center" }} text-md-{{ module.alignment }}" style="{{module.styles.spacing_field.css}}">
     <a class="btn btn{{ module.button_style }}{{module.button_colour}} {{module.button_size}} {% if module.button_style != "-" %}{{module.text_colour}}{% endif %} {{ module.advanced.additional_classes }}" href="{{ href }}"
         id="button_{{ name }}"
        {% if module.advanced.trigger_modal %}

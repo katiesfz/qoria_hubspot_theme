@@ -5,14 +5,6 @@
   "label" : "Cards Appearance",
   "required" : false,
   "locked" : false,
-  "visibility" : {
-    "controlling_field" : "ef18c544-a095-f955-4642-9e8e126a81c4",
-    "controlling_field_path" : null,
-    "controlling_value_regex" : "true",
-    "property" : null,
-    "operator" : "EQUAL",
-    "access" : null
-  },
   "children" : [ {
     "id" : "0f6529b3-2925-619b-43bc-22fc1f14c5fb",
     "name" : "row_classes",

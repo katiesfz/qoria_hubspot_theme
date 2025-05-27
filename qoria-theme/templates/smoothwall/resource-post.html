@@ -8,7 +8,8 @@
 
 {% extends "./layouts/base.html" %}
 
-  {% choice "blog_type" label='Blog type', value="regular", choices=[['regular', 'Regular'], ['case_study', 'Case study'], ['video', 'Video'], ['whitepaper', 'Whitepaper']], export_to_template_context=True %}
+{% choice "blog_type" label='Blog type', value="regular", choices=[['regular', 'Regular'], ['case_study', 'Case study'], ['video', 'Video'], ['whitepaper', 'Whitepaper']], export_to_template_context=True %}
+{% boolean "custom_heading_toggle" label="Custom heading toggle", value=False, no_wrapper=True, export_to_template_context=True %}
 
 {% require_js %}
   <script>
@@ -23,7 +24,7 @@
             formatted += '<div class="card-body text-start p-3">';
                   
               if (blogpost.featuredImage){
-              formatted += `<img src="${blogpost.featuredImage}?width=800" class="card-img-top rounded" alt="${blogpost.featuredImageAltText}">`;
+              formatted += `<div class="ratio ratio-21x9"><img src="${blogpost.featuredImage}?width=800" class="card-img-top rounded  position-absolute" alt="${blogpost.featuredImageAltText}"></div>`;
               }
               let postBody = blogpost.postBody.replace(/(<([^>]+)>)/gi, "").replace(/(\{\%([^}]+)(%}))/gi, "");
               let postWordcount = postBody.split(' ').filter(function(n) { return n != '' }).length;
@@ -36,7 +37,7 @@
                   formatted += `<strong>${blogpost.blogAuthor.fullName}</strong>`;
                 formatted += `</div>`;
               formatted += `</div>`;
-              formatted += `<a href="${blogpost.url}" class="h4 text-reset pb-2 fw-semibold">${blogpost.name}</a>`;
+              formatted += `<a href="${blogpost.url}" class="h4 text-reset pb-2 fw-medium stretched-link">${blogpost.name}</a>`;
             formatted += '</div>';
           formatted += '</div>';
         formatted += '</div>';
@@ -301,7 +302,15 @@
   <article class="container-xxl blog-post pt-md-6" id="blog_post">
     <div class="row align-items-stretch g-lg-7 g-5 ">
       <div class="col-12 offset-0 col-xl-8 col-lg-8 col-md-8 border-end-md">
-        <h1 class="fw-bold {{ "pb-7" if content.featured_image }}">{{ content.name }}</h1>
+        <div class="row">
+          <div class="col {{ "pb-4 pb-lg-7" if content.featured_image }}">
+            {% if widget_data.custom_heading_toggle.value == "true" %}
+              {% rich_text "custom_heading" label="Custom heading" html="<h1>{{ content.name }}</h1>" %}
+            {% else %}
+              <h1 class="fw-bold">{{ content.name }}</h1>
+            {% endif %}
+          </div>
+        </div>
         {% if content.featured_image %}
           <div class="row">
             <div class="col">
@@ -313,7 +322,8 @@
           <div class="col-auto text-secondary">
           {# <img src="{{ content.blog_post_author.avatar }}" class="me-2 d-none" alt="{{ content.blog_post_author.display_name }} Avatar" style="width: 56px; width: 56px; object-fit: cover;">
             #}
-          <strong>By {{ content.blog_post_author.display_name }}</strong>
+          <strong>By {{ content.blog_post_author.display_name }}</strong><br>
+          Published {{content.publish_date|format_date('dd MMMM, yyyy')}}
           </div>
           <div class="col">
             <div class="bg-secondary text-white p-3 d-inline-block lh-1">
@@ -363,7 +373,9 @@
                     <div class="card bg-light border-0 position-relative">
                       <div class="card-body text-start p-3">
                         {% if post.featured_image %}
-                          <img src="{{ resize_image_url(post.featured_image, 800) }}" class="card-img-top rounded" alt="{{post.name}}">
+                          <div class="ratio ratio-21x9">
+                          <img src="{{ resize_image_url(post.featured_image, 800) }}" class="card-img-top rounded position-absolute" alt="{{post.name}}">
+                          </div>
                         {% endif %}
                         {% set postBody = post.post_body|striptags %}
                         {% set postWordcount = postBody|split(' ')|length %}
@@ -376,7 +388,7 @@
                             <strong>{{post.author.full_name}}</strong>
                           </div>
                         </div>
-                        <a href="{{post.absolute_url}}" class="h4 text-reset pb-2 fw-semibold">{{post.name}}</a>
+                        <a href="{{post.absolute_url}}" class="h4 text-reset pb-2 fw-medium stretched-link">{{post.name}}</a>
                       </div>
                     </div>
                   </div>
@@ -418,7 +430,7 @@
             {% endif %}
             <div class="col">
               <div class="bg-light">
-                {% module "module_17230112997651" path="/q-theme/modules/subscribe", label="Subscribe" %}
+                {% module "module_17230112997651" path="/q-theme/modules/region-specific/uk/subscribe", label="Subscribe" %}
               </div>
             </div>
           </div>

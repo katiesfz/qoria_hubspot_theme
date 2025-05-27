@@ -64,6 +64,16 @@
     "type" : "boolean",
     "default" : true
   }, {
+    "id" : "style.rounded",
+    "name" : "rounded",
+    "display_width" : null,
+    "label" : "Rounded",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
     "id" : "style.shadow",
     "name" : "shadow",
     "display_width" : null,

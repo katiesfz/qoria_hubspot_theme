@@ -25,11 +25,47 @@
      },
   "default" : " "
 },{
+  "name" : "nz_type",
+  "label" : "Footer type",
+  "required" : false,
+  "locked" : false,
+  "multiple":"false",
+  "display" : "select",
+  "choices" : [[ " ", "Default" ], [ "success", "Customer Success" ]],
+  "type" : "choice",
+  "visibility" : {
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "nz",
+    "property": "",
+    "operator" : "EQUAL"
+     },
+  "default" : " "
+},{
   "name" : "nz_footer_copy",
   "label" : "Footer copy",
   "required" : false,
   "locked" : false,
   "type" : "richtext",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "nz",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "nz_type",
+      "controlling_value_regex" : "success",
+      "property": "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
   "visibility" : {
     "controlling_field_path" : "region",
     "controlling_value_regex" : "nz",
@@ -67,10 +103,71 @@
       "property": "",
       "operator" : "NOT_EQUAL",
       "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "success",
+      "property": "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
     }],
     "children" : []
   },
   "default" : "<p style='color: inherit'><strong>Call us on 1300 687 052</strong> for an informal chat, <a href='mailto:enquiries@linewize.io' style='color: inherit;'>email us</a> or <a href='https://linewize.io/' style='color: inherit;'>visit our website</a> for more information.</p>"
+},{
+  "name" : "au_success_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "success",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "default" : "<a href='https://www.linewize.io/bite-sized-learning' style='border: 0; line-height: 0; display: block;'><img src='https://linewize.io/hubfs/ANZ-Customer%20Success/BSL/Bite-Sized-Learning-Signature-Transparent.png' style='max-width: 100%; width: 540px;' width='540'></a>"
+},{
+  "name" : "nz_success_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "nz",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "nz_type",
+      "controlling_value_regex" : "success",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "default" : "<a href='https://sites.google.com/linewize.io/qoria-nz/home' style='border: 0; line-height: 0; display: block;'><img src='https://linewize.co.nz/hubfs/ANZ-Customer%20Success/BSL/Signature%20-%20NZ%20Success%20Hub.png' style='max-width: 100%; width: 540px;' width='540'></a>"
 },{
   "name" : "eu_footer_copy",
   "label" : "Footer copy",
@@ -516,4 +613,32 @@
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group"
+}, {
+  "name" : "au_success_banner",
+  "label" : "Include banner",
+  "required" : false,
+  "locked" : false,
+  "type" : "boolean",
+  "display" : "toggle",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "success",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : []
+  },
+  "default" : true
 }]

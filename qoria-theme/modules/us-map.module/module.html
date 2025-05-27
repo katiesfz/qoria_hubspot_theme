@@ -5226,14 +5226,15 @@
 		{% endfor %}
 
 		// TEMPORARY hack - use a hubdb to post the zip codes
+		{% if hub_id == 7922097 %}
+			{% set zips = hubdb_table_rows(7922097, "limit=3000") %}
 
-		{% set zips = hubdb_table_rows(7922097, "limit=3000") %}
-
-		{% for zip in zips %}
-			{% if zip.zip_code != null  %}
-			buildQuoteMarker("{{zip.state}}", "{{zip.zip_code|trim|truncate(3,true,"")}}", false, "", "", "");
-			{% endif %}
-		{% endfor %}
+			{% for zip in zips %}
+				{% if zip.zip_code != null  %}
+				buildQuoteMarker("{{zip.state}}", "{{zip.zip_code|trim|truncate(3,true,"")}}", false, "", "", "");
+				{% endif %}
+			{% endfor %}
+		{% endif %}
 
 		// end temporary hack
 

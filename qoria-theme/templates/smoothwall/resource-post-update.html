@@ -9,6 +9,7 @@
 {% extends "./layouts/base.html" %}
 
 {% choice "blog_type" label='Blog type', value="regular", choices=[['regular', 'Regular'], ['case_study', 'Case study'], ['video', 'Video'], ['whitepaper', 'Whitepaper']], export_to_template_context=True %}
+{% boolean "custom_heading_toggle" label="Custom heading toggle", value=False, no_wrapper=True, export_to_template_context=True %}
 
 {% require_js %}
 <script>
@@ -36,11 +37,11 @@
                 formatted += `<strong>${blogpost.blogAuthor.fullName}</strong>`;
               formatted += `</div>`;
             formatted += `</div>`;
-            formatted += `<a href="${blogpost.url}" class="h4 text-reset pb-2 fw-semibold">${blogpost.name}</a>`;
+            formatted += `<a href="${blogpost.url}" class="h4 text-reset pb-2 fw-semibold stretched-link">${blogpost.name}</a>`;
           formatted += '</div>';
         formatted += '</div>';
       formatted += '</div>';
-    }
+    } 
 
   return formatted;
   }
@@ -301,7 +302,11 @@ style={
 <article class="container-xxl blog-post pt-md-6" id="blog_post">
   <div class="row align-items-stretch g-lg-7 g-5 ">
     <div class="col-12 offset-0 col-xl-8 col-lg-8 col-md-8 border-end-md">
+    {% if widget_data.custom_heading_toggle.value == "true" %}
+      {% rich_text "custom_heading" label="Custom heading" html="<h1>Keep this heading as Heading 1 for SEO purposes.</h1>" no_wrapper=true %}
+      {% else %}
       <h1 class="fw-bold {{ "pb-7" if content.featured_image }}">{{ content.name }}</h1>
+      {% endif %}
       {% if content.featured_image %}
         <div class="row">
           <div class="col">
@@ -376,7 +381,7 @@ style={
                           <strong>{{post.author.full_name}}</strong>
                         </div>
                       </div>
-                      <a href="{{post.absolute_url}}" class="h4 text-reset pb-2 fw-semibold">{{post.name}}</a>
+                      <a href="{{post.absolute_url}}" class="h4 text-reset pb-2 fw-semibold link-stretched stretched-link">{{post.name}}</a>
                     </div>
                   </div>
                 </div>
@@ -418,7 +423,7 @@ style={
           {% endif %}
           <div class="col">
             <div class="bg-light">
-              {% module "module_17230112997651" path="/q-theme/modules/subscribe", label="Subscribe" %}
+              {% module "module_17230112997651" path="/q-theme/modules/region-specific/uk/subscribe", label="Subscribe" %}
             </div>
           </div>
         </div>

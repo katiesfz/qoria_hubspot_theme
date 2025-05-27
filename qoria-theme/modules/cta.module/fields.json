@@ -12,6 +12,20 @@
   "preset" : null,
   "type" : "choice"
 }, {
+  "id" : "small_alignment",
+  "name" : "small_alignment",
+  "display_width" : null,
+  "label" : "Alignment on small screens",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [  [ "default", "Default" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "default": "default",
+  "type" : "choice"
+}, {
   "id" : "link",
   "name" : "link",
   "display_width" : null,

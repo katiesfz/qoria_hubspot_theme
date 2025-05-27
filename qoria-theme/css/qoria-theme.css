@@ -22,68 +22,6 @@
   src: url("{{ get_asset_url('../assets/fonts/peajustgrammasfont.woff') }}") format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.hs-button {
-  display: inline-block;
-  font-weight: 600;
-  line-height: 1.066666667;
-  color: #1d1e1c;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  background-color: transparent;
-  border: 2px solid transparent;
-  --q-btn-padding-y: 1rem;
-  --q-btn-padding-x: 2.375rem;
-  --q-btn-font-size: 0.9375rem;
-  --q-btn-border-radius: 4px;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hs-button {
-    transition: none;
-  }
-}
-.hs-button:hover {
-  color: #1d1e1c;
-}
-.btn-check:focus + .hs-button, .hs-button:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
-}
-.btn-check:checked + .hs-button, .btn-check:active + .hs-button, .hs-button:active, .hs-button.active {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.btn-check:checked + .hs-button:focus, .btn-check:active + .hs-button:focus, .hs-button:active:focus, .hs-button.active:focus {
-  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25), inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.hs-button:disabled, .hs-button.disabled, fieldset:disabled .hs-button {
-  pointer-events: none;
-  opacity: 0.65;
-  box-shadow: none;
-}
-
-.btn-blog-filter-secondary {
-  --q-btn-color: #1d1e1c;
-  --q-btn-bg: transparent;
-  --q-btn-border-color: transparent;
-  --q-btn-hover-color: #1d1e1c;
-  --q-btn-hover-bg: rgba(29, 30, 28, 0.1);
-  --q-btn-hover-border-color: none;
-  --q-btn-focus-shadow-rgb: 29, 30, 28;
-  --q-btn-active-color: #fff;
-  --q-btn-active-bg: #515ba5;
-  --q-btn-active-border-color: none;
-  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --q-btn-disabled-color: #fff;
-  --q-btn-disabled-bg: transparent;
-  --q-btn-disabled-border-color: transparent;
-  --q-btn-active-shadow: none;
-}
-.btn-blog-filter-secondary.active {
-  box-shadow: none !important;
-}
-
 :root,
 [data-bs-theme=light] {
   --q-blue: #8dc9e6;
@@ -309,6 +247,13 @@
   --q-gray-700-rgb: 77, 77, 77;
   --q-gray-800-rgb: 50, 51, 50;
   --q-gray-900-rgb: 29, 30, 28;
+  --q-primary-text-emphasis: #234939;
+  --q-secondary-text-emphasis: #202442;
+  --q-teal-text-emphasis: #234939;
+  --q-indigo-text-emphasis: #202442;
+  --q-orange-text-emphasis: #644c22;
+  --q-red-text-emphasis: #5e282d;
+  --q-blue-text-emphasis: #38505c;
   --q-filter-grayscale: grayscale(1) contrast(1.5) brightness(0.9);
 }
 
@@ -2571,10 +2516,10 @@ progress {
 .table {
   --q-table-color: var(--q-body-color);
   --q-table-bg: transparent;
-  --q-table-border-color: var(--q-border-color);
+  --q-table-border-color: var(--q-border-color-translucent);
   --q-table-accent-bg: transparent;
   --q-table-striped-color: var(--q-body-color);
-  --q-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --q-table-striped-bg: rgba(0, 0, 0, 0.025);
   --q-table-active-color: var(--q-body-color);
   --q-table-active-bg: rgba(0, 0, 0, 0.1);
   --q-table-hover-color: var(--q-body-color);
@@ -2624,12 +2569,12 @@ progress {
   border-top-width: 0;
 }
 
-.table-striped > tbody > tr:nth-of-type(odd) > * {
+.table-striped > tbody > tr:nth-of-type(2n) > * {
   --q-table-accent-bg: var(--q-table-striped-bg);
   color: var(--q-table-striped-color);
 }
 
-.table-striped-columns > :not(caption) > tr > :nth-child(even) {
+.table-striped-columns > :not(caption) > tr > :nth-child(2n) {
   --q-table-accent-bg: var(--q-table-striped-bg);
   color: var(--q-table-striped-color);
 }
@@ -2647,8 +2592,9 @@ progress {
 .table-primary {
   --q-table-color: #000;
   --q-table-bg: #def1e8;
-  --q-table-border-color: #c8d9d1;
-  --q-table-striped-bg: #d3e5dc;
+  --q-table-border-color: #b2c1ba;
+  --q-table-striped-bg: #d8ebe2;
+  --q-table-striped-twice-bg: #d3e5dc;
   --q-table-striped-color: #000;
   --q-table-active-bg: #c8d9d1;
   --q-table-active-color: #000;
@@ -2661,8 +2607,9 @@ progress {
 .table-secondary {
   --q-table-color: #000;
   --q-table-bg: #dcdeed;
-  --q-table-border-color: #c6c8d5;
-  --q-table-striped-bg: #d1d3e1;
+  --q-table-border-color: #b0b2be;
+  --q-table-striped-bg: #d7d8e7;
+  --q-table-striped-twice-bg: #d1d3e1;
   --q-table-striped-color: #000;
   --q-table-active-bg: #c6c8d5;
   --q-table-active-color: #000;
@@ -2675,8 +2622,9 @@ progress {
 .table-success {
   --q-table-color: #000;
   --q-table-bg: #d1e7dd;
-  --q-table-border-color: #bcd0c7;
-  --q-table-striped-bg: #c7dbd2;
+  --q-table-border-color: #a7b9b1;
+  --q-table-striped-bg: #cce1d7;
+  --q-table-striped-twice-bg: #c7dbd2;
   --q-table-striped-color: #000;
   --q-table-active-bg: #bcd0c7;
   --q-table-active-color: #000;
@@ -2689,8 +2637,9 @@ progress {
 .table-info {
   --q-table-color: #000;
   --q-table-bg: #cff4fc;
-  --q-table-border-color: #badce3;
-  --q-table-striped-bg: #c5e8ef;
+  --q-table-border-color: #a6c3ca;
+  --q-table-striped-bg: #caeef6;
+  --q-table-striped-twice-bg: #c5e8ef;
   --q-table-striped-color: #000;
   --q-table-active-bg: #badce3;
   --q-table-active-color: #000;
@@ -2703,8 +2652,9 @@ progress {
 .table-warning {
   --q-table-color: #000;
   --q-table-bg: #fff3cd;
-  --q-table-border-color: #e6dbb9;
-  --q-table-striped-bg: #f2e7c3;
+  --q-table-border-color: #ccc2a4;
+  --q-table-striped-bg: #f9edc8;
+  --q-table-striped-twice-bg: #f2e7c3;
   --q-table-striped-color: #000;
   --q-table-active-bg: #e6dbb9;
   --q-table-active-color: #000;
@@ -2717,8 +2667,9 @@ progress {
 .table-danger {
   --q-table-color: #000;
   --q-table-bg: #fbe0e3;
-  --q-table-border-color: #e2cacc;
-  --q-table-striped-bg: #eed5d8;
+  --q-table-border-color: #c9b3b6;
+  --q-table-striped-bg: #f5dadd;
+  --q-table-striped-twice-bg: #eed5d8;
   --q-table-striped-color: #000;
   --q-table-active-bg: #e2cacc;
   --q-table-active-color: #000;
@@ -2731,8 +2682,9 @@ progress {
 .table-light {
   --q-table-color: #000;
   --q-table-bg: #f8f8f8;
-  --q-table-border-color: #dfdfdf;
-  --q-table-striped-bg: #ececec;
+  --q-table-border-color: #c6c6c6;
+  --q-table-striped-bg: #f2f2f2;
+  --q-table-striped-twice-bg: #ececec;
   --q-table-striped-color: #000;
   --q-table-active-bg: #dfdfdf;
   --q-table-active-color: #000;
@@ -2745,8 +2697,9 @@ progress {
 .table-dark {
   --q-table-color: #fff;
   --q-table-bg: #1d1e1c;
-  --q-table-border-color: #343533;
-  --q-table-striped-bg: #282927;
+  --q-table-border-color: #4a4b49;
+  --q-table-striped-bg: #232422;
+  --q-table-striped-twice-bg: #282927;
   --q-table-striped-color: #fff;
   --q-table-active-bg: #343533;
   --q-table-active-color: #fff;
@@ -3165,7 +3118,7 @@ textarea.form-control-lg {
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
-.btn-check[disabled] + .btn, .password-prompt .btn-check[disabled] + input[type=submit], .hs-form .hs-submit .btn-check[disabled] + .hs-button, .btn-check:disabled + .btn, .password-prompt .btn-check:disabled + input[type=submit], .hs-form .hs-submit .btn-check:disabled + .hs-button {
+.btn-check[disabled] + .btn, .password-prompt .btn-check[disabled] + input[type=submit], .btn-check[disabled] + .hs-button, .btn-check:disabled + .btn, .password-prompt .btn-check:disabled + input[type=submit], .btn-check:disabled + .hs-button {
   pointer-events: none;
   filter: none;
   opacity: 0.65;
@@ -3369,11 +3322,11 @@ textarea.form-control-lg {
 .input-group > .form-floating:focus-within {
   z-index: 5;
 }
-.input-group .btn, .input-group .password-prompt input[type=submit], .password-prompt .input-group input[type=submit], .input-group .hs-form .hs-submit .hs-button, .hs-form .hs-submit .input-group .hs-button {
+.input-group .btn, .input-group .password-prompt input[type=submit], .password-prompt .input-group input[type=submit], .input-group .hs-form .hs-submit .hs-button, .hs-form .hs-submit .input-group .hs-button, .input-group .hs-button {
   position: relative;
   z-index: 2;
 }
-.input-group .btn:focus, .input-group .password-prompt input[type=submit]:focus, .password-prompt .input-group input[type=submit]:focus, .input-group .hs-form .hs-submit .hs-button:focus, .hs-form .hs-submit .input-group .hs-button:focus {
+.input-group .btn:focus, .input-group .password-prompt input[type=submit]:focus, .password-prompt .input-group input[type=submit]:focus, .input-group .hs-button:focus {
   z-index: 5;
 }
 
@@ -3397,7 +3350,8 @@ textarea.form-control-lg {
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn,
 .password-prompt .input-group-lg > input[type=submit],
-.hs-form .hs-submit .input-group-lg > .hs-button {
+.hs-form .hs-submit .input-group-lg > .hs-button,
+.input-group-lg > .hs-button {
   padding: 1rem 2rem;
   font-size: calc(1.255rem + 0.06vw);
   border-radius: 10px;
@@ -3408,7 +3362,8 @@ textarea.form-control-lg {
   .input-group-lg > .input-group-text,
   .input-group-lg > .btn,
   .password-prompt .input-group-lg > input[type=submit],
-  .hs-form .hs-submit .input-group-lg > .hs-button {
+  .hs-form .hs-submit .input-group-lg > .hs-button,
+  .input-group-lg > .hs-button {
     font-size: 1.3rem;
   }
 }
@@ -3418,7 +3373,8 @@ textarea.form-control-lg {
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn,
 .password-prompt .input-group-sm > input[type=submit],
-.hs-form .hs-submit .input-group-sm > .hs-button {
+.hs-form .hs-submit .input-group-sm > .hs-button,
+.input-group-sm > .hs-button {
   padding: 0.7rem 1.5rem;
   font-size: 0.9rem;
   border-radius: 0.25rem;
@@ -3657,7 +3613,7 @@ textarea.form-control-lg {
   z-index: 4;
 }
 
-.btn, .password-prompt input[type=submit], .hs-form .hs-submit .hs-button {
+.btn, .password-prompt input[type=submit], .hs-form .hs-submit .hs-button, .hs-button {
   --q-btn-padding-x: 2.375rem;
   --q-btn-padding-y: 1rem;
   --q-btn-font-family: ;
@@ -3691,42 +3647,42 @@ textarea.form-control-lg {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn, .password-prompt input[type=submit], .hs-form .hs-submit .hs-button {
+  .btn, .password-prompt input[type=submit], .hs-form .hs-submit .hs-button, .hs-button {
     transition: none;
   }
 }
-.btn:hover, .password-prompt input[type=submit]:hover, .hs-form .hs-submit .hs-button:hover {
+.btn:hover, .password-prompt input[type=submit]:hover, .hs-form .hs-submit .hs-button:hover, .hs-button:hover {
   color: var(--q-btn-hover-color);
   background-color: var(--q-btn-hover-bg);
   border-color: var(--q-btn-hover-border-color);
 }
-.btn-check + .btn:hover, .password-prompt .btn-check + input[type=submit]:hover, .hs-form .hs-submit .btn-check + .hs-button:hover {
+.btn-check + .btn:hover, .password-prompt .btn-check + input[type=submit]:hover, .btn-check + .hs-button:hover {
   color: var(--q-btn-color);
   background-color: var(--q-btn-bg);
   border-color: var(--q-btn-border-color);
 }
-.btn:focus-visible, .password-prompt input[type=submit]:focus-visible, .hs-form .hs-submit .hs-button:focus-visible {
+.btn:focus-visible, .password-prompt input[type=submit]:focus-visible, .hs-form .hs-submit .hs-button:focus-visible, .hs-button:focus-visible {
   color: var(--q-btn-hover-color);
   background-color: var(--q-btn-hover-bg);
   border-color: var(--q-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--q-btn-box-shadow), var(--q-btn-focus-box-shadow);
 }
-.btn-check:focus-visible + .btn, .password-prompt .btn-check:focus-visible + input[type=submit], .hs-form .hs-submit .btn-check:focus-visible + .hs-button {
+.btn-check:focus-visible + .btn, .password-prompt .btn-check:focus-visible + input[type=submit], .btn-check:focus-visible + .hs-button {
   border-color: var(--q-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--q-btn-box-shadow), var(--q-btn-focus-box-shadow);
 }
-.btn-check:checked + .btn, .password-prompt .btn-check:checked + input[type=submit], .hs-form .hs-submit .btn-check:checked + .hs-button, :not(.btn-check) + .btn:active, .password-prompt :not(.btn-check) + input[type=submit]:active, .hs-form .hs-submit :not(.btn-check) + .hs-button:active, .btn:first-child:active, .password-prompt input[type=submit]:first-child:active, .hs-form .hs-submit .hs-button:first-child:active, .btn.active, .password-prompt input.active[type=submit], .hs-form .hs-submit .active.hs-button, .btn.show, .password-prompt input.show[type=submit], .hs-form .hs-submit .show.hs-button {
+.btn-check:checked + .btn, .password-prompt .btn-check:checked + input[type=submit], .btn-check:checked + .hs-button, :not(.btn-check) + .btn:active, .password-prompt :not(.btn-check) + input[type=submit]:active, :not(.btn-check) + .hs-button:active, .btn:first-child:active, .password-prompt input[type=submit]:first-child:active, .hs-button:first-child:active, .btn.active, .password-prompt input.active[type=submit], .hs-form .hs-submit .active.hs-button, .active.hs-button, .btn.show, .password-prompt input.show[type=submit], .hs-form .hs-submit .show.hs-button, .show.hs-button {
   color: var(--q-btn-active-color);
   background-color: var(--q-btn-active-bg);
   border-color: var(--q-btn-active-border-color);
   box-shadow: var(--q-btn-active-shadow);
 }
-.btn-check:checked + .btn:focus-visible, .password-prompt .btn-check:checked + input[type=submit]:focus-visible, .hs-form .hs-submit .btn-check:checked + .hs-button:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .password-prompt :not(.btn-check) + input[type=submit]:active:focus-visible, .hs-form .hs-submit :not(.btn-check) + .hs-button:active:focus-visible, .btn:first-child:active:focus-visible, .password-prompt input[type=submit]:first-child:active:focus-visible, .hs-form .hs-submit .hs-button:first-child:active:focus-visible, .btn.active:focus-visible, .password-prompt input.active[type=submit]:focus-visible, .hs-form .hs-submit .active.hs-button:focus-visible, .btn.show:focus-visible, .password-prompt input.show[type=submit]:focus-visible, .hs-form .hs-submit .show.hs-button:focus-visible {
+.btn-check:checked + .btn:focus-visible, .password-prompt .btn-check:checked + input[type=submit]:focus-visible, .btn-check:checked + .hs-button:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .password-prompt :not(.btn-check) + input[type=submit]:active:focus-visible, :not(.btn-check) + .hs-button:active:focus-visible, .btn:first-child:active:focus-visible, .password-prompt input[type=submit]:first-child:active:focus-visible, .hs-button:first-child:active:focus-visible, .btn.active:focus-visible, .password-prompt input.active[type=submit]:focus-visible, .active.hs-button:focus-visible, .btn.show:focus-visible, .password-prompt input.show[type=submit]:focus-visible, .show.hs-button:focus-visible {
   box-shadow: var(--q-btn-active-shadow), var(--q-btn-focus-box-shadow);
 }
-.btn:disabled, .password-prompt input[type=submit]:disabled, .hs-form .hs-submit .hs-button:disabled, .btn.disabled, .password-prompt input.disabled[type=submit], .hs-form .hs-submit .disabled.hs-button, fieldset:disabled .btn, fieldset:disabled .password-prompt input[type=submit], .password-prompt fieldset:disabled input[type=submit], fieldset:disabled .hs-form .hs-submit .hs-button, .hs-form .hs-submit fieldset:disabled .hs-button {
+.btn:disabled, .password-prompt input[type=submit]:disabled, .hs-form .hs-submit .hs-button:disabled, .hs-button:disabled, .btn.disabled, .password-prompt input.disabled[type=submit], .hs-form .hs-submit .disabled.hs-button, .disabled.hs-button, fieldset:disabled .btn, fieldset:disabled .password-prompt input[type=submit], .password-prompt fieldset:disabled input[type=submit], fieldset:disabled .hs-form .hs-submit .hs-button, .hs-form .hs-submit fieldset:disabled .hs-button, fieldset:disabled .hs-button {
   color: var(--q-btn-disabled-color);
   pointer-events: none;
   background-color: var(--q-btn-disabled-bg);
@@ -3735,7 +3691,7 @@ textarea.form-control-lg {
   box-shadow: none;
 }
 
-.btn-primary, .password-prompt input[type=submit] {
+.btn-primary, .password-prompt input[type=submit], .hs-button.primary {
   --q-btn-color: #fff;
   --q-btn-bg: #58b78e;
   --q-btn-border-color: #58b78e;
@@ -4099,19 +4055,19 @@ textarea.form-control-lg {
   color: var(--q-btn-hover-color);
 }
 
-.btn-lg, .btn-group-lg > .btn, .password-prompt .btn-group-lg > input[type=submit], .hs-form .hs-submit .btn-group-lg > .hs-button {
+.btn-lg, .btn-group-lg > .btn, .password-prompt .btn-group-lg > input[type=submit], .hs-form .hs-submit .btn-group-lg > .hs-button, .btn-group-lg > .hs-button {
   --q-btn-padding-y: 1rem;
   --q-btn-padding-x: 2rem;
   --q-btn-font-size: calc(1.255rem + 0.06vw);
   --q-btn-border-radius: 4px;
 }
 @media (min-width: 1200px) {
-  .btn-lg, .btn-group-lg > .btn, .password-prompt .btn-group-lg > input[type=submit], .hs-form .hs-submit .btn-group-lg > .hs-button {
+  .btn-lg, .btn-group-lg > .btn, .password-prompt .btn-group-lg > input[type=submit], .hs-form .hs-submit .btn-group-lg > .hs-button, .btn-group-lg > .hs-button {
     --q-btn-font-size: 1.3rem;
   }
 }
 
-.btn-sm, .btn-group-sm > .btn, .password-prompt .btn-group-sm > input[type=submit], .hs-form .hs-submit .btn-group-sm > .hs-button {
+.btn-sm, .btn-group-sm > .btn, .password-prompt .btn-group-sm > input[type=submit], .hs-form .hs-submit .btn-group-sm > .hs-button, .btn-group-sm > .hs-button {
   --q-btn-padding-y: 0.7rem;
   --q-btn-padding-x: 1.5rem;
   --q-btn-font-size: 0.9rem;
@@ -4512,47 +4468,48 @@ textarea.form-control-lg {
   display: inline-flex;
   vertical-align: middle;
 }
-.btn-group > .btn, .password-prompt .btn-group > input[type=submit], .hs-form .hs-submit .btn-group > .hs-button,
+.btn-group > .btn, .password-prompt .btn-group > input[type=submit], .hs-form .hs-submit .btn-group > .hs-button, .btn-group > .hs-button,
 .btn-group-vertical > .btn,
 .password-prompt .btn-group-vertical > input[type=submit],
-.hs-form .hs-submit .btn-group-vertical > .hs-button {
+.hs-form .hs-submit .btn-group-vertical > .hs-button,
+.btn-group-vertical > .hs-button {
   position: relative;
   flex: 1 1 auto;
 }
-.btn-group > .btn-check:checked + .btn, .password-prompt .btn-group > .btn-check:checked + input[type=submit], .hs-form .hs-submit .btn-group > .btn-check:checked + .hs-button,
+.btn-group > .btn-check:checked + .btn, .password-prompt .btn-group > .btn-check:checked + input[type=submit], .btn-group > .btn-check:checked + .hs-button,
 .btn-group > .btn-check:focus + .btn,
 .password-prompt .btn-group > .btn-check:focus + input[type=submit],
-.hs-form .hs-submit .btn-group > .btn-check:focus + .hs-button,
+.btn-group > .btn-check:focus + .hs-button,
 .btn-group > .btn:hover,
 .password-prompt .btn-group > input[type=submit]:hover,
-.hs-form .hs-submit .btn-group > .hs-button:hover,
+.btn-group > .hs-button:hover,
 .btn-group > .btn:focus,
 .password-prompt .btn-group > input[type=submit]:focus,
-.hs-form .hs-submit .btn-group > .hs-button:focus,
+.btn-group > .hs-button:focus,
 .btn-group > .btn:active,
 .password-prompt .btn-group > input[type=submit]:active,
-.hs-form .hs-submit .btn-group > .hs-button:active,
+.btn-group > .hs-button:active,
 .btn-group > .btn.active,
 .password-prompt .btn-group > input.active[type=submit],
-.hs-form .hs-submit .btn-group > .active.hs-button,
+.btn-group > .active.hs-button,
 .btn-group-vertical > .btn-check:checked + .btn,
 .password-prompt .btn-group-vertical > .btn-check:checked + input[type=submit],
-.hs-form .hs-submit .btn-group-vertical > .btn-check:checked + .hs-button,
+.btn-group-vertical > .btn-check:checked + .hs-button,
 .btn-group-vertical > .btn-check:focus + .btn,
 .password-prompt .btn-group-vertical > .btn-check:focus + input[type=submit],
-.hs-form .hs-submit .btn-group-vertical > .btn-check:focus + .hs-button,
+.btn-group-vertical > .btn-check:focus + .hs-button,
 .btn-group-vertical > .btn:hover,
 .password-prompt .btn-group-vertical > input[type=submit]:hover,
-.hs-form .hs-submit .btn-group-vertical > .hs-button:hover,
+.btn-group-vertical > .hs-button:hover,
 .btn-group-vertical > .btn:focus,
 .password-prompt .btn-group-vertical > input[type=submit]:focus,
-.hs-form .hs-submit .btn-group-vertical > .hs-button:focus,
+.btn-group-vertical > .hs-button:focus,
 .btn-group-vertical > .btn:active,
 .password-prompt .btn-group-vertical > input[type=submit]:active,
-.hs-form .hs-submit .btn-group-vertical > .hs-button:active,
+.btn-group-vertical > .hs-button:active,
 .btn-group-vertical > .btn.active,
 .password-prompt .btn-group-vertical > input.active[type=submit],
-.hs-form .hs-submit .btn-group-vertical > .active.hs-button {
+.btn-group-vertical > .active.hs-button {
   z-index: 1;
 }
 
@@ -4568,27 +4525,27 @@ textarea.form-control-lg {
 .btn-group {
   border-radius: 4px;
 }
-.btn-group > :not(.btn-check:first-child) + .btn, .password-prompt .btn-group > :not(.btn-check:first-child) + input[type=submit], .hs-form .hs-submit .btn-group > :not(.btn-check:first-child) + .hs-button,
+.btn-group > :not(.btn-check:first-child) + .btn, .password-prompt .btn-group > :not(.btn-check:first-child) + input[type=submit], .btn-group > :not(.btn-check:first-child) + .hs-button,
 .btn-group > .btn-group:not(:first-child) {
   margin-left: -2px;
 }
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .password-prompt .btn-group > input[type=submit]:not(:last-child):not(.dropdown-toggle), .hs-form .hs-submit .btn-group > .hs-button:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .password-prompt .btn-group > input[type=submit]:not(:last-child):not(.dropdown-toggle), .btn-group > .hs-button:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn.dropdown-toggle-split:first-child,
 .password-prompt .btn-group > input.dropdown-toggle-split[type=submit]:first-child,
-.hs-form .hs-submit .btn-group > .dropdown-toggle-split.hs-button:first-child,
+.btn-group > .dropdown-toggle-split.hs-button:first-child,
 .btn-group > .btn-group:not(:last-child) > .btn,
 .password-prompt .btn-group > .btn-group:not(:last-child) > input[type=submit],
-.hs-form .hs-submit .btn-group > .btn-group:not(:last-child) > .hs-button {
+.btn-group > .btn-group:not(:last-child) > .hs-button {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.btn-group > .btn:nth-child(n+3), .password-prompt .btn-group > input[type=submit]:nth-child(n+3), .hs-form .hs-submit .btn-group > .hs-button:nth-child(n+3),
+.btn-group > .btn:nth-child(n+3), .password-prompt .btn-group > input[type=submit]:nth-child(n+3), .btn-group > .hs-button:nth-child(n+3),
 .btn-group > :not(.btn-check) + .btn,
 .password-prompt .btn-group > :not(.btn-check) + input[type=submit],
-.hs-form .hs-submit .btn-group > :not(.btn-check) + .hs-button,
+.btn-group > :not(.btn-check) + .hs-button,
 .btn-group > .btn-group:not(:first-child) > .btn,
 .password-prompt .btn-group > .btn-group:not(:first-child) > input[type=submit],
-.hs-form .hs-submit .btn-group > .btn-group:not(:first-child) > .hs-button {
+.btn-group > .btn-group:not(:first-child) > .hs-button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -4604,12 +4561,12 @@ textarea.form-control-lg {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .password-prompt .btn-group-sm > input[type=submit] + .dropdown-toggle-split, .hs-form .hs-submit .btn-group-sm > .hs-button + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .password-prompt .btn-group-sm > input[type=submit] + .dropdown-toggle-split, .btn-group-sm > .hs-button + .dropdown-toggle-split {
   padding-right: 1.125rem;
   padding-left: 1.125rem;
 }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .password-prompt .btn-group-lg > input[type=submit] + .dropdown-toggle-split, .hs-form .hs-submit .btn-group-lg > .hs-button + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .password-prompt .btn-group-lg > input[type=submit] + .dropdown-toggle-split, .btn-group-lg > .hs-button + .dropdown-toggle-split {
   padding-right: 1.5rem;
   padding-left: 1.5rem;
 }
@@ -4626,25 +4583,25 @@ textarea.form-control-lg {
   align-items: flex-start;
   justify-content: center;
 }
-.btn-group-vertical > .btn, .password-prompt .btn-group-vertical > input[type=submit], .hs-form .hs-submit .btn-group-vertical > .hs-button,
+.btn-group-vertical > .btn, .password-prompt .btn-group-vertical > input[type=submit], .hs-form .hs-submit .btn-group-vertical > .hs-button, .btn-group-vertical > .hs-button,
 .btn-group-vertical > .btn-group {
   width: 100%;
 }
-.btn-group-vertical > .btn:not(:first-child), .password-prompt .btn-group-vertical > input[type=submit]:not(:first-child), .hs-form .hs-submit .btn-group-vertical > .hs-button:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .password-prompt .btn-group-vertical > input[type=submit]:not(:first-child), .btn-group-vertical > .hs-button:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: -2px;
 }
-.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .password-prompt .btn-group-vertical > input[type=submit]:not(:last-child):not(.dropdown-toggle), .hs-form .hs-submit .btn-group-vertical > .hs-button:not(:last-child):not(.dropdown-toggle),
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .password-prompt .btn-group-vertical > input[type=submit]:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .hs-button:not(:last-child):not(.dropdown-toggle),
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
 .password-prompt .btn-group-vertical > .btn-group:not(:last-child) > input[type=submit],
-.hs-form .hs-submit .btn-group-vertical > .btn-group:not(:last-child) > .hs-button {
+.btn-group-vertical > .btn-group:not(:last-child) > .hs-button {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.btn-group-vertical > .btn ~ .btn, .password-prompt .btn-group-vertical > input[type=submit] ~ .btn, .password-prompt .btn-group-vertical > .btn ~ input[type=submit], .password-prompt .btn-group-vertical > input[type=submit] ~ input[type=submit], .hs-form .hs-submit .btn-group-vertical > .hs-button ~ .btn, .hs-form .hs-submit .password-prompt .btn-group-vertical > .hs-button ~ input[type=submit], .password-prompt .hs-form .hs-submit .btn-group-vertical > .hs-button ~ input[type=submit], .hs-form .hs-submit .btn-group-vertical > .btn ~ .hs-button, .hs-form .hs-submit .password-prompt .btn-group-vertical > input[type=submit] ~ .hs-button, .password-prompt .hs-form .hs-submit .btn-group-vertical > input[type=submit] ~ .hs-button, .hs-form .hs-submit .btn-group-vertical > .hs-button ~ .hs-button,
+.btn-group-vertical > .btn ~ .btn, .password-prompt .btn-group-vertical > input[type=submit] ~ .btn, .password-prompt .btn-group-vertical > .btn ~ input[type=submit], .password-prompt .btn-group-vertical > input[type=submit] ~ input[type=submit], .btn-group-vertical > .hs-button ~ .btn, .password-prompt .btn-group-vertical > .hs-button ~ input[type=submit], .btn-group-vertical > .btn ~ .hs-button, .password-prompt .btn-group-vertical > input[type=submit] ~ .hs-button, .btn-group-vertical > .hs-button ~ .hs-button,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn,
 .password-prompt .btn-group-vertical > .btn-group:not(:first-child) > input[type=submit],
-.hs-form .hs-submit .btn-group-vertical > .btn-group:not(:first-child) > .hs-button {
+.btn-group-vertical > .btn-group:not(:first-child) > .hs-button {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -5284,6 +5241,7 @@ textarea.form-control-lg {
 }
 .card .card-header:first-child {
   border-radius: var(--q-card-inner-border-radius) var(--q-card-inner-border-radius) 0 0;
+  padding-top: var(--q-card-cap-padding-x);
 }
 .card .card-footer {
   padding: 0 var(--q-card-spacer-x) var(--q-card-spacer-y);
@@ -5405,6 +5363,106 @@ textarea.form-control-lg {
   .card-group > .card:not(:first-child) .card-footer {
     border-bottom-left-radius: 0;
   }
+}
+
+.hs-button {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.066666667;
+  color: #1d1e1c;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  --q-btn-padding-y: 1rem;
+  --q-btn-padding-x: 2.375rem;
+  --q-btn-font-size: 0.9375rem;
+  --q-btn-border-radius: 4px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hs-button {
+    transition: none;
+  }
+}
+.hs-button:hover {
+  color: #1d1e1c;
+}
+.btn-check:focus + .hs-button, .hs-button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+.btn-check:checked + .hs-button, .btn-check:active + .hs-button, .hs-button:active, .hs-button.active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.btn-check:checked + .hs-button:focus, .btn-check:active + .hs-button:focus, .hs-button:active:focus, .hs-button.active:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25), inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.hs-button:disabled, .hs-button.disabled, fieldset:disabled .hs-button {
+  pointer-events: none;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.btn-blog-filter-secondary {
+  --q-btn-color: #1d1e1c;
+  --q-btn-bg: transparent;
+  --q-btn-border-color: transparent;
+  --q-btn-hover-color: #1d1e1c;
+  --q-btn-hover-bg: rgba(29, 30, 28, 0.1);
+  --q-btn-hover-border-color: none;
+  --q-btn-focus-shadow-rgb: 29, 30, 28;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #515ba5;
+  --q-btn-active-border-color: none;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #fff;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: transparent;
+  --q-btn-active-shadow: none;
+}
+.btn-blog-filter-secondary.active {
+  box-shadow: none !important;
+}
+
+.table {
+  --q-table-striped-bg: rgba(0, 0, 0, 0.025);
+}
+
+.table-striped > tbody > tr:nth-of-type(2n) > * {
+  --q-table-accent-bg: var(--q-table-striped-bg);
+  color: var(--q-table-striped-color);
+}
+
+.table-striped-columns > :not(caption) > tr > :nth-child(2n) {
+  --q-table-accent-bg: var(--q-table-striped-bg);
+  color: var(--q-table-striped-color);
+}
+
+.table-striped.table-striped-columns {
+  --q-table-striped-twice-bg: rgba(0, 0, 0, 0.05);
+  --q-table-striped-bg: rgba(0, 0, 0, 0.025);
+}
+.table-striped.table-striped-columns > tbody > tr:nth-of-type(2n) > * {
+  --q-table-accent-bg: var(--q-table-striped-bg);
+  color: var(--q-table-striped-color);
+}
+.table-striped.table-striped-columns > :not(caption) > tr:nth-of-type(2n) > :nth-child(2n) {
+  --q-table-accent-bg: var(--q-table-striped-twice-bg);
+  color: var(--q-table-striped-twice-color);
+}
+
+.table-bordered-columns > :not(caption) > * > * {
+  border-width: 0 var(--q-border-width);
+}
+
+.table-bordered-columns-inside > :not(caption) > * > * {
+  border-width: 0;
+}
+.table-bordered-columns-inside > :not(caption) > * > *:not(:first-child):not(:last-child) {
+  border-width: 0 var(--q-border-width);
 }
 
 .accordion {
@@ -5654,6 +5712,7 @@ textarea.form-control-lg {
   }
 }
 .hs-form .hs-form-checkbox .hs-form-checkbox-display .hs-input, .hs-form .hs-form-checkbox .hs-form-booleancheckbox-display .hs-input, .hs-form .hs-form-booleancheckbox .hs-form-checkbox-display .hs-input, .hs-form .hs-form-booleancheckbox .hs-form-booleancheckbox-display .hs-input {
+  margin-top: 0.3em;
   width: 1em !important;
   padding: 0;
 }
@@ -5667,7 +5726,7 @@ textarea.form-control-lg {
 }
 .hs-form .hs-form-radio .hs-form-radio-display .hs-input {
   margin-bottom: 0;
-  margin-top: 0;
+  margin-top: 0.3em;
   width: 1em !important;
   padding: 0;
 }
@@ -5708,6 +5767,9 @@ textarea.form-control-lg {
 }
 .hs-form .hs-error-msg {
   display: inherit;
+}
+.hs-form .legal-consent-container {
+  font-size: 0.8rem;
 }
 .hs-form .hs-form label {
   display: block;
@@ -5912,10 +5974,23 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: var(--q-card-bg);
   background-clip: border-box;
-  padding: 0 1.5rem 1.5rem;
   border: var(--q-card-border-width) solid var(--q-card-border-color);
   border-radius: var(--q-card-border-radius);
   box-shadow: var(--q-card-box-shadow);
+}
+.card-video.card-inset {
+  padding: 1.5rem 1.5rem;
+}
+.card-video.card-inset .card-img,
+.card-video.card-inset .card-img-top {
+  border-top-left-radius: var(--q-card-inner-border-radius);
+  border-top-right-radius: var(--q-card-inner-border-radius);
+  margin: calc(0px - 1.5rem) calc(0px - 1.5rem) 0;
+}
+.card-video.card-inset .card-img,
+.card-video.card-inset .card-img-bottom {
+  border-bottom-right-radius: var(--q-card-inner-border-radius);
+  border-bottom-left-radius: var(--q-card-inner-border-radius);
 }
 .card-video > hr {
   margin-right: 0;
@@ -5962,7 +6037,7 @@ textarea.form-control-lg {
   margin-left: var(--q-card-spacer-x);
 }
 .card-video .card-header {
-  padding: var(--q-card-cap-padding-y) var(--q-card-cap-padding-x);
+  padding: var(--q-card-spacer-y) var(--q-card-spacer-x) 0;
   margin-bottom: 0;
   color: var(--q-card-cap-color);
   background-color: var(--q-card-cap-bg);
@@ -5972,7 +6047,7 @@ textarea.form-control-lg {
   border-radius: var(--q-card-inner-border-radius) var(--q-card-inner-border-radius) 0 0;
 }
 .card-video .card-footer {
-  padding: 0 var(--q-card-cap-padding-x) var(--q-card-cap-padding-y);
+  padding: 0 var(--q-card-spacer-x) var(--q-card-spacer-y);
   color: var(--q-card-cap-color);
   background-color: var(--q-card-cap-bg);
   border-top: var(--q-card-border-width) solid var(--q-card-border-color);
@@ -6012,17 +6087,6 @@ textarea.form-control-lg {
 .card-video .card-img-top img,
 .card-video .card-img-bottom img {
   object-fit: cover;
-}
-.card-video .card-img,
-.card-video .card-img-top {
-  border-top-left-radius: var(--q-card-inner-border-radius);
-  border-top-right-radius: var(--q-card-inner-border-radius);
-  margin: 0 calc(0px - 1.5rem);
-}
-.card-video .card-img,
-.card-video .card-img-bottom {
-  border-bottom-right-radius: var(--q-card-inner-border-radius);
-  border-bottom-left-radius: var(--q-card-inner-border-radius);
 }
 .card-video .play-button {
   background-position: 50%;
@@ -6334,6 +6398,26 @@ textarea.form-control-lg {
   }
 }
 
+.animate-fade {
+  transition: opacity 500ms;
+}
+
+.animate-fade.faded {
+  opacity: 1;
+}
+
+.animate-slide {
+  transition: transform 500ms ease-out;
+}
+
+.animate-slide.slid {
+  transform: translateX(0px) translateY(0px) translateZ(0px);
+}
+
+.animate-card {
+  transition: transform 500ms ease-out, opacity 500ms;
+}
+
 .breadcrumb {
   --q-breadcrumb-padding-x: 0;
   --q-breadcrumb-padding-y: 0;
@@ -6481,7 +6565,7 @@ textarea.form-control-lg {
   display: none;
 }
 
-.btn .badge, .hs-form .hs-submit .hs-button .badge, .password-prompt input[type=submit] .badge {
+.btn .badge, .hs-button .badge, .hs-form .hs-submit .hs-button .badge, .password-prompt input[type=submit] .badge {
   position: relative;
   top: -1px;
 }
@@ -8480,7 +8564,7 @@ textarea.form-control-lg {
   background-color: currentcolor;
   opacity: 0.5;
 }
-.placeholder.btn::before, .hs-form .hs-submit .placeholder.hs-button::before, .password-prompt input.placeholder[type=submit]::before {
+.placeholder.btn::before, .placeholder.hs-button::before, .hs-form .hs-submit .placeholder.hs-button::before, .password-prompt input.placeholder[type=submit]::before {
   display: inline-block;
   content: "";
 }
@@ -8928,6 +9012,10 @@ textarea.form-control-lg {
   overflow: scroll !important;
 }
 
+.overflow-clip {
+  overflow: clip !important;
+}
+
 .overflow-x-auto {
   overflow-x: auto !important;
 }
@@ -8944,6 +9032,10 @@ textarea.form-control-lg {
   overflow-x: scroll !important;
 }
 
+.overflow-x-clip {
+  overflow-x: clip !important;
+}
+
 .overflow-y-auto {
   overflow-y: auto !important;
 }
@@ -8958,6 +9050,10 @@ textarea.form-control-lg {
 
 .overflow-y-scroll {
   overflow-y: scroll !important;
+}
+
+.overflow-y-clip {
+  overflow-y: clip !important;
 }
 
 .d-inline {
@@ -10532,12 +10628,16 @@ textarea.form-control-lg {
   text-transform: capitalize !important;
 }
 
-.text-wrap {
-  white-space: normal !important;
+.white-space-reset {
+  white-space: inherit !important;
 }
 
-.text-nowrap {
-  white-space: nowrap !important;
+.white-space-nowrap {
+  white-space: preserve nowrap !important;
+}
+
+.white-space-wrap {
+  white-space: wrap !important;
 }
 
 /* rtl:begin:remove */
@@ -10659,35 +10759,39 @@ textarea.form-control-lg {
 }
 
 .text-primary-emphasis {
-  color: var(--q-primary-text) !important;
+  color: var(--q-primary-text-emphasis) !important;
 }
 
 .text-secondary-emphasis {
-  color: var(--q-secondary-text) !important;
+  color: var(--q-secondary-text-emphasis) !important;
 }
 
-.text-success-emphasis {
-  color: var(--q-success-text) !important;
+.text-teal-emphasis {
+  color: var(--q-teal-text-emphasis) !important;
 }
 
-.text-info-emphasis {
-  color: var(--q-info-text) !important;
+.text-indigo-emphasis {
+  color: var(--q-indigo-text-emphasis) !important;
 }
 
-.text-warning-emphasis {
-  color: var(--q-warning-text) !important;
+.text-blue-emphasis {
+  color: var(--q-blue-text-emphasis) !important;
 }
 
-.text-danger-emphasis {
-  color: var(--q-danger-text) !important;
+.text-red-emphasis {
+  color: var(--q-red-text-emphasis) !important;
+}
+
+.text-orange-emphasis {
+  color: var(--q-orange-text-emphasis) !important;
 }
 
 .text-light-emphasis {
-  color: var(--q-light-text) !important;
+  color: var(--q-light-text-emphasis) !important;
 }
 
 .text-dark-emphasis {
-  color: var(--q-dark-text) !important;
+  color: var(--q-dark-text-emphasis) !important;
 }
 
 .bg-primary {
@@ -10943,20 +11047,24 @@ textarea.form-control-lg {
   background-color: var(--q-secondary-bg-subtle) !important;
 }
 
-.bg-success-subtle {
-  background-color: var(--q-success-bg-subtle) !important;
+.bg-teal-subtle {
+  background-color: var(--q-teal-bg-subtle) !important;
 }
 
-.bg-info-subtle {
-  background-color: var(--q-info-bg-subtle) !important;
+.bg-indigo-subtle {
+  background-color: var(--q-indigo-bg-subtle) !important;
 }
 
-.bg-warning-subtle {
-  background-color: var(--q-warning-bg-subtle) !important;
+.bg-blue-subtle {
+  background-color: var(--q-blue-bg-subtle) !important;
 }
 
-.bg-danger-subtle {
-  background-color: var(--q-danger-bg-subtle) !important;
+.bg-red-subtle {
+  background-color: var(--q-red-bg-subtle) !important;
+}
+
+.bg-orange-subtle {
+  background-color: var(--q-orange-bg-subtle) !important;
 }
 
 .bg-light-subtle {
@@ -12342,6 +12450,15 @@ textarea.form-control-lg {
   .text-sm-center {
     text-align: center !important;
   }
+  .white-space-sm-reset {
+    white-space: inherit !important;
+  }
+  .white-space-sm-nowrap {
+    white-space: preserve nowrap !important;
+  }
+  .white-space-sm-wrap {
+    white-space: wrap !important;
+  }
 }
 @media (min-width: 768px) {
   .float-md-start {
@@ -13297,6 +13414,15 @@ textarea.form-control-lg {
   }
   .text-md-center {
     text-align: center !important;
+  }
+  .white-space-md-reset {
+    white-space: inherit !important;
+  }
+  .white-space-md-nowrap {
+    white-space: preserve nowrap !important;
+  }
+  .white-space-md-wrap {
+    white-space: wrap !important;
   }
 }
 @media (min-width: 992px) {
@@ -14254,6 +14380,15 @@ textarea.form-control-lg {
   .text-lg-center {
     text-align: center !important;
   }
+  .white-space-lg-reset {
+    white-space: inherit !important;
+  }
+  .white-space-lg-nowrap {
+    white-space: preserve nowrap !important;
+  }
+  .white-space-lg-wrap {
+    white-space: wrap !important;
+  }
 }
 @media (min-width: 1200px) {
   .float-xl-start {
@@ -15209,6 +15344,15 @@ textarea.form-control-lg {
   }
   .text-xl-center {
     text-align: center !important;
+  }
+  .white-space-xl-reset {
+    white-space: inherit !important;
+  }
+  .white-space-xl-nowrap {
+    white-space: preserve nowrap !important;
+  }
+  .white-space-xl-wrap {
+    white-space: wrap !important;
   }
 }
 @media (min-width: 1400px) {
@@ -16166,6 +16310,15 @@ textarea.form-control-lg {
   .text-xxl-center {
     text-align: center !important;
   }
+  .white-space-xxl-reset {
+    white-space: inherit !important;
+  }
+  .white-space-xxl-nowrap {
+    white-space: preserve nowrap !important;
+  }
+  .white-space-xxl-wrap {
+    white-space: wrap !important;
+  }
 }
 @media (min-width: 1200px) {
   .fs-1 {
@@ -16419,6 +16572,16 @@ footer.bg-gradient-primary a {
   background: linear-gradient(225deg, #515ba5 0%, #58b78e 63%) border-box;
 }
 
+.bg-gradient-primary-extended {
+  background-color: #515ba5;
+  background: linear-gradient(180deg, #58b78e 0%, #515ba5 50%, #202442 100%) border-box;
+}
+
+.bg-gradient-primary-subtle {
+  background-color: #58b78e;
+  background: linear-gradient(-45deg, color-mix(in srgb, #58b78e 70%, #515ba5 30%) 0%, #58b78e 100%) border-box;
+}
+
 .bg-gradient-primary-transparent {
   background-color: #58b78e;
   background: linear-gradient(45deg, #58b78e 0%, transparent 100%) border-box;
@@ -16429,9 +16592,34 @@ footer.bg-gradient-primary a {
   background: linear-gradient(45deg, #515ba5 0%, transparent 100%) border-box;
 }
 
+.bg-image-multiply {
+  position: relative;
+}
+
+.bg-image-multiply:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: multiply;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  opacity: 0.25;
+}
+
 .fade-45 {
   -webkit-mask-image: linear-gradient(45deg, rgba(0, 0, 0, 0.9) 24%, transparent 63%);
   mask-image: linear-gradient(45deg, rgba(0, 0, 0, 0.9) 24%, transparent 63%);
+}
+
+.fade-down {
+  -webkit-mask-image: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  mask-image: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .bg-image-faded:before {
@@ -16645,6 +16833,20 @@ blockquote {
   margin-right: auto;
   margin-left: auto;
   width: 800px;
+}
+
+section {
+  z-index: 0;
+}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  z-index: 1;
 }
 
 :root,
@@ -16931,7 +17133,7 @@ blockquote {
   --q-btn-disabled-border-color: #fff;
 }
 
-.btn, .hs-form .hs-submit .hs-button, .password-prompt input[type=submit] {
+.btn, .hs-button, .hs-form .hs-submit .hs-button, .password-prompt input[type=submit] {
   white-space: nowrap;
 }
 
@@ -17145,7 +17347,7 @@ blockquote {
   right: -10px;
   background-repeat: no-repeat;
   top: 20px;
-  bottom: 0px;
+  bottom: -20px;
   left: -10px;
   filter: blur(10px);
   opacity: 70%;
@@ -18596,10 +18798,14 @@ a[data-hs-anchor=true] {
   outline: none;
   cursor: text;
   -webkit-appearance: none;
-  color: #999;
+  color: #1d1e1c;
   box-sizing: border-box;
   height: 3em;
   width: 100%;
+  background-color: transparent;
+}
+.hs-search-field .hs-search-field__input::placeholder {
+  color: #706f6e;
 }
 .hs-search-field .hs-search-field--open .hs-search-field__input {
   width: 100%;
@@ -18651,7 +18857,7 @@ a[data-hs-anchor=true] {
   transform: translateY(-50%);
 }
 
-.input-group .btn:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .input-group .hs-form .hs-submit .hs-button:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .hs-form .hs-submit .input-group .hs-button:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .input-group .password-prompt input[type=submit]:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .password-prompt .input-group input[type=submit]:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+.input-group .btn:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .input-group .hs-button:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .input-group .password-prompt input[type=submit]:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback), .password-prompt .input-group input[type=submit]:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
   margin-left: -2px;
 }
 
@@ -18738,7 +18944,6 @@ ol.list-num-sup li::marker {
 
 .hero-full-video, .hero-full-image {
   position: relative;
-  background-color: black;
   width: 100%;
   /*  overflow: hidden; */
 }
@@ -18760,18 +18965,9 @@ ol.list-num-sup li::marker {
 }
 
 .hero-full-video video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-full-video .container,
@@ -18853,8 +19049,52 @@ ol.list-num-sup li::marker {
   z-index: 1;
 }
 
+.parallax {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.parallax > video,
+.parallax > img {
+  object-fit: cover;
+  height: calc(100% + 150px) !important;
+  object-position: 50% 50%;
+}
+
+.image-bg-container {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.image-bg-container > img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.page-contents.arrow-down {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
 .page-contents.arrow-down:after {
   left: 43px;
+  content: "";
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  transform: translateZ(-1px) rotate(45deg);
+  border: 0;
+  background-color: white;
+  bottom: -20px;
+  box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.1);
 }
 
 img.blog-featured-image {

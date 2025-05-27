@@ -1,7 +1,7 @@
 
 
 <section class="{{" section-shadow" if module.style.shadow }}" style="transform-style: preserve-3d; {{"position: relative; z-index: 2; margin-top: -24px;" if module.style.overlay }}">
-    <div class="container-fluid g-0 {{ module.style.background_colour if module.style.background_colour != "none" }}{{ (" bg-" ~ module.style.background_image) if module.style.background_image != "none" }}" style=" {{module.style.spacing_field.css}}">
+    <div class="container-fluid g-0 {{ module.style.background_colour if module.style.background_colour != "none" }}{{ (" bg-" ~ module.style.background_image) if module.style.background_image != "none" }} {{ "rounded" if module.style.rounded }}" style=" {{module.style.spacing_field.css}}">
         {% for row in module.row %}
             <div class="row g-0 {{row.advanced.additional_classes}}">
                 {% for col in row.column %}

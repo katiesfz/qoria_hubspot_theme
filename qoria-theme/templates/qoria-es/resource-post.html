@@ -20,12 +20,13 @@
 
 {% if widget_data.blog_type.value == "case_study" %}
 
+  
   {% module "hero"
   path="/q-theme/modules/hero",
   offset=0,
   width=12,
   pre_header="",
-  header="Case Study",
+  header="Recursos",
   header_level="h2",
   hero_type="full-image",
   image={
@@ -41,20 +42,20 @@
   menu=115248177746,
   cta=[],
   page_contents=[{
-        "content_label" : "Featured article",
-        "anchor": "#featured"
+        "content_label" : "Artículo destacado",
+        "anchor": group.absolute_url + "#featured"
     },{
-        "content_label" : "Most viewed this month",
-        "anchor": "#mostViewed"
+        "content_label" : "Últimos artículos",
+        "anchor": group.absolute_url + "#latest"
     },{
-        "content_label" : "Latest content",
-        "anchor": "#latest"
+      "content_label" : "Últimos eBooks",
+      "anchor": group.absolute_url + "#mostViewed"
     },{
-        "content_label" : "Trending topics",
-        "anchor": "#trending"
+        "content_label" : "Casos de éxito",
+        "anchor": group.absolute_url + "#videos"
     },{
-        "content_label" : "Latest videos",
-        "anchor": "#videos"
+        "content_label" : "Conecta con nosotros",
+        "anchor": group.absolute_url + "#videos"
     }],
   show_breadcrumbs=false,
   show_share_price=false,
@@ -158,19 +159,6 @@
   </div>
 </section>
 
-<section class="bg-light pt-7 pb-7">
-  <div class="container-xxl">
-    <div class="row">
-      <div class="col">
-        <a id="trending" data-hs-anchor="true"></a>
-        <h2 class="text-center"><strong>Trending topics</strong></h2>
-        <hr class="opacity-25">
-        {% module "trending_topics" path="/q-theme/modules/region-specific/nz/trending-topics-nz" %}
-      </div>
-    </div>
-  </div>
-</section>
-
 </div>
 
 {% global_partial path="./partials/lets-connect.html" %}
@@ -265,7 +253,7 @@
   offset=0,
   width=12,
   pre_header="",
-  header="Resources",
+  header="Recursos",
   header_level="h2",
   hero_type="full-image",
   image={
@@ -281,19 +269,19 @@
   menu=115248177746,
   cta=[],
   page_contents=[{
-        "content_label" : "Featured article",
+        "content_label" : "Artículo destacado",
         "anchor": group.absolute_url + "#featured"
     },{
-        "content_label" : "Most viewed this month",
-        "anchor": group.absolute_url + "#mostViewed"
-    },{
-        "content_label" : "Latest content",
+        "content_label" : "Últimos artículos",
         "anchor": group.absolute_url + "#latest"
     },{
-        "content_label" : "Trending topics",
-        "anchor": group.absolute_url + "#trending"
+      "content_label" : "Últimos eBooks",
+      "anchor": group.absolute_url + "#mostViewed"
     },{
-        "content_label" : "Latest videos",
+        "content_label" : "Casos de éxito",
+        "anchor": group.absolute_url + "#videos"
+    },{
+        "content_label" : "Conecta con nosotros",
         "anchor": group.absolute_url + "#videos"
     }],
   show_breadcrumbs=false,
@@ -329,7 +317,7 @@
         <div class="row align-items-center py-5">
           <div class="col">
             <div class="bg-secondary text-white p-3 d-inline-block">
-              <strong><i class="fa fas fa-pencil me-1"></i> {{ ((content.post_body|regex_replace("{%.*%}", "")|striptags|wordcount)/225)|round(0, "ceil") }} minute read</strong>
+              <strong><i class="fa fas fa-pencil me-1"></i> {{ ((content.post_body|regex_replace("{%.*%}", "")|striptags|wordcount)/225)|round(0, "ceil") }} minutos de lectura</strong>
             </div>
           </div>
           <div class="col text-secondary text-end">
@@ -363,19 +351,6 @@
           {% endif %}
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bg-light pt-7 pb-7">
-  <div class="container-xxl">
-    <div class="row">
-      <div class="col">
-        <a id="trending" data-hs-anchor="true"></a>
-        <h2 class="text-center"><strong>Trending topics</strong></h2>
-        <hr class="opacity-25">
-        {% module "trending_topics" path="/q-theme/modules/region-specific/nz/trending-topics-nz" %}
       </div>
     </div>
   </div>

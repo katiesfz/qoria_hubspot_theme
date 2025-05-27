@@ -54,7 +54,7 @@
         {% set cardColour = "bg-light" %}
     {% endif %}
 
-    <div class="{{ "card-video" if module.styles.card.overlay else "card" }} h-100 {{ cardColour }} {{ module.styles.card.shadow if module.styles.card.shadow != "section-shadow" && !module.styles.carousel }}">
+    <div class="{{ "card-video" if module.styles.card.overlay else "card" }} {{ "card-inset" if module.styles.card.inset_card}} h-100 {{ cardColour }} {{ module.styles.card.shadow if module.styles.card.shadow != "section-shadow" && !module.styles.carousel }}">
         <div class="card-img-top">
         
             {% set sizeAttrs = 'width="{{ item.video_settings.custom_thumbnail.width|escape_attr }}" height="{{ item.video_settings.custom_thumbnail.height|escape_attr }}"' %}

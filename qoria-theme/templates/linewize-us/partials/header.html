@@ -43,6 +43,9 @@ label: Linewize US Header
     <nav class="navbar {{navbarExpand}}">
       <div class="container-xxl position-relative"> 
         {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+
+
+
           <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
             {% if widget_data.show_language_switcher.value == true %}
               <div class="d-flex d-{{breakpoint}}-none">          
@@ -84,6 +87,8 @@ label: Linewize US Header
           {% endif %}
 
         </div>
+
+
       </div>
     </nav>
   </header>
