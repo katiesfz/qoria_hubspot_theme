@@ -16580,6 +16580,10 @@ footer.bg-gradient-primary a {
   color: #fff;
 }
 
+a.text-white {
+  text-decoration: underline;
+}
+
 .heading-bg-gradient {
   display: inline;
   padding: 0.06em 1.8em 0.15em 1.5rem;

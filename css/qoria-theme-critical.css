@@ -22,16 +22,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 .hs-button {
-  display: inline-block;
-  font-weight: 600;
-  line-height: 1.066666667;
-  color: #1d1e1c;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  background-color: transparent;
-  border: 2px solid transparent;
   --q-btn-padding-y: 1rem;
   --q-btn-padding-x: 2.375rem;
   --q-btn-font-size: 0.9375rem;
