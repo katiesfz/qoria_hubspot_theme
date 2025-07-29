@@ -29,7 +29,7 @@
                     {%- endif -%}
                 <td valign="top" style="width: {{ colWidth }}px;">
                 <![endif]-->
-                <div class="hs_width_100" style="display:inline-block; vertical-align: top; width: 100%; max-width: {{ colWidth }}px; {% if !loop.last%} margin-right: {{gutter}}px; margin-bottom: {{module.styles.space_below}}px; {% endif %} {% if item.border_colour.color != null %} border: 1px solid {{item.border_colour.color }}; {% endif %} border-radius: {{item.border_radius}}px; {% if item.shadow %}box-shadow: 1px 3px 5px #ebebeb;{% endif %} {% if item.background_colour.color %}background-color: {{item.background_colour.color}};{% endif %}">
+                <div class="hs_width_100" style="display:inline-block; vertical-align: {{item.v_alignment if item.v_alignment else "top"}}; width: 100%; max-width: {{ colWidth }}px; {% if !loop.last%} margin-right: {{gutter}}px; margin-bottom: {{module.styles.space_below}}px; {% endif %} {% if item.border_colour.color != null %} border: 1px solid {{item.border_colour.color }}; {% endif %} border-radius: {{item.border_radius}}px; {% if item.shadow %}box-shadow: 1px 3px 5px #ebebeb;{% endif %} {% if item.background_colour.color %}background-color: {{item.background_colour.color}};{% endif %}">
                     <table class="hs_width_100" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 100%;">
                     <tr>
                         <td align="{{ item.alignment }}" valign="top" style="padding: {{item.padding_y}}px {{item.padding_x}}px; {{item.additional_column_styling}}">

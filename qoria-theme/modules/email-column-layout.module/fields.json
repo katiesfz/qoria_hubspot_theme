@@ -228,6 +228,33 @@
      "reordering_enabled": true,
      "required": false,
      "type": "choice"
+    },
+    {
+     "choices": [
+      [
+       "top",
+       "Top"
+      ],
+      [
+       "middle",
+       "Middle"
+      ],
+      [
+       "bottom",
+       "Bottom"
+      ]
+     ],
+     "default": "top",
+     "display": "select",
+     "display_width": null,
+     "label": "Vertical Alignment",
+     "locked": false,
+     "multiple": false,
+     "name": "v_alignment",
+     "preset": null,
+     "reordering_enabled": true,
+     "required": false,
+     "type": "choice"
     },{
       "name" : "shadow",
       "label" : "Shadow",
