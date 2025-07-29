@@ -248,7 +248,7 @@
             {% if module.contents_listing == "custom" %}
                 {% if module.page_contents|length > 0 %}
                     <div class="col-10 col-sm-8 col-md-6 col-lg-4 position-relative section-shadow mb-n4 z-3">
-                        <div class="page-contents bg-white p-3 arrow-down text-white">
+                        <div class="page-contents bg-white p-3 arrow-down">
                             <div class="list-group list-group-flush" id="pageContents">
                                 {% for contents in module.page_contents %}
                                     <a href="{{contents.anchor}}" class="fw-semibold list-group-item list-group-item-action {{"active" if loop.first}}">{{contents.content_label}}</a>
@@ -259,7 +259,7 @@
                 {% endif %}
             {% elif module.contents_listing == "auto" %}
                 <div class="col-10 col-sm-8 col-md-6 col-lg-4 position-relative section-shadow mb-n4 z-3">
-                    <div class="page-contents bg-white p-3 arrow-down text-white">
+                    <div class="page-contents bg-white p-3 arrow-down">
                         <div class="list-group list-group-flush" id="pageContents">
                         </div>
                     </div>
@@ -268,7 +268,7 @@
         {% else %}
             {% if module.page_contents|length > 0 %}
                 <div class="col-10 col-sm-8 col-md-6 col-lg-4 position-relative section-shadow mb-n4 z-3">
-                    <div class="page-contents bg-white p-3 arrow-down text-white">
+                    <div class="page-contents bg-white p-3 arrow-down">
                         <div class="list-group list-group-flush" id="pageContents">
                             {% for contents in module.page_contents %}
                                 <a href="{{contents.anchor}}" class="fw-semibold list-group-item list-group-item-action {{"active" if loop.first}}">{{contents.content_label}}</a>
