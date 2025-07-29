@@ -197,6 +197,7 @@ function normaliseSlideHeights() {
   
   // play video
   function playVideo(videoId) {
+    console.log(document.getElementById(videoId));
     document.getElementById(videoId).play();
     document.getElementById(videoId).controls = "controls";
     if (document.getElementById(videoId).parentNode.getElementsByClassName("play-button").length > 0) {
@@ -205,6 +206,7 @@ function normaliseSlideHeights() {
   };
   // pause video
   function pauseVideo(videoId) {
+    //console.log(document.getElementById(videoId));
     document.getElementById(videoId).pause();
   };
 
@@ -526,7 +528,7 @@ function pagination(containerId, curPage) {
   const nextButton = document.getElementById("nextLink");
 
   if (prevButton) {
-      prevButton.addEventListener("click", () => {
+      prevButton.addEventListener("click", (event) => {
           event.preventDefault();
           goPrev(containerId, curPage);
           curPage--;
@@ -534,7 +536,7 @@ function pagination(containerId, curPage) {
   }
 
   if (nextButton) {
-      nextButton.addEventListener("click", () => {
+      nextButton.addEventListener("click", (event) => {
           event.preventDefault();
       //    console.log("next");
           goNext(containerId, curPage);
