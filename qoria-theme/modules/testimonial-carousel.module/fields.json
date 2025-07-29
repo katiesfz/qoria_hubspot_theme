@@ -81,7 +81,7 @@
     "label" : "Quote",
     "required" : false,
     "locked" : false,
-    "enabled_features" : [ "nonbreaking_space", "bold" ],
+    "enabled_features" : [ "nonbreaking_space", "bold", "charmap" ],
     "type" : "richtext",
     "default" : "I was a consumer customer of Linewize by Family Zone safety technology long before I became employed with them. When the opportunity arose to work here, I felt incredibly honoured to work for a company who has one of the most important charters in the 21st century."
   }, {
