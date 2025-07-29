@@ -1,6 +1,6 @@
 [{
     "name" : "number_students",
-    "label" : "Number of students",
+    "label" : "Millions of students",
     "required" : false,
     "locked" : false,
     "display" : "text",
@@ -14,7 +14,7 @@
     "placeholder": "50"
   },{
     "name" : "number_children",
-    "label" : "Number of children",
+    "label" : "Millions of children",
     "required" : false,
     "locked" : false,
     "display" : "text",
@@ -26,6 +26,20 @@
     "suffix" : "",
     "default" : null,
     "placeholder": "50"
+  },{
+    "name" : "number_parents",
+    "label" : "Millions of parents",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : null,
+    "max" : null,
+    "step" : 1,
+    "type" : "number",
+    "prefix": "",
+    "suffix" : "",
+    "default" : null,
+    "placeholder": "7"
   },{
     "name" : "number_schools",
     "label" : "Number of schools",
