@@ -13,7 +13,6 @@
   {% module "youtube_link" path="@hubspot/text" label="YouTube link" value="https://www.youtube.com/@SpotlightQoria" export_to_template_context=True %}
   {% module "spotify_link" path="@hubspot/text" label="Spotify link" value="https://open.spotify.com/user/31trvwzltemcmvbsroqaf475bcdu" export_to_template_context=True %}
   {% module "transcript" path="/q-theme/modules/blog-file" label="Transcript file" export_to_template_context=True %}
-
   
 {% require_css %}
   <style>
@@ -455,6 +454,57 @@
         </div>
       </div>
     </div>
+    
+    {% boolean "second_guest_toggle" label="Show second guest", value=False, no_wrapper=True, export_to_template_context=True %}
+
+    {% if widget_data.second_guest_toggle.value == 'true' || is_in_editor %}
+      <div class="row align-items-center mt-5">
+        <div class="col-12 col-md-7">
+        {% module_block module "guest_2" path="@hubspot/rich_text" label="Guest 2" %}
+            {% module_attribute "html" %}
+            {% end_module_attribute %}
+        {% end_module_block %}
+        </div>
+        <div class="col-12 col-md-4 offset-0 offset-md-1">
+          <div class="guest-image-container position-relative">
+            {% module "fancy_image_2" path="/q-theme/modules/fancy-image" label="Guest Image 2"
+            image={
+              "alt" : "anthony_england",
+              "height" : 1030,
+              "loading" : "lazy",
+              "max_height" : 1030,
+              "max_width" : 797,
+              "size_type" : "auto",
+              "src" : "https://www.qoria.com/hubfs/Qoria/Corporate/images/podcast/anthony_england.png",
+              "width" : 797
+            },
+            style={
+              "greyscale_filter" : true
+            } %}
+
+            {% module "guest-cta-2" label="Guest CTA 2"
+              path="/q-theme/modules/cta",
+              offset=0,
+              width=12,
+              alignment="center",
+              link={
+                "no_follow" : false,
+                "open_in_new_tab" : true,
+                "url" : {
+                  "href" : "www.hubspot.com/",
+                  "type" : "EXTERNAL"
+                }
+              },
+              button_size=" ",
+              advanced={
+                "additional_classes" : "rounded-pill"
+              },
+              button_text="Connect with Anthony on LinkedIn"
+            %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
   </div>
 </section>
 
