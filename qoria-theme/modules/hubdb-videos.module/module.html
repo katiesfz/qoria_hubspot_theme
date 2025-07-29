@@ -50,7 +50,7 @@
     {% elif module.selection == "manual" %}
         {# call in all rows because calling a single row is limited to 10 per page and you can't use OR in filter query strings #}
         {% set table = hubdb_table_rows(tableId) %}
-        {# now we filter them in HubL #}
+        {# now we filter them with HubL #}
         {% set rows = [] %}
         {% for row in table %}
             {% if row.hs_id is in module.row_id %}
@@ -70,6 +70,7 @@
 //    console.log("{{filterString|escape_js}}");
  //   console.log({{rows|tojson}});
  //   console.log("{{videoIds|string}}");
+
     </script>
     <script>
 
@@ -77,10 +78,8 @@
 
     // build rows object
     const hubdbRows_{{name|replace("-","_")}} = {{ rows.objects|tojson }};
- //       console.log(hubdbRows_{{name|replace("-","_")}});
- //       console.log("{{ rows.objects[0] }}");
- //       console.log("{{ rows.objects[0].video2 }}");
- //    console.log("{{ file_by_id(rows.objects[0].video2)|pprint }}");
+    // console.log(hubdbRows_{{name|replace("-","_")}});
+
     </script>
 
     {% require_css %}
@@ -104,15 +103,15 @@
                             <form id="hubdbFilter" method="get" class="row">
                                 {% for option in module.filter_options %}
                                     <div class="col-12 col-sm-6 col-lg-3 mb-1">
-                                        <select class="form-control" name="{{option}}" form="hubdbFilter" onChange="this.form.submit()">
-                                            <option value="show-all">Filter by {{hubdb_table_column(tableId, option).label}}</option>
-                                            <option value="show-all">Show All</option>
+                                        <select class="form-control" name="{{option}}" form="hubdbFilter">
+                                            <option value="all" data-filter="all">Filter by {{hubdb_table_column(tableId, option).label}}</option>
+                                            <option value="all" data-filter="all">Show All</option>
                                             {% set options = hubdb_table_column(tableId, option).options %}
                                             {% for choice in options %}
                                                 {% if choice.name == request.query_dict[option] %}
-                                                    <option selected="selected" value="{{ choice.name }}">{{ choice.label }}</option>
+                                                    <option selected="selected" value="{{ choice.name }}" data-filter="{{choice.name}}" data-category="{{option}}">{{ choice.label }}</option>
                                                 {% else %}
-                                                    <option value="{{ choice.name }}">{{ choice.label }}</option>
+                                                    <option value="{{ choice.name }}" data-filter="{{choice.name}}" data-category="{{option}}">{{ choice.label }}</option>
                                                 {% endif %}
                                             {% endfor %}
                                         </select>
@@ -251,28 +250,29 @@
             featuredImage.style = "object-fit: contain";
             {% endif %}
             
+        if (row.video) {
+            // play button
+            {% if module.styles.play_button != "none" %}
+                featuredImageContainer.classList.add("position-relative");
+                let playButton = document.createElement("div");
+                playButton.classList.add("play-button");
+                {% if module.styles.play_button == "light" %}
+                    playButton.classList.add("play-button-light");
+                {% elif module.styles.play_button == "dark" %}
+                    playButton.classList.add("play-button-dark");
+                {% endif %}
 
-        // play button
-        {% if module.styles.play_button != "none" %}
-            featuredImageContainer.classList.add("position-relative");
-            let playButton = document.createElement("div");
-            playButton.classList.add("play-button");
-            {% if module.styles.play_button == "light" %}
-                playButton.classList.add("play-button-light");
-            {% elif module.styles.play_button == "dark" %}
-                playButton.classList.add("play-button-dark");
+                {% if !dynamic_page_hubdb_table_id %}
+                    playButton.dataset.bsToggle = "modal";
+                    let modalTarget = "#videoModal_{{name|replace("-","_")}}_" + index;
+                    playButton.dataset.bsTarget = modalTarget;
+                    let modalVideo = "video_{{name|replace("-","_")}}_" + index;
+                    playButton.addEventListener("click", function(){
+                        playVideo(modalVideo);
+                    });
+                {% endif %}
             {% endif %}
-
-            {% if !dynamic_page_hubdb_table_id %}
-                playButton.dataset.bsToggle = "modal";
-                let modalTarget = "#videoModal_{{name|replace("-","_")}}_" + index;
-                playButton.dataset.bsTarget = modalTarget;
-                let modalVideo = "video_{{name|replace("-","_")}}_" + index;
-                playButton.addEventListener("click", function(){
-                    playVideo(modalVideo);
-                });
-            {% endif %}
-        {% endif %}
+        }
         
         {% if module.styles.image_fit == "cover" %}
             cardHeader.classList.add("card-img-top");
@@ -287,12 +287,33 @@
 
         }
 
-        // print name
-        newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-3 align-items-center">';
-            newContent += '<div>';
-                newContent += '<h5 class="text-{{module.styles.textalignment}} mb-0">' + row.name + '</h5>';
+
+        {% if module.subheading && module.subheading != "" %}
+            // print name
+            newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-2 align-items-center">';
+                newContent += '<div>';
+                    newContent += '<h5 class="text-{{module.styles.textalignment}} mb-0">' + row.name + '</h5>';
+                newContent += '</div>';
             newContent += '</div>';
-        newContent += '</div>';
+
+            // print subheading
+            newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-2 align-items-center">';
+                newContent += '<div>';
+                    newContent += '<p class="text-{{module.styles.textalignment}} mb-0 fw-bold">' + row.{{module.subheading}}.name + '</p>';
+                newContent += '</div>';
+            newContent += '</div>';
+
+        {% else %}
+
+            // print name
+            newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-3 align-items-center">';
+                newContent += '<div>';
+                    newContent += '<h5 class="text-{{module.styles.textalignment}} mb-0">' + row.name + '</h5>';
+                newContent += '</div>';
+            newContent += '</div>';
+
+        {% endif %}
+
 
         // print description
         if (row.description){
@@ -353,6 +374,8 @@
             {% if module.styles.stretched_link %}
                 ctaClasses.push("stretched-link");
             {% endif %}
+
+            
             
             {% if (module.link_label|striptags) is string_containing "->" %}
                 {% set linkLabel = module.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
@@ -377,10 +400,26 @@
                     cardLink.addEventListener("click", function(){
                         playVideo(modalVideo);
                     });
+                    console.log("video");
+                } else if (row.file) {
+                    //console.log(row.file);
+                    var urlObject = new URL(row.file.url);
+                    var downloadLink = urlObject.pathname;
+                    cardLink.href = downloadLink;
+                    cardLink.download = row.name;
+                    cardLink.target = "_blank";
                 } else {
                     cardLink.href = row.page_link;
                 }
+                {% if module.cta_column %}
+                    if (row.cta) {
+                        cardLink.innerHTML = row.cta;
+                    } else {
+                        cardLink.innerHTML = "{{linkLabel}}";
+                    }
+                {% else %}
                 cardLink.innerHTML = "{{linkLabel}}";
+                {% endif %}
            //     console.log(ctaClasses);
                 cardLink.classList.add(...ctaClasses);
                 newFooterInner += cardLink.outerHTML;
@@ -487,7 +526,7 @@
                     prevLink.innerHTML = '<i class="fa far fa-chevrons-left fa-2xs"></i> Previous';
 
                     // on previous click, run the goToPage function on the current page value - 1 and update the current page value
-                    prevLink.addEventListener("click", () => {
+                    prevLink.addEventListener("click", (event) => {
                         event.preventDefault();
                         goToPage2(curPage - 1);
                     });
@@ -522,7 +561,7 @@
                         newLink.dataset.destination = i;
                         newLink.href = "#";
 
-                        newLink.addEventListener("click", () => {
+                        newLink.addEventListener("click", (event) => {
                             event.preventDefault();
                             goToPage2(i);
                         });
@@ -582,7 +621,7 @@
                     
                     nextLink.innerHTML = 'Next <i class="fa far fa-chevrons-right fa-2xs"></i>';
 
-                    nextLink.addEventListener("click", () => {
+                    nextLink.addEventListener("click", (event) => {
                         event.preventDefault();
                     //    console.log("next");
                         goToPage2(curPage + 1);
@@ -597,6 +636,9 @@
             }
         }
 
+        </script>
+        <script>
+
         // to use blogFilter(), set a contentsAll array, include a .filter-tags-container div with a tags that have a data-filter property to filter with
         
         function blogFilter(){
@@ -604,7 +646,80 @@
             contents = contentsAll;
                 
             {% if module.filter_options %}
-                {% if module.filter_options|length = 1 %}
+                {% if module.filter_options|length > 1 %}
+                    
+                    contents = contentsAll;
+                    var filterDropdowns = document.querySelectorAll(".filter-tags-container select");
+                    var activeFilters = [];
+                    for (let i=0; i < filterDropdowns.length; i++) {
+                        let selectedIndex = filterDropdowns[i].selectedIndex;
+                        //console.log(selectedIndex);
+                        let selectedOption = filterDropdowns[i].options[selectedIndex];
+                        //console.log(selectedOption);
+                        let newFilter = {};
+                        if (selectedOption.dataset.category) {
+                            newFilter["category"] = selectedOption.dataset.category;
+                        }
+                        if (selectedOption.dataset.filter) {
+                            newFilter["filter"] = selectedOption.dataset.filter;
+                        }
+                      //  console.log(Object.keys(newFilter).length);
+                        if (Object.keys(newFilter).length > 0) {
+                            activeFilters.push(newFilter);
+                        }
+                    }
+                    //console.log(activeFilters);
+        
+                    // when filter dropdown is changed, assign filter, update contents variable, update pagination, and go to page 1
+                    filterDropdowns.forEach(function (i) {
+                        i.addEventListener('change', function(event) {
+                           // event.preventDefault();
+                            activeFilters = [];
+                            for (let i=0; i < filterDropdowns.length; i++) {
+                                let selectedIndex = filterDropdowns[i].selectedIndex;
+                                //console.log(selectedIndex);
+                                let selectedOption = filterDropdowns[i].options[selectedIndex];
+                                //console.log(selectedOption);
+                                let newFilter = {};
+                                if (selectedOption.dataset.category && selectedOption.dataset.category != "all") {
+                                    newFilter["category"] = selectedOption.dataset.category;
+                                }
+                                if (selectedOption.dataset.filter && selectedOption.dataset.filter != "all") {
+                                    newFilter["filter"] = selectedOption.dataset.filter;
+                                }
+                                if (Object.keys(newFilter).length > 0) {
+                                    activeFilters.push(newFilter);
+                                }
+                            }
+                             console.log(activeFilters);
+                            filterContents(activeFilters);
+                     //       console.log(contents);
+                            goToPage2(1);
+                        });
+                    });
+        //
+                    // filter contents to active filter
+                    function filterContents(filtersObj) {
+                        contents = contentsAll.filter(function(el) { 
+                            for (let i=0; i< filtersObj.length; i++) {
+                                let key = filtersObj[i].category;
+                                console.log(`${key}: ${filtersObj[i].filter}?`);
+                                if (Array.isArray(el[key])) {
+                                    console.log(el[key][0].name);
+                                 //   console.log(el[key].find(({name}) => name === filtersObj[i].filter));
+                                    // if i go through each value and can't find a matching value, return false
+                                    if ((el[key].find(({name}) => name === filtersObj[i].filter)) === undefined) { return false; }
+                                } else {
+                                    console.log(`${el[key].name} is not array`);
+                                    console.log(`${el[key].name} and ${filtersObj[i].filter}`);
+                                    if (el.hasOwnProperty(key) && el[key].name !== filtersObj[i].filter) {return false;}
+                                }
+                            }
+                            return true;
+                        });
+                    }
+
+                {% elif module.filter_options|length == 1 %}
 
                     contents = contentsAll;
                     var activeFilter = document.querySelector(".filter-tags-container .active").dataset.filter;
@@ -612,7 +727,7 @@
         
                     // when filter button is clicked, switch active button, assign filter, update contents variable, update pagination, and go to page 1
                     filterButtons.forEach(function (i) {
-                        i.addEventListener('click', function() {
+                        i.addEventListener('click', function(event) {
                             event.preventDefault();
                             filterButtons.forEach(function (j) {
                                 j.classList.remove("active");
@@ -673,8 +788,6 @@
             } else {
                 elementContainer.innerHTML = "<div class='col-12 col-md-12 col-lg-12'><h2>No results match your filters.</h2></div>"
             }
-
-            
             
             {% if module.styles.equal_height_img %}
              setTimeout(normaliseHeightsMin,300,"#hubdb_videos_{{name|replace("-","_")}} .img-normalise");

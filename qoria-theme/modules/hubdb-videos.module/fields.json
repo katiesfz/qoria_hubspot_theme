@@ -161,7 +161,7 @@
   "id" : "link_label",
   "name" : "link_label",
   "display_width" : null,
-  "label" : "Link Label",
+  "label" : "Default CTA",
   "required" : false,
   "locked" : false,
   "validation_regex" : "",
@@ -169,6 +169,32 @@
   "show_emoji_picker" : false,
   "type" : "text",
   "default" : "Watch video"
+},{
+  "id" : "cta_column",
+  "name" : "cta_column",
+  "display_width" : null,
+  "label" : "CTA Column",
+  "inline_help_text" : "ID of the column to use for CTA",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+},{
+  "id" : "subheading",
+  "name" : "subheading",
+  "display_width" : null,
+  "label" : "Subheading column",
+  "inline_help_text" : "ID of the column to use for subheadings",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
 }, {
   "id" : "styles",
   "name" : "styles",
