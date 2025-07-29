@@ -19,7 +19,7 @@
   "label" : "Heading",
   "required" : false,
   "locked" : false,
-  "enabled_features" : [ "alignment" ],
+  "enabled_features" : [ "charmap", "standard_emphasis", "bold", "nonbreaking_space", "personalize", "alignment", "source_code"],
   "type" : "richtext",
   "default" : "Closing the gaps that children fall through"
 }, {
@@ -57,7 +57,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "text-white", "White" ], [ "text-dark", "Dark" ]],
+    "choices" : [ [ "text-white", "White" ], [ "text-dark", "Dark" ], [ "text-primary", "Primary" ]],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
