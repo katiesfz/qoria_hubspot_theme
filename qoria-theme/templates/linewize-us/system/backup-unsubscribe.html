@@ -1,21 +1,58 @@
 <!--
   templateType: email_backup_unsubscribe_page
   isAvailableForNewContent: true
-  label: Boilerplate - email backup unsubscribe
+  label: Linewize US Email backup unsubscribe
   screenshotPath: ../../images/template-previews/backup-unsubscribe.png
 -->
-{% set template_css = "../../css/templates/system.css" %}
 {% extends "../layouts/base.html" %}
 {# pageTitle is used on system templates for setting a value for the title tag #}
-{% set pageTitle = "Unsubscribe" %}
+{% set pageTitle = "Unsubscribe | Linewize" %}
+
+
+
 
 {% block body %}
-<section class="content-wrapper">
-  <div class="systems-page">
-    {% module "backup_unsubscribe"
-      extra_classes="backup-unsubscribe",
-      path="@hubspot/email_simple_subscription"
-    %}
+
+{# hero banner #}
+
+{% module "Header"
+  path="/q-theme/modules/hero",
+  offset=0,
+  width=12,
+  cta=[ ],
+  header="<strong>Unsubscribe</strong>",
+  hero_type="full-image",
+  image={
+    "alt" : "404 banner",
+    "height" : 1080,
+    "loading" : "disabled",
+    "max_height" : 1080,
+    "max_width" : 1920,
+    "size_type" : "auto",
+    "src" : get_asset_url("../../../images/qoria/photos/404_banner.jpg"),
+    "width" : 1920
+  },
+  page_contents=[],
+  pre_header="",
+  show_share_price=false,
+  show_breadcrumbs=false
+%}
+
+<section style=" padding-top: 80px; padding-bottom: 80px;">
+  <div class="container-xxl">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        
+        {% module "backup_unsubscribe"
+          extra_classes="backup-unsubscribe",
+          path="@hubspot/email_simple_subscription"
+        %}
+      
+      </div>
+      <div class="col-12 col-lg-4">
+      </div>
+    </div>
   </div>
 </section>
+
 {% endblock body %}
