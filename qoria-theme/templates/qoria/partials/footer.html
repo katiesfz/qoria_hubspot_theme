@@ -11,7 +11,7 @@ screenshotPath: ../../../images/section-previews/screenshot_Footer.png
       <div class="col-auto mb-4 me-auto">
           {% module "module_16793700538024" path="/q-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('../../images/qoria/Qoria_Logo_White.svg')}}", "alt": "Qoria Logo", "size_type" : "auto_custom_max", "max_width" : "128"} %}
       </div>
-      <div class="col-12 col-sm-4 col-lg-3 mb-5">
+      <div class="col-12 col-sm-5 col-lg-4 mb-5">
             <h6 class="mb-3">
             {% text "address_heading" label="Address heading", value="Registered Office", no_wrapper=True %}
             </h6>
@@ -60,7 +60,7 @@ screenshotPath: ../../../images/section-previews/screenshot_Footer.png
       {% module "address_2_multiline" path="../../../modules/plaintext-multiline", label="Address 2 Multi-line", export_to_template_context=True %}
 
       {% if widget_data.address_2_multiline.plaintext_multiline != "" %}
-        <div class="col-12 col-sm-4 col-lg-3 mb-5">
+       <!-- <div class="col-12 col-sm-4 col-lg-3 mb-5">
 
               <h6 class="mb-3">
               {% text "address_2_heading" label="Address 2 heading", value="Principal Place of Business (Perth)", no_wrapper=True %}
@@ -72,10 +72,10 @@ screenshotPath: ../../../images/section-previews/screenshot_Footer.png
                 {% endfor %}
               </p>
 
-        </div>
+        </div>-->
       {% endif %}
 
-      <div class="col-12 col-sm-3 col-lg-2 mb-5">
+      <div class="col-12 col-sm-4 col-lg-3 mb-5">
       <h6 class="mb-3">{% text "menu_heading" label="Menu heading", value="Useful Links", no_wrapper=True %}</h6>
         {% module_block module "module_16795362141501" path="/q-theme/modules/simple_menu", orientation="vertical", label="Useful Links", no_wrapper=True %}
           {% module_attribute "menu_tree" is_json=True %}[
