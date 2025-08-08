@@ -719,20 +719,18 @@ function slideInHandler(slideFrom) {
       el.classList.add("animated", "slid"); 
     } else {
       // otherwise move it off screen
-      
-      if (slideFrom == "right") {
+      if (el.classList.contains("slide-right")) {
+     // if (slideFrom == "right") {
           const translateX = (window.innerWidth - el.getBoundingClientRect().left) + 150;
           //console.log(translateX);
           el.style.transform = "translateX(" + translateX + "px)";
-      }
-
-      if (slideFrom == "left") {
-        const translateX = -(el.getBoundingClientRect().right - 150);
+      } else if (el.classList.contains("slide-left")) {
+     // if (slideFrom == "left") {
+        const translateX = -(el.getBoundingClientRect().right) - 150;
         //console.log(translateX);
         el.style.transform = "translateX(" + translateX + "px)";
-      }
-
-      if (slideFrom == "bottom") {
+      } else if (el.classList.contains("slide-bottom")) {
+      // if (slideFrom == "bottom") {
         const translateY = (Math.max(el.getBoundingClientRect().height, 150));
         //console.log(translateY);
         el.style.transform = "translateY(" + translateY + "px)";
