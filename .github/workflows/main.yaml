@@ -13,13 +13,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: HubSpot Project Action
-        account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
         uses: HubSpot/hubspot-project-actions@v1.0.0
+        with:
+          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
   deploy-us:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: HubSpot Project Action
-        account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
         uses: HubSpot/hubspot-project-actions@v1.0.0
+        with:
+          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
