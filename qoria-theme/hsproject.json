@@ -1,5 +1,5 @@
 {
   "type": "theme",
-  "srcDir": "./",
-  "destDir": "theme"
+  "srcDir": "./qoria-theme",
+  "destDir": "q-theme"
 }
