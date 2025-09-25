@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+env:
+  DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
+  DEFAULT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+  DEFAULT_CLI_VERSION: "7.6.2"
+jobs:
+  deploy-anz:
+    runs-on: ubuntu-latest
+    account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: HubSpot Project Action
+        uses: HubSpot/hubspot-project-actions@v1.0.0
+  deploy-us:
+    runs-on: ubuntu-latest
+    account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: HubSpot Project Action
+        uses: HubSpot/hubspot-project-actions@v1.0.0
