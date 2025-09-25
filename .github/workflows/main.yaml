@@ -16,6 +16,9 @@ jobs:
         uses: HubSpot/hubspot-project-actions@v1.0.0
         with:
           account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
+          src: /qoria-theme
+          dest: q-theme
+
   deploy-us:
     runs-on: ubuntu-latest
     steps:
@@ -25,3 +28,5 @@ jobs:
         uses: HubSpot/hubspot-project-actions@v1.0.0
         with:
           account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
+          src: /qoria-theme
+          dest: q-theme
