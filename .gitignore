@@ -1,2 +1,5 @@
 hubspot-defaults/
-node_modules
+node_modules/
+Bootstrap Test/
+node_modules_original/
+qoria-theme-lean/

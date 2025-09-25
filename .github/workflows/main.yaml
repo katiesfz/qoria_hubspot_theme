@@ -9,17 +9,17 @@ env:
 jobs:
   deploy-anz:
     runs-on: ubuntu-latest
-    account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: HubSpot Project Action
+        account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
         uses: HubSpot/hubspot-project-actions@v1.0.0
   deploy-us:
     runs-on: ubuntu-latest
-    account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: HubSpot Project Action
+        account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
         uses: HubSpot/hubspot-project-actions@v1.0.0
