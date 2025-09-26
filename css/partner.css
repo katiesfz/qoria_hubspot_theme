@@ -1,0 +1,298 @@
+:root,
+[data-bs-theme=light] {
+  --q-indigo: #0e1f59;
+  --q-secondary: #0e1f59;
+  --q-indigo: #0e1f59;
+  --q-secondary-rgb: 14, 31, 89;
+  --q-indigo-rgb: 14, 31, 89;
+  --q-secondary-text: rgb(26.4, 32.8, 64.8);
+  --q-indigo-text: rgb(26.4, 32.8, 64.8);
+  --q-secondary-bg-subtle: rgb(210.6, 212.2, 220.2);
+  --q-indigo-bg-subtle: rgb(210.6, 212.2, 220.2);
+  --q-secondary-border-subtle: rgb(166.2, 169.4, 185.4);
+  --q-indigo-border-subtle: rgb(166.2, 169.4, 185.4);
+}
+
+
+:root,
+[data-bs-theme=light] {
+  --q-secondary-rgb: 14, 31, 89;
+  --q-indigo-rgb: 14, 31, 89;
+  --q-indigo-100-rgb: 211, 212, 220;
+  --q-indigo-200-rgb: 166, 169, 185;
+  --q-indigo-300-rgb: 122, 127, 151;
+  --q-indigo-400-rgb: 77, 84, 116;
+  --q-indigo-500-rgb: 33, 41, 81;
+  --q-indigo-600-rgb: 26, 33, 65;
+  --q-indigo-700-rgb: 20, 25, 49;
+  --q-indigo-800-rgb: 13, 16, 32;
+  --q-indigo-900-rgb: 7, 8, 16;
+  --q-secondary-text-emphasis: rgb(13.2, 16.4, 32.4);
+  --q-indigo-text-emphasis: rgb(13.2, 16.4, 32.4);
+}
+
+
+
+.table-secondary {
+  --q-table-color: #000;
+  --q-table-bg: rgb(210.6, 212.2, 220.2);
+  --q-table-border-color: rgb(168.48, 169.76, 176.16);
+  --q-table-striped-bg: rgb(205.335, 206.895, 214.695);
+  --q-table-striped-twice-bg: rgb(200.07, 201.59, 209.19);
+  --q-table-striped-color: #000;
+  --q-table-active-bg: rgb(189.54, 190.98, 198.18);
+  --q-table-active-color: #000;
+  --q-table-hover-bg: rgb(194.805, 196.285, 203.685);
+  --q-table-hover-color: #000;
+  color: var(--q-table-color);
+  border-color: var(--q-table-border-color);
+}
+
+.btn-secondary, .hs-form .hs-submit .hs-button.primary {
+  --q-btn-color: #fff;
+  --q-btn-bg: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: rgb(28.05, 34.85, 68.85);
+  --q-btn-hover-border-color: rgb(26.4, 32.8, 64.8);
+  --q-btn-focus-shadow-rgb: 66, 73, 107;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: rgb(26.4, 32.8, 64.8);
+  --q-btn-active-border-color: rgb(24.75, 30.75, 60.75);
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #fff;
+  --q-btn-disabled-bg: #0e1f59;
+  --q-btn-disabled-border-color: #0e1f59;
+}
+
+.btn-indigo {
+  --q-btn-color: #fff;
+  --q-btn-bg: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: rgb(28.05, 34.85, 68.85);
+  --q-btn-hover-border-color: rgb(26.4, 32.8, 64.8);
+  --q-btn-focus-shadow-rgb: 66, 73, 107;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: rgb(26.4, 32.8, 64.8);
+  --q-btn-active-border-color: rgb(24.75, 30.75, 60.75);
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #fff;
+  --q-btn-disabled-bg: #0e1f59;
+  --q-btn-disabled-border-color: #0e1f59;
+}
+
+.btn-outline-secondary {
+  --q-btn-color: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: #0e1f59;
+  --q-btn-hover-border-color: #212951;
+  --q-btn-focus-shadow-rgb: 33, 41, 81;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: #0e1f59;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #0e1f59;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: #0e1f59;
+  --q-gradient: none;
+  border-width: 2px;
+}
+
+.btn-outline-indigo {
+  --q-btn-color: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: #0e1f59;
+  --q-btn-hover-border-color: #0e1f59;
+  --q-btn-focus-shadow-rgb: 33, 41, 81;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: #0e1f59;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #0e1f59;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: #0e1f59;
+  --q-gradient: none;
+  border-width: 2px;
+}
+
+.btn-blog-filter-secondary {
+  --q-btn-color: #1d1e1c;
+  --q-btn-bg: transparent;
+  --q-btn-border-color: transparent;
+  --q-btn-hover-color: #1d1e1c;
+  --q-btn-hover-bg: rgba(29, 30, 28, 0.1);
+  --q-btn-hover-border-color: none;
+  --q-btn-focus-shadow-rgb: 29, 30, 28;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: none;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #fff;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: transparent;
+  --q-btn-active-shadow: none;
+}
+
+.accordion-item .accordion-collapse:before {
+  content: " ";
+  width: 0.25rem;
+  transition: background-position 500ms ease-in-out;
+  background-image: linear-gradient(45deg, #f8f8f8 0%, #f8f8f8 33%, #58b78e 66%, #0e1f59 91%);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: 100% 300%;
+  background-position: 50% 0%;
+}
+
+
+
+.text-bg-secondary {
+  color: #fff !important;
+  background-color: RGBA(33, 41, 81, var(--q-bg-opacity, 1)) !important;
+}
+
+.text-bg-indigo {
+  color: #fff !important;
+  background-color: RGBA(33, 41, 81, var(--q-bg-opacity, 1)) !important;
+}
+
+.link-secondary {
+  color: #212951 !important;
+}
+.link-secondary:hover, .link-secondary:focus {
+  color: rgb(26.4, 32.8, 64.8) !important;
+}
+
+.link-indigo {
+  color: #212951 !important;
+}
+.link-indigo:hover, .link-indigo:focus {
+  color: rgb(26.4, 32.8, 64.8) !important;
+}
+
+.fill-secondary {
+  fill: #212951 !important;
+}
+
+.fill-indigo {
+  fill: #212951 !important;
+}
+
+.fill-indigo-100 {
+  fill: rgb(210.6, 212.2, 220.2) !important;
+}
+
+.fill-indigo-200 {
+  fill: rgb(166.2, 169.4, 185.4) !important;
+}
+
+.fill-indigo-300 {
+  fill: rgb(121.8, 126.6, 150.6) !important;
+}
+
+.fill-indigo-400 {
+  fill: rgb(77.4, 83.8, 115.8) !important;
+}
+
+.fill-indigo-500 {
+  fill: #212951 !important;
+}
+
+.fill-indigo-600 {
+  fill: rgb(26.4, 32.8, 64.8) !important;
+}
+
+.fill-indigo-700 {
+  fill: rgb(19.8, 24.6, 48.6) !important;
+}
+
+.fill-indigo-800 {
+  fill: rgb(13.2, 16.4, 32.4) !important;
+}
+
+.fill-indigo-900 {
+  fill: rgb(6.6, 8.2, 16.2) !important;
+}
+
+.theme-text-on-theme-bg-secondary {
+  color: rgb(210.6, 212.2, 220.2) !important;
+}
+
+.theme-text-on-theme-bg-indigo {
+  color: rgb(210.6, 212.2, 220.2) !important;
+}
+
+.bg-gradient-primary {
+  background-color: #58b78e;
+  background: linear-gradient(45deg, rgb(14 31 89) 0%, #58b78e 63%) border-box;
+}
+
+.bg-gradient-primary-reverse {
+  background-color: #58b78e;
+  background: linear-gradient(225deg, #0e1f59 0%, #58b78e 63%) border-box;
+}
+
+.bg-gradient-primary-extended {
+  background-color: #0e1f59;
+  background: linear-gradient(180deg, #58b78e 0%, #0e1f59 50%, rgb(13.2, 16.4, 32.4) 100%) border-box;
+}
+
+.bg-gradient-primary-subtle {
+  background-color: #58b78e;
+  background: linear-gradient(-45deg, color-mix(in srgb, #58b78e 70%, #0e1f59 30%) 0%, #58b78e 100%) border-box;
+}
+
+.bg-gradient-secondary-transparent {
+  background-color: #0e1f59;
+  background: linear-gradient(45deg, #0e1f59 0%, transparent 100%) border-box;
+}
+
+.btn-outline-secondary {
+  --q-btn-color: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: #0e1f59;
+  --q-btn-hover-border-color: #0e1f59;
+  --q-btn-focus-shadow-rgb: 33, 41, 81;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: #0e1f59;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #0e1f59;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: #0e1f59;
+  --q-gradient: none;
+  border-width: 2px;
+}
+
+.btn-outline-indigo {
+  --q-btn-color: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: #0e1f59;
+  --q-btn-hover-border-color: #0e1f59;
+  --q-btn-focus-shadow-rgb: 33, 41, 81;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: #0e1f59;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #0e1f59;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: #0e1f59;
+  --q-gradient: none;
+  border-width: 2px;
+}
+
+.arrow-secondary:after {
+  color: #212951;
+}
+
+
+.arrow-indigo:after {
+  color: #212951;
+}
