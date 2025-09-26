@@ -12,7 +12,6 @@ jobs:
       matrix:
         account:
           - name: LW-ANZ-SB
-            token: ${{ secrets.HUBSPOT_PAK_ANZ_SB }}
 
     steps:
       - name: Checkout repository
@@ -28,6 +27,6 @@ jobs:
 
       - name: Authenticate and Upload Theme
         run: |
-          echo "${{ matrix.account.token }}" > token.txt
+          echo "${{ secrets.HUBSPOT_PAK_ANZ_SB }}" > token.txt
           hs auth personalaccesskey --key "$(cat token.txt)" --name "${{ matrix.account.name }}"
           hs upload qoria-theme q-theme --account "${{ matrix.account.name }}"

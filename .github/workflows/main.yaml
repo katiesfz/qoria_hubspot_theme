@@ -12,9 +12,7 @@ jobs:
       matrix:
         account:
           - name: LW-ANZ
-            token: ${{ secrets.HUBSPOT_PAK_ANZ }}
           - name: LW-US
-            token: ${{ secrets.HUBSPOT_PAK_US }}
 
     steps:
       - name: Checkout repository
@@ -30,6 +28,10 @@ jobs:
 
       - name: Authenticate and Upload Theme
         run: |
-          echo "${{ matrix.account.token }}" > token.txt
+          if [ "${{ matrix.account.name }}" = "LW-ANZ" ]; then
+            echo "${{ secrets.HUBSPOT_PAK_ANZ }}" > token.txt
+          elif [ "${{ matrix.account.name }}" = "LW-US" ]; then
+            echo "${{ secrets.HUBSPOT_PAK_US }}" > token.txt
+          fi
           hs auth personalaccesskey --key "$(cat token.txt)" --name "${{ matrix.account.name }}"
           hs upload qoria-theme q-theme --account "${{ matrix.account.name }}"
