@@ -1,30 +1,35 @@
+name: Deploy HubSpot Theme - Live
+
 on:
   push:
     branches:
       - main
-env:
-  DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
-  DEFAULT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
-  DEFAULT_CLI_VERSION: "7.6.2"
-jobs:
-  deploy-anz:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: HubSpot Project Action
-        uses: HubSpot/hubspot-project-actions@v1.0.0
-        with:
-          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
-          project_dir: qoria-theme
 
-  deploy-us:
+jobs:
+  deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        account:
+          - name: LW-ANZ
+            token: ${{ secrets.HUBSPOT_PAK_ANZ }}
+          - name: LW-US
+            token: ${{ secrets.HUBSPOT_PAK_US }}
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: HubSpot Project Action
-        uses: HubSpot/hubspot-project-actions@v1.0.0
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
-          project_dir: qoria-theme
+          node-version: '22.19.0'
+
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli
+
+      - name: Authenticate and Upload Theme
+        run: |
+          echo "${{ matrix.account.token }}" > token.txt
+          hs auth personalaccesskey --key "$(cat token.txt)" --name "${{ matrix.account.name }}"
+          hs upload qoria-theme q-theme --account "${{ matrix.account.name }}"

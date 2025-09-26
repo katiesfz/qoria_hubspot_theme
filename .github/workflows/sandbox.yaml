@@ -1,16 +1,33 @@
+name: Deploy HubSpot Theme - Sandbox
+
 on:
   push:
     branches:
       - sandbox
-env:
-  DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID_SANDBOX }}
-  DEFAULT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
-  DEFAULT_CLI_VERSION: "7.6.2"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        account:
+          - name: LW-ANZ-SB
+            token: ${{ secrets.HUBSPOT_PAK_ANZ_SB }}
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: HubSpot Project Action
-        uses: HubSpot/hubspot-project-actions@v1.0.0
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.19.0'
+
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli
+
+      - name: Authenticate and Upload Theme
+        run: |
+          echo "${{ matrix.account.token }}" > token.txt
+          hs auth personalaccesskey --key "$(cat token.txt)" --name "${{ matrix.account.name }}"
+          hs upload qoria-theme q-theme --account "${{ matrix.account.name }}"
