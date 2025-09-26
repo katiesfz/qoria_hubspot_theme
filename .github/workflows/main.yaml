@@ -33,5 +33,5 @@ jobs:
           elif [ "${{ matrix.account.name }}" = "LW-US" ]; then
             echo "${{ secrets.HUBSPOT_PAK_US }}" > token.txt
           fi
-          hs auth --personalaccesskey "$(cat token.txt)" --account "${{ matrix.account.name }}"
+          hs auth --pak "$(cat token.txt)" --account "${{ matrix.account.name }}"
           hs upload qoria-theme q-theme --account "${{ matrix.account.name }}"
