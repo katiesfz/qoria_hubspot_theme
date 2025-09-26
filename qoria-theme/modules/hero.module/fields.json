@@ -331,7 +331,7 @@
     "access" : null
   },
   "type" : "hubdbtable",
-  "default" : 6270539
+  "default" : null
 }, {
   "id" : "show_breadcrumbs",
   "name" : "show_breadcrumbs",
