@@ -1,3 +1,15 @@
 defaultAccount: placeholder
-accountId: 000000
-name: placeholder
+accounts:
+  - name: placeholder
+    accountId: 000000
+    env: prod
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          dummy
+    personalAccessKey: >-
+      dummy
+    sandboxAccountType: null
+    parentAccountId: null
+    accountType: STANDARD
