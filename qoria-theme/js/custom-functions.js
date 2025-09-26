@@ -950,3 +950,91 @@ strBuffer = strBuffer +"</div>";
 
 
 }
+
+//  parallax images:
+
+function applyParallaxToImages({
+  selector = '.parallax-img',
+  speed = 0.5,
+  easing = 0.1,
+  disableOnMobile = true
+} = {}) {
+  const mobileThreshold = 768;
+  const images = Array.from(document.querySelectorAll(selector));
+  const state = new Map();
+  let isMobile = window.innerWidth < mobileThreshold;
+  let animationFrame;
+
+  // Initialize state and store original transform
+  images.forEach(img => {
+    state.set(img, {
+      current: 0,
+      target: 0,
+      originalTransform: getComputedStyle(img).transform || 'none'
+    });
+    img.style.willChange = 'transform';
+  });
+
+  function updateTargets() {
+    if (disableOnMobile && isMobile) return;
+
+    const viewportHeight = window.innerHeight;
+
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      const distanceFromCenter = rect.top + rect.height / 2 - viewportHeight / 2;
+      const offset = -distanceFromCenter * speed;
+
+      const imgState = state.get(img);
+      imgState.target = offset;
+    });
+  }
+
+  function animate() {
+    if (disableOnMobile && isMobile) return;
+
+    images.forEach(img => {
+      const imgState = state.get(img);
+      imgState.current += (imgState.target - imgState.current) * easing;
+      img.style.transform = `translateY(${imgState.current}px)`;
+    });
+
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  function resetToOriginal() {
+    images.forEach(img => {
+      const imgState = state.get(img);
+      img.style.transform = imgState.originalTransform;
+      imgState.current = 0;
+      imgState.target = 0;
+    });
+  }
+
+  function handleResize() {
+    const wasMobile = isMobile;
+    isMobile = window.innerWidth < mobileThreshold;
+
+    if (disableOnMobile) {
+      if (isMobile && !wasMobile) {
+        cancelAnimationFrame(animationFrame);
+        resetToOriginal();
+      } else if (!isMobile && wasMobile) {
+        updateTargets();
+        animate();
+      }
+    } else {
+      updateTargets();
+    }
+  }
+
+  window.addEventListener('scroll', updateTargets);
+  window.addEventListener('resize', handleResize);
+
+  if (!(disableOnMobile && isMobile)) {
+    updateTargets();
+    animate();
+  }
+}
+
+

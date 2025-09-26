@@ -1,0 +1,113 @@
+<section class="video-background position-relative" id="{{name}}" style="">
+
+    {% if module.poster_image.src %}
+        {% set sizeAttrs = 'width="{{ module.poster_image.width }}" height="{{ module.poster_image.height }}"' %}
+        {% if module.poster_image.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.poster_image.width }}" height="{{ module.poster_image.height }}"' %}
+            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+            {% set imgSrc = resize_image_url(module.poster_image.src, module.poster_image.width) %}
+        {% elif module.poster_image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.poster_image.max_width }}" height="{{ module.poster_image.max_height }}"' %}
+            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+            {% set imgSrc = resize_image_url(module.poster_image.src, module.poster_image.max_width) %}
+        {% endif %}
+        
+<!-- preload video poster -->
+        <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        href="{{imgSrc}}"
+        />
+
+    {% endif %}
+    {% require_css %}
+        <style>
+
+        .video-background {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+            {% if module.poster_image.src %}
+
+                /* This prevents the video from showing on mobiles */
+            @media (pointer: coarse) and (hover: none) {
+                .video-background {
+                background: url('{{imgSrc}}') no-repeat center center scroll;
+                background-size: cover;
+                }
+            
+                .video-background video {
+                display: none;
+                }
+            } 
+            
+            {% endif %}
+
+            {% scope_css %}
+
+            /* default styles */
+
+            .container-xl {
+                {{module.style.spacing_desktop.css}}
+            }
+
+            /* tablet styles */
+            @media screen and (max-width: 992px) {
+                .container-xl {
+                    {{module.style.spacing_tablet.css}}
+                }
+            }
+            
+            /* mobile styles */
+            @media screen and (max-width: 768px) {
+                .container-xl {
+                    {{module.style.spacing_mobile.css}}
+                }
+            }
+
+            
+            {% end_scope_css %}
+        </style>
+    {% end_require_css %}
+
+    <div class="video-bg-container">
+        <!-- The HTML5 video element that will create the background video on the header -->
+        <video playsinline="playsinline" id="{{name}}-video-bg"  muted="muted" loop="loop" {% if module.poster_image.src %}poster="{{imgSrc}}" {{sizeAttrs}}{% endif %}>
+            <source src="{{module.video}}" data-src="{{module.video}}" type="video/mp4">
+        </video>
+  </div>
+
+  <!-- The header content -->
+    <div class="container-xl g-0 position-relative">
+        {% for row in module.row %}
+            <div class="row g-0 {{row.advanced.additional_classes}}" style="{{ "z-index: 1;" if module.style.background_image != "none" }}">
+                {% for col in row.column %} 
+                    {% if col.column_styles.background_image == "custom" %}
+                        {% set bgCode = "background-image: url('" + col.column_styles.background_image_file.src + "'); background-size: " + col.column_styles.background_size + "; background-position: center center;" %}
+                    {% else %}
+                        {% set bgCode = "" %}
+                    {% endif %}
+                    <div class="col {{ col.advanced.additional_col_classes }} {{ "position-relative" if col.link_stretched }} {{ col.column_styles.background_colour }}{{ " bg-q-tail-1" if col.column_styles.background_image == "q-tail-1" }}" style="{{bgCode}}">
+                        <div class="content-container {{ col.advanced.additional_classes }}">
+                        {{ col.text }}
+                        {% if (col.link.url.href) && (col.link_label) %}
+                            <a href="{{ col.link.url.href }}" class="text-reset text-decoration-none fw-semibold {{ "stretched-link" if col.link_stretched }}">{{ col.link_label }}</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    var video = document.getElementById("{{name}}-video-bg");
+    video.addEventListener("canplay", function() {
+//    setTimeout(function() {
+        video.play();
+    //   }, 5000);
+    });
+</script>
