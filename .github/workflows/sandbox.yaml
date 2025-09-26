@@ -8,15 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        account:
-          - name: LW-ANZ-SB
-            id: 112233
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: HubSpot Deploy Action ANZ
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
