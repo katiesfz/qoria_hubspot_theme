@@ -18,25 +18,37 @@
             {% endfor %}
         {% endif %}
 
+        {# order by here #}
+         {% if module.order_by %}
+            {% if module.reverse_order %}
+                {% set orderBy = "orderBy=-" ~ module.order_by %}
+            {% else %}
+                {% set orderBy = "orderBy=" ~ module.order_by %}
+            {% endif %}
+            {% do filterArr.append(orderBy) %}
+         {% endif %}
 
-        {# if there are multiple secondary filter options in the UI we add more filter queries here #}
-        {% set additionalFilters = [] %}
 
-        {% set queryKeys = [] %}
-        {% if request.query_dict %}
-            {% for key, val in request.query_dict.items() %}
-                {% do queryKeys.append(key) %}
-            {% endfor %}
-        {% endif %}
+        {# secondary filters are done with js so we don't use this section anymore #}
+            {# if there are multiple secondary filter options in the UI we add more filter queries here #}
+            {% set additionalFilters = [] %}
 
-        {% if module.filter_options %}
-            {% for filt in module.filter_options %}
-                {% if queryKeys is containing filt && request.query_dict[filt] != "show-all" %}
-                    {% set newQuery = filt ~ "__contains=" ~ request.query_dict[filt] %}
-                    {% do filterArr.append(newQuery) %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+            {% set queryKeys = [] %}
+            {% if request.query_dict %}
+                {% for key, val in request.query_dict.items() %}
+                    {% do queryKeys.append(key) %}
+                {% endfor %}
+            {% endif %}
+
+            {% if module.filter_options %}
+                {% for filt in module.filter_options %}
+                    {% if queryKeys is containing filt && request.query_dict[filt] != "show-all" %}
+                        {% set newQuery = filt ~ "__contains=" ~ request.query_dict[filt] %}
+                        {% do filterArr.append(newQuery) %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {# end secondary filter section #}
             
         {% set filterString = filterArr|join("&") %}
 
@@ -299,7 +311,7 @@
             // print subheading
             newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-2 align-items-center">';
                 newContent += '<div>';
-                    newContent += '<p class="text-{{module.styles.textalignment}} mb-0 fw-bold">' + row.{{module.subheading}}.name + '</p>';
+                    newContent += '<p class="text-{{module.styles.textalignment}} mb-0 fw-bold">' + row.{{module.subheading}}.label + '</p>';
                 newContent += '</div>';
             newContent += '</div>';
 

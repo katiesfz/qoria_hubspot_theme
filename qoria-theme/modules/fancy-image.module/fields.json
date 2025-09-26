@@ -99,6 +99,16 @@
     },
     "default" : " "
   }, {
+    "id" : "style.parallax",
+    "name" : "parallax",
+    "display_width" : null,
+    "label" : "Parallax",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  },  {
     "id" : "style.shadow",
     "name" : "shadow",
     "display_width" : null,
@@ -123,6 +133,14 @@
     "choices" : [ [ " ", "None" ], [ "slide slide-right", "Slide from right" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.parallax",
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
     "preset" : null,
     "type" : "choice",
     "default" : " "
