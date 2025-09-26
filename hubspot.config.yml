@@ -13,3 +13,13 @@ accounts:
     sandboxAccountType: null
     parentAccountId: null
     accountType: STANDARD
+portals:
+  - name: placeholder
+    portalId: 000000
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          dummy
+    personalAccessKey: >-
+      dummy
