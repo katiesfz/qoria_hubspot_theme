@@ -29,5 +29,5 @@ jobs:
       - name: Authenticate and Upload Theme
         run: |
           echo "${{ secrets.HUBSPOT_PAK_ANZ_SB }}" > token.txt
-          hs auth --pak "$(cat token.txt)" --account="${{ matrix.account.id }}"
-          hs upload qoria-theme q-theme --account="${{ matrix.account.id }}"
+          hs auth --pak "$(cat token.txt)" --account="${{ matrix.account.name }}"
+          hs upload qoria-theme q-theme --account="${{ matrix.account.name }}"
