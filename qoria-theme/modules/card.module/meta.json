@@ -1,7 +1,7 @@
 {
   "global" : false,
   "icon" : "../../images/module-icons/info-circle-solid.svg",
-  "host_template_types" : [ "PAGE", "BLOG_LISTING" ],
+  "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
   "module_id" : 114969642022,
   "js_assets" : [ {
     "autoload" : true,
