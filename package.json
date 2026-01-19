@@ -1,9 +1,15 @@
 {
   "dependencies": {
     "@floating-ui/dom": "^1.6.10",
+    "@hubspot/cli": "^7.6.2",
     "bootstrap": "^5.3.0-alpha1"
   },
   "devDependencies": {
     "sass": "^1.47.0"
+  },
+  "scripts": {
+    "hs:sandbox": "hs upload qoria-theme q-theme --account=LW-ANZ-SB",
+    "hs:deploy": "hs upload qoria-theme q-theme --account=LW-ANZ && hs upload qoria-theme q-theme --account=LW-US && hs upload qoria-theme q-theme --account=SMW-UK",
+    "hs:verify": "hs fetch qoria-theme q-theme --account=LW-ANZ-SB"
   }
 }

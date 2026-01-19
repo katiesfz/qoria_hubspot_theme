@@ -1,9 +1,11 @@
 {
     "liveSassCompile.settings.excludeList": [
-        "/.vscode/**"
+        "/.vscode/**",
+        "/**/node_modules/**"
     ],
-    "liveSassCompile.settings.forceBaseDirectory": "/node_modules/bootstrap",
+    "liveSassCompile.settings.forceBaseDirectory": "/sass",
     "liveSassCompile.settings.formats": [
+
         {
             "format": "expanded",
             "extensionName": ".css",
@@ -19,9 +21,9 @@
     ],
     "liveSassCompile.settings.includeItems": [
         "/scss/qoria-theme.scss",
-        "/scss/qoria-theme-critical.scss",
         "/scss/smart-recruiters-styles.scss",
-        "/scss/easy-webinar-styles.scss"
+        "/scss/easy-webinar-styles.scss",
+        "/scss/qoria-theme-partner.scss"
     ],
     "liveSassCompile.settings.generateMap": false,
     "files.associations": {
@@ -29,8 +31,6 @@
         "*.css": "css-hubl"
     },
     "liveSassCompile.settings.autoprefix": [
-
-    
     ],
     "search.exclude": {
         "**/node_modules": false
@@ -39,6 +39,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "liveServer.settings.root": "",
+    "liveSassCompile.settings.rootIsWorkspace": true,
+    "prettier.tabWidth": 4
   
 }
