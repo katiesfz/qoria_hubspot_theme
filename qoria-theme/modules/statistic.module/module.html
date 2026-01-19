@@ -6,7 +6,7 @@
   {% set globalSizing = module.style.absolute_icon_size %}
 {% endif %}
 
-<div class="row gx-3 gy-4 row-cols-{{module.style.responsive.mobile.stats}} row-cols-md-{{module.style.responsive.tablet.stats}} row-cols-lg-{{module.style.responsive.desktop.stats}} g-3" style="{{ module.style.spacing_field.css }}">
+<div class="row gx-3 gy-4 row-cols-{{module.style.responsive.mobile.stats}} row-cols-md-{{module.style.responsive.tablet.stats}} row-cols-lg-{{module.style.responsive.desktop.stats}} g-3 justify-content-{{module.style.row_alignment}}" style="{{ module.style.spacing_field.css }}">
 {% for item in module.statistic %}
  {%if item.icon.icon_colour != "inherit" %}
    {% set iconColour = item.icon.icon_colour %}
