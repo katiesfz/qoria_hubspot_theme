@@ -11,11 +11,11 @@
 
   {% choice "blog_type" label='Blog type', value="regular", choices=[['regular', 'Blog'], ['case_study', 'Case study'], ['whitepaper', 'Whitepaper'], ['video', 'Video']], export_to_template_context=True %}
     
-    {% module "description" path="/q-theme/modules/blog-description", export_to_template_context=True %}
+  {% module "description" path="/q-theme/modules/blog-description", export_to_template_context=True %}
 
-    {% block body %}
+  {% block body %}
 
-{% if widget_data.blog_type.value == "regular" %}
+    {% if widget_data.blog_type.value == "regular" %}
   
   {% module "hero"
   path="/q-theme/modules/hero",

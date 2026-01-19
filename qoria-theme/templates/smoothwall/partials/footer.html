@@ -53,7 +53,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
             </p>
             {{ "<p>" if (widget_data.phone_number.value != "" || widget_data.email.value != "") }}
               {% if widget_data.phone_number.value != "" %}
-                Phone: {{newPhone|join}}
+                Phone: <a class="text-reset text-decoration-none" href="tel:{{widget_data.phone_number.value|split(" ")|join}}">{{widget_data.phone_number.value}}</a>
               {% endif %}
               {{ "<br>" if (widget_data.phone_number.value != "" && widget_data.email.value != "") }}
               {% if widget_data.email.value != "" %}
