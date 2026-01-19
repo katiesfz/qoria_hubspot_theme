@@ -1,6 +1,7 @@
 {
   "global" : false,
   "host_template_types" : [ "BLOG_LISTING", "PAGE" ],
+  "module_id" : 127639883080,
   "js_assets" : [ {
     "autoload" : true,
     "path" : "../../js/jquery/jquery-3.6.4.min.js",
@@ -10,6 +11,6 @@
     "path" : "../../js/custom-functions.js",
     "name" : "custom-functions.js"
   } ],
-  "label" : "Blog listing - Sandbox",
-  "is_available_for_new_content" : true
+  "label" : "Blog listing",
+  "is_available_for_new_content" : false
 }
