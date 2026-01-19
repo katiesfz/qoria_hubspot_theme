@@ -8,25 +8,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        account: [ANZ, US]
-        include:
-          - account: ANZ
-            portal_id: HUBSPOT_ACCOUNT_ID_ANZ
-            access_key: HUBSPOT_PAK_ANZ
-          - account: US
-            portal_id: HUBSPOT_ACCOUNT_ID_US
-            access_key: HUBSPOT_PAK_US
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: HubSpot Deploy Action
+      - name: HubSpot Deploy Action ANZ
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
-          account_id: ${{ secrets[matrix.portal_id_key] }}
-          personal_access_key: ${{ secrets[matrix.pak_key] }}
+          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
+          personal_access_key: ${{ secrets.HUBSPOT_PAK_ANZ }}
           src_dir: qoria-theme
           dest_dir: q-theme
