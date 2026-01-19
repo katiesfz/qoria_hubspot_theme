@@ -47,13 +47,56 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ], [ "q-tail-2", "Q Tail 2" ] ],
+    "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ], [ "q-tail-2", "Q Tail 2" ], [ "custom", "Custom" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
     "default" : "none"
-  }, {
+  },{
+        "id" : "background_image_file",
+        "name" : "background_image_file",
+        "display_width" : null,
+        "label" : "Background Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : true,
+        "type" : "image",
+        "visibility" : {
+          "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "default" : {
+          "loading" : "lazy"
+        }
+     },{
+      "name" : "background_size",
+      "display_width" : null,
+      "label" : "Background size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ]],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "visibility" : {
+        "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "custom",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "default" : "cover"
+    }, {
     "id" : "style.overlay",
     "name" : "overlay",
     "display_width" : null,
