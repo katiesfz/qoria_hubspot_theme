@@ -1,13 +1,4 @@
 [{
-  "id": "unique_name",
-  "name": "unique_name",
-  "default": "",
-  "label": "Unique name",
-  "locked": false,
-  "required": false,
-  "type": "text",
-  "validation_regex": ""
-},{
   "name" : "accordion",
   "display_width" : null,
   "label" : "Accordion",

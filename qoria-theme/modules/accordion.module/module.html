@@ -32,11 +32,11 @@
                 {% endif %}
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                    <button class="hs-allow-transition accordion-button {{ "collapsed" if show == "" }}" type="button" data-bs-toggle="collapse" data-bs-target="#{{accordion.unique_name if accordion.unique_name else "acc-{{name}}-{{loop.index}}"}}" {{ 'aria-expanded="true"' if show == "show" }} aria-controls="{{accordion.unique_name if accordion.unique_name else "acc-{{name}}-{{loop.index}}"}}">
+                    <button class="hs-allow-transition accordion-button {{ "collapsed" if show == "" }}" type="button" data-bs-toggle="collapse" data-bs-target="#acc-{{name}}-{{loop.index}}" {{ 'aria-expanded="true"' if show == "show" }} aria-controls="acc-{{name}}-{{loop.index}}">
                         <div class="accordion-icon"></div>{{ accordion.acc_label }}
                     </button>
                     </h2>
-                    <div id="{{accordion.unique_name if accordion.unique_name else "acc-{{name}}-{{loop.index}}"}}" class="accordion-collapse collapse {{ show }} hs-allow-transition" data-bs-parent="#accordion-{{name}}">
+                    <div id="acc-{{name}}-{{loop.index}}" class="accordion-collapse collapse {{ show }} hs-allow-transition" data-bs-parent="#accordion-{{name}}">
                         <div class="accordion-body">
                             {{accordion.content}}
                         </div>
