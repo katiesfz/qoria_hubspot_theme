@@ -15,7 +15,7 @@
 {% endif %}
 
 {# split to columns/arrays #}
-{% if blog_posts != [] %}
+{% if blog_posts.length > 0 %}
     {% if module.responsive.desktop.columns >= module.responsive.tablet.columns && module.responsive.desktop.columns >= module.responsive.mobile.columns %}
         {% set numCol = module.responsive.desktop.columns %}
     {% elif module.responsive.tablet.columns >= module.responsive.desktop.columns && module.responsive.tablet.columns >= module.responsive.mobile.columns %}
@@ -25,15 +25,18 @@
     {% else %}
         {% set numCol = 2 %}
     {% endif %}
-    {% set numPerCol = (blog_posts|length|default(4) / numCol|default(2))|round(0, "ceil") %}
+    {% if numCol < 1 %}
+        {% set numCol = 1 %}
+    {% endif %}
+    {% set numPerCol = (blog_posts|length|divide(numCol))|round(0, "ceil") %}
 {% else %}
     {% set numPerCol = 1 %}
 {% endif %}
 
 <div class="container-fluid g-0">
     <div class="row row-cols-lg-{{module.responsive.desktop.columns|default(2)}} row-cols-md-{{module.responsive.tablet.columns|default(2)}} row-cols-{{module.responsive.mobile.columns|default(1)}} g-3">
-    {% if blog_posts != [] %}
-        {% for column in blog_posts|slice(numPerCol, " ") %}
+    {% if blog_posts.length > 0 %}
+        {% for column in blog_posts|slice(numPerCol|default(1), "") %}
             <div class="col">
                 <div class="col-inner px-3 px-md-5 bg-white h-100">
                 {% for blog in column %}
