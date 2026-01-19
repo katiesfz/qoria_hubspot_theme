@@ -243,7 +243,7 @@
 {% endif %}
 </div>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
         var smallBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-sm');
         var largeBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-lg');
         {% if module.style.carousel %}
@@ -287,15 +287,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 normaliseHeights("#testimonial-{{name}} .card-body");
             })
         {% endif %}
-
-        $(window).on(
-        'load resize orientationchange', function () {
-        normaliseHeights("#testimonial-{{name}} .card-header");
-        normaliseHeights("#testimonial-{{name}} .card-body");
-        });
         
-    
-});
+        const handleHeightNormalisation = () => {
+            normaliseHeights("#testimonial-{{name}} .card-header");
+            normaliseHeights("#testimonial-{{name}} .card-body");
+        };
+
+        window.addEventListener('load', handleHeightNormalisation);
+        window.addEventListener('resize', handleHeightNormalisation);
+        window.addEventListener('orientationchange', handleHeightNormalisation);
+        
+    });
 
 
 </script>
