@@ -125,7 +125,7 @@
   "preset" : null,
   "type" : "choice",
   "default" : "h1"
-}, {
+},{
   "id" : "copy",
   "name" : "copy",
   "display_width" : null,
@@ -483,6 +483,34 @@
     "type" : "choice",
     "default" : "bottom-left"
   },{
+    "id" : "style.padding_top",
+    "name" : "padding_top",
+    "display_width" : null,
+    "label" : "Padding top",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "lg", "Large" ], [ "md", "Medium" ], [ "sm", "Small" ], [ "0", "None" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "lg"
+  },{
+    "id" : "style.padding_bottom",
+    "name" : "padding_bottom",
+    "display_width" : null,
+    "label" : "Padding bottom",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "lg", "Large" ], [ "md", "Medium" ], [ "sm", "Small" ], [ "0", "None" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "0"
+  },{
     "id" : "style.filter_image",
     "name" : "filter_image",
     "display_width" : null,
@@ -503,7 +531,35 @@
     "type" : "boolean",
     "default" : false,
     "inline_help_text" : "Check all following page sections to ensure no transparent backgrounds if this is toggled on!"
-  } ],
+  },{
+  "name" : "header_background",
+  "display_width" : null,
+  "label" : "Heading text background",
+  "inline_help_text" : "ONLY change this if you are creating a LANDING PAGE",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "heading-bg-gradient bg-gradient-primary", "Primary Gradient" ], [ " ps-3", "None" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "heading-bg-gradient bg-gradient-primary"
+}, {
+  "name" : "header_color",
+  "display_width" : null,
+  "label" : "Heading color",
+  "inline_help_text" : "ONLY change this if you are creating a LANDING PAGE",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "text-white", "White" ], [ "text-dark", "Dark" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "text-white"
+} ],
   "tab" : "STYLE",
   "expanded" : false,
   "type" : "group"

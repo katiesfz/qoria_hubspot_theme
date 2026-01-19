@@ -124,6 +124,27 @@
 </div>
 
 {% endif %}
+
+
+{% set paddingClasses = "" %}
+{% if module.style.padding_top && module.style.padding_bottom %}
+    {% set paddingClasses = "hero-padding-top-" ~ module.style.padding_top ~ " hero-padding-bottom-" ~ module.style.padding_bottom %}
+{% else %}
+    {% if module.style.heading_location == "top-left" %}
+        {% set paddingClasses = "hero-padding-top-0 hero-padding-bottom-lg" %}
+    {% elif module.style.heading_location == "33-left" %}
+        {% set paddingClasses = "hero-padding-top-sm hero-padding-bottom-md" %}
+    {% elif module.style.heading_location == "middle-left" %}
+        {% set paddingClasses = "hero-padding-top-sm hero-padding-bottom-sm" %}
+    {% elif module.style.heading_location == "66-left" %}
+        {% set paddingClasses = "hero-padding-top-md hero-padding-bottom-sm" %}
+    {% elif module.style.heading_location == "bottom-left" %}
+        {% set paddingClasses = "hero-padding-top-lg hero-padding-bottom-0" %}
+    {% endif %}
+{% endif %}
+
+
+
   <!-- The header content -->
 <div class="container-xxl g-0 h-100">
     {% if module.show_breadcrumbs %}
@@ -148,7 +169,7 @@
                             {% if module.header_level == "h2" %}
                                 <h2 class="text-decoration-partial-underline">{{module.header}}</h2>
                             {% else %}
-                            <h1 class="h2 text-decoration-partial-underline">{{module.header}}</h1>
+                                <h1 class="h2 text-decoration-partial-underline">{{module.header}}</h1>
                             {% endif %}
                         {% endif %}
                         {% if module.copy %}
@@ -199,15 +220,15 @@
     {% else %}
     <div class="row h-100 gx-0 justify-content-end flex-column">
         <div class="hero-content-container 
-{% if module.include_form %}hero-form{% else %}heading-location-{{module.style.heading_location}}{% endif %} col-12 ">
+{% if module.include_form %}hero-form{% else %} {{paddingClasses}}{% endif %} col-12 ">
             <div class="row">
                 <div class="col-12 py-5">
                 {% if module.pre_header %}<h5 class="fw-bold text-white shadow-filter ms-4">{{module.pre_header}}</h5> {% endif %}
                 {% if module.header != "" && module.header %}
                     {% if module.header_level == "h2" %}
-                        <h2 class="heading-bg-gradient bg-gradient-primary text-white h1">{{module.header}}</h2>
+                        <h2 class="{{ module.style.header_background if module.style.header_background != "heading-bg-gradient bg-gradient-primary" else "heading-bg-gradient bg-gradient-primary"}} {{module.style.header_color if module.style.header_color != "text-white" else "text-white"}} h1">{{module.header}}</h2>
                     {% else %}
-                    <h1 class="heading-bg-gradient bg-gradient-primary text-white">{{module.header}}</h1>
+                    <h1 class="{{ module.style.header_background if module.style.header_background != "heading-bg-gradient bg-gradient-primary" else "heading-bg-gradient bg-gradient-primary"}} {{module.style.header_color if module.style.header_color != "text-white" else "text-white"}}">{{module.header}}</h1>
                     {% endif %}
                 {% endif %}
                 </div>
