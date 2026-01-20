@@ -20,19 +20,3 @@ jobs:
           personal_access_key: ${{ secrets.HUBSPOT_PAK_ANZ }}
           src_dir: qoria-theme
           dest_dir: q-theme
-          
-      - name: HubSpot Deploy Action US
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_US }}
-          personal_access_key: ${{ secrets.HUBSPOT_PAK_US }}
-          src_dir: qoria-theme
-          dest_dir: q-theme
-
-      - name: HubSpot Deploy Action UK
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_UK }}
-          personal_access_key: ${{ secrets.HUBSPOT_PAK_UK }}
-          src_dir: qoria-theme
-          dest_dir: q-theme
