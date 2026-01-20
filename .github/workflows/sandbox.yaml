@@ -17,16 +17,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: HubSpot Deploy Action ANZ
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
-          node-version: '22.19.0'
-
-      - name: Install HubSpot CLI
-        run: npm install -g @hubspot/cli
-
-      - name: Authenticate and Upload Theme
-        run: |
-          echo "${{ secrets.HUBSPOT_PAK_ANZ_SB }}" > token.txt
-          hs auth --pak "$(cat token.txt)" --account "${{ matrix.account.name }}"
-          hs upload qoria-theme q-theme --account "${{ matrix.account.name }}"
+          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_SANDBOX }}
+          personal_access_key: ${{ secrets.HUBSPOT_PAK_ANZ_SB }}
+          src_dir: qoria-theme
+          dest_dir: q-theme
