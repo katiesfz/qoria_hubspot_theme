@@ -349,3 +349,24 @@ function handlePrint() {
         if(summaryAcc) summaryAcc.open = false;
     }, 1000);
 }
+
+
+// Button event handlers
+
+const nextButtons = document.getElementsByClassName('next-btn');
+for (let i = 0; i < nextButtons.length; i++) {
+    nextButtons[i].addEventListener('click', function() {
+        const step = this.getAttribute('data-step');
+        nextStep(step);
+    });
+}
+
+const backButtons = document.getElementsByClassName('back-btn');
+for (let i = 0; i < backButtons.length; i++) {
+    backButtons[i].addEventListener('click', function() {
+        const step = this.getAttribute('data-step');
+        prevStep(step);
+    });
+}
+
+document.getElementsByClassName('submit-btn')[0].addEventListener('click', openGate);
