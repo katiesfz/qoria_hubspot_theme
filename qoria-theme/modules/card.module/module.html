@@ -83,22 +83,22 @@
       {{ card.text }}
       </div>
     {% endif %}
-    {% if card.cta.link.url.href %}
-      {% if card.cta.cta_style %}
-        {% if card.cta.cta_style != "text-" %}
-          {% set ctaClasses = card.cta.cta_size ~ " " ~ card.cta.cta_style ~ card.cta.cta_colour ~ " mt-3" %}
+    {% if card.link.url.href %}
+      {% if card.cta_style %}
+        {% if card.cta_style != "text-" %}
+          {% set ctaClasses = card.cta_size ~ " " ~ card.cta_style ~ card.cta_colour ~ " mt-3" %}
         {% else %}
-          {% set ctaClasses = "text-" ~ card.cta.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
+          {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
         {% endif %}
       {% else %}
         {% set ctaClasses = "text-reset text-decoration-none fw-semibold mt-2" %}
       {% endif %}
-      {% if (card.cta.cta_alignment) && (card.cta.cta_alignment != "inherit") %}
-        {% if card.cta.cta_alignment == "center" %}
+      {% if (card.cta_alignment) && (card.cta_alignment != "inherit") %}
+        {% if card.cta_alignment == "center" %}
           {% set ctaClasses = ctaClasses ~ " mx-auto" %}
-        {% elif card.cta.cta_alignment == "end" %}
+        {% elif card.cta_alignment == "end" %}
           {% set ctaClasses = ctaClasses ~ " ms-auto" %}
-        {% elif card.cta.cta_alignment == "start" %}
+        {% elif card.cta_alignment == "start" %}
           {% set ctaClasses = ctaClasses ~ " me-auto" %}
         {% endif %}
       {% else %}
@@ -110,27 +110,27 @@
           {% set ctaClasses = ctaClasses ~ " me-auto" %}
         {% endif %}
       {% endif %}
-      <a href="{{ "#" if card.cta.trigger_modal else card.cta.link.url.href}}" 
-      class="{{ "stretched-link" if card.cta.stretched_link }} {{ ctaClasses }}"
-      {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
-      {% if card.cta.download %}
-        {% if card.cta.download_file %}
-          download="{{card.cta.download_file}}"
+      <a href="{{ "#" if card.trigger_modal else card.link.url.href}}" 
+      class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
+      {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+      {% if card.download %}
+        {% if card.download_file %}
+          download="{{card.download_file}}"
         {% else %}
             download
         {% endif %}
       {% endif %}
-      {% if card.cta.trigger_modal %}
+      {% if card.trigger_modal %}
            data-bs-toggle="modal"
-         data-bs-target="#{{ card.cta.modal_id }}"
+         data-bs-target="#{{ card.modal_id }}"
        {% endif %}
       >
-      {% if (card.cta.link_label|striptags) is string_containing "->" %}
-        {% set linkLabel = card.cta.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
-      {% elif (card.cta.link_label|striptags) is string_containing " >" %}
-        {% set linkLabel = card.cta.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
+      {% if (card.link_label|striptags) is string_containing "->" %}
+        {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
+      {% elif (card.link_label|striptags) is string_containing " >" %}
+        {% set linkLabel = card.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
       {% else %}
-        {% set linkLabel = card.cta.link_label %}
+        {% set linkLabel = card.link_label %}
       {% endif %}
       {{linkLabel}}</a>
     {% endif %}
@@ -399,13 +399,36 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", () => {
-  $(window).on('load resize orientationchange', normaliseHeights("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-header"));
+
+  const handleHeaderHeightNormalisation{{name|replace("-","_")}} = () => {
+      normaliseHeightsMd('#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-header');
+  };
+
+  window.addEventListener('load', handleHeaderHeightNormalisation{{name|replace("-","_")}});
+  window.addEventListener('resize', handleHeaderHeightNormalisation{{name|replace("-","_")}});
+  window.addEventListener('orientationchange', handleHeaderHeightNormalisation{{name|replace("-","_")}});
   
   {% if module.styles.normalise_image_headers %}
     {% if module.styles.image_header_fit == "cover" %}
-      $(window).on('load resize orientationchange', function() {normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top")});
+
+        const handleImageHeightNormalisation{{name|replace("-","_")}} = () => {
+            normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top")
+        };
+
+        window.addEventListener('load', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('resize', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('orientationchange', handleImageHeightNormalisation{{name|replace("-","_")}});
+
     {% elif module.styles.image_header_fit == "contain" %}
-      $(window).on('load resize orientationchange', function() {normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-body .img-header")});
+
+        const handleImageHeightNormalisation{{name|replace("-","_")}} = () => {
+            normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-body .img-header")
+        };
+
+        window.addEventListener('load', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('resize', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('orientationchange', handleImageHeightNormalisation{{name|replace("-","_")}});
+
     {% endif %}
   {% endif %}
 
