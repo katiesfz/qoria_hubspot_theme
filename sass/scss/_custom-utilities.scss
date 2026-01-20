@@ -1,0 +1,166 @@
+$utilities: map-merge(
+  $utilities,
+  (
+    // utils-fill-color
+    "fill-color": (
+      property: fill,
+      class: fill,
+      values: map-merge(
+        ("transparent": transparent),
+        $fill-colors,
+      )
+    )
+  )
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    // utils-bg-color
+    "background-color": (
+      property: background-color,
+      class: bg,
+      local-vars: (
+        "bg-opacity": 1
+      ),
+      values: map-merge(
+        $utilities-bg-colors,
+        (
+          "transparent": transparent,
+          "body-secondary": rgba(var(--#{$prefix}secondary-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "body-tertiary": rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "body-emphasis": rgba(var(--#{$prefix}emphasis-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "body-test": rgba(var(--#{$prefix}emphasis-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "gray-700": rgba($gray-700, var(--#{$prefix}bg-opacity)),
+          "white-20": rgba(255,255,255,0.2),
+        )
+      )
+    )
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    // border
+    "border": map-merge(
+      map-get($utilities, "border"),
+      ( responsive: true ),
+    ),
+    "border-top": map-merge(
+      map-get($utilities, "border-top"),
+      ( responsive: true ),
+    ),
+    "border-end": map-merge(
+      map-get($utilities, "border-end"),
+      ( responsive: true ),
+    ),
+    "border-bottom": map-merge(
+      map-get($utilities, "border-bottom"),
+      ( responsive: true ),
+    ),
+    "border-start": map-merge(
+      map-get($utilities, "border-start"),
+      ( responsive: true ),
+    ),
+    "border-color": map-merge(
+      map-get($utilities, "border-color"),
+      ( property: --q-border-color,
+        local-vars: (
+        "border-opacity": 1
+        ),
+      ),
+    ),
+    "subtle-border-color": map-merge(
+      map-get($utilities, "subtle-border-color"),
+      ( property: --q-border-color ),
+    )
+  )
+);
+
+
+$utilities: map-merge(
+  $utilities, (
+    "subtle-background-color": map-merge(
+      map-get($utilities, "subtle-background-color"),
+      ( property: background-color ),
+    ),
+    "text-color": map-merge(
+      map-get($utilities, "text-color"),
+      ( property: color ),
+    ),
+    "theme-text-on-theme-bg": (
+      property: color,
+      class: theme-text-on-theme-bg,
+      responsive: false,
+      values: $theme-on-theme-colors-text,
+    )
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      ( responsive: true ),
+    ),
+    "height": map-merge(
+      map-get($utilities, "height"),
+      ( responsive: true ),
+    ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    "opacity": (
+      property: opacity,
+      values: (
+        0: 0,
+        10: .1,
+        20: .2,
+        25: .25,
+        30: .3,
+        40: .4,
+        50: .5,
+        60: .6,
+        70: .7,
+        75: .75,
+        80: .8,
+        90: .9,
+        100: 1,
+      )
+    )
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    "overflow": (
+      property: overflow,
+      values: auto hidden visible scroll clip,
+    ),
+    "overflow-x": (
+      property: overflow-x,
+      values: auto hidden visible scroll clip,
+    ),
+    "overflow-y": (
+      property: overflow-y,
+      values: auto hidden visible scroll clip,
+    ),
+    responsive: true
+  )
+);
+
+$utilities: map-merge(
+  $utilities, (
+    "white-space": (
+      property: white-space,
+      values: (
+        "reset": inherit,
+        "nowrap": preserve nowrap,
+        "wrap": wrap
+      ),
+      responsive: true
+    )
+  )
+);
