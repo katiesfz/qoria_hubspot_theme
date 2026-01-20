@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: HubSpot Deploy Action ANZ
+      - name: HubSpot Deploy Action Sandbox
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_SANDBOX }}
