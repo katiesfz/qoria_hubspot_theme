@@ -110,13 +110,16 @@ function openGate() {
     empowerPctGlobal = (empowerScore / empowerMaxRaw) * 100;
     overallAverageGlobal = (protectPctGlobal + detectPctGlobal + empowerPctGlobal) / 3;
 
-    // 2. Show Modal
-    document.getElementById('hsModal').style.display = 'flex';
+
+    // Initialise modal //
+
+    const surveyFormModal = new bootstrap.Modal('#surveyFormModal', {
+        keyboard: false
+    });
+
+    surveyFormModal.show();
 }
 
-function closeModal() {
-    document.getElementById('hsModal').style.display = 'none';
-}
 
 // --- MAIN RESULTS LOGIC (Executed after Hubspot Submit) ---
 function calculateAndShowResults() {
@@ -369,4 +372,8 @@ for (let i = 0; i < backButtons.length; i++) {
     });
 }
 
-document.getElementsByClassName('submit-btn')[0].addEventListener('click', openGate);
+document.getElementById('submitBtn').addEventListener('click', openGate);
+document.getElementById('printBtn').addEventListener('click', handlePrint);
+
+
+document.getElementById('skipToResults').addEventListener('click', calculateAndShowResults);

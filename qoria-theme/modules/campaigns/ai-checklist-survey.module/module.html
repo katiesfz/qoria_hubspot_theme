@@ -1,8 +1,3 @@
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-
-<style>
-</style>
-
 <div class="container">
     <header>
         <h1>Using AI in Schools, Colleges and MATs:<br>Best Practice Checklist</h1>
@@ -70,7 +65,7 @@
             <div class="question-block"><span class="question-text">25. Have you delivered information, advice and guidance for parents and carers about the use of AI?</span><div class="options-group"><input type="radio" id="q25_yes" name="q25" value="Yes"><label for="q25_yes" class="option-label">Yes</label><input type="radio" id="q25_no" name="q25" value="No"><label for="q25_no" class="option-label">No</label><input type="radio" id="q25_unsure" name="q25" value="Not Sure"><label for="q25_unsure" class="option-label">Not sure</label></div></div>
             <div class="question-block"><span class="question-text">26. Do you regularly share updates with parents regarding all aspects of digital safeguarding including AI?</span><div class="options-group"><input type="radio" id="q26_yes" name="q26" value="Yes"><label for="q26_yes" class="option-label">Yes</label><input type="radio" id="q26_no" name="q26" value="No"><label for="q26_no" class="option-label">No</label><input type="radio" id="q26_unsure" name="q26" value="Not Sure"><label for="q26_unsure" class="option-label">Not sure</label></div></div>
 
-            <div class="btn-group"><button type="button" class="back-btn" data-step="4">&larr; Back</button><button type="button" class="submit-btn">Complete Checklist</button></div>
+            <div class="btn-group"><button type="button" class="back-btn" data-step="4">&larr; Back</button><button type="button" id="submitBtn" class="submit-btn">Complete Checklist</button></div>
             <div class="error-message">Please answer all questions before submitting.</div>
         </div>
     </form>
@@ -127,18 +122,40 @@
             <p>Whether you're looking for general advice and guidance on AI safeguarding or information on Smoothwall solutions that can help you bridge the gaps, we're here to help! Simply click the button below and fill out the form.</p>
             <a href="#" class="cta-btn">Help me improve my results</a>
         </div>
-
-        <button onclick="handlePrint()" class="submit-btn" style="width:100%; margin-top:20px;">Print / Save Results</button>
+        <button id="printBtn" class="submit-btn" style="width:100%; margin-top:20px;">Print / Save Results</button>
     </div>
 </div>
 
-<div id="hsModal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h3>Almost there!</h3>
-        <p class="modal-desc">Please complete the form below to access your tailored AI checklist results.</p>
-        <div id="hubspotFormTarget"></div>
-    </div>
+<div class="modal fade" id="surveyFormModal" tabindex="-1" aria-labelledby="surveyFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-gradient-primary text-white">
+        <div class="modal-header border-0 p-3">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body px-5 py-4 pt-2">
+          <h3 class="mb-6 border-top border-bottom border-dark py-3 border-2 fw-semibold px-2">
+            Almost there!
+          </h3>
+          <p class="lead">
+            Please complete the form below to access your tailored AI checklist results.
+          </p>
+          
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                portalId: "{{hub_id}}",
+                formId: "{{module.form.form_id}}",
+                submitButtonClass: "btn btn-light d-block ms-auto mt-2 rounded-0",
+                cssClass: 'hs-form form-light'
+                });
+            </script>
+
+            <div id="hubspotFormTarget"></div>
+
+            <button href="#" id="skipToResults" class="submit-btn">Skip to results</button>
+        </div>
+      </div>
+  </div>
 </div>
 
 <div class="progress-container">
