@@ -1,0 +1,92 @@
+
+// --------------------------------------------------------------------------
+// ADVANCED USAGE: Responsive Class Generation for Bootstrap row-cols-*
+// --------------------------------------------------------------------------
+
+// 1. Define Bootstrap 5.3 Breakpoints
+//$breakpoints: (
+//    sm: 576px,
+//    md: 768px,
+//    lg: 992px,
+//    xl: 1200px,
+//    xxl: 1400px
+//);
+
+// Define the standard overlap amount to use for this family of classes
+//$overlap-amount: 20px; moved to _custom-variables.scss
+
+
+// 2. Generate the base class for the overlap amount
+// This single class applies the visual overlap and row correction globally (mobile-first)
+.row-overlap {
+    @include row-overlap();
+    
+    // Add default visual styling for demonstration
+ //   > * {
+ //       border: 2px solid white;
+ //       text-align: center;
+ //   }
+ //   > *:nth-child(even) { background-color: #4c51bf; color: white; }
+ //   > *:nth-child(odd) { background-color: #a78bfa; color: white; }
+
+ 
+ // @each $breakpoint in map-keys($grid-breakpoints) {
+ //   $next: breakpoint-next($breakpoint, $grid-breakpoints);
+ //   $infix: breakpoint-infix($next, $grid-breakpoints);
+//
+ //   // stylelint-disable-next-line scss/selector-no-union-class-name
+ //   &#{$infix} {
+ //     @include media-breakpoint-up($next) {
+ //       flex-wrap: nowrap;
+ //       justify-content: flex-start;
+ //     }
+ //   }
+ // }
+}
+
+
+// 3. Loop through all breakpoints and column counts (1 through 12) to generate fix classes.
+//@each $breakpoint, $width in $grid-breakpoints {
+//    @media (min-width: $width) {
+//        // Loop from 1 columns up to 12 columns per row
+//        @for $col-count from 1 through 12 {
+//            // Generates classes like .row-overlap-md-3, .row-overlap-lg-4, etc.
+//            .row-overlap-#{$breakpoint}-#{$col-count} {
+//                // Apply the correction specific to this breakpoint and column count
+//                @include row-overlap-break-correction($col-count, $overlap-amount);
+//            }
+//        }
+//    }
+//}
+
+
+// --------------------------------------------------------------------------
+// DEMO USAGE (Replaces previous examples for clarity)
+// --------------------------------------------------------------------------
+/* To use these generated classes in your HTML, you would combine the base 
+overlap class with the specific responsive fix class:
+
+<div class="container my-5">
+    <div 
+        class="row 
+               row-cols-1                // Default single column (no fix needed)
+               row-cols-md-3             // 3 columns from MD up
+               row-cols-lg-4             // 4 columns from LG up
+
+               row-overlap               // 1. Base Overlap (applies -20px margin to children n+2)
+
+               row-overlap-md-3          // 2. Fix: At MD (768px), reset margin every 3rd column
+               row-overlap-lg-4"         // 3. Fix: At LG (992px), reset margin every 4th column
+    >
+        <div class="col">Item 1 (Always Z-index 2)</div>
+        <div class="col">Item 2 (Overlaps 1)</div>
+        <div class="col">Item 3 (Starts new row visually at MD, overlaps 2 at SM/XS)</div>
+        <div class="col">Item 4 (Starts new row visually at LG, overlaps 3 at MD)</div>
+        <div class="col">Item 5 (Overlaps 4)</div>
+        <div class="col">Item 6 (Starts new row visually at MD/LG)</div>
+        <div class="col">Item 7 (Overlaps 6)</div>
+        <div class="col">Item 8 (Overlaps 7)</div>
+    </div>
+</div>
+
+*/
