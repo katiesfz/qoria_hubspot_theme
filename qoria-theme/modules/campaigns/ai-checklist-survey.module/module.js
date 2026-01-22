@@ -12,12 +12,14 @@ window.addEventListener('load', function() {
             formId: "f8279705-9592-4493-947a-a963f46f8c30",
             region: "na1",
             target: "#hubspotFormTarget",
+            submitButtonClass: "btn btn-light d-block mt-4",
+            cssClass: 'hs-form form-light',
             onFormReady: function($form) {
                 // Populate Hidden Fields (if they exist)
                 // Note: Ensure your HubSpot form has fields with these internal names and they are set to Hidden.
-                const protectField = $form.find('input[name="ai_survey_protect_score"]');
-                const detectField = $form.find('input[name="ai_survey_detect_score"]');
-                const empowerField = $form.find('input[name="ai_survey_empower_score"]');
+                const protectField = $form.find('input[name="protect_score"]');
+                const detectField = $form.find('input[name="detect_score"]');
+                const empowerField = $form.find('input[name="empower_score"]');
                 
                 if(protectField.length) protectField.val(Math.round(protectPctGlobal)).change();
                 if(detectField.length) detectField.val(Math.round(detectPctGlobal)).change();
@@ -57,7 +59,7 @@ function nextStep(targetStep) {
         currentStepEl.classList.remove('step-active');
         document.getElementById('step' + targetStep).classList.add('step-active');
         updateProgressBar(targetStep);
-        document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.ai-survey').scrollIntoView({ behavior: 'smooth' });
     } else {
         currentStepEl.querySelector('.error-message').style.display = 'block';
     }
@@ -68,7 +70,7 @@ function prevStep(targetStep) {
     currentStepEl.classList.remove('step-active');
     document.getElementById('step' + targetStep).classList.add('step-active');
     updateProgressBar(targetStep);
-    document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('.ai-survey').scrollIntoView({ behavior: 'smooth' });
 }
 
 // --- MODAL & PRE-CALC LOGIC ---
@@ -129,7 +131,7 @@ function calculateAndShowResults() {
 
     // Hide Form
     document.getElementById('aiSurveyForm').style.display = 'none';
-    document.querySelector('.progress-container').style.display = 'none';
+    document.querySelector('.ai-survey-progress-container').style.display = 'none';
 
     // Show Results
     document.getElementById('results').style.display = 'block';
@@ -181,7 +183,7 @@ function calculateAndShowResults() {
     });
     summaryContainer.innerHTML = summaryHTML;
     
-    document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('.ai-survey').scrollIntoView({ behavior: 'smooth' });
 }
 
 function countAnswers(data, startQ, endQ, answerType) {
@@ -374,6 +376,5 @@ for (let i = 0; i < backButtons.length; i++) {
 
 document.getElementById('submitBtn').addEventListener('click', openGate);
 document.getElementById('printBtn').addEventListener('click', handlePrint);
-
 
 document.getElementById('skipToResults').addEventListener('click', calculateAndShowResults);
