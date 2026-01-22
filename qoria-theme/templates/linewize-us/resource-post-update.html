@@ -54,7 +54,13 @@
               <div class="d-flex flex-row align-items-center text-white fs-5">
                 <a href="{{blog.absolute_url}}" class="text-white text-decoration-none">Blog</a>
                 <i class="fal fa-chevron-right mx-2 fa-xs"></i>
-                  {% choice "main_tag" label="Choose the main tag", choices="{{content.topic_list}}" %}
+                {% set topics = [] %}
+                {% for topic in content.topic_list %}
+                  {% do topics.append(topic.label) %}
+                {% endfor %}
+                {% set topicsString = topics|join(", ") %}
+                  <span class="d-none">{{topicsString|pprint}}</span>
+                {% choice "main_tag" label="Choose the main tag", choices="{{topicsString}}", value="{{content.topic_list[0].label}}" %}
               </div>
             </div>
           </div>
