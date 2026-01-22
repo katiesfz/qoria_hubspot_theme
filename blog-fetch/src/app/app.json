@@ -1,0 +1,7 @@
+{
+"name": "Fetch Blog Posts",
+"description": "This app runs a serverless function to fetch all the blog posts from a blog.",
+"scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+"uid": "fetch-blog-app",
+"public": false
+}

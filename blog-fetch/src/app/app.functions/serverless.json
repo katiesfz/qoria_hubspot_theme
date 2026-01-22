@@ -1,0 +1,12 @@
+{
+"appFunctions": {
+  "fetch-blog-function": {
+      "file": "function.js",
+      "secrets": [],
+      "endpoint": {
+        "path": "fetch-blog",
+        "method": ["GET"]
+        }
+    }
+    }
+}
