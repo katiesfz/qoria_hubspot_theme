@@ -983,7 +983,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ],[ "bg-secondary text-white", "Secondary" ],[ "bg-indigo text-white", "Indigo" ] ],
+    "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ],[ "bg-secondary text-white", "Secondary" ],[ "bg-indigo text-white", "Indigo" ],[ "bg-red text-white", "Red" ],[ "bg-orange text-dark", "Orange" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
