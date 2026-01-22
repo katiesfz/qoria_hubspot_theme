@@ -213,6 +213,7 @@ $teal-800: shade-color($teal, 60%) !default;
 $teal-900: shade-color($teal, 80%) !default;
 
 $primary-gradient: linear-gradient(45deg, $secondary 0%, $primary 63%);
+$primary-gradient-hover: linear-gradient(45deg, $indigo-600 0%, $teal-600 63%);
 $primary-gradient-subtle: linear-gradient(-45deg, color-mix(in srgb, $primary 70%, $secondary 30%) 0%, $primary 100%);
 $primary-gradient-reverse: linear-gradient(225deg, $secondary 0%, $primary 63%);
 $primary-gradient-extended: linear-gradient(180deg, $primary 0%, $secondary 50%, $indigo-800 100%);

@@ -61,6 +61,36 @@
   &.active {
     box-shadow: none !important;
   }
+}
 
+.btn-gradient {
+  @extend .btn;
+  background-image: var(--#{$prefix}btn-bg);
 
+  &:hover {
+    background-image: var(--#{$prefix}btn-hover-bg);
+  }
+
+  .btn-check + &:hover {
+    // override for the checkbox/radio buttons
+    background-image: var(--#{$prefix}btn-bg);
+  }
+
+  &:focus-visible {
+    background-image: var(--#{$prefix}btn-hover-bg);
+  }
+
+  .btn-check:checked + &,
+  :not(.btn-check) + &:active,
+  &:first-child:active,
+  &.active,
+  &.show {
+    background-image: var(--#{$prefix}btn-active-bg);
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    background-color: var(--#{$prefix}btn-disabled-bg);
+  }
 }
