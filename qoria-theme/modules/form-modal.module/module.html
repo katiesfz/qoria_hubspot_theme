@@ -20,6 +20,7 @@
           </p>
           {% endif %}
           <div id="form_{{module.unique_name}}" class="form-container"></div>
+          <div id="postForm_{{module.unique_name}}"></div>
         </div>
       </div>
   </div>
@@ -79,8 +80,8 @@
               {% elif module.form.download_file.open_in_new_tab %}
                 button.setAttribute("target","_blank");
               {% endif %}
-              formContainer = document.getElementById("form_{{module.unique_name}}");
-              formContainer.append(button);
+              postFormContainer = document.getElementById("postForm_{{module.unique_name}}");
+              postFormContainer.append(button);
               button.click(function(){
                 {% if module.form.form.response_type == "redirect" %}
                   {% if module.form.form.redirect_url != "" && module.form.form.redirect_url %}
