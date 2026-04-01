@@ -45,233 +45,262 @@
 //})(bootstrap);
 //
 
-// Set all carousel items to the same height
-function normaliseSlideHeights() {
-    $('.carousel-normalise').each(function(){
-      var items = $('.carousel-item', this);
-      // reset the height
-      items.css('min-height', 0);
-      // set the height
-      var maxHeight = Math.max.apply(null, 
-                                     items.map(function(){
-        return $(this).outerHeight()}).get() );
-      items.css('min-height', maxHeight + 'px');
-    })
+function normaliseHeights(classString, screenWidth="xs") {
+
+  const breakpoint = window.getComputedStyle(document.documentElement).getPropertyValue(`--q-breakpoint-${screenWidth}`);
+
+  const screenSizeQuery = window.matchMedia(`(min-width: ${breakpoint})`);
+  const items = document.querySelectorAll(classString);
+
+  if (items.length === 0) return;
+
+  function handleResize() {
+    items.forEach(item => {
+      item.style.minHeight = '0';
+    });
+    
+    if (screenSizeQuery.matches) {
+      let maxHeight = 0;
+      items.forEach(item => {
+        const currentHeight = item.offsetHeight;
+        if (currentHeight > maxHeight) {
+          maxHeight = currentHeight;
+        }
+      });
+
+      if (maxHeight > 0) {
+        items.forEach(item => {
+          item.style.minHeight = maxHeight + 'px';
+        });
+      }
+    }
+  }
+
+  screenSizeQuery.addEventListener("change", handleResize);
+  handleResize();
 }
 
-// Set all selected items to the same height
-function normaliseHeights(classString) {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-    // set the height
-    let maxHeight = Math.max.apply(null, 
-                                    items.map(function(){
-      return $(this).outerHeight()}).get() );
-    items.css('min-height', maxHeight + 'px');
-  //  console.log("normalise run");
-}
+function normaliseHeightsMin(classString, screenWidth="xs") {
+  
+  const breakpoint = window.getComputedStyle(document.documentElement).getPropertyValue(`--q-breakpoint-${screenWidth}`);
 
-// Set all selected items to the same as the smallest height
-function normaliseHeightsMin(classString) {
-    var items = $(classString);
-    // reset the height
-    items.css('max-height', '');
-    // set the height
-    let maxHeight = Math.min.apply(null, 
-                                    items.map(function(){return $(this).outerHeight()}).get());
-    items.css('max-height', maxHeight + 'px');
-  //  console.log("normalise run");
+  const screenSizeQuery = window.matchMedia(`(min-width: ${breakpoint})`);
+  const items = document.querySelectorAll(classString);
+
+  if (items.length === 0) return;
+
+  function handleResize() {
+    items.forEach(item => {
+      item.style.maxHeight = '';
+    });
+    
+    if (screenSizeQuery.matches) {
+      // initialize with the first item's height instead of 0, otherwise it'll never get past 0
+      let minHeight = items[0].offsetHeight;
+
+      items.forEach(item => {
+        const curHeight = item.offsetHeight;
+        if (curHeight < minHeight) {
+          minHeight = curHeight;
+        }
+      });
+
+      items.forEach(item => {
+        item.style.maxHeight = minHeight + 'px';
+        item.style.overflow = 'hidden'; 
+      });
+    }
+  }
+
+  screenSizeQuery.addEventListener("change", handleResize);
+  handleResize();
 }
 
 // responsive equal heights
-var mediaXs = window.matchMedia("(max-width: 575px)");
-var mediaSm = window.matchMedia("(min-width: 576px)");
-var mediaMd = window.matchMedia("(min-width: 768px)");
-var mediaLg = window.matchMedia("(min-width: 992px)");
-var mediaXl = window.matchMedia("(min-width: 1200px)");
-var mediaXxl = window.matchMedia("(min-width: 1400px)");
+const mediaXs = window.matchMedia("(max-width: 575px)");
+const mediaSm = window.matchMedia("(min-width: 576px)");
+const mediaMd = window.matchMedia("(min-width: 768px)");
+const mediaLg = window.matchMedia("(min-width: 992px)");
+const mediaXl = window.matchMedia("(min-width: 1200px)");
+const mediaXxl = window.matchMedia("(min-width: 1400px)");
 
 function normaliseHeightsXs(classString) {
-  if (mediaXs.matches) {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-    // set the height
-    var maxHeight = Math.max.apply(null, 
-                                    items.map(function(){
-      return $(this).outerHeight()}).get() );
-    items.css('min-height', maxHeight + 'px');
-  } else {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-  }
+  normaliseHeights(classString, "xs");
 }
 
 function normaliseHeightsSm(classString) {
-  if (mediaSm.matches) {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-    // set the height
-    var maxHeight = Math.max.apply(null, 
-                                    items.map(function(){
-      return $(this).outerHeight()}).get() );
-    items.css('min-height', maxHeight + 'px');
-  } else {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-  }
+  normaliseHeights(classString, "sm");
 }
 
 function normaliseHeightsMd(classString) {
-  if (mediaMd.matches) {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-    // set the height
-    var maxHeight = Math.max.apply(null, 
-                                    items.map(function(){
-      return $(this).outerHeight()}).get() );
-    items.css('min-height', maxHeight + 'px');
-  } else {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-  }
+  normaliseHeights(classString, "md");
 }
 
 function normaliseHeightsLg(classString) {
-  if (mediaLg.matches) {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-    // set the height
-    var maxHeight = Math.max.apply(null, 
-                                    items.map(function(){
-      return $(this).outerHeight()}).get() );
-    items.css('min-height', maxHeight + 'px');
-  } else {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-  }
+  normaliseHeights(classString, "lg");
 }
 
 function normaliseHeightsXl(classString) {
-  if (mediaXl.matches) {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-    // set the height
-    var maxHeight = Math.max.apply(null, 
-                                    items.map(function(){
-      return $(this).outerHeight()}).get() );
-    items.css('min-height', maxHeight + 'px');
-  } else {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-  }
+  normaliseHeights(classString, "xl");
 }
 
 function normaliseHeightsXxl(classString) {
-  if (mediaXxl.matches) {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-    // set the height
-    var maxHeight = Math.max.apply(null, 
-                                    items.map(function(){
-      return $(this).outerHeight()}).get() );
-    items.css('min-height', maxHeight + 'px');
-  } else {
-    var items = $(classString);
-    // reset the height
-    items.css('min-height', 0);
-  }
+  normaliseHeights(classString, "xxl");
 }
 
-
-// play video
-function playVideo(videoId) {
-  console.log(document.getElementById(videoId));
+function playVideo(videoId, event) {
   document.getElementById(videoId).play();
   document.getElementById(videoId).controls = "controls";
   if (document.getElementById(videoId).parentNode.getElementsByClassName("play-button").length > 0) {
     document.getElementById(videoId).parentNode.getElementsByClassName("play-button")[0].remove();
   }
 };
-// pause video
+
 function pauseVideo(videoId) {
-  //console.log(document.getElementById(videoId));
   document.getElementById(videoId).pause();
 };
 
-// popups
-function showPopup(hoverElems, popupElem, breakpoint=mediaMd){
-var count = 0;
-var tolerance = 0;
-  $(hoverElems).mouseenter(function(){
-    if (breakpoint.matches) {
-      console.log("breakpoint matches");
-      count++;
-      $(popupElem).fadeIn(400);
+function initWellbeingFramework(container, hoverElements = [], uniqueParents = [], breakpoint = "md") {
+
+  if (!container) return;
+  const containerElement = container;
+  const breakpointValue = window.getComputedStyle(document.documentElement).getPropertyValue(`--q-breakpoint-${breakpoint}`);
+  const screenSizeQuery = window.matchMedia(`(min-width: ${breakpointValue})`);
+  const uniqueParentGroup = uniqueParents.map(parent => {
+    return containerElement.querySelector(`#${parent}`);
+  });
+  
+  const uniqueParentAccordions = uniqueParents.map(parent => {
+    return containerElement.querySelector(`#group${parent}`);
+  });
+
+
+  function initWellbeingPopup(popupElementString="") {
+    if (!popupElementString) return;
+
+    const triggers = containerElement.querySelectorAll(`#${popupElementString}, #${popupElementString}Popup`);
+    const popup = containerElement.querySelector(`#${popupElementString}Popup`);
+
+    let count = 0;
+    const tolerance = 0;
+
+    function showPopup() {
+      popup.classList.add("wellbeing-popup-active");
+      popup.style.visibility = 'visible';
     }
-  }).mouseleave(function(){
-    
-    if (breakpoint.matches) {
-      count--;
-      setTimeout(function () {
-          if (!count) {
-              $(popupElem).fadeOut(100);
-          }
+
+    function hidePopup() {
+      setTimeout(() => {
+      if (count <= 0) {
+        popup.style.transition = 'opacity 100ms ease';
+        popup.classList.remove("wellbeing-popup-active");
+
+        setTimeout(() => {
+        if (count <= 0) popup.style.visibility = 'hidden';
+        }, 100);
+        
+        setTimeout(() => {
+        popup.style.transition = '';
+        }, 100);
+      }
       }, tolerance);
     }
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('mouseenter', () => {
+      if (screenSizeQuery.matches) {
+        count++;
+        showPopup();
+      }
+      });
+
+      trigger.addEventListener('mouseleave', () => {
+      if (screenSizeQuery.matches) {
+        count--;
+        hidePopup()
+      }
+      });
+    });
+  }
+
+  hoverElements.forEach(element => {
+    initWellbeingPopup(element);
   });
+
+  uniqueParentGroup.forEach((element, index) => {
+    const resultElement = uniqueParentAccordions[index];
+    element.addEventListener('click', function(e) {
+      if (!(screenSizeQuery.matches)) {
+        uniqueParentGroup.forEach(function(el){
+          el.style.filter="opacity(0.5)";
+        });
+        uniqueParentAccordions.forEach(function(el){
+          el.style.display="none";
+        });
+        this.style.filter="opacity(1)";
+        resultElement.style.display="block";
+      }
+    });
+  });
+
+  function handleResize() {
+    if (screenSizeQuery.matches) {
+      uniqueParentGroup.forEach(function(item){
+        item.style.filter="";
+      });
+      uniqueParentAccordions.forEach(function(item){
+        item.style.display="none";
+      });
+      containerElement.querySelector('#frameworkInstructions').innerHTML = "Hover over a section to learn more.";
+    } else {
+      containerElement.querySelector('#frameworkInstructions').innerHTML = "Tap a section to learn more.";
+    }
+  }
+
+  screenSizeQuery.addEventListener("change", handleResize);
+  handleResize();
 }
+
 
 // counter
 function counterAnim(element, start = 0, end, duration = 1000, region = "en-US"){
-// let targetOld = document.querySelector(qSelector);
-let target = element;
-let startTimestamp = null;
-let floorEnd = Math.floor(end);
-let ceilEnd = Math.ceil(end);
-let step = (timestamp) => {
-  if (!startTimestamp) startTimestamp = timestamp;
-  let progress = Math.min((timestamp - startTimestamp) / duration, 1);
-  if (floorEnd == Math.floor(progress * (end - start) + start)){
-  target.innerText = new Intl.NumberFormat(region).format(end);
-  } else {
-  let number = Math.floor(progress * (end - start) + start);
-  target.innerText = new Intl.NumberFormat(region).format(number);
-  }
-  if (progress < 1) {
+  // let targetOld = document.querySelector(qSelector);
+  let target = element;
+  let startTimestamp = null;
+  let floorEnd = Math.floor(end);
+  let ceilEnd = Math.ceil(end);
+  let step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    let progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    if (floorEnd == Math.floor(progress * (end - start) + start)){
+    target.innerText = new Intl.NumberFormat(region).format(end);
+    } else {
+    let number = Math.floor(progress * (end - start) + start);
+    target.innerText = new Intl.NumberFormat(region).format(number);
+    }
+    if (progress < 1) {
+    window.requestAnimationFrame(step);
+    }
+  };
   window.requestAnimationFrame(step);
-  }
-};
-window.requestAnimationFrame(step);
 };
 
 // run function when element is in window
 
 function whenInViewport(element, callback){
-var run = false;
+  let run = false;
 
-$(window).on('scroll', function(){
-  if ( run ) {
-    return;
-  }
-  if (element) {
-    if (element.offsetTop <= (window.scrollY + (window.innerHeight/2) + (element.offsetHeight))){
-      run = true;
-      callback();
+  window.addEventListener('scroll', function() {
+    if (run) {
+      return;
     }
-  }
-})
+    if (element) {
+      if (element.offsetTop <= (window.scrollY + (window.innerHeight / 2) + element.offsetHeight)) {
+        run = true;
+        callback();
+      }
+    }
+  });
 }
 
 
@@ -279,19 +308,17 @@ $(window).on('scroll', function(){
 
 function resetLegalStyles(){    
 
-var legalReset = document.querySelectorAll(".legal-reset");
+  const allHeadings = document.querySelectorAll(".legal-reset h1, .legal-reset h2, .legal-reset h3, .legal-reset h4, .legal-reset h5, .legal-reset h6");
+  const allSpans    = document.querySelectorAll(".legal-reset span");
+  const allLinks    = document.querySelectorAll(".legal-reset a");
+  const allTables   = document.querySelectorAll(".legal-reset table");
+  const allCells    = document.querySelectorAll(".legal-reset td, .legal-reset th");
 
-var allHeadings = document.querySelectorAll(".legal-reset h1, .legal-reset h2, .legal-reset h3, .legal-reset h4, .legal-reset h5, .legal-reset h6");
-var allSpans    = document.querySelectorAll(".legal-reset span");
-var allLinks    = document.querySelectorAll(".legal-reset a");
-var allTables   = document.querySelectorAll(".legal-reset table");
-var allCells    = document.querySelectorAll(".legal-reset td, .legal-reset th");
-
-$(allHeadings).each(function(i){this.style=""});
-$(allSpans).each(function(i){this.style=""});
-$(allLinks).each(function(i){this.style=""});
-$(allTables).each(function(i){this.classList.add("table", "table-striped"); this.style="";});
-$(allCells).each(function(i){this.style=""});
+  allHeadings.forEach(el => { el.style = ""; });
+  allSpans.forEach(el => { el.style = ""; });
+  allLinks.forEach(el => { el.style = ""; });
+  allTables.forEach(el => { el.classList.add("table", "table-striped"); el.style = ""; });
+  allCells.forEach(el => { el.style = ""; });
 
 }
 
@@ -302,17 +329,17 @@ $(allCells).each(function(i){this.style=""});
 
 
 function downloadWithBody(filename, fileBody) {
-var element = document.createElement('a');
-element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(fileBody));
-element.setAttribute('download', filename);
-element.setAttribute('target', '_blank');
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(fileBody));
+  element.setAttribute('download', filename);
+  element.setAttribute('target', '_blank');
 
-element.style.display = 'none';
-document.body.appendChild(element);
+  element.style.display = 'none';
+  document.body.appendChild(element);
 
-element.click();
+  element.click();
 
-document.body.removeChild(element);
+  document.body.removeChild(element);
 }
 
 
@@ -322,13 +349,13 @@ document.body.removeChild(element);
 * @returns {string} String with the date in ICS format
 */
 function convertToICSDate(dateTime) {
-const year = dateTime.getFullYear().toString();
-const month = (dateTime.getMonth() + 1) < 10 ? "0" + (dateTime.getMonth() + 1).toString() : (dateTime.getMonth() + 1).toString();
-const day = dateTime.getDate() < 10 ? "0" + dateTime.getDate().toString() : dateTime.getDate().toString();
-const hours = dateTime.getHours() < 10 ? "0" + dateTime.getHours().toString() : dateTime.getHours().toString();
-const minutes = dateTime.getMinutes() < 10 ? "0" +dateTime.getMinutes().toString() : dateTime.getMinutes().toString();
+  const year = dateTime.getFullYear().toString();
+  const month = (dateTime.getMonth() + 1) < 10 ? "0" + (dateTime.getMonth() + 1).toString() : (dateTime.getMonth() + 1).toString();
+  const day = dateTime.getDate() < 10 ? "0" + dateTime.getDate().toString() : dateTime.getDate().toString();
+  const hours = dateTime.getHours() < 10 ? "0" + dateTime.getHours().toString() : dateTime.getHours().toString();
+  const minutes = dateTime.getMinutes() < 10 ? "0" +dateTime.getMinutes().toString() : dateTime.getMinutes().toString();
 
-return year + month + day + "T" + hours + minutes + "00";
+  return year + month + day + "T" + hours + minutes + "00";
 }
 
 
@@ -342,36 +369,36 @@ return year + month + day + "T" + hours + minutes + "00";
 * @params {string} location
 */
 function createDownloadICSFile(timezone, startTime, endTime, title, description, location) {
-const icsBody = 'BEGIN:VCALENDAR\n' +
-'VERSION:2.0\n' +
-'PRODID:Calendar\n' +
-'CALSCALE:GREGORIAN\n' +
-'METHOD:PUBLISH\n' +
-'BEGIN:VTIMEZONE\n' +
-'TZID:' + timezone + '\n' +
-'END:VTIMEZONE\n' +
-'BEGIN:VEVENT\n' +
-'SUMMARY:' + title + '\n' +
-'UID:@Default\n' +
-'SEQUENCE:0\n' +
-'STATUS:CONFIRMED\n' +
-'TRANSP:TRANSPARENT\n' +
-'DTSTART;TZID=' + timezone + ':' + convertToICSDate(startTime) + '\n' +
-'DTEND;TZID=' + timezone + ':' + convertToICSDate(endTime)+ '\n' +
-'DTSTAMP:'+ convertToICSDate(new Date()) + '\n' +
-'LOCATION:' + location + '\n' +
-'DESCRIPTION:' + description + '\n' +
-'END:VEVENT\n' +
-'END:VCALENDAR\n';
+  const icsBody = 'BEGIN:VCALENDAR\n' +
+  'VERSION:2.0\n' +
+  'PRODID:Calendar\n' +
+  'CALSCALE:GREGORIAN\n' +
+  'METHOD:PUBLISH\n' +
+  'BEGIN:VTIMEZONE\n' +
+  'TZID:' + timezone + '\n' +
+  'END:VTIMEZONE\n' +
+  'BEGIN:VEVENT\n' +
+  'SUMMARY:' + title + '\n' +
+  'UID:@Default\n' +
+  'SEQUENCE:0\n' +
+  'STATUS:CONFIRMED\n' +
+  'TRANSP:TRANSPARENT\n' +
+  'DTSTART;TZID=' + timezone + ':' + convertToICSDate(startTime) + '\n' +
+  'DTEND;TZID=' + timezone + ':' + convertToICSDate(endTime)+ '\n' +
+  'DTSTAMP:'+ convertToICSDate(new Date()) + '\n' +
+  'LOCATION:' + location + '\n' +
+  'DESCRIPTION:' + description + '\n' +
+  'END:VEVENT\n' +
+  'END:VCALENDAR\n';
 
-downloadWithBody(title + '.ics', icsBody);
+  downloadWithBody(title + '.ics', icsBody);
 }
 
 // scroll to top
 
 function topFunction() {
-document.body.scrollTop = 0; // For Safari
-document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
 function updateHeight(containerId) {
@@ -470,13 +497,21 @@ function isAllInViewport(element) {
   );
 }
 
-const lerp = (x, y, a) => x * (1 - a) + y * a;
-const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
-const invlerp = (x, y, a) => clamp((a - x) / (y - x));
-const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
+function lerp(x, y, a) {
+  return x * (1 - a) + y * a;
+}
 
+function clamp(a, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, a));
+}
 
+function invlerp(x, y, a) {
+  return clamp((a - x) / (y - x));
+}
 
+function range(x1, y1, x2, y2, a) {
+  return lerp(x2, y2, invlerp(x1, y1, a));
+}
 
 function fadeInHandler() {
 
@@ -622,137 +657,128 @@ function cardAnimateHandler() {
 
 
 
+function fetchRSS(rssURL, limit = 5) {
 
-
-
-function fetchRSS(rssURL, limit = 5){
-
-  var xmlhttp;
+  let xmlhttp;
  
-  if (window.XMLHttpRequest)
-  {// For IE7 and above, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// For IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.open("GET",rssURL,false);
-xmlhttp.send();
-xmlDoc=xmlhttp.responseXML;
-
-
-// iterate through var x=xmlDoc.getElementsByTagName("item"); items
-
-// <item>s contain
-// <guid>
-// <title>
-// <description>
-// <author>?
-// <pubDate>
-// <enclosure> e.g.  <enclosure length="64948464" type="audio/mpeg" url="https://pdst.fm/e/dts.podtrac.com/redirect.mp3/tracking.swap.fm/track/0bDcdoop59bdTYSfajQW/stitcher.simplecastaudio.com/4ca28c43-1b5a-4fc4-bc21-fc9e79754a3a/episodes/de7efe44-aa91-45ce-a532-e77bf704eda0/audio/128/default.mp3?aid=rss_feed&awCollectionId=4ca28c43-1b5a-4fc4-bc21-fc9e79754a3a&awEpisodeId=de7efe44-aa91-45ce-a532-e77bf704eda0&feed=dCXMIpJz"/>
-// <itunes:image> href for episodic images?
-// <itunes:duration>
-// <itunes:episode>?
-
-var feedJson = {};
-
-var feedJsonItems = [];
-
-var items=xmlDoc.getElementsByTagName("item");
-
-console.log(items);
-
-for (let i=0; i<limit; i++) {
-  let newItem = {
-    "title": items[i].getElementsByTagName('title')[0].childNodes[0].textContent,
-    "description": items[i].getElementsByTagName('description')[0].childNodes[0].textContent
-   // "episode": items[i].getElementsByTagName('episode')[0].childNodes[0].textContent
-  };
-
-  if (items[i].getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd','image')[0]) {
-    newItem.image = items[i].getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd','image')[0].attributes.getNamedItem("href").textContent;
+  if (window.XMLHttpRequest) {
+    // For IE7 and above, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
   } else {
-    newItem.image = xmlDoc.getElementsByTagName("channel")[0].getElementsByTagName("image")[0].getElementsByTagName("url")[0].textContent;
+    // For IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.open("GET",rssURL,false);
+  xmlhttp.send();
+  xmlDoc=xmlhttp.responseXML;
+
+
+  // iterate through var x=xmlDoc.getElementsByTagName("item"); items
+
+  // <item>s contain
+  // <guid>
+  // <title>
+  // <description>
+  // <author>?
+  // <pubDate>
+  // <enclosure> e.g.  <enclosure length="64948464" type="audio/mpeg" url="https://pdst.fm/e/dts.podtrac.com/redirect.mp3/tracking.swap.fm/track/0bDcdoop59bdTYSfajQW/stitcher.simplecastaudio.com/4ca28c43-1b5a-4fc4-bc21-fc9e79754a3a/episodes/de7efe44-aa91-45ce-a532-e77bf704eda0/audio/128/default.mp3?aid=rss_feed&awCollectionId=4ca28c43-1b5a-4fc4-bc21-fc9e79754a3a&awEpisodeId=de7efe44-aa91-45ce-a532-e77bf704eda0&feed=dCXMIpJz"/>
+  // <itunes:image> href for episodic images?
+  // <itunes:duration>
+  // <itunes:episode>?
+
+  let feedJson = {};
+
+  let feedJsonItems = [];
+
+  let items=xmlDoc.getElementsByTagName("item");
+
+  // console.log(items);
+
+  for (let i=0; i<limit; i++) {
+    let newItem = {
+      "title": items[i].getElementsByTagName('title')[0].childNodes[0].textContent,
+      "description": items[i].getElementsByTagName('description')[0].childNodes[0].textContent
+    // "episode": items[i].getElementsByTagName('episode')[0].childNodes[0].textContent
+    };
+
+    if (items[i].getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd','image')[0]) {
+      newItem.image = items[i].getElementsByTagNameNS('http://www.itunes.com/dtds/podcast-1.0.dtd','image')[0].attributes.getNamedItem("href").textContent;
+    } else {
+      newItem.image = xmlDoc.getElementsByTagName("channel")[0].getElementsByTagName("image")[0].getElementsByTagName("url")[0].textContent;
+    }
+
+    feedJsonItems.push(newItem);
   }
 
-  feedJsonItems.push(newItem);
-}
-
-feedJson.items = feedJsonItems;
+  feedJson.items = feedJsonItems;
 
 
-console.log(feedJson);
+  console.log(feedJson);
 
-return feedJson;
+  return feedJson;
 
-var strBuffer= "";
-strBuffer = strBuffer +"<div class='container-fluid padding_top_10' style='max-width: 350px;'>";
-var x=xmlDoc.getElementsByTagName("item");
-for (i=0;i<x.length;i++)
-  {
-      var description = (x[i].getElementsByTagName('description')[0].childNodes[0].nodeValue);
+  var strBuffer= "";
+  strBuffer = strBuffer +"<div class='container-fluid padding_top_10' style='max-width: 350px;'>";
+  var x=xmlDoc.getElementsByTagName("item");
+  for (i=0;i<x.length;i++) {
+    var description = (x[i].getElementsByTagName('description')[0].childNodes[0].nodeValue);
+  
+    var descriptionText = (x[i].getElementsByTagName('description')[0].childNodes[0].textContent);
+    var imgUrl = $(descriptionText).find('img').attr('src');
+  
+    var categories = (x[i].getElementsByTagName("category"));
+  
+    var loopCount = 0;
+    var categoryList = "";
     
-      var descriptionText = (x[i].getElementsByTagName('description')[0].childNodes[0].textContent);
-      var imgUrl = $(descriptionText).find('img').attr('src');
-    
-      var categories = (x[i].getElementsByTagName("category"));
-    
-      var loopCount = 0;
-      var categoryList = "";
-      
-      if (categories.length != 0) {
-        if (categories.length <= 4) {
-          for (j=0;j<categories.length;j++) {
-            loopCount = loopCount + 1;
-            if (j+1 == categories.length) {
-              categoryList = categoryList + "<small class='last-small'>" + categories[j].childNodes[0].textContent + "</small>";      
-            } else {
-              categoryList = categoryList + "<small>" + categories[j].childNodes[0].textContent + "</small>";      
-            }
-          }
-        } else {
-          for (j=0;j<4;j++) {
-            loopCount = loopCount + 1;
-            if (j == 3) {
-              categoryList = categoryList + "<small class='last-small'>" + categories[j].childNodes[0].textContent + "</small>";      
-            } else {
-              categoryList = categoryList + "<small>" + categories[j].childNodes[0].textContent + "</small>";      
-            }
+    if (categories.length != 0) {
+      if (categories.length <= 4) {
+        for (j=0;j<categories.length;j++) {
+          loopCount = loopCount + 1;
+          if (j+1 == categories.length) {
+            categoryList = categoryList + "<small class='last-small'>" + categories[j].childNodes[0].textContent + "</small>";      
+          } else {
+            categoryList = categoryList + "<small>" + categories[j].childNodes[0].textContent + "</small>";      
           }
         }
-      };
-    
-    
-    
-      strBuffer = strBuffer + "<div class='row'><div class='col-sm-12 blog_post_listing mb-3'><div class='card'>";
-      strBuffer = strBuffer + "<div class='card-header' style='background-image:url(" + imgUrl + ")'>&nbsp;</div>";
-      strBuffer = strBuffer + "<div class='card-body'>" + categoryList + "<h5 class='card-title'><a href='";
-      strBuffer = strBuffer + (x[i].getElementsByTagName('link')[0].childNodes[0].nodeValue);
-      strBuffer = strBuffer + "' class='stretched-link'>" + (x[i].getElementsByTagName('title')[0].childNodes[0].nodeValue) + "</a></h5>";
-      strBuffer = strBuffer + (x[i].getElementsByTagName('description')[0].childNodes[0].nodeValue) + "</div>";
-      strBuffer = strBuffer + "<div class='card-footer text-right'><a class='button_readmore pr-0 stretched-link' href='";
-      strBuffer = strBuffer + (x[i].getElementsByTagName('link')[0].childNodes[0].nodeValue) + "'>Read more</a></div>";
-      strBuffer = strBuffer +"</div></div></div>";
-      if(i==10){
-        break;
+      } else {
+        for (j=0;j<4;j++) {
+          loopCount = loopCount + 1;
+          if (j == 3) {
+            categoryList = categoryList + "<small class='last-small'>" + categories[j].childNodes[0].textContent + "</small>";      
+          } else {
+            categoryList = categoryList + "<small>" + categories[j].childNodes[0].textContent + "</small>";      
+          }
+        }
       }
+    }
+      
+    strBuffer = strBuffer + "<div class='row'><div class='col-sm-12 blog_post_listing mb-3'><div class='card'>";
+    strBuffer = strBuffer + "<div class='card-header' style='background-image:url(" + imgUrl + ")'>&nbsp;</div>";
+    strBuffer = strBuffer + "<div class='card-body'>" + categoryList + "<h5 class='card-title'><a href='";
+    strBuffer = strBuffer + (x[i].getElementsByTagName('link')[0].childNodes[0].nodeValue);
+    strBuffer = strBuffer + "' class='stretched-link'>" + (x[i].getElementsByTagName('title')[0].childNodes[0].nodeValue) + "</a></h5>";
+    strBuffer = strBuffer + (x[i].getElementsByTagName('description')[0].childNodes[0].nodeValue) + "</div>";
+    strBuffer = strBuffer + "<div class='card-footer text-right'><a class='button_readmore pr-0 stretched-link' href='";
+    strBuffer = strBuffer + (x[i].getElementsByTagName('link')[0].childNodes[0].nodeValue) + "'>Read more</a></div>";
+    strBuffer = strBuffer +"</div></div></div>";
+    if(i==10){
+      break;
+    }
   }
-strBuffer = strBuffer +"</div>";
+  strBuffer = strBuffer +"</div>";
 
 
- // callback(feed);
+  // callback(feed);
 
 
   document.getElementById(containerId).innerHTML =strBuffer;
   $(".blog_post_listing p").addClass("card-text text-left"); 
-// standard on load code goes here with $ prefix
-// note: the $ is setup inside the anonymous function of the ready command
-
+  // standard on load code goes here with $ prefix
+  // note: the $ is setup inside the anonymous function of the ready command
 }
 
 //  parallax images:
-
 function applyParallaxToImages({
   selector = '.parallax-img',
   speed = 0.5,
@@ -835,7 +861,6 @@ function applyParallaxToImages({
     updateTargets();
     animate();
   }
-
 }
 
 
@@ -1584,5 +1609,41 @@ function blogListing(containerId, blogPostsObj, postsPerPage, cardColourSeq, fil
             normaliseHeights(containerId + " .single-blog .featured-image");
         };
     }
+}
 
+
+function debounce(fn, delay) {
+  let timeoutId;
+  return function(...args) {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+}
+
+
+function cssStringSanitiser(string) {
+  return string.replace(/[^a-z0-9]/g, function(s) {
+      var c = s.charCodeAt(0);
+      if (c == 32) return '-';
+      if (c >= 65 && c <= 90) return s.toLowerCase();
+      return '__' + ('000' + c.toString(16)).slice(-4);
+  });
+}
+
+
+
+function applyClassesToParent(placeToStart, classToFind, classesToAdd) {
+    const classList = classesToAdd.split(" ");
+    if (placeToStart.closest("." + classToFind)) {
+        if (classToFind == "dnd-row") {
+            // For rows, we need to go up two levels to reach the next row element up
+            placeToStart.closest("." + classToFind).parentElement.closest(".row-fluid").classList.add(...classList);
+        } else {
+            placeToStart.closest("." + classToFind).classList.add(...classList);
+        }
+    }
 }
