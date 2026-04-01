@@ -12,6 +12,20 @@
   "preset" : null,
   "type" : "choice"
 }, {
+  "id" : "mobile_alignment",
+  "name" : "mobile_alignment",
+  "display_width" : null,
+  "label" : "Mobile alignment",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "default": "center",
+  "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+},{
   "id" : "group_buttons",
   "name" : "group_buttons",
   "display_width" : null,
@@ -21,6 +35,50 @@
   "display" : "toggle",
   "type" : "boolean",
   "default" : false
+},  {
+  "id" : "gap",
+  "name" : "gap",
+  "display_width" : null,
+  "label" : "Gap",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "default": "3",
+  "choices" : [ [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ], [ "5", "5" ], [ "6", "6" ], [ "7", "7" ], [ "8", "8" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "group_buttons",
+    "controlling_value_regex" : "false",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "choice"
+}, {
+  "id" : "mobile_gap",
+  "name" : "mobile_gap",
+  "display_width" : null,
+  "label" : "Mobile gap",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "default": "inherit",
+  "choices" : [ ["inherit", "Inherit"],[ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ], [ "5", "5" ], [ "6", "6" ], [ "7", "7" ], [ "8", "8" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "group_buttons",
+    "controlling_value_regex" : "false",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "choice"
 }, {
   "id" : "cta_group",
   "name" : "cta_group",
