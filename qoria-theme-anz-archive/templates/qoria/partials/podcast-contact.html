@@ -1,0 +1,175 @@
+<!--
+templateType: global_partial
+label: Qoria Podcast Contact
+description: "Podcast Contact section"
+screenshotPath: ../images/section-previews/screenshot_Footer.png
+-->
+
+{% dnd_area "dnd_podcast_contact"
+label="Podcast Contact"
+class="main p-0 overflow-hidden"
+%}
+
+{% dnd_section
+background_color="rgba(255, 255, 255, 1)",
+padding={
+  "default" : {
+    "bottom" : "5rem",
+    "left" : "16px",
+    "right" : "16px",
+    "top" : "80px"
+  },
+  "mobile" : {
+    "bottom" : "40px",
+    "top" : "40px"
+  }
+},
+full_width=false,
+max_width=1280
+%}
+{% dnd_column
+  offset=0,
+  width=12
+%}
+  {% dnd_row %}
+    {% dnd_module
+      path="@hubspot/rich_text",
+      offset=0,
+      width=12,
+      padding={
+        "default" : {
+          "bottom" : "32px"
+        },
+        "mobile" : {
+          "bottom" : "16px"
+        }
+      }
+    %}
+      {% module_attribute "html" %}
+        <h2 class="h2" style="text-align: center; font-weight: bold;">Take Part</h2>
+      {% end_module_attribute %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_column
+      offset=0,
+      width=1
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="@hubspot/horizontal_spacer",
+          offset=0,
+          width=12,
+          hidden={
+            "mobile" : true
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+    {% dnd_column
+      offset=1,
+      width=10
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="@hubspot/rich_text",
+          offset=0,
+          width=12,
+          padding={
+            "default" : {
+              "bottom" : "32px"
+            },
+            "mobile" : {
+              "bottom" : "16px"
+            }
+          }
+        %}
+          {% module_attribute "html" %}
+            <p class="intro" style="text-align: center;">We would love to hear about your own experiences.<br>Sign up for a quick chat and you could join us as a guest on our podcast.</p>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+        {% dnd_module
+          path="@hubspot/rich_text",
+          offset=0,
+          width=12,
+          padding={
+            "default" : {
+              "bottom" : "64px"
+            },
+            "mobile" : {
+              "bottom" : "32px"
+            }
+          }
+        %}
+          {% module_attribute "html" %}
+            <p class="lead" style="text-align: center; font-size: 20px;">Now is the time to contribute and be part of the conversation. Just submit your name, position and contact info and we will be in touch. We look forward to the possibility of having you on our show!</p>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/cta",
+          offset=0,
+          width=12,
+          advanced={
+            "modal_id" : "podcastContactForm",
+            "trigger_modal" : true
+          },
+          alignment="center",
+          button_colour="secondary",
+          button_text="I'd like to take part",
+          link={
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "href" : "#",
+              "type" : "EXTERNAL"
+            }
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/form-modal",
+          offset=0,
+          width=12,
+          form={
+            "form_id" : "7d761171-8d42-4b78-af23-58171a01a2bd",
+            "form_type" : "HUBSPOT",
+            "message" : "Thanks for submitting the form.",
+            "response_type" : "inline"
+          },
+          heading="",
+          unique_name="podcastContactForm"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+    {% dnd_column
+      offset=11,
+      width=1
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="@hubspot/horizontal_spacer",
+          offset=0,
+          width=12,
+          hidden={
+            "mobile" : true
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+{% end_dnd_area %}
+
+
+
+

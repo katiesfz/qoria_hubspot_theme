@@ -1,0 +1,201 @@
+[ {
+  "id" : "event",
+  "name" : "event",
+  "label" : "Event",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "event_name",
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "event.event_name",
+    "name" : "event_name",
+    "label" : "Name/Location",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "b9d8f9d3-2bf8-d3eb-9775-6c5f51eb7bd5",
+    "name" : "event_date",
+    "label" : "Event Date",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "event.event_site_label",
+    "name" : "event_site_label",
+    "label" : "More Information Label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "event.url",
+    "name" : "url",
+    "label" : "More Information URL",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE" ],
+    "type" : "url",
+    "display_width" : null,
+    "default" : { }
+  }, {
+    "id" : "event.include_calendar_link",
+    "name" : "include_calendar_link",
+    "label" : "Include calendar link",
+    "required" : true,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "event.calendar_object",
+    "name" : "calendar_object",
+    "label" : "Calendar Object",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "event.calendar_object.title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null
+    }, {
+      "id" : "event.calendar_object.description",
+      "name" : "description",
+      "label" : "Description",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : true,
+      "show_emoji_picker" : true,
+      "type" : "text",
+      "display_width" : null
+    }, {
+      "id" : "event.calendar_object.location",
+      "name" : "location",
+      "label" : "Location",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null
+    }, {
+      "id" : "event.calendar_object.event_start",
+      "name" : "event_start",
+      "label" : "Event Start",
+      "inline_help_text" : "In UTC+08:00",
+      "required" : false,
+      "locked" : false,
+      "step" : 15,
+      "type" : "datetime",
+      "display_width" : null
+    }, {
+      "id" : "event.calendar_object.event_end",
+      "name" : "event_end",
+      "label" : "Event End",
+      "inline_help_text" : "In UTC+08:00",
+      "required" : false,
+      "locked" : false,
+      "step" : 15,
+      "type" : "datetime",
+      "display_width" : null
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "url" : { }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "url" : { },
+    "include_calendar_link" : false
+  }
+}, {
+  "id" : "add_to_diary",
+  "name" : "add_to_diary",
+  "label" : "Add to diary label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Add to diary"
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.event_style",
+    "name" : "event_style",
+    "label" : "Event Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "Style 1" ], [ "2", "Style 2" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "1"
+  }, {
+    "id" : "style.include_filter",
+    "name" : "include_filter",
+    "label" : "Include filter",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "style.filter_type",
+    "name" : "filter_type",
+    "label" : "Filter type",
+    "required" : false,
+    "locked" : true,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.include_filter",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "month", "Month" ], [ "state", "State" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "month"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

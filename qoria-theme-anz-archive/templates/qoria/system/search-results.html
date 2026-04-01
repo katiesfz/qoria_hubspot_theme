@@ -1,0 +1,31 @@
+<!--
+  templateType: search_results_page
+  isAvailableForNewContent: true
+  label: Qoria Search Results
+  screenshotPath: ../../../images/template-previews/search-results.png
+-->
+
+
+{% extends "../layouts/base.html" %}
+{# pageTitle is used on system templates for setting a value for the title tag #}
+{% set pageTitle = "Search results" %}
+
+  
+
+{% block body %}
+<section class="search-results-wrapper">
+  <div class="container pt-8 pb-8">
+    {% module_block module "search_results_content"
+      label="Search results heading",
+      path="@hubspot/rich_text"
+    %}
+      {% module_attribute "html" %}
+        <h1 class="h2 mb-5">Results for "{{ request.query_dict.term|escape }}"</h1>
+      {% end_module_attribute %}
+    {% end_module_block %}
+    {% module "search_results"
+      path="@hubspot/search_results"
+    %}
+  </div>
+</section>
+{% endblock body %}

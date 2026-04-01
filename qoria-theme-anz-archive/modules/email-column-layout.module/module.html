@@ -1,0 +1,81 @@
+<!-- module html  -->
+{% if module.styles.email_body_width %}
+    {% set email_body_width = module.styles.email_body_width %}
+{% endif %}
+    
+
+
+    <table style="width: 100%">
+       <tr>
+          <td align="center" valign="top" style="font-size:0;padding: 0;">
+          <div class="hs_padded_0" style="{{module.styles.spacing.css }}; text-align: {{module.styles.row_alignment}}; {% if module.styles.border_colour.color != null %} border: 1px solid {{module.styles.border_colour.color }};{% endif %} border-radius: {{module.styles.border_radius}}px; {% if module.styles.shadow %}box-shadow: 1px 3px 5px #ebebeb;{% endif %}{% if module.styles.background_colour.color != "" %}background-color: {{module.styles.background_colour.color}};{% endif %}">
+
+                <!--[if (gte mso 9)|(IE)]>
+                <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 100%;">
+                <tr>
+                {% for item in module.column %}
+                    {%- set rowPadding = module.styles.spacing.padding.left.value + module.styles.spacing.padding.right.value -%}
+                    {%- set gutter = module.styles.gutter -%}
+                    {%- set numGutters = loop.length - 1 -%}
+                    {% set gutterTotal = gutter * numGutters -%}
+                    {%- set spaceForCols = email_body_width - rowPadding - gutterTotal -%}
+                    {%- if item.custom_width == true -%}
+                        {%- set colWidth = ((spaceForCols/100)*item.width)|round(0, "floor")  -%}
+                    {%- else -%}
+                        {% set colWidth = (spaceForCols/loop.length)|round(0, "floor")  -%}
+                    {%- endif -%}
+                    {%- if item.border_colour != "" -%}
+                        {%- set colWidth = colWidth - 2 -%}
+                    {%- endif -%}
+                <td valign="top" style="width: {{ colWidth }}px;">
+                <![endif]-->
+                <div class="hs_width_100" style="display:inline-block; vertical-align: {{item.v_alignment if item.v_alignment else "top"}}; width: 100%; max-width: {{ colWidth }}px; {% if !loop.last%} margin-right: {{gutter}}px; margin-bottom: {{module.styles.space_below}}px; {% endif %} {% if item.border_colour.color != null %} border: 1px solid {{item.border_colour.color }}; {% endif %} border-radius: {{item.border_radius}}px; {% if item.shadow %}box-shadow: 1px 3px 5px #ebebeb;{% endif %} {% if item.background_colour.color %}background-color: {{item.background_colour.color}};{% endif %}">
+                    <table class="hs_width_100" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 100%;">
+                    <tr>
+                        <td align="{{ item.alignment }}" valign="top" style="padding: {{item.padding_y}}px {{item.padding_x}}px; {{item.additional_column_styling}}">
+                            {% if item.image.image_field.src %}
+                            {% set sizeAttrs = 'width="{{ item.image.image_field.width }}" height="{{ item.image.image_field.height }}"' %}
+                            {% if item.image.image_field.size_type == 'auto' %}
+                            {% set sizeAttrs = 'width="{{ item.image.image_field.width }}" height="{{ item.image.image_field.height }}"' %}
+                            {% elif item.image.image_field.size_type == 'auto_custom_max' %}
+                            {% set sizeAttrs = 'width="{{ item.image.image_field.max_width }}" height="{{ item.image.image_field.max_height }}"' %}
+                            {% endif %}
+                            {% set imageStyles = 'style="max-width: 100%; height: auto;"' %}
+                            {% if item.image.border_radius %}
+                            {% set imageStyles = 'style="max-width: 100%; height: auto; border-radius: ' + item.image.border_radius + 'px;"' %}
+                            {% endif %}
+                            {% set loadingAttr = item.image.image_field.loading != 'disabled' ? 'loading="{{ item.image.image_field.loading }}"' : '' %}
+                            
+                            {% set href = item.image.image_link.url.href %}
+                            {% if item.image.image_link.url.type is equalto "EMAIL_ADDRESS" %}
+                            {% set href = "mailto:" + href %}
+                            {% endif %}
+                            {% if href %}
+                            <a href="{{ href|escape_url }}"
+                                {% if item.image.image_link.open_in_new_tab %}target="_blank"{% endif %}
+                                {% if item.image.image_link.rel %}rel="{{ item.image.image_link.rel|escape_attr }}"{% endif %}
+                                >
+                                {% endif %}
+                                <img src="{{ item.image.image_field.src }}" alt="{{ item.image.image_field.alt }}" {{ loadingAttr }} {{ sizeAttrs }} {{imageStyles}}>
+                                {% if href %}
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                            {% inline_rich_text field="richtext_field" value="{{ item.richtext_field }}" %}
+                        </td>
+                    </tr>
+                    </table>
+                </div>
+                <!--[if (gte mso 9)|(IE)]>
+                </td>
+                {% endfor %}
+                </tr>
+                </table>
+                <![endif]-->
+    </div>
+          </td>
+       </tr>
+    </table>
+    
+    
+    

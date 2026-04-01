@@ -1,0 +1,1304 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Smoothwall Monitoring Resource Centre
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+    {% dnd_area "dnd_area"
+    label="Body"
+    class="main p-0 overflow-hidden"
+    %}
+    {% dnd_section
+    full_width=false
+  %}
+    {% dnd_column
+      offset=0,
+      width=12
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/hero",
+          offset=0,
+          width=12,
+          cta=[ ],
+          header="Digital Monitoring and Web Filtering<br>All You Need to Know...",
+          hero_type="full-image",
+          image={
+            "alt" : "smw-Just-ask-banner",
+            "height" : 1414,
+            "loading" : "disabled",
+            "max_height" : 1333.3333333333333,
+            "max_width" : 2000,
+            "size_type" : "auto_custom_max",
+            "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/smw-Just-ask-banner.jpg",
+            "width" : 2121
+          },
+          menu="123441695658",
+          page_contents=[ {
+            "anchor" : "#resources",
+            "content_label" : "Whitepapers"
+          }, {
+            "anchor" : "#form",
+            "content_label" : "Have a question? Just Ask"
+          }, {
+            "anchor" : "#FAQs",
+            "content_label" : "Frequently Asked Questions"
+          }, {
+            "anchor" : "#assessment",
+            "content_label" : "Get your FREE assessment"
+          } ],
+          pre_header="",
+          show_breadcrumbs=true,
+          show_share_price=false,
+          style={
+            "heading_location" : "bottom-left"
+          },
+          video=""
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+  
+
+
+  {% dnd_section
+  background_linear_gradient={
+    "colors" : [ "rgba(88, 183, 142, 1)", "rgba(81, 91, 165, 1)" ],
+    "direction" : "to bottom left"
+  },
+  padding={
+    "default" : {
+      "left" : "16px",
+      "right" : "16px"
+    }
+  },
+  margin={
+    "default" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=5
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p style="line-height: 1.25; font-weight: bold; font-size: 26px;"><span style="color: #ffffff;">Leaders, DSLs, Governors</span></p>
+          <p style="line-height: 1.25; font-weight: bold; font-size: 16px;"><span style="color: #ffffff;">Equip yourselves with the essential aspects of digital monitoring and web filtering.</span></p>
+          <p style="font-size: 16px;"><span style="color: #ffffff;">Do you have questions? Just Ask! We're here to support you, guide you, and deepen your understanding of digital monitoring and web filtering.</span></p>
+          <p style="font-size: 16px; font-weight: bold;"><span style="color: #ffffff; font-size: 20px;">#JustAskSmoothwall</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=6,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=7,
+    width=5
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/fancy-image",
+        offset=0,
+        width=12,
+        image={
+          "alt" : "just-ask-2",
+          "height" : 442,
+          "loading" : "lazy",
+          "max_height" : 400,
+          "max_width" : 362,
+          "size_type" : "auto_custom_max",
+          "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/just-ask-2.png",
+          "width" : 400
+        },
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : { },
+              "left" : { },
+              "right" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 10
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "0px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "68px"
+    },
+    "mobile" : {
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "flex-md-row-reverse"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_classes" : "p-5 pe-5 pe-md-0 pb-0 pb-md-5",
+              "additional_col_classes" : "col-12 col-md-5"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "{% video_player 'embed_player' overrideable=False, type='hsvideo2', hide_playlist=True, viral_sharing=False, embed_button=False, autoplay=False, hidden_controls=False, loop=False, muted=False, full_width=False, width='1920', height='1080', player_id='152051212385', style='' %}\n<p>&nbsp;</p>"
+          }, {
+            "advanced" : {
+              "additional_classes" : "",
+              "additional_col_classes" : "p-5"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h4 style='font-size: 24px; font-weight: bold; text-align: left; padding-top: 2vw;'>Ruth Noble, DSL at Tonacliffe Primary School talks about digital monitoring and web filtering technology in UK education.</h4>\n<p style='text-align: left;'>In this short video, Ruth explains the differences between web filtering and digital monitoring technology, their importance in safeguarding students and why both are needed in education settings.</p>"
+          } ]
+        }, {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<div class='bg-gradient-primary w-100' style='height: 12px;'>&nbsp;</div>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-white text-dark",
+          "overlay" : true,
+          "shadow" : true,
+          "shadow_style" : "section-shadow-sm",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "vw",
+                "value" : -3
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 30
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+  background_color="rgba(248, 248, 248, 1)",
+  padding={
+    "default" : {
+      "top" : "4vw"
+    }
+  },
+  max_width=1280,
+  full_width=false
+%}
+  {% dnd_column
+    offset=0,
+    width=2
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=2,
+    width=8
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="resources"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/rich-text",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            },
+            "text" : "<h2 style='text-align: center;'>Get up to speed with<br><strong>digital monitoring and web filtering</strong></h2>"
+          } ]
+        } ],
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "vw",
+                "value" : 2
+              },
+              "left" : {
+                "units" : "vw",
+                "value" : 2
+              },
+              "right" : {
+                "units" : "vw",
+                "value" : 2
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 20
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p style="text-align: center; font-size: 20px;">Our experts have selected the resources below to help enhance your understanding and learning about digital monitoring and web filtering.</p>
+              <p style="text-align: center; font-size: 20px;">Whether you are new to these topics or already have some knowledge, our whitepapers and videos will provide you with all the information you need.</p>
+              <p style="text-align: center; font-size: 20px;">We'll explain how digital monitoring and web filtering can enhance student digital safety and ensure KCSIE compliance.<br><br></p>
+              <p style="text-align: center; font-size: 22px; font-weight: bold;"><span style="color: #000000;">Pick the topic you'd like to learn more about, <span style="color: #58b78e;">or Just Ask</span></span></p>
+              <p style="text-align: center; font-size: 22px; font-weight: bold;">&nbsp;</p>
+              <p style="text-align: center; font-size: 22px; font-weight: bold;"><span style="color: #000000;">Choose an option below</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=10,
+    width=2
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+  background_color="rgba(248, 248, 248, 1)",
+  padding={
+    "default" : {
+      "bottom" : "50px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "10px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/tabbed-interface",
+        offset=0,
+        width=12,
+        content_block=[ {
+          "advanced" : { },
+          "link_label" : "Digital Monitoring",
+          "row" : [ {
+            "advanced" : { },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : "px-5 pt-4 bg-white mx-0"
+              },
+              "text" : "<h3 class='text-decoration-partial-underline text-center' style='text-align: center; padding-top: 10px;'><strong>Whitepapers</strong></h3>"
+            } ],
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            }
+          }, {
+            "advanced" : {
+              "additional_classes" : "px-5 pb-4 bg-white mx-0 gx-7"
+            },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : "",
+                "additional_div_classes" : "d-flex flex-column h-100 align-items-center position-relative"
+              },
+              "text" : "<img src='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/A-Complete-Digital-Monitoring-for-Schools1.png' width='138' height='183' loading='lazy' alt='A-Complete-Digital-Monitoring-for-Schools1' style='height: auto; max-width: 100%; width: 138px; margin: 0px auto; display: block;'>\n<h5 style='text-align: center;'>A Complete Guide to Digital Monitoring for Schools</h5>\n<div class='mt-4' style='font-size: 20px; font-weight: normal; text-align: center;'>Key takeaways include:<br><br></div>\n<div class='mb-2' style='text-align: center;'>\n<div class='mb-2' style='text-align: center;'>What digital monitoring is and how it works<hr style='border-top: dotted 1px;'></div>\n<div class='mb-2' style='text-align: center;'>How it can help your school meet <br>statutory guidelines<hr style='border-top: dotted 1px;'></div>\n<div class='mb-5' style='text-align: center;'>How it benefits safeguarders and helps you meet KCSIE obligations<br><br></div>\n</div>\n<div style='text-align: center;'><a href='https://smoothwall.com/a-complete-guide-to-digital-monitoring-for-schools' class='btn btn-secondary mt-auto stretched-link' rel='noopener' target='_blank'>Download</a></div>"
+            }, {
+              "advanced" : {
+                "additional_classes" : "",
+                "additional_div_classes" : "d-flex flex-column h-100 align-items-center position-relative text-center"
+              },
+              "text" : "<img src='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Bridging-the-Language-Gap-3-1.png' width='138' height='183' loading='lazy' alt='Bridging-the-Language-Gap-3-1' style='height: auto; max-width: 100%; width: 138px; margin-left: auto; margin-right: auto; display: block;'>\n<h5 style='text-align: center;'>Bridging the <br>Language Gap</h5>\n<div class='mt-4' style='font-size: 20px; font-weight: normal; text-align: center;'>Key takeaways include:<br><br></div>\n<div class='mb-2' style='text-align: center;'>\n<div class='mb-2' style='text-align: center;'>What web filtering and digital monitoring are and how they work<hr style='border-top: dotted 1px;'></div>\n<div class='mb-2' style='text-align: center;'>The key web filtering and digital monitoring terms unpicked<hr style='border-top: dotted 1px;'></div>\n<div class='mb-5' style='text-align: center;'>Reviewing your school's filtering/monitoring approach</div>\n</div>\n<div style='text-align: center;'><a href='/bridging-the-language-gap' class='btn btn-secondary mt-auto stretched-link' rel='noopener' target='_blank'>Download</a></div>"
+            }, {
+              "advanced" : {
+                "additional_classes" : "",
+                "additional_div_classes" : "d-flex flex-column h-100 align-items-center position-relative text-center"
+              },
+              "text" : "<a href='https://smoothwall.com/setting-the-new-standard-for-digital-monitoring-in-uk-education' rel='noopener' target='_blank'><img src='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Setting-the-new-standard-guide1.png' width='138' height='183' loading='lazy' alt='Setting-the-new-standard-guide1' style='height: auto; max-width: 100%; width: 138px; margin-left: auto; margin-right: auto; display: block;'></a>\n<h5 style='text-align: center;'>Setting the New Standard<br>for Digital Monitoring</h5>\n<div class='mt-4' style='font-size: 20px; font-weight: normal; text-align: center;'>Key takeaways include:<br><br></div>\n<div class='mb-2' style='text-align: center;'>\n<div class='mb-2' style='text-align: center;'>Understanding the pressing need for digital monitoring in schools<hr style='border-top: dotted 1px;'></div>\n<div class='mb-2' style='text-align: center;'>The 8 key standards for digital monitoring excellence<hr style='border-top: dotted 1px;'></div>\n<div class='mb-5' style='text-align: center;'>How Smoothwall can help you meet these standards</div>\n</div>\n<div class='mb-5' style='text-align: center;'><a href='https://smoothwall.com/setting-the-new-standard-for-digital-monitoring-in-uk-education' class='btn btn-secondary mt-auto stretched-link' rel='noopener' target='_blank'>Download</a></div>"
+            } ],
+            "responsive" : {
+              "desktop" : {
+                "columns" : 3
+              },
+              "mobile" : {
+                "columns" : 1
+              },
+              "tablet" : {
+                "columns" : 2
+              }
+            }
+          }, {
+            "advanced" : {
+              "additional_classes" : "col px-5 py-4 bg-white mx-0"
+            },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : "px-5 pt-4 bg-white mx-0"
+              },
+              "text" : "<h3 class='text-decoration-partial-underline text-center' style='text-align: center;'><strong>Video</strong></h3>"
+            } ],
+            "responsive" : {
+              "desktop" : {
+                "columns" : 1
+              },
+              "mobile" : { },
+              "tablet" : { }
+            }
+          }, {
+            "advanced" : {
+              "additional_classes" : "px-5 pb-4 bg-white align-items-center gy-4"
+            },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : ""
+              },
+              "text" : "<div style='vertical-align: middle;'>\n<h4 style='font-size: 24px; font-weight: bold; text-align: center;'>Digital monitoring in 90 seconds</h4>\n<p style='text-align: center;'>In just 90 seconds, Katherine Howard provides a brief overview of digital monitoring and its functionality.</p>\n<p style='text-align: center;'>Discover how the technology can help capture potential student risks on school devices.<br><br>Understand its crucial role in safeguarding children and how it empowers DSLs, equipping them with vital information to both intervene early and fulfil their obligations under KCSIE.</p>\n<p style='text-align: center;'><br><br></p>\n</div>"
+            }, {
+              "advanced" : { },
+              "text" : "{% video_player 'embed_player' overrideable=False, type='hsvideo2', hide_playlist=True, viral_sharing=False, embed_button=False, autoplay=False, hidden_controls=False, loop=False, muted=False, full_width=False, width='1920', height='1080', player_id='148609438743', style='' %}\n<p>&nbsp;</p>"
+            } ],
+            "responsive" : {
+              "desktop" : {
+                "columns" : 2
+              },
+              "mobile" : { },
+              "tablet" : {
+                "columns" : 2
+              }
+            }
+          }, {
+            "advanced" : {
+              "additional_classes" : "px-5 pb-4 bg-white align-items-center gy-4"
+            },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : ""
+              },
+              "text" : "<div style='vertical-align: middle;'>\n<h4 style='font-size: 24px; font-weight: bold; text-align: center;'>Common misconceptions about digital monitoring</h4>\n<p style='text-align: center;'><span>Digital monitoring can be a fairly unfamiliar topic for many safeguarders, leading to misunderstandings about how the technology works to keep students safe.</span><span><br></span><span><br></span><span>In this video, Katherine Howard clears up some of the common misconceptions and provides clarity on what digital monitoring really means for safeguarding young people in UK education.</span></p>\n</div>"
+            }, {
+              "advanced" : { },
+              "text" : "{% video_player 'embed_player' overrideable=False, type='hsvideo2', hide_playlist=True, viral_sharing=False, embed_button=False, autoplay=False, hidden_controls=False, loop=False, muted=False, full_width=False, width='1920', height='1080', player_id='181018088553', style='' %}\n<p>&nbsp;</p>"
+            } ],
+            "responsive" : {
+              "desktop" : {
+                "columns" : 2
+              },
+              "mobile" : { },
+              "tablet" : {
+                "columns" : 2
+              }
+            }
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "align-items-center"
+          },
+          "link_label" : "Web Filtering",
+          "row" : [ {
+            "advanced" : { },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : "px-5 py-4 bg-white mx-0"
+              },
+              "text" : "<h3 class='text-decoration-partial-underline text-center' style='text-align: center; padding-top: 10px;'><strong>Whitepapers</strong></h3>"
+            } ],
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            }
+          }, {
+            "advanced" : {
+              "additional_classes" : "px-5 py-4 bg-white mx-0"
+            },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : "",
+                "additional_div_classes" : "d-flex flex-column h-100 align-items-start"
+              },
+              "text" : "<div style='padding-bottom: 3em; padding-right: 2vw; text-align: center;'>\n<h5><a href='https://smoothwall.com/web-filtering-for-education-deployment-guide' rel='noopener' target='_blank'><img src='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Cloud-On-premise-or-hybrid-web-filtering-guide1.png' width='138' height='183' loading='lazy' alt='Cloud-On-premise-or-hybrid-web-filtering-guide1' style='height: auto; max-width: 100%; width: 138px; margin-left: auto; margin-right: auto; display: block;'></a></h5>\n<h5 style='text-align: center;'>Web Filtering for UK Education - Cloud, On-premise or Hybrid?</h5>\n<p style='font-size: 20px; font-weight: normal; text-align: center;' class='mt-4'>Key takeaways include:</p>\n<p><span>A brief overview of web filtering in UK education</span></p>\n<hr style='border-top: dotted 1px;'><span><span>The different filtering deployment options available to schools</span></span><hr style='border-top: dotted 1px;'><span></span>What you need to do to meet your KCSIE web filtering obligations<br><br><a href='/web-filtering-for-education-deployment-guide' class='btn btn-secondary mt-auto' rel='noopener' target='_blank'>Download</a></div>"
+            }, {
+              "advanced" : {
+                "additional_classes" : "",
+                "additional_div_classes" : "d-flex flex-column h-100 align-items-start"
+              },
+              "text" : "<div style='padding-bottom: 3em; padding-right: 2vw; text-align: center;'>\n<h5 style='font-size: 1.25rem;'><a href='https://smoothwall.com/bridging-the-language-gap' rel='noopener' target='_blank'><img src='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Bridging-the-Language-Gap-3-1.png' width='138' height='183' loading='lazy' alt='Bridging-the-Language-Gap-3-1' style='height: auto; max-width: 100%; width: 138px; margin-left: auto; margin-right: auto; display: block;'></a></h5>\n<h5 style='text-align: center;'>Bridging the <br>Language Gap</h5>\n<p style='font-size: 20px; font-weight: normal; text-align: center;' class='mt-4'>Key takeaways include:</p>\n<p>What web filtering and digital monitoring are and how they work</p>\n<hr style='border-top: dotted 1px;'>\n<p>The key web filtering and digital monitoring terms unpicked</p>\n<hr style='border-top: dotted 1px;'>Reviewing your filtering/monitoring<br><br><br><a href='/bridging-the-language-gap' class='btn btn-secondary mt-auto' rel='noopener' target='_blank'>Download</a></div>"
+            }, {
+              "advanced" : {
+                "additional_classes" : "",
+                "additional_div_classes" : "d-flex flex-column h-100 align-items-start"
+              },
+              "text" : "<div style='padding-bottom: 3em; padding-right: 2vw; text-align: center;'>\n<h5 style='font-size: 1.25rem;'><a href='https://smoothwall.com/a-simple-guide-to-web-filtering-and-digital-monitoring' rel='noopener' target='_blank' linktext=''><img src='https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/A-Simple-Guide-to-WF-and-DM-2024.png' width='148' height='183' loading='lazy' alt='A-Simple-Guide-to-WF-and-DM-2024' style='height: auto; max-width: 100%; width: 148px;'></a></h5>\n<h5 style='text-align: center;'>A Simple Guide to Web Filtering and Digital Monitoring</h5>\n<p style='font-size: 20px; font-weight: normal; text-align: center;' class='mt-4'>Key takeaways include:</p>\n<p>Key differences between web filtering <br>and digital monitoring</p>\n<hr style='border-top: dotted 1px;'>\n<p><span>Why both of these solutions are vital <br>to protecting your student</span></p>\n<hr style='border-top: dotted 1px;'>\n<p><span>How these safeguarding solutions can effectively protect your students and staff</span></p>\n<br><a href='/a-simple-guide-to-web-filtering-and-digital-monitoring' class='btn btn-secondary mt-auto' rel='noopener' target='_blank'>Download</a></div>"
+            } ],
+            "responsive" : {
+              "desktop" : {
+                "columns" : 3
+              },
+              "mobile" : {
+                "columns" : 1
+              },
+              "tablet" : {
+                "columns" : 2
+              }
+            }
+          }, {
+            "advanced" : { },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : "px-5 py-4 bg-white mx-0"
+              },
+              "text" : "<h3 class='text-decoration-partial-underline text-center' style='text-align: center;'><strong>Video</strong></h3>"
+            } ],
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            }
+          }, {
+            "advanced" : {
+              "additional_classes" : "px-5 py-4 bg-white mx-0 align-items-center gy-4"
+            },
+            "column" : [ {
+              "advanced" : {
+                "additional_classes" : ""
+              },
+              "text" : "<div style='vertical-align: middle;'>\n<h4 style='font-size: 24px; font-weight: bold; text-align: center;'>Web filtering in 2 minutes</h4>\n<div style='text-align: center;'>Get a concise overview of web filtering in just 2 minutes from our filtering expert, Tom Newton.&nbsp;<br><br></div>\n<div style='text-align: center;'>Understand the distinction between cloud and on-premise filtering commonly used across UK schools and colleges.&nbsp;<br><br>Gain insight into the various levels of filtering commonly used to safeguard students online and why real-time content filtering should be considered in today's learning environment.</div>\n<div style='text-align: center;'>&nbsp;</div>\n</div>"
+            }, {
+              "advanced" : { },
+              "text" : "<p>&nbsp;</p>\n{% video_player 'embed_player' overrideable=False, type='hsvideo2', hide_playlist=True, viral_sharing=False, embed_button=False, autoplay=False, hidden_controls=False, loop=False, muted=False, full_width=False, width='1920', height='1080', player_id='177770276160', style='' %}\n<p>&nbsp;</p>"
+            } ],
+            "responsive" : {
+              "desktop" : {
+                "columns" : 2
+              },
+              "mobile" : {
+                "columns" : 1
+              },
+              "tablet" : {
+                "columns" : 2
+              }
+            }
+          } ]
+        } ],
+        style={
+          "fade" : true,
+          "nav_styles" : {
+            "active_colour" : "teal",
+            "active_style" : "btn",
+            "alignment" : "justify-content-center",
+            "appearance" : "input-group",
+            "button_size" : "btn-sm",
+            "horizontal_vertical" : " ",
+            "inactive_colour" : "dark",
+            "inactive_style" : "btn-outline"
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_linear_gradient={
+    "colors" : [ "rgba(84, 86, 156, 1)", "rgba(88, 183, 142, 1)" ],
+    "direction" : "to right"
+  },
+  padding={
+    "default" : {
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "5vw"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="form"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;"><span style="color: #ffffff;">Have a question? <span style="font-weight: bold;">Just Ask.</span></span></h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p style="text-align: center;"><span style="color: #ffffff;"><span style="font-size: 20px;">We’ve created a safe space for you to submit your digital monitoring and web filtering questions directly to us. <br></span><span style="font-size: 20px;">Our experts will then respond with an answer. <span style="font-weight: bold;">Ask anything</span>, <span style="font-weight: bold;">n</span></span></span><span style="color: #ffffff;"><span style="font-size: 20px;"><span style="font-weight: bold;">o question is too trivial. </span></span></span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/form",
+        offset=0,
+        width=12,
+        form={
+          "form_id" : "90e1bef1-92e8-4aa2-922a-0170f4da252b",
+          "form_type" : "HUBSPOT",
+          "message" : "Thank you for submitting your question. One of our experts will review your question shortly and directly respond to you. Please allow some time for our team to respond.",
+          "response_type" : "inline"
+        },
+        style={
+          "background_colour" : "bg-white text-dark",
+          "button_alignment" : "center",
+          "button_colour" : "secondary",
+          "rounded_corners" : "rounded-2",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "vw",
+                "value" : 6
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 30
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 30
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 30
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 30
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "8vw",
+      "top" : "6vw"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="FAQs"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;">Frequently Asked <span style="font-weight: bold;">Questions</span></h2>
+          <p style="font-weight: normal; text-align: center; font-size: 20px;">Discover some of the questions other DSLs and safeguarders have asked us about <br>digital monitoring and web filtering, with answers given by our experts.&nbsp;</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "bg-secondary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "multiple_text" : false,
+          "text" : "<p>Web filtering and monitoring work hand in hand when it comes to protecting pupils online.</p>\n<p>Where web filtering is designed to block pupils from being able to access and view inappropriate content on the internet, digital monitoring analyses screen views and any keystrokes the child makes into a device to search for any risks.</p>\n<p>Whether a user types into a browser, Microsoft document, or a social media platform, digital monitoring will capture the word/s even if they are immediately deleted, or never submitted or sent.</p>\n<p>&nbsp;</p>",
+          "title" : "<p>Web filtering and digital monitoring - what's the difference?&nbsp;</p>",
+          "title_size" : "h5"
+        }, {
+          "accent_colour" : "bg-gradient-primary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>Modern web filters, such as <span style='color: #58b78e;'><a href='/solutions/filter' rel='noopener' target='_blank' style='color: #58b78e;'>Smoothwall Filter</a></span> include granular controls that allow web filtering to be relaxed or made stricter based on your institute's needs.</p>\n<p>In most cases, you'll find that web filtering rules can be set up to take into consideration, year groups or discern between staff and student users.</p>",
+          "title" : "<p>Can web filtering be adjusted for roles and age groups?</p>"
+        }, {
+          "accent_colour" : "bg-primary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>There are no standardised training programs or resources in place that DSLs need in order to understand digital monitoring or web filtering.</p>\n<p>However, vendor such as Smoothwall can provide <span style='color: #58b78e;'><a href='/solutions/training-and-consultancy' rel='noopener' target='_blank' style='color: #58b78e;'>formal training</a></span> and educational resources to help DSLs better understand their new responsibilities.</p>",
+          "title" : "Is there standardised training to help staff oversee monitoring and filtering systems?"
+        }, {
+          "accent_colour" : "bg-indigo text-white",
+          "cta_colour" : "primary",
+          "cta_style" : "text-",
+          "download" : false,
+          "download_file" : "",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "image_overlap" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "",
+          "multiple_text" : false,
+          "overlap" : "0",
+          "stretched_link" : false,
+          "text" : "<p>Schools require content filtering that contextually analyses a web page to determine whether or not it should be blocked to the user.</p>\n<p>Web filters that rely solely the URL or domain block lists tend to overclock as they are likely to overly restrict student access and/or leave students exposed to new harmful content that might go live.</p>",
+          "text_group" : [ ],
+          "title" : "<p><span>How do you prevent your web filter from overblocking?</span></p>",
+          "title_size" : "h5"
+        }, {
+          "accent_colour" : "bg-gradient-primary text-white",
+          "cta_colour" : "primary",
+          "cta_style" : "text-",
+          "download" : false,
+          "download_file" : "",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "image_overlap" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "",
+          "multiple_text" : false,
+          "overlap" : "0",
+          "stretched_link" : false,
+          "text" : "<p>Digital monitoring, unlike web filtering, does not generate alerts based on what sites students visit. It generates captures when a student types in something that could indicate a risk.</p>\n<p>This leads to risks being discovered on sites that filters may on their own fail to pick up on.</p>",
+          "text_group" : [ ],
+          "title" : "<p>Does digital monitoring generate alerts for specific websites, especially those not currently blocked?</p>",
+          "title_size" : "h5"
+        }, {
+          "accent_colour" : "bg-primary text-white",
+          "cta_colour" : "primary",
+          "cta_style" : "text-",
+          "download" : false,
+          "download_file" : "",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "image_overlap" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "",
+          "multiple_text" : false,
+          "overlap" : "0",
+          "stretched_link" : false,
+          "text" : "<p>No. Digital safety is not just something that concerns older students.</p>\n<p>Younger children remain just as exposed to risks online. Bad things can happen in good places. It's up to schools to effectively put in place 'appropriate monitoring' to mitigate where risks do arise.&nbsp;</p>",
+          "text_group" : [ ],
+          "title" : "<p>Is digital monitoring only necessary for older pupils?</p>",
+          "title_size" : "h5"
+        } ],
+        styles={
+          "image_header" : false,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 64
+              }
+            }
+          },
+          "title_accent" : false
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+  background_color="rgba(248, 248, 248, 1)",
+  padding={
+    "default" : {
+      "bottom" : "6vw",
+      "top" : "6vw"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="assessment"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h3 style="font-size: 36px; text-align: center; font-weight: bold;">Fill in the form below to receive your <br>FREE web filtering and monitoring assessment</h3>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p><span style="font-weight: normal; font-size: 20px;"><span style="font-size: 26px;">Is your filtering and/or monitoring up to the task? Get a free, objective assessment.</span><br><br></span><span style="font-size: 16px;"><span style="background-color: transparent; color: var(--q-body-color); font-family: var(--q-body-font-family); font-weight: var(--q-body-font-weight); text-align: var(--q-body-text-align);">Want to know the type of filtering and/or monitoring used in your setting and whether it's robust enough to meet today's challenges?</span><strong><br></strong></span></p>
+              <p style="font-size: 18px;"><span><span style="font-size: 16px;">Book a free, objective assessment call with a Smoothwall expert.</span> <br><span style="font-weight: bold;"><br>We'll run through a few questions and tell you:</span></span></p>
+              <ul class="list-checks-primary">
+              <li aria-level="1"><span>If there are gaps in your current provision as well as what and where they are</span></li>
+              <li aria-level="1"><span>What kind of filtering you have, together with any pros and cons</span></li>
+              <li aria-level="1"><span>What kind of monitoring you have, together with any pros and cons</span></li>
+              <li aria-level="1"><span>If appropriate, how <a href="/solutions/filter" rel="noopener" target="_blank" style="font-weight: normal;">Smoothwall Filter</a> and <span style="color: #58b78e;"><a href="/solutions/monitor" rel="noopener" target="_blank" style="color: #58b78e;">Monitor</a></span> can help you improve student digital safety.<br><br></span></li>
+              </ul>
+              <p><strong>Fill in the form and we'll get right back to you.</strong></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/divider",
+            offset=0,
+            width=12,
+            styles={
+              "line" : {
+                "style" : "gradient",
+                "thickness" : 12
+              },
+              "size" : {
+                "width" : 100
+              },
+              "spacing" : {
+                "spacing" : {
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 0
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 0
+                    }
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/form",
+            offset=0,
+            width=12,
+            form={
+              "form_id" : "555f0778-9bfb-4f1d-90b9-fe9b5e21df0e",
+              "form_type" : "HUBSPOT",
+              "message" : "Thank you for requesting your FREE Web Filtering and/or Monitoring Assessment. A member of the Smoothwall team will reach out to you to discuss your request and arrange a time for a call.&nbsp;",
+              "redirect_id" : 144257767815,
+              "response_type" : "inline"
+            },
+            style={
+              "background_colour" : "bg-white text-dark",
+              "button_colour" : "primary",
+              "form_style" : " ",
+              "rounded_corners" : "rounded-bottom-2",
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 30
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 30
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 30
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 30
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "top" : "4vw"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <h2 style="text-align: center;">Discover Smoothwall<br><span style="font-weight: bold;">digital monitoring and web filtering</span></h2>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "none",
+          "cta_colour" : "primary",
+          "cta_style" : "btn btn-",
+          "image" : {
+            "alt" : "Smoothwall Monitor",
+            "height" : 550,
+            "loading" : "lazy",
+            "max_height" : 550,
+            "max_width" : 1200,
+            "size_type" : "auto",
+            "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/smoothwall-monitor-ss-2-1.png",
+            "width" : 1200
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : true,
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 134512342071,
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Learn more",
+          "text" : "<p>Real-time, human-moderated monitoring that alerts designated staff to students suspected of becoming vulnerable.</p>",
+          "title" : "Smoothwall Monitor",
+          "title_size" : "h4"
+        }, {
+          "accent_colour" : "none",
+          "cta_colour" : "primary",
+          "cta_style" : "btn btn-",
+          "image" : {
+            "alt" : "Smoothwall Filter",
+            "height" : 550,
+            "loading" : "lazy",
+            "max_height" : 550,
+            "max_width" : 1200,
+            "size_type" : "auto",
+            "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/sw-filter-ss-2.png",
+            "width" : 1200
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : true,
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 134512341887,
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Learn more",
+          "text" : "<p><span>Unparalleled, 100% real-time filtering, designed from the ground up for UK education. Trusted by 1 in 3 schools.</span></p>",
+          "title" : "Smoothwall Filter",
+          "title_size" : "h4"
+        } ],
+        styles={
+          "card_colour" : "bg-light",
+          "card_style" : "2",
+          "image_header" : true,
+          "image_header_fit" : "contain",
+          "responsive" : {
+            "desktop" : {
+              "cards" : 2
+            }
+          },
+          "shadow" : " ",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "vw",
+                "value" : 3
+              },
+              "right" : {
+                "units" : "vw",
+                "value" : 3
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          },
+          "textalignment" : "center",
+          "title_accent" : false
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+    {% end_dnd_area %}
+    {% global_partial path="../partials/lets-connect.html" %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

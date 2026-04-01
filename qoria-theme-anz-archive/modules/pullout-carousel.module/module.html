@@ -1,0 +1,148 @@
+
+{% require_css %}
+    <style>
+    {% scope_css %}
+.carousel-container {
+  display: grid !important;
+  {% if module.style.carousel.controls %}
+  grid-template-columns: 60px 1fr 60px;
+  {%else%}
+    grid-template-columns: 1fr;
+  {%endif%}
+  {%if module.style.carousel.indicators %}
+  padding-bottom: 2rem;
+  {% endif %}
+}
+
+{% if module.style.carousel.normalise_heights %}
+
+.slick-initialized .slick-slide {
+    /* display: block; */
+    display: flex;
+    align-items: {{module.style.carousel.vertical_align}};
+    justify-content: {{module.style.carousel.horizontal_align}};
+}
+
+{% endif %}
+
+
+{% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="{{ module.style.shadow_style if module.style.shadow }}" style="transform-style: preserve-3d; -webkit-transform-style: preserve-3d; position-relative; {{"position: relative; z-index: 2; margin-top: -24px;" if module.style.overlay }}">
+    <div style="{{module.style.spacing_field.css}}" class="container-fluid g-0 position-relative {{ module.style.background_colour if module.style.background_colour != "none" }}{{ (" bg-" ~ module.style.background_image) if module.style.background_image != "none" }}">
+        {% for row in module.row %}
+            <div class="row g-0 {{row.advanced.additional_classes}}" style="{{ "z-index: 1;" if module.style.background_image != "none" }}">
+                {% for col in row.column %} 
+                    {% if col.type == "content" %}
+                        {% if col.column_styles.background_image == "custom" %}
+                            {% set bgCode = "background-image: url('" + col.column_styles.background_image_file.src + "'); background-size: " + col.column_styles.background_size + "; background-position: center center;" %}
+                        {% else %}
+                            {% set bgCode = "" %}
+                        {% endif %}
+                        <div class="col {{ col.advanced.additional_col_classes }} {{ "position-relative" if col.link_stretched }} {{ col.column_styles.background_colour }}{{ " bg-q-tail-1" if col.column_styles.background_image == "q-tail-1" }}" style="{{bgCode}}">
+                            <div class="content-container {{ col.advanced.additional_classes }}">
+                            {{ col.text }}
+                            {% if (col.link.url.href) && (col.link_label) %}
+                                <a href="{{ col.link.url.href }}" class="text-reset text-decoration-none fw-semibold {{ "stretched-link" if col.link_stretched }}">{{ col.link_label }}</a>
+                            {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        {% if col.column_styles.background_image == "custom" %}
+                            {% set bgCode = "background-image: url('" + col.column_styles.background_image_file.src + "'); background-size: " + col.column_styles.background_size + "; background-position: center center;" %}
+                        {% else %}
+                            {% set bgCode = "" %}
+                        {% endif %}
+                        <div class="carousel-container " id="slick-{{name}}">
+                        
+                            {% if module.style.carousel.controls %}
+                                <div class="slider-arrow-container align-self-center text-center">
+                                    <a class="" aria-label="Previous" type="button" style="" aria-disabled="false" id="prevArrow-{{name}}">
+                                        <span class="fa-stack fa-2x fs-6 {{module.style.carousel.dark_or_light}}">
+                                        <i class="fal fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-chevron-left fa-stack-1x"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                {%endif%}
+                                
+                            <div class="{{module.style.dark_or_light}} carousel-slider" id="carousel_{{name}}">
+                            {% for item in col.slide %}
+                                <div class="slide">
+                                    <div class="row g-0 w-100">
+                                        <div class="{{ item.column_classes }}">
+                                        {{ item.content }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+
+                            {% if module.style.carousel.controls %}
+                                <div class="slider-arrow-container align-self-center text-center">
+                                    <a class="" aria-label="Next" type="button" style="" aria-disabled="false" id="nextArrow-{{name}}">
+                                        <span class="fa-stack fa-2x fs-6 {{module.style.carousel.dark_or_light}}">
+                                        <i class="fal fa-circle fa-stack-2x"></i>
+                                        <i class="fas fa-chevron-right fa-stack-1x"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                {%endif%}
+                        
+
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+        var smallBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-sm');
+        var largeBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-lg');
+    $('#carousel_{{name}}').slick({
+        dots: {{ module.style.carousel.indicators }},
+        infinite: {{ module.style.carousel.infinite_scrolling }},
+        speed: 300,
+        autoplay: {{ module.style.carousel.autoplay }},
+        {% if module.style.carousel.autoplay %} autoplaySpeed: {{ module.style.carousel.interval }}, {% endif %}
+        arrows: {{ module.style.carousel.controls }},
+        prevArrow: '#prevArrow-{{name}}',
+        adaptiveHeight: {{ module.style.carousel.adaptive_height }},
+        nextArrow: '#nextArrow-{{name}}',
+        dotsClass: "slider-indicators",
+        slidesToShow: {{ module.style.carousel.responsive.desktop.slides_to_display }},
+        slidesToScroll: {{ module.style.carousel.responsive.desktop.slides_to_slide }},
+        responsive: [
+            {
+                breakpoint: parseInt(largeBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.carousel.responsive.tablet.slides_to_display }},
+                    slidesToScroll: {{ module.style.carousel.responsive.tablet.slides_to_slide }}
+                }
+            },
+            {
+                breakpoint: parseInt(smallBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.carousel.responsive.mobile.slides_to_display }},
+                    slidesToScroll: {{ module.style.carousel.responsive.mobile.slides_to_slide }}
+                }
+            }
+        ]
+    });
+
+    {% if module.style.carousel.normalise_heights %}
+        
+        $(window).on(
+        'load resize orientationchange', function () {
+        normaliseHeights('#slick-{{ name }} .slick-slide');
+        });
+
+    {% endif %}
+
+});
+</script>

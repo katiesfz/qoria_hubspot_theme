@@ -1,0 +1,65 @@
+
+{% set blog_posts = [] %}
+{% for blog in module.blog_posts %}
+{% set blog_item = {"blog_title": blog.blog_title|render, "blog_description": blog.blog_description, "blog_tag": blog.blog_tag, "blog_image": blog.blog_image.src|render, "blog_url":blog.blog_link.url.href, "blog_target":blog.blog_link.open_in_new_tab, "blog_badge":blog.badge} %}
+{% do blog_posts.append(blog_item) %}
+{% endfor %}
+
+{# split to columns/arrays #}
+{% if module.styles.responsive.desktop.columns >= module.styles.responsive.tablet.columns && module.styles.responsive.desktop.columns >= module.styles.responsive.mobile.columns %}
+    {% set numCol = module.styles.responsive.desktop.columns %}
+{% elif module.styles.responsive.tablet.columns >= module.styles.responsive.desktop.columns && module.styles.responsive.tablet.columns >= module.styles.responsive.mobile.columns %}
+    {% set numCol = module.styles.responsive.tablet.columns %}
+{% elif module.styles.responsive.mobile.columns >= module.styles.responsive.tablet.columns && module.styles.responsive.mobile.columns >= module.styles.responsive.desktop.columns %}
+    {% set numCol = module.styles.responsive.mobile.columns %}
+{% else %}
+    {% set numCol = 2 %}
+{% endif %}
+{% set numPerCol = ((blog_posts|length)|default(4) / numCol|default(2))|round(0, "ceil") %}
+<div class="d-none">{{module.responsive|pprint}}<br>{{module.styles.responsive|pprint}}</div>
+<div class="container-fluid g-0">
+<div class="row row-cols-lg-{{module.styles.responsive.desktop.columns|default(2)}} row-cols-md-{{module.styles.responsive.tablet.columns|default(2)}} row-cols-{{module.styles.responsive.mobile.columns|default(1)}} g-3">
+{% if blog_posts != [] %}
+    {% for column in blog_posts|slice(numPerCol, " ") %}
+        <div class="col">
+            <div class="col-inner px-3 px-md-5 bg-white h-100">
+            {% for blog in column %}
+                {% if blog != " " %}
+                    <div class="blog py-3 py-md-5 {{"border-bottom" if not loop.last}}">
+                        <div class="row align-items-stretch">
+                            <div class="col d-flex flex-column justify-content-start">
+                            {% if blog.blog_badge == "new_feature" %}
+                                <span class="d-inline-block badge bg-blue text-blue-emphasis align-self-start mb-2">New feature</span>
+                            {% endif %}
+                            <h5 class="fw-semibold">{{ blog.blog_title }}</h5>
+                            {% if blog.blog_tag %}
+                            <p class="small fw-semibold">{{ blog.blog_tag }}</p>
+                            {% endif %}
+                            </div>
+                            {% if blog.blog_image %}
+                                <div class="col-5">
+                                <img src="{{blog.blog_image}}" alt="{{ blog.blog_title }}"  class="img-fluid">
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col pt-0 pt-md-4">
+                                {{blog.blog_description}}
+                            </div>
+                        </div>
+                        {% if blog.blog_url != "" %}
+                            <div class="row">
+                                <div class="col pt-3">
+                                    <a href="{{blog.blog_url}}" {% if blog.blog_target == true %}target="_blank"{% endif %} {% if item.blog_link.rel %}rel="{{ item.blog_link.rel }}"{% endif %} class="text-reset fw-semibold text-decoration-none">Read more +</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
+</div>

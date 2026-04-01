@@ -1,0 +1,93 @@
+{% if module.image.src != "" %}
+
+    {% set imgSrc = module.image.src %}
+	{% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
+    {% if module.image.size_type == 'auto' %}
+        {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
+        {% set sizeCSS = "max-width: 100%; height: auto;" %}
+        {% set imgSrc = resize_image_url(module.image.src, module.image.width) %}
+    {% elif module.image.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ module.image.max_width }}" height="{{ module.image.max_height }}"' %}
+        {% set sizeCSS = "max-width: 100%; height: auto;" %}
+        {% set imgSrc = resize_image_url(module.image.src, module.image.max_width) %}
+    {% endif %}
+    {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading }}"' : '' %}
+
+        {% if module.style.alignment %}
+            {% if module.style.alignment.horizontal_align == "CENTER" %}
+                {% set alignmentCSS = " margin-left: auto; margin-right: auto; display: block;" %}
+            {% elif module.style.alignment.horizontal_align == "LEFT" %}
+                {% set alignmentCSS = " " %}
+            {% elif module.style.alignment.horizontal_align == "RIGHT" %}
+                {% set alignmentCSS = " margin-left: auto; display: block;" %}
+            {% endif %}
+            
+        {% endif %}
+
+        {% if module.style.rounded_corners %}
+            {% set roundedClass = "rounded-" ~ module.style.rounded_option %}
+        {% else %}
+            {% set roundedClass = "" %}
+        {% endif %}
+
+        {% require_css %}
+            <style>
+              {% scope_css %}
+                .img-container {
+                    {{module.style.spacing_field.css}}
+                }
+                {{theme_meta.responsive_breakpoints[0].media_query}} {
+                    .img-container {
+                        {{module.style.spacing_field_mobile.css}}
+                    }
+                }
+              {% end_scope_css %}
+            </style>
+          {% end_require_css %}
+
+<div class="img-container">
+<img src="{{imgSrc}}" id="{{name}}" alt="{{ module.image.alt }}" style="{{ alignmentCSS }} {{ sizeCSS }}" class="{{ "animate-" ~ module.style.animate_in if module.style.animate_in != " " }} {{ 'filter-grayscale' if module.style.greyscale_filter }} {{roundedClass}} {{module.style.shadow}}" {{ loadingAttr }} {{ sizeAttrs }}>
+</div>
+{% if module.style.animate_in != " " %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+
+        {% if module.style.no_animate_on_mobile != false %}
+            if (Math.max(window.screen.width, window.screen.height) > 768) {
+        {% endif %}
+            {% if module.style.animate_in == "fade" %}
+                fadeInHandler();
+            {% endif %}
+
+            {% if module.style.animate_in == "slide slide-right" %}
+                slideInHandler("right");
+            {% endif %}
+
+            {% if module.style.animate_in == "slide slide-left" %}
+                slideInHandler("left");
+            {% endif %}
+
+            {% if module.style.animate_in == "slide slide-top" %}
+                slideInHandler("top");
+            {% endif %}
+
+            {% if module.style.animate_in == "slide slide-bottom" %}
+                slideInHandler("bottom");
+            {% endif %}
+
+        {% if module.style.no_animate_on_mobile != false %}
+            }
+        {% endif %}
+        });
+    </script>
+{% endif %}
+
+
+
+{% else %}
+
+    {% if is_in_page_editor %}
+        {% editor_placeholder %}
+    {% endif %}
+
+{% endif %}

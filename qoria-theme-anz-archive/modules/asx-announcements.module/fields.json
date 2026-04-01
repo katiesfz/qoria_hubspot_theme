@@ -1,0 +1,159 @@
+[ {
+  "id" : "hubdb",
+  "name" : "hubdb",
+  "display_width" : null,
+  "label" : "ASX Announcement HubDB",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable"
+}, {
+  "id" : "stock_db",
+  "name" : "stock_db",
+  "display_width" : null,
+  "label" : "Stock Data HubDB",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable"
+}, {
+  "id" : "registered_office",
+  "name" : "registered_office",
+  "display_width" : null,
+  "label" : "Registered Office",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "945 Wellington Street, \nWest Perth, WA, \nAUSTRALIA, 6005"
+}, {
+  "id" : "description",
+  "name" : "description",
+  "display_width" : null,
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Browse our list of announcements for all the latest ASX updates and insights."
+}, {
+  "id" : "description_reports",
+  "name" : "description_reports",
+  "display_width" : null,
+  "label" : "Annual Reports Description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Download and view our annual reports by clicking on the following links."
+}, 
+{
+  "id" : "corporate_governance",
+  "name" : "corporate_governance",
+  "display_width" : null,
+  "label" : "Corporate Governance",
+  "required" : false,
+  "locked" : false,
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "corporate_governance.cg_name",
+    "default" : null
+  },
+  "children" : [
+    {
+      "picker" : "document",
+      "id" : "corporate_governance.cg_file",
+      "name" : "cg_file",
+      "display_width" : null,
+      "label" : "File",
+      "required" : false,
+      "locked" : false,
+      "type" : "file"
+    }, {
+      "id" : "corporate_governance.cg_name",
+      "name" : "cg_name",
+      "display_width" : null,
+      "label" : "Name",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : true,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Corporate Governance"
+    }],
+  "default": []
+},
+
+
+
+
+
+
+{
+  "picker" : "document",
+  "id" : "rights_to_receive",
+  "name" : "rights_to_receive",
+  "display_width" : null,
+  "label" : "Rights to receive documents notice",
+  "required" : false,
+  "locked" : false,
+  "type" : "file"
+}, {
+  "id" : "newsletter_form",
+  "name" : "newsletter_form",
+  "display_width" : null,
+  "label" : "Investor Newsletter Sign-up",
+  "required" : false,
+  "locked" : false,
+  "type" : "form",
+  "default" : {
+    "form_id" : null,
+    "redirect_url" : null,
+    "redirect_id" : null,
+    "gotowebinar_webinar_key" : null,
+    "form_type" : null,
+    "follow_up_type_simple" : null,
+    "response_type" : "inline",
+    "message" : "Thanks for submitting the form."
+  }
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+} ]

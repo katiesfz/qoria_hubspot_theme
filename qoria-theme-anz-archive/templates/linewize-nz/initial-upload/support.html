@@ -1,0 +1,406 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize NZ Support
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+{% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ ],
+        header="Support",
+        hero_type="full-image",
+        image={
+          "alt" : "linewize-nz-contactusbanner",
+          "height" : 1414,
+          "loading" : "disabled",
+          "max_height" : 1333.3333333333333,
+          "max_width" : 2000,
+          "size_type" : "auto_custom_max",
+          "src" : "https://qoria.com/hubfs/linewize-nz-contactusbanner.jpg",
+          "width" : 2121
+        },
+        menu=123441695658,
+        page_contents=[ ],
+        pre_header="We'd love to hear from you:",
+        show_breadcrumbs=true,
+        show_share_price=false,
+        style={
+          "heading_location" : "66-left"
+        },
+        video=""
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=2
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=2,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="intro"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="intro mb-0 " style="text-align: center;">If you're an existing customer and would like help with a Linewize product, please get in touch below.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=10,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "80px",
+      "top" : "40px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "16px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=8,
+    padding={
+      "default" : {
+        "bottom" : "0px",
+        "left" : "16px",
+        "right" : "16px",
+        "top" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "bottom" : "32px",
+            "left" : "32px",
+            "right" : "32px",
+            "top" : "32px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=7
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/heading",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "heading" %}
+                  Fill our form in and <strong>we'll get </strong><strong>straight back to you</strong>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=7,
+            width=5
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/form",
+            offset=0,
+            width=12,
+            form={
+              "form_id" : "4f8f0ed9-c3b3-496a-84ee-9de10257da2b",
+              "form_type" : "HUBSPOT",
+              "message" : "Thanks for your enquiry, we'll be in touch shortly.",
+              "response_type" : "inline"
+            },
+            style={
+              "background_colour" : "bg-white text-dark",
+              "form_style" : "form-underline",
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 0
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 24
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=8,
+    width=4,
+    padding={
+      "default" : {
+        "left" : "16px",
+        "right" : "16px"
+      },
+      "mobile" : {
+        "top" : "32px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/rich-text",
+        offset=0,
+        width=12,
+        advanced={
+          "additional_classes" : "p-4 p-md-5"
+        },
+        row=[ {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            },
+            "text" : "<h5>Linewize Help Center</h5>\n<p>Search our knowledge base for answers to common questions.</p>\n<p><a class='text-reset text-decoration-none fw-bold' href='https://help.linewize.com/' rel='noopener' target='_blank'>Visit the help center <i class='fa fa-chevron-right fa-2xs'></i></a></p>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-white text-dark",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/rich-text",
+        offset=0,
+        width=12,
+        advanced={
+          "additional_classes" : "p-4 p-md-5"
+        },
+        row=[ {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : { },
+              "mobile" : { },
+              "tablet" : { }
+            },
+            "text" : "<h5>Speak to a human</h5>\n<p>Call our support line on 0800 445 206 to connect with a Linewize support specialist.</p>\n<p><a class='btn btn-secondary mt-3' href='tel:0800445206' rel='noopener'>Call now</a></p>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-white text-dark",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

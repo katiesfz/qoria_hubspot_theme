@@ -1,0 +1,512 @@
+{% if module.selection == "auto" %}
+
+    {# select the hubDB #}
+    {% if module.source_table %}
+        {% set tableId = module.source_table %}
+    {% else %}
+        {% set tableId = dynamic_page_hubdb_table_id %}
+    {% endif %}
+
+    {# build filter query string #}
+    {% set filterArr = [] %}
+    {% if module.filter %}
+        {% for filt in module.filter %}
+            {% set oneFilter = filt.filter_property ~ "__" ~ filt.filter_operator ~ "=" ~ filt.filter_value %}
+            {% do filterArr.append(oneFilter) %}
+        {% endfor %}
+    {% endif %}
+    {% set filterString = filterArr|join("&") %}
+
+    {% if filterString != "" %}
+
+        {# get filtered table rows #}
+        {% set rows = hubdb_table_rows(tableId, filterString) %}
+
+    {% else %}
+
+        {# get table rows #}
+        {% set rows = hubdb_table_rows(tableId) %}
+
+    {% endif %}
+
+{% elif module.selection == "manual" %}
+    {# call in all rows because calling a single row is limited to 10 per page and you can't use OR in filter query strings #}
+    {% set table = hubdb_table_rows(tableId) %}
+    {# now we filter them in HubL #}
+    {% set rows = [] %}
+    {% for row in table %}
+        {% if row.hs_id is in module.row_id %}
+            {% do rows.append(row) %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+{# set posts per page #}
+{% if module.styles.items_per_page %}
+    {% set itemsPerPage = module.styles.items_per_page|int %}
+{% else %}
+    {% set itemsPerPage = 10 %}
+{% endif %}
+
+<script>
+// console.log("{{filterString}}");
+//console.log({{hubdb_table(module.source_table)|tojson}});
+//console.log({{rows|tojson}});
+// console.log('{{rows.objects|string|escape_js}}');
+
+// build blogPosts object
+ const hubdbRows_{{name|replace("-","_")}} = {{ rows.objects|tojson }};
+
+// build hubdb table object
+const hubdbTable_{{name|replace("-","_")}} = {{ hubdb_table(module.source_table)|tojson }};
+
+    console.log(hubdbRows_{{name|replace("-","_")}});
+</script>
+
+    <div class="container-fluid blog-listing g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}  transition-property: height; transition-duration: 500ms;" id="hubdb_resources_{{name|replace("-","_")}}">
+
+        {% if module.filter_options %}
+            {% if module.filter_options|length > 1 %}
+                <div class="row pb-5">
+                    <div class="col-12 filter-tags-container">
+                        <form id="hubdbFilter" method="get" class="row">
+                            {% for option in module.filter_options %}
+                                <div class="col-12 col-sm-6 col-lg-3 mb-1">
+                                    <select class="form-control" name="{{option}}" form="hubdbFilter" onChange="this.form.submit()">
+                                        <option value="show-all">Filter by {{option}}</option>
+                                        <option value="show-all">Show All</option>
+                                        {% set options = hubdb_table_column(tableId, option).options %}
+                                        {% for choice in options %}
+                                            {% if choice.name == request.query_dict.audience %}
+                                                <option selected="selected" value="{{ choice.name }}">{{ choice.name }}</option>
+                                            {% else %}
+                                                <option value="{{ choice.name }}">{{ choice.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endfor %}
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                {% for option in module.filter_options %}
+                    <div class="row">
+                        <div class="col filter-tags-container text-center pb-4">
+                            <a href="#" data-filter="all" class="btn btn-blog-filter-secondary me-2 mb-2 active" aria-pressed="true">All</a>
+                            {% set options = hubdb_table_column(tableId, option).options %}
+                            {% for choice in options %}
+                                <a href="#" data-filter="{{choice.name}}" data-category="{{option}}" class="btn btn-blog-filter-secondary me-2 mb-2">{{choice.label}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endif %}       
+        <div class="row g-0">
+            <div class="col" id="pagesContainer" style="transition-property: height; transition-duration: 500ms; overflow: hidden; filter: drop-shadow({{module.styles.shadow}});">
+                <div id="resourcesContainer_{{name}}" class="row flex-wrap row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-4 gx-md-5 gy-md-7 pages-container">
+                </div>
+            </div>
+        </div>
+        {% if module.styles.pagination %}
+            <div class="row pt-4 mt-auto">
+                <div class="col text-center">
+                    <nav class="pagination-container" id="pagination" aria-label="Pagination">
+                    
+                    </nav>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+<script>
+
+ // init: 
+var contentsAll = hubdbRows_{{name|replace("-","_")}};
+var contents = contentsAll;
+var itemsPerPage = {{itemsPerPage}};
+var outerContainer = document.getElementById("hubdb_resources_{{name|replace("-","_")}}");
+var elementContainer = outerContainer.getElementsByClassName("pages-container")[0];
+var paginationContainer = outerContainer.getElementsByClassName("pagination-container")[0];
+var curPage = 1;
+var table = hubdbTable_{{name|replace("-","_")}};
+
+// print single blog post
+function hubdbResourceTemplate(row){
+
+    const newCol = document.createElement("div");
+    newCol.classList.add("col");
+
+    const newPost = document.createElement("div");
+
+    {% if module.styles.card_colour != "none" %}
+      newPost.classList.add("{{module.styles.card_colour}}");
+    {% endif %}
+
+    {% if module.styles.border_colour != "none" %}
+      newPost.classList.add("{{module.styles.border_colour}}", "border-1", "border");
+    {% endif %}
+
+    {% if module.styles.shadow != "none" %}
+      newPost.classList.add("{{module.styles.shadow}}");
+    {% endif %}
+
+    {% if module.styles.equal_heights %}
+      newPost.classList.add("h-100", "d-flex", "flex-column");
+    {% endif %}
+
+    newPost.classList.add("card");
+
+    const newCardBody = document.createElement("div");
+
+  //  {% if module.styles.equal_heights %}
+  //    newCardBody.classList.add("d-flex", "flex-column");
+  //  {% endif %}
+
+    {% if module.styles.card_colour != "none" %}
+      newCardBody.classList.add("{{module.styles.card_colour}}");
+    {% endif %}
+
+    newCardBody.classList.add("row", "g-0", "h-100");
+
+
+    let newContent = "";
+
+    // featured image
+    if (row.thumbnail){
+        let featuredImage = document.createElement("img");
+        
+        featuredImage.src = row.thumbnail.url;
+        featuredImage.classList.add("img-fluid");
+        featuredImage.alt = row.name;
+        {% if module.styles.loading != "none" %}
+          loading="{{module.styles.loading}}";
+        {% endif %}
+        {% if module.styles.image_header_fit == "contain" %}
+          featuredImage.style = "object-fit: contain";
+        {% endif %}
+        // link classes
+        {% if module.styles.cta_style %}
+            {% if module.styles.cta_style != "text-" %}
+                {% set ctaClasses = module.styles.cta_size ~ " " ~ module.styles.cta_style ~ module.styles.cta_colour ~ " mt-4" %}
+            {% else %}
+                {% set ctaClasses = "text-" ~ module.styles.cta_colour ~ " mt-4 text-decoration-none fw-semibold" %}
+            {% endif %}
+        {% else %}
+            {% set ctaClasses = " mt-4 text-decoration-none fw-semibold" %}
+        {% endif %}
+
+        // link label
+        {% if (module.link_label|striptags|unescape_html) is string_containing "->" %}
+            {% set linkLabel = module.link_label|replace('->','<i class="fa fa-arrow-right fa-xs"></i>') %}
+            {% set linkHasIcon = true %}
+        {% elif (module.link_label|striptags|unescape_html) is string_containing " >" %}
+            {% set linkLabel = module.link_label|replace(' >',' <i class="fa fa-chevron-right fa-xs"></i>') %}
+            {% set linkHasIcon = true %}
+        {% else %}
+            {% set linkLabel = module.link_label %}
+            {% set linkHasIcon = false %}
+        {% endif %}
+
+        newContent += "<div class='col-md-5'>";
+            newContent += "<div class='card-body h-100 d-flex flex-column justify-content-center pb-xs-0'>";
+                newContent += featuredImage.outerHTML;
+            newContent += "</div>";
+        newContent += "</div>";
+            
+    }
+
+    if (row.thumbnail){
+        newContent += "<div class='col-md-7'>";
+            newContent += "<div class='card-body d-flex flex-column h-100 ps-md-0 text-{{ module.styles.textalignment }}'>";
+    } else {
+        newContent += "<div class='card-body {% if module.styles.equal_heights %}d-flex flex-column{% endif %} h-100 text-{{ module.styles.textalignment }}'>";
+    }
+
+
+        newContent += "<div class='card-heading pt-md-3'>";
+            // print category
+            newContent += "<p class='card-text m-0 mb-1 lh-sm'>" + row.category[0].label + "</p>";
+        
+            // print name
+            newContent += '<div class="card-title m-0 lh-sm h5">' + row.name + '</div>';
+
+
+        newContent += "</div>";
+          
+        // print cta
+        newContent += '<div class="mt-auto -align-self-end-">';
+            if (table.useForPages) {
+                newContent += '<div class="mt-auto -align-self-end-">';
+                    newContent += '<a href="{{request.path}}/' + row.hs_path + '" class="ms-auto {{ "stretched-link" if module.styles.stretched_link }} {{ ctaClasses }}">' + '{{linkLabel}}' + '</a>';
+                newContent += '</div>';
+            } else {
+                if (row.page_link) {    
+                {% if !linkHasIcon %}
+                    {% set linkIcon = ' <i class="far fa-external-link-alt"></i>' %}
+                {% else %}
+                    {% set linkIcon = "" %}
+                {% endif %}
+                    newContent += '<a href="' + row.page_link + '" class="ms-auto {{ "stretched-link" if module.styles.stretched_link }} {{ ctaClasses }}">' + '{{linkLabel}}' + '{{linkIcon}}</a>';
+                } else if (row.file.url) {
+                {% if module.download && !linkHasIcon %}
+                    {% set linkIcon = ' <i class="far fa-arrow-to-bottom"></i>' %}
+                {% else %}
+                    {% set linkIcon = "" %}
+                {% endif %}
+                    newContent += '<a href="' + row.file.url + '" class="ms-auto {{ "stretched-link" if module.styles.stretched_link }} {{ ctaClasses }}" {{ "download" if module.download }}>' + '{{linkLabel}}' + '{{linkIcon}}</a>';
+                }
+            }
+        newContent += '</div>';
+
+    if (row.thumbnail){
+        newContent += "</div>";
+    }
+        
+    
+    newCardBody.innerHTML = newContent;
+
+            
+
+    newPost.append(newCardBody);
+ //   newPost.append(newFooter);
+    
+    newCol.append(newPost);
+
+    return newCol;
+}
+
+</script>
+<script>
+
+// pagination - 
+function pagination2(curPage) {
+
+    // if the pagination container doesn't exist, don't bother continuing
+    if (!paginationContainer) {
+        return;
+    }
+
+    var pageCount = Math.ceil(contents.length / itemsPerPage); // total pages
+    const numPadding = 2; // how many numbers on either side of the current page number before we break with a "..."
+
+
+    //    console.log(pageCount);
+
+    // clear existing pagination
+    paginationContainer.innerHTML = '';
+
+    // if there's more than one page
+    if (pageCount > 1){
+        const paginationUl = document.createElement("ul");
+        paginationUl.classList.add("pagination", "justify-content-center");
+
+        // if the page isn't the first page, add a previous link
+        if (curPage != 1) {
+            const prevLi = document.createElement("li");
+            prevLi.classList.add("page-item")
+
+            const prevLink = document.createElement("a");
+            prevLink.classList.add("page-link");
+            prevLink.id = "previousLink";
+            prevLink.href="#";
+            prevLink.innerHTML = '<i class="fa far fa-chevrons-left fa-2xs"></i> Previous';
+
+            // on previous click, run the goToPage function on the current page value - 1 and update the current page value
+            prevLink.addEventListener("click", () => {
+                event.preventDefault();
+                goToPage2(curPage - 1);
+            });
+
+            prevLi.appendChild(prevLink);
+            paginationUl.appendChild(prevLi);
+        }
+
+
+
+        // build pagination numbers  
+        var firstEllipses = false;
+        var secondEllipses = false;
+
+        for (let i=1; i <= pageCount; i++){
+        
+            // if the number is within the padding of the current page, then show it
+            if (((curPage - numPadding) <= (i) && (i) <= (curPage + numPadding)) || (i == 1) || (i == pageCount)) {
+                const newPageLi = document.createElement("li");
+                newPageLi.classList.add("page-item");
+
+                // highlight the active page number
+                if (i == curPage){
+                    newPageLi.ariaCurrent = "page";
+                    newPageLi.classList.add("active");
+                }
+
+                // add page link to the page number
+                const newLink = document.createElement("a");
+                newLink.classList.add("page-link", "page-link-number");
+                newLink.innerHTML = i;
+                newLink.dataset.destination = i;
+                newLink.href = "#";
+
+                newLink.addEventListener("click", () => {
+                    event.preventDefault();
+                    goToPage2(i);
+                });
+                
+                newPageLi.appendChild(newLink);
+                paginationUl.appendChild(newPageLi);
+            } else {
+                
+                if (!firstEllipses) {
+                    if (1 < (i) && (i) < (curPage - numPadding)) {
+                    const ellipsesLi = document.createElement("li");
+                    ellipsesLi.classList.add("page-item","first-ellipses");
+
+                    const ellipses = document.createElement("span");
+                    ellipses.classList.add("page-link");
+                    ellipses.innerHTML = "...";
+                    
+                    ellipsesLi.appendChild(ellipses);
+
+                    paginationUl.appendChild(ellipsesLi);
+
+                    firstEllipses = true;
+                    continue;
+                    }
+                }
+
+                if (!secondEllipses) {
+                    if ((curPage + numPadding) < (i) && (i) < pageCount) {
+                        const ellipsesLi = document.createElement("li");
+                        ellipsesLi.classList.add("page-item","second-ellipses");
+
+                        const ellipses = document.createElement("span");
+                        ellipses.classList.add("page-link");
+                        ellipses.innerHTML = "...";
+                        
+                        ellipsesLi.appendChild(ellipses);
+
+                        paginationUl.appendChild(ellipsesLi);
+
+                        secondEllipses = true;
+                        continue;
+                    }
+                }
+            }
+        }
+
+        // if the page isn't the last page, add a next link
+        if (curPage != pageCount) {
+            
+            const nextLi = document.createElement("li");
+            nextLi.classList.add("page-item")
+
+            const nextLink = document.createElement("a");
+            nextLink.classList.add("page-link");
+            nextLink.id = "nextLink";
+            nextLink.href="#";
+            
+            nextLink.innerHTML = 'Next <i class="fa far fa-chevrons-right fa-2xs"></i>';
+
+            nextLink.addEventListener("click", () => {
+                event.preventDefault();
+            //    console.log("next");
+                goToPage2(curPage + 1);
+            });
+            
+            nextLi.appendChild(nextLink);
+            paginationUl.appendChild(nextLi);
+        }
+
+        // replace contents of the pagination container
+        paginationContainer.appendChild(paginationUl);
+    }
+}
+
+// to use blogFilter(), set a contentsAll array, include a .filter-tags-container div with a tags that have a data-filter property to filter with
+function blogFilter(){
+
+    contents = contentsAll;
+    var activeFilter = document.querySelector(".filter-tags-container .active").dataset.filter;
+    var filterButtons = document.querySelectorAll('.filter-tags-container a');
+
+    // filter contents to active filter
+    function filterContents(category, filter) {
+        contents = contentsAll.filter(function (el) {
+            if (filter == "all") {
+                return true;
+            } else {
+                // iterate through the categories
+                for (let i = 0; i < el[category].length; i++) {
+                    if (el[category][i].name == filter) {
+                        return true;
+                    }
+                }
+            }
+        });
+    }
+
+    // when filter button is clicked, switch active button, assign filter, update contents variable, update pagination, and go to page 1
+    filterButtons.forEach(function (i) {
+        i.addEventListener('click', function() {
+            event.preventDefault();
+            filterButtons.forEach(function (j) {
+                j.classList.remove("active");
+            });
+            i.classList.add("active");
+            activeFilter = i.dataset.filter;
+            activeCategory = i.dataset.category;
+            // console.log(activeFilter);
+            filterContents(activeCategory, activeFilter);
+            // console.log(contents);
+            goToPage2(1);
+        });
+    });
+
+}
+
+// clear container, and fill with current filtered contents variable items
+// to use goToPage2(), set an elementContainer and an itemTemplate() and contents
+ function goToPage2(pageNum) {
+    elementContainer.innerHTML = '';
+    curPage = pageNum;
+
+    //    console.log("current page: " + curPage);
+
+    const prevRange = (pageNum - 1) * itemsPerPage;
+    const currRange = pageNum * itemsPerPage;
+
+    contents.forEach((item, index) => {
+        if (index >= prevRange && index < currRange) {
+            elementContainer.appendChild(hubdbResourceTemplate(item));
+        }
+    });
+
+    
+    {% if module.styles.equal_height_img %}
+        setTimeout(normaliseHeights,300,"#bloglisting_{{name|replace("-","_")}} .single-blog .featured-image");
+    {% endif %}
+
+    pagination2(curPage);
+}
+
+window.addEventListener("load", function() {
+
+    if(document.readyState == 'complete') {
+    {% if module.filter_options %}    
+    blogFilter();
+    {% endif %}
+
+        goToPage2(1);
+        {% if module.styles.equal_height_img %}
+            $(window).on('load resize orientationchange', normaliseHeights("#bloglisting_{{name|replace("-","_")}} .single-blog .featured-image"));
+        {% endif %}
+    }
+});
+
+
+</script>

@@ -1,0 +1,69 @@
+[ {
+  "id" : "top_left",
+  "name" : "top_left",
+  "label" : "Top left content",
+  "required" : false,
+  "locked" : true,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<h1>Hello, world!</h1>"
+}, {
+  "id" : "top_right",
+  "name" : "top_right",
+  "label" : "Top right content",
+  "required" : false,
+  "locked" : true,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<h1>Hello, world!</h1>"
+}, {
+  "id" : "bottom_left",
+  "name" : "bottom_left",
+  "label" : "Bottom left content",
+  "required" : false,
+  "locked" : true,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<h1>Hello, world!</h1>"
+}, {
+  "id" : "bottom_right",
+  "name" : "bottom_right",
+  "label" : "Bottom right content",
+  "required" : false,
+  "locked" : true,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<h1>Hello, world!</h1>"
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : true,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

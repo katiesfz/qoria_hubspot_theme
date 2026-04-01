@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "icon" : "../../images/module-icons/table.svg",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 108979612991,
+  "label" : "ASX Announcements",
+  "is_available_for_new_content" : true
+}

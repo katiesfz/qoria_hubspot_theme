@@ -1,0 +1,48 @@
+<div>
+  <div style="width: 100%; padding-bottom: 10px;">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 50%; vertical-align: middle;">
+          <h4 style="margin-bottom: 0;">
+            {{ module.date_field|format_date('MMMM yyyy') if module.date_field }}
+          </h4>
+        </td>
+        <td style="width: 50%; text-align: right; vertical-align: middle;">
+          {% if module.logo.src %}
+          {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}
+          <img src="{{ module.logo.src }}" style="max-width: {{ module.logo.width }}px; height: auto;" alt="Logo" {{ sizeAttrs }}>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <hr style="border-style: none; border-width: 0; height: 1px; background-color: #000000;">
+  <div style="width: 100%; text-align: center; padding: 25px 10px; box-sizing: border-box;">
+    {% if module.newsletter_title.src %}
+    {% set sizeAttrs = 'width="{{ module.newsletter_title.width }}" height="{{ module.newsletter_title.height }}"' %}
+    <img src="{{ module.newsletter_title.src }}" alt="{{ module.newsletter_title.alt }}" {{ sizeAttrs }} style="width: 100%; height: auto; max-width: {{ module.newsletter_title.width }};">
+    {% endif %}
+  </div>
+  <hr style="border-style: none; border-width: 0; height: 1px; background-color: #000000;">
+  <div class="width: 100%;">
+    <ul style="list-style: none; padding: 0; text-align: right; margin-bottom: 0;">
+      {% for item in module.nav_item %}
+      <li style="display: inline-block; list-style: none; margin-left: auto; margin-right: auto; padding: 0 8px; {% if loop.last %}padding-right: 0;{% endif %} ">
+        {% set href = item.nav_link.url.href %}
+        {% if item.nav_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% endif %}
+        <h4>
+          <a href="{{ href }}" style="color: inherit; text-decoration: none;" 
+             {% if item.nav_link.open_in_new_tab %}target="_blank"{% endif %}
+             {% if item.nav_link.rel %}rel="{{ item.nav_link.rel }}"{% endif %}
+             >
+            {{ item.nav_text }}
+          </a>
+        </h4>
+      </li>
+      {% unless loop.last %}<h3 style="display: inline">|</h3>{% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

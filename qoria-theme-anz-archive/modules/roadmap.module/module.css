@@ -1,0 +1,98 @@
+.product-roadmap-grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: minmax(10px, 1fr) 1fr 1fr 1fr;
+    gap: var(--q-gap, 1.5rem);
+}
+
+.col-heading {
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    justify-content: flex-start;
+}
+
+.product-roadmap-grid .col-heading-now {
+    background:
+    linear-gradient(to right, #515ba5 0%, #58b78e 100%), 
+    #515ba5;    
+}
+
+.product-roadmap-grid .col-heading-next {
+    background: #f2c464;
+}
+
+.product-roadmap-grid .col-heading-later {
+    background: #d96a71;
+}
+
+.product-roadmap-grid textarea {
+    height: auto;
+    border: 0;
+    field-sizing: content;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: left;
+    resize: none;
+}
+
+.product-roadmap-grid .now-item, .product-roadmap-grid .next-item, .product-roadmap-grid .later-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-roadmap-grid .item-label {
+    background-color: #515ba5;
+    color: #ffffff;
+    width: calc(100% - 20px);
+    padding: 16px 0 16px 16px;
+    border-radius: 8px 0 0 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.product-roadmap-grid .priority {
+    width: 50px; height: 36px;
+
+} 
+
+.product-roadmap-grid .priority[value=""],
+.product-roadmap-grid .priority:not([value]) {
+    opacity: 50%;
+
+}
+
+.product-roadmap-grid .item-label-col {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: row;
+}
+
+.product-roadmap-grid #objectives_1 {
+    font-size: 23pt;
+}
+
+.product-roadmap-grid .item-label-arrow {
+  height: 100%; /* Arrow takes full height of parent */
+  width: 20px; /* Fixed width of the arrow */
+  background: 
+    linear-gradient(to top right, #515ba5 50%, transparent 50%), 
+    linear-gradient(to bottom right, #515ba5 50%, transparent 50%);
+  background-size: 100% 50.5%; /* Each gradient covers half the height */
+  background-repeat: no-repeat;
+  background-position: top, bottom;
+}
+
+.product-roadmap-grid label {
+    display: none;
+}
+
+.product-roadmap-grid .item-label textarea {
+    background-color: transparent;
+    color: #ffffff;
+}

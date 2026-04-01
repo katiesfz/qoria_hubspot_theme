@@ -1,0 +1,168 @@
+{% if module.accent_colour == "primary" || module.accent_colour == "teal" %}
+   {% set accentColour = "#58b78e" %}
+{% elif module.accent_colour == "secondary" || module.accent_colour == "indigo" %}
+   {% set accentColour = "#515ba5" %}
+{% elif module.accent_colour == "red" %}
+   {% set accentColour = "#eb6571" %}
+{% elif module.accent_colour == "orange" %}
+   {% set accentColour = "#fabd55" %}
+{% elif module.accent_colour == "blue" %}
+   {% set accentColour = "#8dc9e6" %}
+{% elif module.accent_colour == "dark" %}
+   {% set accentColour = "#4d4d4d" %}
+{% endif %}
+   <table width="100%" style="width: 100%;">
+      {% if module.background_image.src %}
+         {% if module.image_location == "above" %}
+            <tr>
+               <td style="font-size: 0; line-height: 0; padding: 0; ">
+                  <img src="{{module.background_image.src}}" alt="{{module.background_image.alt}}" style="width: 100%; {% if module.object_fit == "cover" %}height: 7rem; object-fit: cover; object-position: center center;{% else %}{% endif %}">
+               </td>
+            </tr>
+         {% endif %}
+      {% endif %}
+
+      {% if module.image_location == "above" || module.image_location == "below" || module.background_image.src == "" %}
+         <tr>
+            <td style="background-color: {{ accentColour }}; padding: {{ module.heading_padding.padding_y }}px {{ module.heading_padding.padding_x }}px; color: {{ module.heading_text_colour }}" background="{{ accentColour }}">
+               {{ module.heading }}
+            </td>
+         </tr>
+      {% else %}
+
+         {% if module.background_image.src != "" && (module.image_location == "left" || module.image_location == "right") %}
+         <td class="hs_padded" style="font-size:0; background-color: {{ accentColour }}; padding: {{ module.heading_padding.padding_y }}px {{ module.heading_padding.padding_x }}px;" align="center" valign="top" {{ "dir='rtl'" if module.image_location == "right" }}>
+            <!--[if (gte mso 9)|(IE)]>
+            <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 100%;">
+            <tr>
+            <![endif]-->
+            {% set textWidth = 480 - module.image_width - 1 %}
+            <!--[if (gte mso 9)|(IE)]>
+            <td valign="top" style="width:{{module.image_width}}px;">
+            <![endif]-->
+            <div class="hs_padded_0" style="display:inline-block;vertical-align:top;width: 100%; max-width: {{module.image_width}}px; {% if module.image_location == "left" %}margin-right: {{module.heading_padding.padding_x}}px;{% else %}margin-left: {{module.heading_padding.padding_x}}px;{% endif %}">
+                  <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 100%;" dir="ltr">
+                     <tr>
+                        <td align="left" valign="top" style="">
+                           <img src="{{module.background_image.src}}" alt="{{module.background_image.alt}}" style="width: 100%; {% if module.content_image_fit == "cover" %}height: 7rem; object-fit: cover; object-position: center center;{% else %}{% endif %}">
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            <td valign="top" style="width: {{textWidth}}px;">
+            <![endif]-->
+               <div style="display:inline-block;vertical-align:top;width: 100%; max-width: {{textWidth}}px;">
+                  <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 100%;" dir="ltr">
+                     <tr>
+                        <td style="color: {{ module.heading_text_colour }};" background="{{ accentColour }}">
+                           {{ module.heading }}
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+         </td>
+         {% endif %}
+         {% endif %}
+
+      {% if module.background_image.src %}
+         {% if module.image_location == "below" %}
+            <tr>
+               <td style="font-size: 0; line-height: 0; padding: 0;">
+                  <img src="{{module.background_image.src}}" alt="{{module.background_image.alt}}" style="width: 100%; {% if module.object_fit == "cover" %}height: 7rem; object-fit: cover; object-position: center center;{% else %}{% endif %}">
+               </td>
+            </tr>
+         {% endif %}
+      {% endif %}
+
+      <tr class="hs_cos_wrapper_type_rich_text">
+         {% if module.content_image.src != "" %}
+
+            <td style="font-size:0; padding-top: {{ module.content_padding.padding_y }}px; padding-bottom: {{ module.content_padding.padding_y }}px;" align="center" valign="top" {{ "dir='rtl'" if module.reverse == true }}>
+               <!--[if (gte mso 9)|(IE)]>
+               <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 100%;">
+               <tr>
+               <![endif]-->
+               {% if (module.content_image_location == "left" && module.reverse == false) || (module.content_image_location == "right" && module.reverse == true) %}
+                  <!--[if (gte mso 9)|(IE)]>
+                  <td valign="top" style="width:269px;">
+                  <![endif]-->
+                     <div style="display:inline-block;vertical-align:top;">
+                        <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:269px;" dir="ltr">
+                           <tr>
+                              <td align="left" valign="top" style="">
+                                 <img src="{{module.content_image.src}}" alt="{{module.content_image.alt}}" style="width: 100%; {% if module.content_image_fit == "cover" %}height: 7rem; object-fit: cover; object-position: center center;{% else %}{% endif %}">
+                              </td>
+                           </tr>
+                        </table>
+                     </div>
+                  <!--[if (gte mso 9)|(IE)]>
+                  </td>
+                  <![endif]-->
+               {% endif %}
+               <!--[if (gte mso 9)|(IE)]>
+               <td valign="top" style="width: 269px;">
+               <![endif]-->
+                  <div style="display:inline-block;vertical-align:top;">
+                     <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width: 269px;" dir="ltr">
+                        <tr>
+                           <td align="left" valign="top" style="padding: 0 {{ module.content_padding.padding_x }}px;">
+                              {{ module.content }}
+                              {% if module.link.url.href %}
+                              {% set href = module.link.url.href %}
+                              <div style="text-align: {{ module.cta_alignment }};">
+                              <a href="{{ href }}" target="_blank" style="display: inline-block; text-decoration: none; border: 1px solid #000000; border-radius: 4px; padding: 16px 24px; font-weight: bold; color: #000000; Margin-top: {{ module.content_padding.padding_y }}px;">
+                                {{ module.link_text }}
+                              </a>
+                              </div>
+                              {% endif %}
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               <!--[if (gte mso 9)|(IE)]>
+               </td>
+               <![endif]-->
+               {% if (module.content_image_location == "right" && module.reverse == false) || (module.content_image_location == "left" && module.reverse == true) %}
+                  <!--[if (gte mso 9)|(IE)]>
+                  <td valign="top" style="width:269px;">
+                  <![endif]-->
+                  <div style="display:inline-block;vertical-align:top;">
+                     <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:269px;" dir="ltr">
+                           <tr>
+                              <td align="left" valign="top" style="">
+                                 <img src="{{module.content_image.src}}" alt="{{module.content_image.alt}}" style="width: 100%; {% if module.content_image_fit == "cover" %}height: 7rem; object-fit: cover; object-position: center center;{% else %}{% endif %}">
+                              </td>
+                           </tr>
+                     </table>
+                  </div>
+                  <!--[if (gte mso 9)|(IE)]>
+                  </td>
+                  <![endif]-->
+               {% endif %}
+               <!--[if (gte mso 9)|(IE)]>
+               </tr>
+               </table>
+               <![endif]-->
+            </td>
+         {% else %}
+         <td style="padding: {{ module.content_padding.padding_y }}px {{ module.content_padding.padding_x }}px;" class="mce-content-body article">
+           {{ module.content }}
+            {% if module.link.url.href %}
+            {% set href = module.link.url.href %}
+            <div style="text-align: {{ module.cta_alignment }};">
+            <a href="{{ href }}" target="_blank" style="display: inline-block; text-decoration: none; border: 1px solid #000000; border-radius: 4px; padding: 16px 24px; font-weight: bold; color: #000000; Margin-top: {{ module.content_padding.padding_y }}px;">
+              {{ module.link_text }}
+            </a>
+            </div>
+            {% endif %}
+         </td>
+         {% endif %}
+      </tr>
+   </table>

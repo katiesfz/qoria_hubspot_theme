@@ -1,0 +1,57 @@
+<!--
+  templateType: email_subscription_preferences_page
+  isAvailableForNewContent: true
+  label: Qoria EU Email Subscriptions Page
+  screenshotPath: ../../images/template-previews/subscription-preferences.png
+-->
+{% extends "../layouts/blank.html" %}
+{# pageTitle is used on system templates for setting a value for the title tag #}
+{% set pageTitle = "Subscription preferences" %}
+
+
+{% block body %}
+<style>
+.email-prefs span.fakelabel {
+font-size: 1.1em;
+position: relative;
+}
+.email-prefs .item {
+padding-bottom: 10px;
+}
+.email-prefs .item .item-inner  {
+padding-left: 30px;
+}
+.email-prefs .item .item-inner .fakelabel input {
+position: absolute;
+width: 30px;
+top: 5px;
+left: -30px;
+}
+</style>
+<section class="container-xxl mt-7">
+    <div class="row">
+        <div class="col bg-gradient-primary py-0 py-md-2">
+            <div class="row align-items-center">
+                <div class="col-md p-5 p-md-5 border-bottom border-bottom-md-0 border-end-md border-light text-center">
+                    <img src="https://smoothwall.com/hubfs/smoothwall__byqoria_white2.png" class="img-fluid" style="max-height: 80px;">
+                </div>
+                <div class="col-md p-5 p-md-5 text-center">
+                    <img src="https://smoothwall.com/hubfs/Qoria%20Europe/Qoria-europe-white-logo.png" class="img-fluid" style="max-height: 80px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col py-5">
+            {% module "email_subscriptions"
+            path="@hubspot/email_subscriptions" 
+            header="Update email preferences for" 
+            subheader_text="Choose which emails you would like to receive from Smoothwall Limited or Qoria Europe."
+            unsubscribe_single_text=""
+            unsubscribe_all_text=""
+            unsubscribe_all_option="Unsubscribe from all emails"
+            %}
+        </div>
+    </div>
+</section>
+{% endblock body %}

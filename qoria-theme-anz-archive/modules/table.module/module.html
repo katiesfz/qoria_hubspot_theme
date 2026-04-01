@@ -1,0 +1,32 @@
+{% if module.row %}
+    <div style="{{module.styles.spacing.css}}">
+        <table class="table {{module.styles.border}} {{module.styles.striping}} {{module.styles.colour}} {{ "table-sm" if module.styles.compact == true }}">
+            {% for row in module.row %}
+                {% if row.head == true %}
+                    <thead>
+                        <tr>
+                            {% for cell in row.cell %}
+                                <th {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }} {{ "style='" + cell.custom_styling + "'" if cell.custom_styling != ""}}>
+                                    {{ cell.data }}
+                                </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                {% endif %}
+            {% endfor %}   
+            <tbody>         
+            {% for row in module.row %}
+                {% if row.head != true %}
+                    <tr>
+                        {% for cell in row.cell %}
+                            <td {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }} {{ "style='" + cell.custom_styling + "'" if cell.custom_styling != ""}}>
+                                {{ cell.data }}
+                            </td>
+                        {% endfor %}
+                    </tr> 
+                {% endif %} 
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}

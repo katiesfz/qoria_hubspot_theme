@@ -1,0 +1,3 @@
+{% for line in module.plaintext_multiline %}
+{{line}} {{ "<br>" if !loop.last }}
+{% endfor %}

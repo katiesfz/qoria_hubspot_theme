@@ -1,0 +1,247 @@
+{% macro card(card) %}
+
+  
+  <div class="col">
+  <div class="card {{ module.style.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} {{ module.style.shadow }} border-0 {{ "h-100 d-flex flex-column" if module.style.equal_heights }}">
+
+
+      {% set headingColour = " " %}
+      {% set preHeadingColour = " " %}
+
+        {% if card.icon_toggle == true %}
+          {% set icon = true %}
+        {% else %}
+          {% set icon = false %}
+        {% endif %}
+       
+       <div class="card-body {{ module.style.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} text-{{ module.style.textalignment }} {{ "d-flex flex-column" if module.style.equal_heights }}">
+
+      {% if ((card.preheader_toggle && card.pre_header != "") || (icon == true) || (card.title != ""))  %}
+        <div class="d-flex justify-content-{{ module.style.textalignment }} mb-3 align-items-center">
+          <div>
+            {% if card.preheader_toggle && card.pre_header != "" %}
+              <div class="{{card.preheader_size if card.preheader_size else "h6"}} mb-0 fw-normal {{ preHeadingColour }}">{{ card.pre_header }}</div>
+            {% endif %}
+            {% if card.title != "" %}
+              <h5 class="text-{{module.style.textalignment}} {{ card.title_size if card.title_size else "h5" }} {{ headingColour }} mb-0">{{ card.title }}</h5>
+            {% endif %}
+          </div>
+        
+          {% if icon == true %}
+            {% if card.icon.icon_colour != "inherit" %}
+              {% set iconColour = card.icon.icon_colour %}
+            {% else %}
+              {% set iconColour = module.style.icon.icon_colour %}
+            {% endif %}
+            <div class="flex-shrink-0 ms-auto ps-3">
+              {% if card.icon.custom_image.src %}
+                {% set sizeAttrs = 'width="{{ card.icon.custom_image.width }}" height="{{ card.icon.custom_image.height }}"' %}
+                {% if card.icon.custom_image.size_type == 'auto' %}
+                  {% set sizeAttrs = 'width="{{ card.icon.custom_image.width }}" height="{{ card.icon.custom_image.height }}" style="max-width: 100%; height: auto;"' %}
+                {% elif card.icon.custom_image.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ card.icon.custom_image.max_width }}" height="{{ card.icon.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = card.icon.custom_image.loading != 'disabled' ? 'loading="{{ card.icon.custom_image.loading }}"' : '' %}
+                <img src="{{ card.icon.custom_image.src }}" alt="{{ card.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% else %}
+                <div style="content-sizing: border-box;" class="d-flex justify-content-center align-items-center">
+                  {% if card.icon.icon_code != "none" %}
+                    {% if card.icon.icon_code %}
+                      {% set iconCode = "fa-" ~ card.icon.icon_code %}
+                    {% else %}
+                      {% set iconCode = "fa-" ~ card.icon.icon_field.name|lower|replace(" ", "-") %}
+                    {% endif %}
+                    {% if card.icon.sizing == "inherit" %}
+                      {% set sizing = globalSizing %}
+                    {%elif card.icon.sizing == "relative" %}
+                      {% set sizing = card.icon.relative_icon_size %}
+                    {% elif card.icon.sizing == "absolute" %}
+                      {% set sizing = card.icon.absolute_icon_size %}
+                    {% endif %}
+                    {% if card.icon.icon_style != "inherit" %}
+                      {% set iconStyle = card.icon.icon_style %}
+                    {% else %}
+                      {% set iconStyle = module.style.icon.icon_style %}
+                    {% endif %}
+                  <i class="text-{{iconColour}} fa-fw {{ "lh-base" if module.style.icon.sizing == "relative" }} {{ iconStyle }} {{ sizing }} {{ iconCode }}" style="{{ "line-height: " + (card.icon.icon_height * 4) + "px;" if card.icon.custom_icon_height }}"></i>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if card.text %}
+        <div class="card-text flex-grow-1">
+        {{ card.text }}
+        </div>
+      {% endif %}
+      {% if card.link.url.href %}
+        {% if card.cta_style %}
+          {% if card.cta_style != "text-" %}
+            {% set ctaClasses = card.cta_size ~ " " ~ card.cta_style ~ card.cta_colour ~ " mt-3" %}
+          {% else %}
+            {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
+          {% endif %}
+        {% else %}
+          {% set ctaClasses = "text-reset text-decoration-none fw-semibold mt-2" %}
+        {% endif %}
+        {% if (card.cta_alignment) && (card.cta_alignment != "inherit") %}
+          {% if card.cta_alignment == "center" %}
+            {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+          {% elif card.cta_alignment == "end" %}
+            {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+          {% elif card.cta_alignment == "start" %}
+            {% set ctaClasses = ctaClasses ~ " me-auto" %}
+          {% endif %}
+        {% else %}
+          {% if module.styles.textalignment == "center" %}
+            {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+          {% elif module.styles.textalignment == "end" %}
+            {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+          {% elif module.styles.textalignment == "start" %}
+            {% set ctaClasses = ctaClasses ~ " me-auto" %}
+          {% endif %}
+        {% endif %}
+        <a href="{{card.link.url.href}}" 
+        class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
+        {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if card.download %}
+          {% if card.download_file %}
+            download="{{card.download_file}}"
+          {% else %}
+              download
+          {% endif %}
+        {% endif %}
+        >
+        {% if (card.link_label|striptags) is string_containing "->" %}
+          {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
+        {% elif (card.link_label|striptags) is string_containing " >" %}
+          {% set linkLabel = card.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
+        {% else %}
+          {% set linkLabel = card.link_label %}
+        {% endif %}
+        {{linkLabel}}</a>
+      {% endif %}
+
+     </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+
+<!-- module html  -->
+<div id="carousel_{{name}}" class="carousel {% if module.style.normalise_heights %}carousel-normalise{% endif %} slide {{ module.style.slide_or_fade }} {{ module.style.dark_or_light }}" data-bs-interval="{{ module.style.interval }}" data-bs-wrap="{{ module.style.infinite_scrolling }}" data-bs-ride="{{ module.style.autoplay }}">
+{% if module.style.indicators %}
+ <div class="carousel-indicators">
+   {% for item in module.slide %}
+       <button type="button" data-bs-target="#carousel_{{name}}" data-bs-slide-to="{{loop.index0}}" {% if loop.first %}class="active" aria-current="true" {% endif %} aria-label="Slide {{loop.index}}"></button>
+   {% endfor %}
+ </div>
+ {% endif %}
+ <div class="carousel-inner">
+   {% for item in module.slide %}
+   
+   <div class="carousel-item {% if loop.first %}active{% endif %}" {% if item.custom_interval %}data-bs-interval="{{ item.custom_interval }}"{% endif %}>
+     {% set caroSlidesClasses = "col-12" %}
+     {% if module.style.slides_to_display == 2 %}
+       {% set caroSlidesClasses = "col-12 col-md-6" %}
+     {% elif module.style.slides_to_display == 3 %}
+       {% set caroSlidesClasses = "col-12 col-md-4" %}
+     {% elif module.style.slides_to_display == 4 %}
+       {% set caroSlidesClasses = "col-12 col-md-3" %}
+     {% endif %}
+       <div class="{{caroSlidesClasses}}">
+         <div class="row {{item.vertical_alignment}}">
+           {% for item2 in item.column %}
+             <div class="{{item2.column_classes}}">
+               {{ item2.content }}
+             </div>
+           {% endfor %}
+         </div>
+
+        {% if item.card|length > 0 %}
+          <div class="row">
+          {% for item2 in item.card%}
+
+            {{ card(item2) }}
+
+          {% endfor %}
+          </div>
+        {% endif %}
+
+       </div>
+   </div>
+{% endfor %}
+ </div>
+ {% if module.style.controls %}
+ <button class="carousel-control-prev" type="button" data-bs-target="#carousel_{{name}}" data-bs-slide="prev">
+   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   <span class="visually-hidden">Previous</span>
+ </button>
+ <button class="carousel-control-next" type="button" data-bs-target="#carousel_{{name}}" data-bs-slide="next">
+   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+   <span class="visually-hidden">Next</span>
+ </button>
+{% endif %}
+</div>
+
+
+{% if module.style.slides_to_display > 1 %}
+<script type="text/javascript">
+let items = document.querySelectorAll('.carousel .carousel-item')
+
+items.forEach((el) => {
+   const minPerSlide = {{module.style.slides_to_display}}
+   let next = el.nextElementSibling
+   for (var i=1; i<minPerSlide; i++) {
+       if (!next) {
+           // wrap carousel by using first child
+           next = items[0]
+         }
+       let cloneChild = next.cloneNode(true)
+       el.appendChild(cloneChild.children[0])
+       next = next.nextElementSibling
+   }
+})
+
+</script>
+
+<style>
+@media (max-width: 767px) {
+   .carousel-inner .carousel-item > div {
+       display: none;
+   }
+   .carousel-inner .carousel-item > div:first-child {
+       display: block;
+   }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+   display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+   
+   .carousel-inner .carousel-item-end.active,
+   .carousel-inner .carousel-item-next {
+     transform: translateX({{100 / module.style.slides_to_display}}%);
+   }
+   
+   .carousel-inner .carousel-item-start.active, 
+   .carousel-inner .carousel-item-prev {
+     transform: translateX(-{{100 / module.style.slides_to_display}}%);
+   }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+ transform: translateX(0);
+}
+</style>
+{% endif %}
