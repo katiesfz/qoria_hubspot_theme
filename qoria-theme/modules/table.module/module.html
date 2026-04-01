@@ -1,6 +1,6 @@
 {% if module.row %}
     <div style="{{module.styles.spacing.css}}">
-        <table class="table {{module.styles.border}} {{module.styles.striping}} {{module.styles.colour}} {{ "table-sm" if module.styles.compact == true }}">
+        <table class="table {{module.styles.border}} {{module.styles.striping}} {{module.styles.colour}} {{ "table-sm" if module.styles.compact == true }} p-0 m-0">
             {% for row in module.row %}
                 {% if row.head == true %}
                     <thead>
