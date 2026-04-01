@@ -345,7 +345,7 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ " ", "Default" ], [ "form-underline", "Underline" ], [ "form-light", "Light" ] ],
+    "choices" : [ [ " ", "Default" ], [ "form-underline", "Underline" ], [ "form-light", "Light" ], [ "form-compact", "Compact" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -496,7 +496,18 @@
     "show_emoji_picker" : false,
     "type" : "text",
     "default" : ""
-  }  ],
+  },  {
+    "name" : "on_form_submitted",
+    "display_width" : null,
+    "label" : "OnFormSubmitted code",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : true,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
