@@ -1,0 +1,51 @@
+[ {
+  "id" : "show_title",
+  "name" : "show_title",
+  "display_width" : null,
+  "label" : "Show form title",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Form Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+},{
+  "name" : "form",
+  "display_width" : null,
+  "label" : "Hero form",
+  "help_text" : "Use when including a form in the hero",
+  "required" : false,
+  "locked" : false,
+  "type" : "form",
+  "default" : {
+    "form_id" : "",
+    "response_type" : "redirect",
+    "message" : "Thanks for submitting the form.",
+    "redirect_id" : null,
+    "redirect_url" : "http://www.google.com"
+  }
+}]
