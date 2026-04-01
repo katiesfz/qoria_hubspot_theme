@@ -1,9 +1,21 @@
 
 {% set blog_posts = [] %}
 {% for blog in module.blog_posts %}
-{% set blog_item = {"blog_title": blog.blog_title|render, "blog_description": blog.blog_description, "blog_tag": blog.blog_tag, "blog_image": blog.blog_image.src|render, "blog_url":blog.blog_link.url.href, "blog_target":blog.blog_link.open_in_new_tab, "blog_badge":blog.badge} %}
+{% set blog_item = {"blog_title": blog.blog_title|render, "blog_description": blog.blog_description, "blog_tag": blog.blog_tag, "blog_image": blog.blog_image.src|render, "blog_url":blog.blog_link.url.href, "blog_target":blog.blog_link.open_in_new_tab, "blog_badge":blog.badge, "blog_classes":blog.advanced.blog_classes} %}
 {% do blog_posts.append(blog_item) %}
 {% endfor %}
+
+<style>
+    .before-dot {
+    }
+    .before-dot:before {
+    content: "\2022";
+    font-size: 2em;
+    line-height: calc(var(--q-badge-font-size) / 2);
+    vertical-align: middle;
+    margin-right: 4px;
+    }
+</style>
 
 {# split to columns/arrays #}
 {% if module.styles.responsive.desktop.columns >= module.styles.responsive.tablet.columns && module.styles.responsive.desktop.columns >= module.styles.responsive.mobile.columns %}
@@ -16,24 +28,39 @@
     {% set numCol = 2 %}
 {% endif %}
 {% set numPerCol = ((blog_posts|length)|default(4) / numCol|default(2))|round(0, "ceil") %}
-<div class="d-none">{{module.responsive|pprint}}<br>{{module.styles.responsive|pprint}}</div>
 <div class="container-fluid g-0">
 <div class="row row-cols-lg-{{module.styles.responsive.desktop.columns|default(2)}} row-cols-md-{{module.styles.responsive.tablet.columns|default(2)}} row-cols-{{module.styles.responsive.mobile.columns|default(1)}} g-3">
 {% if blog_posts != [] %}
     {% for column in blog_posts|slice(numPerCol, " ") %}
         <div class="col">
-            <div class="col-inner px-3 px-md-5 bg-white h-100">
+            <div class="col-inner bg-white h-100">
             {% for blog in column %}
                 {% if blog != " " %}
-                    <div class="blog py-3 py-md-5 {{"border-bottom" if not loop.last}}">
+                    <div class="blog p-3 p-md-5 mb-3 {{blog.blog_classes}}">
                         <div class="row align-items-stretch">
                             <div class="col d-flex flex-column justify-content-start">
                             {% if blog.blog_badge == "new_feature" %}
                                 <span class="d-inline-block badge bg-blue text-blue-emphasis align-self-start mb-2">New feature</span>
+                            {% elif blog.blog_badge == "reminder" %}
+                                <span class="d-inline-block badge bg-blue text-blue-emphasis align-self-start mb-2">Reminder</span>
+                            {% elif blog.blog_badge == "update" %}
+                                <span class="d-inline-block badge bg-blue text-blue-emphasis align-self-start mb-2">Update</span>
                             {% endif %}
-                            <h5 class="fw-semibold">{{ blog.blog_title }}</h5>
+                            <h3 class="h5 fw-semibold">{{ blog.blog_title }}</h3>
                             {% if blog.blog_tag %}
-                            <p class="small fw-semibold">{{ blog.blog_tag }}</p>
+                                {% if blog.blog_tag == "Filter" || blog.blog_tag == "Linewize Filter" %}
+                                    <p class="d-flex flex-row align-items-center badge bg-teal text-bg-teal align-self-start rounded-pill mb-2 before-dot">{{ blog.blog_tag }}</p>
+                                {% elif blog.blog_tag == "Pulse" %}
+                                    <p class="d-flex flex-row align-items-center badge bg-indigo text-bg-indigo align-self-start rounded-pill mb-2 before-dot">{{ blog.blog_tag }}</p>
+                                {% elif blog.blog_tag == "Classwize" %}
+                                    <p class="d-flex flex-row align-items-center badge bg-orange text-bg-orange align-self-start rounded-pill mb-2 before-dot">{{ blog.blog_tag }}</p>
+                                {% elif blog.blog_tag == "Monitor" %}
+                                    <p class="d-flex flex-row align-items-center badge bg-red text-bg-red align-self-start rounded-pill mb-2 before-dot">{{ blog.blog_tag }}</p>
+                                {% elif blog.blog_tag == "Qustodio" %}
+                                    <p class="d-flex flex-row align-items-center badge bg-blue text-bg-blue align-self-start rounded-pill mb-2 before-dot">{{ blog.blog_tag }}</p>
+                                {% else %}
+                                    <p class="small fw-semibold">{{ blog.blog_tag }}</p>
+                                {% endif %}
                             {% endif %}
                             </div>
                             {% if blog.blog_image %}
@@ -55,6 +82,13 @@
                             </div>
                         {% endif %}
                     </div>
+                    {% if module.styles.show_dividers %}
+                        {% if not loop.last %}
+                            <div class="px-3 px-md-5">
+                                <hr class="opacity-25">
+                            </div>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
             {% endfor %}
             </div>
