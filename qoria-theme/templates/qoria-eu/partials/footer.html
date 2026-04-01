@@ -22,9 +22,9 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
           {% module "module_16793700538024" path="/q-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('../../images/qoria/Qoria_Logo_White.svg')}}", "alt": "Qoria Logo", "size_type" : "auto_custom_max", "max_width" : "128"} %}
       </div>
       <div class="col-12 col-sm-5 col-lg-5 mb-5">
-            <h6 class="mb-3">
+            <p class="h6 mb-3">
             {% text "address_heading" label="Address heading", value="Registered Office", no_wrapper=True %}
-            </h6>
+            </p>
             {% module "address_multiline" path="../../../modules/plaintext-multiline", label="Address Multi-line", export_to_template_context=True %}
             {% textarea "address_multiline" label="Address Multiline", value="", export_to_template_context=True %}
             {% text "phone_number" label="Phone", value="08 9322 7600", export_to_template_context=True %}
@@ -64,7 +64,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
             {% text "business_number" label="Business Number", value="ABN 331 675 09177", no_wrapper=True %}</p>
       </div>
       <div class="col-12 col-sm-4 col-lg-2 mb-5">
-        <h6 class="mb-3">{% text "menu_heading" label="Menu heading", value="Useful Links", no_wrapper=True %}</h6>
+        <p class="h6 mb-3">{% text "menu_heading" label="Menu heading", value="Useful Links", no_wrapper=True %}</p>
         {% module_block module "module_16795362141501" path="/q-theme/modules/simple_menu", orientation="vertical", label="Useful Links", no_wrapper=True %}
           {% module_attribute "menu_tree" is_json=True %}[
             {
@@ -113,7 +113,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
         {% end_module_block %}
       </div>
       <div class="col-12 col-sm-3  col-lg-2 mb-5">
-        <h6 class="mb-3">{% text "legal_heading" label="Legal heading", value="Legal information", no_wrapper=True %}</h6>
+        <p class="h6 mb-3">{% text "legal_heading" label="Legal heading", value="Legal information", no_wrapper=True %}</p>
           
         {% module_block module "legal_menu" path="/q-theme/modules/simple_menu", orientation="vertical", label="Legal links", no_wrapper=True %}
           {% module_attribute "menu_tree" is_json=True %}[
