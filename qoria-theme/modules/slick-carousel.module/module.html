@@ -1,41 +1,62 @@
-
 {% require_css %}
-    <style>
+  <style>
     {% scope_css %}
-.carousel-container {
-  display: grid !important;
-  {% if module.style.controls %}
-  grid-template-columns: 60px 1fr 60px;
-  margin: 0 -60px;
-  {%else%}
-    grid-template-columns: 1fr;
-  {%endif%}
-  {%if module.style.indicators %}
-  padding-bottom: 2rem;
-  {% endif %}
-}
+      .carousel-container {
+        display: grid !important;
+        {% if module.style.controls %}
+        grid-template-columns: 60px 1fr 60px;
+        margin: 0 -60px;
+        {%else%}
+          grid-template-columns: 1fr;
+        {%endif%}
+        {%if module.style.indicators %}
+        padding-bottom: 2rem;
+        {% endif %}
+      }
 
 
-{%- if module.style.responsive.mobile.slides_per_row != 0 || module.style.responsive.tablet.slides_per_row != 0 || module.style.responsive.desktop.slides_per_row != 0 %}
-.slick-slide>div{
-	height: 100%;
-}
-{% endif %}
+      {%- if module.style.responsive.mobile.slides_per_row|default(0) != 0 %}
+      .slick-slide > div {
+        height: 100%;
+      }
+      {% endif %}
 
-{% if module.style.normalise_heights %}
+      {% if module.style.normalise_heights %}
+      .slick-initialized .slick-slide {
+          /* display: block; */
+          display: flex;
+          align-items: {{module.style.vertical_align}};
+          justify-content: {{module.style.horizontal_align}};
+      }
 
-.slick-initialized .slick-slide {
-    /* display: block; */
-    display: flex;
-    align-items: {{module.style.vertical_align}};
-    justify-content: {{module.style.horizontal_align}};
-}
+      .slide {
+        display: inline-flex !important;
+        height: 100%;
+      }
+      {% endif %}
+        
+      .slick-slide > .row > .col-12 {
+        {% if module.style.slide.background.background_type == "color" and module.style.slide.background.color.color %}
+          background-color: rgba({{ module.style.slide.background.color.color|convert_rgb }}, {{ module.style.slide.background.color.opacity / 100 }});
+        {% elif module.style.slide.background.background_type == "gradient" %}
+          background: {{ module.style.slide.background.gradient.css }};
+        {% elif module.style.slide.background.background_type == "image" %}
+          background-image: url({{ module.style.slide.background.image.src }}); 
+          background-size: cover;"
+        {% endif %}
+      }
 
-{% endif %}
+      {% if module.style.slide.spacing %}
+        .slick-list {
+          margin: 0 -{{module.style.slide.spacing/2}}px;
+        }
+        .slick-slide > div {
+          padding: 0 {{module.style.slide.spacing/2}}px;
+        }
+      {% endif %}
 
-
-{% end_scope_css %}
-</style>
+    {% end_scope_css %}
+  </style>
 {% end_require_css %}
 
 
@@ -44,7 +65,7 @@
 
   
     <div class="col">
-    <div class="card {{ module.style.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} {{ module.style.shadow }} border-0 {{ "h-100 d-flex flex-column" if module.style.equal_heights }}">
+    <div class="card {{ module.style.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} {{ card.shadow }} border-0 {{ "h-100 d-flex flex-column" if module.style.equal_heights }}">
   
   
         {% set headingColour = " " %}
@@ -195,15 +216,30 @@
         </div>
         {%endif%}
         
-    <div class="{{module.style.dark_or_light}} carousel-slider {{ "section-shadow" if module.style.shadow == "section-shadow" }}" style="{{ "transform-style: preserve-3d; position: relative; z-index: 2;" if module.style.shadow == "section-shadow" }}" id="{{ module.new_id if module.custom_id else "carousel_" ~ name}}">
+    <div class="{{module.style.dark_or_light}} carousel-slider {{ module.style.shadow if module.style.shadow is string_containing "filter" }} {{ "section-shadow" if module.style.shadow == "section-shadow" }}" style="{{ "transform-style: preserve-3d; position: relative; z-index: 2;" if module.style.shadow == "section-shadow" }}" id="{{ module.new_id if module.custom_id else "carousel_" ~ name}}">
 
       {% for item in module.slide %}
+        
+        {% if item.background.background_type != "inherit" %}
+            {% if item.background.background_type == "color" and item.background.color.color %}
+              {% set slideStyles = "background-color: rgba({{ item.background.color.color|convert_rgb }}, {{ item.background.color.opacity / 100 }});" %}
+            {% elif item.background.background_type == "gradient" %}
+              {% set slideStyles = "background: {{ item.background.gradient.css }};" %}
+            {% elif item.background.background_type == "image" %}
+              {% set slideStyles = "background-image: url({{ item.background.image.src }}); background-size: cover;" %}
+            {% else %}
+              {% set slideStyles = "" %}
+            {% endif %}
+          {% else %}
+            {% set slideStyles = "" %}
+        {% endif %}
+        
           <div class="slide">
-            {%- if module.style.responsive.mobile.slides_per_row != 0 || module.style.responsive.tablet.slides_per_row != 0 || module.style.responsive.desktop.slides_per_row != 0 %}
+            {%- if module.style.responsive.mobile.slides_per_row|default(0) != 0  %}
               <div>
             {% endif -%}
-                <div class="row">
-                    <div class="col-12">
+                <div class="row g-0 w-100" style="">
+                    <div class="col-12 {{item.slide_class}}" style="{{ slideStyles }} {{module.style.slide.spacing_field.css}}">
                         <div class="row g-0 w-100">
                             {% for item2 in item.column %}
                                 <div class="{{ item2.column_classes }}">
@@ -223,7 +259,7 @@
                     </div>
                 </div>    
             </div>
-        {%- if module.style.responsive.mobile.slides_per_row != 0 || module.style.responsive.tablet.slides_per_row != 0 || module.style.responsive.desktop.slides_per_row != 0 %}
+          {%- if module.style.responsive.mobile.slides_per_row|default(0) != 0  %}
           </div>
         {% endif -%}
       {% endfor %}
@@ -251,7 +287,9 @@ document.addEventListener("DOMContentLoaded", () => {
         infinite: {{ module.style.infinite_scrolling }},
         speed: 300,
         autoplay: {{ module.style.autoplay }},
-        {% if module.style.autoplay %} autoplaySpeed: {{ module.style.interval }}, {% endif %}
+        {%- if module.style.autoplay %} autoplaySpeed: {{ module.style.interval }}, {% endif -%}
+        {%- if module.style.center_mode %} centerMode: {{ module.style.center_mode }}, 
+          centerPadding: '{{ module.style.responsive.mobile.center_padding }}%',{% endif -%}
         arrows: {{ module.style.controls }},
         prevArrow: '#prevArrow-{{name}}',
         adaptiveHeight: {{ module.style.adaptive_height }},
@@ -259,12 +297,12 @@ document.addEventListener("DOMContentLoaded", () => {
         {% if module.as_nav_for -%}
         asNavFor: '{{module.nav_id}}',
         {%- endif %}
-        {% if module.style.slide_or_fade == "carousel-fade" -%}
+        {%- if module.style.slide_or_fade == "carousel-fade" %}
         fade: true,
-        {%- endif %}
-        {% if module.style.focus_on_select %}
+        {% endif -%}
+        {%- if module.style.focus_on_select %}
           focusOnSelect: true,
-        {% endif %}
+        {% endif -%}
         dotsClass: "slider-indicators",
         mobileFirst: true,
         slidesToShow: {{ module.style.responsive.mobile.slides_to_display }},
@@ -280,37 +318,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 breakpoint: parseInt(largeBreakpoint),
                 settings: {
                   slidesToShow: {{ module.style.responsive.desktop.slides_to_display }},
-                  slidesToScroll: {{ module.style.responsive.desktop.slides_to_slide }},
                   {%- if module.style.responsive.desktop.slides_per_row != 0 %}
                     rows: {{ (module.slide|length / module.style.responsive.desktop.slides_per_row)|int|round(0, "ceil") }}
                   {% else %}
-                    rows: 1
+                    rows: 1,
                   {% endif -%}
+                  {%- if module.style.center_mode %} centerMode: {{ module.style.center_mode }}, 
+                    centerPadding: '{{ module.style.responsive.desktop.center_padding }}%',{% endif -%}
+                  slidesToScroll: {{ module.style.responsive.desktop.slides_to_slide }},
                 }
             },
             {
                 breakpoint: parseInt(smallBreakpoint),
                 settings: {
                   slidesToShow: {{ module.style.responsive.tablet.slides_to_display }},
-                  slidesToScroll: {{ module.style.responsive.tablet.slides_to_slide }},
                   {%- if module.style.responsive.tablet.slides_per_row != 0 %}
-                  rows: {{ (module.slide|length / module.style.responsive.tablet.slides_per_row)|int|round(0, "ceil") }}
+                  rows: {{ (module.slide|length / module.style.responsive.tablet.slides_per_row)|int|round(0, "ceil") }},
                   {% else %}
-                  rows: 1
+                  rows: 1,
                   {% endif -%}
+                  centerMode: false,
+                  slidesToScroll: {{ module.style.responsive.tablet.slides_to_slide }},
                 }
             }
         ]
     });
 
-    {% if module.style.normalise_heights %}
+    {% if module.style.normalise_heights -%}
         
-        $(window).on(
-        'load resize orientationchange', function () {
-        normaliseHeights('#slick-{{ name }} .slick-slide');
+        window.addEventListener('load', function(){
+          normaliseHeights("##slick-{{ name }} .slick-slide", "xs");
         });
 
-    {% endif %}
+    {%- endif %}
 
 });
 </script>

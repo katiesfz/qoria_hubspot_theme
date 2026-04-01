@@ -55,42 +55,34 @@
       "default" : null
     },
     "children" : [ {
-      "id" : "slide.column.content",
-      "name" : "content",
-      "display_width" : null,
-      "label" : "Content",
-      "required" : false,
-      "locked" : false,
-      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
-      "type" : "richtext"
-    }, {
-      "id" : "slide.column.column_classes",
-      "name" : "column_classes",
-      "display_width" : null,
-      "label" : "Column classes",
-      "required" : false,
-      "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text",
-      "default" : "col"
-    } ],
+        "id" : "slide.column.content",
+        "name" : "content",
+        "display_width" : null,
+        "label" : "Content",
+        "required" : false,
+        "locked" : false,
+        "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+        "type" : "richtext"
+      }, {
+        "id" : "slide.column.column_classes",
+        "name" : "column_classes",
+        "display_width" : null,
+        "label" : "Column classes",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "col"
+      } ],
     "tab" : "CONTENT",
     "expanded" : false,
     "type" : "group",
     "default" : {
       "column_classes" : "col"
     }
-  },
-  
-  
-  
-  
-  
-  
-  
- {
+  }, {
   "id" : "card",
   "name" : "card",
   "display_width" : null,
@@ -577,11 +569,25 @@
     "id" : "card.override_colour",
     "name" : "override_colour",
     "display_width" : null,
-    "label" : "Override Card Body Colour",
+    "label" : "Card Body Colour",
     "required" : false,
     "locked" : false,
     "display" : "select",
     "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ],[ "bg-secondary text-white", "Secondary" ],[ "bg-indigo text-white", "Indigo" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
+  }, {
+    "id" : "card.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Card Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "None" ], [ "shadow-sm", "Small" ], [ "shadow", "Medium" ], [ "shadow-lg", "Large" ], [ "section-shadow", "Section shadow" ],[ "section-shadow-sm", "Section shadow small" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -592,20 +598,7 @@
   "expanded" : false,
   "type" : "group",
   "default" : []
-},
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  {
+}, {
     "id" : "slide.vertical_alignment",
     "name" : "vertical_alignment",
     "display_width" : null,
@@ -630,7 +623,57 @@
     "step" : 1,
     "suffix" : "ms",
     "type" : "number"
-  } ],
+  }, {
+      "label": "Background",
+      "name": "background",
+      "type": "group",
+      "children": [
+        {
+          "label": "Background type",
+          "name": "background_type",
+          "id": "slide.background.background_type",
+          "type": "choice",
+          "choices": [
+            ["inherit", "Inherit"],
+            ["none", "None"],
+            ["color", "Color"],
+            ["image", "Image"]
+          ],
+          "display": "radio",
+          "default": "inherit"
+        },
+        {
+          "label": "Color",
+          "name": "color",
+          "type": "color",
+          "visibility": {
+            "controlling_field": "slide.background.background_type",
+            "controlling_value_regex": "color",
+            "operator": "EQUAL"
+          }
+        },
+        {
+          "label": "Image",
+          "name": "image",
+          "type": "image",
+          "visibility": {
+            "controlling_field": "slide.background.background_type",
+            "controlling_value_regex": "image",
+            "operator": "EQUAL"
+          }
+        }
+      ]
+    }, {
+    "name": "slide_class",
+    "label": "Custom class",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": null
+  }],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
@@ -717,7 +760,7 @@
       "access" : null
     },
     "display" : "select",
-    "choices" : [ [ "start", "Top" ], [ "center", "Center" ], [ "end", "Bottom" ] ],
+    "choices" : [ [ "start", "Top" ], [ "center", "Center" ], [ "end", "Bottom" ], [ "stretch", "Stretch" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
@@ -812,7 +855,17 @@
     "display" : "toggle",
     "type" : "boolean",
     "default" : false
-  },  {
+  }, {
+    "id" : "style.center_mode",
+    "name" : "center_mode",
+    "display_width" : null,
+    "label" : "Center mode",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
     "id" : "style.shadow",
     "name" : "shadow",
     "display_width" : null,
@@ -820,12 +873,95 @@
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ " ", "None" ], [ "shadow-sm", "Small shadow" ], [ "shadow", "Medium shadow" ], [ "shadow-lg", "Large shadow" ], [ "section-shadow", "Section shadow" ] ],
+    "choices" : [ [ " ", "None" ], [ "shadow-sm", "Small shadow" ], [ "shadow", "Medium shadow" ], [ "shadow-lg", "Large shadow" ], [ "section-shadow", "Section shadow" ], [ "shadow-filter", "Filter shadow" ], [ "shadow-filter-sm", "Filter shadow small" ], [ "shadow-filter-md", "Filter shadow medium" ], [ "shadow-filter-lg", "Filter shadow large" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
     "default" : " "
+  }, {
+    "id": "style.slide",
+    "name": "slide",
+    "display_width": null,
+    "label": "Slide style",
+    "required": false,
+    "locked": false,
+    "tab": "STYLE",
+    "expanded": false,
+    "type": "group",
+    "children": [{
+        "id" : "style.slide.spacing",
+        "name" : "spacing",
+        "display_width" : null,
+        "label" : "Gutter",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 100,
+        "step" : 1,
+        "type" : "number",
+        "default" : 0
+      },{
+        "id" : "style.slide.spacing_field",
+        "name" : "spacing_field",
+        "display_width" : null,
+        "label" : "Spacing",
+        "required" : false,
+        "locked" : false,
+        "type" : "spacing",
+        "default" : {}
+      }, {
+        "label": "Background",
+        "name": "background",
+        "type": "group",
+        "children": [
+            {
+          "label": "Background type",
+          "name": "background_type",
+          "id": "style.slide.background.background_type",
+          "type": "choice",
+          "choices": [
+            ["none", "None"],
+            ["color", "Color"],
+            ["gradient", "Gradient"],
+            ["image", "Image"]
+          ],
+          "display": "radio",
+          "default": "none"
+        },
+        {
+          "label": "Color",
+          "name": "color",
+          "type": "color",
+          "visibility": {
+            "controlling_field": "style.slide.background.background_type",
+            "controlling_value_regex": "color",
+            "operator": "EQUAL"
+          }
+        },
+        {
+          "label": "Gradient",
+          "name": "gradient",
+          "type": "gradient",
+          "visibility": {
+            "controlling_field": "style.slide.background.background_type",
+            "controlling_value_regex": "gradient",
+            "operator": "EQUAL"
+          }
+        },
+        {
+          "label": "Image",
+          "name": "image",
+          "type": "image",
+          "visibility": {
+            "controlling_field": "style.slide.background.background_type",
+            "controlling_value_regex": "image",
+            "operator": "EQUAL"
+          }
+        }
+      ]
+    }] 
   }, {
     "id" : "style.responsive",
     "name" : "responsive",
@@ -893,6 +1029,27 @@
         "suffix" : " cards",
         "type" : "number",
         "default" : "3"
+      }, {
+        "id" : "style.responsive.desktop.center_padding",
+        "name" : "center_padding",
+        "display_width" : null,
+        "label" : "Center padding (%)",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 100,
+        "step" : 1,
+        "type" : "number",
+        "default" : 10,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "style.center_mode",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        }
       } ],
       "tab" : "STYLE",
       "expanded" : false,
@@ -957,6 +1114,27 @@
         "suffix" : " cards",
         "type" : "number",
         "default" : "2"
+      }, {
+        "id" : "style.responsive.tablet.center_padding",
+        "name" : "center_padding",
+        "display_width" : null,
+        "label" : "Center padding (%)",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 100,
+        "step" : 1,
+        "type" : "number",
+        "default" : 10,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "style.center_mode",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        }
       } ],
       "tab" : "STYLE",
       "expanded" : false,
@@ -1021,7 +1199,28 @@
         "suffix" : " cards",
         "type" : "number",
         "default" : "1"
-      }],
+      }, {
+        "id" : "style.responsive.mobile.center_padding",
+        "name" : "center_padding",
+        "display_width" : null,
+        "label" : "Center padding (%)",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : 0,
+        "max" : 100,
+        "step" : 1,
+        "type" : "number",
+        "default" : 10,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "style.center_mode",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        }
+      } ],
       "tab" : "STYLE",
       "expanded" : false,
       "type" : "group"
