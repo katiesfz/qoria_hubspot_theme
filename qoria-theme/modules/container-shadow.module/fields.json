@@ -1,0 +1,56 @@
+[{
+  "id" : "apply_to_element",
+  "name" : "apply_to_element",
+  "display_width" : null,
+  "label" : "Apply to element",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "column", "Column" ], [ "row", "Row" ], [ "section", "Section" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+},{
+  "id" : "shadow_style",
+  "name" : "shadow_style",
+  "display_width" : null,
+  "label" : "Shadow style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "small", "Small" ], [ "medium", "Medium" ], [ "large", "Large" ],[ "pullout-small", "Pullout small" ], [ "pullout-medium", "Pullout medium" ], [ "filter", "Filter" ], [ "filter-small", "Filter small" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+},{
+  "id" : "rounded",
+  "name" : "rounded",
+  "display_width" : null,
+  "label" : "Rounded corners",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [[ "all", "All" ], [ "top", "Top" ],[ "right", "Right" ], [ "bottom", "Bottom" ], [ "left", "Left" ] ],
+  "multiple" : true,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default": null
+},{
+  "id" : "rounded_strength",
+  "name" : "rounded_strength",
+  "display_width" : null,
+  "label" : "Rounding strength",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "0", "0" ], [ "1", "1" ], [ "2", "2" ],[ "3", "3" ], [ "4", "4" ], [ "5", "5" ], [ "circle", "Circle" ], [ "pill", "Pill" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default": "0"
+}
+]
