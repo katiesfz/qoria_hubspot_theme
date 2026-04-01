@@ -22,8 +22,11 @@
           <hr class="bg-turquoise-600 opacity-100 w-50" size="6">
           {% endif %}
           {{ module.modal_body }}
-
+          {% if module.form.form.form_id %}
+            <div class="form-container"></div>
+          {% endif %}
         </div>
+
         {% if module.cta %}
           <div class="modal-footer border-0 pt-0 {{ "pb-md-{{module.style.modal_padding}} px-md-{{module.style.modal_padding}}" if module.style.modal_padding != " "}}">
             {% for cta in module.cta %}
@@ -49,7 +52,6 @@
                 {% set alignment = "ms-auto" %}
               {% endif %}
               
-              
               {% set rel = (cta.link.open_in_new_tab ? "noopener " : null) ~ (cta.link.no_follow ? "nofollow" : null) %}
                 <a class="{{alignment}} btn btn{{ cta.button_style }}{{cta.button_colour}} {{cta.button_size}} {% if cta.button_style != "-" %}{{cta.text_colour}}{% endif %} {{ cta.advanced.additional_classes }}" href="{{ href }}"
                     id="button_{{ name }}_{{cta.index}}" {{cta.advanced.additional_code}}
@@ -71,36 +73,79 @@
   </div>
 </div>
 
-<script>
+{% if module.form.form.form_id %}
+  {{ require_js("//js.hsforms.net/forms/embed/v2.js", "head") }}
+{% endif %}
 
-document.addEventListener("DOMContentLoaded", () => {
-//  const modal{{ module.modal_id }} = document.getElementById('{{ module.modal_id }}');
-//  modal{{ module.modal_id }}.addEventListener('hide.bs.modal', event => {
-//    var modalVideo{{ module.modal_id }} = document.querySelector('#{{ module.modal_id }} video');
-//
-//    modalVideo{{ module.modal_id }}.pause();
-//    modalVideo{{ module.modal_id }}.currentTime = 0;
-//  });
+{% require_js %}
+  <script>
+    {% if module.form.form.form_id %}
+      const form_{{name}} = function() {
+        hbspt.forms.create({
+          portalId: "{{hub_id}}",
+          formId: "{{module.form.form.form_id}}",
+          target: "#{{ module.modal_id }} .form-container",
+            {% if module.form.form.response_type == "redirect" %}
+              {% if module.form.form.redirect_url != "" && module.form.form.redirect_url %}
+              redirectUrl: "{{module.form.form.redirect_url}}",
+              {% else %}
+              redirectUrl: "{{ content_by_id(module.form.form.redirect_id).absolute_url }}",
+              {% endif %}
+            {% elif module.form.form.response_type == "inline" %}
+              inlineMessage: "{{module.form.form.message|escapejs}}",
+            {% endif %}
+          {% if module.form.advanced.on_before_form_submit || module.form.override_values %}
+            onFormSubmit: function($form) {
+                {{module.form.advanced.on_before_form_submit}}
+                {% if module.form.override_values %}
+                  {% for item in module.form.override_values %}
+                    document.querySelector('input[name="{{ item.property_id }}"]').value = {{ item.property_value|escapejs }};
+                    document.querySelector('input[name="{{ item.property_id }}"]').dispatchEvent(new Event("input", { bubbles: true }));
+                  {% endfor %}       
+                {% endif %}
+              },
+          {% endif %}
+          {% if module.form.advanced.on_form_ready %}
+            onFormReady: function($form) {
+                {{module.form.advanced.on_form_ready}}
+              },
+          {% endif %}
+          onFormSubmitted: function($form, data) {
+            {% if module.form.advanced.on_form_submitted %}
+              {{module.form.advanced.on_form_submitted}}
+            {% endif %}
+            },
+          {% if module.form.cta.cta_label && module.form.cta.cta_label != "" %}
+            submitText: "{{module.form.cta.cta_label}}",
+          {% endif %}
+          submitButtonClass: "btn mt-4 {{module.form.cta.button_size}} btn{{module.form.cta.button_style}}{{module.form.cta.button_colour}} {{"d-block mx-auto" if module.form.cta.button_alignment == "center"}} {{"d-block ms-auto" if module.form.cta.button_alignment == "right"}}",
+          cssClass: 'hs-form {{ module.style.form_style if module.style.form_style != "form-underline" }} {{module.form.advanced.additional_classes}}'
+        });
+      };
 
-  const modal{{ module.modal_id }} = document.getElementById('{{ module.modal_id }}');
-  const modalBody = modal{{ module.modal_id }}.querySelector('.modal-body');
-  var modalContent{{module.modal_id}} = null;
-  if (modal{{ module.modal_id }}) {
-      let gotVideoCode = false;
-      modal{{ module.modal_id }}.addEventListener('shown.bs.modal', event => {
-          if (!gotVideoCode) {
-            modalContent{{ module.modal_id }} = modalBody.innerHTML;
-            gotVideoCode = true;
-          } else {
-            modalBody.innerHTML = modalContent{{ module.modal_id }};
-          }
+      document.addEventListener("DOMContentLoaded", () => {
+        form_{{name}}();
       });
-      modal{{ module.modal_id }}.addEventListener('hidden.bs.modal', event => {
-        modalBody.innerHTML = "";
-      });
-  }
-
-
-});
-
-</script>
+    {% endif %}
+        
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal{{ module.modal_id }} = document.getElementById('{{ module.modal_id }}');
+      const modalBody = modal{{ module.modal_id }}.querySelector('.modal-body');
+      var modalContent{{module.modal_id}} = null;
+      if (modal{{ module.modal_id }}) {
+        let gotVideoCode = false;
+        modal{{ module.modal_id }}.addEventListener('shown.bs.modal', event => {
+            if (!gotVideoCode) {
+              modalContent{{ module.modal_id }} = modalBody.innerHTML;
+              gotVideoCode = true;
+            } else {
+              modalBody.innerHTML = modalContent{{ module.modal_id }};
+            }
+        });
+        modal{{ module.modal_id }}.addEventListener('hidden.bs.modal', event => {
+          modalBody.innerHTML = "";
+        });
+      }
+    });
+  </script>
+{% end_require_js %}

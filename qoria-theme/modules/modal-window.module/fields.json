@@ -104,19 +104,7 @@
   "label" : "Form",
   "required" : false,
   "locked" : false,
-  "children" : [ {
-    "id" : "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
-    "name" : "title",
-    "display_width" : null,
-    "label" : "Form Title",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : ""
-  }, {
+  "children" : [{
     "id" : "e4adbe47-d462-2396-c7e7-62d52c812966",
     "name" : "form",
     "display_width" : null,
@@ -124,6 +112,8 @@
     "required" : false,
     "locked" : false,
     "type" : "form",
+    "disable_inline_form_editing": true,
+    "embed_versions": ["v2"],
     "default" : {
       "form_id" : "",
       "response_type" : "redirect",
@@ -131,152 +121,182 @@
       "redirect_id" : null,
       "redirect_url" : "http://www.google.com"
     }
-  }, {
-    "id" : "96a2942d-c746-0299-c0a9-6b16d7a20c1d",
-    "name" : "notifications_are_overridden",
+    },{  
+    "name" : "cta",
     "display_width" : null,
-    "label" : "Send form notifications to specified email addresses instead of the form defaults",
+    "label" : "CTA",
     "required" : false,
     "locked" : false,
-    "visibility" : {
-      "controlling_field" : "e4adbe47-d462-2396-c7e7-62d52c812966",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "^((?!\\\"form_type\\\":\\\"TICKET_FORM\\\").)*$",
-      "property" : null,
-      "operator" : "MATCHES_REGEX",
-      "access" : null
+    "children" : [{
+      "id" : "form.cta.alignment",
+      "name" : "alignment",
+      "display_width" : null,
+      "label" : "Alignment",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice"
+    },{
+      "id" : "form.cta.cta_label",
+      "name" : "cta_label",
+      "display_width" : null,
+      "label" : "Custom label",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    },{
+      "id" : "form.cta.button_colour",
+      "name" : "button_colour",
+      "display_width" : null,
+      "label" : "Button Colour",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary"
+    }, {
+      "id" : "form.cta.button_style",
+      "name" : "button_style",
+      "display_width" : null,
+      "label" : "Button Style",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "-", "Normal" ], [ "-outline-", "Outline" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-"
+    }, {
+      "id" : "form.cta.button_size",
+      "name" : "button_size",
+      "display_width" : null,
+      "label" : "Button Size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "btn-sm", "Small" ], [ " ", "Standard" ], [ "btn-lg", "Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : " "
+    }],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group"
+  },{
+    "id" : "form.advanced",
+    "name" : "advanced",
+    "display_width" : null,
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "form.advanced.additional_classes",
+      "name" : "additional_classes",
+      "display_width" : null,
+      "label" : "Additional classes",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    },  {
+      "id" : "form.advanced.on_form_ready",
+      "name" : "on_form_ready",
+      "display_width" : null,
+      "label" : "OnFormReady code",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : true,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    },  {
+      "id" : "form.advanced.on_before_form_submit",
+      "name" : "on_before_form_submit",
+      "display_width" : null,
+      "label" : "onBeforeFormSubmit code",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : true,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    },  {
+      "id" : "form.advanced.on_form_submitted",
+      "name" : "on_form_submitted",
+      "display_width" : null,
+      "label" : "OnFormSubmitted code",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : true,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  },{
+    "id" : "form.override_values",
+    "name" : "override_values",
+    "display_width" : null,
+    "label" : "Override values",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "form.override_values.property_id",
+      "default" : null
     },
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "e496f0fb-4c96-8a5f-5fa3-54a5838f02a2",
-    "name" : "notifications_override_email_addresses",
-    "display_width" : null,
-    "label" : "Email Addresses",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : "96a2942d-c746-0299-c0a9-6b16d7a20c1d",
-      "controlling_field_path" : null,
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "MATCHES_REGEX",
-      "access" : null
-    },
-    "allow_custom_email_addresses" : false,
-    "type" : "email"
-  }, {
-    "id" : "e80bfcd3-1b1e-a503-fd51-a6e9c6d8dbc6",
-    "name" : "follow_up_type_automation",
-    "display_width" : null,
-    "label" : "Add to workflow",
-    "required" : false,
-    "locked" : false,
-    "display" : "toggle",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
-    "name" : "follow_up_type_simple",
-    "display_width" : null,
-    "label" : "Send a follow-up email",
-    "help_text" : "To send a follow-up email, make sure the 'Set contacts created as marketing contacts’ setting is turned on. You can manage this in options. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Learn more</a>",
-    "required" : false,
-    "locked" : false,
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [ {
-        "controlling_field" : null,
-        "controlling_field_path" : null,
-        "controlling_value_regex" : null,
-        "property" : null,
-        "operator" : null,
-        "access" : {
-          "operator" : "HAS_ALL",
-          "scopes" : [ "email-marketing-product-access" ]
-        }
-      } ],
-      "children" : [ {
-        "boolean_operator" : "OR",
-        "criteria" : [ {
-          "controlling_field" : null,
-          "controlling_field_path" : null,
-          "controlling_value_regex" : null,
-          "property" : null,
-          "operator" : null,
-          "access" : {
-            "operator" : "HAS_NONE",
-            "scopes" : [ ],
-            "gates" : [ "ContextualAutomation:FormsEmailsAccess" ]
-          }
-        } ],
-        "children" : [ {
-          "boolean_operator" : "AND",
-          "criteria" : [ {
-            "controlling_field" : "fa108c7e-d78d-9edd-f015-f3d8e35fb790",
-            "controlling_field_path" : null,
-            "controlling_value_regex" : null,
-            "property" : null,
-            "operator" : "NOT_EMPTY",
-            "access" : null
-          }, {
-            "controlling_field" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
-            "controlling_field_path" : null,
-            "controlling_value_regex" : "true",
-            "property" : null,
-            "operator" : "EQUAL",
-            "access" : null
-          } ],
-          "children" : [ ]
-        } ]
-      } ]
-    },
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "fa108c7e-d78d-9edd-f015-f3d8e35fb790",
-    "name" : "simple_email_for_live_id",
-    "display_width" : null,
-    "label" : "Email",
-    "required" : false,
-    "locked" : false,
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "OR",
-      "criteria" : [ {
-        "controlling_field" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
-        "controlling_field_path" : null,
-        "controlling_value_regex" : "true",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      }, {
-        "controlling_field" : null,
-        "controlling_field_path" : null,
-        "controlling_value_regex" : null,
-        "property" : null,
-        "operator" : null,
-        "access" : {
-          "operator" : "HAS_ALL",
-          "scopes" : [ ],
-          "gates" : [ "ContextualAutomation:FormsEmailsAccess" ]
-        }
-      } ],
-      "children" : [ ]
-    },
-    "type" : "followupemail"
-  }, {
-    "id" : "82375ac5-e902-3628-b674-1eb8f5397c41",
-    "name" : "sfdc_campaign",
-    "display_width" : null,
-    "label" : "Salesforce campaign",
-    "required" : false,
-    "locked" : false,
-    "type" : "salesforcecampaign"
-  } ],
+    "children" : [ {
+      "id" : "form.override_values.property_id",
+      "name" : "property_id",
+      "display_width" : null,
+      "label" : "Property ID",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "form.override_values.property_value",
+      "name" : "property_value",
+      "display_width" : null,
+      "label" : "Value",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : [ ]
+  }],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
