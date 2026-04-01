@@ -20,7 +20,7 @@ label: Linewize US Header No Nav
     {% elif breakpoint == "never" %}
         {% set navbarExpand = "navbar-expand" %}
     {% else %}
-        {% set navbarExpand = "navbar-expand-" + breakpoint %}
+        {% set navbarExpand = "navbar-expand-" ~ breakpoint %}
     {% endif %}
 
 <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
