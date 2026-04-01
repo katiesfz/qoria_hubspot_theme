@@ -19,14 +19,14 @@
       {% else %}
         {% set fs = "" %}
       {% endif %}
-        <h5 class="m-0 mb-1 {{module.styles.title_size}}">
+        <p class="m-0 mb-1 {{module.styles.title_size}}">
         {{card.title}}
-        </h5>
+        </p>
     {% endif %}
     {% if card.text %}
-        <div class="p m-0  lh-sm {{fs}}">
+        <h3 class="p m-0 lh-sm {{fs}}">
         {{ card.text }}
-        </div>
+        </h3>
     {% endif %}
     {% if card.description %}
         <div class="p mb-0 mt-2">
