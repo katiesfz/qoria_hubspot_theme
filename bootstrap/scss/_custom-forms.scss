@@ -17,7 +17,7 @@
                 padding: 0;
                 background-color: transparent;
                 border-width: 1px;
-                margin-top: 0;
+                margin-top: .25em;
             //  margin-bottom: 0.5rem;
             }
 
@@ -38,7 +38,7 @@
         .hs-input {
             @extend .form-check-input;
             margin-bottom: 0;
-            margin-top: .3em;
+            margin-top: .25em;
             width: 1em !important;
             padding: 0;
         }
@@ -313,7 +313,7 @@
             padding: 0;
             background-color: transparent;
             border-width: 1px;
-            margin-top: 0;
+            margin-top: .25em;
            //  margin-bottom: 0.5rem;
         }
 
@@ -340,7 +340,7 @@
     }
 
     select.hs-input {
-        background: rgb(255 255 255 / 50%);
+        background-color: rgb(255 255 255 / 50%);
 
         &:focus {
             border-bottom-color: $gray-900;
@@ -409,7 +409,7 @@
 
     .hs-input {
             
-        background: rgb(255 255 255 / 50%);
+        background-color: rgb(255 255 255 / 50%);
         padding: 1rem;
         
         &:focus {
@@ -497,3 +497,133 @@
 
 
 
+
+// white form styles
+
+.form-white {
+
+    
+    $input-box-shadow: 0 0 4px 3px rgba(255, 255, 255, .5);
+    $form-select-focus-box-shadow: $input-box-shadow;
+
+    color: $white;
+    $input-border-width:      0;
+
+    .hs-form-checkbox, .hs-form-booleancheckbox {
+
+      .hs-form-checkbox-display, .hs-form-booleancheckbox-display {
+        .hs-input {
+
+            width: 1em !important;
+            padding: 0;
+            background-color: transparent;
+            border-width: 1px;
+            margin-top: .25em;
+           //  margin-bottom: 0.5rem;
+        }
+
+      }
+
+    }
+
+    a { color: $white; font-weight: $font-weight-bold;}
+
+    .hs-form-radio {
+
+      .hs-form-radio-display {
+
+        .hs-input {
+
+            width: 1em !important;
+            padding: 0;
+            background-color: transparent;
+            border-width: 1px;
+        }
+
+      }
+
+    }
+
+    select.hs-input {
+        background-color: rgb(255 255 255 / 100%);
+
+        &:focus {
+            border-bottom-color: $gray-900;
+            box-shadow: $form-select-focus-box-shadow;
+        }
+        
+    }
+
+    .hs-dateinput .hs-input {
+        background-image: #{escape-svg($form-date-indicator)};
+        background-color: transparent;
+        border-bottom-width: 1px;
+        padding-left: 0;
+        &:focus {
+            border-bottom-color: $gray-900;
+            box-shadow: $form-select-focus-box-shadow;
+            background-color: $white;
+        }
+    }
+
+    fieldset {
+        .hs-form-field:last-child {
+            .input {
+                margin-right: 0px !important;
+            }
+        }
+    }
+    
+    .hs-form-field {
+
+
+        &:not(:nth-last-of-type(2)) {
+            margin-bottom: 0.5rem;
+        }
+
+        &:nth-last-of-type(2) {
+            margin-bottom: 0.5rem;
+        }
+
+    }
+
+    .invalid.error {
+        color: $white;
+    }
+    
+
+    .hs-error-msg {
+        @extend .invalid-feedback;
+        display: inherit;
+        font-weight: 500;
+        color: $white;
+    }
+
+    label {
+        display: block;
+        width: fit-content;
+        font-weight: 600;
+        margin-bottom: 0.4em;
+        margin-left: 0.1em;
+        line-height: 1.3em;
+        margin-top: 0.5em;
+        color: $white;
+    }
+    
+
+    .hs-field-desc {
+        color: $white;
+    }
+
+    .hs-input {
+            
+        background-color: rgb(255 255 255 / 100%);
+        padding: 1rem;
+        
+        &:focus {
+            box-shadow: $form-select-focus-box-shadow;
+            background-color: $white;
+        }
+    }
+
+  }

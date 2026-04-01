@@ -1,14 +1,14 @@
 // scss-docs-start import-stack
 // Configuration
-@import "_functions";
+@import "functions";
 
 // Custom variables
-@import "_custom-fonts";
-@import "_custom-variables";
+@import "custom-fonts";
+@import "custom-variables";
 
 // scss-docs-start import-stack 
 // Configuration
-@import "_variables";
+@import "variables";
 @import "variables-dark"; 
 @import "maps";
 @import "mixins";

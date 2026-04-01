@@ -47,7 +47,7 @@
 
 // custom components
 @import "_custom-card";
-@import "_custom-grid";
+//@import "_custom-grid";
 @import "_custom-buttons";
 @import "_custom-tables";
 @import "_custom-accordion";
@@ -73,6 +73,9 @@
 @import "offcanvas";
 @import "placeholders";
 
+
+
+@import "_custom-badges";
 
 // Helpers
 @import "helpers";
@@ -466,7 +469,9 @@ $css-col-counts: 2,3,4,5;
             transparent 0%) 
         50% 100%/ 50% 50% no-repeat border-box;
 -webkit-mask: var(--mask);
-                mask: var(--mask);
+    mask: var(--mask);
+    margin: -1rem -1rem 0 -1rem;
+    pointer-events: none;
 }
 
 .gradient-tooltip-up {
@@ -477,6 +482,8 @@ $css-col-counts: 2,3,4,5;
     conic-Gradient(from 135deg at 50% 0%, red 0% 90deg, transparent 0%) 50% 0%/ 50% 50% no-repeat border-box;
 -webkit-mask: var(--mask);
                 mask: var(--mask);
+    margin: 0rem -1rem -1rem -1rem;
+    pointer-events: none;
 }
 
 .gradient-tooltip-left {
@@ -484,8 +491,10 @@ $css-col-counts: 2,3,4,5;
 	border-radius: calc(.5rem + 1rem);
     background-clip: border-box;
     --mask: linear-Gradient(red, red) padding-box, conic-Gradient(from 45deg at 50% 50%, red 0% 90deg, transparent 0%) -50% 50%/ 50% 50% no-repeat border-box;
--webkit-mask: var(--mask);
-                mask: var(--mask);
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    margin: -1rem -1rem -1rem 0;
+    pointer-events: none;
 }
 
 .gradient-tooltip-right {
@@ -494,14 +503,33 @@ $css-col-counts: 2,3,4,5;
     background-clip: border-box;
     --mask: linear-Gradient(red, red) padding-box, 
     conic-Gradient(from 225deg at 100% 50%, red 0% 90deg, transparent 0%) 100% 50%/ 50% 50% no-repeat border-box;
--webkit-mask: var(--mask);
-                mask: var(--mask);
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    margin: -1rem 0 -1rem -1rem;
+    pointer-events: none;
 }
 
 
 .gradient-tooltip-small {
     border: solid 0.5rem transparent;
     border-radius: calc(1rem);
+}
+
+.wellbeing-popup {
+    position: absolute;
+    filter: drop-shadow($box-shadow);
+    transition: opacity 400ms ease;
+    opacity: 0; 
+    visibility: hidden;
+    transform: translate(-50%, -100%); 
+    width: 350px;
+    max-width: 100%;
+}
+
+.wellbeing-popup-active {
+  opacity: 1; 
+  display: block;
+  visibility: visible;
 }
 
 
@@ -559,6 +587,14 @@ $css-col-counts: 2,3,4,5;
 
     .shadow-filter-sm {
         filter: drop-shadow($box-shadow-sm);
+    }
+
+    .shadow-filter-md {
+        filter: drop-shadow($box-shadow);
+    }
+
+    .shadow-filter-lg {
+        filter: drop-shadow($box-shadow-lg);
     }
 
     // borders

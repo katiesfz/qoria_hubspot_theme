@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
@@ -336,7 +338,7 @@ $success-bg-subtle:       $green-100 !default;
 $info-bg-subtle:          $cyan-100 !default;
 $warning-bg-subtle:       $yellow-100 !default;
 $danger-bg-subtle:        $red-100 !default;
-$light-bg-subtle:         mix($gray-100, $white) !default;
+$light-bg-subtle:         color.mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 
 $primary-border-subtle:   $blue-200 !default;
