@@ -52,6 +52,7 @@
   "default" : "Download and view our annual reports by clicking on the following links."
 }, 
 {
+  "id" : "corporate_governance",
   "name" : "corporate_governance",
   "display_width" : null,
   "label" : "Corporate Governance",
