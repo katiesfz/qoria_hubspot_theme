@@ -1,0 +1,390 @@
+
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .swiper {
+        min-height: 50px;
+      }
+      {% if !module.style.normalise_heights %}
+          .swiper-wrapper {
+            align-items: {{module.style.vertical_align}};
+          }
+
+          .swiper-slide {
+            height: auto;
+          }
+      {% endif %}
+
+      {% if module.style.controls && module.style.controls_outside %}
+        .swiper-container {    
+          margin-left: -56px;
+          margin-right: -56px;
+          padding-left: 56px;
+          padding-right: 56px;
+        }
+      {% endif %}
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+
+{% macro card(card) %}
+    <div class="col">
+    <div class="card {{ module.style.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} {{ module.style.shadow }} border-0 {{ "h-100 d-flex flex-column" if module.style.equal_heights }}">
+        {% set headingColour = " " %}
+        {% set preHeadingColour = " " %}
+  
+          {% if card.icon_toggle == true %}
+            {% set icon = true %}
+          {% else %}
+            {% set icon = false %}
+          {% endif %}
+         
+         <div class="card-body {{ module.style.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} text-{{ module.style.textalignment }} {{ "d-flex flex-column" if module.style.equal_heights }}">
+  
+        {% if ((card.preheader_toggle && card.pre_header != "") || (icon == true) || (card.title != ""))  %}
+          <div class="d-flex justify-content-{{ module.style.textalignment }} mb-3 align-items-center">
+            <div>
+              {% if card.preheader_toggle && card.pre_header != "" %}
+                <div class="{{card.preheader_size if card.preheader_size else "h6"}} mb-0 fw-normal {{ preHeadingColour }}">{{ card.pre_header }}</div>
+              {% endif %}
+              {% if card.title != "" %}
+                <h5 class="text-{{module.style.textalignment}} {{ card.title_size if card.title_size else "h5" }} {{ headingColour }} mb-0">{{ card.title }}</h5>
+              {% endif %}
+            </div>
+          
+            {% if icon == true %}
+              {% if card.icon.icon_colour != "inherit" %}
+                {% set iconColour = card.icon.icon_colour %}
+              {% else %}
+                {% set iconColour = module.style.icon.icon_colour %}
+              {% endif %}
+              <div class="flex-shrink-0 ms-auto ps-3">
+                {% if card.icon.custom_image.src %}
+                  {% set sizeAttrs = 'width="{{ card.icon.custom_image.width }}" height="{{ card.icon.custom_image.height }}"' %}
+                  {% if card.icon.custom_image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ card.icon.custom_image.width }}" height="{{ card.icon.custom_image.height }}" style="max-width: 100%; height: auto;"' %}
+                  {% elif card.icon.custom_image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ card.icon.custom_image.max_width }}" height="{{ card.icon.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                  {% endif %}
+                  {% set loadingAttr = card.icon.custom_image.loading != 'disabled' ? 'loading="{{ card.icon.custom_image.loading }}"' : '' %}
+                  <img src="{{ card.icon.custom_image.src }}" alt="{{ card.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% else %}
+                  <div style="content-sizing: border-box;" class="d-flex justify-content-center align-items-center">
+                    {% if card.icon.icon_code != "none" %}
+                      {% if card.icon.icon_code %}
+                        {% set iconCode = "fa-" ~ card.icon.icon_code %}
+                      {% else %}
+                        {% set iconCode = "fa-" ~ card.icon.icon_field.name|lower|replace(" ", "-") %}
+                      {% endif %}
+                      {% if card.icon.sizing == "inherit" %}
+                        {% set sizing = globalSizing %}
+                      {%elif card.icon.sizing == "relative" %}
+                        {% set sizing = card.icon.relative_icon_size %}
+                      {% elif card.icon.sizing == "absolute" %}
+                        {% set sizing = card.icon.absolute_icon_size %}
+                      {% endif %}
+                      {% if card.icon.icon_style != "inherit" %}
+                        {% set iconStyle = card.icon.icon_style %}
+                      {% else %}
+                        {% set iconStyle = module.style.icon.icon_style %}
+                      {% endif %}
+                    <i class="text-{{iconColour}} fa-fw {{ "lh-base" if module.style.icon.sizing == "relative" }} {{ iconStyle }} {{ sizing }} {{ iconCode }}" style="{{ "line-height: " + (card.icon.icon_height * 4) + "px;" if card.icon.custom_icon_height }}"></i>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+  
+        {% if card.text %}
+          <div class="card-text flex-grow-1">
+          {{ card.text }}
+          </div>
+        {% endif %}
+        {% if card.link.url.href %}
+          {% if card.cta_style %}
+            {% if card.cta_style != "text-" %}
+              {% set ctaClasses = card.cta_size ~ " " ~ card.cta_style ~ card.cta_colour ~ " mt-3" %}
+            {% else %}
+              {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
+            {% endif %}
+          {% else %}
+            {% set ctaClasses = "text-reset text-decoration-none fw-semibold mt-2" %}
+          {% endif %}
+          {% if (card.cta_alignment) && (card.cta_alignment != "inherit") %}
+            {% if card.cta_alignment == "center" %}
+              {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+            {% elif card.cta_alignment == "end" %}
+              {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+            {% elif card.cta_alignment == "start" %}
+              {% set ctaClasses = ctaClasses ~ " me-auto" %}
+            {% endif %}
+          {% else %}
+            {% if module.styles.textalignment == "center" %}
+              {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+            {% elif module.styles.textalignment == "end" %}
+              {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+            {% elif module.styles.textalignment == "start" %}
+              {% set ctaClasses = ctaClasses ~ " me-auto" %}
+            {% endif %}
+          {% endif %}
+          <a href="{{card.link.url.href}}" 
+          class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
+          {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+          {% if card.download %}
+            {% if card.download_file %}
+              download="{{card.download_file}}"
+            {% else %}
+                download
+            {% endif %}
+          {% endif %}
+          >
+          {% if (card.link_label|striptags) is string_containing "->" %}
+            {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
+          {% elif (card.link_label|striptags) is string_containing " >" %}
+            {% set linkLabel = card.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
+          {% else %}
+            {% set linkLabel = card.link_label %}
+          {% endif %}
+          {{linkLabel}}</a>
+        {% endif %}
+  
+       </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% if module.slide|length == 0 %}
+    {% if is_in_page_editor %}
+        {% editor_placeholder %}
+    {% endif %}
+{% endif %}
+
+
+<!-- Slider main container -->
+<div class="swiper-container position-relative"  id="container_{{ module.new_id if module.custom_id else name}}">
+  {%- if module.style.controls %}
+    <div class="swiper-button-prev {{module.style.dark_or_light}}">
+      <span class="fa-stack fa-2x fs-6 {{module.style.dark_or_light}}">
+      <i class="fal fa-circle fa-stack-2x"></i>
+      <i class="fas fa-chevron-left fa-stack-1x"></i>
+      </span>
+    </div>
+  {% endif -%}  
+  <div class="{{module.style.dark_or_light}} swiper {{ "section-shadow" if module.style.shadow == "section-shadow" }}" style="{{ "transform-style: preserve-3d; position: relative; z-index: 2;" if module.style.shadow == "section-shadow" }}" id="{{ module.new_id if module.custom_id else "carousel_" ~ name}}">
+  
+    <div class="swiper-wrapper">
+      {% for item in module.slide %}
+        <div class="swiper-slide">
+          <div class="row">
+            <div class="col-12">
+              <div class="{{ item.row_classes }}">
+                {% for item2 in item.column %}
+                    <div class="{{ item2.column_classes }}">
+                    {{ item2.content }}
+                    </div>
+                {% endfor %}
+              </div>
+              {% if item.card|length > 0 %}
+                <div class="row row-cols-{{module.style.responsive.mobile.cards}} row-cols-md-{{module.style.responsive.tablet.cards}} row-cols-lg-{{module.style.responsive.desktop.cards}} g-3 justify-content-{{module.style.row_alignment}}">
+                  {% for item2 in item.card%}
+                      {{ card(item2) }}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+    {%- if module.style.indicators %}
+      <div class="swiper-pagination {{module.style.dark_or_light}}"></div>
+    {% endif -%}
+
+    <!-- If we need scrollbar -->
+    <!-- <div class="swiper-scrollbar"></div> -->
+  </div>
+  
+    {%- if module.style.controls %}
+    <div class="swiper-button-next {{module.style.dark_or_light}}">
+      <span class="fa-stack fa-2x fs-6 {{module.style.dark_or_light}}">
+      <i class="fal fa-circle fa-stack-2x"></i>
+      <i class="fas fa-chevron-right fa-stack-1x"></i>
+      </span>
+    </div>
+    {% endif -%}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const smallBreakpointStr = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-md');
+    const largeBreakpointStr = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-xl');
+    const replaceAlphaRegex = /\D/g;
+    const smallBreakpoint = smallBreakpointStr.replace(replaceAlphaRegex, "");
+    const largeBreakpoint = largeBreakpointStr.replace(replaceAlphaRegex, "");
+
+    const swiperContainer = document.getElementById("{{ module.new_id if module.custom_id else "carousel_" ~ name}}");
+
+    let breakpointsObj = {};
+    breakpointsObj[smallBreakpoint] = {
+      slidesPerView: {{ module.style.responsive.tablet.slides_to_display }},
+      {% if module.style.responsive.tablet.slides_to_slide > 1 -%}
+      slidesPerGroup: {{ module.style.responsive.tablet.slides_to_slide }},
+      {%- endif %}
+      {%- if module.style.responsive.tablet.slides_per_row != 0 %}
+        grid: {
+          rows: {{ (module.slide|length / module.style.responsive.tablet.slides_per_row)|int|round(0, "ceil") }},
+          fill:	'row',
+        },
+        loopAddBlankSlides: true,
+      {% endif -%}
+    };
+    breakpointsObj[largeBreakpoint] = {
+      slidesPerView: {{ module.style.responsive.desktop.slides_to_display }},
+      {% if module.style.responsive.desktop.slides_to_slide > 1 -%}
+      slidesPerGroup: {{ module.style.responsive.desktop.slides_to_slide }},
+      {%- endif %}
+      {%- if module.style.responsive.desktop.slides_per_row != 0 %}
+        grid: {
+          rows: {{ (module.slide|length / module.style.responsive.desktop.slides_per_row)|int|round(0, "ceil") }},
+          fill:	'row',
+        },
+        loopAddBlankSlides: true,
+      {% endif -%}
+    };
+
+
+
+    const swiper = new Swiper(swiperContainer, {
+      {% if module.style.slide_or_fade == "carousel-fade" -%}
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+      {% elif module.style.slide_or_fade == "carousel-slide" %}
+        effect: 'slide',
+      {% elif module.style.slide_or_fade == "flip" %}
+        effect: 'flip',
+        flipEffect: {
+          slideShadows: false,
+          limitRotation: false,
+        },
+      {% elif module.style.slide_or_fade == "cube" %}
+        effect: 'cube',
+        cubeEffect: {
+          slideShadows: false,
+          shadow: true,
+          shadowOffset: 20,
+          shadowScale: 0.94,
+          slideShadows: true,
+        },
+      {% elif module.style.slide_or_fade == "cards" %}
+        effect: 'cards',
+        cardsEffect: {
+          perSlideOffset:	8,
+          perSlideRotate:	2,
+          rotate:	true,
+          slideShadows:	true,
+        },
+      {% elif module.style.slide_or_fade == "creative" %}
+        effect: 'creative',
+        creativeEffect: {
+          limitProgress: 1,
+          next: {
+            translate: (string | number)[]; // Array with translate X, Y and Z values
+            rotate?: number[]; // Array with rotate X, Y and Z values (in deg)
+            opacity?: number; // Slide opacity
+            scale?: number; // Slide scale
+            shadow?: boolean; // Enables slide shadow
+            origin?: string; // Transform origin, e.g. `left bottom`
+          },
+          perspective:	true, //Enable this parameter if your custom transforms require 3D transformations (translateZ, rotateX, rotateY )
+          prev: {
+            translate: (string | number)[]; // Array with translate X, Y and Z values
+            rotate?: number[]; // Array with rotate X, Y and Z values (in deg)
+            opacity?: number; // Slide opacity
+            scale?: number; // Slide scale
+            shadow?: boolean; // Enables slide shadow
+            origin?: string; // Transform origin, e.g. `left bottom`
+          },
+          progressMultiplier: 1,
+          shadowPerProgress: false, // Splits shadow "opacity" per slide based on limitProgress (only if transformation shadows enabled). E.g. setting limitProgress: 2 and enabling shadowPerProgress, will set shadow opacity to 0.5 and 1 on two slides next to active. With this parameter disabled, all slides beside active will have shadow with 1 opacity
+        },
+      {% elif module.style.slide_or_fade == "coverflow" %}
+        effect: 'coverflow',
+        coverflowEffect: {
+          depth: "100",
+          modifier: 1,
+          rotate: "-5",
+          scale: "1",
+          slideShadows: true,
+          stretch: "10%",
+        },
+      {%- endif %}
+      {%- if module.style.infinite_scrolling %}
+      loop: true,
+      {% endif -%}
+      {%- if module.style.autoplay%} 
+        autoplay: {
+          delay: {{ module.style.interval }},
+          disableOnInteraction:	true,
+          pauseOnMouseEnter: false,
+          reverseDirection: false,
+          stopOnLastSlide: false,
+          waitForTransition: true
+        }, 
+      {% endif -%}
+      {%- if module.style.focus_on_select %}
+        slideToClickedSlide: true,
+      {% endif -%}
+      {%- if module.style.adaptive_height %}
+        autoHeight: true,
+      {% endif -%}
+      {%- if module.style.indicators %}
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      {% endif -%}
+      {%- if module.style.controls %}
+        navigation: {
+          addIcons: false,
+          enabled: true,
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      {% endif -%}
+      {%- if module.as_nav_for %}
+        controller: {
+          by: 'slide',
+          control: "#{{module.nav_id}}",
+          inverse: true,
+        },
+      {% endif -%}
+
+
+      a11y: true, // can also be options object
+
+      breakpoints: breakpointsObj,
+      slidesPerView: {{ module.style.responsive.mobile.slides_to_display }},
+      {% if module.style.responsive.mobile.slides_to_slide > 1 -%}
+        slidesPerGroup: {{ module.style.responsive.mobile.slides_to_slide }},
+      {% endif %}
+      {%- if module.style.responsive.mobile.slides_per_row != 0 %}
+        grid: {
+          rows: {{ (module.slide|length / module.style.responsive.mobile.slides_per_row)|int|round(0, "ceil") }},
+          fill:	'row',
+        },
+        loopAddBlankSlides: true,
+      {% endif -%}
+      spaceBetween: 150,
+      initialSlide: 3,
+      centeredSlides: true,
+      watchOverflow: true,
+      speed: 400,
+    });
+  });
+</script>
