@@ -4,18 +4,19 @@
   label: Linewize US LP No Nav
   screenshotPath: ../../images/template-previews/landing-page.png
 -->
+
 {% extends "./layouts/base.html" %}
 
 {% block head %}
   <meta name="robots" content="noindex">
-{% endblock %}
+{% endblock head %}
 
 
 {% block header %}
     <div class="header-wrapper sticky-top shadow-sm">
       {% global_partial path='./partials/header-no-navigation.html', label="Header No Nav" %}
     </div>
-  {% endblock header %}
+{% endblock header %}
   
 
 {% block body %}

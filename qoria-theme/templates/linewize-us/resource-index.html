@@ -187,7 +187,7 @@
       <div class="container-xl">
         <div class="row">
           <div class="col-12">
-              {% module
+             {% module
                 "Heading",
                 path="/q-theme/modules/heading",
                 heading_tag="h1",
@@ -195,8 +195,11 @@
                   "colour" : "light",
                   "textalignment" : "start"
                 },
-                heading="Welcome to our <strong>blogs</strong>"
+                heading="Welcome to our <strong>blogs</strong>",
+                export_to_template_context=true
               %}
+              
+            <h1>{{content.widgets.Heading.body.heading}}</h1>
           </div>
         </div>
         <div class="row">
