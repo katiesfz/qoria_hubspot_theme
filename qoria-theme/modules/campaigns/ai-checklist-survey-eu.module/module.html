@@ -1,13 +1,13 @@
-<div class="ai-survey" id="survey">
+<div class="ai-survey" id="surveyContainer" data-form-id="{{module.gating_form.form_id}}" data-hub-id="{{hub_id}}">
     <form id="aiSurveyForm">
         <div id="step1" class="step step-active" data-step="1">
             <h2 class="section-header">
-                1. A School, College, MAT Approach
+                1. A School Approach
             </h2>
             <div class="question-block">
-                <span class="question-text">1. Have you read the relevant materials from the DfE?</span>
+                <span class="question-text">1. Have you reviewed the relevant EU-level or international guidance on the use of generative AI in education?</span>
                 <div class="question-subtext">
-                    For example, the <a href="https://www.gov.uk/government/publications/generative-artificial-intelligence-in-education/generative-artificial-intelligence-ai-in-education" target="_blank" rel="noopener">Generative AI Policy Paper</a> and <a href="https://www.gov.uk/government/collections/using-ai-in-education-settings-support-materials" target="_blank" rel="noopener">Using AI in education settings: Support materials</a>.
+                    For example, UNESCO’s <a href="https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research" target="_blank" rel="nofollow noopener">Guidance for Generative AI in Education and Research</a> and the European Commission’s <a href="https://education.ec.europa.eu/focus-topics/digital-education/action-plan/ethical-guidelines-for-educators-on-using-ai?utm_source=chatgpt.com" rel="nofollow noopener" target="_blank">Ethical Guidelines on the Use of AI and Data in Teaching and Learning</a>.
                 </div>
                 <div class="options-group">
                     <input type="radio" id="q1_yes" name="q1" value="Yes" />
@@ -436,11 +436,11 @@
         </div>
 
         <div class="cta-box">
-            <h3>How to improve your AI safeguarding with Smoothwall</h3>
+            <h3>How to improve your AI safeguarding with Qoria</h3>
             <p>
-                Smoothwall Filter, Monitor and Online Safety Hub are designed from the ground up to address AI risk head-on. Book an informal, no-obligation demo to compare with your existing solutions and learn what's possible.
+                Qoria Filter, Monitor and Online Safety Hub are designed from the ground up to address AI risk head-on. Book an informal, no-obligation demo to compare with your existing solutions and learn what's possible.
             </p>
-            <a href="https://smoothwall.com/ai-checklist-demo-follow-up" target="_blank" class="btn cta-btn">Book a demo today</a>
+            <a href="{{content_by_id(module.follow_up_page).absolute_url}}" target="_blank" class="btn cta-btn">Book a demo today</a>
         </div>
         <button id="printBtn" class="submit-btn" style="width: 100%; margin-top: 20px"><span>Print / Save Results</span></button>
     </div>
@@ -453,12 +453,14 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-5 py-4 pt-2">
-                <h3 class="mb-6 border-top border-bottom border-dark py-3 border-2 fw-semibold px-2 d-none">
-                    Almost there!
-                </h3>
-                <p class="lead d-none">
-                    Please complete the form below to access your tailored AI checklist results.
-                </p>
+                <div id="formHeader">
+                    <h3 class="mb-6 border-top border-bottom border-dark py-3 border-2 fw-semibold px-2 d-none">
+                        Almost there!
+                    </h3>
+                    <p class="lead d-none">
+                        Please complete the form below to access your tailored AI checklist results.
+                    </p>
+                </div>
                 <div id="hubspotFormTarget"></div>
                 {% if is_in_page_editor || request.query_dict.hs_preview %}
                     <button type="button" id="skipToResults" class="submit-btn"><span>Skip to results</span></button>

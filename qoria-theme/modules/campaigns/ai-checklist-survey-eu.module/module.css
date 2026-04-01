@@ -649,7 +649,7 @@ fieldset:disabled .ai-survey .submit-btn,
     visibility: hidden;
     background-color: white;
   }
-  #survey {
+  #surveyContainer {
     visibility: visible;
     position: absolute;
     left: 0;

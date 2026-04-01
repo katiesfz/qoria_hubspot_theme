@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const aiSurveyContainer = document.getElementById("surveyContainer");
+
+    const formId = aiSurveyContainer.dataset.formId;
+    const hubId = aiSurveyContainer.dataset.hubId;
+
     // --- GLOBAL VARIABLES ---
     let protectPctGlobal = 0;
     let detectPctGlobal = 0;
@@ -7,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let overallAverageGlobal = 0;
     let hubspotForm = null; 
     let finalData = {};
+    let gotDetails = false;
+    let contactDetails = {};
 
 
     const surveyFormModal = new bootstrap.Modal('#surveyFormModal', {
@@ -27,24 +34,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- HUBSPOT FORM INIT ---
 
-    window.addEventListener('load', function() {
+    function buildForm() {
         if(window.hbspt) {
             hbspt.forms.create({
-                portalId: "4139239",
-                formId: "f8279705-9592-4493-947a-a963f46f8c30",
-                region: "na1",
+                portalId: hubId,
+                formId: formId,
+                region: "eu1",
                 target: "#hubspotFormTarget",
                 submitButtonClass: "btn btn-light d-block mt-4",
                 cssClass: 'hs-form form-light',
                 onFormReady: function($form) {
                     hubspotForm = $form[0]; 
                 },
-                onFormSubmitted: function() {
-                    surveyFormModal.hide(); 
-                    calculateAndShowResults();
+                onFormSubmitted: function($form, data) {
+                    surveyFormModal.hide();
+                    gotDetails == true;
+                    contactDetails = data.submissionValues;
+                    buildForm();
                 }
             });
         }
+    }
+
+    window.addEventListener('load', function() {
+        buildForm();
     });
 
     // --- NAVIGATION & LOGIC ---
@@ -62,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sections = Array.from(document.getElementsByClassName("dnd-section"));
         
         const nonSurveySections = sections.filter(parentElement => {
-            const childWithClass = parentElement.querySelector("#survey");
+            const childWithClass = parentElement.querySelector("#surveyContainer");
             return !childWithClass;
         });
 
@@ -70,6 +83,35 @@ document.addEventListener('DOMContentLoaded', () => {
             section.classList.add("hide-on-print");
         });
     }
+
+    function updateLeadWithScores(contactDetailsObject, scoreData) {
+        const portalId = hubId;
+        const formId = formId;
+        const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+        const scoreData = {
+            "protect_score": protectPctGlobal,
+            "detect_score": detectPctGlobal,
+            "empower_score": empowerPctGlobal
+        };
+
+        const updatedData = {
+            ...contactDetailsObject,
+            fields: additionalData.fields.map(field => {
+                if (Object.hasOwn(scoreData, field.name)) {
+                    return { ...field, value: updates[field.name] };
+                }
+                return field;
+            })
+        };
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedData)
+        }).then(() => console.log("Initial lead captured."));
+    }
+
 
     function updateProgressBar(stepNumber) {
         const totalSteps = 5;
@@ -101,6 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function nextStep(targetStep) {
         const currentStepEl = document.querySelector('.step.step-active');
         if (isStepValid(currentStepEl)) {
+            if (targetStep == 2 && gotDetails == false) {
+                openSoftGate();
+            }
             currentStepEl.querySelector('.error-message').style.display = 'none';
             currentStepEl.classList.remove('step-active');
             document.getElementById('step' + targetStep).classList.add('step-active');
@@ -119,7 +164,29 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.ai-survey').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function openGate() {
+    function openSoftGate() {
+        const currentStepEl = document.querySelector('.step.step-active');
+        if (!isStepValid(currentStepEl)) {
+            currentStepEl.querySelector('.error-message').style.display = 'block';
+            return;
+        }
+        
+        const formHeader = document.getElementById("surveyFormModal").getElementById("formHeader");
+
+        formHeader.innerHTML = `<h3 class="mb-6 border-top border-bottom border-dark py-3 border-2 fw-semibold px-2 d-none">
+                                    Almost there!
+                                </h3>
+                                <p class="lead d-none">
+                                    Please complete the form below to access your tailored AI checklist results.
+                                </p>`;
+
+        surveyFormModal.show();
+
+        addPrintClasses();
+    }
+
+    
+    function openHardGate() {
         const currentStepEl = document.querySelector('.step.step-active');
         if (!isStepValid(currentStepEl)) {
             currentStepEl.querySelector('.error-message').style.display = 'block';
@@ -129,17 +196,27 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateScores();
         
         if (hubspotForm) {
+
             let pIn = hubspotForm.querySelector('input[name="protect_score"]');
-            if(pIn) { pIn.value = protectPctGlobal.toFixed(1); pIn.dispatchEvent(new Event('change', {bubbles:true})); }
+            if(pIn) {pIn.value = protectPctGlobal.toFixed(1); pIn.dispatchEvent(new Event('change', {bubbles:true}));}
             
             let dIn = hubspotForm.querySelector('input[name="detect_score"]');
             if(dIn) { dIn.value = detectPctGlobal.toFixed(1); dIn.dispatchEvent(new Event('change', {bubbles:true})); }
             
             let eIn = hubspotForm.querySelector('input[name="empower_score"]');
             if(eIn) { eIn.value = empowerPctGlobal.toFixed(1); eIn.dispatchEvent(new Event('change', {bubbles:true})); }
+        
         } 
         
-        surveyFormModal.show();
+        if (gotDetails == false) {
+            surveyFormModal.show();
+        }
+        
+        if (gotDetails == true) {
+            // resubmit form with score
+
+
+        }
 
         addPrintClasses();
     }
@@ -308,17 +385,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let points = [];
 
         if (data.q6 !== 'Yes') {
-            points.push("<strong>Establish an AI Policy:</strong> Establishing a dedicated AI policy is a priority to provide clarity for staff and students. For support in creating one, <a href='https://smoothwall.com/building-an-effective-ai-policy-for-uk-schools' target='_blank'>see our guide on building an effective AI policy for UK schools</a>.");
+            points.push("<strong>Establish an AI Policy:</strong> Establishing a dedicated AI policy is a priority to provide clarity for staff and students. For support in creating one, see our guide on building an effective AI policy.");
         } else if (data.q7 !== 'Yes') {
             points.push("<strong>Cross-reference your policies:</strong> You have an AI policy, which is excellent. However, it is valuable to cross-reference this with your other statutory policies (e.g., Safeguarding, Acceptable Use) to ensure there is no conflict or ambiguity.");
         }
 
         if (data.q1 === 'No' || data.q1 === 'Not Sure') {
-                points.push("<strong>Review DfE guidance around safe AI use:</strong> Reviewing the <a href='https://www.gov.uk/government/collections/using-ai-in-education-settings-support-materials' target='_blank'>Department for Education’s (DfE) guidance on generative AI</a> is a strong starting point to understand the government's position and recommendations for schools.");
+                points.push("<strong>Review Unesco guidance around safe AI use:</strong> Reviewing the <a href='https://unesdoc.unesco.org/ark:/48223/pf0000386693' target='_blank' rel='nofollow noopener'>Unesco guidance on generative AI</a> is a strong starting point to learn recommendations for schools.");
         }
 
         if (data.q8 === 'Yes' && data.q9 !== 'Yes') {
-            points.push("<strong>Put in place a risk assessment process:</strong> While you have assessed current tools, it is equally important to formalise a process for risk-assessing any *new* AI tools before they are introduced to the setting to prevent the use of unapproved or insecure alternatives.");
+            points.push("<strong>Put in place a risk assessment process:</strong> While you have assessed current tools, it is equally important to formalise a process for risk-assessing any new AI tools before they are introduced to the setting to prevent the use of unapproved or insecure alternatives.");
         }
         if (data.q8 !== 'Yes') {
             points.push("<strong>Conduct regular risk assessments:</strong> Conducting thorough risk assessments (DPIAs) for all AI tools currently in use is a crucial step to identify data privacy and safeguarding risks.");
@@ -343,10 +420,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (parentMon === 'No') {
             return `<p><strong>Consider digital monitoring:</strong> You appear not to have digital monitoring in place at the moment. Without it, it becomes extremely difficult to spot students who may be at risk online - often before those risks surface in the classroom.</p>
             <p>Digital harm doesn’t usually announce itself. Concerns linked to self-harm, mental health, bullying, sexual exploitation, radicalisation, harmful content and misuse of AI tools often show up first in what students type, search, or share digitally. Without monitoring, these early warning signs are easy to miss – meaning schools are left reacting later, when situations are more serious and harder to manage.</p>
-            <p>Further information around digital monitoring can be found here - <a href="https://smoothwall.com/a-complete-guide-to-digital-monitoring-for-schools" target="_blank" style="color:#58b78e;">A complete guide to digital monitoring for schools</a>.</p>`;
+            <p>Further information around digital monitoring can be found here - A complete guide to digital monitoring for schools.</p>`;
         }
         if (parentMon === 'Not Sure') {
-            return `<p><strong>Find out if you have digital monitoring:</strong> You appear uncertain about whether your setting currently uses digital monitoring to spot students at risk. It is worth having a conversation with individuals within your setting, such as your safeguarding team, IT leads or even senior leaders with safeguarding responsibilities, to determine what you have in place and the extent to which it can spot AI-related concerns.</p>`;
+            return `<p><strong>Find out if you have digital monitoring:</strong>  You appear uncertain about whether your setting currently uses digital monitoring to spot students at risk. It is worth having a conversation with individuals within your setting, such as your safeguarding team, IT leads or even senior leaders with safeguarding responsibilities, to determine what you have in place and the extent to which it can spot AI-related concerns.</p>`;
         }
 
         const yesCount = countAnswers(data, 15, 18, 'Yes'); 
@@ -461,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    document.getElementById('submitBtn').addEventListener('click', openGate);
+    document.getElementById('submitBtn').addEventListener('click', openHardGate);
     document.getElementById('printBtn').addEventListener('click', handlePrint);
 
     const skipBtn = document.getElementById('skipToResults');

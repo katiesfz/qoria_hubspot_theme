@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const aiSurveyContainer = document.getElementById("surveyContainer");
+
+    const formId = aiSurveyContainer.dataset.formId;
+    const hubId = aiSurveyContainer.dataset.hubId;
+
     // --- GLOBAL VARIABLES ---
     let protectPctGlobal = 0;
     let detectPctGlobal = 0;
@@ -7,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let overallAverageGlobal = 0;
     let hubspotForm = null; 
     let finalData = {};
+    let gotDetails = false;
+    let contactDetails = {};
 
 
     const surveyFormModal = new bootstrap.Modal('#surveyFormModal', {
@@ -27,24 +34,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- HUBSPOT FORM INIT ---
 
-    window.addEventListener('load', function() {
+    function buildForm() {
         if(window.hbspt) {
             hbspt.forms.create({
-                portalId: "4139239",
-                formId: "f8279705-9592-4493-947a-a963f46f8c30",
-                region: "na1",
+                portalId: hubId,
+                formId: formId,
+                region: "eu1",
                 target: "#hubspotFormTarget",
                 submitButtonClass: "btn btn-light d-block mt-4",
                 cssClass: 'hs-form form-light',
                 onFormReady: function($form) {
                     hubspotForm = $form[0]; 
                 },
-                onFormSubmitted: function() {
-                    surveyFormModal.hide(); 
-                    calculateAndShowResults();
+                onFormSubmitted: function($form, data) {
+                    surveyFormModal.hide();
+                    gotDetails == true;
+                    contactDetails = data.submissionValues;
+                    buildForm();
                 }
             });
         }
+    }
+
+    window.addEventListener('load', function() {
+        buildForm();
     });
 
     // --- NAVIGATION & LOGIC ---
@@ -62,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sections = Array.from(document.getElementsByClassName("dnd-section"));
         
         const nonSurveySections = sections.filter(parentElement => {
-            const childWithClass = parentElement.querySelector("#survey");
+            const childWithClass = parentElement.querySelector("#surveyContainer");
             return !childWithClass;
         });
 
@@ -70,6 +83,35 @@ document.addEventListener('DOMContentLoaded', () => {
             section.classList.add("hide-on-print");
         });
     }
+
+    function updateLeadWithScores(contactDetailsObject, scoreData) {
+        const portalId = hubId;
+        const formId = formId;
+        const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+        const scoreData = {
+            "protect_score": protectPctGlobal,
+            "detect_score": detectPctGlobal,
+            "empower_score": empowerPctGlobal
+        };
+
+        const updatedData = {
+            ...contactDetailsObject,
+            fields: additionalData.fields.map(field => {
+                if (Object.hasOwn(scoreData, field.name)) {
+                    return { ...field, value: updates[field.name] };
+                }
+                return field;
+            })
+        };
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedData)
+        }).then(() => console.log("Initial lead captured."));
+    }
+
 
     function updateProgressBar(stepNumber) {
         const totalSteps = 5;
@@ -101,6 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function nextStep(targetStep) {
         const currentStepEl = document.querySelector('.step.step-active');
         if (isStepValid(currentStepEl)) {
+            if (targetStep == 2 && gotDetails == false) {
+                openSoftGate();
+            }
             currentStepEl.querySelector('.error-message').style.display = 'none';
             currentStepEl.classList.remove('step-active');
             document.getElementById('step' + targetStep).classList.add('step-active');
@@ -119,7 +164,29 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.ai-survey').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function openGate() {
+    function openSoftGate() {
+        const currentStepEl = document.querySelector('.step.step-active');
+        if (!isStepValid(currentStepEl)) {
+            currentStepEl.querySelector('.error-message').style.display = 'block';
+            return;
+        }
+        
+        const formHeader = document.getElementById("surveyFormModal").getElementById("formHeader");
+
+        formHeader.innerHTML = `<h3 class="mb-6 border-top border-bottom border-dark py-3 border-2 fw-semibold px-2 d-none">
+                                    Almost there!
+                                </h3>
+                                <p class="lead d-none">
+                                    Please complete the form below to access your tailored AI checklist results.
+                                </p>`;
+
+        surveyFormModal.show();
+
+        addPrintClasses();
+    }
+
+    
+    function openHardGate() {
         const currentStepEl = document.querySelector('.step.step-active');
         if (!isStepValid(currentStepEl)) {
             currentStepEl.querySelector('.error-message').style.display = 'block';
@@ -129,17 +196,27 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateScores();
         
         if (hubspotForm) {
+
             let pIn = hubspotForm.querySelector('input[name="protect_score"]');
-            if(pIn) { pIn.value = protectPctGlobal.toFixed(1); pIn.dispatchEvent(new Event('change', {bubbles:true})); }
+            if(pIn) {pIn.value = protectPctGlobal.toFixed(1); pIn.dispatchEvent(new Event('change', {bubbles:true}));}
             
             let dIn = hubspotForm.querySelector('input[name="detect_score"]');
             if(dIn) { dIn.value = detectPctGlobal.toFixed(1); dIn.dispatchEvent(new Event('change', {bubbles:true})); }
             
             let eIn = hubspotForm.querySelector('input[name="empower_score"]');
             if(eIn) { eIn.value = empowerPctGlobal.toFixed(1); eIn.dispatchEvent(new Event('change', {bubbles:true})); }
+        
         } 
         
-        surveyFormModal.show();
+        if (gotDetails == false) {
+            surveyFormModal.show();
+        }
+        
+        if (gotDetails == true) {
+            // resubmit form with score
+
+
+        }
 
         addPrintClasses();
     }
@@ -300,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const total = 13;
 
         if (yesCount === total) {
-            return "<p>You are currently doing everything relatively possible to keep students safe against AI risks. Your focus now should be on monitoring and evaluating these measures regularly to ensure there are no gaps and that policies continue to align as AI usage evolves both inside and outside the classroom.</p>";
+            return "<p>Actualmente estás haciendo todo lo posible para mantener a los estudiantes seguros frente a los riesgos de la IA. Tu enfoque ahora debería centrarse en supervisar y evaluar estas medidas regularmente para garantizar que no haya brechas y que las políticas sigan alineadas a medida que el uso de la IA evoluciona tanto dentro como fuera del aula.</p>";
         }
 
         let intro = "";
@@ -308,29 +385,29 @@ document.addEventListener('DOMContentLoaded', () => {
         let points = [];
 
         if (data.q6 !== 'Yes') {
-            points.push("<strong>Establish an AI Policy:</strong> Establishing a dedicated AI policy is a priority to provide clarity for staff and students. For support in creating one, <a href='https://smoothwall.com/building-an-effective-ai-policy-for-uk-schools' target='_blank'>see our guide on building an effective AI policy for UK schools</a>.");
+            points.push("<strong>Establece una política de IA:</strong> Establecer una política específica sobre IA es una prioridad para proporcionar claridad al personal y a los estudiantes. Para obtener apoyo en su creación, consulta nuestro contenido sobre cómo desarrollar una política de IA eficaz.");
         } else if (data.q7 !== 'Yes') {
-            points.push("<strong>Cross-reference your policies:</strong> You have an AI policy, which is excellent. However, it is valuable to cross-reference this with your other statutory policies (e.g., Safeguarding, Acceptable Use) to ensure there is no conflict or ambiguity.");
+            points.push("<strong>Haz un cruce entre tus políticas:</strong> Tienes una política de IA, lo cual es excelente. Sin embargo, es importante vincularla con otras políticas obligatorias (por ejemplo, Protección y Salvaguarda, Práctica de buenas conductas) para asegurarse de que no exista ningún conflicto o ambigüedad.");
         }
 
         if (data.q1 === 'No' || data.q1 === 'Not Sure') {
-                points.push("<strong>Review DfE guidance around safe AI use:</strong> Reviewing the <a href='https://www.gov.uk/government/collections/using-ai-in-education-settings-support-materials' target='_blank'>Department for Education’s (DfE) guidance on generative AI</a> is a strong starting point to understand the government's position and recommendations for schools.");
+                points.push("<strong>Revisa las directrices de la UNESCO sobre el uso seguro de la IA:</strong> Revisar las <a href='https://www.unesco.org/es/articles/guia-para-el-uso-de-ia-generativa-en-educacion-e-investigacion' target='_blank' rel='nofollow noopener'>recomendaciones de la UNESCO sobre IA generativa</a> es un buen punto de partida para conocer orientaciones dirigidas a centros educativos.");
         }
 
         if (data.q8 === 'Yes' && data.q9 !== 'Yes') {
-            points.push("<strong>Put in place a risk assessment process:</strong> While you have assessed current tools, it is equally important to formalise a process for risk-assessing any *new* AI tools before they are introduced to the setting to prevent the use of unapproved or insecure alternatives.");
+            points.push("<strong>Establece un proceso de evaluación de riesgos:</strong> Aunque ya has evaluado las herramientas actuales, es igualmente importante formalizar un proceso para evaluar los riesgos de cualquier nueva herramienta de IA antes de introducirla en el entorno educativo, con el fin de evitar el uso de alternativas no aprobadas o inseguras.");
         }
         if (data.q8 !== 'Yes') {
-            points.push("<strong>Conduct regular risk assessments:</strong> Conducting thorough risk assessments (DPIAs) for all AI tools currently in use is a crucial step to identify data privacy and safeguarding risks.");
+            points.push("<strong>Realiza evaluaciones de riesgo periódicas:</strong> Llevar a cabo evaluaciones de impacto y riesgo exhaustivas (DPIA) para todas las herramientas de IA que se utilizan actualmente es un paso crucial para identificar riesgos relacionados con la privacidad de los datos y la protección de los estudiantes.");
         }
 
         if (data.q11 !== 'Yes') {
-            const context = data.q11 === 'Not Sure' ? "You should consider investigating if your web filter can" : "You should consider looking into your web filter to understand the extent to which it can";
-            points.push(`<strong>Look into your web filtering:</strong> ${context} block harmful AI-generated content the moment it goes live. Without real-time filtering, there is potential for students to view harmful or inappropriate content generated by AI at speed. You may also want to check what capacity your filter has to blur image and video content generated by AI tools, as this can limit exposure to harmful or explicit images before they’re ever seen.`);
+            const context = data.q11 === 'Not Sure' ? "Deberías considerar investigar si tu filtro web puede" : "Deberías considerar revisar tu filtro web para entender hasta qué punto puede";
+            points.push(`<strong>Revisa tu filtrado web:</strong> ${context} bloquear contenido dañino generado por IA en el momento en que aparece en línea. Sin filtrado en tiempo real, existe el riesgo de que los estudiantes vean contenido dañino o inapropiado generado por IA. También podrías comprobar qué capacidad tiene tu filtro para difuminar imágenes y vídeos generados por herramientas de IA, ya que esto puede limitar la exposición a imágenes dañinas o explícitas antes incluso de que sean vistas.`);
         }
 
         if (points.length === 0 && notSureCount <= 6) {
-            points.push("<strong>Continuously review progress:</strong> Reviewing your risk assessments and ensuring all staff understand the reporting mechanisms for AI concerns.");
+            points.push("<strong>Revisa continuamente el progreso:</strong> Revisa tus evaluaciones de riesgo y asegúrate de que todo el personal entienda los mecanismos para informar sobre preocupaciones relacionadas con la IA.");
         }
 
         let introHTML = intro ? `<p>${intro}</p>` : '';
@@ -341,43 +418,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const parentMon = data.q_mon_parent;
         
         if (parentMon === 'No') {
-            return `<p><strong>Consider digital monitoring:</strong> You appear not to have digital monitoring in place at the moment. Without it, it becomes extremely difficult to spot students who may be at risk online - often before those risks surface in the classroom.</p>
-            <p>Digital harm doesn’t usually announce itself. Concerns linked to self-harm, mental health, bullying, sexual exploitation, radicalisation, harmful content and misuse of AI tools often show up first in what students type, search, or share digitally. Without monitoring, these early warning signs are easy to miss – meaning schools are left reacting later, when situations are more serious and harder to manage.</p>
-            <p>Further information around digital monitoring can be found here - <a href="https://smoothwall.com/a-complete-guide-to-digital-monitoring-for-schools" target="_blank" style="color:#58b78e;">A complete guide to digital monitoring for schools</a>.</p>`;
+            return `<p><strong>Considera la monitorización digital:</strong> Parece que actualmente no cuentas con monitorización digital. Sin ella, resulta extremadamente difícil detectar a estudiantes que puedan estar en riesgo en línea, a menudo antes de que esos riesgos aparezcan en el aula.</p>
+            <p>El daño digital rara vez se anuncia por sí mismo. Las preocupaciones relacionadas con autolesiones, salud mental, acoso, explotación sexual, radicalización, contenido dañino y el uso indebido de herramientas de IA suelen aparecer primero en lo que los estudiantes escriben, buscan o comparten digitalmente. Sin monitorización, estas primeras señales de alerta son fáciles de pasar por alto, lo que significa que los centros educativos terminan reaccionando más tarde, cuando las situaciones son más graves y difíciles de gestionar.</p>
+            <p>Puedes encontrar más información sobre la monitorización digital aquí: <a href="">Guía completa sobre monitorización digital para centros educativos</a>.</p>`;
         }
         if (parentMon === 'Not Sure') {
-            return `<p><strong>Find out if you have digital monitoring:</strong> You appear uncertain about whether your setting currently uses digital monitoring to spot students at risk. It is worth having a conversation with individuals within your setting, such as your safeguarding team, IT leads or even senior leaders with safeguarding responsibilities, to determine what you have in place and the extent to which it can spot AI-related concerns.</p>`;
+            return `<p><strong>Averigua si tienes monitorización digital:</strong> Parece que no estás seguro de si tu centro utiliza actualmente monitorización digital para detectar estudiantes en riesgo. Merece la pena hablar con personas dentro de tu centro, como el equipo de protección y salvaguarda, responsables de TI o incluso líderes con responsabilidades en protección, para determinar qué herramientas existen y hasta qué punto pueden detectar preocupaciones relacionadas con la IA.</p>`;
         }
 
         const yesCount = countAnswers(data, 15, 18, 'Yes'); 
         const notSureCount = countAnswers(data, 15, 18, 'Not Sure');
 
         if (yesCount === 4) {
-            return "<p>Your detection strategy is comprehensive. Continue to monitor its effectiveness and ensure your DSLs are comfortable interpreting AI-related alerts as the technology evolves.</p>";
+            return "<p>Tu estrategia de detección es completa. Continúa supervisando su eficacia y asegúrate de que los responsables de salvaguarda y bienestar se sientan cómodos interpretando alertas relacionadas con la IA a medida que la tecnología evoluciona.</p>";
         }
 
         let adviceSegments = [];
 
         if (data.q15 === 'Yes' && data.q16 === 'Yes' && data.q18 !== 'Yes') {
-            adviceSegments.push("<strong>Look at your cloud storage:</strong> Your approach to identifying students at risk through their digital behaviours appears strong, which is excellent. However, to ensure this visibility extends across your entire digital environment, we recommend reviewing your cloud storage protocols. As AI usage in the classroom continues to grow, education settings must be prepared for an increase in AI-generated content appearing on school drives. We recommend assessing your current visibility into images and videos stored in your cloud environment and evaluating how frequently these are checked for harmful or inappropriate content.");
+            adviceSegments.push("<strong>Revisa tu almacenamiento en la nube:</strong> Tu enfoque para identificar estudiantes en riesgo a través de su comportamiento digital parece sólido, lo cual es excelente. Sin embargo, para asegurar que esta visibilidad se extienda a todo tu entorno digital, recomendamos revisar los protocolos de almacenamiento en la nube. A medida que el uso de la IA en el aula continúa creciendo, los centros educativos deben prepararse para un aumento del contenido generado por IA en los sistemas de almacenamiento del centro. Recomendamos evaluar tu visibilidad actual sobre imágenes y vídeos almacenados en la nube y revisar con qué frecuencia se analizan para detectar contenido dañino o inapropiado.");
         } 
         else if (notSureCount >= 2) {
-            adviceSegments.push("<strong>Find out what your monitoring can and can't do:</strong> You seem unsure about the specifics of your monitoring capabilities regarding AI. We strongly recommend speaking with <strong>internal stakeholders (such as your DSL or IT Lead)</strong> and your monitoring provider to understand exactly what AI-related risks they can detect today.");
+            adviceSegments.push("<strong>Averigua qué puede y qué no puede hacer tu sistema de monitorización:</strong> Parece que no estás seguro de las capacidades específicas de tu monitorización respecto a la IA. Recomendamos encarecidamente hablar con las <strong>partes interesadas internas (como tu responsable de salvaguarda o responsable de TI)</strong> y con tu proveedor de monitorización para entender exactamente qué riesgos relacionados con la IA pueden detectar actualmente.");
         }
         else {
             if (data.q15 === 'Yes' && (data.q16 !== 'Yes' || data.q17 !== 'Yes')) {
-                adviceSegments.push("<strong>Consider the effectiveness of your monitoring against AI risks:</strong> You have monitoring in place, which is great. It is valuable to consider *how* effectively it detects serious risks. Automated keywords often miss context. Human-moderated systems can be significantly more effective at spotting subtle warning signs—such as emotional reliance on chatbots or coercion—providing peace of mind that risks beyond a teacher's eyes and ears are being picked up.");
+                adviceSegments.push("<strong>Considera la eficacia de tu monitorización frente a riesgos de IA:</strong> Tener monitorización es un gran paso. Sin embargo, es importante considerar hasta qué punto detecta riesgos graves. Los sistemas basados únicamente en palabras clave suelen perder el contexto. Los sistemas moderados por personas pueden ser mucho más eficaces para detectar señales de alerta sutiles —como dependencia emocional de chatbots o situaciones de coerción— ofreciendo mayor tranquilidad de que riesgos que escapan a la vista de profesores están siendo identificados.");
             }
         }
 
         const bridgeTriggered = (data.q15 === 'Yes' && data.q16 === 'Yes' && data.q18 !== 'Yes');
         if (data.q18 !== 'Yes' && !bridgeTriggered) {
-            const prefix = adviceSegments.length > 0 ? "As" : "As"; 
-            adviceSegments.push(`<strong>Review your cloud storage:</strong> ${prefix} AI usage in the classroom continues to grow, education settings need to be prepared for an increase in AI-generated content appearing on school drives. We recommend assessing your current visibility into images and videos stored in your cloud storage and evaluating how often these are checked for harmful or inappropriate content.`);
+            adviceSegments.push(`<strong>Revisa tu almacenamiento en la nube:</strong> A medida que aumenta el uso de la IA en el aula, los centros educativos deben prepararse para un incremento de contenido generado por IA en sus sistemas de almacenamiento. Recomendamos evaluar la visibilidad actual sobre imágenes y vídeos almacenados en la nube y revisar con qué frecuencia se analizan para detectar contenido dañino o inapropiado.`);
         }
 
         if (adviceSegments.length === 0) {
-                return "<p>Continue to monitor your detection systems regularly.</p>";
+                return "<p>Continúa revisando regularmente tus sistemas de detección.</p>";
         }
 
         return `<p>${adviceSegments.join("</p><p>")}</p>`;
@@ -388,33 +464,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const notSureCount = countAnswers(data, 19, 27, 'Not Sure');
 
         if (yesCount === 9) {
-            return "<p>You are doing an excellent job empowering your community. Your comprehensive approach to training and engagement sets a high standard. Keep this momentum going by regularly refreshing training materials.</p>";
+            return "<p>Estás haciendo un excelente trabajo empoderando a tu comunidad. Tu enfoque integral en formación y participación establece un estándar muy alto. Mantén este impulso actualizando periódicamente los materiales de formación.</p>";
         }
 
         let intro = "";
         let points = [];
 
         if (data.q19 === 'Yes' && data.q20 !== 'Yes') {
-            points.push("<strong>Train staff on the safe use of AI tools:</strong> You have ensured staff know the rules (Code of Conduct), which is vital. The next step is to provide practical training on <i>how</i> to use these tools effectively and safely in the classroom.");
+            points.push("<strong>Forma al personal en el uso seguro de herramientas de IA:</strong> Has asegurado que el personal conozca las normas (Código de Conducta), lo cual es fundamental. El siguiente paso es proporcionar formación práctica sobre cómo usar estas herramientas de forma eficaz y segura en el aula.");
         }
         if (data.q19 !== 'Yes' && data.q20 !== 'Yes') {
-                points.push("<strong>Prioritise staff training:</strong> Staff training appears to be a key area for development. Prioritise sessions that cover both the Code of Conduct and practical, safe usage of AI tools.");
+                points.push("<strong>Prioriza la formación del personal:</strong> La formación del personal parece ser un área clave de desarrollo. Prioriza sesiones que cubran tanto el Código de Conducta como el uso práctico y seguro de herramientas de IA.");
         }
 
         if (data.q23 !== 'Yes') {
-            points.push("<strong>Teach students how to use AI safely:</strong> When reviewing AI education, it’s important to ensure learning is age-appropriate. Expectations around topics such as AI use and ethics will naturally differ between younger pupils and those in Sixth Form.");
+            points.push("<strong>Enseña a los estudiantes a usar la IA de forma segura:</strong> Al revisar la educación sobre IA, es importante asegurar que el aprendizaje sea apropiado para la edad. Las expectativas sobre temas como el uso de la IA y la ética variarán naturalmente entre estudiantes más jóvenes y aquellos en Bachillerato o etapas superiores.");
         }
         
         if (data.q24 !== 'Yes' || data.q25 !== 'Yes') { 
-            points.push("<strong>Have a clear list of approved AI tools:</strong> Defining a clear list of approved AI tools can also help students engage with AI safely, reducing the likelihood of them turning to unverified or unsuitable platforms.");
+            points.push("<strong>Define una lista clara de herramientas de IA aprobadas:</strong> Establecer una lista clara de herramientas de IA aprobadas también puede ayudar a que los estudiantes interactúen con la IA de forma segura, reduciendo la probabilidad de que recurran a plataformas no verificadas o inadecuadas.");
         }
 
         if (data.q26 !== 'Yes' || data.q27 !== 'Yes') {
-            points.push("<strong>Engage parents and carers around AI safeguarding:</strong> Finally, sharing clear, accessible guidance with parents and carers supports a whole-school approach to AI safety - helping to reinforce consistent messages both in school and beyond the school gates. Reviewing what information is currently shared can help ensure families feel informed and supported when it comes to AI.");
+            points.push("<strong>Involucra a padres y cuidadores en la seguridad de la IA:</strong> Compartir orientación clara y accesible con padres y cuidadores respalda un enfoque de centro completo para la seguridad en IA, ayudando a reforzar mensajes coherentes tanto dentro del centro como fuera de él. Revisar qué información se comparte actualmente puede ayudar a garantizar que las familias se sientan informadas y apoyadas en relación con la IA.");
         }
 
         if (points.length === 0 && yesCount < 9) {
-                points.push("<strong>Regularly engage staff and students around AI safeguarding:</strong> Continue to engage with staff and students to ensure they feel confident reporting AI-related issues.");
+                points.push("<strong>Involucra regularmente al personal y a los estudiantes en la seguridad de la IA:</strong> Continúa trabajando con el personal y los estudiantes para asegurarte de que se sientan seguros y confiados al reportar problemas relacionados con la IA.");
         }
         
         let introHTML = intro ? `<p>${intro}</p>` : '';
@@ -461,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    document.getElementById('submitBtn').addEventListener('click', openGate);
+    document.getElementById('submitBtn').addEventListener('click', openHardGate);
     document.getElementById('printBtn').addEventListener('click', handlePrint);
 
     const skipBtn = document.getElementById('skipToResults');
