@@ -53,459 +53,445 @@
         }
       ]
     },{
-    "id" : "card.image",
-    "name" : "image",
-    "display_width" : null,
-    "label" : "Image",
-    "required" : false,
-    "locked" : false,
-    "responsive" : true,
-    "resizable" : true,
-    "show_loading" : true,
-    "type" : "image",
-    "default" : {
-      "loading" : "lazy"
-    }
-  }, {
-    "id" : "card.image_overlap",
-    "name" : "image_overlap",
-    "display_width" : null,
-    "label" : "Toggle Image Overlap",
-    "inline_help_text" : "Enables image to be pulled up into the header.",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "card.overlap",
-    "name" : "overlap",
-    "display_width" : null,
-    "label" : "Overlap Amount",
-    "required" : false,
-    "locked" : true,
-    "visibility" : {
-      "controlling_field" : "card.image_overlap",
-      "controlling_field_path" : "card.image_overlap",
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "display" : "select",
-    "choices" : [ [ "0", "None" ], [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ], [ "5", "5" ], [ "6", "6" ], [ "7", "7" ], [ "8", "8" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "0"
-  }, {
-    "id" : "card.accent_colour",
-    "name" : "accent_colour",
-    "display_width" : null,
-    "label" : "Accent Colour",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-gradient-primary-reverse text-white", "Reverse Primary Gradient" ],  [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "text-bg-blue", "Blue" ], [ "bg-gray-700 text-white", "Dark" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "bg-primary text-white"
-  }, {
-    "id" : "icon_toggle",
-    "name" : "icon_toggle",
-    "display_width" : null,
-    "label" : "Icon toggle",
-    "required" : false,
-    "locked" : false,
-    "display" : "toggle",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "name" : "icon",
-    "display_width" : null,
-    "label" : "Icon",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "card.icon_toggle",
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "children" : [ {
-      "name" : "icon_field",
+      "id" : "card.image",
+      "name" : "image",
       "display_width" : null,
-      "label" : "Icon",
-      "required" : false,
-      "locked" : false,
-      "icon_set" : "fontawesome-5.14.0",
-      "type" : "icon",
-      "default" : {
-        "name" : "Check Circle",
-        "unicode" : "f058",
-        "type" : "REGULAR"
-      }
-    }, {
-      "name" : "icon_code",
-      "display_width" : null,
-      "label" : "Icon Code",
-      "help_text" : "Icon selection not working? Enter the icon name here. e.g. address-book",
-      "inline_help_text" : "Find icons at https://fontawesome.com/search",
-      "required" : false,
-      "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text",
-      "default" : ""
-    }, {
-      "name" : "icon_style",
-      "display_width" : null,
-      "label" : "Icon Style",
-      "required" : false,
-      "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "inherit", "Inherit" ], [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fa fa-brands fab ", "Brand" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "inherit"
-    }, {
-      "id" : "card.icon.sizing",
-      "name" : "sizing",
-      "display_width" : null,
-      "label" : "Sizing",
-      "required" : false,
-      "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "inherit", "Inherited" ], [ "relative", "Custom - Relative" ], [ "absolute", "Custom - Absolute" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "inherit"
-    }, {
-      "id" : "card.icon.absolute_icon_size",
-      "name" : "absolute_icon_size",
-      "display_width" : null,
-      "label" : "Icon size",
-      "required" : false,
-      "locked" : false,
-      "visibility" : {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.icon.sizing",
-        "controlling_value_regex" : "absolute",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      },
-      "display" : "select",
-      "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "fa-3x"
-    }, {
-      "id" : "card.icon.relative_icon_size",
-      "name" : "relative_icon_size",
-      "display_width" : null,
-      "label" : "Icon size",
-      "required" : false,
-      "locked" : false,
-      "visibility" : {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.icon.sizing",
-        "controlling_value_regex" : "relative",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      },
-      "display" : "select",
-      "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ " ", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : " "
-    }, {
-      "name" : "custom_image",
-      "display_width" : null,
-      "label" : "Custom Image",
+      "label" : "Image",
       "required" : false,
       "locked" : false,
       "responsive" : true,
       "resizable" : true,
-      "show_loading" : false,
+      "show_loading" : true,
       "type" : "image",
       "default" : {
-        "size_type" : "auto",
-        "src" : "",
-        "alt" : null,
         "loading" : "lazy"
       }
     }, {
-      "name" : "icon_colour",
+      "id" : "card.override_image_fit",
+      "name" : "override_image_fit",
       "display_width" : null,
-      "label" : "Icon colour",
+      "label" : "Override header image fit",
+      "inline_help_text" : "",
       "required" : false,
       "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "inherit", "Inherit" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "indigo", "Indigo" ], [ "teal", "Teal" ], [ "red", "Red" ], [ "orange", "Orange" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "default" : "inherit"
-    },{
-      "id" : "custom_icon_height",
-      "name" : "custom_icon_height",
-      "display_width" : null,
-      "label" : "Custom icon height",
-      "required" : false,
-      "locked" : false,
-      "display" : "toggle",
-      "type" : "boolean",
-      "default" : false
-    }, {
-      "name" : "icon_height",
-      "display_width" : null,
-      "label" : "Icon height",
-      "required" : false,
-      "locked" : false,
-      "display" : "text",
-      "min" : null,
-      "max" : null,
-      "step" : 1,
-      "suffix" : "",
-      "type" : "number",
-      "visibility" : {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.icon.custom_icon_height",
-        "controlling_value_regex" : "true",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      },
-      "default" : null
-    } ],
-    "default" : {
-      "icon" : {
-        "icon_field" : {
-          "name" : "Check Circle",
-          "unicode" : "f058",
-          "type" : "REGULAR"
-        },
-        "icon_code" : "",
-        "icon_style" : "inherit",
-        "custom_image" : {
-          "size_type" : "auto",
-          "src" : "",
-          "alt" : null,
-          "loading" : "lazy"
-        },
-        "icon_colour" : "inherit"
-      }
-    },
-    "tab" : "CONTENT",
-    "expanded" : false,
-    "type" : "group"
-  }, {
-    "id" : "card.preheader_toggle",
-    "name" : "preheader_toggle",
-    "display_width" : null,
-    "label" : "Toggle Pre-header",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "card.pre_header",
-    "name" : "pre_header",
-    "display_width" : null,
-    "label" : "Pre-header",
-    "required" : false,
-    "locked" : false,
-    "enabled_features" : [ "standard_emphasis" ],
-    "type" : "richtext",
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "card.preheader_toggle",
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "default" : ""
-  }, {
-    "id" : "card.preheader_size",
-    "name" : "preheader_size",
-    "display_width" : null,
-    "label" : "Pre-header Size",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [[ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "card.preheader_toggle",
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "default" : "h6"
-  }, {
-    "id" : "card.title",
-    "name" : "title",
-    "display_width" : null,
-    "label" : "Title",
-    "required" : false,
-    "locked" : false,
-    "enabled_features" : [ "standard_emphasis" ],
-    "type" : "richtext",
-    "default" : "<strong>Linewize</strong> (North America)"
-  }, {
-    "id" : "card.title_size",
-    "name" : "title_size",
-    "display_width" : null,
-    "label" : "Title Size",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "h5"
-  }, {
-    "id" : "card.multiple_text",
-    "name" : "multiple_text",
-    "display_width" : null,
-    "label" : "Toggle Multiple Texts",
-    "inline_help_text" : "Enables multiple bodies of content in the card.",
-    "required" : false,
-    "locked" : false,
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "text_group",
-    "name" : "text_group",
-    "display_width" : null,
-    "label" : "Multiple Texts",
-    "required" : false,
-    "locked" : false,
-    "occurrence" : {
-      "min" : null,
-      "max" : null,
-      "sorting_label_field" : "text_group.text",
-      "default" : 0
-    },
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "card.multiple_text",
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "children" : [ {
-      "id" : "text_group.text",
-      "name" : "text",
-      "display_width" : null,
-      "label" : "Content",
-      "required" : false,
-      "locked" : false,
-      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
-      "type" : "richtext",
-      "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
-    }, {
-      "id" : "text_group.link",
-      "name" : "link",
-      "display_width" : null,
-      "label" : "Link",
-      "required" : false,
-      "locked" : false,
-      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
-      "show_advanced_rel_options" : false,
-      "type" : "link",
-      "default" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
-        "no_follow" : false,
-        "sponsored" : false,
-        "user_generated_content" : false
-      }
-    }, {
-      "id" : "text_group.download",
-      "name" : "download",
-      "display_width" : null,
-      "label" : "Download",
-      "required" : false,
-      "locked" : false,
-      "display" : "toggle",
-      "type" : "boolean",
-      "visibility_rules" : "ADVANCED",
-      "advanced_visibility" : {
-        "boolean_operator" : "OR",
-        "criteria" : [ {
-          "controlling_field" : null,
-          "controlling_field_path" : "card.text_group.link",
-          "controlling_value_regex" : "EXTERNAL",
-          "property" : "url.type",
-          "operator" : "EQUAL",
-          "access" : null
-        },{
-          "controlling_field" : null,
-          "controlling_field_path" : "card.text_group.link",
-          "controlling_value_regex" : "FILE",
-          "property" : "url.type",
-          "operator" : "EQUAL",
-          "access" : null
-        } ],
-        "children" : []
-      },
-      "default" : false
-    },{
-      "id" : "text_group.download_file",
-      "name" : "download_file",
-      "display_width" : null,
-      "label" : "Download name",
-      "required" : false,
-      "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text",
       "visibility_rules" : "ADVANCED",
       "advanced_visibility" : {
         "boolean_operator" : "AND",
         "criteria" : [ {
           "controlling_field" : null,
-          "controlling_field_path" : "card.text_group.download",
+          "controlling_field_path" : "styles.image_header",
           "controlling_value_regex" : "true",
-          "property" : "",
+          "property" : null,
           "operator" : "EQUAL",
           "access" : null
         } ],
-        "children" : [{
+        "children" : [ ]
+      },
+      "display" : "select",
+      "choices" : [ [ "inherit", "Inherit" ], [ "cover", "Cover" ], [ "contain", "Contain" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "inherit"
+    }, {
+      "id" : "card.image_overlap",
+      "name" : "image_overlap",
+      "display_width" : null,
+      "label" : "Toggle Image Overlap",
+      "inline_help_text" : "Enables image to be pulled up into the header.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "card.overlap",
+      "name" : "overlap",
+      "display_width" : null,
+      "label" : "Overlap Amount",
+      "required" : false,
+      "locked" : true,
+      "visibility" : {
+        "controlling_field" : "card.image_overlap",
+        "controlling_field_path" : "card.image_overlap",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "0", "None" ], [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ], [ "5", "5" ], [ "6", "6" ], [ "7", "7" ], [ "8", "8" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "0"
+    }, {
+      "id" : "card.accent_colour",
+      "name" : "accent_colour",
+      "display_width" : null,
+      "label" : "Accent Colour",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-gradient-primary-reverse text-white", "Reverse Primary Gradient" ],  [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "text-bg-blue", "Blue" ], [ "bg-gray-700 text-white", "Dark" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "bg-primary text-white"
+    }, {
+      "id" : "icon_toggle",
+      "name" : "icon_toggle",
+      "display_width" : null,
+      "label" : "Icon toggle",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.icon_toggle",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "children" : [ {
+        "name" : "icon_field",
+        "display_width" : null,
+        "label" : "Icon",
+        "required" : false,
+        "locked" : false,
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : {
+          "name" : "Check Circle",
+          "unicode" : "f058",
+          "type" : "REGULAR"
+        }
+      }, {
+        "name" : "icon_code",
+        "display_width" : null,
+        "label" : "Icon Code",
+        "help_text" : "Icon selection not working? Enter the icon name here. e.g. address-book",
+        "inline_help_text" : "Find icons at https://fontawesome.com/search",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : ""
+      }, {
+        "name" : "icon_style",
+        "display_width" : null,
+        "label" : "Icon Style",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "inherit", "Inherit" ], [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fa fa-brands fab ", "Brand" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "inherit"
+      }, {
+        "id" : "card.icon.sizing",
+        "name" : "sizing",
+        "display_width" : null,
+        "label" : "Sizing",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "inherit", "Inherited" ], [ "relative", "Custom - Relative" ], [ "absolute", "Custom - Absolute" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "inherit"
+      }, {
+        "id" : "card.icon.absolute_icon_size",
+        "name" : "absolute_icon_size",
+        "display_width" : null,
+        "label" : "Icon size",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.icon.sizing",
+          "controlling_value_regex" : "absolute",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "display" : "select",
+        "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "fa-3x"
+      }, {
+        "id" : "card.icon.relative_icon_size",
+        "name" : "relative_icon_size",
+        "display_width" : null,
+        "label" : "Icon size",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.icon.sizing",
+          "controlling_value_regex" : "relative",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "display" : "select",
+        "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ " ", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : " "
+      }, {
+        "name" : "custom_image",
+        "display_width" : null,
+        "label" : "Custom Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "auto",
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }, {
+        "name" : "icon_colour",
+        "display_width" : null,
+        "label" : "Icon colour",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "inherit", "Inherit" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "indigo", "Indigo" ], [ "teal", "Teal" ], [ "red", "Red" ], [ "orange", "Orange" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "inherit"
+      },{
+        "id" : "custom_icon_height",
+        "name" : "custom_icon_height",
+        "display_width" : null,
+        "label" : "Custom icon height",
+        "required" : false,
+        "locked" : false,
+        "display" : "toggle",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "name" : "icon_height",
+        "display_width" : null,
+        "label" : "Icon height",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "min" : null,
+        "max" : null,
+        "step" : 1,
+        "suffix" : "",
+        "type" : "number",
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.icon.custom_icon_height",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "default" : null
+      } ],
+      "default" : {
+        "icon" : {
+          "icon_field" : {
+            "name" : "Check Circle",
+            "unicode" : "f058",
+            "type" : "REGULAR"
+          },
+          "icon_code" : "",
+          "icon_style" : "inherit",
+          "custom_image" : {
+            "size_type" : "auto",
+            "src" : "",
+            "alt" : null,
+            "loading" : "lazy"
+          },
+          "icon_colour" : "inherit"
+        }
+      },
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "card.preheader_toggle",
+      "name" : "preheader_toggle",
+      "display_width" : null,
+      "label" : "Toggle Pre-header",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "card.pre_header",
+      "name" : "pre_header",
+      "display_width" : null,
+      "label" : "Pre-header",
+      "required" : false,
+      "locked" : false,
+      "enabled_features" : [ "standard_emphasis" ],
+      "type" : "richtext",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.preheader_toggle",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "default" : ""
+    }, {
+      "id" : "card.preheader_size",
+      "name" : "preheader_size",
+      "display_width" : null,
+      "label" : "Pre-header Size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [[ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.preheader_toggle",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "default" : "h6"
+    }, {
+      "id" : "card.title",
+      "name" : "title",
+      "display_width" : null,
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "enabled_features" : [ "standard_emphasis" ],
+      "type" : "richtext",
+      "default" : "<strong>Linewize</strong> (North America)"
+    }, {
+      "id" : "card.title_size",
+      "name" : "title_size",
+      "display_width" : null,
+      "label" : "Title Size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "h5"
+    }, {
+      "id" : "card.multiple_text",
+      "name" : "multiple_text",
+      "display_width" : null,
+      "label" : "Toggle Multiple Texts",
+      "inline_help_text" : "Enables multiple bodies of content in the card.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "text_group",
+      "name" : "text_group",
+      "display_width" : null,
+      "label" : "Multiple Texts",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : null,
+        "max" : null,
+        "sorting_label_field" : "text_group.text",
+        "default" : 0
+      },
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.multiple_text",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "children" : [ {
+        "id" : "text_group.text",
+        "name" : "text",
+        "display_width" : null,
+        "label" : "Content",
+        "required" : false,
+        "locked" : false,
+        "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+        "type" : "richtext",
+        "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+      }, {
+        "id" : "text_group.link",
+        "name" : "link",
+        "display_width" : null,
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+        "show_advanced_rel_options" : false,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false,
+          "sponsored" : false,
+          "user_generated_content" : false
+        }
+      }, {
+        "id" : "text_group.download",
+        "name" : "download",
+        "display_width" : null,
+        "label" : "Download",
+        "required" : false,
+        "locked" : false,
+        "display" : "toggle",
+        "type" : "boolean",
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
           "boolean_operator" : "OR",
           "criteria" : [ {
             "controlling_field" : null,
@@ -521,12 +507,354 @@
             "property" : "url.type",
             "operator" : "EQUAL",
             "access" : null
+          } ],
+          "children" : []
+        },
+        "default" : false
+      },{
+        "id" : "text_group.download_file",
+        "name" : "download_file",
+        "display_width" : null,
+        "label" : "Download name",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
+          "boolean_operator" : "AND",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.text_group.download",
+            "controlling_value_regex" : "true",
+            "property" : "",
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : [{
+            "boolean_operator" : "OR",
+            "criteria" : [ {
+              "controlling_field" : null,
+              "controlling_field_path" : "card.text_group.link",
+              "controlling_value_regex" : "EXTERNAL",
+              "property" : "url.type",
+              "operator" : "EQUAL",
+              "access" : null
+            },{
+              "controlling_field" : null,
+              "controlling_field_path" : "card.text_group.link",
+              "controlling_value_regex" : "FILE",
+              "property" : "url.type",
+              "operator" : "EQUAL",
+              "access" : null
+            }]
+          }]
+        },
+        "default" : ""
+      },{
+        "id" : "text_group.link_label",
+        "name" : "link_label",
+        "display_width" : null,
+        "label" : "Link Label",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
+          "boolean_operator" : "AND",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.multiple_text",
+            "controlling_value_regex" : "true",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : [ ]
+        },
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : ""
+      }, {
+        "id" : "text_group.cta_style",
+        "name" : "cta_style",
+        "display_width" : null,
+        "label" : "CTA Style",
+        "required" : false,
+        "locked" : false,
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
+          "boolean_operator" : "AND",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.multiple_text",
+            "controlling_value_regex" : "true",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : [ ]
+        },
+        "display" : "select",
+        "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "text-"
+      }, {
+        "id" : "text_group.cta_size",
+        "name" : "cta_size",
+        "display_width" : null,
+        "label" : "CTA Size",
+        "required" : false,
+        "locked" : false,
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
+          "boolean_operator" : "AND",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.multiple_text",
+            "controlling_value_regex" : "true",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : [ ]
+        },
+        "display" : "select",
+        "choices" : [ [ "btn-sm", "Small" ], [ " ", "Medium" ], [ "btn-lg", "Large" ]],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : " "
+      }, {
+        "id" : "text_group.cta_colour",
+        "name" : "cta_colour",
+        "display_width" : null,
+        "label" : "CTA Colour",
+        "required" : false,
+        "locked" : false,
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
+          "boolean_operator" : "AND",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.multiple_text",
+            "controlling_value_regex" : "true",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : [ ]
+        },
+        "display" : "select",
+        "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "default" : "primary"
+      }, {
+        "id" : "text_group.stretched_link",
+        "name" : "stretched_link",
+        "display_width" : null,
+        "label" : "Stretched link",
+        "inline_help_text" : "Applies link to the whole text area",
+        "required" : false,
+        "locked" : false,
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
+          "boolean_operator" : "AND",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.multiple_text",
+            "controlling_value_regex" : "true",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : [ ]
+        },
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : { }
+    }, {
+      "id" : "card.text",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Content",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.multiple_text",
+        "controlling_value_regex" : "false",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+      "type" : "richtext",
+      "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+    },{
+      "id" : "card.link",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.multiple_text",
+        "controlling_value_regex" : "false",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      }
+    }, {
+      "id" : "card.trigger_modal",
+      "name" : "trigger_modal",
+      "display_width" : null,
+      "label" : "Trigger modal",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "card.modal_id",
+      "name" : "modal_id",
+      "display_width" : null,
+      "label" : "Modal ID",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "card.trigger_modal",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      }
+    },{
+      "id" : "download",
+      "name" : "download",
+      "display_width" : null,
+      "label" : "Download",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [{
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "false",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null 
+          }],
+        "children" : [{
+          "boolean_operator" : "OR",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.link",
+            "controlling_value_regex" : "EXTERNAL",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
+          },{
+            "controlling_field" : null,
+            "controlling_field_path" : "card.link",
+            "controlling_value_regex" : "FILE",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
+          } ]
+        }]
+      },
+      "default" : false
+    },{
+      "id" : "download_file",
+      "name" : "download_file",
+      "display_width" : null,
+      "label" : "Download name",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.download",
+          "controlling_value_regex" : "true",
+          "property" : "",
+          "operator" : "EQUAL",
+          "access" : null
+        },{
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "false",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null 
+          } ],
+        "children" : [{
+          "boolean_operator" : "OR",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "card.link",
+            "controlling_value_regex" : "EXTERNAL",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
+          },{
+            "controlling_field" : null,
+            "controlling_field_path" : "card.link",
+            "controlling_value_regex" : "FILE",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
           }]
         }]
       },
       "default" : ""
-    },{
-      "id" : "text_group.link_label",
+    }, {
+      "id" : "card.link_label",
       "name" : "link_label",
       "display_width" : null,
       "label" : "Link Label",
@@ -539,7 +867,7 @@
         "criteria" : [ {
           "controlling_field" : null,
           "controlling_field_path" : "card.multiple_text",
-          "controlling_value_regex" : "true",
+          "controlling_value_regex" : "false",
           "property" : null,
           "operator" : "EQUAL",
           "access" : null
@@ -551,7 +879,7 @@
       "type" : "text",
       "default" : ""
     }, {
-      "id" : "text_group.cta_style",
+      "id" : "card.cta_style",
       "name" : "cta_style",
       "display_width" : null,
       "label" : "CTA Style",
@@ -563,7 +891,7 @@
         "criteria" : [ {
           "controlling_field" : null,
           "controlling_field_path" : "card.multiple_text",
-          "controlling_value_regex" : "true",
+          "controlling_value_regex" : "false",
           "property" : null,
           "operator" : "EQUAL",
           "access" : null
@@ -578,7 +906,34 @@
       "type" : "choice",
       "default" : "text-"
     }, {
-      "id" : "text_group.cta_size",
+      "id" : "card.cta_colour",
+      "name" : "cta_colour",
+      "display_width" : null,
+      "label" : "CTA Colour",
+      "required" : false,
+      "locked" : false,
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.multiple_text",
+          "controlling_value_regex" : "false",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [ ]
+      },
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ]  ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary"
+    }, {
+      "id" : "card.cta_size",
       "name" : "cta_size",
       "display_width" : null,
       "label" : "CTA Size",
@@ -590,7 +945,7 @@
         "criteria" : [ {
           "controlling_field" : null,
           "controlling_field_path" : "card.multiple_text",
-          "controlling_value_regex" : "true",
+          "controlling_value_regex" : "false",
           "property" : null,
           "operator" : "EQUAL",
           "access" : null
@@ -604,39 +959,25 @@
       "preset" : null,
       "type" : "choice",
       "default" : " "
-    }, {
-      "id" : "text_group.cta_colour",
-      "name" : "cta_colour",
+    },{
+      "id" : "card.cta_alignment",
+      "name" : "cta_alignment",
       "display_width" : null,
-      "label" : "CTA Colour",
+      "label" : "CTA alignment",
       "required" : false,
       "locked" : false,
-      "visibility_rules" : "ADVANCED",
-      "advanced_visibility" : {
-        "boolean_operator" : "AND",
-        "criteria" : [ {
-          "controlling_field" : null,
-          "controlling_field_path" : "card.multiple_text",
-          "controlling_value_regex" : "true",
-          "property" : null,
-          "operator" : "EQUAL",
-          "access" : null
-        } ],
-        "children" : [ ]
-      },
       "display" : "select",
-      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+      "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
       "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
+      "reordering_enabled" : false,
       "type" : "choice",
-      "default" : "primary"
+      "default" : "inherit"
     }, {
-      "id" : "text_group.stretched_link",
+      "id" : "card.stretched_link",
       "name" : "stretched_link",
       "display_width" : null,
       "label" : "Stretched link",
-      "inline_help_text" : "Applies link to the whole text area",
+      "inline_help_text" : "Applies link to the whole card",
       "required" : false,
       "locked" : false,
       "visibility_rules" : "ADVANCED",
@@ -645,9 +986,16 @@
         "criteria" : [ {
           "controlling_field" : null,
           "controlling_field_path" : "card.multiple_text",
-          "controlling_value_regex" : "true",
+          "controlling_value_regex" : "false",
           "property" : null,
           "operator" : "EQUAL",
+          "access" : null
+        }, {
+          "controlling_field" : null,
+          "controlling_field_path" : "card.link",
+          "controlling_value_regex" : "",
+          "property" : "url.href",
+          "operator" : "NOT_EMPTY",
           "access" : null
         } ],
         "children" : [ ]
@@ -655,376 +1003,57 @@
       "display" : "checkbox",
       "type" : "boolean",
       "default" : false
-    } ],
-    "tab" : "CONTENT",
-    "expanded" : false,
-    "type" : "group",
-    "default" : { }
-  }, {
-    "id" : "card.text",
-    "name" : "text",
-    "display_width" : null,
-    "label" : "Content",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "card.multiple_text",
-      "controlling_value_regex" : "false",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
-    "type" : "richtext",
-    "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
-  },{
-    "id" : "card.link",
-    "name" : "link",
-    "display_width" : null,
-    "label" : "Link",
-    "required" : false,
-    "locked" : false,
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "card.multiple_text",
-      "controlling_value_regex" : "false",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
-    "show_advanced_rel_options" : false,
-    "type" : "link",
-    "default" : {
-      "url" : {
-        "content_id" : null,
-        "type" : "EXTERNAL",
-        "href" : ""
-      },
-      "open_in_new_tab" : false,
-      "no_follow" : false,
-      "sponsored" : false,
-      "user_generated_content" : false
-    }
-  }, {
-    "id" : "card.trigger_modal",
-    "name" : "trigger_modal",
-    "display_width" : null,
-    "label" : "Trigger modal",
-    "required" : false,
-    "locked" : false,
-    "display" : "toggle",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "card.modal_id",
-    "name" : "modal_id",
-    "display_width" : null,
-    "label" : "Modal ID",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "card.trigger_modal",
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    }
-  },{
-    "id" : "download",
-    "name" : "download",
-    "display_width" : null,
-    "label" : "Download",
-    "required" : false,
-    "locked" : false,
-    "display" : "toggle",
-    "type" : "boolean",
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [{
-        "controlling_field" : null,
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null 
-        }],
-      "children" : [{
-        "boolean_operator" : "OR",
-        "criteria" : [ {
-          "controlling_field" : null,
-          "controlling_field_path" : "card.link",
-          "controlling_value_regex" : "EXTERNAL",
-          "property" : "url.type",
-          "operator" : "EQUAL",
-          "access" : null
-        },{
-          "controlling_field" : null,
-          "controlling_field_path" : "card.link",
-          "controlling_value_regex" : "FILE",
-          "property" : "url.type",
-          "operator" : "EQUAL",
-          "access" : null
-        } ]
-      }]
-    },
-    "default" : false
-  },{
-    "id" : "download_file",
-    "name" : "download_file",
-    "display_width" : null,
-    "label" : "Download name",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [ {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.download",
-        "controlling_value_regex" : "true",
-        "property" : "",
-        "operator" : "EQUAL",
-        "access" : null
-      },{
-        "controlling_field" : null,
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null 
-        } ],
-      "children" : [{
-        "boolean_operator" : "OR",
-        "criteria" : [ {
-          "controlling_field" : null,
-          "controlling_field_path" : "card.link",
-          "controlling_value_regex" : "EXTERNAL",
-          "property" : "url.type",
-          "operator" : "EQUAL",
-          "access" : null
-        },{
-          "controlling_field" : null,
-          "controlling_field_path" : "card.link",
-          "controlling_value_regex" : "FILE",
-          "property" : "url.type",
-          "operator" : "EQUAL",
-          "access" : null
-        }]
-      }]
-    },
-    "default" : ""
-  }, {
-    "id" : "card.link_label",
-    "name" : "link_label",
-    "display_width" : null,
-    "label" : "Link Label",
-    "required" : false,
-    "locked" : false,
-    "validation_regex" : "",
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [ {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      } ],
-      "children" : [ ]
-    },
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text",
-    "default" : ""
-  }, {
-    "id" : "card.cta_style",
-    "name" : "cta_style",
-    "display_width" : null,
-    "label" : "CTA Style",
-    "required" : false,
-    "locked" : false,
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [ {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      } ],
-      "children" : [ ]
-    },
-    "display" : "select",
-    "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "text-"
-  }, {
-    "id" : "card.cta_colour",
-    "name" : "cta_colour",
-    "display_width" : null,
-    "label" : "CTA Colour",
-    "required" : false,
-    "locked" : false,
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [ {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      } ],
-      "children" : [ ]
-    },
-    "display" : "select",
-    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ]  ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "primary"
-  }, {
-    "id" : "card.cta_size",
-    "name" : "cta_size",
-    "display_width" : null,
-    "label" : "CTA Size",
-    "required" : false,
-    "locked" : false,
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [ {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      } ],
-      "children" : [ ]
-    },
-    "display" : "select",
-    "choices" : [ [ "btn-sm", "Small" ], [ " ", "Medium" ], [ "btn-lg", "Large" ]],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : " "
-  },{
-    "id" : "card.cta_alignment",
-    "name" : "cta_alignment",
-    "display_width" : null,
-    "label" : "CTA alignment",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
-    "multiple" : false,
-    "reordering_enabled" : false,
-    "type" : "choice",
-    "default" : "inherit"
-  }, {
-    "id" : "card.stretched_link",
-    "name" : "stretched_link",
-    "display_width" : null,
-    "label" : "Stretched link",
-    "inline_help_text" : "Applies link to the whole card",
-    "required" : false,
-    "locked" : false,
-    "visibility_rules" : "ADVANCED",
-    "advanced_visibility" : {
-      "boolean_operator" : "AND",
-      "criteria" : [ {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.multiple_text",
-        "controlling_value_regex" : "false",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      }, {
-        "controlling_field" : null,
-        "controlling_field_path" : "card.link",
-        "controlling_value_regex" : "",
-        "property" : "url.href",
-        "operator" : "NOT_EMPTY",
-        "access" : null
-      } ],
-      "children" : [ ]
-    },
-    "display" : "checkbox",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "card.override_colour",
-    "name" : "override_colour",
-    "display_width" : null,
-    "label" : "Override Card Body Colour",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ],[ "bg-secondary text-white", "Secondary" ],[ "bg-indigo text-white", "Indigo" ],[ "bg-red text-white", "Red" ],[ "bg-orange text-dark", "Orange" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : " "
-  }, {
-    "id" : "card.advanced",
-    "name" : "advanced",
-    "display_width" : null,
-    "label" : "Advanced",
-    "required" : false,
-    "locked" : false,
-    "children" : [{
-      "id" : "card.advanced.col_classes",
-      "name" : "col_classes",
-      "display_width" : null,
-      "label" : "Additional column classes",
-      "required" : false,
-      "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text",
-      "default" : ""
     }, {
-      "id" : "card.advanced.card_classes",
-      "name" : "card_classes",
+      "id" : "card.override_colour",
+      "name" : "override_colour",
       "display_width" : null,
-      "label" : "Additional card classes",
+      "label" : "Override Card Body Colour",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
-      "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text",
-      "default" : ""
-    }  ],
-    "tab" : "CONTENT",
-    "expanded" : false,
-    "type" : "group"
-  }],
+      "display" : "select",
+      "choices" : [ [ " ", "None" ], [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ],[ "bg-secondary text-white", "Secondary" ],[ "bg-indigo text-white", "Indigo" ],[ "bg-red text-white", "Red" ],[ "bg-orange text-dark", "Orange" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : " "
+    }, {
+      "id" : "card.advanced",
+      "name" : "advanced",
+      "display_width" : null,
+      "label" : "Advanced",
+      "required" : false,
+      "locked" : false,
+      "children" : [{
+        "id" : "card.advanced.col_classes",
+        "name" : "col_classes",
+        "display_width" : null,
+        "label" : "Additional column classes",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : ""
+      }, {
+        "id" : "card.advanced.card_classes",
+        "name" : "card_classes",
+        "display_width" : null,
+        "label" : "Additional card classes",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : ""
+      }  ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group"
+    }
+    ],
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
@@ -1177,7 +1206,7 @@
       "children" : [ ]
     },
     "display" : "select",
-    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ] ],
+    "choices" : [ [ "cover", "Cover" ], [ "contain-cover", "Cover (inset)" ], [ "contain", "Contain (full width)" ], [ "contain-variable", "Contain (variable width)" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,

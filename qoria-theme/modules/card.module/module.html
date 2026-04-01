@@ -163,12 +163,16 @@
     {% endif %}
 
     <div class="col {{ card.advanced.col_classes }}">
-      <div class="card {{"animate-card" if module.styles.animate_in }} bg-transparent border-0 {{ "h-100 d-flex flex-column" if module.styles.equal_heights }} {{ card.advanced.card_classes }}" style="{{cardStyles}}">
+      <div class="card {{"animate-card" if module.styles.animate_in }} bg-transparent {{ "h-100 d-flex flex-column" if module.styles.equal_heights }} {{ card.advanced.card_classes }}" style="{{cardStyles}}">
 
           {% if module.styles.image_header && module.styles.image_header_fit == "cover" %}
             {% if card.image.src %}
+              {% set imageStyle = "" %}
+              {% if card.override_image_fit && card.override_image_fit != "inherit" %}
+                {% set imageStyle = imageStyle ~ "object-fit: " ~ card.override_image_fit ~ "; " %}
+              {% endif %}
               {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
-              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="card-img-top" alt="{{ card.image.alt }}" {{loadingAttr}}>
+              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="card-img-top" alt="{{ card.image.alt }}" style="{{ imageStyle }}" {{loadingAttr}}>
             {% endif %}
           {% endif %}
 
@@ -312,12 +316,29 @@
            
            <div class="card-body {{ module.styles.shadow }} {{ module.styles.card_colour  if (card.override_colour == " " || !card.override_colour) else card.override_colour }} text-{{ module.styles.textalignment }} {{ "pt-0" if card.image_overlap }} {{ "d-flex flex-column" if module.styles.equal_heights }}">
            
-          {% if module.styles.image_header && module.styles.image_header_fit == "contain" %}
+          {% if module.styles.image_header && module.styles.image_header_fit != "cover" %}
             {% if card.image.src %}
-              
+              {% set imageStyle = "" %}
+              {% if card.override_image_fit && card.override_image_fit != "inherit" %}
+                {% set imageStyle = imageStyle ~ "object-fit: " ~ card.override_image_fit ~ "; " %}
+              {% else %}
+                {% if module.styles.image_header_fit == "contain-cover" %}
+                  {% set imageStyle = imageStyle ~ "object-fit: cover; " %}
+                {% elif module.styles.image_header_fit == "contain" %}
+                  {% set imageStyle = imageStyle ~ "object-fit: contain; " %}
+                {% elif module.styles.image_header_fit == "contain-variable" %}
+                  {% if card.image.size_type == "auto_custom_max" %}
+                    {% set max_width = card.image.max_width %}
+                    {% set max_height = card.image.max_height %}
+                  {% else %}
+                    {% set max_width = card.image.width %}
+                    {% set max_height = card.image.height %}
+                  {% endif %}
+                  {% set imageStyle = imageStyle ~ "object-fit: contain; width: 100%; max-width: " ~ max_width ~ "px; " %}
+                {% endif %}
+              {% endif %}
               {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
-              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="img-fluid mb-3 img-header" style="object-fit: contain;" alt="{{ card.image.alt }}" {{loadingAttr}}>
-              
+              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="img-fluid mb-3 img-header" style="{{ imageStyle }}" alt="{{ card.image.alt }}" {{loadingAttr}}>
             {% endif %}
           {% endif %}
 
@@ -397,43 +418,31 @@
 </div>
 
 <script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
   const handleHeaderHeightNormalisation{{name|replace("-","_")}} = () => {
-      normaliseHeightsMd('#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-header');
+      normaliseHeights('#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-header', "md");
   };
 
   window.addEventListener('load', handleHeaderHeightNormalisation{{name|replace("-","_")}});
-  window.addEventListener('resize', handleHeaderHeightNormalisation{{name|replace("-","_")}});
-  window.addEventListener('orientationchange', handleHeaderHeightNormalisation{{name|replace("-","_")}});
   
   {% if module.styles.normalise_image_headers %}
     {% if module.styles.image_header_fit == "cover" %}
 
         const handleImageHeightNormalisation{{name|replace("-","_")}} = () => {
-            normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top")
+            normaliseHeights("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top", "md")
         };
 
         window.addEventListener('load', handleImageHeightNormalisation{{name|replace("-","_")}});
-        window.addEventListener('resize', handleImageHeightNormalisation{{name|replace("-","_")}});
-        window.addEventListener('orientationchange', handleImageHeightNormalisation{{name|replace("-","_")}});
 
-    {% elif module.styles.image_header_fit == "contain" %}
+    {% elif module.styles.image_header_fit == "contain" || module.styles.image_header_fit == "contain-variable" || module.styles.image_header_fit == "contain-cover" %}
 
         const handleImageHeightNormalisation{{name|replace("-","_")}} = () => {
-            normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-body .img-header")
+            normaliseHeights("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-body .img-header", "md")
         };
-
+        
         window.addEventListener('load', handleImageHeightNormalisation{{name|replace("-","_")}});
-        window.addEventListener('resize', handleImageHeightNormalisation{{name|replace("-","_")}});
-        window.addEventListener('orientationchange', handleImageHeightNormalisation{{name|replace("-","_")}});
 
     {% endif %}
   {% endif %}
-
-  
-});
 </script>
 
 
