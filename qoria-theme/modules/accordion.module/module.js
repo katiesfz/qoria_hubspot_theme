@@ -1,10 +1,10 @@
 const accordionList = document.querySelectorAll('.accordion-collapse');
 
-for (i=0; i < accordionList.length; i++) {
-    accordionList[i].addEventListener('show.bs.collapse', event => {
-        $(event.target).addClass("opening");
+accordionList.forEach(accordion => {
+    accordion.addEventListener('show.bs.collapse', (event) => {
+        event.target.classList.add('opening');
     });
-    accordionList[i].addEventListener('shown.bs.collapse', event => {
-        $(event.target).removeClass("opening");
+     accordion.addEventListener('shown.bs.collapse', (event) => {
+        event.target.classList.remove('opening');
     });
-}
+});
