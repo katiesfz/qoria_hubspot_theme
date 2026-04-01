@@ -1,0 +1,62 @@
+{% if module.blog_field %}
+        {% set blogId = module.blog_field %}
+    {% else %}
+        {% set blogId = "default" %}
+{% endif %}
+
+{% if module.post_type == "popular" %}
+    {% set blog_posts = blog_popular_posts(blogId, module.number_of_posts, module.tag_field, module.timeframe) %}
+{% elif module.post_type == "latest" %}
+    {% if module.tag_field %}
+        {% set blog_posts = blog_recent_tag_posts(blogId, module.tag_field, module.number_of_posts) %}
+    {% else %}
+        {% set blog_posts = blog_recent_posts(blogId, module.number_of_posts) %}
+    {% endif %}
+{% endif %}
+
+{# split to 2 columns/arrays #}
+{% if blog_posts != [] %}
+{% set numPerCol = (blog_posts|length / 2)|round(0, "ceil") %}
+    {% else %}
+{% set numPerCol = 1 %}
+{% endif %}
+
+<div class="container-fluid g-0">
+    <div class="row row-cols-md-2 row-cols-1 g-3">
+    {% if blog_posts != [] %}
+        {% for column in blog_posts|slice(numPerCol, " ") %}
+            <div class="col">
+                <div class="col-inner px-3 px-md-5 bg-white h-100">
+                {% for blog in column %}
+                    {% if blog != " " %}
+                        <div class="blog py-3 py-md-5 {{"border-bottom" if not loop.last}}">
+                            <div class="row align-items-stretch">
+                                <div class="col d-flex flex-column justify-content-start">
+                                <h5 class="fw-semibold">{{ blog.name }}</h5>
+                                <p class="small fw-semibold">{{ (blog.tag_list[0] + " | ") if blog.tag_list }}{{blog.published_at|format_date('MMMM yyyy')}}</p>
+                                </div>
+                                {% if blog.featured_image %}
+                                    <div class="col-5">
+                                    <img src="{{blog.featured_image}}" alt="{{ blog.name }}" class="img-fluid">
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="row">
+                                <div class="col pt-4">
+                                    <p>{{blog.post_summary|striptags}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col pt-3">
+                                    <a href="{{blog.absolute_url}}" class="text-reset fw-semibold text-decoration-none">Read more +</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>

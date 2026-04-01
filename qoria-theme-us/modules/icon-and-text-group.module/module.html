@@ -1,0 +1,97 @@
+  {%if module.style.sizing == "relative" %}
+   {% set globalSizing = module.style.relative_icon_size %}
+ {% elif module.style.sizing == "absolute" %}
+   {% set globalSizing = module.style.absolute_icon_size %}
+ {% endif %}
+ 
+{% require_css %}
+  <style>
+  {% scope_css %}
+    
+.icon-and-text.active {
+    background: #FFF;
+}
+
+  {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+<div class="d-flex {{ "flex-column row" if module.style.icon_arrangement == "inline" else "row" }} {% if module.style.icon_arrangement == "stacked" %}row-cols-{{module.style.responsive.mobile.cards}} row-cols-md-{{module.style.responsive.tablet.cards}} row-cols-lg-{{module.style.responsive.desktop.cards}} justify-content-center{% endif %} {{ "nav" if module.style.use_as_nav }}">
+{% for item in module.icon_and_text %}
+  {% if item.icon.icon_colour != "inherit" %}
+    {% set iconColour = item.icon.icon_colour %}
+  {% else %}
+    {% set iconColour = module.style.icon_colour %}
+  {% endif %}
+  
+  {% set borderClasses = "" %}
+  {% if module.style.separators && !loop.last %}
+    
+    {% set borderPosition = "bottom" %}
+    {% if module.style.icon_arrangement == "stacked" %}
+      {% set borderPosition = "end" %}
+    {% endif %}
+
+    {% if loop.index is divisibleby module.style.responsive.desktop.cards|int %}
+      {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-lg-0" %}
+    {% else %}
+      {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-lg" %}
+    {% endif %}
+
+    {% if loop.index is divisibleby module.style.responsive.tablet.cards|int %}
+      {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-md-0" %}
+    {% else %}
+      {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-md" %}
+    {% endif %}
+
+    {% if loop.index is divisibleby module.style.responsive.mobile.cards|int %}
+      {% set borderClasses = borderClasses ~ " border-" ~ borderPosition ~ "-0" %}
+    {% else %}
+      {% set borderClasses = borderClasses ~ " border-" ~ borderPosition %}
+    {% endif %}
+
+  {% endif %}
+<div class="d-flex icon-and-text {{loop.index}} cards-dt-{{module.style.responsive.desktop.cards}} cards-tab-{{module.style.responsive.tablet.cards}} cards-mob-{{module.style.responsive.mobile.cards}} {{ module.style.icon_alignment }}{{" text-light" if iconColour == "light"}} {% if module.style.icon_arrangement == "stacked" %} flex-column col {% else %} {{ "flex-row" if module.style.display_as_list else "flex-column flex-sm-row" }}{% endif %} {{ borderClasses }} {{ " active" if loop.first && item.additional_code is string_containing "data-bs-target" }}" style="{{ module.style.spacing_field.css }}" id="{{name}}-icon-{{ loop.index }}" {{item.additional_code}}>
+      <div class="{% if item.icon.icon_shape != "icon-only" %}ratio ratio-1x1 {{ item.icon.icon_shape }} bg-{{iconColour}} text-dark {% endif %} flex-shrink-0" {% if item.icon.icon_shape != "icon-only" %}style="max-width: {{ item.icon.max_width }}px; max-height: {{ item.icon.max_width }}px;"{%endif%}>
+        {% if item.icon.custom_image.src %}
+          {% set sizeAttrs = 'width="{{ item.icon.custom_image.width }}" height="{{ item.icon.custom_image.height }}"' %}
+          {% if item.icon.custom_image.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ item.icon.custom_image.width }}" height="{{ item.icon.custom_image.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif item.icon.custom_image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ item.icon.custom_image.max_width }}" height="{{ item.icon.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+          {% set loadingAttr = item.icon.custom_image.loading != 'disabled' ? 'loading="{{ item.icon.custom_image.loading }}"' : '' %}
+          <img src="{{ item.icon.custom_image.src }}" alt="{{ item.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% else %}
+          <div style="content-sizing: border-box;" class="d-flex justify-content-center align-items-center">
+            {% if item.icon.icon_code != "none" %}
+              {% if item.icon.icon_code %}
+                {% set iconCode = "fa-" ~ item.icon.icon_code|lower %}
+              {% else %}
+                {% set iconCode = "fa-" ~ item.icon.icon_field.name|lower|replace(" ", "-") %}
+              {% endif %}
+              {% if item.icon.sizing == "inherit" %}
+                {% set sizing = globalSizing %}
+              {%elif item.icon.sizing == "relative" %}
+                {% set sizing = item.icon.relative_icon_size %}
+              {% elif item.icon.sizing == "absolute" %}
+                {% set sizing = item.icon.absolute_icon_size %}
+              {% endif %}
+              {% if item.icon.icon_style != "inherit" %}
+                {% set iconStyle = item.icon.icon_style %}
+              {% else %}
+                {% set iconStyle = module.style.icon_style %}
+              {% endif %}
+            <i class="{{ 'text-{{iconColour}} fa-fw' if (item.icon.icon_shape == "icon-only") else "text-light" }} {{ "lh-base" if module.style.sizing == "relative" }} {{ iconStyle }} {{ sizing }} {{ iconCode }}  {% if module.style.icon_arrangement == "inline" && !module.style.display_as_list %} pb-3 pb-md-0 {% endif %}" style="{{ "line-height: " + (item.icon.icon_height * 4) + "px;" if item.icon.custom_icon_height }}"></i>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% if item.text != "" %}
+    <div class="{% if module.style.icon_arrangement == "stacked" && item.icon.icon_code != "none" %}pt-3{% elif (module.style.icon_arrangement != "stacked" && item.icon.icon_code != "none")  %}ps-2 ps-sm-3{% endif %}">
+      {{ item.text }}
+    </div>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>

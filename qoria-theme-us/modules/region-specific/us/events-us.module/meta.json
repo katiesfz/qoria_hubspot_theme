@@ -1,0 +1,19 @@
+{
+  "global" : true,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "smart_type" : "NOT_SMART",
+  "placeholder" : {
+    "show_module_icon" : true,
+    "title" : "Events - US"
+  },
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 207783914874,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/custom-functions.js",
+    "name" : "custom-functions.js"
+  } ],
+  "label" : "Events - US",
+  "icon" : "../../../../images/module-icons/calendar-module-icon.svg",
+  "is_available_for_new_content" : true
+}

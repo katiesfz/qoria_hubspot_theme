@@ -1,0 +1,11 @@
+[ {
+  "id" : "embed_code",
+  "name" : "embed_code",
+  "label" : "Embed Code",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "display_width" : null,
+  "type" : "text",
+  "default" : ""
+} ]

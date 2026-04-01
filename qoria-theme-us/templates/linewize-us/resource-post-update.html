@@ -1,0 +1,213 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Linewize US - Resource Page Updated
+  screenshotPath: ../images/template-previews/blog-post.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+
+{% block body %}
+  
+{{ require_js(get_asset_url("../../js/custom-functions.js"), "head") }}
+
+{% if is_listing_view %}
+
+{% else %}
+
+  <style>
+    {% if content.featured_image %}
+      .hero-article:before {
+        background-image: url("{{content.featured_image}}");
+      }
+      
+      @media (min-width:768px) {
+        .hero-article:before {
+          background-image: linear-gradient(90deg, black, transparent 80%), url("{{content.featured_image}}");
+        }
+      }
+    {% endif %}
+
+    h2 {
+      font-weight: bold;
+      margin-top: 3rem;
+    }
+
+    .blog-cta h2 {
+      margin-top: 0;
+    }
+
+    #post_body_container #hs_cos_wrapper_post_body > p:first-child {
+      font-size: 1.5em;
+    }
+
+  </style>
+
+  <section class="hero-article">
+    <div class="container-xl position-relative">
+      {% if is_in_editor %}
+        {# allow editing of breadcrumbs in editor #}
+        <div class="row">
+          <div class="col-12">
+            <div class="breadcrumbs mb-3">
+              <div class="d-flex flex-row align-items-center text-white fs-5">
+                <a href="{{blog.absolute_url}}" class="text-white text-decoration-none">Blog</a>
+                <i class="fal fa-chevron-right mx-2 fa-xs"></i>
+                {% set topics = [] %}
+                {% for topic in content.topic_list %}
+                  {% do topics.append(topic.label) %}
+                {% endfor %}
+                {% set topicsString = topics|join(", ") %}
+                  <span class="d-none">{{topicsString|pprint}}</span>
+                {% choice "main_tag" label="Choose the main tag", choices="{{topicsString}}", value="{{content.topic_list[0].label}}" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="row">
+          <div class="col-12">
+            <div class="breadcrumbs mb-3">
+              <div class="d-flex flex-row align-items-center text-white fs-5">
+                <a href="{{blog.absolute_url}}" class="text-white text-decoration-none">Blog</a>
+                <i class="fal fa-chevron-right mx-2 fa-xs"></i>
+                {% if content.widgets.main_tag.body.value %}
+                  {{content.widgets.main_tag.body.value}}
+                {% else %}
+                  {{content.topic_list[0]}}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <div class="row">
+        <div class="col-12 col-md-8 col-xxl-7">
+          <h1 class="display-3 fw-bold text-white lh-sm mb-4  pb-2">{{ content.name|striptags }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7">
+          <hr class="border border-light my-4">
+          <div class="row">
+            <div class="col">
+              <div class="metadata-container fs-5">
+                <div class="blog-article-author">
+                  {% if content.blog_post_author.avatar %}
+                    <a href="{{blog.absolute_url}}/{{blog.url_segments.author}}/{{content.blog_post_author.slug}}">
+                      <img src="{{ content.blog_post_author.avatar }}" class="blog-article-avatar rounded-circle d-inline-block" alt="{{ content.blog_post_author.display_name }} Avatar" style="object-fit: cover;">
+                    </a>
+                  {% endif %}
+                  <p class="blog-metadata d-inline-block text-light mb-0">
+                  {% if content.blog_post_author %}
+                    <a class="text-reset" href="{{blog.absolute_url}}/{{blog.url_segments.author}}/{{content.blog_post_author.slug}}">
+                    <strong>By:</strong> {{ content.blog_post_author.display_name }}</a><br>
+                  {% endif %}
+                    {% if content.updated != content.created %}
+                      <strong>Updated:</strong> {{ content.updated|format_date('dd MMMM, yyyy') }}
+                    {% else %}
+                      <strong>Published:</strong> {{ content.publish_date|format_date('d MMMM, yyyy') }}
+                    {% endif %}
+                  </p>
+                </div>
+                {% set wordCount = content.post_body|regex_replace("{%.*%}", "")|striptags|wordcount %}
+                {% set minRead = (wordCount/225)|round(0, ceil) %}
+                <div class="blog-duration"><i class="fas fa-pencil me-2"></i>{{minRead}} minute read</div>
+              </div>
+            </div>
+          </div>
+          {% if is_in_editor %}
+            <div class="row">
+              <div class="col mt-5 text-white fs-5">
+                  {% rich_text "blurb" label="Blurb" %}
+              </div>
+            </div>
+          {% else %}
+            {% if (content.widgets.blurb) && (content.widgets.blurb.body.html|trim != "") %}
+            <div class="row">
+              <div class="col mt-5 text-white fs-5">
+                  {{content.widgets.blurb.body.html}}
+              </div>
+            </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    <section class="">
+
+      <div class="container-xl">
+
+        <div class="row">
+
+          <div class="col-12 col-lg-4 col-xl-3">
+            <div class="table-of-contents bg-light p-3 arrow-down arrow-light shadow" id="table_of_contents">
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-8 col-xl-9 pt-5 ps-lg-5" id="post_body_container">
+            {{ content.post_body }}
+            
+          </div>
+        </div>
+        
+            <div class="row">
+              <div class="col-12 col-lg-9 offset-lg-3 pt-5">
+                {% module "sharing" path="/q-theme/modules/social_sharing" label="Social sharing" %}
+              </div>
+            </div>
+            <div class="row py-5">
+              <div class="col-12 col-lg-9 offset-lg-3">
+                <div class="row">
+                  <div class="col text-start">
+                    {% if content.previous_post_name %}
+                      <p class="">
+                      <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+                      <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
+                      {{ content.previous_post_name }}
+                      </a>
+                      </p>
+                    {% endif %}
+                  </div>
+                  <div class="col text-end">
+                  {% if content.next_post_name %}
+                    <p class="">
+                    <a href="/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
+                    <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
+                    {{ content.next_post_name }}
+                    </a>
+                    </p>
+                  {% endif %}
+                  </div>
+                </div>
+            </div>
+
+      </div>
+
+    </section>
+
+  <section class="bg-light pt-7 pb-7">
+    <div class="container-xxl">
+      <div class="row">
+        <div class="col">
+          <a id="trending" data-hs-anchor="true"></a>
+          <h2 class="text-center"><strong>Trending topics</strong></h2>
+          <hr class="opacity-25">
+          {% module "trending_topics" path="/q-theme/modules/region-specific/us/trending-topics-us" %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% global_partial path="./partials/lets-connect.html" %}
+        
+{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    window.onload =  function() {
+      generateTOC("table_of_contents", "post_body_container", ['#hs_cos_wrapper_post_body > h2', '#hs_cos_wrapper_post_body > h3', '#hs_cos_wrapper_post_body > h4']);
+    };
+  });
+</script>
+{% endblock body %}

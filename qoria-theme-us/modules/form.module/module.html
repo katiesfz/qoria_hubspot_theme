@@ -1,0 +1,177 @@
+{% if module.title is truthy %}
+	{% set no_title = False %}
+{% else %}
+	{% set no_title = True %}
+{% endif %}
+
+{% if module.form.form_id %}
+<div class="form-container {{module.style.background_colour}} {{module.style.shadow}} {{module.style.rounded_corners}}" style="{{module.style.spacing_field.css}};">
+{% if module.show_title %}
+  <div id="form-heading ">
+    <h2 class="{{module.heading_tag}} text-{{module.textalignment}} {{ "text-decoration-partial-underline" if module.heading_underline else "mb-5" }} {{ "text-light" if module.style.form_style == "form-light" }}">{{ module.title }}</h2>
+  </div>
+{% endif %}
+  <div id="{{name}}"></div>
+  <div id="{{name}}-2"></div>
+</div>
+  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+  <script>
+    const form_{{name|replace("-","_")}} = function() {
+      hbspt.forms.create({
+        portalId: "{{hub_id}}",
+        formId: "{{module.form.form_id}}",
+        target: "#{{name}}",
+          {% if module.form.response_type == "redirect" && !module.download %}
+            {% if module.form.redirect_url != "" && module.form.redirect_url %}
+            redirectUrl: "{{module.form.redirect_url}}",
+            {% else %}
+            redirectUrl: "{{ content_by_id(module.form.redirect_id).absolute_url }}",
+            {% endif %}
+          {% else %}
+              {% if module.form.response_type == "inline" %}
+                inlineMessage: "{{module.form.message|escapejs}}",
+              {% elif module.download %}
+                inlineMessage: "Thank you for your interest, your download should start shortly.",
+              {% endif %}
+          {% endif %}
+        {% if module.advanced.on_before_form_submit || module.override_values %}
+          onFormSubmit: function($form) {
+              {{module.advanced.on_before_form_submit}}
+              {% if module.override_values %}
+                {% for item in module.override_values %}
+                  $('input[name="{{ item.property_id }}"]').val("{{ item.property_value }}").change();
+                {% endfor %}       
+              {% endif %}
+            },
+        {% endif %}
+        {% if module.advanced.on_form_ready %}
+          onFormReady: function($form) {
+              {{module.advanced.on_form_ready}}
+            },
+        {% endif %}
+        onFormSubmitted: function($form, data) {
+          {% if module.download %}
+            if (window.hsInEditor) {
+              return;
+            }
+            buildDownloadButton();
+            document.getElementById("downloadFile-{{name}}").click(function(){
+            {% if module.form.response_type == "redirect" %}
+              {% if module.form.redirect_url != "" && module.form.redirect_url %}
+                window.location.href = "{{module.form.redirect_url}}";
+              {% else %}
+                window.location.href = "{{ content_by_id(module.form.redirect_id).absolute_url }}";
+              {% endif %}
+            {% endif %}
+              });
+          {% endif %}
+          {% if module.advanced.on_form_submitted %}
+            {{module.advanced.on_form_submitted}}
+          {% endif %}
+          {% if module.video %}
+              if (window.hsInEditor) {
+                return;
+              }
+              buildVideoButton();
+              document.getElementById("modalToggle-{{name}}").click();
+          {% endif %}
+          },
+        {% if module.video && module.button_text %}
+          submitText: "{{module.button_text}}",
+        {% endif %}
+        submitButtonClass: "btn mt-4 btn-{{module.style.button_colour}} {{"d-block mx-auto" if module.style.button_alignment == "center"}} {{"d-block ms-auto" if module.style.button_alignment == "right"}} {{ "d-none" if module.style.hide_submit_button }}",
+        cssClass: 'hs-form {{ module.style.form_style if module.style.form_style != "form-underline" }} {{module.advanced.additional_classes}}'
+      });
+    };
+
+    form_{{name|replace("-","_")}}();
+  </script>
+
+
+{% else %}
+	{% form
+    title='{{ module.title }}',
+    no_title='{{ no_title }}',
+  %}
+{% endif %}
+
+{% if module.video %}
+
+  <div class="modal fade" id="videoModal-{{name}}" tabindex="-1" aria-labelledby="videoModal-{{name}}" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content overflow-hidden">
+          <div class="modal-body p-0">
+              <div class="position-relative">
+                  <video id="video{{ name }}" width="100%" class="d-block">
+                  {% set videoUrl = module.video_file|lower %}
+                  {% if videoUrl is string_containing ".mp4" %}
+                  {% set type = 'type="video/mp4"' %}
+                  {% elif videoUrl is string_containing ".ogg" %}
+                  {% set type = 'type="video/ogg"' %}
+                  {% elif videoUrl is string_containing ".webm" %}
+                  {% set type = 'type="video/webm"' %}
+                  {% endif %}
+                  <source src="{{ module.video_file }}" {{ type }}>
+                  {% for subtitle in module.subtitles %}
+                  <track label="{{ subtitle.subs_label }}" kind="captions" src="{{ subtitle.subtitle_file }}" {% if loop.first %}default{% endif %} />
+                  {% endfor %}
+                  Your browser does not support the video tag.
+                  </video>                        
+                  <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" onclick="pauseVideo('video{{name}}')"></button>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endif %}
+
+<script>
+   
+   {% if module.download %}
+function buildDownloadButton() {
+  const button = document.createElement("a");
+    button.className = 'btn mt-4 btn-{{module.style.button_colour}} {{"d-block mx-auto" if module.style.button_alignment == "center"}} {{"d-block ms-auto" if module.style.button_alignment == "right"}}';
+    button.id = "downloadFile-{{name}}";
+    button.innerHTML = "Download now";
+    button.setAttribute("href","{{ module.download_file.url.href }}");
+    button.setAttribute("download","{{ module.download_name }}");
+    {% if module.form.response_type == "redirect" %}
+      button.setAttribute("target","_blank");
+    {% elif module.download_file.open_in_new_tab %}
+      button.setAttribute("target","_blank");
+    {% endif %}
+  formContainer = document.getElementById("{{name}}-2");
+  formContainer.append(button);
+}
+   {% endif %}
+   
+   {% if module.video %}
+function buildVideoButton() {
+  const button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.className = 'btn mt-4 btn-{{module.style.button_colour}} {{"d-block mx-auto" if module.style.button_alignment == "center"}} {{"d-block ms-auto" if module.style.button_alignment == "right"}}';
+    button.dataset.bsToggle = "modal";
+    button.id = "modalToggle-{{name}}"
+    button.dataset.bsTarget = "#videoModal-{{name}}";
+    button.innerHTML = "Watch the recording";
+    button.onclick = function(){playVideo('video{{name}}')};
+
+  formContainer = document.getElementById("{{name}}-2");
+  formContainer.append(button);
+}
+document.addEventListener("DOMContentLoaded", () => {
+// buildButton();
+  const videoModal{{name}} = document.getElementById('videoModal-{{name}}');
+  videoModal{{name}}.addEventListener('hide.bs.modal', event => {
+      pauseVideo('video{{name}}');
+  });
+
+});
+   {% endif %}
+</script>
+
+
+
+

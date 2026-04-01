@@ -1,0 +1,24 @@
+[ {
+  "id" : "apply_to_element",
+  "name" : "apply_to_element",
+  "label" : "Apply to element",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "column", "Column" ], [ "row", "Row" ], [ "section", "Section" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice"
+}, {
+  "id" : "classes",
+  "name" : "classes",
+  "label" : "Classes to add",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : ""
+} ]

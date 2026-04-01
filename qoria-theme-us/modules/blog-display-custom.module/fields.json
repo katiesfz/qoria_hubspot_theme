@@ -1,0 +1,84 @@
+[ {
+  "id" : "blog_posts",
+  "name" : "blog_posts",
+  "label" : "Blog Posts",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "blog.blog_title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "blog.blog_image",
+    "name" : "blog_image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "display_width" : null,
+    "type" : "image",
+    "default" : {
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "blog.blog_title",
+    "name" : "blog_title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Blog title"
+  }, {
+    "id" : "blog.blog_tag",
+    "name" : "blog_tag",
+    "label" : "Tag",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Linewize"
+  }, {
+    "id" : "blog.blog_description",
+    "name" : "blog_description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "emoji", "lists", "standard_emphasis", "block", "alignment", "advanced_emphasis" ],
+    "display_width" : null,
+    "type" : "richtext",
+    "default" : "<p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+  }, {
+    "id" : "blog.blog_link",
+    "name" : "blog_link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "display_width" : null,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group"
+} ]

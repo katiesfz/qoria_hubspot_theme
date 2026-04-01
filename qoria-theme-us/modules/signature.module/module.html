@@ -1,0 +1,12 @@
+<div class="row gx-2">
+    {% if module.image.src %}
+        {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading|escape_attr }}"' : '' %}
+        <div class="col-auto">
+            <img src="{{resize_image_url(module.image.src, 128)}}" alt="{{module.image.alt}}" {{loadingAttr}} class="{{"filter-grayscale" if module.style.grayscale_filter}} rounded-circle" width="64" height="64" style="object-fit: cover;">
+        </div>
+    {% endif %}
+    <div class="col">
+        <h4 class="text-cursive fw-medium mb-0">{{module.signature}}</h4>
+        <p class="small fw-semibold">{{module.subtext}}</p>
+    </div>
+</div>

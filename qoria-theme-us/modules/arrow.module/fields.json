@@ -1,0 +1,43 @@
+[ {
+  "id" : "arrow_colour",
+  "name" : "arrow_colour",
+  "label" : "Arrow colour",
+  "required" : false,
+  "locked" : false,
+  "display_width" : null,
+  "type" : "color",
+  "default" : {
+    "color" : "#000000",
+    "opacity" : 100
+  }
+}, {
+  "id" : "arrow_direction",
+  "name" : "arrow_direction",
+  "label" : "Arrow direction",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ " ", "Up" ], [ "rotate-180", "Down" ], [ "rotate-90", "Right" ], [ "rotate-270", "Left" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "rotate-180"
+}, {
+  "id" : "width",
+  "name" : "width",
+  "label" : "Width",
+  "required" : false,
+  "locked" : false,
+  "display" : "slider",
+  "placeholder" : "50",
+  "min" : 1,
+  "max" : 600,
+  "step" : 1,
+  "prefix" : "",
+  "suffix" : "px",
+  "display_width" : null,
+  "type" : "number",
+  "default" : 50
+} ]

@@ -1,0 +1,996 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Smoothwall LP 2
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "./layouts/blank.html" %}
+
+{% block header %}
+  <div class="header-wrapper sticky-top shadow-sm">
+    {% global_partial path='./partials/header-transparent.html', label="Header" %}
+  </div>
+{% endblock header %}
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+{% dnd_section
+  background_image={
+    "background_position" : "MIDDLE_CENTER",
+    "background_size" : "cover",
+    "image_url" : "https://4139239.fs1.hubspotusercontent-na1.net/hub/4139239/hubfs/Background-Images/teacher-helping-student-rt-banner.jpg?width=2000&height=876.1904761904763"
+  },
+  padding={
+    "default" : {
+      "bottom" : "8rem",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "15rem"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "7.5rem"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=7,
+    padding={
+      "default" : {
+        "right" : "64px"
+      },
+      "mobile" : {
+        "right" : "0px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "colour" : "light"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Spot the risks you can’t see in students’ digital behaviour.
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/lead-paragraph",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "text" %}
+              <p class="lead text-white">Smoothwall Monitor blends advanced technology with expert human moderation to deliver real-time alerts, helping safeguarding staff identify serious risks and act before things escalate.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=9,
+        padding={
+          "default" : {
+            "top" : "30px"
+          },
+          "mobile" : {
+            "bottom" : "32px",
+            "top" : "32px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/icon-and-text-group",
+            offset=0,
+            width=12,
+            icon_and_text=[ {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "arrow-right",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p><strong>Spot risks beyond the browser</strong><br>Risk-assesses everything a student types across Google, Office 365, offline documents, web chat, social media and more.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "arrow-right",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p><strong>Human-moderated, 24/7, 365</strong><br>Safeguarding experts review every alert, removing 99% of false positives, so staff only hear about genuine concerns.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "arrow-right",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p><strong>Real-time alerts</strong><br>Designated staff <span>are alerted by phone and email within minutes with the context they need to support interventions.</span>&nbsp;</p>"
+            } ],
+            style={
+              "absolute_icon_size" : "fa-2x",
+              "display_as_list" : true,
+              "icon_alignment" : "align-items-start",
+              "icon_colour" : "light",
+              "sizing" : "absolute"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=9,
+        width=3
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=7,
+    width=5
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "style" : "gradient",
+            "thickness" : 12
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/form",
+        offset=0,
+        width=12,
+        form={
+          "form_id" : "079667bf-06ad-450e-9657-ae625d6ed2d9",
+          "form_type" : "HUBSPOT",
+          "message" : "Thanks for submitting the form.",
+          "response_type" : "inline"
+        },
+        heading_tag="h3",
+        heading_underline=false,
+        show_title=true,
+        style={
+          "background_colour" : "bg-white text-dark",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 32
+              }
+            }
+          }
+        },
+        textalignment="center",
+        title="Book Your Free Demo Today!"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "64px",
+      "right" : "64px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "left" : "64px",
+      "right" : "64px",
+      "top" : "16px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          What Monitor <strong>customers say</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/video-cards",
+        offset=0,
+        width=12,
+        styles={
+          "autoplay" : false,
+          "equal_heights" : true,
+          "responsive" : {
+            "desktop" : {
+              "slides_to_display" : 2
+            },
+            "tablet" : {
+              "slides_to_display" : 2
+            }
+          },
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        },
+        video_card=[ {
+          "description" : "<p><strong>Ruth Noble, Designated Safeguarding Lead at </strong><strong>Tonacliffe Primary School </strong>why her explains why her school decided to use Smoothwall Monitor.</p>",
+          "logo" : {
+            "src" : ""
+          },
+          "text" : "<p>See how Linewize provides the leadership team at Coomera with confidence by knowing that their students only engage with content appropriate for their age and stage of development.</p>",
+          "title" : "Tonacliffe Primary School",
+          "video_settings" : {
+            "autoplay" : false,
+            "controls" : true,
+            "custom_thumbnail" : {
+              "alt" : "UK_SMW_2024_Casestudy_thumb_tonacliffe-1",
+              "height" : 700,
+              "loading" : "lazy",
+              "max_height" : 700,
+              "max_width" : 1060,
+              "size_type" : "auto_custom_max",
+              "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/custom-video-thumbnails/UK_SMW_2024_Casestudy_thumb_tonacliffe-1.jpg",
+              "width" : 1060
+            },
+            "file" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall%20Site%20Videos/Tonacliffe%20-%20Smoothwall%20Monitor.mp4",
+            "loop" : false,
+            "muted" : false,
+            "play_button_colour" : "dark",
+            "preload" : "auto",
+            "subtitles" : { }
+          }
+        }, {
+          "description" : "<p><strong>Andy Eastcrabbe, <span>IT Manager at&nbsp;</span>Hipperholme<span>&nbsp;Grammar School</span></strong> talks about the impact of Smoothwall Monitor.&nbsp;</p>",
+          "logo" : {
+            "src" : ""
+          },
+          "text" : "<p>See how Linewize provides the leadership team at Coomera with confidence by knowing that their students only engage with content appropriate for their age and stage of development.</p>",
+          "title" : "Hipperholme Grammar School",
+          "video_settings" : {
+            "autoplay" : false,
+            "controls" : true,
+            "custom_thumbnail" : {
+              "alt" : "Andy Eastcrabbe speaks about Smoothwall Monitor",
+              "height" : 707,
+              "loading" : "lazy",
+              "max_height" : 707,
+              "max_width" : 1060,
+              "size_type" : "auto_custom_max",
+              "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/video-testimonial-photocards-Andy%20Crabbetree.jpg",
+              "width" : 1060
+            },
+            "file" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/UK%20School%20Testimonials/UK_SMW_2023_Product%20Testimonial%20-%20Monitor%20-%20Hipperhome.mp4",
+            "loop" : false,
+            "muted" : false,
+            "play_button_colour" : "dark",
+            "preload" : "auto",
+            "subtitles" : { }
+          }
+        }, {
+          "description" : "<p><span><strong>Computing and E-safety lead, Ann Rose</strong>, shares her school's experience of Smoothwall Monitor.</span></p>",
+          "logo" : {
+            "src" : ""
+          },
+          "text" : "<p>See how Linewize provides the leadership team at Coomera with confidence by knowing that their students only engage with content appropriate for their age and stage of development.</p>",
+          "title" : "Hollywood Primary School",
+          "video_settings" : {
+            "autoplay" : false,
+            "controls" : true,
+            "custom_thumbnail" : {
+              "alt" : "video-testimonial-photocards-Ann Rose",
+              "height" : 707,
+              "loading" : "lazy",
+              "max_height" : 707,
+              "max_width" : 1060,
+              "size_type" : "auto_custom_max",
+              "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/video-testimonial-photocards-Ann%20Rose.jpg",
+              "width" : 1060
+            },
+            "file" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/UK%20School%20Testimonials/UK_SMW_2023_Product%20Testimonial%20-%20Monitor%20-%20Hollywood%20Primary.mp4",
+            "loop" : false,
+            "muted" : false,
+            "play_button_colour" : "dark",
+            "preload" : "auto",
+            "subtitles" : { }
+          }
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_linear_gradient={
+    "colors" : [ "rgba(255, 255, 255, 1)", "rgba(248, 248, 248, 1)" ],
+    "direction" : "to bottom"
+  },
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "32px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "left" : "64px",
+      "right" : "64px",
+      "top" : "16px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/testimonial-carousel",
+        offset=0,
+        width=12,
+        slide=[ {
+          "accent_colour" : "primary",
+          "author" : "Designated Safeguarding Lead",
+          "image" : {
+            "alt" : "hps",
+            "height" : 440,
+            "loading" : "lazy",
+            "max_height" : 120,
+            "max_width" : 120,
+            "size_type" : "auto_custom_max",
+            "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/hps.png",
+            "width" : 440
+          },
+          "image_fit" : "contain",
+          "quote" : "<p><span>Smoothwall Monitor is amazing... it’s the reassurance that you know students are safe, and you know humans are analysing risks and providing human judgement. It works so seamlessly.<br><br><strong>Hollywood Primary School</strong></span></p><p>&nbsp;</p>",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Customer"
+        }, {
+          "accent_colour" : "secondary",
+          "author" : "Care, Guidance & Support Manager ",
+          "image" : {
+            "alt" : "KH-logoH-gold-header",
+            "height" : 284,
+            "loading" : "lazy",
+            "max_height" : 48,
+            "max_width" : 160,
+            "size_type" : "auto_custom_max",
+            "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/KH-logoH-gold-header.png",
+            "width" : 950
+          },
+          "image_fit" : "contain",
+          "quote" : "<p><span>I can’t praise Smoothwall Monitor enough! It’s not only made my life a lot easier, but it really does have the ability to transform lives because it gives me time to act.</span></p><p><strong><span>King Harold Academy&nbsp;</span></strong></p>",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Customer"
+        }, {
+          "accent_colour" : "orange",
+          "author" : " Operations & Business Manager ",
+          "image" : {
+            "alt" : "carlton-keighley-logo-main",
+            "height" : 109,
+            "loading" : "lazy",
+            "max_height" : 150,
+            "max_width" : 220,
+            "size_type" : "exact",
+            "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/carlton-keighley-logo-main.svg",
+            "width" : 160
+          },
+          "image_fit" : "contain",
+          "quote" : "<p><span>In relation to 7 months of stress and pain from a previous provider which failed to deliver what they had stated it would do, Smoothwall Monitor knocks it out of the park! </span></p><p><strong>Carlton Keighley </strong></p><p>&nbsp;</p><p>&nbsp;</p>",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Customer"
+        } ],
+        style={
+          "carousel_settings" : {
+            "autoplay" : true,
+            "controls" : true,
+            "normalise_heights" : true,
+            "responsive" : {
+              "desktop" : {
+                "slides_to_slide" : 1
+              },
+              "tablet" : {
+                "slides_to_display" : 3
+              }
+            }
+          },
+          "greyscale_images" : false
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_image={
+    "background_position" : "BOTTOM_CENTER",
+    "background_size" : "cover",
+    "image_url" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Background-Images/bg-point.jpg"
+  },
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "0px",
+      "right" : "0px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=2
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/linked_image",
+        offset=0,
+        width=12,
+        horizontal_alignment="CENTER",
+        img={
+          "alt" : "Pixel-1",
+          "height" : 1,
+          "loading" : "lazy",
+          "max_height" : 1,
+          "max_width" : 1,
+          "size_type" : "auto",
+          "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Pixel-1.png",
+          "width" : 1
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=2,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "colour" : " ",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          FAQs
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6,
+        padding={
+          "default" : {
+            "bottom" : "30px",
+            "top" : "30px"
+          },
+          "mobile" : {
+            "bottom" : "5vw",
+            "left" : "20px",
+            "right" : "20px",
+            "top" : "5vw"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/accordion",
+            offset=0,
+            width=12,
+            accordion=[ {
+              "acc_label" : "How does Monitor track student activity?",
+              "content" : "<p>Monitor sits on the student devices and uses keystroke technology to flag whenever a student types something onto their device that may indicate a risk to themselves or others. This monitoring happens in real-time.&nbsp;</p>"
+            }, {
+              "acc_label" : "What happens when Monitor picks up a student at risk?",
+              "content" : "<p>When a risk is detected, a screenshot is taken, and AI grades the risk. Low risks go to the dashboard for the DSL to view next time they log in.<br><br>Higher risks go to our team of highly trained human moderators who assess their severity. If they are deemed genuinely serious, they will contact your school by email or, in the case of a possible risk to health or life, by phone 24/7.</p>"
+            }, {
+              "acc_label" : "How does human moderation improve alert accuracy?",
+              "content" : "<p>Human moderation significantly enhances alert accuracy by reducing false positives and ensuring that only genuine safeguarding concerns reach you. Our expert moderation team reviews all serious alerts, filtering out non-issues that automated systems might flag. This means potential risks that technology alone could overlook are identified, while unnecessary alerts are minimised. As a result, you only receive notifications (by phone and email) for incidents that truly require your attention, helping you focus on what matters most without being overwhelmed by constant alerts.</p>"
+            }, {
+              "acc_label" : "What types of risks can Monitor detect?",
+              "content" : "<p>Monitor can detect a wide range of risks by analysing students' digital behaviour across platforms like Google, Office 365, web chats, social media, and even offline documents. It identifies concerns that may indicate vulnerability or harm, including:<br><br>Mental health issues, self-harm and suicidal ideation, bullying and cyberbullying, violence and aggressive behaviour, radicalisation and extremism, sexual exploitation and grooming, sharing of harmful images or oversharing personal information, substance abuse, including drugs and alcohol.</p>"
+            }, {
+              "acc_label" : "How easy can Monitor be to set up?",
+              "content" : "<p>As Monitor is a cloud-based platform it can be installed on to your school/college devices remotely, within minutes, using any software distribution tool such as Group Policy, SCCM or Intune, or Google G-Suite.</p>"
+            }, {
+              "acc_label" : "What devices is Monitor compatible with?",
+              "content" : "<p>Monitor is compatible with Windows, MacOS and Chromebook devices.</p>"
+            }, {
+              "acc_label" : "Will the Monitor still work if students take devices offsite?",
+              "content" : "<p>Smoothwall Monitor works offline as well as online. This means if a student takes home a school device but isn’t connected to the internet, the device will continue to be monitored, capturing screenshots and keystrokes. <br><br>As soon as an internet connection is re- established, Smoothwall Monitor will send any data through to our team of moderators to analyse.</p>"
+            }, {
+              "acc_label" : "Can it integrate with other digital safety solutions?",
+              "content" : "<p>With Smoothwall Monitor you can integrate with various record management systems including CPOMS, MyConcern and our very own Smoothwall Record Manager. Any events which are alerted in Smoothwall Monitor can automatically be sent through to these record management systems.</p>"
+            } ],
+            style={
+              "shadow" : true,
+              "shadow_style" : "shadow"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6,
+        padding={
+          "default" : {
+            "left" : "0px"
+          },
+          "mobile" : {
+            "left" : "0px",
+            "top" : "32px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/fancy-image",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "Monitor-Records-2-1",
+              "height" : 604,
+              "loading" : "lazy",
+              "max_height" : 604,
+              "max_width" : 606,
+              "size_type" : "auto",
+              "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Monitor-Records-2-1.png",
+              "width" : 606
+            },
+            style={
+              "alignment" : {
+                "horizontal_align" : "RIGHT",
+                "vertical_align" : "MIDDLE"
+              },
+              "greyscale_filter" : false,
+              "spacing_field" : {
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 50
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "right" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 20
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% dnd_section
+  background_color="rgba(244, 244, 244, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          <span>Understand the <strong>technology behind Monitor</strong></span>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=7
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/heading",
+                offset=0,
+                width=12,
+                style={
+                  "heading_underline" : false
+                }
+              %}
+                {% module_attribute "heading" %}
+                  Download our Complete Guide to Digital Monitoring for Schools today.
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p style="font-size: 22px;">Learn what digital monitoring is and how it can help schools spot students at potential risk that might otherwise go unnoticed or noticed too late.</p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/cta",
+                offset=0,
+                width=12,
+                alignment="start",
+                button_colour="secondary",
+                button_text="Download guide",
+                download=true,
+                download_file="A Complete Guide to Digital Monitoring for Schools",
+                link={
+                  "no_follow" : false,
+                  "open_in_new_tab" : true,
+                  "url" : {
+                    "content_id" : 142765645651,
+                    "type" : "CONTENT"
+                  }
+                },
+                small_alignment="start",
+                styles={
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 0
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 32
+                      }
+                    }
+                  }
+                },
+                word_wrap=true
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=7,
+            width=1
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=8,
+            width=4,
+            padding={
+              "default" : {
+                "left" : "64px"
+              },
+              "mobile" : {
+                "left" : "0px",
+                "top" : "32px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/fancy-image",
+                offset=0,
+                width=12,
+                image={
+                  "alt" : "Smoothwall---A-Complete-Guide-to-Digital-Monitoring-for-Schools-2024",
+                  "height" : 566,
+                  "loading" : "lazy",
+                  "max_height" : 350,
+                  "max_width" : 247,
+                  "size_type" : "auto_custom_max",
+                  "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Smoothwall---A-Complete-Guide-to-Digital-Monitoring-for-Schools-2024.png",
+                  "width" : 400
+                },
+                style={
+                  "alignment" : {
+                    "horizontal_align" : "LEFT",
+                    "vertical_align" : "MIDDLE"
+                  },
+                  "greyscale_filter" : false,
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : { },
+                      "top" : { }
+                    }
+                  }
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

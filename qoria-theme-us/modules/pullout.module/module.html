@@ -1,0 +1,68 @@
+
+
+<section class="{{" section-shadow" if module.style.shadow }}" style="transform-style: preserve-3d; {{"position: relative; z-index: 2; margin-top: -24px;" if module.style.overlay }}">
+    <div class="container-fluid g-0 {{ module.style.background_colour if module.style.background_colour != "none" }}{{ (" bg-" ~ module.style.background_image) if module.style.background_image != "none" }}" style=" {{module.style.spacing_field.css}}">
+        {% for row in module.row %}
+            <div class="row g-0 {{row.advanced.additional_classes}}">
+                {% for col in row.column %}
+                    <div class="col {{ "position-relative" if col.link_stretched }} {{ col.column_styles.background_colour }}{{ " bg-q-tail-1" if col.column_styles.background_image == "q-tail-1" }}">
+                        <div class="content-container {{ col.advanced.additional_classes }}">
+
+                        {% if col.icon.icon_colour != "inherit" %}
+                            {% set iconColour = col.icon.icon_colour %}
+                          {% else %}
+                            {% set iconColour = module.style.icon_colour %}
+                          {% endif %}
+
+                          {% if module.style.sizing == "relative" %}
+                            {% set globalSizing = module.style.relative_icon_size %}
+                          {% elif module.style.sizing == "absolute" %}
+                            {% set globalSizing = module.style.absolute_icon_size %}
+                          {% endif %}
+
+                          {% if col.icon.custom_image.src %}
+                            {% set sizeAttrs = 'width="{{ col.icon.custom_image.width }}" height="{{ col.icon.custom_image.height }}"' %}
+                            {% if col.icon.custom_image.size_type == 'auto' %}
+                              {% set sizeAttrs = 'width="{{ col.icon.custom_image.width }}" height="{{ col.icon.custom_image.height }}" style="max-width: 100%; height: auto;"' %}
+                            {% elif col.icon.custom_image.size_type == 'auto_custom_max' %}
+                              {% set sizeAttrs = 'width="{{ col.icon.custom_image.max_width }}" height="{{ col.icon.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                            {% endif %}
+                            {% set loadingAttr = col.icon.custom_image.loading != 'disabled' ? 'loading="{{ col.icon.custom_image.loading }}"' : '' %}
+                            <img src="{{ col.icon.custom_image.src }}" alt="{{ col.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                          {% else %}
+                            {% if (col.icon.icon_code != "" && col.icon.icon_code != "none" ) || col.icon.icon_field.name != "" %}
+                                <div style="content-sizing: border-box;" class="d-flex justify-content-center align-items-center mb-3">
+                                    {% if col.icon.icon_code %}
+                                        {% set iconCode = "fa-" ~ col.icon.icon_code %}
+                                    {% else %}
+                                        {% set iconCode = "fa-" ~ col.icon.icon_field.name|lower|replace(" ", "-") %}
+                                    {% endif %}
+                                    {% if col.icon.sizing == "inherit" %}
+                                        {% set sizing = globalSizing %}
+                                    {% elif col.icon.sizing == "relative" %}
+                                        {% set sizing = col.icon.relative_icon_size %}
+                                    {% elif col.icon.sizing == "absolute" %}
+                                        {% set sizing = col.icon.absolute_icon_size %}
+                                    {% endif %}
+                                    <i class="{{ 'text-{{iconColour}} fa-fw' if col.icon.icon_shape == "icon-only" }} {{ col.icon.icon_style }} {{ sizing }} {{ iconCode }}"></i>
+                                </div>                                
+                            {% endif %}
+                          {% endif %}
+
+
+
+
+                        {{"<h5><strong>{{ col.pre_heading }}</strong></h5>" if col.pre_heading }}
+                        {{"<h3>{{ col.heading }}</h3>" if col.heading }}
+                        {{'<span class="{{col.statistic_font_size}}">{{ col.statistic }}</span>' if col.statistic }}
+                        {{ col.text }}
+                        {% if (col.link.url.href) && (col.link_label) %}
+                            <a href="{{ col.link.url.href }}" class="text-reset text-decoration-none fw-semibold {{ "stretched-link" if col.link_stretched }}">{{ col.link_label }}</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,19 @@
+{
+  "global" : true,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 144006720590,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/jquery/jquery-3.6.4.min.js",
+    "name" : "jquery-3.6.4.min.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/custom-functions.js",
+    "name" : "custom-functions.js"
+  } ],
+  "label" : "Pullout - Legal Navigation",
+  "icon" : "../../../images/module-icons/square-quote.svg",
+  "is_available_for_new_content" : false
+}

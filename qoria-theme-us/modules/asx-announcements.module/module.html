@@ -1,0 +1,339 @@
+{% set table = hubdb_table_rows(module.hubdb, queryparam)%}
+    
+    {% set dates = [] %}
+    {% for row in table|sort(True, False, "date") %}
+        {% do dates.append(row.date|format_date('yyyy')) %}
+    {% endfor %}
+ {#   {% set uniqueYears = dates|unique %}   #}
+
+
+{# get fiscal years #}
+    {% set fiscalYears = [] %}
+    {% for row in table|sort(True, False, "date") %}
+         {% set previousYear = row.date|format_date('yyyy')|int - 1 %}
+         {% set nextYear = row.date|format_date('yyyy')|int + 1 %}
+         {% if row.date|format_date("M") < 7 %}
+          {% set fiscalYear = previousYear ~ "/" ~ row.date|format_date('yyyy') %}
+         {% else %}
+          {% set fiscalYear = row.date|format_date('yyyy') ~ "/" ~ nextYear %}
+         {% endif %}
+        {% do fiscalYears.append(fiscalYear) %}
+    {% endfor %}
+    {% set uniqueYears = fiscalYears|unique %}
+
+
+        
+    {% set typeCol = hubdb_table_column(module.hubdb, "type") %}
+    {% set docTypes = [] %}
+    {% do docTypes.append("All announcements") %}
+    {% for type in typeCol.options %}
+        {% do docTypes.append(type.name) %}
+    {% endfor %}
+
+    <div class="row" style="{{module.styles.spacing_field.css}}">
+        <div class="col-12 col-lg-8 mb-4">
+            <div class="bg-gradient-primary p-5 text-light">
+                <div class="row">
+                    <div class="col-12"><h2 class="fw-semibold mb-4">ASX announcements</h2></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-4">
+
+                    <p class="mb-3">
+                    {{ module.description }}
+                    </p>
+                    <form class="form-light">
+                        <fieldset>
+                            <select class="form-select fw-semibold bg-transparent text-white mb-3 border rounded-3 pe-7" aria-label="Select document type" id="docTypeSelect">
+                                {% for docType in docTypes %}
+                                <option class="text-dark" {{ "selected" if loop.first }} value="{{docType}}">{{docType}}</option>
+                                {% endfor %}
+                            </select>
+                            <select class="form-select fw-semibold bg-transparent text-white mb-3 border rounded-3 pe-7" aria-label="Select year" id="yearSelect">
+                                {% for year in uniqueYears %}
+                                <option class="text-dark" {{ "selected" if loop.first }} value="{{year}}">{{year}}</option>
+                                {% endfor %}
+                            </select>
+                        </fieldset>
+                    </form>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <ul class="nav nav-tabs" id="fqNav" role="tablist">
+                            <li class="nav-item flex-grow-1 me-1" role="presentation">
+                            <button class="nav-link w-100 py-3 fs-5 rounded-0 fw-semibold active" id="q1-tab" data-bs-toggle="tab" data-bs-target="#q1-tab-pane" type="button" role="tab" aria-controls="q1-tab-pane" aria-selected="true">Q1</button>
+                            </li>
+                            <li class="nav-item flex-grow-1 me-1" role="presentation">
+                            <button class="nav-link w-100 py-3 fs-5 rounded-0 fw-semibold " id="q2-tab" data-bs-toggle="tab" data-bs-target="#q2-tab-pane" type="button" role="tab" aria-controls="q2-tab-pane" aria-selected="false">Q2</button>
+                            </li>
+                            <li class="nav-item flex-grow-1 me-1" role="presentation">
+                            <button class="nav-link w-100 py-3 fs-5 rounded-0 fw-semibold " id="q3-tab" data-bs-toggle="tab" data-bs-target="#q3-tab-pane" type="button" role="tab" aria-controls="q3-tab-pane" aria-selected="false">Q3</button>
+                            </li>
+                            <li class="nav-item flex-grow-1" role="presentation">
+                            <button class="nav-link w-100 py-3 fs-5 rounded-0 fw-semibold " id="q4-tab" data-bs-toggle="tab" data-bs-target="#q4-tab-pane" type="button" role="tab" aria-controls="q4-tab-pane" aria-selected="false">Q4</button>
+                            </li>
+                            <li class="nav-item d-none" role="presentation">
+                            <button class="nav-link d-none" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-tab-pane" type="button" role="tab" aria-controls="all-tab-pane" aria-selected="true">All</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content bg-white shadow-lg" id="fqPanes">
+                            <div class="tab-pane py-4 fade show active" id="q1-tab-pane" role="tabpanel" aria-labelledby="q1-tab" tabindex="0">...</div>
+                            <div class="tab-pane py-4 fade" id="q2-tab-pane" role="tabpanel" aria-labelledby="q2-tab" tabindex="0">...</div>
+                            <div class="tab-pane py-4 fade" id="q3-tab-pane" role="tabpanel" aria-labelledby="q3-tab" tabindex="0">...</div>
+                            <div class="tab-pane py-4 fade" id="q4-tab-pane" role="tabpanel" aria-labelledby="q4-tab" tabindex="0">...</div>
+                            <div class="tab-pane fade" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 mb-4">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-12 mb-4">
+                    <div class="card ">
+                        <img src="{{get_asset_url('../../images/qoria/photos/iStock-1430627347-LR.jpg')}}" class="card-img-top" alt="Stock value card header">
+                        <div class="card-body text-start">
+                            <h5 class="card-text">Stock price: </h5>
+
+                            {% set foundRow = [] %}
+                            {% for row in hubdb_table_rows(module.stock_db, queryparam) %}
+                                {% if row.price != 0 and foundRow == [] %}
+                                    {% do foundRow.append(row.hs_id) %}
+                                {% endif %}
+                            {% endfor %}
+                
+                            {% set stockRow = hubdb_table_row(module.stock_db, foundRow[0]) %}
+                
+                            <p class="card-text fs-6 mb-0">{{stockRow.name}} A${{stockRow.price}} {{stockRow.change|format}} ({{stockRow.change_percent}}%)</p>
+                            <p class="card-text small fst-italic">Stock price updated twice daily</p>
+                            <h5 class="card-text">Registered office:</h5>
+                            <p class="card-text">{{module.registered_office|replace("\n", "<br>")}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-body text-start">
+                        <h5 class="card-text">Rights to receive documents</h5>
+                        <p class="card-text mb-3">Notice of rights of members in connection with certain documents.</p>
+                        <a href="{{module.rights_to_receive}}" download="Rights-to-receive" target="_blank" class="btn btn-link text-reset text-decoration-none p-0 fw-semibold">Download here <i class="fas ms-2 fa-arrow-down-to-bracket"></i></a>
+                        </div>
+                    </div>
+                
+                {% if module.newsletter_form.form_id %}
+                    <div class="card ">
+                        <div class="card-body text-start">
+                        <h5 class="card-text">Investor newsletter</h5>
+                        <p class="card-text">Keep up to date with the latest investor developments from Qoria.</p>
+                                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                                <script>
+                                hbspt.forms.create({
+                                    region: "na1",
+                                    portalId: "{{hub_id}}",
+                                    formId: "{{ module.newsletter_form.form_id }}",
+                                    submitButtonClass: "btn btn-secondary w-100 mt-2"
+                                });
+                                </script>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+
+var docsListUnfiltered = [];
+{% for row in table|sort(True, False, "date") %}
+    var date = new Date('{{row.date|format_date('yyyy-MM-dd')}}');
+    {% set rowTypes = [] %}
+    {% if row.type %}
+        {% for type in row.type %}
+            {% do rowTypes.append("'" + type.name + "'") %}
+        {% endfor %}
+    {% endif %}
+    var newDoc = { "date" : date, "name" : "{{row.name}}", "url" : "{{row.download_link}}", "type" : {{rowTypes}} };
+    docsListUnfiltered.push(newDoc);
+{% endfor %}
+
+function checkYear(doc) {
+    let itemYear = new Date(doc.date).getFullYear();
+    let selected = this;
+    return itemYear == selected;
+  }
+   
+function checkFiscalYear(doc) {
+    let itemDate = new Date(doc.date);
+    let itemYear = itemDate.getFullYear();
+    let itemMonth = itemDate.getMonth();
+    let selectedYears = this.split("/");
+   if ((itemYear == selectedYears[0]) && (itemMonth > 5)){
+      return true;
+   } else if ((itemYear == selectedYears[1]) && (itemMonth < 6)){
+      return true;
+   } else {return false;}
+  }
+
+function checkQ1(doc) {
+let itemMonth = new Date(doc.date).getMonth();
+return (6 <= itemMonth && itemMonth <= 8);
+}
+
+function checkQ2(doc) {
+let itemMonth = new Date(doc.date).getMonth();
+return (9 <= itemMonth && itemMonth <= 11);
+}
+
+function checkQ3(doc) {
+let itemMonth = new Date(doc.date).getMonth();
+return (0 <= itemMonth && itemMonth <= 2);
+}
+function checkQ4(doc) {
+let itemMonth = new Date(doc.date).getMonth();
+return (3 <= itemMonth && itemMonth <= 5);
+}
+
+   function checkCurQuarter() {
+      var today = new Date();
+      var curMonth = today.getMonth();
+      var curQuarter = 0;
+      if (curMonth < 3) {
+         curQuarter = 3;
+      } else if (curMonth < 6) {
+         curQuarter = 4;
+      } else if (curMonth < 9) {
+         curQuarter = 1;
+      } else if (curMonth < 12) {
+         curQuarter = 2;
+      };
+      return curQuarter;
+   }
+
+function checkDocType(doc) {
+    let selected = this;
+    for (i=0; i<doc.type.length; i++) {
+        if (selected == doc.type[i])
+        {return true;}
+    }
+  }
+
+function filterDocType(listToFilter, docType) {
+    return listToFilter.filter(checkDocType, docType);
+  }
+
+function filterYear(listToFilter, year) {
+    return listToFilter.filter(checkFiscalYear, year);
+  }
+
+function printQuarters(listToFilter) {
+    document.getElementById("q1-tab-pane").innerHTML = printDocs(listToFilter.filter(checkQ1));
+    document.getElementById("q2-tab-pane").innerHTML = printDocs(listToFilter.filter(checkQ2));
+    document.getElementById("q3-tab-pane").innerHTML = printDocs(listToFilter.filter(checkQ3));
+    document.getElementById("q4-tab-pane").innerHTML = printDocs(listToFilter.filter(checkQ4));
+}
+
+function printDocs(docList) {
+    // console.log(docList.length);
+    if (docList.length == 0) {
+        let printString = "<p class='text-dark px-3 text-center my-0'>No documents found matching selected filters.</p>";
+        return printString;
+    } else {
+        let printString = "<table class='table table-striped table-hover my-0 w-100'><tbody>";
+        for (i=0; i<docList.length; i++) {
+            printString += "<tr class='position-relative'><td class='ps-4' style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>" + docList[i].date.toLocaleDateString("en-GB") + "</td><td class='pe-4'><a class='text-reset text-decoration-none stretched-link' style='' href='" + docList[i].url + "' title='" + docList[i].name + "'><div class='d-table w-100' style='table-layout: fixed;'><div class='d-table-row'><div class='d-table-cell' style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>" + docList[i].name + "</div></div></div></a></td></tr>";
+        }
+        printString += "</tbody></table>";
+        return printString;
+    };
+}
+
+document.getElementById("yearSelect").addEventListener("change", function() {
+   if (document.getElementById("docTypeSelect").value == "All announcements") {
+      if (document.getElementById("yearSelect").value != "All time") {
+          let filteredYear = filterYear(docsListUnfiltered, document.getElementById("yearSelect").value);
+          printQuarters(filteredYear, document.getElementById("yearSelect").value);
+      } else {
+          let filteredYear = docsListUnfiltered;
+      }
+  } else {
+      if (document.getElementById("yearSelect").value != "All time") {
+        let filteredDocType = filterDocType(docsListUnfiltered, document.getElementById("docTypeSelect").value);
+        let filteredYear = filterYear(filteredDocType, document.getElementById("yearSelect").value);
+        document.getElementById("all-tab-pane").innerHTML = "<p class='text-dark fw-semibold px-3 text-center fs-5 py-3'>" + document.getElementById("docTypeSelect").value + "</h3>" +   printDocs(filteredYear);
+      } else {
+        let filteredDocType = filterDocType(docsListUnfiltered, document.getElementById("docTypeSelect").value);
+        let filteredYear = filterYear(filteredDocType, document.getElementById("yearSelect").value);
+        document.getElementById("all-tab-pane").innerHTML = "<p class='text-dark fw-semibold px-3 text-center fs-5 py-3'>" + document.getElementById("docTypeSelect").value + "</h3>" +   printDocs(filteredDocType);
+      }
+  }
+});
+
+document.getElementById("docTypeSelect").addEventListener("change", function() {
+if ((document.getElementById("docTypeSelect").value != "All announcements") && (document.getElementById("docTypeSelect").value != "Presentations")) {
+    // if All announcements and Presentations is not selected
+    // hide the Q1, Q2 etc. tabs
+    document.getElementById("fqNav").style.display = "none";
+    // hide the year selection
+    document.getElementById("yearSelect").style.display = "none";
+    // print filtered docs to the All tab pane
+    let filteredDocType = filterDocType(docsListUnfiltered, document.getElementById("docTypeSelect").value);
+    document.getElementById("all-tab-pane").innerHTML = "<p class='text-dark fw-semibold px-3 text-center fs-5 py-3'>" + document.getElementById("docTypeSelect").value + "</h3>" +   printDocs(filteredDocType);
+    // show the All tab pane
+    let allTab = document.getElementById("all-tab");
+    allTab.click();
+    } else if (document.getElementById("docTypeSelect").value == "Presentations") {
+       // if Presentations is selected
+       // hide the Q1, Q2 etc. tabs
+       document.getElementById("fqNav").style.display = "none";
+       // show the year select
+       document.getElementById("yearSelect").style.display = "block";
+        // reset year selection
+        document.getElementById('yearSelect').querySelectorAll('option')[0].selected = 'selected';
+       
+        let filteredDocType = filterDocType(docsListUnfiltered, document.getElementById("docTypeSelect").value);
+        let filteredYear = filterYear(filteredDocType, document.getElementById("yearSelect").value);
+        document.getElementById("all-tab-pane").innerHTML = "<p class='text-dark fw-semibold px-3 text-center fs-5 py-3'>" + document.getElementById("docTypeSelect").value + "</h3>" +   printDocs(filteredYear);
+        let allTab = document.getElementById("all-tab");
+        allTab.click();
+    } else {
+    // if all announcements is selected
+        // show the Q1, Q2 etc.
+        document.getElementById("fqNav").style.display = "flex";
+        document.getElementById("yearSelect").style.display = "block";
+        // reset year selection
+        document.getElementById('yearSelect').querySelectorAll('option')[0].selected = 'selected';
+        // reset announcements list
+        // console.log(document.getElementById("yearSelect").value);
+        let filteredYear = filterYear(docsListUnfiltered, document.getElementById("yearSelect").value);
+        printQuarters(filteredYear, document.getElementById("yearSelect").value);
+        
+        let q1Tab = document.getElementById("q1-tab");
+        q1Tab.click();
+}
+});
+
+window.onload = function(){
+let filteredYear = filterYear(docsListUnfiltered, document.getElementById("yearSelect").value);
+printQuarters(filteredYear, document.getElementById("yearSelect").value);
+   
+let q1Tab = document.getElementById("q1-tab");
+let q2Tab = document.getElementById("q2-tab");
+let q3Tab = document.getElementById("q3-tab");
+let q4Tab = document.getElementById("q4-tab");
+   
+   if (checkCurQuarter() == 1){
+      q1Tab.click();
+   } else if (checkCurQuarter() == 2){
+      q2Tab.click();
+   } else if (checkCurQuarter() == 3){
+      q3Tab.click();
+   } else if (checkCurQuarter() == 4){
+      q4Tab.click();
+   }
+};
+
+</script>
+

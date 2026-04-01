@@ -1,0 +1,456 @@
+[ {
+  "id" : "location",
+  "name" : "location",
+  "label" : "Roundels",
+  "required" : false,
+  "locked" : true,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "location.business_name",
+    "default" : 9
+  },
+  "children" : [ {
+    "id" : "location.location_name",
+    "name" : "location_name",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Qoria Europe"
+  }, {
+    "id" : "location.business_name",
+    "name" : "business_name",
+    "label" : "Business name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Smoothwall (Leeds, UK)"
+  }, {
+    "id" : "location.website",
+    "name" : "website",
+    "label" : "Website",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "display_width" : null,
+    "type" : "url",
+    "default" : {
+      "content_id" : null,
+      "href" : "https://www.smoothwall.com/education/",
+      "type" : "EXTERNAL"
+    }
+  }, {
+    "id" : "location.x_position",
+    "name" : "x_position",
+    "label" : "X position",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "suffix" : "%",
+    "display_width" : null,
+    "type" : "number"
+  }, {
+    "id" : "location.y_position",
+    "name" : "y_position",
+    "label" : "Y position",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "suffix" : "%",
+    "display_width" : null,
+    "type" : "number"
+  }, {
+    "id" : "location.direction",
+    "name" : "direction",
+    "label" : "Direction",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "gradient-tooltip", "Down" ], [ "gradient-tooltip-up", "Up" ], [ "gradient-tooltip-left", "Left" ], [ "gradient-tooltip-right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "gradient-tooltip"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "location_name" : "Qoria Europe",
+    "business_name" : "Smoothwall (Leeds, UK)<br>Smoothwall (Salford, UK)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.smoothwall.com/education/",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 47,
+    "y_position" : 29
+  }, {
+    "location_name" : "Qoria Europe",
+    "business_name" : "Qustodio (Barcelona, Spain)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.qustodio.com/",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 47,
+    "y_position" : 37
+  }, {
+    "location_name" : "Qoria Asia-Pacific",
+    "business_name" : "Linewize (New Zealand)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.io/anz",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 94.8,
+    "y_position" : 87.5
+  }, {
+    "location_name" : "Qoria Asia-Pacific",
+    "business_name" : "Linewize (Melbourne, AUS)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.io/anz",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 87,
+    "y_position" : 85
+  }, {
+    "location_name" : "Qoria Asia-Pacific",
+    "business_name" : "Linewize (Sydney, AUS)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.io/anz",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 88.5,
+    "y_position" : 82.5
+  }, {
+    "location_name" : "Qoria Asia-Pacific",
+    "business_name" : "Linewize (Perth, AUS)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.io/anz",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 79,
+    "y_position" : 81
+  }, {
+    "location_name" : "Qoria US",
+    "business_name" : "Linewize (San Diego, CA)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.com/",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 14,
+    "y_position" : 41
+  }, {
+    "location_name" : "Qoria US",
+    "business_name" : "Linewize (Orlando, FL)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.com/",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 24.5,
+    "y_position" : 46
+  }, {
+    "location_name" : "Qoria US",
+    "business_name" : "Linewize (Charlotte, NC)",
+    "direction" : "gradient-tooltip",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.com/",
+      "type" : "EXTERNAL"
+    },
+    "x_position" : 25,
+    "y_position" : 40
+  } ]
+}, {
+  "id" : "location_text",
+  "name" : "location_text",
+  "label" : "Text Locations",
+  "required" : false,
+  "locked" : true,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "location_text.location_name",
+    "default" : 5
+  },
+  "children" : [ {
+    "id" : "location_text.location_name",
+    "name" : "location_name",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Qoria Europe"
+  }, {
+    "id" : "location_text.business_name",
+    "name" : "business_name",
+    "label" : "Business name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Smoothwall (Leeds, UK)"
+  }, {
+    "id" : "location_text.website",
+    "name" : "website",
+    "label" : "Website",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT" ],
+    "display_width" : null,
+    "type" : "url",
+    "default" : {
+      "content_id" : null,
+      "href" : "https://www.smoothwall.com/education/",
+      "type" : "EXTERNAL"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "location_name" : "United States",
+    "business_name" : "Linewize, San Diego CA, Orlando FL, Charlotte NC",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.com",
+      "type" : "EXTERNAL"
+    }
+  }, {
+    "location_name" : "United Kingdom",
+    "business_name" : "Smoothwall, Leeds, Salford",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.smoothwall.com/education/",
+      "type" : "EXTERNAL"
+    }
+  }, {
+    "location_name" : "Australia",
+    "business_name" : "Linewize, Perth, Melbourne, Sydney",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.io",
+      "type" : "EXTERNAL"
+    }
+  }, {
+    "location_name" : "New Zealand",
+    "business_name" : "Linewize",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.linewize.io",
+      "type" : "EXTERNAL"
+    }
+  }, {
+    "location_name" : "Spain",
+    "business_name" : "Qustodio",
+    "website" : {
+      "content_id" : null,
+      "href" : "https://www.qustodio.com",
+      "type" : "EXTERNAL"
+    }
+  } ]
+}, {
+  "id" : "shaded_countries",
+  "name" : "shaded_countries",
+  "label" : "Shaded Countries",
+  "required" : false,
+  "locked" : true,
+  "children" : [ {
+    "id" : "shaded_countries.africa",
+    "name" : "africa",
+    "label" : "Africa",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "choices" : [ [ "Algeria", "Algeria" ], [ "Angola", "Angola" ], [ "Benin", "Benin" ], [ "Botswana", "Botswana" ], [ "Burkina Faso", "Burkina Faso" ], [ "Burundi", "Burundi" ], [ "Cameroon", "Cameroon" ], [ "Cape Verde", "Cape Verde" ], [ "Central African Republic", "Central African Republic" ], [ "Chad", "Chad" ], [ "Comoros", "Comoros" ], [ "Democratic Republic of the Congo", "Democratic Republic of the Congo" ], [ "Djibouti", "Djibouti" ], [ "Egypt", "Egypt" ], [ "Equatorial Guinea", "Equatorial Guinea" ], [ "Eritrea", "Eritrea" ], [ "Ethiopia", "Ethiopia" ], [ "Gabon", "Gabon" ], [ "Gambia", "Gambia" ], [ "Ghana", "Ghana" ], [ "Guinea", "Guinea" ], [ "Guinea-Bissau", "Guinea-Bissau" ], [ "Ivory Coast", "Ivory Coast" ], [ "Kenya", "Kenya" ], [ "Lesotho", "Lesotho" ], [ "Liberia", "Liberia" ], [ "Libya", "Libya" ], [ "Madagascar", "Madagascar" ], [ "Malawi", "Malawi" ], [ "Mali", "Mali" ], [ "Mauritania", "Mauritania" ], [ "Mauritius", "Mauritius" ], [ "Mayotte", "Mayotte" ], [ "Morocco", "Morocco" ], [ "Mozambique", "Mozambique" ], [ "Namibia", "Namibia" ], [ "Niger", "Niger" ], [ "Nigeria", "Nigeria" ], [ "Republic of the Congo", "Republic of the Congo" ], [ "Réunion", "Réunion" ], [ "Rwanda", "Rwanda" ], [ "Saint Helena", "Saint Helena" ], [ "São Tomé and Príncipe", "São Tomé and Príncipe" ], [ "Senegal", "Senegal" ], [ "Seychelles", "Seychelles" ], [ "Sierra Leone", "Sierra Leone" ], [ "Somalia", "Somalia" ], [ "South Africa", "South Africa" ], [ "South Sudan", "South Sudan" ], [ "Sudan", "Sudan" ], [ "Swaziland", "Swaziland" ], [ "Tanzania", "Tanzania" ], [ "Togo", "Togo" ], [ "Tunisia", "Tunisia" ], [ "Uganda", "Uganda" ], [ "Western Sahara", "Western Sahara" ], [ "Zambia", "Zambia" ], [ "Zimbabwe", "Zimbabwe" ] ],
+    "multiple" : true,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : [ "Algeria", "Angola", "Benin", "Botswana", "Burundi", "Cape Verde", "Central African Republic", "Chad", "Comoros", "Djibouti", "Egypt", "Ethiopia", "Gambia", "Guinea", "Ivory Coast", "Kenya", "Liberia", "Madagascar", "Mauritius", "Morocco", "Mozambique", "Niger", "Nigeria", "Republic of the Congo", "Rwanda", "São Tomé and Príncipe", "Senegal", "Somalia", "Tanzania", "Togo", "Uganda", "Zambia", "Zimbabwe" ]
+  }, {
+    "id" : "shaded_countries.asia",
+    "name" : "asia",
+    "label" : "Asia",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "choices" : [ [ "Afghanistan", "Afghanistan" ], [ "Armenia", "Armenia" ], [ "Azerbaijan", "Azerbaijan" ], [ "Bahrain", "Bahrain" ], [ "Bangladesh", "Bangladesh" ], [ "Bhutan", "Bhutan" ], [ "British Indian Ocean Territory", "British Indian Ocean Territory" ], [ "Brunei", "Brunei" ], [ "Cambodia", "Cambodia" ], [ "China", "China" ], [ "Christmas Island", "Christmas Island" ], [ "Cocos Keeling Islands", "Cocos [Keeling] Islands" ], [ "Georgia", "Georgia" ], [ "Hong Kong", "Hong Kong" ], [ "India", "India" ], [ "Indonesia", "Indonesia" ], [ "Iran", "Iran" ], [ "Iraq", "Iraq" ], [ "Israel", "Israel" ], [ "Japan", "Japan" ], [ "Jordan", "Jordan" ], [ "Kazakhstan", "Kazakhstan" ], [ "Kuwait", "Kuwait" ], [ "Kyrgyzstan", "Kyrgyzstan" ], [ "Laos", "Laos" ], [ "Lebanon", "Lebanon" ], [ "Macao", "Macao" ], [ "Malaysia", "Malaysia" ], [ "Maldives", "Maldives" ], [ "Mongolia", "Mongolia" ], [ "Myanmar Burma", "Myanmar [Burma]" ], [ "Nepal", "Nepal" ], [ "North Korea", "North Korea" ], [ "Oman", "Oman" ], [ "Pakistan", "Pakistan" ], [ "Palestine", "Palestine" ], [ "Philippines", "Philippines" ], [ "Qatar", "Qatar" ], [ "Saudi Arabia", "Saudi Arabia" ], [ "Singapore", "Singapore" ], [ "South Korea", "South Korea" ], [ "Sri Lanka", "Sri Lanka" ], [ "Syria", "Syria" ], [ "Taiwan", "Taiwan" ], [ "Tajikistan", "Tajikistan" ], [ "Thailand", "Thailand" ], [ "Turkey", "Turkey" ], [ "Turkmenistan", "Turkmenistan" ], [ "United Arab Emirates", "United Arab Emirates" ], [ "Uzbekistan", "Uzbekistan" ], [ "Vietnam", "Vietnam" ], [ "Yemen", "Yemen" ] ],
+    "multiple" : true,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : [ "Taiwan", "Bahrain", "Brunei", "Cambodia", "Christmas Island", "India", "Iraq", "Japan", "Jordan", "Malaysia", "Mongolia", "Myanmar Burma", "North Korea", "Philippines", "Qatar", "Saudi Arabia", "Singapore", "South Korea", "Sri Lanka", "Syria", "Tajikistan", "Thailand", "Turkey", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Vietnam" ]
+  }, {
+    "id" : "shaded_countries.north_america",
+    "name" : "north_america",
+    "label" : "North America",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "choices" : [ [ "Anguilla", "Anguilla" ], [ "Antigua and Barbuda", "Antigua and Barbuda" ], [ "Aruba", "Aruba" ], [ "Bahamas", "Bahamas" ], [ "Barbados", "Barbados" ], [ "Belize", "Belize" ], [ "Bermuda", "Bermuda" ], [ "Bonaire", "Bonaire" ], [ "British Virgin Islands", "British Virgin Islands" ], [ "Canada", "Canada" ], [ "Cayman Islands", "Cayman Islands" ], [ "Costa Rica", "Costa Rica" ], [ "Cuba", "Cuba" ], [ "Curacao", "Curacao" ], [ "Dominica", "Dominica" ], [ "Dominican Republic", "Dominican Republic" ], [ "El Salvador", "El Salvador" ], [ "Greenland", "Greenland" ], [ "Grenada", "Grenada" ], [ "Guadeloupe", "Guadeloupe" ], [ "Guatemala", "Guatemala" ], [ "Haiti", "Haiti" ], [ "Honduras", "Honduras" ], [ "Jamaica", "Jamaica" ], [ "Martinique", "Martinique" ], [ "Mexico", "Mexico" ], [ "Montserrat", "Montserrat" ], [ "Nicaragua", "Nicaragua" ], [ "Panama", "Panama" ], [ "Puerto Rico", "Puerto Rico" ], [ "Saint Barthelemy", "Saint Barthélemy" ], [ "Saint Kitts and Nevis", "Saint Kitts and Nevis" ], [ "Saint Lucia", "Saint Lucia" ], [ "Saint Martin", "Saint Martin" ], [ "Saint Pierre and Miquelon", "Saint Pierre and Miquelon" ], [ "Saint Vincent and the Grenadines", "Saint Vincent and the Grenadines" ], [ "Sint Maarten", "Sint Maarten" ], [ "Trinidad and Tobago", "Trinidad and Tobago" ], [ "Turks and Caicos Islands", "Turks and Caicos Islands" ], [ "U.S. Virgin Islands", "U.S. Virgin Islands" ], [ "United States", "United States" ] ],
+    "multiple" : true,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : [ "Bahamas", "Barbados", "Belize", "Bermuda", "Canada", "Costa Rica", "Cuba", "Dominica", "Dominican Republic", "El Salvador", "Jamaica", "Mexico", "Panama", "Saint Kitts and Nevis", "Trinidad and Tobago", "United States" ]
+  }, {
+    "id" : "shaded_countries.south_america",
+    "name" : "south_america",
+    "label" : "South America",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "choices" : [ [ "Argentina", "Argentina" ], [ "Bolivia", "Bolivia" ], [ "Brazil", "Brazil" ], [ "Chile", "Chile" ], [ "Colombia", "Colombia" ], [ "Ecuador", "Ecuador" ], [ "Falkland Islands", "Falkland Islands" ], [ "French Guiana", "French Guiana" ], [ "Guyana", "Guyana" ], [ "Paraguay", "Paraguay" ], [ "Peru", "Peru" ], [ "Suriname", "Suriname" ], [ "Uruguay", "Uruguay" ], [ "Venezuela", "Venezuela" ] ],
+    "multiple" : true,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : [ "Argentina", "Bolivia", "Brazil", "Chile", "Ecuador", "Colombia", "Falkland Islands", "Guyana", "Paraguay", "Peru", "Suriname", "Venezuela" ]
+  }, {
+    "id" : "shaded_countries.europe",
+    "name" : "europe",
+    "label" : "Europe",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "choices" : [ [ "Aland", "Åland" ], [ "Albania", "Albania" ], [ "Andorra", "Andorra" ], [ "Austria", "Austria" ], [ "Belarus", "Belarus" ], [ "Belgium", "Belgium" ], [ "Bosnia and Herzegovina", "Bosnia and Herzegovina" ], [ "Bulgaria", "Bulgaria" ], [ "Croatia", "Croatia" ], [ "Cyprus", "Cyprus" ], [ "Czechia", "Czechia" ], [ "Denmark", "Denmark" ], [ "Estonia", "Estonia" ], [ "Faroe Islands", "Faroe Islands" ], [ "Finland", "Finland" ], [ "France", "France" ], [ "Germany", "Germany" ], [ "Gibraltar", "Gibraltar" ], [ "Greece", "Greece" ], [ "Guernsey", "Guernsey" ], [ "Hungary", "Hungary" ], [ "Iceland", "Iceland" ], [ "Ireland", "Ireland" ], [ "Isle of Man", "Isle of Man" ], [ "Italy", "Italy" ], [ "Jersey", "Jersey" ], [ "Kosovo", "Kosovo" ], [ "Latvia", "Latvia" ], [ "Liechtenstein", "Liechtenstein" ], [ "Lithuania", "Lithuania" ], [ "Luxembourg", "Luxembourg" ], [ "Macedonia", "Macedonia" ], [ "Malta", "Malta" ], [ "Moldova", "Moldova" ], [ "Monaco", "Monaco" ], [ "Montenegro", "Montenegro" ], [ "Netherlands", "Netherlands" ], [ "Norway", "Norway" ], [ "Poland", "Poland" ], [ "Portugal", "Portugal" ], [ "Romania", "Romania" ], [ "Russia", "Russia" ], [ "San Marino", "San Marino" ], [ "Serbia", "Serbia" ], [ "Slovakia", "Slovakia" ], [ "Slovenia", "Slovenia" ], [ "Spain", "Spain" ], [ "Svalbard and Jan Mayen", "Svalbard and Jan Mayen" ], [ "Sweden", "Sweden" ], [ "Switzerland", "Switzerland" ], [ "Ukraine", "Ukraine" ], [ "United Kingdom", "United Kingdom" ], [ "Vatican City", "Vatican City" ] ],
+    "multiple" : true,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : [ "Andorra", "Austria", "Belarus", "Belgium", "Croatia", "Denmark", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Isle of Man", "Italy", "Malta", "Moldova", "Montenegro", "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom" ]
+  }, {
+    "id" : "shaded_countries.oceania",
+    "name" : "oceania",
+    "label" : "Oceania",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "choices" : [ [ "American Samoa", "American Samoa" ], [ "Australia", "Australia" ], [ "Cook Islands", "Cook Islands" ], [ "East Timor", "East Timor" ], [ "Fiji", "Fiji" ], [ "French Polynesia", "French Polynesia" ], [ "Guam", "Guam" ], [ "Kiribati", "Kiribati" ], [ "Marshall Islands", "Marshall Islands" ], [ "Micronesia", "Micronesia" ], [ "Nauru", "Nauru" ], [ "New Caledonia", "New Caledonia" ], [ "New Zealand", "New Zealand" ], [ "Niue", "Niue" ], [ "Norfolk Island", "Norfolk Island" ], [ "Northern Mariana Islands", "Northern Mariana Islands" ], [ "Palau", "Palau" ], [ "Papua New Guinea", "Papua New Guinea" ], [ "Pitcairn Islands", "Pitcairn Islands" ], [ "Samoa", "Samoa" ], [ "Solomon Islands", "Solomon Islands" ], [ "Tokelau", "Tokelau" ], [ "Tonga", "Tonga" ], [ "Tuvalu", "Tuvalu" ], [ "U.S. Minor Outlying Islands", "U.S. Minor Outlying Islands" ], [ "Vanuatu", "Vanuatu" ], [ "Wallis and Futuna", "Wallis and Futuna" ] ],
+    "multiple" : true,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : [ "Australia", "Fiji", "Micronesia", "New Zealand", "Palau", "Papua New Guinea", "Tuvalu" ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group"
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : true,
+  "children" : [ {
+    "id" : "style.breakpoint",
+    "name" : "breakpoint",
+    "label" : "Breakpoint",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "sm", "Small" ], [ "md", "Medium" ], [ "lg", "Large" ], [ "xl", "Extra Large" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "lg"
+  }, {
+    "id" : "style.map_colour",
+    "name" : "map_colour",
+    "label" : "Map Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fill-white", "White" ], [ "fill-light", "Light" ], [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "fill-white"
+  }, {
+    "id" : "style.map_colour_selected",
+    "name" : "map_colour_selected",
+    "label" : "Map Colour - Selected",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "white", "White" ], [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal-300", "Teal" ], [ "indigo-300", "Indigo" ], [ "orange-300", "Orange" ], [ "red-300", "Red" ], [ "dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "teal-300"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group"
+}, {
+  "id" : "our_customers",
+  "name" : "our_customers",
+  "label" : "\"Our Customers\" Key",
+  "required" : false,
+  "locked" : true,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Our customers"
+}, {
+  "id" : "qoria_offices",
+  "name" : "qoria_offices",
+  "label" : "\"Qoria offices\" Key",
+  "required" : false,
+  "locked" : true,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Qoria offices"
+} ]

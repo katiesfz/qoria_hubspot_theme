@@ -1,0 +1,217 @@
+/* @mixin row-overlap($overlap-px) {
+  // -----------------------------------------------------------
+  // 0. ROW CORRECTION (NEW)
+  // Pull the entire row container to the left and right to compensate for
+  // the first child's positive margin, ensuring content is flush with the
+  // parent container edge and visually spans full width.
+  margin-left: calc(-1 * $overlap-px);
+  //  margin-right: calc(-1 * $overlap-px);
+  // -----------------------------------------------------------
+
+  // -----------------------------------------------------------
+  // 1. BASE STYLES & DEFAULT OVERLAP (Applies at all breakpoints)
+  // -----------------------------------------------------------
+
+  // Target all direct children (the .col-* elements)
+  > * {
+    //   position: relative;
+    //   padding: 1.5rem; // Add standard padding for visibility
+    transition: margin-left 0.3s ease; // Optional: for smooth changes
+    //   z-index: 1; // Default z-index for all
+    // Ensure separation between wrapped rows
+    //   margin-bottom: 1.5rem;
+  }
+
+  // 1a. Initial Position Shift: Apply positive margin to the very first column.
+  // This shifts the entire overlapping sequence to the right, aligning the
+  // start point flush with the container edge.
+  > *:first-child {
+    margin-left: $overlap-px;
+    //    z-index: 2;
+  }
+
+  // 1b. Overlap Creation: Apply negative margin to all subsequent columns.
+  > *:nth-child(n + 2) {
+    // Negative margin pulls the element to the left, causing the overlap.
+    margin-left: calc(-1 * $overlap-px);
+  }
+
+  // Optional: Style for hover/interaction to show stacking
+  //   > *:hover {
+  //       z-index: 3 !important;
+  //       transform: translateY(-5px);
+  //       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  //   }
+} */
+:root,
+[data-bs-theme=light] {
+  --q-indigo: #0e1f59;
+  --q-secondary: #0e1f59;
+  --q-secondary-rgb: 14, 31, 89;
+  --q-secondary-text: rgb(64.8, 72.8, 132);
+  --q-secondary-bg-subtle: rgb(220.2, 222.2, 237);
+  --q-secondary-border-subtle: rgb(185.4, 189.4, 219);
+}
+
+:root,
+[data-bs-theme=light] {
+  --q-secondary-rgb: 14, 31, 89;
+  --q-white-rgb: 255, 255, 255;
+  --q-indigo-100-rgb: 220, 222, 237;
+  --q-indigo-200-rgb: 185, 189, 219;
+  --q-indigo-300-rgb: 151, 157, 201;
+  --q-indigo-400-rgb: 116, 124, 183;
+  --q-indigo-500-rgb: 81, 91, 165;
+  --q-indigo-600-rgb: 65, 73, 132;
+  --q-indigo-700-rgb: 49, 55, 99;
+  --q-indigo-800-rgb: 32, 36, 66;
+  --q-indigo-900-rgb: 16, 18, 33;
+  --q-secondary-text-emphasis: rgb(32.4, 36.4, 66);
+  --q-filter-grayscale: grayscale(1) contrast(1.5) brightness(0.9);
+}
+
+.table-secondary {
+  --q-table-color: #000;
+  --q-table-bg: rgb(206.8, 210.2, 221.8);
+  --q-table-border-color: rgb(165.44, 168.16, 177.44);
+  --q-table-striped-bg: rgb(201.63, 204.945, 216.255);
+  --q-table-striped-twice-bg: rgb(196.46, 199.69, 210.71);
+  --q-table-striped-color: #000;
+  --q-table-active-bg: rgb(186.12, 189.18, 199.62);
+  --q-table-active-color: #000;
+  --q-table-hover-bg: rgb(191.29, 194.435, 205.165);
+  --q-table-hover-color: #000;
+  color: var(--q-table-color);
+  border-color: var(--q-table-border-color);
+}
+
+.btn-secondary {
+  --q-btn-color: #fff;
+  --q-btn-bg: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: rgb(11.9, 26.35, 75.65);
+  --q-btn-hover-border-color: rgb(11.2, 24.8, 71.2);
+  --q-btn-focus-shadow-rgb: 50, 65, 114;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: rgb(11.2, 24.8, 71.2);
+  --q-btn-active-border-color: rgb(10.5, 23.25, 66.75);
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #fff;
+  --q-btn-disabled-bg: #0e1f59;
+  --q-btn-disabled-border-color: #0e1f59;
+}
+
+.btn-outline-secondary {
+  --q-btn-color: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: #0e1f59;
+  --q-btn-hover-border-color: #0e1f59;
+  --q-btn-focus-shadow-rgb: 14, 31, 89;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: #0e1f59;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #0e1f59;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: #0e1f59;
+  --q-gradient: none;
+  border-width: 2px;
+}
+.btn-check:focus + .btn-outline-secondary, .btn-outline-secondary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(var(--q-btn-focus-shadow-rgb), 0.5);
+}
+
+.btn-blog-filter-secondary {
+  --q-btn-color: #1d1e1c;
+  --q-btn-bg: transparent;
+  --q-btn-border-color: transparent;
+  --q-btn-hover-color: #1d1e1c;
+  --q-btn-hover-bg: rgba(29, 30, 28, 0.1);
+  --q-btn-hover-border-color: none;
+  --q-btn-focus-shadow-rgb: 29, 30, 28;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: none;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #fff;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: transparent;
+  --q-btn-active-shadow: none;
+}
+.btn-blog-filter-secondary.active {
+  box-shadow: none !important;
+}
+
+.accordion .accordion-collapse:before {
+  background-image: linear-gradient(45deg, #f8f8f8 0%, #f8f8f8 33%, #58b78e 66%, #0e1f59 91%);
+}
+
+.text-bg-secondary {
+  color: #fff !important;
+  background-color: RGBA(14, 31, 89, var(--q-bg-opacity, 1)) !important;
+}
+
+.link-secondary {
+  color: #0e1f59 !important;
+}
+.link-secondary:hover, .link-secondary:focus {
+  color: rgb(11.2, 24.8, 71.2) !important;
+}
+
+.bg-gradient-primary {
+  background-color: #58b78e;
+  background: linear-gradient(45deg, #0e1f59 0%, #58b78e 63%) border-box;
+}
+
+.bg-gradient-primary-reverse {
+  background-color: #58b78e;
+  background: linear-gradient(225deg, #0e1f59 0%, #58b78e 63%) border-box;
+}
+
+.bg-gradient-primary-extended {
+  background-color: #0e1f59;
+  background: linear-gradient(180deg, #58b78e 0%, #0e1f59 50%, rgb(32.4, 36.4, 66) 100%) border-box;
+}
+
+.bg-gradient-primary-subtle {
+  background-color: #58b78e;
+  background: linear-gradient(-45deg, color-mix(in srgb, #58b78e 70%, #0e1f59 30%) 0%, #58b78e 100%) border-box;
+}
+
+.bg-gradient-primary-transparent {
+  background-color: #58b78e;
+  background: linear-gradient(45deg, #58b78e 0%, transparent 100%) border-box;
+}
+
+.bg-gradient-secondary-transparent {
+  background-color: #0e1f59;
+  background: linear-gradient(45deg, #0e1f59 0%, transparent 100%) border-box;
+}
+
+/* custom buttons */
+.btn-outline-secondary {
+  --q-btn-color: #0e1f59;
+  --q-btn-border-color: #0e1f59;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: #0e1f59;
+  --q-btn-hover-border-color: #0e1f59;
+  --q-btn-focus-shadow-rgb: 14, 31, 89;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: #0e1f59;
+  --q-btn-active-border-color: #0e1f59;
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #0e1f59;
+  --q-btn-disabled-bg: transparent;
+  --q-btn-disabled-border-color: #0e1f59;
+  --q-gradient: none;
+  border-width: 2px;
+}
+.btn-check:focus + .btn-outline-secondary, .btn-outline-secondary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(var(--q-btn-focus-shadow-rgb), 0.5);
+}
+
+.arrow-secondary:after {
+  color: #0e1f59;
+}

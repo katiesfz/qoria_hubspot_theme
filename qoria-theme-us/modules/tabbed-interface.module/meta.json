@@ -1,0 +1,18 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 144006720804,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/jquery/jquery-3.6.4.min.js",
+    "name" : "jquery-3.6.4.min.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/bootstrap/tabs.js",
+    "name" : "tabs.js"
+  } ],
+  "label" : "Tabbed Content",
+  "icon" : "../../images/module-icons/folder.svg",
+  "is_available_for_new_content" : true
+}

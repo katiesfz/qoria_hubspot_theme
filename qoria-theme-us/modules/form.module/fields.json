@@ -1,0 +1,444 @@
+[ {
+  "id" : "show_title",
+  "name" : "show_title",
+  "label" : "Show form title",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "display_width" : null,
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
+  "name" : "title",
+  "label" : "Form Title",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : ""
+}, {
+  "id" : "heading_tag",
+  "name" : "heading_tag",
+  "label" : "Heading Style",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display" : "select",
+  "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "h5"
+}, {
+  "id" : "heading.underline",
+  "name" : "heading_underline",
+  "label" : "Heading Underline",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display" : "toggle",
+  "display_width" : null,
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "heading.alignment",
+  "name" : "textalignment",
+  "label" : "Text alignment",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "show_title",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display" : "select",
+  "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "start"
+}, {
+  "id" : "e4adbe47-d462-2396-c7e7-62d52c812966",
+  "name" : "form",
+  "label" : "Form",
+  "help_text" : "Styling options are managed in the form settings.",
+  "inline_help_text" : "Must be set to raw HTML for correct styling.",
+  "required" : false,
+  "locked" : false,
+  "display_width" : null,
+  "type" : "form",
+  "default" : {
+    "form_id" : "",
+    "response_type" : "redirect",
+    "message" : "Thanks for submitting the form.",
+    "redirect_id" : null,
+    "redirect_url" : "http://www.google.com"
+  }
+}, {
+  "id" : "download",
+  "name" : "download",
+  "label" : "Download file on submit",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "display_width" : null,
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "download_file",
+  "name" : "download_file",
+  "label" : "File",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "supported_types" : [ "EXTERNAL", "FILE" ],
+  "show_advanced_rel_options" : false,
+  "display_width" : null,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "open_in_new_tab" : true,
+    "no_follow" : true,
+    "sponsored" : false,
+    "user_generated_content" : false
+  }
+}, {
+  "id" : "download_name",
+  "name" : "download_name",
+  "label" : "Download name",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text"
+}, {
+  "id" : "video",
+  "name" : "video",
+  "label" : "Show video on submit",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "display_width" : null,
+  "type" : "boolean",
+  "default" : false
+}, {
+  "picker" : "video",
+  "id" : "video_file",
+  "name" : "video_file",
+  "label" : "File",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "video",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display_width" : null,
+  "type" : "file"
+}, {
+  "id" : "subtitles",
+  "name" : "subtitles",
+  "label" : "Subtitles",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "subtitle_label",
+    "default" : null
+  },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "video",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "children" : [ {
+    "picker" : "file",
+    "id" : "subtitle_file",
+    "name" : "subtitle_file",
+    "label" : "Subtitle file",
+    "inline_help_text" : "must be a .VTT file",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "file"
+  }, {
+    "id" : "subtitle_label",
+    "name" : "subs_label",
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : { }
+}, {
+  "id" : "button_text",
+  "name" : "button_text",
+  "label" : "Customise Button Text",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "video",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text"
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "style.form_style",
+    "name" : "form_style",
+    "label" : "Form Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "Default" ], [ "form-underline", "Underline" ], [ "form-light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : " "
+  }, {
+    "id" : "style.button_colour",
+    "name" : "button_colour",
+    "label" : "Button Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "White" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "secondary"
+  }, {
+    "id" : "style.button_alignment",
+    "name" : "button_alignment",
+    "label" : "Button Alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "style.background_colour",
+    "name" : "background_colour",
+    "label" : "Background Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-gray-300 text-dark", "Grey-300" ], [ "bg-light text-dark", "Light" ], [ "bg-white text-dark", "White" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "style.rounded_corners",
+    "name" : "rounded_corners",
+    "label" : "Rounded Corners",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "rounded-0", "None" ], [ "rounded-2", "All" ], [ "rounded-top-2", "Top" ], [ "rounded-bottom-2", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "rounded-0"
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "No shadow" ], [ "shadow-sm", "Small shadow" ], [ "shadow", "Medium shadow" ], [ "shadow-lg", "Large shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : " "
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group"
+}, {
+  "id" : "advanced",
+  "name" : "advanced",
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "advanced.additional_classes",
+    "name" : "additional_classes",
+    "label" : "Additional classes",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : { }
+} ]

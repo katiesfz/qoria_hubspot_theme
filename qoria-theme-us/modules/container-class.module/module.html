@@ -1,0 +1,38 @@
+<div id="{{name}}"></div>
+{% if is_in_editor %}
+    {% editor_placeholder %}
+{% endif %}
+<script>
+
+    function applyClassesToParent(placeToStart, classToFind, classesToAdd) {
+        const classList = classesToAdd.split(" ");
+        if (placeToStart.closest("." + classToFind)) {
+            if (classToFind == "dnd-row") {
+                // For rows, we need to go up two levels to reach the correct dnd-row element
+                placeToStart.closest("." + classToFind).parentElement.closest("." + classToFind).classList.add(...classList);
+            } else {
+                placeToStart.closest("." + classToFind).classList.add(...classList);
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let e = document.getElementById("{{name}}");
+
+        {% if module.apply_to_element == "column" %}
+            let eToFind = "dnd-column";
+        {% elif module.apply_to_element == "row" %}
+            let eToFind = "dnd-row";
+        {% elif module.apply_to_element == "section" %}
+            let eToFind = "dnd-section";
+        {% endif %}
+
+        let cToAdd = "{{module.classes}}";
+
+        cToAdd = cToAdd.trim();
+
+        applyClassesToParent(e, eToFind, cToAdd);
+
+    });
+    
+</script>

@@ -1,0 +1,710 @@
+[ {
+  "id" : "region",
+  "name" : "region",
+  "label" : "Region",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "au", "Australia" ], [ "eu", "Europe" ], [ "nz", "New Zealand" ], [ "uk", "United Kingdom" ], [ "us", "United States" ], [ "global", "Global" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "global"
+}, {
+  "id" : "type",
+  "name" : "type",
+  "label" : "Footer type",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "au",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "select",
+  "choices" : [ [ " ", "Default" ], [ "ysafe", "ySafe Team" ], [ "ysafe-2", "ySafe" ], [ "success", "Customer Success" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : " "
+}, {
+  "id" : "nz_type",
+  "name" : "nz_type",
+  "label" : "Footer type",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "nz",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "select",
+  "choices" : [ [ " ", "Default" ], [ "success", "Customer Success" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : " "
+}, {
+  "id" : "nz_footer_copy",
+  "name" : "nz_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "nz",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "nz",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "nz_type",
+      "controlling_value_regex" : "success",
+      "property" : "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p style='color: inherit'><strong><a href='mailto:enquiries@linewize.co.nz' style='color: inherit;'>Email us</a> or <a href='https://linewize.co.nz/' style='color: inherit;'>visit our website</a> for more information.</strong></p>"
+}, {
+  "id" : "au_footer_copy",
+  "name" : "au_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "ysafe",
+      "property" : "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "ysafe-2",
+      "property" : "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "success",
+      "property" : "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p style='color: inherit'><strong>Call us on 1300 687 052</strong> for an informal chat, <a href='mailto:enquiries@linewize.io' style='color: inherit;'>email us</a> or <a href='https://linewize.io/' style='color: inherit;'>visit our website</a> for more information.</p>"
+}, {
+  "id" : "au_success_footer_copy",
+  "name" : "au_success_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "success",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<a href='https://www.linewize.io/bite-sized-learning' style='border: 0; line-height: 0; display: block;'><img src='https://linewize.io/hubfs/ANZ-Customer%20Success/BSL/Bite-Sized-Learning-Signature-Transparent.png' style='max-width: 100%; width: 540px;' width='540'></a>"
+}, {
+  "id" : "nz_success_footer_copy",
+  "name" : "nz_success_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "nz",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "nz_type",
+      "controlling_value_regex" : "success",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<a href='https://sites.google.com/linewize.io/qoria-nz/home' style='border: 0; line-height: 0; display: block;'><img src='https://linewize.co.nz/hubfs/ANZ-Customer%20Success/BSL/Signature%20-%20NZ%20Success%20Hub.png' style='max-width: 100%; width: 540px;' width='540'></a>"
+}, {
+  "id" : "eu_footer_copy",
+  "name" : "eu_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "eu",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p style='color: inherit'><strong><a href='mailto:enquiries@qoria.es' style='color: inherit;'>Email us</a> or <a href='https://qoria.eu/' style='color: inherit;'>visit our website</a> for more information.</strong><br><br>Registered in the Companies Registry of Barcelona<br>CIF/NIF B-65825523</p>"
+}, {
+  "id" : "uk_footer_copy",
+  "name" : "uk_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "uk",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p style='color: inherit'><strong>Call us on 0000 000000</strong> for an informal chat, <a href='mailto:enquiries@smoothwall.com' style='color: inherit;'>email us</a> or <a href='https://smoothwall.com/' style='color: inherit;'>visit our website</a> for more information.</p>"
+}, {
+  "id" : "us_footer_copy",
+  "name" : "us_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "us",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p style='color: inherit'><strong>Call us on 844 SAFEWEB (844-723-3932)</strong> for an informal chat, or <a href='https://www.linewize.com/' style='color: inherit;'>visit our website</a> for more information.</p>"
+}, {
+  "id" : "global_footer_copy",
+  "name" : "global_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "region",
+    "controlling_value_regex" : "global",
+    "property" : "",
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p style='color: inherit'><strong>Call us on 0000 000000</strong> for an informal chat, <a href='mailto:enquiries@qoria.com' style='color: inherit;'>email us</a> or <a href='https://qoria.com/' style='color: inherit;'>visit our website</a> for more information.</p>"
+}, {
+  "id" : "ysafe_footer_copy",
+  "name" : "ysafe_footer_copy",
+  "label" : "Footer copy",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ {
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "type",
+        "controlling_value_regex" : "ysafe",
+        "property" : "",
+        "operator" : "EQUAL",
+        "access" : null
+      }, {
+        "controlling_field" : null,
+        "controlling_field_path" : "type",
+        "controlling_value_regex" : "ysafe-2",
+        "property" : "",
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    } ]
+  },
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p style='color: inherit; font-size: 12px; Margin-top: 0; margin-top: 0;'>sales@ysafe.com.au<br>www.ysafe.com.au</p>"
+}, {
+  "id" : "profiles_ysafe",
+  "name" : "profiles_ysafe",
+  "label" : "Profiles",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : 4,
+    "sorting_label_field" : "profiles_ysafe.profile_copy",
+    "default" : null
+  },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "ysafe",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "children" : [ {
+    "id" : "profiles_ysafe.image",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "display_width" : null,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "profiles_ysafe.profile_copy",
+    "name" : "profile_copy",
+    "label" : "Profile copy",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "richtext"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "image" : {
+      "src" : "{{get_asset_url('../../images/qoria/photos/staff/patrick_thomas_grayscale.png')}}",
+      "size_type" : "auto_custom_max",
+      "max_width" : 90
+    },
+    "profile_copy" : "<p style='color: inherit'><strong>Patrick Thomas</strong><br>ySafe National Education Manager</p>"
+  }, {
+    "image" : {
+      "src" : "{{get_asset_url('../../images/qoria/photos/staff/david_smith_grayscale.png')}}",
+      "size_type" : "auto_custom_max",
+      "max_width" : 90
+    },
+    "profile_copy" : "<p style='color: inherit'><strong>David Smith</strong><br>ySafe State Education Manager NSW</p>"
+  }, {
+    "image" : {
+      "src" : "{{get_asset_url('../../images/qoria/photos/staff/abi_dargan_grayscale.png')}}",
+      "size_type" : "auto_custom_max",
+      "max_width" : 90
+    },
+    "profile_copy" : "<p style='color: inherit'><strong>Abi Dargan</strong><br>ySafe State Education Manager QLD</p>"
+  } ]
+}, {
+  "id" : "profiles_success",
+  "name" : "profiles_success",
+  "label" : "Profiles",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : 4,
+    "sorting_label_field" : "profiles_success.profile_copy",
+    "default" : null
+  },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "success",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "children" : [ {
+    "id" : "profiles_success.image",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "display_width" : null,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "profiles_success.profile_copy",
+    "name" : "profile_copy",
+    "label" : "Profile copy",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "richtext"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "image" : {
+      "src" : "https://www.linewize.io/hubfs/Signatures_Assets/Photos/suzi_bamford.png",
+      "size_type" : "auto_custom_max",
+      "max_width" : 90
+    },
+    "profile_copy" : "<p style='color: inherit'><strong>Suzi Bamford</strong><br>Head of Customer Success</p>"
+  }, {
+    "image" : {
+      "src" : "https://www.linewize.io/hubfs/Signatures_Assets/Photos/jasontonks.png",
+      "size_type" : "auto_custom_max",
+      "max_width" : 90
+    },
+    "profile_copy" : "<p style='color: inherit'><strong>Jason Tonks</strong><br>Head of Account Management</p>"
+  }, {
+    "image" : {
+      "src" : "https://www.linewize.io/hubfs/AU%20Success%20-%20Welcome/Justin.png",
+      "size_type" : "auto_custom_max",
+      "max_width" : 90
+    },
+    "profile_copy" : "<p style='color: inherit'><strong>Justin Curnick</strong><br>Head of Delivery</p>"
+  }, {
+    "image" : {
+      "src" : "https://www.linewize.io/hubfs/AU%20Success%20-%20Welcome/pavan.png",
+      "size_type" : "auto_custom_max",
+      "max_width" : 90
+    },
+    "profile_copy" : "<p style='color: inherit'><strong>Pavan Prakash</strong><br>Head of Support</p>"
+  } ]
+}, {
+  "id" : "social_links",
+  "name" : "social_links",
+  "label" : "Social links",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "eu",
+      "property" : "",
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "children" : [ {
+    "id" : "social_links.social_account",
+    "name" : "social_account",
+    "label" : "Social account",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fb", "Facebook" ], [ "tw", "Twitter" ], [ "in", "Instagram" ], [ "li", "LinkedIn" ], [ "yt", "YouTube" ], [ "custom_icon", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "fb"
+  }, {
+    "id" : "social_links.custom_image",
+    "name" : "custom_image",
+    "label" : "Custom Image",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "social_links.social_account",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom_icon",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "display_width" : null,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "social_links.social_link",
+    "name" : "social_link",
+    "label" : "Social link",
+    "required" : true,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL" ],
+    "show_advanced_rel_options" : false,
+    "display_width" : null,
+    "type" : "link",
+    "default" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.facebook.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group"
+}, {
+  "id" : "social_links_eu",
+  "name" : "social_links_eu",
+  "label" : "Social links",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "eu",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "children" : [ {
+    "id" : "social_links_eu.social_account",
+    "name" : "social_account",
+    "label" : "Social account",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fb", "Facebook" ], [ "tw", "Twitter" ], [ "in", "Instagram" ], [ "li", "LinkedIn" ], [ "yt", "YouTube" ], [ "custom_icon", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "fb"
+  }, {
+    "id" : "social_links_eu.custom_image",
+    "name" : "custom_image",
+    "label" : "Custom Image",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "social_links.social_account",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom_icon",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "display_width" : null,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "social_links_eu.social_link",
+    "name" : "social_link",
+    "label" : "Social link",
+    "required" : true,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL" ],
+    "show_advanced_rel_options" : false,
+    "display_width" : null,
+    "type" : "link",
+    "default" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.facebook.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "social_account" : "li",
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.linkedin.com/company/68922332/",
+        "type" : "EXTERNAL"
+      }
+    }
+  } ]
+}, {
+  "id" : "au_success_banner",
+  "name" : "au_success_banner",
+  "label" : "Include banner",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "region",
+      "controlling_value_regex" : "au",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "type",
+      "controlling_value_regex" : "success",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display" : "toggle",
+  "display_width" : null,
+  "type" : "boolean",
+  "default" : true
+} ]

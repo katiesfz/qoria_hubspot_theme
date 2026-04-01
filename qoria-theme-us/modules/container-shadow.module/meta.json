@@ -1,0 +1,13 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "placeholder" : {
+    "show_module_icon" : false,
+    "title" : "Shadow",
+    "description" : "Shadow effect for drag-and-drop elements"
+  },
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 208742069285,
+  "label" : "Shadow",
+  "is_available_for_new_content" : true
+}

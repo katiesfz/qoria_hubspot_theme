@@ -1,0 +1,71 @@
+[ {
+  "id" : "heading_tag",
+  "name" : "heading_tag",
+  "label" : "Heading Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "h2"
+}, {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "enabled_features" : [ "alignment" ],
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "Closing the gaps that children fall through"
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 100,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 100,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "style.colour",
+    "name" : "colour",
+    "label" : "Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "text-white", "White" ], [ "text-dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "text-dark"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group"
+} ]

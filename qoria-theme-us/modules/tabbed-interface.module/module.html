@@ -1,0 +1,74 @@
+{% if module.style.nav_styles.appearance == "input-group" %}
+    {% require_css %}
+        <style>
+            {% scope_css %}
+                nav .btn.active, nav .btn:active {
+                    z-index: 1;
+                    position: relative;
+                }
+
+                nav .btn {
+          /*          --q-btn-color: #fff;
+                    --q-btn-bg: #58b78e;
+                    --q-btn-border-color: var(--q-{{ module.style.nav_styles.active_colour }});
+                    --q-btn-hover-color: #fff;
+                    --q-btn-hover-bg: #4b9c79;
+                    --q-btn-hover-border-color: #469272; */
+                    --q-btn-active-color: var(--q-{{ "dark" if module.style.nav_styles.active_colour == "light" else "white"}});
+                    --q-btn-active-bg: var(--q-{{ module.style.nav_styles.active_colour }});
+                    --q-btn-active-border-color: var(--q-{{ module.style.nav_styles.active_colour }});
+                    --q-btn-active-shadow: none;
+                    box-shadow: none;
+                    z-index: 0;
+                    position: relative;
+                }
+
+            {% end_scope_css %}
+        </style>
+    {% end_require_css %}
+{% endif %}
+
+
+{% if module.style.nav_styles.appearance != "none" %}
+<nav>
+    {% if module.style.nav_styles.appearance != "input-group" %}
+        <ul class="nav {{module.style.nav_styles.appearance}} {{module.style.nav_styles.alignment}}" id="tabs-{{name}}" role="tablist">
+            {% for item in module.content_block %}
+            <li class="nav-item " role="presentation">
+                <button class="nav-link {{"active" if loop.first}}" id="link-{{loop.index}}-{{name}}" data-bs-toggle="tab" data-bs-target="#tab-{{loop.index}}-{{name}}" type="button" role="tab" aria-controls="#tab-{{loop.index}}-{{name}}" aria-selected="{{ "true" if loop.first else "false" }}">{{item.link_label}}</button>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="nav {{module.style.nav_styles.appearance}} {{module.style.nav_styles.alignment}}" id="tabs-{{name}}" role="tablist">
+            {% for item in module.content_block %}
+                <button class="btn {{module.style.nav_styles.button_size}} {{module.style.nav_styles.inactive_style}}{{ "-" ~ module.style.nav_styles.active_colour if module.style.nav_styles.inactive_colour == " " else "-" ~ module.style.nav_styles.inactive_colour }} {{"active" if loop.first}}" id="link-{{loop.index}}-{{name}}" data-bs-toggle="tab" data-bs-target="#tab-{{loop.index}}-{{name}}" type="button" role="tab" aria-controls="#tab-{{loop.index}}-{{name}}" aria-selected="{{ "true" if loop.first else "false" }}">
+                    {{item.link_label}}
+                </button>
+            {% endfor %}
+        </div>
+    {% endif %}
+</nav>
+{% endif %}
+
+
+<div class="tab-content" id="tabContent-{{name}}" style="{{module.style.spacing_field.css}}">
+    {% for item in module.content_block %}
+    <div class="tab-pane {{ "fade" if module.style.fade }} {{"active show" if loop.first}} {{item.advanced.additional_classes}}" id="tab-{{loop.index}}-{{name}}" role="tabpanel" aria-labelledby="tab-{{loop.index}}-{{name}}" tabindex="0">
+    
+    {% for row in item.row %}
+        <div class="row mx-0 {{ row.advanced.additional_classes }} row-cols-lg-{{ row.responsive.desktop.columns }} row-cols-sm-{{ row.responsive.tablet.columns }} row-cols-{{ row.responsive.mobile.columns }}">
+        {% for column in row.column %}
+            <div class="col {{ column.advanced.additional_classes }}">
+            <div class="{{ column.advanced.additional_div_classes }}">
+                {{ column.text }}
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+
+
+    </div>
+    {% endfor %}
+</div>

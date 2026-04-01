@@ -1,0 +1,106 @@
+{% if is_in_page_editor %}
+  {% editor_placeholder %}
+{% endif %}
+<div class="modal fade" style="" id="{{ module.modal_id }}" tabindex="-1" aria-labelledby="{{ module.modal_id }}Modal" aria-hidden="true">
+  <div class="modal-dialog {{module.style.modal_size}} modal-dialog-centered">
+      <div class="modal-content {{ module.style.modal_background if module.style.modal_background != " "}}">
+        <div class="modal-header border-0 ">
+          <button type="button" class="btn-close {{"btn-close-white" if module.style.modal_background != " "}}" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body {{ "pt-md-{{module.style.modal_padding}} px-md-{{module.style.modal_padding}}" if module.style.modal_padding != " "}} {{ "pb-md-{{module.style.modal_padding}}" if !module.cta && module.style.modal_padding != " "}}">
+          {% if module.heading %}
+          <h3 class="mb-0">
+            {{ module.heading}}
+          </h3>
+          {% endif %}
+          {% if module.sub_heading %}
+          <p class="lead">
+            {{ module.sub_heading }}
+          </p>
+          {% endif %}
+          {% if module.sub_heading || module.heading %}
+          <hr class="bg-turquoise-600 opacity-100 w-50" size="6">
+          {% endif %}
+          {{ module.modal_body }}
+
+        </div>
+        {% if module.cta %}
+          <div class="modal-footer border-0 pt-0 {{ "pb-md-{{module.style.modal_padding}} px-md-{{module.style.modal_padding}}" if module.style.modal_padding != " "}}">
+            {% for cta in module.cta %}
+              {% if cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" ~ cta.link.url.href %}
+              {% else %}
+                {% unless (cta.link.url.href is string_containing "//") 
+                  or (!cta.link is string_startingwith "tel:") 
+                  or !cta.link.url.href 
+                %}
+                  {% set href = "//" ~ cta.link.url.href %}
+                {% else %}
+                  {% set href = cta.link.url.href || "" %}
+                {% endunless %}
+              {% endif %}
+
+              {% set alignment = "" %}
+              {% if cta.alignment == "start" %}
+                {% set alignment = "me-auto" %}
+              {% elif cta.alignment == "center" %}
+                {% set alignment = "mx-auto" %}
+              {% elif cta.alignment == "end" %}
+                {% set alignment = "ms-auto" %}
+              {% endif %}
+              
+              
+              {% set rel = (cta.link.open_in_new_tab ? "noopener " : null) ~ (cta.link.no_follow ? "nofollow" : null) %}
+                <a class="{{alignment}} btn btn{{ cta.button_style }}{{cta.button_colour}} {{cta.button_size}} {% if cta.button_style != "-" %}{{cta.text_colour}}{% endif %} {{ cta.advanced.additional_classes }}" href="{{ href }}"
+                    id="button_{{ name }}_{{cta.index}}" {{cta.advanced.additional_code}}
+                    {% if cta.link.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if cta.download %}
+                      {% if cta.download_file %}
+                        download="{{cta.download_file}}"
+                      {% else %}
+                          download
+                      {% endif %}
+                    {% endif %}
+                    rel="{{ rel }}">
+                  {{ cta.button_text }}
+                </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+  </div>
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+//  const modal{{ module.modal_id }} = document.getElementById('{{ module.modal_id }}');
+//  modal{{ module.modal_id }}.addEventListener('hide.bs.modal', event => {
+//    var modalVideo{{ module.modal_id }} = document.querySelector('#{{ module.modal_id }} video');
+//
+//    modalVideo{{ module.modal_id }}.pause();
+//    modalVideo{{ module.modal_id }}.currentTime = 0;
+//  });
+
+  const modal{{ module.modal_id }} = document.getElementById('{{ module.modal_id }}');
+  const modalBody = modal{{ module.modal_id }}.querySelector('.modal-body');
+  var modalContent{{module.modal_id}} = null;
+  if (modal{{ module.modal_id }}) {
+      let gotVideoCode = false;
+      modal{{ module.modal_id }}.addEventListener('shown.bs.modal', event => {
+          if (!gotVideoCode) {
+            modalContent{{ module.modal_id }} = modalBody.innerHTML;
+            gotVideoCode = true;
+          } else {
+            modalBody.innerHTML = modalContent{{ module.modal_id }};
+          }
+      });
+      modal{{ module.modal_id }}.addEventListener('hidden.bs.modal', event => {
+        modalBody.innerHTML = "";
+      });
+  }
+
+
+});
+
+</script>
