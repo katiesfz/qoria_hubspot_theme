@@ -1,6 +1,7 @@
 [ {
   "id" : "heading_tag",
   "name" : "heading_tag",
+  "display_width" : null,
   "label" : "Heading Style",
   "required" : false,
   "locked" : false,
@@ -9,32 +10,32 @@
   "multiple" : false,
   "reordering_enabled" : true,
   "preset" : null,
-  "display_width" : null,
   "type" : "choice",
   "default" : "h2"
 }, {
   "id" : "heading",
   "name" : "heading",
+  "display_width" : null,
   "label" : "Heading",
   "required" : false,
   "locked" : false,
-  "enabled_features" : [ "alignment" ],
-  "display_width" : null,
+  "enabled_features" : [ "charmap", "standard_emphasis", "bold", "nonbreaking_space", "personalize", "alignment", "source_code"],
   "type" : "richtext",
   "default" : "Closing the gaps that children fall through"
 }, {
   "id" : "style",
   "name" : "style",
+  "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "style.spacing_field",
     "name" : "spacing_field",
+    "display_width" : null,
     "label" : "Spacing",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "spacing",
     "default" : {
       "margin" : {
@@ -48,24 +49,22 @@
         }
       }
     }
-  }, {
+  },{
     "id" : "style.colour",
     "name" : "colour",
+    "display_width" : null,
     "label" : "Colour",
     "required" : false,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "text-white", "White" ], [ "text-dark", "Dark" ] ],
+    "choices" : [ [ "text-white", "White" ], [ "text-dark", "Dark" ], [ "text-primary", "Primary" ]],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,
-    "display_width" : null,
     "type" : "choice",
     "default" : "text-dark"
-  } ],
+  }],
   "tab" : "STYLE",
   "expanded" : false,
-  "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group"
 } ]
