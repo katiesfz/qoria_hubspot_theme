@@ -1,0 +1,165 @@
+
+{% require_css %}
+    <style>
+    {% scope_css %}
+.timeline-slide, .timeline-arrow-container {
+  display: grid !important;
+  grid-template-rows: auto 140px auto;
+}
+
+.timeline-container {
+  display: grid !important;
+  {% if module.style.controls %}
+  grid-template-columns: 60px 1fr 60px;
+  margin: 0 -60px;
+  {%endif%}
+  {%if module.style.indicators %}
+  padding-bottom: 2rem;
+  {% endif %}
+}
+
+.timeline-indicators {
+    position: absolute;
+    right: 0;
+    top: 100% !important;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-right: 15%;
+    margin-bottom: 1rem;
+    margin-left: 15%;
+    list-style: none;
+}
+
+.timeline-indicators li button {
+    font-size: 0;
+    line-height: 9px;
+    display: block;
+    width: 9px;
+    height: 9px;
+    margin: 2px;
+    padding: 2px;
+    cursor: pointer;
+    color: transparent;
+    box-sizing: content-box;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.timeline-indicators li button::before {
+    content: "\f111";
+    font-family: "Font Awesome 6 Pro";
+    font-weight: 900;
+    font-size: 9px;
+    color: var(--q-gray-400);
+}
+
+.timeline-indicators li.slick-active button::before {
+    color: var(--q-gray-700);
+}
+
+{% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+{% from '/q-theme/assets/macros.html' import timelineSlide %}
+<div class="timeline-container" id="carousel-container-{{name}}">
+
+{% if module.style.controls %}
+<div class="timeline-arrow-container">
+    <div class="timeline-slide-top-container"></div>
+    <div class="middle align-self-center position-relative text-center">
+        <a class="" aria-label="Previous" type="button" style="" aria-disabled="false" id="prevArrow-{{name}}">
+            <span class="fa-stack fa-2x fs-6 {{module.style.dark_or_light}}">
+            <i class="fal fa-circle fa-stack-2x"></i>
+            <i class="fas fa-chevron-left fa-stack-1x"></i>
+            </span>
+        </a>
+    </div>
+    <div class="timeline-slide-bottom d-flex"></div>
+</div>
+{% endif %}
+<div class="timeline-slider {{module.style.dark_or_light}}" id="carousel-{{name}}">
+{% for item in module.slide %}
+    {% if loop.index is even %}
+            {{ timelineSlide(item, "bottom") }}
+        {% else %}
+            {{ timelineSlide(item, "top") }}
+    {% endif %}
+{% endfor %}
+</div>
+
+{% if module.style.controls %}
+<div class="timeline-arrow-container">
+<div class="timeline-slide-top-container"></div>
+<div class="middle align-self-center position-relative text-center">
+<a class="" aria-label="Next" type="button" style="" aria-disabled="false" id="nextArrow-{{name}}">
+<span class="fa-stack fa-2x fs-6 {{module.style.dark_or_light}}">
+<i class="fal fa-circle fa-stack-2x"></i>
+<i class="fas fa-chevron-right fa-stack-1x"></i>
+</span>
+</a>
+</div>
+<div class="timeline-slide-bottom d-flex"></div>
+</div>
+</div>
+{% endif %}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+        var smallBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-sm');
+        var medBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-md');
+        var largeBreakpoint = window.getComputedStyle(document.documentElement).getPropertyValue('--q-breakpoint-lg');
+    $('#carousel-{{name}}').slick({
+        dots: {{ module.style.indicators }},
+        speed: 300,
+        infinite: false,
+        prevArrow: '#prevArrow-{{name}}',
+        nextArrow: '#nextArrow-{{name}}',
+        dotsClass: "slider-indicators",
+        autoplay: {{ module.style.autoplay }},
+        {% if module.style.autoplay %} autoplaySpeed: {{ module.style.interval }}, {% endif %}
+        arrows: {{ module.style.controls }},
+    //    initialSlide: {{(module.slide|length - module.style.responsive.desktop.slides_to_display)/module.style.responsive.desktop.slides_to_slide|round("ceil")}},
+        slidesToShow: {{ module.style.responsive.desktop.slides_to_display }},
+        slidesToScroll: {{ module.style.responsive.desktop.slides_to_slide }},
+        responsive: [
+            {
+                breakpoint: parseInt(largeBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.responsive.tablet.slides_to_display }},
+                    slidesToScroll: {{ module.style.responsive.tablet.slides_to_slide }},        
+                  //  initialSlide: {{(module.slide|length - module.style.responsive.tablet.slides_to_display)/module.style.responsive.tablet.slides_to_slide|round("ceil")}},
+
+                }
+            },
+            {
+                breakpoint: parseInt(medBreakpoint),
+                settings: {
+                    slidesToShow: {{ module.style.responsive.mobile.slides_to_display }},
+                    slidesToScroll: {{ module.style.responsive.mobile.slides_to_slide }},
+                  //  initialSlide: {{(module.slide|length - module.style.responsive.mobile.slides_to_display)/module.style.responsive.mobile.slides_to_slide|round("ceil")}},
+                }
+            }
+        ]
+    });
+
+    
+    normaliseHeights("#carousel-container-{{name}} .timeline-slide-bottom");
+    normaliseHeightsMd("#carousel-container-{{name}} .timeline-slide-top");
+    normaliseHeights("#carousel-container-{{name}} .timeline-slide-top-container");
+    
+    $(window).on(
+    'load resize orientationchange', function () {
+    normaliseHeights("#carousel-container-{{name}} .timeline-slide-bottom");
+    normaliseHeightsMd("#carousel-container-{{name}} .timeline-slide-top");
+    normaliseHeights("#carousel-container-{{name}} .timeline-slide-top-container");
+    });
+    
+});
+
+
+</script>

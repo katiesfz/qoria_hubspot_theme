@@ -1,0 +1,275 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Linewize US Our Reach
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+{% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ ],
+        header="Our reach",
+        hero_type="full-image",
+        image={
+          "alt" : "LWZ-NZ-Our-reach-banner",
+          "height" : 1000,
+          "loading" : "disabled",
+          "max_height" : 1000,
+          "max_width" : 1500,
+          "size_type" : "auto_custom_max",
+          "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/Linewize%20-%20NZ%20-%20Web%20Banners/LWZ-NZ-Our-reach-banner.png",
+          "width" : 1500
+        },
+        menu=123441695658,
+        page_contents=[ {
+          "anchor" : "#intro",
+          "content_label" : "Intro"
+        }, {
+          "anchor" : "#ourReach",
+          "content_label" : "Our reach"
+        } ],
+        pre_header="About us:",
+        show_breadcrumbs=true,
+        show_share_price=false,
+        style={
+          "heading_location" : "bottom-left"
+        },
+        video=""
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="intro"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="intro" style="text-align: center; font-size: 24px;"><span>We have global reach and local presence. It allows us to maximise the availability of our solutions</span><span>&nbsp;whilst meeting the unique needs of the schools and communities we serve.</span> &nbsp;</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "32px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "16px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h5",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Our local presence in New Zealand is supported <br>by a<strong> worldwide team of experts.</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/map-locations",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "32px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="ourReach"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cursive-heading",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 80
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <div style="text-align: center;">Our community supports your community&nbsp;</div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/rich-text",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : {
+                "columns" : 2
+              },
+              "mobile" : {
+                "columns" : 1
+              },
+              "tablet" : {
+                "columns" : 2
+              }
+            },
+            "text" : "<p><strong>We are a global family. However far apart we are our teams work hand-in-hand to support our schools and their communities, every day.</strong></p>\n<p>Our connectedness is incredibly important to us. It allows us to understand the issues unique to each country. It also allows us to recognise those universal issues every school community is trying to address, wherever in the world they are.</p>\n<p>It’s a vantage point that drives innovation.</p>\n<p>If we can address a global challenge with one powerful solution we will. It gives us efficiencies that we can invest straight back into addressing the digital wellbeing challenges of tomorrow.&nbsp;&nbsp;</p>\n<p>Some of the world’s leading experts in student digital safety wellbeing work for us and every one of our schools in New Zealand benefits from that. <br><br>From the best engineers and product developers to psychologists and wellbeing authorities. Ex-police officers, teachers, pastoral staff and school ITs are also part of our family. <br><br>We are a multidisciplinary mix of specialists united in a single intention; to keep children safe and well in their digital lives and to support those who care for them to do the same.&nbsp;&nbsp;</p>"
+          } ]
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+
+{% end_dnd_area %}
+{% global_partial path="../partials/lets-connect.html" %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

@@ -1,0 +1,753 @@
+[ {
+  "id" : "style",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "layout",
+    "name" : "layout",
+    "display_width" : null,
+    "label" : "Layout",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "blog", "Blog" ], [ "podcast", "Podcast" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "blog"
+  }, {
+    "id" : "background_colour",
+    "name" : "background_colour",
+    "display_width" : null,
+    "label" : "Background Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-gradient-primary-reverse text-white", "Primary Gradient Reverse" ], [ "bg-gradient-primary-transparent text-white", "Primary Transparent Gradient" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "bg-gradient-primary text-white"
+  }, {
+    "id" : "style.overlay",
+    "name" : "overlay",
+    "display_width" : null,
+    "label" : "Overlay",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "style.shadow_style",
+    "name" : "shadow_style",
+    "display_width" : null,
+    "label" : "Shadow style",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.shadow",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "shadow-sm", "Small" ], [ "shadow", "Medium" ], [ "shadow-lg", "Large" ], [ "section-shadow", "Pullout shadow" ], [ "section-shadow-sm", "Small pullout shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "section-shadow"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacing_field" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    },
+    "background_colour" : "bg-gradient-primary text-white",
+    "background_image" : "none",
+    "overlay" : true,
+    "shadow" : true
+  }
+}, {
+  "id" : "source",
+  "name" : "source",
+  "display_width" : null,
+  "label" : "Source",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "page", "Page or Blog Article" ], [ "file", "File" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "style.layout",
+    "controlling_value_regex" : "blog",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "default" : "page"
+}, {
+  "id" : "blog_entry",
+  "name" : "blog_entry",
+  "display_width" : null,
+  "label" : "Article",
+  "required" : false,
+  "locked" : false,
+  "type" : "page",
+  "default" : 128229352888,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "source",
+    "controlling_value_regex" : "page",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "name": "file_field",
+  "label": "File",
+  "required": false,
+  "locked": false,
+  "type": "file",
+  "picker": "file",
+  "default": null,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "source",
+    "controlling_value_regex" : "file",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "id" : "heading_width",
+  "name" : "heading_width",
+  "display_width" : null,
+  "label" : "Heading Width",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "col-12 col-sm-7 col-md-6 col-lg-5 col-xl-4", "Small" ], [ "col-12 col-sm-9 col-md-8 col-lg-7 col-xl-6", "Medium" ], [ "col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8", "Large" ], [ "col-12", "Full" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "style.layout",
+    "controlling_value_regex" : "blog",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "default" : "col-12 col-sm-7 col-md-6 col-lg-5 col-xl-4"
+}, {
+  "id" : "background_image",
+  "name" : "background_image",
+  "display_width" : null,
+  "label" : "Custom Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : true,
+  "type" : "image",
+  "default" : {
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "custom_section_title",
+  "name" : "custom_section_title",
+  "display_width" : null,
+  "label" : "Custom section title",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "name" : "section_title",
+  "display_width" : null,
+  "label" : "Section title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "type" : "text",
+  "default" : "Featured article",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "custom_section_title",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "id" : "custom_heading",
+  "name" : "custom_heading",
+  "display_width" : null,
+  "label" : "Custom heading",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "source",
+    "controlling_value_regex" : "page",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "name" : "heading",
+  "display_width" : null,
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "richtext",
+  "enabled_features" : [ "bold", "nonbreaking_space", "charmap", "block", "source_code"],
+  "default" : "",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "source",
+      "controlling_value_regex" : "file",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : [
+      {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "source",
+        "controlling_value_regex" : "page",
+        "property": "",
+        "operator" : "EQUAL",
+        "access" : null
+      }, {
+        "controlling_field" : null,
+        "controlling_field_path" : "custom_heading",
+        "controlling_value_regex" : "true",
+        "property": "",
+        "operator" : "EQUAL",
+        "access" : null
+      } ]
+      }
+    ]
+  }
+}, {
+  "id" : "custom_preheader",
+  "name" : "custom_preheader",
+  "display_width" : null,
+  "label" : "Custom pre-header",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "source",
+    "controlling_value_regex" : "page",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "name" : "preheader",
+  "display_width" : null,
+  "label" : "Pre-header",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "source",
+      "controlling_value_regex" : "file",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }],
+    "children" : [
+      {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "source",
+        "controlling_value_regex" : "page",
+        "property": "",
+        "operator" : "EQUAL",
+        "access" : null
+      }, {
+        "controlling_field" : null,
+        "controlling_field_path" : "custom_preheader",
+        "controlling_value_regex" : "true",
+        "property": "",
+        "operator" : "EQUAL",
+        "access" : null
+      } ]
+      }
+    ]
+  }
+}, {
+  "id" : "custom_min_read",
+  "name" : "custom_min_read",
+  "display_width" : null,
+  "label" : "Custom min read",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "source",
+    "controlling_value_regex" : "page",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "name" : "min_read",
+  "display_width" : null,
+  "label" : "Min read",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "min read",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "custom_min_read",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "id" : "custom_description",
+  "name" : "custom_description",
+  "display_width" : null,
+  "label" : "Custom description",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "name" : "description",
+  "display_width" : null,
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "type" : "richtext",
+  "enabled_features" : [ "bold", "nonbreaking_space", "charmap", "block", "source_code"],
+  "default" : "<p>Anthony England, Pymble Ladies College Director of Innovative Learning Technologies shares how he turned AI anxiety into action for staff at his school.</p>",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "custom_description",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "id" : "custom_cta",
+  "name" : "custom_cta",
+  "display_width" : null,
+  "label" : "Custom CTA",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "name" : "cta_label",
+  "display_width" : null,
+  "label" : "CTA label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Read more",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "custom_cta",
+      "controlling_value_regex" : "true",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "blog",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  }
+}, {
+  "id" : "cta_style",
+  "name" : "cta_style",
+  "display_width" : null,
+  "label" : "CTA Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "btn btn-outline-",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "custom_cta",
+      "controlling_value_regex" : "true",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "blog",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  }
+}, {
+  "id" : "cta_size",
+  "name" : "cta_size",
+  "display_width" : null,
+  "label" : "CTA Size",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "btn-sm", "Small" ], [ " ", "Medium" ], [ "btn-lg", "Large" ]],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : " ",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "custom_cta",
+      "controlling_value_regex" : "true",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "blog",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  }
+}, {
+  "id" : "cta_colour",
+  "name" : "cta_colour",
+  "display_width" : null,
+  "label" : "CTA Colour",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "light",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "custom_cta",
+      "controlling_value_regex" : "true",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "blog",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  }
+},{
+  "name": "cta_link",
+  "display_width": null,
+  "label": "CTA Link",
+  "required": false,
+  "locked": false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "custom_cta",
+      "controlling_value_regex" : "true",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  },
+  "supported_types": [
+    "EXTERNAL",
+    "CONTENT",
+    "FILE",
+    "EMAIL_ADDRESS",
+    "BLOG",
+    "CALL_TO_ACTION",
+    "PHONE_NUMBER",
+    "WHATSAPP_NUMBER",
+    "PAYMENT"
+  ],
+  "show_advanced_rel_options": true,
+  "type": "link",
+  "default": {
+    "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+    },
+    "open_in_new_tab": false,
+    "no_follow": false
+  }
+}, {
+  "name": "youtube_link",
+  "display_width": null,
+  "label": "YouTube Link",
+  "required": false,
+  "locked": false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "podcast",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  },
+  "supported_types": [
+    "EXTERNAL"
+  ],
+  "show_advanced_rel_options": true,
+  "type": "link",
+  "default": {
+    "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+    },
+    "open_in_new_tab": false,
+    "no_follow": false
+  }
+}, {
+  "name": "spotify_link",
+  "display_width": null,
+  "label": "Spotify Link",
+  "required": false,
+  "locked": false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [{
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "podcast",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  },
+  "supported_types": [
+    "EXTERNAL"
+  ],
+  "show_advanced_rel_options": true,
+  "type": "link",
+  "default": {
+    "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+    },
+    "open_in_new_tab": false,
+    "no_follow": false
+  }
+}, {
+  "name": "audible_link",
+  "display_width": null,
+  "label": "Audible Link",
+  "required": false,
+  "locked": false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "podcast",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  },
+  "supported_types": [
+    "EXTERNAL"
+  ],
+  "show_advanced_rel_options": true,
+  "type": "link",
+  "default": {
+    "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+    },
+    "open_in_new_tab": false,
+    "no_follow": false
+  }
+}, {
+  "id" : "download",
+  "name" : "download",
+  "display_width" : null,
+  "label" : "Download the link",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "custom_cta",
+      "controlling_value_regex" : "true",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.layout",
+      "controlling_value_regex" : "blog",
+      "property": "",
+      "operator" : "EQUAL",
+      "access" : null
+    }]
+  }
+}, {
+  "id" : "advanced",
+  "name" : "advanced",
+  "display_width" : null,
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "advanced.additional_classes",
+    "name" : "additional_classes",
+    "display_width" : null,
+    "label" : "Additional classes",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

@@ -1,0 +1,197 @@
+<!--
+  templateType: section
+  label: Pullout section - How it works
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/pullout-stats.jpg
+  description: "A pullout section with a gradient background and a list."
+-->
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+    "bottom" : "32px",
+    "left" : "16px",
+    "right" : "16px",
+    "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="works"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "mobile" : {
+          "bottom" : "32px"
+        }
+      }
+    %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "pt-md-7 px-md-7 pt-5 px-5 pb-4"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_col_classes" : "col-md-7"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h2 class='text-decoration-partial-underline'><strong>How does it work?</strong></h2>\n<p class='lead'>It's simple and straightforward.</p>"
+          }, {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<p><img src='https://www.linewize.com/hubfs/Monitor_mockup.png' width='540' height='226' loading='lazy' alt='Monitor_mockup' style='height: auto; max-width: 100%; width: 540px;'></p>"
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "pb-md-7 px-md-7 pb-5 px-5"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_classes" : "",
+              "additional_col_classes" : ""
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<div class='d-flex flex-row mb-4' style='-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid;'>\n<div class='me-3 fw-bold'>1</div>\n<div><strong>Keyboard stroke data collected</strong> <br>Data is collected online and offline, on any network.</div>\n</div>\n<div class='d-flex flex-row mb-4' style='-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid;'>\n<div class='me-3 fw-bold'>2</div>\n<div><strong>At-risk words or behaviors trigger AI alerts</strong><br>A sophisticated AI technology determines whether online activity should be flagged.</div>\n</div>\n<div class='d-flex flex-row mb-4' style='-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid;'>\n<div class='me-3 fw-bold'>3</div>\n<div>\n<p><strong>Alerts are assessed <br></strong>Alerts are assessed to determine whether the incident is high-risk or low-risk.</p>\n<p>Low-risk alerts are stored in your digital monitoring dashboard.</p>\n<p>High-risk alerts are assessed by human moderators and reported directly to the school.</p>\n</div>\n</div>\n<div class='d-flex flex-row' style='-webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid;'>\n<div class='me-3 fw-bold'>4</div>\n<div><strong>All incidents go directly to record management automatically</strong> <br>View all flagged student activity directly in your dashboard at any time.</div>\n</div>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-gradient-primary text-white",
+          "overlay" : false,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

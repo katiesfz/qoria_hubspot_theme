@@ -1,0 +1,456 @@
+[ {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : true,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "spacing",
+    "default" : { }
+  }, {
+    "id" : "style.background_colour",
+    "name" : "background_colour",
+    "label" : "Background Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "bg-gradient-primary text-white"
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Background Image",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "style.overlay",
+    "name" : "overlay",
+    "label" : "Overlay",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "display_width" : null,
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "display_width" : null,
+    "type" : "boolean",
+    "default" : true
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : {
+    "background_colour" : "bg-gradient-primary text-white",
+    "background_image" : "none",
+    "overlay" : true,
+    "shadow" : true
+  }
+}, {
+  "id" : "row",
+  "name" : "row",
+  "label" : "Row",
+  "required" : false,
+  "locked" : true,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "row.column",
+    "name" : "column",
+    "label" : "Column",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : 3
+    },
+    "children" : [ {
+      "id" : "row.column.pre_heading",
+      "name" : "pre_heading",
+      "label" : "Pre-heading",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "display_width" : null,
+      "type" : "text"
+    }, {
+      "id" : "row.column.heading",
+      "name" : "heading",
+      "label" : "Heading",
+      "required" : false,
+      "locked" : false,
+      "enabled_features" : [ "link", "bold" ],
+      "display_width" : null,
+      "type" : "richtext"
+    }, {
+      "id" : "row.column.statistic",
+      "name" : "statistic",
+      "label" : "Statistic",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "display_width" : null,
+      "type" : "text"
+    }, {
+      "id" : "row.column.statistic_font_size",
+      "name" : "statistic_font_size",
+      "label" : "Statistic font size",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "display-6", "Small" ], [ "display-4", "Regular" ], [ "display-1", "Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "display_width" : null,
+      "type" : "choice"
+    }, {
+      "id" : "row.column.text",
+      "name" : "text",
+      "label" : "Body text",
+      "required" : false,
+      "locked" : false,
+      "enabled_features" : [ "link", "bold" ],
+      "display_width" : null,
+      "type" : "richtext"
+    }, {
+      "id" : "row.column.link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "display_width" : null,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      }
+    }, {
+      "id" : "row.column.link_label",
+      "name" : "link_label",
+      "label" : "Link Label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "display_width" : null,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "link_stretched",
+      "name" : "link_stretched",
+      "label" : "Stretched Link",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "display_width" : null,
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "row.column.column_styles",
+      "name" : "column_styles",
+      "label" : "Column styles",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "row.column.column_styles.background_colour",
+        "name" : "background_colour",
+        "label" : "Background colour",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ], [ "bg-white-20 text-dark", "Semi-transparent white" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "display_width" : null,
+        "type" : "choice"
+      }, {
+        "id" : "row.column.column_styles.background_image",
+        "name" : "background_image",
+        "label" : "Background image",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "display_width" : null,
+        "type" : "choice"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "display_width" : null,
+      "type" : "group"
+    }, {
+      "id" : "row.column.advanced",
+      "name" : "advanced",
+      "label" : "Advanced",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "row.column.advanced.additional_classes",
+        "name" : "additional_classes",
+        "label" : "Additional classes",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "display_width" : null,
+        "type" : "text"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "display_width" : null,
+      "type" : "group"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "display_width" : null,
+    "type" : "group"
+  }, {
+    "id" : "row.advanced",
+    "name" : "advanced",
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "row.advanced.additional_classes",
+      "name" : "additional_classes",
+      "label" : "Additional classes",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "display_width" : null,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "display_width" : null,
+    "type" : "group"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "column" : [ {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-end-lg border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "Partner Contract",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/partner-contract"
+        }
+      }
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-end-lg border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "Partner Program",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/partner-program"
+        }
+      }
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-end-lg border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "Partner Terms",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/partner-terms"
+        }
+      }
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "Customer Terms, <br>Enterprise Customers",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/customer-terms-enterprise-customers"
+        }
+      }
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-end-lg border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "Data Processing Addendum",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/data-processing-addendum"
+        }
+      }
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-end-lg border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "Terms of Service",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/terms-of-service"
+        }
+      }
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-end-lg border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "EULA",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/eula"
+        }
+      }
+    }, {
+      "column_styles" : {
+        "background_colour" : "none",
+        "background_image" : "none"
+      },
+      "advanced" : {
+        "additional_classes" : "border-white border-1 px-4 py-2 fw-bold fs-6 h-100 d-flex align-items-center justify-content-center"
+      },
+      "heading" : "",
+      "pre_heading" : "",
+      "statistic" : "",
+      "statistic_font_size" : "display-1",
+      "text" : "",
+      "link_label" : "Customer Terms, ySafe",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : "/legal/customer-terms-ysafe"
+        }
+      }
+    } ],
+    "advanced" : {
+      "additional_classes" : "g-0 row-cols-lg-4 row-cols-sm-2 row-cols-1 text-center gy-2 p-4 fw-bold fs-6"
+    }
+  } ]
+} ]

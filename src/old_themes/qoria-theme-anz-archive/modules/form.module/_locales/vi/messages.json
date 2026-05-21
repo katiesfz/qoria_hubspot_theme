@@ -1,0 +1,167 @@
+{
+  "crmobjectproperty_field.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.label" : {
+    "message" : "CRM object property",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "follow_up_type_automation.label" : {
+    "message" : "Thêm vào quy trình",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.help_text" : {
+    "message" : "Để gửi email theo dõi, hãy chắc chắn bạn đã bật cài đặt 'Đặt các liên hệ đã tạo làm liên hệ tiếp thị’. Bạn có thể thực hiện việc này trong tùy chọn. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Tìm hiểu thêm</a>",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.label" : {
+    "message" : "Gửi email theo dõi",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.default.message" : {
+    "message" : "Cảm ơn bạn đã gửi biểu mẫu.",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.label" : {
+    "message" : "Biểu mẫu",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form_follow_ups_workflow_id.label" : {
+    "message" : "Quy trình",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "form",
+    "description" : null,
+    "placeholders" : null
+  },
+  "notifications_are_overridden.label" : {
+    "message" : "Gửi thông báo biểu mẫu đến các địa chỉ email được chỉ định thay vì theo cài đặt mặc định của biểu mẫu",
+    "description" : "",
+    "placeholders" : null
+  },
+  "notifications_override_email_addresses.label" : {
+    "message" : "Địa chỉ email",
+    "description" : "",
+    "placeholders" : null
+  },
+  "override_values.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.label" : {
+    "message" : "Field group",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.label" : {
+    "message" : "Property ID",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.label" : {
+    "message" : "Value",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "sfdc_campaign.label" : {
+    "message" : "Chiến dịch Salesforce",
+    "description" : "",
+    "placeholders" : null
+  },
+  "simple_email_for_live_id.label" : {
+    "message" : "Email",
+    "description" : "",
+    "placeholders" : null
+  }
+}

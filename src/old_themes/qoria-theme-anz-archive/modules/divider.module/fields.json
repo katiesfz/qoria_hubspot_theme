@@ -1,0 +1,235 @@
+[ {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.line",
+    "name" : "line",
+    "label" : "Line",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.line.style",
+      "name" : "style",
+      "label" : "Style",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "style" : [ "line_type" ]
+        }
+      },
+      "choices" : [ [ "solid", "Solid" ], [ "dotted", "Dotted" ], [ "dashed", "Dashed" ], [ "gradient", "Primary Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "solid"
+    }, {
+      "id" : "styles.line.color",
+      "name" : "color",
+      "label" : "Color",
+      "required" : true,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "styles.line.style",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null
+      },
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "color" : [ "color" ]
+        }
+      },
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "styles.line.gradient",
+      "name" : "gradient",
+      "label" : "Gradient",
+      "required" : true,
+      "locked" : true,
+      "visibility" : {
+        "controlling_field" : "styles.line.style",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary > Secondary" ], [ "primary-transparent", "Primary" ], [ "secondary-transparent", "Secondary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "primary"
+    }, {
+      "id" : "styles.line.reverse_gradient",
+      "name" : "reverse_gradient",
+      "label" : "Reverse gradient",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "styles.line.style",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "styles.line.thickness",
+      "name" : "thickness",
+      "label" : "Thickness",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "thickness" : [ "height" ]
+        }
+      },
+      "min" : 1,
+      "max" : 30,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 1
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "styles.size",
+    "name" : "size",
+    "label" : "Size",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.size.width",
+      "name" : "width",
+      "label" : "Width",
+      "help_text" : "Percentage of the area the divider is placed into.",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "width" : [ "width" ]
+        }
+      },
+      "min" : 1,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "%",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 50
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "styles.alignment",
+    "name" : "alignment",
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "styles.size.width",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "100",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "styles.alignment.alignment",
+      "name" : "alignment",
+      "label" : "Alignment",
+      "required" : false,
+      "locked" : false,
+      "alignment_direction" : "HORIZONTAL",
+      "type" : "alignment",
+      "display_width" : null,
+      "default" : {
+        "horizontal_align" : "CENTER"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "styles.spacing",
+    "name" : "spacing",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.spacing.spacing",
+      "name" : "spacing",
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : null,
+        "access" : null,
+        "hidden_subfields" : {
+          "padding" : true
+        }
+      },
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : "10",
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : "10",
+            "units" : "px"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

@@ -1,0 +1,43 @@
+[ {
+  "id" : "icon",
+  "name" : "icon",
+  "label" : "Icon",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "src" : "",
+    "alt" : null,
+    "size_type" : null,
+    "width" : null,
+    "height" : null,
+    "max_width" : null,
+    "max_height" : null,
+    "loading" : "disabled"
+  }
+}, {
+  "id" : "copy",
+  "name" : "copy",
+  "label" : "Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "valign",
+  "name" : "valign",
+  "label" : "Vertical alignment",
+  "required" : false,
+  "locked" : false,
+  "alignment_direction" : "VERTICAL",
+  "type" : "alignment",
+  "display_width" : null,
+  "default" : {
+    "vertical_align" : "TOP"
+  }
+} ]

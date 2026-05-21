@@ -1,0 +1,391 @@
+[ {
+  "id" : "22f3fd54-3d57-776f-367c-68dc19c8d063",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "0fb56238-2cad-f53c-f1ad-f0db0e049ecb",
+    "name" : "background_colour",
+    "label" : "Background Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ], [ "bg-light text-dark", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "none"
+  }, {
+    "id" : "c492c462-0846-371a-acca-7690f05a307d",
+    "name" : "background_image",
+    "label" : "Background Image",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ], [ "q-tail-2", "Q Tail 2" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "none"
+  }, {
+    "id" : "style.overlay",
+    "name" : "overlay",
+    "label" : "Overlay",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "style.shadow_style",
+    "name" : "shadow_style",
+    "label" : "Shadow style",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.shadow",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "shadow-sm", "Small" ], [ "shadow", "Medium" ], [ "shadow-lg", "Large" ], [ "section-shadow", "Pullout shadow" ], [ "section-shadow-sm", "Small pullout shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "section-shadow"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "spacing_field" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    },
+    "background_colour" : "none",
+    "background_image" : "none",
+    "overlay" : true,
+    "shadow" : true
+  }
+}, {
+  "id" : "2f82f0ae-499b-4598-4d20-5c46cace631e",
+  "name" : "row",
+  "label" : "Row",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "c2b6450b-442b-599a-558c-8c45d1c10554",
+    "name" : "column",
+    "label" : "Column",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "text",
+      "name" : "text",
+      "label" : "Body text",
+      "required" : false,
+      "locked" : false,
+      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+      "type" : "richtext",
+      "display_width" : null,
+      "default" : "<p class='fs-6 fw-bold'>Across three continents</p>"
+    }, {
+      "id" : "link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      }
+    }, {
+      "id" : "link_label",
+      "name" : "link_label",
+      "label" : "Link Label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "link_stretched",
+      "name" : "link_stretched",
+      "label" : "Stretched Link",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "989e0bde-a735-330e-90ed-7e93efd63501",
+      "name" : "column_styles",
+      "label" : "Column styles",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "452e7fef-c1c2-0469-b224-d227cbbb5d3d",
+        "name" : "background_colour",
+        "label" : "Background colour",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ], [ "bg-white-20 text-dark", "Semi-transparent white" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "none"
+      }, {
+        "id" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+        "name" : "background_image",
+        "label" : "Background image",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ], [ "custom", "Custom" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null
+      }, {
+        "id" : "col.background_image_file",
+        "name" : "background_image_file",
+        "label" : "Background Image",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : true,
+        "type" : "image",
+        "display_width" : null,
+        "default" : {
+          "loading" : "lazy"
+        }
+      }, {
+        "id" : "row.column.column_styles.background_size",
+        "name" : "background_size",
+        "label" : "Background size",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "custom",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "display" : "select",
+        "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "cover"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "background_colour" : "none",
+        "background_size" : "cover"
+      }
+    }, {
+      "id" : "8876fed4-374b-c04a-d6e7-7f811d14bf8f",
+      "name" : "advanced",
+      "label" : "Advanced",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "2f90eb36-9aa2-7fc5-7a7f-5cd81d343716",
+        "name" : "additional_classes",
+        "label" : "Additional classes",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "type" : "text",
+        "display_width" : null
+      }, {
+        "id" : "col.advanced.additional_col_classes",
+        "name" : "additional_col_classes",
+        "label" : "Additional column classes",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "type" : "text",
+        "display_width" : null
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : { }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "text" : "<p>Across three continents</p>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      },
+      "link_label" : "",
+      "link_stretched" : false,
+      "column_styles" : {
+        "background_colour" : "none"
+      },
+      "advanced" : { }
+    }
+  }, {
+    "id" : "e542494d-0a99-be46-b594-dd2c2ff2c8ba",
+    "name" : "advanced",
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "297be8cb-b67f-ae5a-8991-f024c147057d",
+      "name" : "additional_classes",
+      "label" : "Additional classes",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "column" : {
+      "text" : "<p>Across three continents</p>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      },
+      "link_label" : "",
+      "link_stretched" : false,
+      "column_styles" : {
+        "background_colour" : "none"
+      },
+      "advanced" : { }
+    },
+    "advanced" : { }
+  }
+} ]

@@ -1,0 +1,145 @@
+<!--
+ templateType: section
+ label: Student Wellbeing Analysis
+ description: "Pullout advertising the Student Wellbeing Analysis"
+ screenshotPath: ../images/section-previews/student-wellbeing-analysis.png
+ isAvailableForNewContent: true
+-->
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px",
+      "bottom" : "64px"
+    },
+    "mobile" : {
+      "top" : "32px",
+      "bottom" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "p-4 p-md-6 justify-content-center"
+          },
+          "column" : [ {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : ""
+          }, {
+            "advanced" : {
+              "additional_classes" : "text-center",
+              "additional_col_classes" : "col-12 col-md-11 col-xl-10"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h3 class='text-decoration-partial-underline text-center'>Get your free <strong>Student Wellbeing Analysis</strong></h3>\n<p class='fs-6'>Deploy Linewize Pulse for 30 days to quickly identify students who need help. Receive real-time data to gauge current wellbeing levels across your district.</p>\n<p><a class='btn btn-light btn-lg mt-4' href='/student-wellbeing-analysis' rel='noopener'>Learn more</a></p>"
+          }, {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : ""
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-gradient-primary text-white",
+          "overlay" : false,
+          "shadow_style" : "section-shadow"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 114967092121,
+  "label" : "Icon",
+  "icon" : "../../images/module-icons/icons.svg",
+  "is_available_for_new_content" : false
+}

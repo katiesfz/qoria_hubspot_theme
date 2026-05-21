@@ -1,0 +1,24 @@
+<!--
+    templateType: none
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css')) }}
+    {{ standard_header_includes }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#pageContents">
+
+    {% block body %}
+    {% endblock body %}
+   
+    {{ standard_footer_includes }}
+    {{ require_js(get_asset_url('/q-theme/js/bootstrap.bundle.min.js')) }}
+  </body>
+</html>

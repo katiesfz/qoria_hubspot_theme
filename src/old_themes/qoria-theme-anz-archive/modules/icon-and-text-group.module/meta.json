@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 114969642048,
+  "label" : "Icon and Text Group",
+  "icon" : "../../images/module-icons/icons.svg",
+  "is_available_for_new_content" : true
+}

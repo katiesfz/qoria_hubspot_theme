@@ -1,0 +1,1741 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Linewize US Solutions Overview
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+{% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ ],
+        header="Solutions Overview",
+        hero_type="full-image",
+        image={
+          "alt" : "iStock-1180357593 RT",
+          "height" : 707,
+          "loading" : "disabled",
+          "max_height" : 707,
+          "max_width" : 1060,
+          "size_type" : "auto",
+          "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/iStock-1180357593%20RT.jpg",
+          "width" : 1060
+        },
+        menu=123441695658,
+        page_contents=[ {
+          "anchor" : "#framework",
+          "content_label" : "Digital Safety and Wellbeing Framework"
+        }, {
+          "anchor" : "#howItWorks",
+          "content_label" : "How it works"
+        }, {
+          "anchor" : "#prevention",
+          "content_label" : "Prevention & Enablement"
+        }, {
+          "anchor" : "#detection",
+          "content_label" : "Early Detection & Intervention"
+        }, {
+          "anchor" : "#education",
+          "content_label" : "Education & Engagement"
+        } ],
+        pre_header="",
+        show_breadcrumbs=true,
+        show_share_price=false,
+        style={
+          "heading_location" : "bottom-left"
+        },
+        video=""
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=1,
+    width=10
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="intro"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="intro mb-0" style="text-align: center;">The digital safety and wellbeing landscape is rapidly evolving. <br>Our solutions help schools and their communities to effectively navigate these changes.&nbsp;</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+  {% dnd_column
+    offset=11,
+    width=1
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/horizontal_spacer",
+        offset=0,
+        width=12,
+        hidden={
+          "mobile" : true
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "left" : "20px",
+      "right" : "20px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="framework"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=1
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=1,
+            width=10
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/heading",
+                offset=0,
+                width=12,
+                heading_tag="h2",
+                heading_underline="true",
+                style={
+                  "textalignment" : "center"
+                }
+              %}
+                {% module_attribute "heading" %}
+                  Digital Safety and <strong>Wellbeing Framework</strong>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/rich-text",
+                offset=0,
+                width=12,
+                row=[ {
+                  "advanced" : {
+                    "additional_classes" : ""
+                  },
+                  "column" : [ {
+                    "advanced" : {
+                      "additional_classes" : ""
+                    },
+                    "responsive" : {
+                      "desktop" : {
+                        "columns" : 1
+                      },
+                      "mobile" : {
+                        "columns" : 1
+                      },
+                      "tablet" : {
+                        "columns" : 1
+                      }
+                    },
+                    "text" : "<div style='text-align: center; font-size: 18px;'><strong>Successful navigation starts with knowledge.</strong><br><br></div>\n<div style='text-align: center; font-size: 18px;'>Helping schools make sense of the technologies and services available to help them is the first step.&nbsp;</div>\n<div style='text-align: center; font-size: 18px;'>Our Digital Safety and Wellbeing Framework enables school leaders to explore our solutions as they apply to the three most common pillars in a digital safety and wellbeing strategy.</div>\n<div style='text-align: center; font-size: 18px;'>&nbsp;</div>"
+                  } ]
+                } ],
+                style={
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 48
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 0
+                      }
+                    },
+                    "padding" : {
+                      "bottom" : { },
+                      "left" : {
+                        "units" : "px"
+                      },
+                      "right" : {
+                        "units" : "px"
+                      },
+                      "top" : { }
+                    }
+                  }
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=11,
+            width=1
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=2
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=2,
+            width=8
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/region-specific/nz/wellbeing-framework-nz",
+                offset=0,
+                width=12
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/fancy-image",
+                offset=0,
+                width=12,
+                image={
+                  "alt" : "shadow",
+                  "height" : 53,
+                  "loading" : "lazy",
+                  "max_height" : 53,
+                  "max_width" : 600,
+                  "size_type" : "auto_custom_max",
+                  "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/shadow.png",
+                  "width" : 600
+                },
+                style={
+                  "alignment" : {
+                    "horizontal_align" : "CENTER",
+                    "vertical_align" : "MIDDLE"
+                  },
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : { },
+                      "top" : { }
+                    },
+                    "padding" : {
+                      "bottom" : {
+                        "units" : "px"
+                      },
+                      "left" : {
+                        "units" : "px"
+                      },
+                      "right" : {
+                        "units" : "px"
+                      },
+                      "top" : {
+                        "units" : "px"
+                      }
+                    }
+                  }
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=10,
+            width=2
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "16px",
+      "left" : "16px",
+      "right" : "16px"
+    },
+    "mobile" : {
+      "bottom" : "8px"
+    }
+  },
+  margin={
+    "default" : {
+      "top" : "-5px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="howItWorks"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "px-3 px-sm-4 py-4"
+          },
+          "column" : [ {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h2 class='text-center text-decoration-partial-underline' style='text-align: center;'>How it <strong>works</strong></h2>"
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "px-3 px-sm-5 pb-5"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_classes" : "css-col-count-lg-2 css-col-count-sm-2 css-col-count-1 ",
+              "additional_col_classes" : "col-12 col-sm-8"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<p><strong>Developed in consultation with our schools, our Framework sees each type of solution aligned to one of three fundamental pillars commonly used in health and safety strategy.&nbsp;</strong></p>\n<p>Prevention | Intervention | Education.&nbsp;</p>\n<p>Each pillar addresses an essential component of an effective digital safety and wellbeing strategy.</p>\n<p>Our schools can use this, supported by our Linewize team, to identify their priorities and plan the steps needed to achieve a more efficient and robust provision of care.</p>\n<p>Our Framework is also a useful way for school leaders to keep abreast of the types of solutions available to them in the market.</p>\n<p>Also to better understand the role each of them plays and how they combine to build a digital wellbeing culture across the whole community.&nbsp;&nbsp;</p>"
+          }, {
+            "advanced" : {
+              "additional_classes" : "",
+              "additional_col_classes" : "col-12 col-sm-4"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<p><img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/iStock-1346503979%20RT.jpg' alt='iStock-1346503979 RT' width='1932' height='1288' loading='lazy' style='height: auto; max-width: 100%; width: 1932px;'></p>\n<p>&nbsp;</p>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-white text-dark",
+          "shadow_style" : "section-shadow-sm",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+background_color="rgba(235, 235, 235, 1)",
+padding={
+  "default" : {
+    "left" : "16px",
+    "right" : "16px",
+    "top" : "16px"
+  },
+  "mobile" : {
+    "top" : "8px"
+  }
+},
+full_width=false,
+max_width=1280
+%}
+{% dnd_column
+  offset=0,
+  width=12,
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "48px",
+      "left" : "48px",
+      "right" : "48px",
+      "top" : "48px"
+    },
+    "mobile" : {
+      "bottom" : "24px",
+      "left" : "24px",
+      "right" : "24px",
+      "top" : "24px"
+    }
+  }
+%}
+  {% dnd_row %}
+    {% dnd_module
+      path="/q-theme/modules/anchor",
+      offset=0,
+      width=12,
+      anchor="prevention"
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_column
+      offset=0,
+      width=9,
+      padding={
+        "default" : {
+          "bottom" : "-16px"
+        }
+      }
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/rich-text",
+          offset=0,
+          width=12,
+          row=[ {
+            "advanced" : {
+              "additional_classes" : "pb-3"
+            },
+            "column" : [ {
+              "advanced" : { },
+              "responsive" : {
+                "desktop" : { },
+                "mobile" : { },
+                "tablet" : { }
+              },
+              "text" : "<h3><strong>Prevention &amp; Enablement&nbsp;<i class='far fa-user-shield'></i></strong></h3>"
+            } ]
+          }, {
+            "advanced" : { },
+            "column" : [ {
+              "advanced" : { },
+              "responsive" : {
+                "desktop" : {
+                  "columns" : 2
+                },
+                "mobile" : { },
+                "tablet" : {
+                  "columns" : 2
+                }
+              },
+              "text" : "<h6>Solutions in this pillar deliver greatest impact by minimising students’ exposure to known risks.</h6>\n<p>When known risks are mitigated schools can begin to reduce the need for interventions.</p>\n<p>Web filtering solutions that prevent students from seeing inappropriate, harmful or dangerous content live here.</p>\n<p>So do classroom management tools that minimise exposure to distractions in the digital classroom, giving teachers full control to keep students focused and on-task.&nbsp;&nbsp;</p>\n<p>Prevention and enablement are the first steps in a school's digital safety and wellbeing strategy.&nbsp;</p>"
+            } ]
+          } ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+    {% dnd_column
+      offset=9,
+      width=3,
+      background_color="rgba(255, 255, 255, 1)",
+      padding={
+        "default" : {
+          "bottom" : "24px",
+          "left" : "24px",
+          "right" : "24px",
+          "top" : "24px"
+        }
+      }
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/fancy-image",
+          offset=0,
+          width=12,
+          image={
+            "alt" : "Qoria-Impact-Framework-infographic-Outlined_Prevention",
+            "height" : 732,
+            "loading" : "lazy",
+            "max_height" : 732,
+            "max_width" : 731,
+            "size_type" : "auto",
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/Qoria-Impact-Framework-infographic-Outlined_Prevention.png",
+            "width" : 731
+          },
+          style={
+            "greyscale_filter" : false
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/fancy-image",
+          offset=0,
+          width=12,
+          image={
+            "alt" : "shadow",
+            "height" : 53,
+            "loading" : "lazy",
+            "max_height" : 53,
+            "max_width" : 600,
+            "size_type" : "auto",
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/shadow.png",
+            "width" : 600
+          },
+          style={
+            "greyscale_filter" : false,
+            "spacing_field" : {
+              "padding" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 24
+                },
+                "left" : {
+                  "units" : "px",
+                  "value" : 24
+                },
+                "right" : {
+                  "units" : "px",
+                  "value" : 24
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 24
+                }
+              }
+            }
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_column
+      offset=0,
+      width=12,
+      padding={
+        "default" : {
+          "bottom" : "24px"
+        }
+      }
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/rich-text",
+          offset=0,
+          width=12,
+          row=[ {
+            "advanced" : {
+              "additional_classes" : "pb-3"
+            },
+            "column" : [ {
+              "advanced" : { },
+              "responsive" : {
+                "desktop" : { },
+                "mobile" : { },
+                "tablet" : { }
+              },
+              "text" : "<h3 style='text-align: center;'><strong>Linewize solutions:</strong></h3>"
+            } ]
+          } ],
+          style={
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 16
+                }
+              }
+            }
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/card",
+          offset=0,
+          width=12,
+          card=[ {
+            "accent_colour" : "none",
+            "cta_colour" : "secondary",
+            "cta_style" : "btn btn-",
+            "image" : {
+              "alt" : "solutions1",
+              "height" : 467,
+              "max_height" : 467,
+              "max_width" : 860,
+              "size_type" : "auto",
+              "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/solutions1.png",
+              "width" : 860
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 124455273288,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more",
+            "text" : "<p><span>Empowers schools with comprehensive online safety and management.</span></p>",
+            "title" : "School Manager",
+            "title_size" : "h4"
+          }, {
+            "accent_colour" : "none",
+            "cta_colour" : "secondary",
+            "cta_style" : "btn btn-",
+            "image" : {
+              "alt" : "solutions2",
+              "height" : 467,
+              "max_height" : 467,
+              "max_width" : 860,
+              "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/solutions2.png",
+              "width" : 860
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 126844756914,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more",
+            "text" : "<p><span>Supports effective teaching and learning in the modern, digital classroom.</span></p>",
+            "title" : "Classwize",
+            "title_size" : "h4"
+          } ],
+          styles={
+            "card_colour" : "bg-light",
+            "card_style" : "2",
+            "image_header_fit" : "contain",
+            "responsive" : {
+              "desktop" : {
+                "cards" : 2
+              }
+            },
+            "shadow" : " ",
+            "spacing_field" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : -13
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 0
+                }
+              }
+            },
+            "textalignment" : "center",
+            "title_accent" : false
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_column
+      offset=0,
+      width=12,
+      padding={
+        "mobile" : {
+          "bottom" : "0px"
+        }
+      }
+    %}
+      {% dnd_row
+        background_color="rgba(49, 50, 50, 1)",
+        padding={
+          "default" : {
+            "bottom" : "24px",
+            "left" : "64px",
+            "right" : "24px",
+            "top" : "24px"
+          },
+          "mobile" : {
+            "left" : "24px"
+          }
+        }
+      %}
+        {% dnd_column
+          offset=0,
+          width=6,
+          padding={
+            "default" : {
+              "top" : "16px"
+            }
+          }
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <h4><span style="color: #ffffff;">What our customers say</span></h4>
+                <p style="font-size: 20px;"><strong><span style="color: #ffffff;">about the importance of Prevention &amp; Enablement.</span></strong></p>
+                <p style="font-size: 20px; font-weight: bold;"><span style="color: #ffffff;">Watch video &gt;</span></p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=6,
+          width=6
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/video",
+              offset=0,
+              width=12,
+              custom_thumbnail={
+                "alt" : "prevention-thumb-video",
+                "height" : 210,
+                "max_height" : 210,
+                "max_width" : 535,
+                "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/prevention-thumb-video.png",
+                "width" : 535
+              },
+              style={
+                "rounded_corners" : false
+              },
+              video_file="https://qoria.com/hubfs/NZ%20Site%20Video%20Content/LWZ-NZ-Pillar%20Videos%20-%20Prevention.mp4"
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_row %}
+{% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "16px"
+    },
+    "mobile" : {
+      "bottom" : "8px"
+    }
+  },
+  margin={
+    "default" : {
+      "top" : "-2px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/arrow",
+        offset=0,
+        width=12,
+        arrow_colour={
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        arrow_direction="rotate-180"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "16px"
+    },
+    "mobile" : {
+      "top" : "8px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    background_color="rgba(255, 255, 255, 1)",
+    padding={
+      "default" : {
+        "bottom" : "48px",
+        "left" : "48px",
+        "right" : "48px",
+        "top" : "48px"
+      },
+      "mobile" : {
+        "bottom" : "24px",
+        "left" : "24px",
+        "right" : "24px",
+        "top" : "24px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="detection"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=9
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/rich-text",
+            offset=0,
+            width=12,
+            row=[ {
+              "advanced" : {
+                "additional_classes" : "pb-3"
+              },
+              "column" : [ {
+                "advanced" : { },
+                "responsive" : {
+                  "desktop" : { },
+                  "mobile" : { },
+                  "tablet" : { }
+                },
+                "text" : "<h3><strong><span style='color: #58b78e;'>Early Detection &amp; Intervention&nbsp;<i class='far fa-search'></i></span></strong></h3>"
+              } ]
+            }, {
+              "advanced" : { },
+              "column" : [ {
+                "advanced" : { },
+                "responsive" : {
+                  "desktop" : {
+                    "columns" : 2
+                  },
+                  "mobile" : { },
+                  "tablet" : {
+                    "columns" : 2
+                  }
+                },
+                "text" : "<h6>Solutions in this pillar provide vital insight into students' online behaviours, such as what they are doing, saying or sharing and with whom.&nbsp;</h6>\n<p>They also provide a channel for students to speak up and express how they are feeling - either about themselves or things that are happening in their lives.&nbsp;</p>\n<p>Solutions in this pillar let schools know if a student is in harm's way or starting to become vulnerable - either online or in any part of their lives. They can also help identify the causative factors of unsafe online searches identified by the web filter.</p>\n<p>Early detection and intervention solutions enable schools to spot risks they may not otherwise see and prevent vulnerable students from slipping under the radar.&nbsp;</p>\n<p>Early detection and intervention solutions work hand-in-hand with prevention and enablement tools to provide a meaningful and responsive digital safety and wellbeing provision.&nbsp;</p>"
+              } ]
+            } ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=9,
+        width=3,
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "bottom" : "24px",
+            "left" : "24px",
+            "right" : "24px",
+            "top" : "24px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/fancy-image",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "Qoria-Impact-Framework-infographic-Outlined_EarlyDetection",
+              "height" : 732,
+              "loading" : "lazy",
+              "max_height" : 732,
+              "max_width" : 731,
+              "size_type" : "auto",
+              "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/Qoria-Impact-Framework-infographic-Outlined_EarlyDetection.png",
+              "width" : 731
+            },
+            style={
+              "greyscale_filter" : false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/fancy-image",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "shadow",
+              "height" : 53,
+              "loading" : "lazy",
+              "max_height" : 53,
+              "max_width" : 600,
+              "size_type" : "auto",
+              "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/shadow.png",
+              "width" : 600
+            },
+            style={
+              "greyscale_filter" : false,
+              "spacing_field" : {
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 24
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "bottom" : "24px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/rich-text",
+            offset=0,
+            width=12,
+            row=[ {
+              "advanced" : {
+                "additional_classes" : "pb-3"
+              },
+              "column" : [ {
+                "advanced" : { },
+                "responsive" : {
+                  "desktop" : { },
+                  "mobile" : { },
+                  "tablet" : { }
+                },
+                "text" : "<h3 style='text-align: center;'><strong>Linewize solutions:</strong></h3>"
+              } ]
+            } ],
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 16
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/card",
+            offset=0,
+            width=12,
+            card=[ {
+              "accent_colour" : "none",
+              "cta_colour" : "secondary",
+              "cta_style" : "btn btn-",
+              "image" : {
+                "alt" : "monitor4",
+                "height" : 501,
+                "max_height" : 501,
+                "max_width" : 860,
+                "size_type" : "exact",
+                "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/monitor4.png",
+                "width" : 860
+              },
+              "link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 126844756920,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Learn more",
+              "text" : "<p><span>Immediately alerts schools to vulnerable students based on their digital behaviours.</span></p>",
+              "title" : "Monitor",
+              "title_size" : "h4"
+            }, {
+              "accent_colour" : "none",
+              "cta_colour" : "secondary",
+              "cta_style" : "btn btn-",
+              "image" : {
+                "alt" : "pulse-4",
+                "height" : 501,
+                "max_height" : 501,
+                "max_width" : 860,
+                "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/pulse-4.png",
+                "width" : 860
+              },
+              "link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 126847171748,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Learn more",
+              "text" : "<p><span>An easy way for students to speak up and schools to assess wellbeing levels.</span></p>",
+              "title" : "Pulse",
+              "title_size" : "h4"
+            } ],
+            styles={
+              "card_colour" : "bg-light",
+              "card_style" : "2",
+              "image_header_fit" : "contain",
+              "responsive" : {
+                "desktop" : {
+                  "cards" : 2
+                }
+              },
+              "shadow" : " ",
+              "textalignment" : "center",
+              "title_accent" : false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row
+          background_color="rgba(88, 183, 142, 1)",
+          padding={
+            "default" : {
+              "bottom" : "24px",
+              "left" : "64px",
+              "right" : "24px",
+              "top" : "24px"
+            },
+            "mobile" : {
+              "left" : "24px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=6,
+            padding={
+              "default" : {
+                "top" : "16px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <h4><span style="color: #ffffff;">What our customers say</span></h4>
+                  <p style="font-size: 20px; font-weight: bold;"><span style="color: #ffffff;">about the importance of Early Detection &amp; Intervention.</span></p>
+                  <p style="font-size: 20px; font-weight: bold;"><span style="color: #ffffff;">Watch video &gt;</span></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=6,
+            width=6
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/video",
+                offset=0,
+                width=12,
+                custom_thumbnail={
+                  "alt" : "video---framework---thumb2",
+                  "height" : 210,
+                  "loading" : "lazy",
+                  "max_height" : 210,
+                  "max_width" : 535,
+                  "size_type" : "auto",
+                  "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/video---framework---thumb2.png",
+                  "width" : 535
+                },
+                style={
+                  "rounded_corners" : false
+                },
+                video_file="https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20Site%20Video%20Content/LWZ-NZ-Pillar%20Videos-Early%20Detection_1.mp4"
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "16px"
+    },
+    "mobile" : {
+      "bottom" : "8px"
+    }
+  },
+  margin={
+    "default" : {
+      "top" : "-2px"
+    }
+  }
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/arrow",
+        offset=0,
+        width=12,
+        arrow_colour={
+          "color" : "#FFFFFF",
+          "opacity" : 100
+        },
+        arrow_direction="rotate-180"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "16px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "8px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12,
+    background_color="rgba(255, 255, 255, 1)",
+    padding={
+      "default" : {
+        "bottom" : "48px",
+        "left" : "48px",
+        "right" : "48px",
+        "top" : "45px"
+      },
+      "mobile" : {
+        "bottom" : "24px",
+        "left" : "24px",
+        "right" : "24px",
+        "top" : "24px"
+      }
+    }
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="education"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=9
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/rich-text",
+            offset=0,
+            width=12,
+            row=[ {
+              "advanced" : {
+                "additional_classes" : "pb-3"
+              },
+              "column" : [ {
+                "advanced" : { },
+                "responsive" : {
+                  "desktop" : { },
+                  "mobile" : { },
+                  "tablet" : { }
+                },
+                "text" : "<h3><strong><span style='color: #515ba5;'>Education &amp; Engagement&nbsp;<i class='far fa-screen-users'></i></span></strong></h3>"
+              } ]
+            }, {
+              "advanced" : { },
+              "column" : [ {
+                "advanced" : { },
+                "responsive" : {
+                  "desktop" : {
+                    "columns" : 2
+                  },
+                  "mobile" : { },
+                  "tablet" : {
+                    "columns" : 2
+                  }
+                },
+                "text" : "<h6>Solutions in this pillar better educate the school community and encourage them to play a more active role in student digital safety and wellbeing.</h6>\n<p>When teachers, parents and students are more informed they can influence wellbeing outcomes and strengthen capacity. This reduces the physical and emotional burdens traditionally shouldered by IT and pastoral staff alone.</p>\n<p>A focus on education and engagement helps to build culture. Culture in turn helps build resilience and reduce risks overall.</p>\n<p>When all three pillars are represented in a school's wellbeing strategy, student wellbeing can increase, outcomes can improve and lives can transform.&nbsp;</p>"
+              } ]
+            } ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=9,
+        width=3,
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "bottom" : "24px",
+            "left" : "24px",
+            "right" : "24px",
+            "top" : "24px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/fancy-image",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "Qoria-Impact-Framework-infographic-Outlined_Education",
+              "height" : 732,
+              "loading" : "lazy",
+              "max_height" : 732,
+              "max_width" : 731,
+              "size_type" : "auto",
+              "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/Qoria-Impact-Framework-infographic-Outlined_Education.png",
+              "width" : 731
+            },
+            style={
+              "greyscale_filter" : false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/fancy-image",
+            offset=0,
+            width=12,
+            image={
+              "alt" : "shadow",
+              "height" : 53,
+              "loading" : "lazy",
+              "max_height" : 53,
+              "max_width" : 600,
+              "size_type" : "auto",
+              "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/shadow.png",
+              "width" : 600
+            },
+            style={
+              "greyscale_filter" : false,
+              "spacing_field" : {
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 24
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 24
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "bottom" : "24px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/rich-text",
+            offset=0,
+            width=12,
+            row=[ {
+              "advanced" : {
+                "additional_classes" : "pb-3"
+              },
+              "column" : [ {
+                "advanced" : { },
+                "responsive" : {
+                  "desktop" : { },
+                  "mobile" : { },
+                  "tablet" : { }
+                },
+                "text" : "<h3 style='text-align: center;'><strong>Linewize solutions:</strong></h3>"
+              } ]
+            } ],
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 16
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/card",
+            offset=0,
+            width=12,
+            card=[ {
+              "accent_colour" : "none",
+              "cta_colour" : "secondary",
+              "cta_style" : "btn btn-",
+              "image" : {
+                "alt" : "dx3",
+                "height" : 501,
+                "max_height" : 501,
+                "max_width" : 860,
+                "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/dx3.png",
+                "width" : 860
+              },
+              "link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 126827101053,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Learn more",
+              "text" : "<p><span>Teaching students how to become resilient and ethical in their digital lives.</span></p>",
+              "title" : "Linewize Courses",
+              "title_size" : "h4"
+            }, {
+              "accent_colour" : "none",
+              "cta_colour" : "secondary",
+              "cta_style" : "btn btn-",
+              "image" : {
+                "alt" : "qustodio2",
+                "height" : 501,
+                "max_height" : 501,
+                "max_width" : 860,
+                "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/qustodio2.png",
+                "width" : 860
+              },
+              "link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 126847171757,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Learn more",
+              "text" : "<p><span>An all-in-one solution to help parents keep their child’s screen time safe and balanced.</span></p>",
+              "title" : "Qustodio Parental App",
+              "title_size" : "h4"
+            }, {
+              "accent_colour" : "none",
+              "cta_colour" : "secondary",
+              "cta_style" : "btn btn-",
+              "image" : {
+                "alt" : "osh3",
+                "height" : 501,
+                "max_height" : 501,
+                "max_width" : 860,
+                "size_type" : "auto",
+                "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/osh3.png",
+                "width" : 860
+              },
+              "image_fit" : "contain",
+              "link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : false,
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 126850733877,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Learn more",
+              "text" : "<p><span>Dedicated resources to bridge the knowledge gap between adult and child.&nbsp;</span></p>",
+              "title" : "Online Safety Hub",
+              "title_size" : "h4"
+            } ],
+            styles={
+              "card_colour" : "bg-light",
+              "card_style" : "2",
+              "image_header" : true,
+              "image_header_fit" : "contain",
+              "responsive" : {
+                "desktop" : {
+                  "cards" : 3
+                }
+              },
+              "shadow" : " ",
+              "textalignment" : "center",
+              "title_accent" : false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row
+          background_color="rgba(81, 91, 165, 1)",
+          padding={
+            "default" : {
+              "bottom" : "24px",
+              "left" : "64px",
+              "right" : "24px",
+              "top" : "24px"
+            },
+            "mobile" : {
+              "left" : "24px"
+            }
+          }
+        %}
+          {% dnd_column
+            offset=0,
+            width=6,
+            padding={
+              "default" : {
+                "top" : "16px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <h4><span style="color: #ffffff;">What our customers say</span></h4>
+                  <p style="font-size: 20px; font-weight: bold;"><span style="color: #ffffff;">about the impact of Education &amp; Engagement.&nbsp;</span></p>
+                  <p style="font-size: 20px; font-weight: bold;"><span style="color: #ffffff;">Watch video &gt;</span></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=6,
+            width=6
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/video",
+                offset=0,
+                width=12,
+                custom_thumbnail={
+                  "alt" : "video---framework---thumb3",
+                  "height" : 210,
+                  "loading" : "lazy",
+                  "max_height" : 210,
+                  "max_width" : 535,
+                  "size_type" : "auto",
+                  "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/video---framework---thumb3.png",
+                  "width" : 535
+                },
+                style={
+                  "rounded_corners" : false
+                },
+                video_file="https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/NZ%20Site%20Video%20Content/LWZ-NZ-Pillar%20Videos-Education%20&%20Engagment_1.mp4"
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% end_dnd_area %}
+{% global_partial path="../partials/lets-connect.html" %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

@@ -1,0 +1,23 @@
+{% set menuId = module.menu %}
+{% set node = menu(menuId) %}
+
+<div class="container-fluid">
+  <div class="row row-cols-{{ module.styles.columns_mobile }} row-cols-sm-{{ module.styles.columns_tablet }} row-cols-lg-{{ module.styles.columns_desktop }}">
+{% for child in node.children %}
+  <div class="col">
+    <h5 class="mb-4 {% if module.styles.colour == "light" %}text-primary{% else %}text-dark{% endif %}">
+      {{ child.label }}
+    </h5>
+    {% if child.children %}
+    <ul class="list-unstyled text-{{ module.styles.colour }} small">
+      {% for subChild in child.children %}
+        <li><a class="text-reset text-decoration-none" href="{{subChild.url}}">{{subChild.label}}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+	<br>
+{% endfor %}
+    
+  </div>
+</div>

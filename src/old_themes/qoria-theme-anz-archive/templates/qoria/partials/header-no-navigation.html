@@ -1,0 +1,34 @@
+<!--
+  templateType: global_partial
+  label: Qoria Header no navigation
+-->
+
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+
+  
+{% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
+
+{% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+{% set breakpoint = widget_data.navigation.breakpoint %}
+    {% if breakpoint == "always" %}
+        {% set navbarExpand = "" %}
+    {% elif breakpoint == "never" %}
+        {% set navbarExpand = "navbar-expand" %}
+    {% else %}
+        {% set navbarExpand = "navbar-expand-" + breakpoint %}
+    {% endif %}
+  
+
+<header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
+    <nav class="navbar {{navbarExpand}}">
+  <div class="container-xxl position-relative"> 
+    {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand me-auto"} override_default_logo=False, no_wrapper=True %}
+
+  </div>
+    </nav>
+</header>

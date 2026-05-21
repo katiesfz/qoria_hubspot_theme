@@ -1,0 +1,649 @@
+[ {
+  "id" : "expert",
+  "name" : "use_expert_sections",
+  "display_width" : null,
+  "label" : "Use Expert Sections",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+},{
+  "id" : "section_new",
+  "name" : "section_new",
+  "display_width" : null,
+  "label" : "Coming up",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "section_new.heading",
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "use_expert_sections",
+    "controlling_value_regex" : "false",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "children" : [ {
+    "id" : "section_new.type",
+    "name" : "section_type",
+    "display_width" : null,
+    "label" : "Section Type",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "NEW"
+  }, {
+    "id" : "section_new.heading",
+    "name" : "heading",
+    "display_width" : null,
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Policy Creation"
+  }, {
+    "id" : "section_new.content",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p>One of the most frequently requested features we are asked for is the ability to customise elements within a specific webpage. Our new School Manager feature ‘Content Modifications’ provides a more dynamic approach to policy creation, allowing you to customise the page view that students can see. This gives students classroom access to highly educational web content, with unsafe or distracting content removed.</p>"
+  }, {
+    "id" : "section_new.background_image",
+    "name" : "background_image",
+    "display_width" : null,
+    "label" : "Feature image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/ANZ-Newsletter-Assets-1.png",
+      "alt" : "ANZ-Newsletter-Assets-1",
+      "loading" : "lazy",
+      "width" : 467,
+      "height" : 730
+    }
+  }, {
+    "id" : "section_new.link",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "section_new.link_text",
+    "name" : "link_text",
+    "display_width" : null,
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Discover more →"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "section_type" : "NEW",
+    "heading" : "Policy Creation",
+    "content" : "<p>One of the most frequently requested features we are asked for is the ability to customise elements within a specific webpage. Our new School Manager feature ‘Content Modifications’ provides a more dynamic approach to policy creation, allowing you to customise the page view that students can see. This gives students classroom access to highly educational web content, with unsafe or distracting content removed.</p>",
+    "background_image" : {
+      "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/ANZ-Newsletter-Assets-1.png",
+      "alt" : "ANZ-Newsletter-Assets-1",
+      "loading" : "lazy",
+      "width" : 467,
+      "height" : 730
+    },
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "link_text" : "Discover more →"
+  }
+}, {
+  "id" : "section_missed",
+  "name" : "what_you_might_have_missed",
+  "display_width" : null,
+  "label" : "What you might have missed",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "section_missed.heading",
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "use_expert_sections",
+    "controlling_value_regex" : "false",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "children" : [ {
+    "id" : "section_missed.type",
+    "name" : "section_type",
+    "display_width" : null,
+    "label" : "Section Type",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "NEW"
+  }, {
+    "id" : "section_missed.heading",
+    "name" : "heading",
+    "display_width" : null,
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Policy Creation"
+  }, {
+    "id" : "section_missed.content",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : ""
+  }, {
+    "id" : "section_missed.background_image",
+    "name" : "background_image",
+    "display_width" : null,
+    "label" : "Feature image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "section_missed.link",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "section_missed.link_text",
+    "name" : "link_text",
+    "display_width" : null,
+    "label" : "Link text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Discover more →"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : null
+}, {
+  "id" : "section",
+  "name" : "section",
+  "display_width" : null,
+  "label" : "Section",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "use_expert_sections",
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null,
+    "hidden_subfields" : null
+  },
+  "children" : [ {
+    "id" : "section.row",
+    "name" : "row",
+    "display_width" : null,
+    "label" : "Row",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "60abd6f0-812d-b9f8-8c7d-220958f78a2b",
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "section.row.column",
+      "name" : "column",
+      "display_width" : null,
+      "label" : "Column",
+      "required" : false,
+      "locked" : false,
+      "occurrence" : {
+        "min" : null,
+        "max" : null,
+        "sorting_label_field" : "section.row.column.content",
+        "default" : null
+      },
+      "children" : [ {
+        "id" : "section.row.column.content",
+        "name" : "content",
+        "display_width" : null,
+        "label" : "Content",
+        "required" : false,
+        "locked" : false,
+        "occurrence" : {
+          "min" : 0,
+          "max" : 5,
+          "sorting_label_field" : null,
+          "default" : 3
+        },
+        "type" : "richtext",
+        "default" : [ "", "", "" ]
+      }, {
+        "id" : "section.row.column.override_padding",
+        "name" : "override_padding",
+        "display_width" : null,
+        "label" : "Override padding",
+        "required" : false,
+        "locked" : false,
+        "display" : "toggle",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "section.row.column.padding",
+        "name" : "padding",
+        "display_width" : null,
+        "label" : "Padding",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : null,
+          "controlling_field_path" : "section.row.column.override_padding",
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null,
+          "hidden_subfields" : null
+        },
+        "children" : [ {
+          "id" : "section.row.column.padding.top",
+          "name" : "top",
+          "display_width" : null,
+          "label" : "Top",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "step" : 1,
+          "suffix" : "px",
+          "type" : "number"
+        }, {
+          "id" : "section.row.column.padding.right",
+          "name" : "right",
+          "display_width" : null,
+          "label" : "Right",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "step" : 1,
+          "suffix" : "px",
+          "type" : "number"
+        }, {
+          "id" : "section.row.column.padding.bottom",
+          "name" : "bottom",
+          "display_width" : null,
+          "label" : "Bottom",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "step" : 1,
+          "suffix" : "px",
+          "type" : "number"
+        }, {
+          "id" : "section.row.column.padding.left",
+          "name" : "left",
+          "display_width" : null,
+          "label" : "Left",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "step" : 1,
+          "suffix" : "px",
+          "type" : "number"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : { }
+      }, {
+        "id" : "section.row.column.background_colour",
+        "name" : "background_colour",
+        "display_width" : null,
+        "label" : "Background colour",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }, {
+        "id" : "section.row.column.background_image",
+        "name" : "background_image",
+        "display_width" : null,
+        "label" : "Background image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "content" : [ "", "", "" ],
+        "override_padding" : false,
+        "padding" : { },
+        "background_colour" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "background_image" : {
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "column" : {
+        "content" : [ "", "", "" ],
+        "override_padding" : false,
+        "padding" : { },
+        "background_colour" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "background_image" : {
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }
+    }
+  }, {
+    "id" : "section.section_styles",
+    "name" : "section_styles",
+    "display_width" : null,
+    "label" : "Section Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "section.section_styles.override_corner_radius",
+      "name" : "override_corner_radius",
+      "display_width" : null,
+      "label" : "Override Corner Radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "section.section_styles.corner_radius",
+      "name" : "corner_radius",
+      "display_width" : null,
+      "label" : "Corner Radius",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "section.section_styles.override_corner_radius",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "display" : "text",
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 24
+    }, {
+      "id" : "section.section_styles.background_colour",
+      "name" : "background_colour",
+      "display_width" : null,
+      "label" : "Background colour",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : null,
+        "opacity" : 100
+      }
+    }, {
+      "id" : "section.section_styles.background_image",
+      "name" : "background_image",
+      "display_width" : null,
+      "label" : "Background image",
+      "required" : false,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : false,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "section.section_styles.override_padding",
+      "name" : "override_padding",
+      "display_width" : null,
+      "label" : "Override padding",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "section.section_styles.padding",
+      "name" : "padding",
+      "display_width" : null,
+      "label" : "Padding",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "section.section_styles.override_padding",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null,
+        "hidden_subfields" : null
+      },
+      "children" : [ {
+        "id" : "section.section_styles.padding.top",
+        "name" : "top",
+        "display_width" : null,
+        "label" : "Top",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number"
+      }, {
+        "id" : "section.section_styles.padding.right",
+        "name" : "right",
+        "display_width" : null,
+        "label" : "Right",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number"
+      }, {
+        "id" : "section.section_styles.padding.bottom",
+        "name" : "bottom",
+        "display_width" : null,
+        "label" : "Bottom",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number"
+      }, {
+        "id" : "section.section_styles.padding.left",
+        "name" : "left",
+        "display_width" : null,
+        "label" : "Left",
+        "required" : false,
+        "locked" : false,
+        "display" : "text",
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : { }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "override_corner_radius" : false,
+      "corner_radius" : 24,
+      "background_colour" : {
+        "color" : null,
+        "opacity" : 100
+      },
+      "background_image" : {
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      },
+      "override_padding" : false,
+      "padding" : { }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "row" : {
+      "column" : {
+        "content" : [ "", "", "" ],
+        "override_padding" : false,
+        "padding" : { },
+        "background_colour" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "background_image" : {
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }
+    },
+    "section_styles" : {
+      "override_corner_radius" : false,
+      "corner_radius" : 24,
+      "background_colour" : {
+        "color" : null,
+        "opacity" : 100
+      },
+      "background_image" : {
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      },
+      "override_padding" : false,
+      "padding" : { }
+    }
+  }
+} ]

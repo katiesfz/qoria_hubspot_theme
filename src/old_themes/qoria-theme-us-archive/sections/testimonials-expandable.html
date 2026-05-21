@@ -1,0 +1,334 @@
+<!--
+  templateType: section
+  label: Testimonials - Expandable
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/testimonials.jpg
+  description: "Expandable rows of cards of testimonials."
+-->
+
+
+{% dnd_section
+  background_color="rgba(248, 248, 248, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_underline="true"
+      %}
+        {% module_attribute "heading" %}
+          Our culture - <strong>tech with purpose</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=7
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead">Our people are at the heart of our story so far, and they’re driving and shaping our future. Here’s why they say they choose to work for us.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=7,
+        width=5
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/testimonial-carousel",
+        offset=0,
+        width=12,
+        slide=[ {
+          "accent_colour" : "teal",
+          "author" : "Michael Hyndman",
+          "image" : {
+            "alt" : "Michael Hyndman",
+            "height" : 1000,
+            "loading" : "lazy",
+            "max_height" : 1000,
+            "max_width" : 1000,
+            "size_type" : "auto",
+            "src" : "{{get_asset_url('../../images/qoria/photos/staff/michael-hyndman-working-shot.jpg')}}",
+            "width" : 1000
+          },
+          "quote" : "I was a consumer customer of Linewize by Family Zone safety technology long before I became employed with them. When the opportunity arose to work here, I felt incredibly honoured to work for a company who has one of the most important charters in the 21st century.",
+          "read_more_url" : {
+            "href" : "/careers/michael-hyndman",
+            "type" : "EXTERNAL"
+          },
+          "role" : "VP Information Technology & Security"
+        }, {
+          "accent_colour" : "indigo",
+          "author" : "David Ball",
+          "image" : {
+            "alt" : "David Ball",
+            "height" : 1200,
+            "loading" : "lazy",
+            "max_height" : 1200,
+            "max_width" : 1200,
+            "size_type" : "auto",
+            "src" : "{{get_asset_url('../../images/qoria/photos/staff/david-ball-working-shot.jpg')}}",
+            "width" : 1200
+          },
+          "quote" : "<span>The potential to grow professionally here is astounding. It’s an opportunity to be on the cutting edge of technology while helping kids to stay safe.</span>",
+          "read_more_url" : {
+            "href" : "/careers/david-ball",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Quality Assurance Analyst"
+        }, {
+          "accent_colour" : "red",
+          "author" : "Adam Lee",
+          "image" : {
+            "alt" : "AdamHeadshot",
+            "height" : 1000,
+            "loading" : "lazy",
+            "max_height" : 1000,
+            "max_width" : 1000,
+            "size_type" : "auto",
+            "src" : "{{get_asset_url('../../images/qoria/photos/staff/adam-lee-working-shot.jpg')}}",
+            "width" : 1000
+          },
+          "quote" : "I took a look in the mirror and asked myself, ‘Do you want to be just another number, or do you want to roll up your sleeves and give it a go?’ I wake up every day knowing I made the right decision to work with Family Zone.",
+          "read_more_url" : {
+            "href" : "/careers/adam-lee",
+            "type" : "EXTERNAL"
+          },
+          "role" : "VP Inside Sales & Territory Director"
+        }, {
+          "accent_colour" : "orange",
+          "author" : "Rohan Deshpande",
+          "image" : {
+            "alt" : "rohan-deshpande-sq",
+            "height" : 1000,
+            "loading" : "lazy",
+            "max_height" : 1000,
+            "max_width" : 1000,
+            "size_type" : "auto",
+            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/rohan-deshpande-sq.jpg",
+            "width" : 1000
+          },
+          "quote" : "<span>I have lived through Linewize by Family Zone’s entire journey. When I first started, we had no products for use in schools. One of my major projects was to help build that product. I felt empowered - I got to develop a system that could potentially save a child’s life.</span>",
+          "read_more_url" : {
+            "href" : "/careers/rohan-deshpande",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Principal Engineer"
+        }, {
+          "accent_colour" : "teal",
+          "author" : "Jennifer Capps",
+          "image" : {
+            "alt" : "Jennifer-Capps_sq",
+            "height" : 600,
+            "loading" : "lazy",
+            "max_height" : 600,
+            "max_width" : 600,
+            "size_type" : "auto",
+            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/Jennifer-Capps_sq.jpg",
+            "width" : 600
+          },
+          "quote" : "The work I was doing really interested me, so I knew I wanted to become a Project Manager. There wasn’t an opportunity for me to progress in that organisation, so when I saw the job posting for a Project Manager at Smoothwall, I knew it was exactly what I wanted.",
+          "read_more_url" : {
+            "href" : "/careers/jennifer-capps",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Head of Onboarding and Projects"
+        }, {
+          "accent_colour" : "indigo",
+          "author" : "Tina Searcy",
+          "image" : {
+            "alt" : "Tina_Headshot",
+            "height" : 1000,
+            "loading" : "lazy",
+            "max_height" : 1000,
+            "max_width" : 1000,
+            "size_type" : "auto",
+            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/Tina_Headshot.jpg",
+            "width" : 1000
+          },
+          "quote" : "<span>I wondered how I could use my sales skills to work for a tech organization with a mission. That’s how I first heard about Qoria. Something clicked when I read about their services. I thought, ‘This is the experience I’m looking for!’.</span>",
+          "read_more_url" : {
+            "href" : "/careers/tina-searcy",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Lead Senior Customer Success Specialist"
+        } ],
+        style={
+          "carousel" : false,
+          "controls" : true,
+          "dark_or_light" : "text-dark",
+          "infinite" : true,
+          "responsive" : {
+            "desktop" : {
+              "slides_to_display" : 2
+            },
+            "mobile" : {
+              "slides_to_display" : 1
+            },
+            "tablet" : {
+              "slides_to_display" : 2
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "top" : "16px"
+        }
+      }
+    %}
+      {% dnd_module
+        path="/q-theme/modules/testimonial-carousel",
+        offset=0,
+        width=12,
+        slide=[ {
+          "accent_colour" : "teal",
+          "author" : "Kat Howard",
+          "image" : {
+            "alt" : "Kat-Howard_sq",
+            "height" : 600,
+            "loading" : "lazy",
+            "max_height" : 600,
+            "max_width" : 600,
+            "size_type" : "auto",
+            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/Kat-Howard_sq.jpg",
+            "width" : 600
+          },
+          "quote" : "<span>The people I work with are amazing. The value of team collaboration is something I truly feel at Smoothwall. That care element - making sure customers are happy and get what they need - has been a big driver in my career, and it is absolutely paramount at Smoothwall. It really is a positive environment for change development.</span>",
+          "read_more_url" : {
+            "href" : "/careers/katherine-howard",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Head of Knowledge & Awareness UK"
+        }, {
+          "accent_colour" : "indigo",
+          "author" : "Tracy Harper",
+          "image" : {
+            "alt" : "tracy-harper-sq",
+            "height" : 512,
+            "loading" : "lazy",
+            "max_height" : 512,
+            "max_width" : 512,
+            "size_type" : "auto",
+            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/tracy-harper-sq.jpg",
+            "width" : 512
+          },
+          "quote" : "<span>It’s a testament to Smoothwall and the culture they’ve created. It’s hard to make new people feel welcome when you’re working remotely. But I’ve had the opposite experience here. I’ve met lots of people, and I feel like part of the team.</span>",
+          "read_more_url" : {
+            "href" : "/careers/tracy-harper",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Senior Product Manager"
+        }, {
+          "accent_colour" : "red",
+          "author" : "Silas Sales",
+          "image" : {
+            "alt" : "silas-sales-sq",
+            "height" : 1000,
+            "loading" : "lazy",
+            "max_height" : 1000,
+            "max_width" : 1000,
+            "size_type" : "auto",
+            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/silas-sales-sq.jpg",
+            "width" : 1000
+          },
+          "quote" : "<span>I wanted to work for an organisation that had a positive social impact. We are different; we have a mission, and we are dedicated to achieving it.</span>",
+          "read_more_url" : {
+            "href" : "/careers/silas-sales",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Senior Software Engineer"
+        }, {
+          "accent_colour" : "orange",
+          "author" : "Joshua Nordan",
+          "image" : {
+            "alt" : "Joshua-Nordan_sq",
+            "height" : 600,
+            "loading" : "lazy",
+            "max_height" : 600,
+            "max_width" : 600,
+            "size_type" : "auto",
+            "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/images/photos/staff/Joshua-Nordan_sq.jpg",
+            "width" : 600
+          },
+          "quote" : "We all want to develop professionally, and if we have the ability to help someone else grow, we’ll do that. I’m grateful that with my experience, I’m in a position to drive that growth. I get a lot of fulfilment watching other people have a lightbulb moment.",
+          "read_more_url" : {
+            "href" : "/careers/joshua-nordan",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Site Reliability Engineer"
+        } ],
+        style={
+          "carousel" : false,
+          "collapse" : true,
+          "controls" : true,
+          "dark_or_light" : "text-dark",
+          "infinite" : true,
+          "responsive" : {
+            "desktop" : {
+              "slides_to_display" : 2
+            },
+            "mobile" : {
+              "slides_to_display" : 1
+            },
+            "tablet" : {
+              "slides_to_display" : 2
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <a class="h5 text-reset text-decoration-none text-center d-block" onclick="this.remove()" data-bs-toggle="collapse" data-bs-target="#testimonial-container-module_1683705253048" aria-expanded="false" aria-controls="testimonial-container-module_1683705253048">Click here to learn more about life at Qoria</a>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

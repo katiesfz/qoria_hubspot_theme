@@ -1,0 +1,13 @@
+<table class="icon-text">
+    <tr>
+        <td style="padding-right: 10px; Padding-right: 10px; padding-top: 6px; Padding-top: 6px; vertical-align: {{module.valign.vertical_align}};">
+            {% if module.icon.src %}
+            {% set sizeAttrs = 'width="{{ module.icon.width }}" height="{{ module.icon.height }}"' %}
+            <img src="{{ module.icon.src }}" style="max-width: {{ module.icon.width }}px; height: auto;" alt="icon" {{ sizeAttrs }}>
+            {% endif %}
+        </td>
+        <td style="vertical-align: {{module.valign.vertical_align}}">
+            {{ module.copy }}
+        </td>
+    </tr>
+</table>

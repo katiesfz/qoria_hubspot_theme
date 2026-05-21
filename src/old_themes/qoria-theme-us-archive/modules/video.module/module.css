@@ -1,0 +1,14 @@
+.play-button {
+  cursor: pointer;
+  width: 10%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 50px;
+}
+
+.play-button:after {
+    content: "";
+    padding-top: calc(81 / 116 * 100%);
+    display: block;
+}

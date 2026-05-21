@@ -1,0 +1,101 @@
+{% if module.use_expert_sections %}
+
+{% for section in module.section %}
+
+
+
+{% if section.section_styles.background_colour.css %}
+{% set backgroundColour = section.section_styles.background_colour.css %}
+{% else %}
+{% set backgroundColour = "transparent" %}
+{% endif %}
+{% if section.section_styles.override_corner_radius %}
+{% set borderRadiusCSS = "border-radius: " + section.section_styles.corner_radius + "px !important;" %}
+{% else %}
+{% set borderRadiusCSS = "" %}
+{% endif %}
+{% if section.section_styles.override_padding %}
+{% set paddingCSS = "padding: " + section.section_styles.padding.top + "px " + section.section_styles.padding.right + "px " + section.section_styles.padding.bottom + "px " + section.section_styles.padding.left + "px !important;" %}
+{% else %}
+{% set paddingCSS = "" %}
+{% endif %}
+{% if section.section_styles.background_image.src %}
+{% set backgroundSrc = section.section_styles.background_image.src %}
+{% else %}
+{% set backgroundSrc = "" %}
+{% endif %}
+<table class="newsletter-section" border="0" cellpadding="0" cellspacing="0" width="100%" style="{{borderRadiusCSS}} background-color: {{backgroundColour}};">
+  <tr>
+    <td align="center" valign="top" class="rounded" style="background-color: {{backgroundColour}}; {{borderRadiusCSS}}" background="{{backgroundSrc}}" bgcolor="{{backgroundColour}}">
+      {% if backgroundSrc != "" %}
+      <!--[if gte mso 9]>
+<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;">
+<v:fill type="tile" src="https://www.linewize.io/hubfs/ANZ-Newsletter-Assets-whats-coming-up-bg.png" color="#4f4f4f" />
+<v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
+<![endif]-->
+      {% endif %}
+      <div>
+
+        <table border="0" cellpadding="0" cellspacing="0" class="newsletter-section-inner">
+          <div class="body-container-wrapper">
+            <tr>
+              <td align="center" valign="top" class="bodyContent" width="100%" colspan="12" style="{{paddingCSS}}">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="templateColumnWrapper">
+                  {% for row in section.row %}
+                  <tr>
+                    {% for column in row.column %}
+                    {% if column.override_padding %}
+                    {% set colPaddingCSS = "padding: " + column.padding.top + "px " + column.padding.right + "px " + column.padding.bottom + "px " + column.padding.left + "px !important;" %}
+                    {% else %}                      
+                    {% set colPaddingCSS = "" %}
+                    {% endif %}
+                    {% if column.background_image.src %}
+                    {% set colBackgroundSrc = column.background_image.src %}
+                    {% else %}
+                    {% set colBackgroundSrc = "" %}
+                    {% endif %}
+                    {% if column.background_colour.css %}
+                    {% set colBackgroundColour = column.background_colour.css %}
+                    {% else %}
+                    {% set colBackgroundColour = "transparent" %}
+                    {% endif %}
+                    <td align="center" valign="top" colspan="{{12/row.column|length|round(0, "floor")}}" width="{{100/row.column|length|round(0, "floor")}}%" background="{{colBackgroundSrc}}" bgcolor="{{colBackgroundColour}}" class="column" style="text-align: left; font-family: {{ primary_font }}; font-size: {{ primary_font_size }}; line-height: 1.5em; background-size: cover; color: {{ primary_font_color }}; {{colPaddingCSS}} ">
+                      {% if colBackgroundSrc != "" %}
+                      <!--[if gte mso 9]>
+<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: {{600/row.column|length}}px;">
+<v:fill type="tile" src="{{colBackgroundSrc}}" color="{{colBackgroundColour}}" />
+<v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
+<![endif]-->
+                      {% endif %}
+                      {% for colContent in column.content %}
+                      {{ colContent }}
+                      {% endfor %}
+                      {% if colBackgroundSrc != "" %}
+                      <!--[if gte mso 9]>
+</v:textbox>
+</v:rect>
+<![endif]-->
+                      {% endif %}
+                    </td>
+                    {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </table>
+              </td>
+            </tr>
+          </div><!--end body wrapper -->
+        </table>      
+      </div>
+      {% if backgroundSrc != "" %}
+      <!--[if gte mso 9]>
+</v:textbox>
+</v:rect>
+<![endif]-->
+      {% endif %}
+    </td>
+  </tr>
+</table>
+{% endfor %}
+
+
+{% endif %}

@@ -1,0 +1,525 @@
+<!--
+  templateType: blog_listing
+  isAvailableForNewContent: true
+  label: Linewize US - Resource Listing
+  screenshotPath: ../images/template-previews/blog-index.png
+-->
+
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+  <style>
+  /* Blog Listing Page Styles */
+    .blog-hero {
+        background-image: url("https://www.linewize.com/hubfs/US%20-%20Header%20Banners/us-blog-bg-2.jpg");
+        background-size: cover;
+        background-position: center right;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        color: #ffffff;
+    }
+
+    </style>
+
+  {% if blog_author %}
+
+    {% set bioParts = blog_author.bio|split("|",2) %}
+    {% if bioParts|length > 1 %}
+      {% set jobTitle = bioParts[0] %}
+      {% set bio = bioParts[1] %}
+    {% else %}
+      {% set jobTitle = "Content Writer" %}
+      {% set bio = blog_author.bio %}
+    {% endif %}
+
+    <section class="blog-author-header">
+      <div class="blog-author-hero-bg">
+      </div>
+      <div class="blog-author-bio-bg {{"bg-white" if bio == ""}}">
+      </div>
+      <div class="blog-author-header-content">
+        <div class="blog-author-avatar {{'d-none' if blog_author.avatar == ""}}">
+          {% if blog_author.avatar != "" %}
+            <img src="{{ blog_author.avatar }}" alt="{{ blog_author.display_name }}" class="img-fluid rounded-circle shadow-lg">
+          {% endif %}
+          {% if blog_author.has_social_profiles %}
+            <div class="blog-author-social {{"d-none d-md-flex" if bio else "d-none" }}">
+              {% if blog_author.website %}
+                <a href="{{ blog_author.website }}" target="_blank">
+                  <span class="fa-stack fa-xl link-icon">
+                    <i class="fa-solid fa-square fa-stack-2x"></i>
+                    <i class="far fa-link fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              {% endif %}
+              {% if blog_author.facebook %}
+                <a href="{{ blog_author.facebook }}" target="_blank">
+                  <i class="fab fa-facebook-square fa-xl"></i>
+                </a>
+              {% endif %}
+              {% if blog_author.linkedin %}
+                <a href="{{ blog_author.linkedin }}" target="_blank">
+                  <i class="fab fa-linkedin fa-xl"></i>
+                </a>
+              {% endif %}
+              {% if blog_author.twitter %}
+                <a href="{{ blog_author.twitter }}" target="_blank">
+                  <i class="fab fa-square-x-twitter fa-xl"></i>
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="blog-author-title">
+          <h1 class="display-3 fw-bold">{{ blog_author.display_name }}</h1>
+
+          <p class="h4 fw-light">{{jobTitle|trim}}</p>
+          {% if blog_author.has_social_profiles %}
+            <div class="blog-author-social text-light align-center align-md-start {{"d-flex" if (blog_author.avatar == "" || !bio) else "d-flex d-md-none"}}">
+              {% if blog_author.website %}
+                <a href="{{ blog_author.website }}" target="_blank">
+                  <span class="fa-stack fa-xl link-icon">
+                    <i class="fa-solid fa-square fa-stack-2x"></i>
+                    <i class="far fa-link fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              {% endif %}
+              {% if blog_author.facebook %}
+                <a href="{{ blog_author.facebook }}" target="_blank">
+                  <i class="fab fa-facebook-square fa-xl"></i>
+                </a>
+              {% endif %}
+              {% if blog_author.linkedin %}
+                <a href="{{ blog_author.linkedin }}" target="_blank">
+                  <i class="fab fa-linkedin fa-xl"></i>
+                </a>
+              {% endif %}
+              {% if blog_author.twitter %}
+                <a href="{{ blog_author.twitter }}" target="_blank">
+                  <i class="fab fa-square-x-twitter fa-xl"></i>
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        {% if bio %}
+          <div class="blog-author-bio">
+            <div class="lead">
+            {{ bio|trim }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="blog-listing py-md-7 py-4">
+      <div class="container-xl">
+        <div class="row">
+          <div class="col-12">
+
+            {% module
+              "blog listing",
+              path="/q-theme/modules/blog-listing",
+              blog_field=group.id,
+              custom_limit=true,
+              number_of_posts=3,
+              enable_tag_filtering="true",
+              post_type="latest",
+              pullouts=[ ],
+              styles={
+                "equal_height_img" : true,
+                "pagination" : true,
+                "responsive" : {
+                  "desktop" : {
+                    "cards" : 3
+                  }
+                },
+                "spacing_field" : {
+                  "margin" : {
+                    "bottom" : { },
+                    "top" : { }
+                  }
+                }
+              },
+              tag_field=[ ],
+              tag_filter_option=[ {
+                "id" : 10548558613,
+                "name" : "School Filtering",
+                "slug" : "school-filtering"
+              }, {
+                "id" : 10767877681,
+                "name" : "CTO",
+                "slug" : "cto"
+              }, {
+                "id" : 10767877532,
+                "name" : "Superintendent",
+                "slug" : "superintendent"
+              }, {
+                "id" : 10767939443,
+                "name" : "Network Admin",
+                "slug" : "network-admin"
+              }, {
+                "id" : 10551939630,
+                "name" : "BYOD",
+                "slug" : "byod"
+              }, null ],
+              timeframe="popular_past_month"
+            %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    
+
+    
+  {% else %}
+
+    <section class="blog-hero">
+
+      <div class="container-xl">
+        <div class="row">
+          <div class="col-12">
+             {% module
+                "Heading",
+                path="/q-theme/modules/heading",
+                heading_tag="h1",
+                style={
+                  "colour" : "light",
+                  "textalignment" : "start"
+                },
+                heading="Welcome to our <strong>blogs</strong>",
+                export_to_template_context=true
+              %}
+              
+            <h1>{{content.widgets.Heading.body.heading}}</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-7">
+            <div class="row">
+              <div class="col-12 col-md-9 pb-3 pb-md-4">
+                {% module
+                    "Description",
+                    path="@hubspot/rich_text",
+                    html='<p class="lead" style="text-align: left;"><span style="color: #ffffff;">Browse our articles to get the latest on all things student digital safety and wellbeing.</span></p>'
+                    %}
+              </div>
+            </div>            
+              {% module
+                "Search Input",
+                path="/q-theme/modules/search_input",
+                blogs=[group.id],
+                content_types={
+                  "blog_posts" : true,
+                  "website_pages" : false
+                },
+                include_search_button=false,
+                placeholder="Looking for something specific?",
+                style={
+                  "background_colour" : "white",
+                  "baseline" : false,
+                  "rounded_corners" : "rounded"
+                }
+              %}
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    {% dnd_area "blog_listing_area"
+    label="Body"
+    class="main p-0 overflow-hidden"
+    %}
+
+
+      {# featured article #}
+      {% dnd_section
+        background_color="rgba(244, 244, 244, 1)",
+        padding={
+          "default" : {
+            "bottom" : "0px",
+            "left" : "16px",
+            "right" : "16px",
+            "top" : "80px"
+          },
+          "mobile" : {
+            "top" : "32px"
+          }
+        }
+      %}
+        {% dnd_column
+          offset=0,
+          width=1
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/horizontal_spacer",
+              offset=0,
+              width=12,
+              hidden={
+                "mobile" : true
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=1,
+          width=10,
+          padding={
+            "default" : {
+              "right" : "0px"
+            },
+            "mobile" : {
+              "right" : "0px"
+            }
+          }
+        %}
+          {% dnd_row
+            padding={
+              "default" : {
+                "bottom" : "64px"
+              },
+              "mobile" : {
+                "bottom" : "32px"
+              }
+            }
+          %}
+            {% dnd_module
+              path="/q-theme/modules/cursive-heading",
+              offset=0,
+              width=12,
+              style={
+                "spacing_field" : {
+                  "css" : "margin-top: 0px;margin-bottom: 0px;",
+                  "margin" : {
+                    "bottom" : {
+                      "units" : "px",
+                      "value" : 0
+                    },
+                    "top" : {
+                      "units" : "px",
+                      "value" : 0
+                    }
+                  }
+                }
+              }
+            %}
+              {% module_attribute "heading" %}
+                <div style="text-align: center;">Stay in the know</div>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/anchor",
+              offset=0,
+              width=12,
+              anchor="featured"
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_column
+              offset=0,
+              width=12
+            %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="/q-theme/modules/featured-article",
+                  offset=0,
+                  width=12,
+                  advanced={
+                    "additional_classes" : ""
+                  },
+                  blog_entry=184099071909,
+                  heading_width="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8",
+                  style={
+                    "background_colour" : "bg-secondary text-white",
+                    "heading_width" : "col-12 col-sm-11 col-md-10 col-lg-9 col-xl-8",
+                    "overlay" : false
+                  }
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=11,
+          width=1
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/horizontal_spacer",
+              offset=0,
+              width=12,
+              hidden={
+                "mobile" : true
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+
+
+      {# blog listing #}
+      {% dnd_section
+        background_color="rgba(255, 255, 255, 1)",
+        padding={
+          "default" : {
+            "left" : "16px",
+            "right" : "16px"
+          },
+          "mobile" : {
+            "top" : "7rem"
+          }
+        },
+        margin={
+          "default" : {
+            "top" : "10rem"
+          },
+          "mobile" : {
+            "top" : "-5rem"
+          }
+        },
+        full_width=false
+      %}
+        {% dnd_column
+          offset=0,
+          width=12
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/anchor",
+              offset=0,
+              width=12,
+              anchor="latest"
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/blog-listing",
+              offset=0,
+              width=12,
+              blog_field=9317211779,
+              custom_limit=true,
+              enable_tag_filtering="true",
+              number_of_posts=9,
+              post_type="latest",
+              pullouts=[ ],
+              styles={
+                "equal_height_img" : true,
+                "pagination" : true,
+                "responsive" : {
+                  "desktop" : {
+                    "cards" : 3
+                  }
+                },
+                "spacing_field" : {
+                  "margin" : {
+                    "bottom" : { },
+                    "top" : { }
+                  }
+                }
+              },
+              tag_field=[ ],
+              tag_filter_option=[ {
+                "id" : 10548558613,
+                "name" : "School Filtering",
+                "slug" : "school-filtering"
+              }, {
+                "id" : 10767877681,
+                "name" : "CTO",
+                "slug" : "cto"
+              }, {
+                "id" : 10767877532,
+                "name" : "Superintendent",
+                "slug" : "superintendent"
+              }, {
+                "id" : 10767939443,
+                "name" : "Network Admin",
+                "slug" : "network-admin"
+              }, {
+                "id" : 10551939630,
+                "name" : "BYOD",
+                "slug" : "byod"
+              }, null ],
+              timeframe="popular_past_month"
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+
+
+      {% dnd_section
+        padding={
+          "default" : {
+            "bottom" : "0px",
+            "left" : "16px",
+            "right" : "16px",
+            "top" : "32px"
+          },
+          "mobile" : {
+            "top" : "0px"
+          }
+        }
+      %}
+        {% dnd_column
+          offset=0,
+          width=12
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/divider",
+              offset=0,
+              width=12,
+              styles={
+                "line" : {
+                  "color" : {
+                    "color" : "#ebebeb",
+                    "opacity" : 100
+                  }
+                },
+                "size" : {
+                  "width" : 100
+                },
+                "spacing" : {
+                  "spacing" : {
+                    "margin" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 32
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 32
+                      }
+                    }
+                  }
+                }
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+
+
+    {% end_dnd_area %}
+    {% global_partial path="./partials/lets-connect.html" %}
+  {% endif %}
+{% endblock body %}

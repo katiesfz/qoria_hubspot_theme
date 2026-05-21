@@ -1,0 +1,195 @@
+[ {
+  "id" : "blog_posts",
+  "name" : "blog_posts",
+  "display_width" : null,
+  "label" : "Blog Posts",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "blog.blog_title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "blog.blog_image",
+    "name" : "blog_image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "blog.blog_title",
+    "name" : "blog_title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Blog title"
+  }, {
+    "id" : "blog.blog_tag",
+    "name" : "blog_tag",
+    "display_width" : null,
+    "label" : "Tag",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Linewize"
+  }, {
+    "id" : "blog.blog_description",
+    "name" : "blog_description",
+    "display_width" : null,
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "emoji", "lists", "standard_emphasis", "block", "alignment", "advanced_emphasis" ],
+    "type" : "richtext",
+    "default" : "<p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+  }, {
+    "id" : "blog.blog_link",
+    "name" : "blog_link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "id" : "blog.badge",
+    "name" : "badge",
+    "display_width" : null,
+    "label" : "Badge",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "new_feature", "New Feature" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group"
+},{
+"id" : "styles",
+"name" : "styles",
+"display_width" : null,
+"label" : "Styles",
+"required" : false,
+"locked" : false,
+"children":[{
+  "id" : "styles.responsive",
+  "name" : "responsive",
+  "display_width" : null,
+  "label" : "Responsive Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.responsive.desktop",
+    "name" : "desktop",
+    "display_width" : null,
+    "label" : "Desktop",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.desktop.columns",
+      "name" : "columns",
+      "display_width" : null,
+      "label" : "Columns",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "max" : 6,
+      "step" : 1,
+      "suffix" : " columns",
+      "type" : "number",
+      "default" : "2"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.responsive.tablet",
+    "name" : "tablet",
+    "display_width" : null,
+    "label" : "Tablet",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.tablet.columns",
+      "name" : "columns",
+      "display_width" : null,
+      "label" : "Columns",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "max" : 6,
+      "step" : 1,
+      "suffix" : " columns",
+      "type" : "number",
+      "default" : "2"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.responsive.mobile",
+    "name" : "mobile",
+    "display_width" : null,
+    "label" : "Mobile",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.mobile.columns",
+      "name" : "columns",
+      "display_width" : null,
+      "label" : "Columns",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "max" : 6,
+      "step" : 1,
+      "suffix" : " columns",
+      "type" : "number",
+      "default" : "1"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+}],
+"tab" : "STYLE",
+"expanded" : false,
+"type" : "group"
+}]

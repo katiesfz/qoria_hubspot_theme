@@ -1,0 +1,277 @@
+[ {
+  "id" : "social_links",
+  "name" : "social_links",
+  "label" : "Social links",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "social_account",
+    "name" : "social_account",
+    "label" : "Social account",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "facebook-f", "Facebook" ], [ "twitter", "Twitter" ], [ "instagram", "Instagram" ], [ "linkedin-in", "LinkedIn" ], [ "youtube", "YouTube" ], [ "custom_icon", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "facebook-f"
+  }, {
+    "id" : "custom_social",
+    "name" : "custom_social",
+    "label" : "Custom social link",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "social_account",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom_icon",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "social_links.custom_social.icon",
+      "name" : "icon",
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "social_links.custom_social.icon.icon_field",
+        "name" : "icon_field",
+        "label" : "Icon",
+        "required" : false,
+        "locked" : false,
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "display_width" : null,
+        "default" : {
+          "name" : "Check Circle",
+          "unicode" : "f058",
+          "type" : "REGULAR"
+        }
+      }, {
+        "id" : "social_links.custom_social.icon.icon_code",
+        "name" : "icon_code",
+        "label" : "Icon Code",
+        "help_text" : "Can't find the icon you want? Icon selection not working for you? Enter the icon name here. e.g. address-book",
+        "inline_help_text" : "Find icons at https://fontawesome.com/v6/search",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "type" : "text",
+        "display_width" : null,
+        "default" : ""
+      }, {
+        "id" : "social_links.custom_social.icon.custom_image",
+        "name" : "custom_image",
+        "label" : "Custom Image",
+        "required" : false,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : true,
+        "show_loading" : false,
+        "type" : "image",
+        "display_width" : null,
+        "default" : {
+          "size_type" : "auto",
+          "src" : "",
+          "alt" : null,
+          "loading" : "lazy"
+        }
+      }, {
+        "id" : "social_links.custom_social.icon.icon_colour",
+        "name" : "icon_colour",
+        "label" : "Icon colour",
+        "required" : false,
+        "locked" : false,
+        "display" : "select",
+        "choices" : [ [ "fill-primary", "Primary" ], [ "fill-secondary", "Secondary" ], [ "fill-teal", "Teal" ], [ "fill-indigo", "Indigo" ], [ "fill-orange", "Orange" ], [ "fill-red", "Red" ], [ "fill-dark", "Dark" ], [ "fill-light", "Light" ] ],
+        "multiple" : false,
+        "reordering_enabled" : true,
+        "preset" : null,
+        "type" : "choice",
+        "display_width" : null,
+        "default" : "fill-dark"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null
+    }, {
+      "id" : "social_links.custom_label",
+      "name" : "custom_label",
+      "label" : "Custom label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "social_links.social_link",
+    "name" : "social_link",
+    "label" : "Social link",
+    "required" : true,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.facebook.com",
+        "type" : "EXTERNAL"
+      }
+    }
+  }, {
+    "id" : "social_links.accessibility",
+    "name" : "accessibility",
+    "label" : "Accessibility options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "social_links.accessibility.title",
+      "name" : "title",
+      "label" : "Title",
+      "required" : true,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Follow us on Facebook"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "social_account" : "facebook-f",
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.facebook.com",
+        "type" : "EXTERNAL"
+      }
+    },
+    "accessibility" : {
+      "title" : "Follow us on Facebook"
+    }
+  }, {
+    "social_account" : "linkedin-in",
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.linkedin.com",
+        "type" : "EXTERNAL"
+      }
+    },
+    "accessibility" : {
+      "title" : "Follow us on LinkedIn"
+    }
+  }, {
+    "social_account" : "youtube",
+    "social_link" : {
+      "no_follow" : false,
+      "open_in_new_tab" : true,
+      "url" : {
+        "content_id" : null,
+        "href" : "https://www.youtube.com",
+        "type" : "EXTERNAL"
+      }
+    },
+    "accessibility" : {
+      "title" : "Subscribe to our YouTube channel"
+    }
+  } ]
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.icon_size",
+    "name" : "icon_size",
+    "label" : "Icon size (Relative)",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fa-2xs", "Extra extra small" ], [ "fa-xs", "Extra small" ], [ "fa-sm", "Small" ], [ "fa-md", "Medium" ], [ "fa-lg", "Large" ], [ "fa-xl", "Extra large" ], [ "fa-2xl", "Extra extra large" ], [ "absolute", "Literal Sizing" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "fa-lg"
+  }, {
+    "id" : "styles.max_width",
+    "name" : "max_width",
+    "label" : "Literal Sizing",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "styles.icon_size",
+      "controlling_value_regex" : "absolute",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "fa-1x", "1" ], [ "fa-2x", "2" ], [ "fa-3x", "3" ], [ "fa-4x", "4" ], [ "fa-5x", "5" ], [ "fa-6x", "6" ], [ "fa-7x", "7" ], [ "fa-8x", "8" ], [ "fa-9x", "9" ], [ "fa-10x", "10" ], [ "absolute", "Absolute sizing" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "fa-2x"
+  }, {
+    "id" : "styles.icon_style",
+    "name" : "icon_style",
+    "label" : "Icon Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "fas", "Solid" ], [ "far", "Regular" ], [ "fal", "Light" ], [ "fat", "Thin" ], [ "fad", "Duotone" ], [ "fa fa-brands fab ", "Brand" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "fa fa-brands fab "
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
