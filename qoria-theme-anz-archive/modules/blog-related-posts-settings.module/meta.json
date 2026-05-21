@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "BLOG_POST" ],
-  "host_template_types" : [ "BLOG_POST" ],
-  "module_id" : 186576937502,
-  "label" : "Related Article Settings",
-  "is_available_for_new_content" : true
-}

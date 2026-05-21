@@ -1,9 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
-  "host_template_types" : [ "PAGE", "BLOG_POST" ],
-  "module_id" : 135547510551,
-  "label" : "Table",
-  "icon" : "../../images/module-icons/table.svg",
-  "is_available_for_new_content" : true
-}

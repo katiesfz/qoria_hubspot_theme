@@ -1,6 +1,0 @@
-
-{% if module.heading_tag == "h1" %}
-    <h2 class="h1 text-cursive text-tilted {{module.style.colour}}" style="{{ module.style.spacing_field.css }}">{{module.heading}}</h2>
-    {% else %}
-    <{{module.heading_tag}} class="text-cursive text-tilted fw-normal {{module.style.colour}}" style="{{ module.style.spacing_field.css }}">{{module.heading}}</{{module.heading_tag}}>
-    {% endif %}
