@@ -1,0 +1,41 @@
+{% if module.row %}
+    <div class="hs_padded" style="{{module.styles.spacing.css}}">
+        <table class="table {{module.styles.border}} {{module.styles.striping}} {{module.styles.colour}} {{ "table-sm" if module.styles.compact == true }}">
+            {% for row in module.row %}
+                {% if row.head == true %}
+                    <thead>
+                        <tr>
+                            {% for cell in row.cell %}
+                                <th {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }} style="background-color: #ffffff; padding: 4px; border-bottom: 1px solid #ebebeb;">
+                                    {{ cell.data }}
+                                </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                {% endif %}
+            {% endfor %}            
+            {% for row in module.row %}
+                <tbody>
+                {% if row.head != true %}
+                    <tr>
+                    {% if module.styles.striping == "table-striped" %}
+                        {% if loop.index0 is odd %}
+                            {% set striping = "background-color: #f4f4f4; border-bottom: 1px solid #ebebeb;" %}
+                        {% else %}
+                            {% set striping = "background-color: #ffffff; border-bottom: 1px solid #ebebeb;" %}
+                        {% endif %}
+                    {% else %}
+                        {% set striping = "" %}
+                    {% endif %}
+                        {% for cell in row.cell %}
+                            <td {{ "colspan='" + cell.col_span + "'" if cell.col_span > 1 }}  {{ "rowspan='" + cell.row_span + "'" if cell.row_span > 1 }} style="padding: 4px; {{striping}}">
+                                {{ cell.data }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% endif %}

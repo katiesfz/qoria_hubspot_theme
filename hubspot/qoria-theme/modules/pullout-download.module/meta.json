@@ -1,0 +1,20 @@
+{
+  "label": "Pullout - Download CTA",
+  "css_assets": [],
+  "external_js": [],
+  "icon" : "../../images/module-icons/square-quote.svg",
+  "global": false,
+  "help_text": "",
+  "host_template_types": [
+    "PAGE"
+  ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/jquery/jquery-3.6.4.min.js",
+    "name" : "jquery-3.6.4.min.js"
+  }],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

@@ -1,0 +1,530 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Qoria - Podcast Episode
+  screenshotPath: ../images/template-previews/blog-post.png
+-->
+
+{% extends "./layouts/base.html" %}
+
+  {% block body %}
+
+  {% module "description" path="/q-theme/modules/blog-description", export_to_template_context=True %}
+  {% module "youtube_link" path="@hubspot/text" label="YouTube link" value="https://www.youtube.com/@SpotlightQoria" export_to_template_context=True %}
+  {% module "spotify_link" path="@hubspot/text" label="Spotify link" value="https://open.spotify.com/user/31trvwzltemcmvbsroqaf475bcdu" export_to_template_context=True %}
+  {% module "transcript" path="/q-theme/modules/blog-file" label="Transcript file" export_to_template_context=True %}
+  
+{% require_css %}
+  <style>
+    .bg-multiply-microphone::before {
+      background-image: url({{ get_asset_url('../../images/qoria/photos/microphone-rt.jpg') }});
+      background-position: bottom right;
+      background-size: auto;
+      content: "";
+      background-size: contain;
+      opacity: .25;
+    }
+  </style>
+{% end_require_css %}
+
+  
+<section class="bg-light pt-7 mb-n8">
+  <div class="container-xxl position-relative">
+    <div class="row">
+      <div class="col-12 pb-4">
+        {% module "podcast_video" path="/q-theme/modules/video", style={
+          "rounded_corners" : false
+          },
+            custom_thumbnail={
+            "alt" : "Episode_1_Banner",
+            "height" : 1152,
+            "loading" : "lazy",
+            "max_height" : 1150.2745881178234,
+            "max_width" : 2000,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.qoria.com/hubfs/Qoria/Corporate/images/podcast/Episode_1_Banner.png",
+            "width" : 2003
+          }
+          video_file="https://www.qoria.com/hubfs/ANZ-Customer%20Success/BSL/Videos/Qustodio/AU%20BSL%20How%20to%20set%20Routines%20for%20your%20Childs%20Device.mp4",
+        %}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-gradient-primary-extended bg-image-multiply bg-multiply-microphone text-bg-secondary" style="padding-bottom: 18rem; padding-top: 18rem; margin-top: -14rem; margin-bottom: -14rem;">
+  <div class="container-xxl position-relative">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        {% module "episode_number" path="@hubspot/text" label="Episode number" value="Episode 1" extra_classes="d-inline-block h2 fw-bold" %}
+        {% module "episode_number" path="@hubspot/text" label="Episode number" value="Episode 1" export_to_template_context=True %}
+          <h1 class="h1 text-decoration-partial-underline">
+          <div><strong>{{content.name}}</strong></div>
+        </h1>
+        {{ content.post_body }}
+      </div>
+    {% if widget_data.duration.value != "" || content.blog_post_author.display_name || widget_data.transcript.file_field || is_in_blog_post_editor %}
+      <div class="col-12 col-md-1">
+        <div class="border-container w-50 border-end-md border-subtle-light border-2 h-100 opacity-25">
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <h4>Episode details</h4>
+        {% if widget_data.transcript.file_field || is_in_blog_post_editor %}
+          <a href="{{ widget_data.transcript.file_field }}" class="btn btn-primary rounded-pill d-block mb-2 text-start"><img src="{{ get_asset_url('../../images/qoria/icons/audio-bubble.png') }}" style="width: 24px;" class="me-3">Transcript download</a>
+        {% endif %}
+        {% if widget_data.duration.value != "" || is_in_blog_post_editor %}
+          <div class="rounded-pill d-block mb-2 btn btn-outline-light fw-bold disabled text-start">
+            <img src="{{ get_asset_url('../../images/qoria/icons/clock.png') }}" style="width: 24px;" class="me-3"><span style="vertical-align: middle;">Run time: </span><span style="vertical-align: middle;" id="duration-yt-player-podcast_video"></span>
+          </div>
+        {% endif %}
+        {% if content.blog_post_author.display_name || is_in_blog_post_editor %}
+          <div class="rounded-pill d-block mb-2 btn btn-outline-light fw-bold disabled text-start"><img src="{{ get_asset_url('../../images/qoria/icons/microphone.png') }}" style="width: 24px;" class="me-3">Host: {{content.blog_post_author.display_name}}</div>
+        {% endif %}
+        <hr>
+        <a href="{{widget_data.youtube_link.value}}" rel="noopener">
+          <img src="{{ get_asset_url('../../images/qoria/icons/youtube-red.png') }}" width="50" height="50" loading="lazy" alt="YouTube" style="height: auto; max-width: 100%; width: 50px; margin: 10px 20px 0px 0px;">
+        </a>
+        <a href="{{widget_data.spotify_link.value}}" rel="noopener">
+          <img src="{{ get_asset_url('../../images/qoria/icons/spotify-green.png') }}" width="50" height="50" loading="lazy" alt="Spotify" style="height: auto; max-width: 100%; width: 50px; margin: 10px 20px 0px 0px;">
+        </a>
+      </div>
+    {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (){
+      youTubeEmbedHandler.init((event, videoId) => {
+        const duration = event.target.getDuration();
+        document.getElementById(`duration-${videoId}`).innerText = `${Math.floor(duration / 60)} minutes`;
+      });
+    });
+</script>
+
+
+
+
+<section class="bg-light" style="margin-bottom: -14rem;">
+  <div class="container-xxl position-relative">
+    <div class="row align-items-center mb-4">
+      <div class="col-12">
+        <div class="episode-takeaways bg-gradient-primary-subtle text-light rounded-3 py-5 px-6">
+          <h3 class="fw-bold text-decoration-partial-underline">
+            Episode takeaways
+          </h3>
+          {% module "episode_takeaways" label="Episode takeaways" path="/q-theme/modules/icon-and-text-group"
+            icon_and_text=[ {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>Education is about seeing people be their best selves and grow.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>Safety in technology is the first question to ask.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>Trust is essential in navigating the digital landscape.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>We need to grow resilient kids in a protective community.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>AI should support learning, not just be an efficiency tool.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>Assessment practices must evolve with AI integration.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>Personalization in education enhances student engagement.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>Student voice is crucial in shaping technology policies.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>AI can democratize access to quality education.</p>"
+            }, {
+              "icon" : {
+                "absolute_icon_size" : "fa-3x",
+                "custom_icon_height" : false,
+                "custom_image" : {
+                  "loading" : "lazy",
+                  "size_type" : "auto",
+                  "src" : ""
+                },
+                "icon_code" : "",
+                "icon_colour" : "inherit",
+                "icon_field" : {
+                  "name" : "Check Circle",
+                  "type" : "REGULAR",
+                  "unicode" : "f058"
+                },
+                "icon_shape" : "icon-only",
+                "icon_style" : "inherit",
+                "max_width" : 84,
+                "relative_icon_size" : " ",
+                "sizing" : "inherit"
+              },
+              "text" : "<p>Creating a psychologically safe environment is key for educators.</p>"
+            } ]
+            %}
+        </div>
+      </div>
+    </div>
+    <div class="row gx-4">
+      <div class="col-12 col-md-4">
+      {% module "quote_graphic" path="/q-theme/modules/fancy-image" label="Quote graphic"
+      image={
+        "alt" : "microphone",
+        "height" : 1030,
+        "loading" : "lazy",
+        "max_height" : 1030,
+        "max_width" : 797,
+        "size_type" : "auto",
+        "src" : get_asset_url('../../images/qoria/misc/quote-graphic.png'),
+        "width" : 797
+      },
+      style={
+        "greyscale_filter" : false
+      } %}
+      </div>
+      <div class="col-12 col-md-8">
+        <div class="podcast-quote px-6 py-5 bg-gradient-primary-subtle rounded-3 text-bg-primary h-100 d-flex flex-column justify-content-center">
+          {% module "quote" label="Quote" path="/q-theme/modules/testimonial-carousel" 
+          slide=[ {
+            "accent_colour" : "primary",
+            "author" : "Anthony England",
+            "image" : {
+              "loading" : "eager",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "image_fit" : "cover",
+            "quote" : "<p>AI means it's no longer about the Attention Economy. It's now about the Trust Economy.</p>",
+            "read_more_url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "role" : "Director of Innovative Learning Technologies, Pymble Ladies’ College"
+          } ],
+          style={
+            "cards_settings" : {
+              "cards_responsive" : {
+                "desktop" : {
+                  "cards" : 1
+                },
+                "tablet" : {
+                  "cards" : 1
+                }
+              }
+            },
+            "carousel" : false,
+            "testimonial_style" : "2",
+            "dark_light" : "light"
+          }
+          %}
+          <p class="text-end fw-bold">Spotlight : {{widget_data.episode_number.value}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white" style="padding: 18rem 16px 8rem 16px;">
+  <div class="container-xxl position-relative">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-7">
+      {% module_block module "guest" path="@hubspot/rich_text" label="Guest" %}
+          {% module_attribute "html" %}
+            <h2 class="text-decoration-partial-underline fw-bold">
+            Our Guest - Meet Anthony
+            </h2>
+            <p>Anthony England is a progressive leader in educational technology, dedicated to balancing student digital literacy, empowerment, and safety.</p>
+            <p>As Director of Innovative Learning Technologies at Pymble Ladies’ College in Sydney, Australia, he ensures technology enhances learning while equipping students with the skills to navigate the digital world responsibly.</p>
+            <p>With a genuine, future-focused approach, Anthony believes technology should be a bridge to opportunity, not a barrier.</p>
+          {% end_module_attribute %}
+      {% end_module_block %}
+      </div>
+      <div class="col-12 col-md-4 offset-0 offset-md-1">
+        <div class="guest-image-container position-relative">
+          {% module "fancy_image" path="/q-theme/modules/fancy-image" label="Guest Image"
+          image={
+            "alt" : "anthony_england",
+            "height" : 1030,
+            "loading" : "lazy",
+            "max_height" : 1030,
+            "max_width" : 797,
+            "size_type" : "auto",
+            "src" : "https://www.qoria.com/hubfs/Qoria/Corporate/images/podcast/anthony_england.png",
+            "width" : 797
+          },
+          style={
+            "greyscale_filter" : true
+          } %}
+
+          {% module "guest-cta" label="Guest CTA"
+            path="/q-theme/modules/cta",
+            offset=0,
+            width=12,
+            alignment="center",
+            link={
+              "no_follow" : false,
+              "open_in_new_tab" : true,
+              "url" : {
+                "href" : "www.hubspot.com/",
+                "type" : "EXTERNAL"
+              }
+            },
+            button_size=" ",
+            advanced={
+              "additional_classes" : "rounded-pill"
+            },
+            button_text="Connect with Anthony on LinkedIn"
+          %}
+        </div>
+      </div>
+    </div>
+    
+    {% boolean "second_guest_toggle" label="Show second guest", value=False, no_wrapper=True, export_to_template_context=True %}
+
+    {% if widget_data.second_guest_toggle.value == 'true' || is_in_editor %}
+      <div class="row align-items-center mt-5">
+        <div class="col-12 col-md-7">
+        {% module_block module "guest_2" path="@hubspot/rich_text" label="Guest 2" %}
+            {% module_attribute "html" %}
+            {% end_module_attribute %}
+        {% end_module_block %}
+        </div>
+        <div class="col-12 col-md-4 offset-0 offset-md-1">
+          <div class="guest-image-container position-relative">
+            {% module "fancy_image_2" path="/q-theme/modules/fancy-image" label="Guest Image 2"
+            image={
+              "alt" : "anthony_england",
+              "height" : 1030,
+              "loading" : "lazy",
+              "max_height" : 1030,
+              "max_width" : 797,
+              "size_type" : "auto",
+              "src" : "https://www.qoria.com/hubfs/Qoria/Corporate/images/podcast/anthony_england.png",
+              "width" : 797
+            },
+            style={
+              "greyscale_filter" : true
+            } %}
+
+            {% module "guest-cta-2" label="Guest CTA 2"
+              path="/q-theme/modules/cta",
+              offset=0,
+              width=12,
+              alignment="center",
+              link={
+                "no_follow" : false,
+                "open_in_new_tab" : true,
+                "url" : {
+                  "href" : "www.hubspot.com/",
+                  "type" : "EXTERNAL"
+                }
+              },
+              button_size=" ",
+              advanced={
+                "additional_classes" : "rounded-pill"
+              },
+              button_text="Connect with Anthony on LinkedIn"
+            %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+  </div>
+</section>
+
+
+
+{% global_partial path="./partials/podcast-promo.html" %}
+
+{% global_partial path="./partials/podcast-contact.html" %}
+
+</div>
+
+{% global_partial path="./partials/lets-connect.html" %}
+  
+{% endblock body %}

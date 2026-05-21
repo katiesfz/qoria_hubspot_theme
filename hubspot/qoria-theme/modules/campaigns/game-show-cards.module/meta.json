@@ -1,0 +1,16 @@
+{
+  "global" : false,
+  "icon" : "../../images/module-icons/info-circle-solid.svg",
+  "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/jquery/jquery-3.6.4.min.js",
+    "name" : "jquery-3.6.4.min.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/custom-functions.js",
+    "name" : "custom-functions.js"
+  } ],
+  "label" : "Game Show Card",
+  "is_available_for_new_content" : true
+}

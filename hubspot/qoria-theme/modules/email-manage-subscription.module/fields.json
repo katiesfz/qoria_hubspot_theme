@@ -1,0 +1,39 @@
+[
+  {
+  "name" : "email_type",
+  "label" : "Email Type",
+  "required" : false,
+  "locked" : false,
+  "multiple":"false",
+  "display" : "select",
+  "choices" : [[ "marketing", "Marketing" ], [ "transactional", "Transactional" ]],
+  "type" : "choice",
+  "default" : "marketing"
+},{
+    "name" : "marketing_copy",
+    "label" : "Subscription copy",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "visibility" : {
+      "controlling_field_path" : "email_type",
+      "controlling_value_regex" : "marketing",
+      "property": "",
+      "operator" : "EQUAL"
+       },
+    "default" : "<p id='footer' style='text-align: center;font-family: Quicksand, Verdana, sans-serif; font-size: 12px; color: #1d1e1c; display: block;'> {{ site_settings.company_name + ',' if site_settings.company_name }} {{ site_settings.company_street_address_1 ~ ',' if site_settings.company_street_address_1 }} {{ site_settings.company_street_address_2 + ',' if site_settings.company_street_address_2 }} {{ site_settings.company_city + ',' if site_settings.company_city }} {{ site_settings.company_state + ',' if site_settings.company_state }} {{ site_settings.company_zip }} {{ site_settings.company_country }} <br><br> You received this email because you are subscribed to {{ subscription_name }} from {{ site_settings.company_name }}. <br><br> Update your <a target='_blank' href='{{ unsubscribe_link }}' style='text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};' data-unsubscribe='true'>email preferences</a> to choose the types of emails you receive. <br><br> &nbsp;<a target='_blank' href='{{ unsubscribe_link_all }}' style='text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};' data-unsubscribe='true'>Unsubscribe from all future emails</a> &nbsp;</p>"
+  },{
+    "name" : "transactional_copy",
+    "label" : "Subscription copy",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "visibility" : {
+      "controlling_field_path" : "email_type",
+      "controlling_value_regex" : "transactional",
+      "property": "",
+      "operator" : "EQUAL"
+       },
+    "default" : "<p id='footer' style='text-align: center;font-family: Quicksand, Verdana, sans-serif; font-size: 12px; color: #1d1e1c; line-height: 1.25em; display: block;'>We're committed to your privacy. {{ site_settings.company_name }} uses the information you provide to us to contact you about our relevant content, products, and services. You may unsubscribe from these communications - except for important service emails like this one - at any time. For more information, check out our <a target='_blank' href='https://qoria.com/privacy' style='text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};'>Privacy Policy</a>. <br><br> {{ site_settings.company_name + ',' if site_settings.company_name }} {{ site_settings.company_street_address_1 ~ ',' if site_settings.company_street_address_1 }} {{ site_settings.company_street_address_2 + ',' if site_settings.company_street_address_2 }} {{ site_settings.company_city + ',' if site_settings.company_city }} {{ site_settings.company_state + ',' if site_settings.company_state }} {{ site_settings.company_zip }} {{ site_settings.company_country }} <br><br> Update your <a target='_blank' href='{{ unsubscribe_link }}' style='text-decoration: underline; whitespace: nowrap; color: {{ secondary_font_color }};' data-unsubscribe='true'>email preferences</a>.</p>"
+  }
+]

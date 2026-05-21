@@ -1,0 +1,167 @@
+{
+  "crmobjectproperty_field.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.label" : {
+    "message" : "CRM object property",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "follow_up_type_automation.label" : {
+    "message" : "Afegeix al flux de treball",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.help_text" : {
+    "message" : "Per enviar un correu electrònic de seguiment, assegura't que l'opció de configuració \"Defineix els contactes creats com a contactes de màrqueting\" estigui activada. Pots gestionar-la a les opcions. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Més informació</a>",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.label" : {
+    "message" : "Envia un correu electrònic de seguiment",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.default.message" : {
+    "message" : "Gràcies per enviar el formulari.",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.label" : {
+    "message" : "Formulari",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form_follow_ups_workflow_id.label" : {
+    "message" : "Flux de treball",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "form",
+    "description" : null,
+    "placeholders" : null
+  },
+  "notifications_are_overridden.label" : {
+    "message" : "Envia notificacions de formulari a les adreces electròniques especificades en lloc de les opcions per defecte del formulari",
+    "description" : "",
+    "placeholders" : null
+  },
+  "notifications_override_email_addresses.label" : {
+    "message" : "Adreces electròniques",
+    "description" : "",
+    "placeholders" : null
+  },
+  "override_values.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.label" : {
+    "message" : "Field group",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.label" : {
+    "message" : "Property ID",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.label" : {
+    "message" : "Value",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "sfdc_campaign.label" : {
+    "message" : "Campanya de Salesforce",
+    "description" : "",
+    "placeholders" : null
+  },
+  "simple_email_for_live_id.label" : {
+    "message" : "Correu electrònic",
+    "description" : "",
+    "placeholders" : null
+  }
+}

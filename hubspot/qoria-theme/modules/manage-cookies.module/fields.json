@@ -1,0 +1,21 @@
+[
+  {
+    "default": "Manage cookies",
+    "label": "Label",
+    "locked": false,
+    "name": "button_label",
+    "required": false,
+    "type": "text",
+    "validation_regex": ""
+  }, {
+    "default": "btn btn-link btn-light text-reset p-0 fs-6 border-0 h6 mb-3 mt-5",
+    "label": "Classes",
+    "locked": false,
+    "name": "classes",
+    "required": false,
+    "type": "text",
+    "validation_regex": ""
+  }
+]
+
+

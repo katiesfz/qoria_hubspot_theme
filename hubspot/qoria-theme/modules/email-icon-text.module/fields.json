@@ -1,0 +1,30 @@
+[
+  {
+    "id" : "icon",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image"
+  },{
+    "name" : "copy",
+    "label" : "Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : ""
+  },{
+    "name": "valign",
+    "label": "Vertical alignment",
+    "required": false,
+    "alignment_direction": "VERTICAL",
+    "type": "alignment",
+    "default": {
+        "vertical_align": "TOP"
+    }
+  }
+]

@@ -1,0 +1,1206 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Linewize ANZ Home
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+    {% dnd_area "dnd_area"
+    label="Body"
+    class="main p-0 overflow-hidden"
+    %}
+
+
+    {% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ {
+          "colour" : "light",
+          "cta_label" : "Read our story",
+          "cta_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 146199589974,
+              "type" : "CONTENT"
+            }
+          },
+          "size" : " ",
+          "style" : "-"
+        }, {
+          "colour" : "light",
+          "cta_label" : "Book a demo",
+          "cta_link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "url" : {
+              "content_id" : 13047864353,
+              "type" : "CONTENT"
+            }
+          },
+          "size" : " ",
+          "style" : "-"
+        } ],
+        header="Helping every child to <br class='d-none d-md-block'><strong>thrive in their digital life</strong>",
+        hero_type="full-video",
+        image={
+          "alt" : "linewize-nz-homepagebanner",
+          "height" : 1414,
+          "loading" : "disabled",
+          "max_height" : 1334.5917885795186,
+          "max_width" : 2000,
+          "size_type" : "auto_custom_max",
+          "src" : "https://qoria.com/hubfs/linewize-nz-homepagebanner.jpg",
+          "width" : 2119
+        },
+        menu=115248177746,
+        page_contents=[ ],
+        pre_header="Our purpose:",
+        show_breadcrumbs=false,
+        show_share_price="false",
+        style={
+          "heading_location" : "bottom-left"
+        },
+        video="https://www.linewize.com/hubfs/hero-banner-linewize-home.mp4"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "left" : "16px",
+      "right" : "16px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "p-4 p-md-6 align-items-center"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_classes" : "",
+              "additional_col_classes" : "col-12 col-md-7"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h1 style='line-height: 1.25;'><strong>Welcome to Linewize </strong>&nbsp;<br>North America<strong><br></strong></h1>\n<h3><br>We help schools, districts and the communities they serve to keep children safe and thriving in their digital lives - in school, at home and everywhere in between.</h3>\n<p style='font-size: 24px; line-height: 1.5;'>____</p>\n<p>&nbsp;</p>"
+          }, {
+            "advanced" : {
+              "additional_classes" : "px-5"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<p><img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/images/Wellbeing%20Framework/Framework_Core.png' alt='Framework_Core' width='510' height='556' loading='lazy' style='height: auto; max-width: 510px; width: 100%;'></p>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-white text-dark",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "77px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 5
+              }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Best-in-class filtering<strong> and more</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="lead" style="text-align: center;">We're not just a vendor, we're a long term, strategic partner to our customers. Best-in-class filtering is the first step in an ecosystem that empowers not only IT administration but teachers, student safeguarding staff, families and students themselves. Our solutions can be combined over time to create a robust digital wellbeing environment capable of addressing today's challenges. <a href="/solutions" rel="noopener" style="font-weight: bold;">Learn more.&nbsp;</a></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cursive-heading",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 64
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 88
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <div style="text-align: center;">none of us is as powerful as all of us</div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : {
+              "additional_classes" : "text-center p-5"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "icon" : {
+              "icon_code" : "users",
+              "icon_colour" : "inherit",
+              "icon_field" : {
+                "name" : "Users",
+                "type" : "SOLID",
+                "unicode" : "f0c0"
+              },
+              "icon_shape" : "icon-only",
+              "icon_style" : "fat",
+              "relative_icon_size" : "fa-xl",
+              "sizing" : "inherit"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "statistic" : "22 million",
+            "statistic_font_size" : "display-4",
+            "text" : "<p>children are better supported and protected because of our technologies.</p>"
+          }, {
+            "advanced" : {
+              "additional_classes" : "text-center p-5"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "icon" : {
+              "icon_code" : "user-shield",
+              "icon_style" : "fat"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "statistic" : "21,500",
+            "statistic_font_size" : "display-4",
+            "text" : "<p>schools better protect and support their students' wellbeing because of our solutions.</p>"
+          }, {
+            "advanced" : {
+              "additional_classes" : "text-center p-5"
+            },
+            "column_styles" : {
+              "background_colour" : "none"
+            },
+            "icon" : {
+              "icon_code" : "user-magnifying-glass",
+              "icon_style" : "fat"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "statistic" : "6 million",
+            "statistic_font_size" : "display-4",
+            "text" : "<p>parents have greater visibility of their child's online behaviors because of our app.</p>"
+          } ]
+        } ],
+        style={
+          "absolute_icon_size" : "fa-3x",
+          "background_colour" : "bg-gradient-primary text-white",
+          "icon_colour" : "light",
+          "overlay" : false,
+          "relative_icon_size" : "fa-2xl",
+          "sizing" : "absolute"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 16
+              }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          <p>The world's most comprehensive <br><strong>student safety platform</strong></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12,
+        padding={
+          "default" : {
+            "bottom" : "40px"
+          },
+          "mobile" : {
+            "bottom" : "16px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead" style="text-align: center; font-size: 22px;">Our solutions are organized around three fundamental health and safety pillars. <br><strong><span style="color: #444444;">1. Prevention &amp; Enablement; 2. Early Detection &amp; Intervention; 3. Education &amp; Engagement.</span></strong></p>
+              <p class="lead" style="text-align: center; font-size: 22px;">Our approach helps districts identify gaps in their student safety initiatives and provides a strategic roadmap they can <br>implement over time.&nbsp;We call it the 'Linewize Student Safety and Wellbeing Framework'. <a href="/solutions" rel="noopener" style="font-weight: bold;">Find out more.</a></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "bg-gray-700 text-white",
+          "image" : {
+            "alt" : "classwize-2",
+            "height" : 501,
+            "loading" : "lazy",
+            "max_height" : 501,
+            "max_width" : 860,
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/classwize-2.png",
+            "width" : 860
+          },
+          "image_fit" : "contain",
+          "image_overlap" : true,
+          "multiple_text" : true,
+          "overlap" : "6",
+          "text" : "<p>We remember the importance of what we do. We don’t just turn up; we show up with integrity and will not give up until:</p><p>\u0000\u0000&nbsp; &nbsp;The job is done<br>\u0000\u0000&nbsp; &nbsp;The customer is happy<br>\u0000\u0000&nbsp; &nbsp;The teammate is supported<br>\u0000\u0000&nbsp; &nbsp;The child is protected</p><p>We own what we do and we stand behind it.</p>",
+          "text_group" : [ {
+            "cta_colour" : "secondary",
+            "cta_style" : "text-",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 146198723155,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more >",
+            "text" : "<h4>Filtering</h4>\n<p><strong>Linewize School Manager </strong>-&nbsp;best-in-class filter and reporting platform that supports student wellbeing and digital citizenship.<br><br><img src='https://www.linewize.com/hubfs/cspc.png' width='40' height='40' loading='lazy' alt='cspc' style='height: auto; max-width: 100%; width: 40px; margin: 0px 10px 0px 0px;'><img src='https://www.linewize.com/hubfs/coppa.png' width='40' height='40' loading='lazy' alt='coppa' style='height: auto; max-width: 100%; width: 40px; margin: 0px 10px 0px 0px;'><img src='https://www.linewize.com/hubfs/ferpa.png' width='40' height='40' loading='lazy' alt='ferpa' style='height: auto; max-width: 100%; width: 40px;'></p>"
+          }, {
+            "cta_colour" : "secondary",
+            "cta_style" : "text-",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 146198723158,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more >",
+            "text" : "<h4>Classroom management</h4>\n<p><strong>Classwize</strong> - keeps teachers teaching and students safe and learning in the modern, digital classroom.</p>"
+          } ],
+          "title" : "<strong>1. Prevention &amp; Enablement</strong>",
+          "title_size" : "h2"
+        }, {
+          "accent_colour" : "bg-teal text-white",
+          "image" : {
+            "alt" : "monitor-home",
+            "height" : 501,
+            "loading" : "lazy",
+            "max_height" : 501,
+            "max_width" : 860,
+            "src" : "https://qoria.com/hubfs/monitor-home.png",
+            "width" : 860
+          },
+          "image_fit" : "contain",
+          "image_overlap" : true,
+          "multiple_text" : true,
+          "overlap" : "6",
+          "text" : "<p>We remember the importance of what we do. We don’t just turn up; we show up with integrity and will not give up until:</p><p>\u0000\u0000&nbsp; &nbsp;The job is done<br>\u0000\u0000&nbsp; &nbsp;The customer is happy<br>\u0000\u0000&nbsp; &nbsp;The teammate is supported<br>\u0000\u0000&nbsp; &nbsp;The child is protected</p><p>We own what we do and we stand behind it.</p>",
+          "text_group" : [ {
+            "cta_colour" : "secondary",
+            "cta_style" : "text-",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 146198723163,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more >",
+            "text" : "<h4>Threat detection</h4>\n<p style='font-size: 16px;'><span style='color: #091e42;'><strong>Linewize Monitor</strong> - real-time, human moderated threat detection. Alerts designated staff to students whose digital behaviors indicate they may be at risk.&nbsp;&nbsp;<br><br><img src='https://www.linewize.com/hubfs/keepsafe-logos.png' width='181' height='42' loading='lazy' alt='keepsafe-logos' style='height: auto; max-width: 100%; width: 181px;'></span></p>"
+          }, {
+            "cta_colour" : "secondary",
+            "cta_style" : "text-",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 146194537584,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more >",
+            "text" : "<h4>Student surveys&nbsp;</h4>\n<p style='font-size: 16px;'><span style='color: #000000;'><strong>Linewize Pulse</strong> - a 60 second, weekly student checkin solution. Gives vulnerable students a way to speak up, and schools the big data to make better wellbeing decisions.</span></p>"
+          } ],
+          "title" : "<strong>2. Early Detection &amp; Intervention</strong>",
+          "title_size" : "h2"
+        }, {
+          "accent_colour" : "bg-indigo text-white",
+          "image" : {
+            "alt" : "dx4",
+            "height" : 501,
+            "loading" : "lazy",
+            "max_height" : 501,
+            "max_width" : 860,
+            "src" : "https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/dx4.png",
+            "width" : 860
+          },
+          "image_fit" : "contain",
+          "image_overlap" : true,
+          "multiple_text" : true,
+          "overlap" : "6",
+          "text" : "<p>We remember the importance of what we do. We don’t just turn up; we show up with integrity and will not give up until:</p><p>\u0000\u0000&nbsp; &nbsp;The job is done<br>\u0000\u0000&nbsp; &nbsp;The customer is happy<br>\u0000\u0000&nbsp; &nbsp;The teammate is supported<br>\u0000\u0000&nbsp; &nbsp;The child is protected</p><p>We own what we do and we stand behind it.</p>",
+          "text_group" : [ {
+            "cta_colour" : "secondary",
+            "cta_style" : "text-",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 146201693255,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more >",
+            "text" : "<h4>Student empowerment</h4>\n<p style='font-size: 16px;'><span style='color: #000000;'><strong>Linewize Courses</strong>,<strong> </strong>(part of Classwize),<strong> </strong> guide students towards understanding, resilience and good ethical digital citizenship.&nbsp;</span></p>"
+          }, {
+            "cta_colour" : "secondary",
+            "cta_style" : "text-",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 146201693246,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more >",
+            "text" : "<h4>Education&nbsp;</h4>\n<p><strong>Linewize Online Safety Hub</strong> - a dedicated resource of information and guidance to help schools and parents have more effective conversations with children about cyber safety.&nbsp;</p>"
+          }, {
+            "cta_colour" : "secondary",
+            "cta_style" : "text-",
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "content_id" : 146201693249,
+                "type" : "CONTENT"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "Learn more >",
+            "text" : "<h4>Parental engagement</h4>\n<p><strong>Qustodio</strong> - all-in-one parental control app. Working alone or as part of School Manager it helps parents keep their child’s screen time safe and balanced.</p>"
+          } ],
+          "title" : "<strong>3. Education &amp; Engagement</strong>",
+          "title_size" : "h2"
+        } ],
+        styles={
+          "card_style" : "2",
+          "image_header" : false,
+          "image_header_fit" : "",
+          "q_accent" : true,
+          "responsive" : {
+            "breakpoints" : {
+              "mobile" : 1,
+              "tablet" : 3
+            },
+            "tablet" : {
+              "cards" : 1
+            }
+          },
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "50rem"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "25rem"
+    }
+  },
+  margin={
+    "default" : {
+      "top" : "-50rem"
+    },
+    "mobile" : {
+      "top" : "-25rem"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_module
+    path="@hubspot/horizontal_spacer",
+    offset=0,
+    width=12,
+    hidden={
+      "mobile" : true
+    }
+  %}
+  {% end_dnd_module %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "100px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "27rem"
+    }
+  },
+  margin={
+    "mobile" : {
+      "top" : "-25rem"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h1",
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 3
+                  }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              Get a<strong> free student safety audit and analysis</strong>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12,
+            padding={
+              "default" : {
+                "bottom" : "32px"
+              },
+              "mobile" : {
+                "bottom" : "32px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p class="lead" style="text-align: center; font-size: 22px;">With so many options, how do you choose the best tools for your organization? We remove the guesswork with our no-cost audits and trials. Linewize Monitor and Linewize Pulse trials come with FREE evidential impact analyses and next step recommendations. Click below to learn more.<a href="/solutions" rel="noopener"></a></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        advanced={
+          "additional_classes" : ""
+        },
+        card=[ {
+          "accent_colour" : "bg-gradient-primary-reverse text-white",
+          "cta_colour" : "light",
+          "cta_size" : "btn-sm",
+          "cta_style" : "btn btn-outline-",
+          "image" : {
+            "alt" : "LNW-US-Banner-iStock-cropped",
+            "height" : 689,
+            "loading" : "lazy",
+            "max_height" : 689,
+            "max_width" : 1920,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/LNW-US-Banner-iStock-cropped.jpeg",
+            "width" : 1920
+          },
+          "image_overlap" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 72165616384,
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Learn more",
+          "text" : "Assess your students' online safety for 30 days. See who may be at risk.",
+          "title" : "<strong>Linewize Monitor <br>Free 30-day Student Safety Audit</strong>"
+        }, {
+          "accent_colour" : "bg-gradient-primary-reverse text-white",
+          "cta_colour" : "light",
+          "cta_size" : "btn-sm",
+          "cta_style" : "btn btn-outline-",
+          "image" : {
+            "alt" : "US-Linewize-Banners-pulse-cropped",
+            "height" : 689,
+            "loading" : "lazy",
+            "max_height" : 689,
+            "max_width" : 1920,
+            "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/US-Linewize-Banners-pulse-cropped.jpeg",
+            "width" : 1920
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 114863907438,
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Learn more",
+          "text" : "Identify students who may need help. Assess wellbeing levels across your school to guide decision making.",
+          "title" : "<strong>Linewize Pulse<br>Free 30-day Wellbeing Analysis</strong>"
+        } ],
+        styles={
+          "accent" : false,
+          "card_colour" : "bg-gradient-primary text-white",
+          "responsive" : {
+            "desktop" : {
+              "cards" : 3
+            },
+            "tablet" : {
+              "cards" : 3
+            }
+          },
+          "row_alignment" : "center",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center",
+          "title_accent" : false
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "0px"
+    },
+    "mobile" : {
+      "bottom" : "16px",
+      "top" : "27rem"
+    }
+  },
+  margin={
+    "mobile" : {
+      "top" : "-25rem"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : {
+                "units" : "px",
+                "value" : 52
+              }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          <strong>Testimonials</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/testimonial-carousel",
+        offset=0,
+        width=12,
+        slide=[ {
+          "accent_colour" : "primary",
+          "author" : "Heather Brown",
+          "image" : {
+            "alt" : "Santa Fe School District Logo",
+            "height" : 255,
+            "loading" : "lazy",
+            "max_height" : 150,
+            "max_width" : 151,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.linewize.com/hubfs/Santa%20Fe%20School%20District%20Logo.webp",
+            "width" : 256
+          },
+          "image_fit" : "contain",
+          "quote" : "<p>When we put these student safety tools in the hands of our students and teachers, it is almost like we’ve grown our department size because we have people who are able to report to us what they are seeing and enable us to maximize our resources.</p>\n<p><strong>Santa Fe Independent School District</strong></p>",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Director of Technology"
+        }, {
+          "accent_colour" : "primary",
+          "author" : "Jon Myers",
+          "image" : {
+            "alt" : "US-District-School-SQ-logo-clinton-prairie",
+            "height" : 212,
+            "loading" : "lazy",
+            "max_height" : 143,
+            "max_width" : 160,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.linewize.com/hubfs/School%20Logos/US-District-School-SQ-logo-clinton-prairie.png",
+            "width" : 238
+          },
+          "image_fit" : "contain",
+          "quote" : "<p>There has been a night and day difference from our old filter to Linewize. Before, students were getting access to sites that should have been blocked and I had no visibility. Now I can see at a glance which sites are being blocked and what students are searching.</p>\n<p><strong>Clinton Prairie School Corporation</strong></p>",
+          "read_more_url" : {
+            "href" : "",
+            "type" : "EXTERNAL"
+          },
+          "role" : "Director of Technology"
+        } ],
+        style={
+          "autoplay" : false,
+          "cards_settings" : {
+            "cards_responsive" : {
+              "desktop" : {
+                "cards" : 2
+              },
+              "tablet" : {
+                "cards" : 2
+              }
+            }
+          },
+          "carousel" : false,
+          "carousel_settings" : {
+            "controls" : true,
+            "responsive" : {
+              "desktop" : {
+                "slides_to_display" : 1
+              },
+              "tablet" : {
+                "slides_to_display" : 1
+              }
+            }
+          },
+          "controls" : false,
+          "dark_or_light" : "text-dark",
+          "greyscale_images" : false,
+          "infinite" : false,
+          "normalise_heights" : false,
+          "quote_size" : "80",
+          "responsive" : {
+            "desktop" : {
+              "slides_to_display" : 3
+            },
+            "mobile" : {
+              "slides_to_display" : 2
+            },
+            "tablet" : {
+              "slides_to_display" : 1
+            }
+          },
+          "testimonial_style" : "1"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "32px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "16px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row
+      background_color="rgba(255, 255, 255, 1)",
+      padding={
+        "default" : {
+          "bottom" : "0px",
+          "left" : "32px",
+          "right" : "32px",
+          "top" : "32px"
+        },
+        "mobile" : {
+          "bottom" : "16px",
+          "left" : "16px",
+          "right" : "16px",
+          "top" : "16px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h1",
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 29
+                  }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              Our <strong>customers</strong>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead" style="text-align: center;">The tens of thousands of districts who are coming to Linewize share our passion for best-in-class, affordable solutions that help keep every child safe and thriving, now and in the future.</p>
+              <p class="lead" style="text-align: center;">&nbsp;</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=12,
+            padding={
+              "default" : {
+                "left" : "64px",
+                "right" : "64px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/slick-carousel",
+                offset=0,
+                width=12,
+                slide=[ {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/Lowndes-School-Logo.jpeg' width='100' height='102' loading='lazy' alt='Lowndes-School-Logo' style='height: auto; max-width: 100%; width: 100px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/South%20Bound%20Brook%20Logo.png' width='100' height='100' loading='lazy' alt='South Bound Brook Logo' style='height: auto; max-width: 100%; width: 100px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/Nemo%20Vista%20District%20Logo.png' width='110' height='110' loading='lazy' alt='Nemo Vista District Logo' style='height: auto; max-width: 100%; width: 110px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/ClintonPrairieLogo.jpg' width='172' height='100' loading='lazy' alt='ClintonPrairieLogo' style='height: auto; max-width: 100%; width: 172px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/LCUSDlogo.jpg' width='110' height='110' loading='lazy' alt='LCUSDlogo' style='height: auto; max-width: 100%; width: 110px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/Capistrano%20District%20Logo.png' width='267' height='80' loading='lazy' alt='Capistrano District Logo' style='height: auto; max-width: 100%; width: 267px; margin: 21px auto 0px; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/Pascagoula%20District%20logo.png' width='140' height='140' loading='lazy' alt='Pascagoula District logo' style='height: auto; max-width: 100%; width: 140px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/PCSS_Logo-CMYK.png' width='354' height='90' loading='lazy' alt='PCSS_Logo-CMYK' style='height: auto; max-width: 100%; width: 354px; margin: 36px auto 0px; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/Santa%20Fe%20School%20District%20Logo.webp' width='110' height='110' loading='lazy' alt='Santa Fe School District Logo' style='height: auto; max-width: 100%; width: 110px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                }, {
+                  "column" : [ {
+                    "column_classes" : "col bg-white",
+                    "content" : "<img src='https://www.linewize.com/hubfs/Aurora_Logo.png' width='282' height='100' loading='lazy' alt='Aurora_Logo' style='height: auto; max-width: 100%; width: 282px; margin: 17px auto 0px; display: block;'>\n<p>&nbsp;</p>"
+                  } ],
+                  "vertical_alignment" : "align-items-center"
+                } ],
+                style={
+                  "adaptive_height" : true,
+                  "autoplay" : false,
+                  "normalise_heights" : false,
+                  "responsive" : {
+                    "desktop" : {
+                      "slides_to_display" : 5,
+                      "slides_to_slide" : 5
+                    },
+                    "mobile" : {
+                      "slides_to_display" : 2,
+                      "slides_to_slide" : 2
+                    },
+                    "tablet" : {
+                      "slides_to_display" : 3,
+                      "slides_to_slide" : 3
+                    }
+                  },
+                  "shadow" : " ",
+                  "slide_or_fade" : "carousel-slide"
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+    {% end_dnd_area %}
+{% global_partial path="../partials/lets-connect.html" %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

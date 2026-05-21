@@ -1,0 +1,10 @@
+[ {
+  "picker" : "file",
+  "id" : "file_field",
+  "name" : "file_field",
+  "label" : "File",
+  "required" : false,
+  "locked" : false,
+  "type" : "file",
+  "display_width" : null
+} ]

@@ -1,0 +1,508 @@
+<div class="ai-survey" id="surveyContainer" data-form-id="{{module.gating_form.form_id}}" data-hub-id="{{hub_id}}">
+    <form id="aiSurveyForm">
+        <div id="step1" class="step step-active" data-step="1">
+            <h2 class="section-header">
+                1. Enfoque del centro educativo
+            </h2>
+            <div class="question-block">
+                <span class="question-text">1. ¿Has revisado guías de la UE o internacionales sobre IA generativa en educación?</span>
+                <div class="question-subtext">
+                    Ejemplos: 
+                    <ul>
+                    <li>
+                    <a href="https://www.unesco.org/es/articles/guia-para-el-uso-de-ia-generativa-en-educacion-e-investigacion" target="_blank" rel="nofollow noopener">Guía para el uso de IA generativa en educación e investigación</a>
+                    </li>
+                    <li>
+                    <a href="https://education.ec.europa.eu/es/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence" rel="nofollow noopener" target="_blank">Directrices éticas para el personal docente sobre el uso de la inteligencia artificial</a>
+                </div>
+                <div class="options-group">
+                    <input type="radio" id="q1_yes" name="q1" value="Yes" />
+                    <label for="q1_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q1_no" name="q1" value="No" />
+                    <label for="q1_no" class="option-label">No</label>
+                    <input type="radio" id="q1_unsure" name="q1" value="Not Sure"/>
+                    <label for="q1_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">2. ¿Tienes una o varias plataformas de IA definidas para todo el centro?</span>
+                <div class="question-subtext">
+                    Ejemplos: CENTURY, ChatGPT, Google AI Tools (Gemini, Notebook LM, AI Studio), Learnt.ai, Olex.AI.
+                </div>
+                <div class="options-group">
+                    <input type="radio" id="q2_yes" name="q2" value="Yes" />
+                    <label for="q2_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q2_no" name="q2" value="No" />
+                    <label for="q2_no" class="option-label">No</label>
+                    <input type="radio" id="q2_unsure" name="q2" value="Not Sure"/>
+                    <label for="q2_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">3. ¿Sabes si el personal entiende cómo usar la IA?</span>
+                <div class="options-group">
+                    <input type="radio" id="q3_yes" name="q3" value="Yes" />
+                    <label for="q3_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q3_no" name="q3" value="No" />
+                    <label for="q3_no" class="option-label">No</label>
+                    <input type="radio" id="q3_unsure" name="q3" value="Not Sure"/>
+                    <label for="q3_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">4. ¿Has creado un grupo de trabajo de IA con todos los perfiles clave del centro?</span>
+                <div class="options-group">
+                    <input type="radio" id="q4_yes" name="q4" value="Yes" />
+                    <label for="q4_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q4_no" name="q4" value="No" />
+                    <label for="q4_no" class="option-label">No</label>
+                    <input type="radio" id="q4_unsure" name="q4" value="Not Sure"/>
+                    <label for="q4_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">5. Si lo tienes, ¿haces revisiones periódicas del progreso?</span>
+                <div class="options-group">
+                    <input type="radio" id="q5_yes" name="q5" value="Yes" />
+                    <label for="q5_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q5_no" name="q5" value="No" />
+                    <label for="q5_no" class="option-label">No</label>
+                    <input type="radio" id="q5_unsure" name="q5" value="Not Sure"/>
+                    <label for="q5_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+
+            <div class="survey-btn-group">
+                <button type="button" class="btn next-btn" data-step="2"><span>Siguiente &rarr;</span></button>
+            </div>
+            <div class="error-message">
+                Por favor, responda a todas las preguntas antes de continuar.
+            </div>
+        </div>
+
+        <div id="step2" class="step" data-step="2">
+            <h2 class="section-header">2. Políticas & Evaluación de riesgos</h2>
+            <h3 class="subsection-header">Políticas</h3>
+            <div class="question-block">
+                <span class="question-text">6. ¿Tienes una política de uso de IA para todo el centro?</span>
+                <div class="options-group">
+                    <input type="radio" id="q6_yes" name="q6" value="Yes" />
+                    <label for="q6_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q6_no" name="q6" value="No" />
+                    <label for="q6_no" class="option-label">No</label>
+                    <input type="radio" id="q6_unsure" name="q6" value="Not Sure"
+                    />
+                    <label for="q6_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">7. Si la tienes, ¿está alineada con otras políticas (buenas prácticas, conducta, protección, etc.)?</span>
+                <div class="options-group">
+                    <input type="radio" id="q7_yes" name="q7" value="Yes" />
+                    <label for="q7_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q7_no" name="q7" value="No" />
+                    <label for="q7_no" class="option-label">No</label>
+                    <input type="radio" id="q7_unsure" name="q7" value="Not Sure"/>
+                    <label for="q7_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <h3 class="subsection-header">Evaluación de riesgos</h3>
+            <div class="question-block">
+                <span class="question-text">8. ¿Has evaluado los riesgos de las herramientas de IA aprobadas?</span>
+                <div class="options-group">
+                    <input type="radio" id="q8_yes" name="q8" value="Yes" />
+                    <label for="q8_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q8_no" name="q8" value="No" />
+                    <label for="q8_no" class="option-label">No</label>
+                    <input type="radio" id="q8_unsure" name="q8" value="Not Sure"/>
+                    <label for="q8_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">9. ¿Repites la evaluación cada vez que introduces una nueva herramienta?</span>
+                <div class="options-group">
+                    <input type="radio" id="q9_yes" name="q9" value="Yes" />
+                    <label for="q9_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q9_no" name="q9" value="No" />
+                    <label for="q9_no" class="option-label">No</label>
+                    <input type="radio" id="q9_unsure" name="q9" value="Not Sure"/>
+                    <label for="q9_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="survey-btn-group">
+                <button type="button" class="btn back-btn" data-step="1">
+                    &larr; Anterior
+                </button>
+                <button type="button" class="next-btn" data-step="3"><span>Siguiente &rarr;</span></button>
+            </div>
+            <div class="error-message">
+                Por favor, responda a todas las preguntas antes de continuar.
+            </div>
+        </div>
+
+        <div id="step3" class="step" data-step="3">
+            <h2 class="section-header">3. Salvaguardias técnicas</h2>
+            <h3 class="subsection-header">Filtrado</h3>
+            <div class="question-block">
+                <span class="question-text">10. ¿Has aplicado la política de IA al filtrado web?</span>
+                <div class="options-group">
+                    <input type="radio" id="q10_yes" name="q10" value="Yes" />
+                    <label for="q10_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q10_no" name="q10" value="No" />
+                    <label for="q10_no" class="option-label">No</label>
+                    <input type="radio" id="q10_unsure" name="q10" value="Not Sure"/>
+                    <label for="q10_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">11. ¿Tu filtrado bloquea contenido dañino generado por IA en tiempo real?</span>
+                <div class="question-subtext">
+                    Ejemplos:
+                    <ul>
+                        <li>Imágenes explícitas generadas por IA</li>
+                        <li>Deep Fakes dirigidos a estudiantes</li>
+                        <li>Artículos falsos creados por IA</li>
+                    </ul>
+                </div>
+                <div class="options-group">
+                    <input type="radio" id="q11_yes" name="q11" value="Yes" />
+                    <label for="q11_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q11_no" name="q11" value="No" />
+                    <label for="q11_no" class="option-label">No</label>
+                    <input type="radio" id="q11_unsure" name="q11" value="Not Sure"/>
+                    <label for="q11_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">12. ¿Puedes limitar el acceso a chatbots por edad o rol?</span>
+                <div class="options-group">
+                    <input type="radio" id="q12_yes" name="q12" value="Yes" />
+                    <label for="q12_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q12_no" name="q12" value="No" />
+                    <label for="q12_no" class="option-label">No</label>
+                    <input type="radio" id="q12_unsure" name="q12" value="Not Sure"/>
+                    <label for="q12_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">13. ¿Tienes visibilidad e informes sobre el uso de IA?</span>
+                <div class="options-group">
+                    <input type="radio" id="q13_yes" name="q13" value="Yes" />
+                    <label for="q13_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q13_no" name="q13" value="No" />
+                    <label for="q13_no" class="option-label">No</label>
+                    <input type="radio" id="q13_unsure" name="q13" value="Not Sure"/>
+                    <label for="q13_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <h3 class="subsection-header">Monitorización</h3>
+            <div class="question-block" id="q_monitoring_parent">
+                <span class="question-text">14. ¿Usas una herramienta para detectar estudiantes en riesgo?</span>
+                <div class="options-group">
+                    <input type="radio" id="q14_yes" name="q_mon_parent" value="Yes"/>
+                    <label for="q14_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q14_no" name="q_mon_parent" value="No"/>
+                    <label for="q14_no" class="option-label">No</label>
+                    <input type="radio" id="q14_unsure" name="q_mon_parent" value="Not Sure"/>
+                    <label for="q14_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div id="monitoring_details_container" class="collapse" aria-expanded="false">
+                <div class="question-block">
+                    <span class="question-text">15. ¿Detecta riesgos relacionados con IA?</span>
+                    <div class="question-subtext">
+                        Ejemplos:
+                        <ul>
+                            <li>Búsqueda de contenido inapropiado con IA</li>
+                            <li>Uso de IA para mensajes abusivos</li>
+                            <li>Estudiantes vulnerables que expresan autolesión o suicidio en chatbots</li>
+                        </ul>
+                    </div>
+                    <div class="options-group">
+                        <input type="radio" id="q15_yes" name="q15" value="Yes"/>
+                        <label for="q15_yes" class="option-label">Sí</label>
+                        <input type="radio" id="q15_no" name="q15" value="No"/>
+                        <label for="q15_no" class="option-label">No</label>
+                        <input type="radio" id="q15_unsure" name="q15" value="Not Sure"/>
+                        <label for="q15_unsure" class="option-label">No estoy seguro</label>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <span class="question-text">16. ¿Puede detectar señales sutiles en el uso de IA?</span>
+                    <div class="question-subtext">
+                        (Patrones que por separado no alertan, pero juntos sí)
+                    </div>
+                    <div class="options-group">
+                        <input type="radio" id="q16_yes" name="q16" value="Yes"/>
+                        <label for="q16_yes" class="option-label">Sí</label>
+                        <input type="radio" id="q16_no" name="q16" value="No"/>
+                        <label for="q16_no" class="option-label">No</label>
+                        <input type="radio" id="q16_unsure" name="q16" value="Not Sure"/>
+                        <label for="q16_unsure" class="option-label">No estoy seguro</label>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <span class="question-text">17. ¿El equipo solo recibe alertas cuando hay un riesgo real?</span>
+                    <div class="options-group">
+                        <input type="radio" id="q17_yes" name="q17" value="Yes">
+                        <label for="q17_yes" class="option-label">Sí</label>
+                        <input type="radio" id="q17_no" name="q17" value="No"/>
+                        <label for="q17_no" class="option-label">No</label>
+                        <input type="radio" id="q17_unsure" name="q17" value="Not Sure"/>
+                        <label for="q17_unsure" class="option-label">No estoy seguro</label>
+                    </div>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">18. ¿Revisas el almacenamiento en la nube en busca de contenido dañino generado por IA?</span>
+                <div class="options-group">
+                    <input type="radio" id="q18_yes" name="q18" value="Yes"/>
+                    <label for="q18_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q18_no" name="q18" value="No"/>
+                    <label for="q18_no" class="option-label">No</label>
+                    <input type="radio" id="q18_unsure" name="q18" value="Not Sure"/>
+                    <label for="q18_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="survey-btn-group">
+                <button type="button" class="btn back-btn" data-step="2">&larr; Anterior</button>
+                <button type="button" class="next-btn" data-step="4"><span>Siguiente &rarr;</span></button>
+            </div>
+            <div class="error-message">
+                Por favor, responda a todas las preguntas antes de continuar.
+            </div>
+        </div>
+
+        <div id="step4" class="step" data-step="4">
+            <h2 class="section-header">4. Educación</h2>
+            <h3 class="subsection-header">Formación del personal</h3>
+            <div class="question-block">
+                <span class="question-text">19. ¿Todo el personal ha recibido formación sobre el uso de IA y el código de conducta?</span>
+                <div class="options-group">
+                    <input type="radio" id="q19_yes" name="q19" value="Yes"/>
+                    <label for="q19_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q19_no" name="q19" value="No"/>
+                    <label for="q19_no" class="option-label">No</label>
+                    <input type="radio" id="q19_unsure" name="q19" value="Not Sure"/>
+                    <label for="q19_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">20. ¿El personal sabe usar herramientas de IA de forma eficaz?</span>
+                <div class="question-subtext">
+                    Ejemplos:
+                    <ul>
+                        <li>Plataformas adaptativas como CENTURY</li>
+                        <li>Asistentes como ChatGPT</li>
+                        <li>Feedback automático como Gradescope</li>
+                        <li>Planificación con TeacherMatic</li>
+                    </ul>
+                </div>
+                <div class="options-group">
+                    <input type="radio"id="q20_yes"name="q20"value="Yes"/>
+                    <label for="q20_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q20_no" name="q20" value="No"/>
+                    <label for="q20_no" class="option-label">No</label>
+                    <input type="radio" id="q20_unsure" name="q20" value="Not Sure"/>
+                    <label for="q20_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">21. ¿El personal conoce la política de protección de datos aplicada a la IA?</span>
+                <div class="options-group">
+                    <input type="radio" id="q21_yes" name="q21" value="Yes"/>
+                    <label for="q21_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q21_no" name="q21" value="No"/>
+                    <label for="q21_no" class="option-label">No</label>
+                    <input type="radio" id="q21_unsure" name="q21" value="Not Sure"/>
+                    <label for="q21_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <h3 class="subsection-header">
+                Alfabetización en IA
+            </h3>
+            <div class="question-block">
+                <span class="question-text">22. ¿Tienes una política clara sobre evaluación y tareas con IA para estudiantes y personal?</span>
+                <div class="options-group">
+                    <input type="radio" id="q22_yes" name="q22" value="Yes"/>
+                    <label for="q22_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q22_no" name="q22" value="No"/>
+                    <label for="q22_no" class="option-label">No</label>
+                    <input type="radio" id="q22_unsure" name="q22" value="Not Sure"/>
+                    <label for="q22_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">23. ¿Has definido cómo enseñar sobre IA según la edad del alumnado?</span>
+                <div class="options-group">
+                    <input type="radio" id="q23_yes" name="q23" value="Yes">
+                    <label for="q23_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q23_no" name="q23" value="No"/>
+                    <label for="q23_no" class="option-label">No</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">24. ¿Sabes qué herramientas usarás para trabajar este tema con los estudiantes?</span>
+                <div class="options-group">
+                    <input type="radio" id="q24_yes" name="q24" value="Yes"/>
+                    <label for="q24_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q24_no" name="q24" value="No"/>
+                    <label for="q24_no" class="option-label">No</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">25. ¿Tienes claro cómo se usarán y qué formación necesitarán?</span>
+                <div class="options-group">
+                    <input type="radio" id="q25_yes" name="q25" value="Yes"/>
+                    <label for="q25_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q25_no" name="q25" value="No"/>
+                    <label for="q25_no" class="option-label">No</label>
+                </div>
+            </div>
+            <div class="survey-btn-group">
+                <button type="button" class="btn back-btn" data-step="3">&larr; Anterior</button>
+                <button type="button" class="btn next-btn" data-step="5"><span>Siguiente &rarr;</span></button>
+            </div>
+            <div class="error-message">
+                Por favor, responda a todas las preguntas antes de continuar.
+            </div>
+        </div>
+
+        <div id="step5" class="step" data-step="5">
+            <h2 class="section-header">5. Participación de la comunidad</h2>
+            <div class="question-block">
+                <span class="question-text">26. ¿Has dado información y orientación a familias sobre el uso seguro de la IA?</span>
+                <div class="options-group">
+                    <input type="radio" id="q26_yes" name="q26" value="Yes"/>
+                    <label for="q26_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q26_no" name="q26" value="No"/>
+                    <label for="q26_no" class="option-label">No</label>
+                    <input type="radio" id="q26_unsure" name="q26" value="Not Sure"/>
+                    <label for="q26_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <span class="question-text">27. ¿Compartes actualizaciones periódicas sobre protección digital, incluida la IA?</span>
+                <div class="options-group">
+                    <input type="radio" id="q27_yes" name="q27" value="Yes"/>
+                    <label for="q27_yes" class="option-label">Sí</label>
+                    <input type="radio" id="q27_no" name="q27" value="No"/>
+                    <label for="q27_no" class="option-label">No</label>
+                    <input type="radio" id="q27_unsure" name="q27" value="Not Sure"/>
+                    <label for="q27_unsure" class="option-label">No estoy seguro</label>
+                </div>
+            </div>
+
+            <div class="survey-btn-group">
+                <button type="button" class="btn back-btn" data-step="4">&larr; Anterior</button>
+                <button type="button" id="submitBtn" class="submit-btn"><span>Lista de verificación completa</span></button>
+            </div>
+            <div class="error-message">
+                Por favor, responda a todas las preguntas para continuar.
+            </div>
+        </div>
+    </form>
+
+    <div id="results">
+        <div class="total-score-box">
+            <h3>Puntuación general</h3>
+            <div class="big-score" id="totalScoreValue">Cargando...</div>
+            <div id="totalScoreMax">Análisis ponderado</div>
+        </div>
+
+        <div class="results-intro">
+            <p>
+                En función de sus respuestas, este es su grado de preparación para los riesgos que plantea la IA.
+            </p>
+        </div>
+
+        <div class="score-card">
+            <div class="score-header">
+                <span class="score-title">Proteger</span>
+            </div>
+            <div class="score-bar-bg">
+                <div class="score-bar-fill" id="protectBar"></div>
+            </div>
+            <div class="score-status" id="protectStatus"></div>
+            <div class="feedback-dropdown">
+                <div class="summary" data-bs-toggle="collapse" href="#protectFeedback" role="button" aria-expanded="false" aria-controls="protectFeedback">Ver recomendaciones</div>
+                <div class="feedback-text collapse" id="protectFeedback"></div>
+            </div>
+        </div>
+
+        <div class="score-card">
+            <div class="score-header">
+                <span class="score-title">Detectar</span>
+            </div>
+            <div class="score-bar-bg">
+                <div class="score-bar-fill" id="detectBar"></div>
+            </div>
+            <div class="score-status" id="detectStatus"></div>
+            <div class="feedback-dropdown">                
+                <div class="summary" data-bs-toggle="collapse" href="#detectFeedback" role="button" aria-expanded="false" aria-controls="detectFeedback">Ver recomendaciones</div>
+                <div class="feedback-text collapse" id="detectFeedback"></div>
+            </div>
+        </div>
+
+        <div class="score-card">
+            <div class="score-header">
+                <span class="score-title">Educar</span>
+            </div>
+            <div class="score-bar-bg">
+                <div class="score-bar-fill" id="empowerBar"></div>
+            </div>
+            <div class="score-status" id="empowerStatus"></div>
+            <div class="feedback-dropdown">
+                <div class="summary" data-bs-toggle="collapse" href="#empowerFeedback" role="button" aria-expanded="false" aria-controls="empowerFeedback">Ver recomendaciones</div>
+                <div class="feedback-text collapse" id="empowerFeedback"></div>
+            </div>
+        </div>
+
+        <div class="summary-dropdown" id="summaryAccordion">
+            <div class="summary" data-bs-toggle="collapse" href="#summaryList" role="button" aria-expanded="false" aria-controls="summaryList">Ver todas tus respuestas</div>
+            <div class="summary-box collapse" id="summaryList"></div>
+        </div>
+
+        <div class="cta-box">
+            <h3>Cómo mejorar tu protección contra la IA con Qoria</h3>
+            <p>
+                Qoria Filter, Monitor y Online Safety Hub están diseñados desde cero para abordar directamente los riesgos de la IA. Solicite una demostración informal y sin compromiso para compararlos con sus soluciones actuales y descubrir todas las posibilidades.
+            </p>
+            <a href="{{content_by_id(module.follow_up_page).absolute_url}}" target="_blank" class="btn cta-btn">Solicita una demostración</a>
+        </div>
+        <button id="printBtn" class="submit-btn" style="width: 100%; margin-top: 20px"><span>Imprimir/Guardar resultados</span></button>
+    </div>
+</div>
+
+<div class="modal fade" id="surveyFormModal" tabindex="-1" aria-labelledby="surveyFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-gradient-primary text-white">
+            <div class="modal-header border-0 p-3">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-5 py-4 pt-2">
+                <div id="formHeader">
+                    <h3 class="mb-6 border-top border-bottom border-dark py-3 border-2 fw-semibold px-2 d-none">
+                        ¡Casi llegamos!
+                    </h3>
+                    <p class="lead d-none">
+                        Complete el siguiente formulario para acceder a los resultados personalizados de su lista de verificación de IA.
+                    </p>
+                </div>
+                <div id="hubspotFormTarget"></div>
+                {% if is_in_page_editor || request.query_dict.hs_preview %}
+                    <button type="button" id="skipToResults" class="submit-btn"><span>Skip to results</span></button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ai-survey-progress-container">
+    <div class="progress-wrapper">
+        <div class="progress w-100" role="progressbar" aria-label="AI Survey Progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" id="progressBar" style="width: 20%"></div>
+        </div>
+        <div class="progress-text" id="progressText">Paso 1 de 5</div>
+    </div>
+</div>

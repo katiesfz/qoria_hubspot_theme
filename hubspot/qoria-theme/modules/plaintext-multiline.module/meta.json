@@ -1,0 +1,18 @@
+{
+  "label": "Multi-line Text",
+  "css_assets": [],
+  "external_js": [],
+  "icon" : "../../images/module-icons/richtext-module-icon.svg",
+  "global": false,
+  "help_text": "",
+  "host_template_types": [
+    "PAGE",
+    "BLOG_POST",
+    "BLOG_LISTING",
+    "EMAIL"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "tags": [],
+  "is_available_for_new_content": true
+}

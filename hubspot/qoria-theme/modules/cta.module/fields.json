@@ -1,0 +1,322 @@
+[ {
+  "id" : "alignment",
+  "name" : "alignment",
+  "display_width" : null,
+  "label" : "Alignment",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+}, {
+  "id" : "small_alignment",
+  "name" : "small_alignment",
+  "display_width" : null,
+  "label" : "Alignment on small screens",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [  [ "default", "Default" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "default": "default",
+  "type" : "choice"
+}, {
+  "id" : "link",
+  "name" : "link",
+  "display_width" : null,
+  "label" : " Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "www.hubspot.com",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "download",
+  "name" : "download",
+  "display_width" : null,
+  "label" : "Download",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "link",
+      "controlling_value_regex" : "EXTERNAL",
+      "property" : "url.type",
+      "operator" : "EQUAL",
+      "access" : null
+    },{
+      "controlling_field" : null,
+      "controlling_field_path" : "link",
+      "controlling_value_regex" : "FILE",
+      "property" : "url.type",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : []
+  },
+  "default" : false
+},{
+  "id" : "download_file",
+  "name" : "download_file",
+  "display_width" : null,
+  "label" : "Download name",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [{
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "EXTERNAL",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      },{
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "FILE",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      }]
+    }]
+  },
+  "default" : ""
+}, {
+  "id" : "download_on_page_load",
+  "name" : "download_on_page_load",
+  "display_width" : null,
+  "label" : "Download automatically",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [{
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "EXTERNAL",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      },{
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "FILE",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      }]
+    }]
+  },
+  "default" : false
+}, {
+  "id" : "button_text",
+  "name" : "button_text",
+  "display_width" : null,
+  "label" : "Button text",
+  "required" : true,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Add a button link here"
+}, {
+  "id" : "button_colour",
+  "name" : "button_colour",
+  "display_width" : null,
+  "label" : "Button Colour",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "primary"
+}, {
+  "id" : "button_style",
+  "name" : "button_style",
+  "display_width" : null,
+  "label" : "Button Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "-", "Normal" ], [ "-outline-", "Outline" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "-"
+}, {
+  "id" : "text_colour",
+  "name" : "text_colour",
+  "display_width" : null,
+  "label" : "Text colour",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "button_style",
+    "controlling_value_regex" : "-",
+    "property" : null,
+    "operator" : "NOT_EQUAL",
+    "access" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "text-white", "Light" ], [ "text-dark", "Dark" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "text-dark"
+}, {
+  "id" : "button_size",
+  "name" : "button_size",
+  "display_width" : null,
+  "label" : "Button Size",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "btn-sm", "Small" ], [ " ", "Standard" ], [ "btn-lg", "Large" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : " "
+}, {
+  "id" : "word_wrap",
+  "name" : "word_wrap",
+  "display_width" : null,
+  "label" : "Enable word wrap",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "advanced",
+  "name" : "advanced",
+  "display_width" : null,
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "advanced.additional_classes",
+    "name" : "additional_classes",
+    "display_width" : null,
+    "label" : "Additional Classes",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "advanced.trigger_modal",
+    "name" : "trigger_modal",
+    "display_width" : null,
+    "label" : "Trigger modal",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "advanced.modal_id",
+    "name" : "modal_id",
+    "display_width" : null,
+    "label" : "Modal ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "trigger_modal" : false
+  }
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+} ]

@@ -1,0 +1,21 @@
+{
+  "global" : false,
+  "placeholder" : {
+    "show_module_icon" : true,
+    "title" : "Carousel (Swiper)"
+  },
+  "icon" : "../../images/module-icons/gallery-module-icon.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/swiper/swiper-bundle.css",
+    "name" : "swiper-bundle.min.css"
+  } ],
+  "js_assets" : [{
+    "autoload" : true,
+    "path" : "../../js/swiper/swiper-bundle.js",
+    "name" : "swiper-bundle.min.js"
+  } ],
+  "label" : "Carousel (Swiper)",
+  "is_available_for_new_content" : false
+}

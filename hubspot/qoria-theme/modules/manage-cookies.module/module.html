@@ -1,0 +1,15 @@
+<button type="button" class="{{module.classes}} d-none" id="{{name|replace('-','')}}" onClick="manageCookies()">{{module.button_label}}</button>
+
+{% require_js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const _hsq = window._hsq = window._hsq || [];
+            const manageCookiesBtn = document.getElementById('{{name|replace('-','')}}');
+            _hsq.push(['addPrivacyConsentListener', function(consent) {
+                if (consent.categories) {
+                manageCookiesBtn.classList.remove('d-none');
+                }
+            }]);
+        });
+</script>
+{% end_require_js %}

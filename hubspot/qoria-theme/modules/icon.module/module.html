@@ -1,0 +1,21 @@
+<!-- module html  -->
+
+{% if module.icon.custom_image.src %}
+    {% set sizeAttrs = 'width="{{ module.icon.custom_image.width }}" height="{{ module.icon.custom_image.height }}"' %}
+    {% if module.icon.custom_image.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.icon.custom_image.width }}" height="{{ module.icon.custom_image.height }}" style="max-width: 100%; height: auto;"' %}
+    {% elif module.icon.custom_image.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.icon.custom_image.max_width }}" height="{{ module.icon.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+    {% endif %}
+     {% set loadingAttr = module.icon.custom_image.loading != 'disabled' ? 'loading="{{ module.icon.custom_image.loading }}"' : '' %}
+    <img src="{{ module.icon.custom_image.src }}" alt="{{ module.icon.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+ {% else %}
+   <div style="content-sizing: border-box;" class="p-3 d-flex justify-content-center align-items-center">
+     {% if module.icon.icon_code %}
+      {% set iconCode = "fa-" ~ module.icon.icon_code %}
+     {% else %}
+       {% set iconCode = "fa-" ~ module.icon.icon_field.name|lower|replace(" ", "-") %}
+     {% endif %}
+      <i class="{{ module.icon.icon_style }} {{ module.icon.icon_size }} {{ iconCode }}"></i>
+   </div>
+ {% endif %}

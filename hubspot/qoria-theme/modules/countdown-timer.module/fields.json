@@ -1,0 +1,69 @@
+[
+  {
+    "name": "end_date",
+    "label": "End date",
+    "required": false,
+    "locked": false,
+    "type": "date",
+    "default": 1577854800000
+  },
+  {
+    "name": "show_units",
+    "label": "Show units",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "display": "toggle",
+    "default": false
+  },
+  {
+    "type": "group",
+    "name": "advanced",
+    "label": "Advanced styling",
+    "expanded": true,
+    "children": [
+        {
+        "name": "unit_classes",
+        "label": "Unit classes",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": ""
+      },
+        {
+        "name": "unit_styling",
+        "label": "Unit styling",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": ""
+      },{
+        "label": "Number classes",
+        "name": "number_classes",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": ""
+      },{
+        "name": "number_styling",
+        "label": "Number styling",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "global" : false,
+  "host_template_types" : [ "PAGE", "BLOG_LISTING" ],
+  "module_id" : 127977590797,
+  "label" : "Featured Article",
+  "is_available_for_new_content" : true
+}

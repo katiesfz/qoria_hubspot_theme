@@ -1,0 +1,167 @@
+{
+  "crmobjectproperty_field.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.label" : {
+    "message" : "CRM object property",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "follow_up_type_automation.label" : {
+    "message" : "Додати до робочого циклу",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.help_text" : {
+    "message" : "Щоб надіслати наступне електронне повідомлення, переконайтеся, що ввімкнено параметр «Налаштувати контакти, створені як маркетингові». Ви можете керувати цим у налаштуваннях. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Дізнатися більше</a>",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.label" : {
+    "message" : "Відправити наступний електронний лист",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.default.message" : {
+    "message" : "Дякуємо за надсилання форми.",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.label" : {
+    "message" : "Форма",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form_follow_ups_workflow_id.label" : {
+    "message" : "Робочий цикл",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "form",
+    "description" : null,
+    "placeholders" : null
+  },
+  "notifications_are_overridden.label" : {
+    "message" : "Надіслати на зазначені адреси електронної пошти повідомлення про форми замість стандартних форм",
+    "description" : "",
+    "placeholders" : null
+  },
+  "notifications_override_email_addresses.label" : {
+    "message" : "Адреси електронної пошти",
+    "description" : "",
+    "placeholders" : null
+  },
+  "override_values.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.label" : {
+    "message" : "Field group",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.label" : {
+    "message" : "Property ID",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.label" : {
+    "message" : "Value",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "sfdc_campaign.label" : {
+    "message" : "Кампанія з продажу товарів",
+    "description" : "",
+    "placeholders" : null
+  },
+  "simple_email_for_live_id.label" : {
+    "message" : "Електронне повідомлення",
+    "description" : "",
+    "placeholders" : null
+  }
+}

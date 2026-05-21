@@ -1,0 +1,393 @@
+[{
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "name" : "background_colour",
+    "display_width" : null,
+    "label" : "Background Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-primary text-white", "Primary" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-teal text-white", "Teal" ], [ "bg-indigo text-white", "Indigo" ], [ "bg-orange text-white", "Orange" ], [ "bg-red text-white", "Red" ], [ "bg-dark text-white", "Dark" ], [ "bg-white text-dark", "White" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "bg-white text-dark"
+  }, {
+    "name" : "background_image",
+    "display_width" : null,
+    "label" : "Background Image",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "q-tail-1", "Q Tail 1" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "style.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "style.shadow_style",
+    "name" : "shadow_style",
+    "display_width" : null,
+    "label" : "Shadow style",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "style.shadow",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "shadow-sm", "Small" ], [ "shadow", "Medium" ], [ "shadow-lg", "Large" ], [ "section-shadow", "Pullout shadow" ], [ "section-shadow-sm", "Small pullout shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "section-shadow"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacing_field" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    },
+    "background_colour" : "none",
+    "background_image" : "none",
+    "overlay" : true,
+    "shadow" : true
+  }
+}, {
+  "id" : "text",
+  "name" : "text",
+  "display_width" : null,
+  "label" : "Body text",
+  "required" : false,
+  "locked" : false,
+  "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+  "type" : "richtext",
+  "default" : "<h2><strong>Thank you!</strong></h2><p class='fs-4 lh-sm'>Please click the download button if your download doesn’t start automatically.</p>"
+}, {
+  "id" : "cta",
+  "name" : "cta",
+  "display_width" : null,
+  "label" : "CTA",
+  "required" : false,
+  "locked" : false,
+  "show_advanced_rel_options" : false,
+  "type" : "group",
+  "children": [{
+    "id" : "link",
+    "name" : "link",
+    "display_width" : null,
+    "label" : " Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "www.hubspot.com",
+        "content_id" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "download",
+    "name" : "download",
+    "display_width" : null,
+    "label" : "Download",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta.link",
+        "controlling_value_regex" : "EXTERNAL",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      },{
+        "controlling_field" : null,
+        "controlling_field_path" : "cta.link",
+        "controlling_value_regex" : "FILE",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : []
+    },
+    "default" : false
+  },{
+    "id" : "download_file",
+    "name" : "download_file",
+    "display_width" : null,
+    "label" : "Download name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta.download",
+        "controlling_value_regex" : "true",
+        "property" : "",
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [{
+        "boolean_operator" : "OR",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "cta.link",
+          "controlling_value_regex" : "EXTERNAL",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        },{
+          "controlling_field" : null,
+          "controlling_field_path" : "cta.link",
+          "controlling_value_regex" : "FILE",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        }]
+      }]
+    },
+    "default" : ""
+  }, {
+    "id" : "download_on_page_load",
+    "name" : "download_on_page_load",
+    "display_width" : null,
+    "label" : "Download automatically",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "visibility_rules" : "ADVANCED",
+    "advanced_visibility" : {
+      "boolean_operator" : "AND",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta.download",
+        "controlling_value_regex" : "true",
+        "property" : "",
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [{
+        "boolean_operator" : "OR",
+        "criteria" : [ {
+          "controlling_field" : null,
+          "controlling_field_path" : "cta.link",
+          "controlling_value_regex" : "EXTERNAL",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        },{
+          "controlling_field" : null,
+          "controlling_field_path" : "cta.link",
+          "controlling_value_regex" : "FILE",
+          "property" : "url.type",
+          "operator" : "EQUAL",
+          "access" : null
+        }]
+      }]
+    },
+    "default" : true
+  }, {
+    "id" : "button_text",
+    "name" : "button_text",
+    "display_width" : null,
+    "label" : "Button text",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Download"
+  }, {
+    "id" : "button_colour",
+    "name" : "button_colour",
+    "display_width" : null,
+    "label" : "Button Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "secondary"
+  }, {
+    "id" : "button_style",
+    "name" : "button_style",
+    "display_width" : null,
+    "label" : "Button Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "-", "Normal" ], [ "-outline-", "Outline" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "-"
+  }, {
+    "id" : "text_colour",
+    "name" : "text_colour",
+    "display_width" : null,
+    "label" : "Text colour",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "cta.button_style",
+      "controlling_value_regex" : "-",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "text-white", "Light" ], [ "text-dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "text-dark"
+  }, {
+    "id" : "button_size",
+    "name" : "button_size",
+    "display_width" : null,
+    "label" : "Button Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "btn-sm", "Small" ], [ " ", "Standard" ], [ "btn-lg", "Large" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
+  }, {
+    "id" : "advanced",
+    "name" : "advanced",
+    "display_width" : null,
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "advanced.additional_classes",
+      "name" : "additional_classes",
+      "display_width" : null,
+      "label" : "Additional Classes",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "trigger_modal" : false
+    }
+  }]
+}, {
+  "id" : "post_text",
+  "name" : "post_text",
+  "display_width" : null,
+  "label" : "Post-CTA text",
+  "required" : false,
+  "locked" : false,
+  "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+  "type" : "richtext",
+  "default" : "<p><strong>Having trouble? <a href='/contact-us' rel='noopener' target='_blank' class='text-decoration-none'>Please get in touch.</a></strong></p>"
+}, {
+  "id" : "back",
+  "name" : "back",
+  "display_width" : null,
+  "label" : "Include back link",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+},{
+  "id" : "image",
+  "name" : "image",
+  "display_width" : null,
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : true,
+  "type" : "image",
+  "default" : {
+    "loading" : "lazy"
+  }
+} ]

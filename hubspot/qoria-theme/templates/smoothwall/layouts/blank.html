@@ -1,0 +1,41 @@
+<!--
+    templateType: none
+-->
+<!doctype html>
+<html>
+  <head>  
+    <meta charset="utf-8">
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css'),{ async: true, defer: true }) }}
+    {{ standard_header_includes }}
+
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css"),{ defer: true }) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css"),{ async: true }) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css"),{ async: true }) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css"),{ async: true }) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css"),{ async: true }) }}
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css"),{ async: true }) }} 
+  {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/v5-font-face.min.css"),{ async: true }) }} 
+
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#pageContents">
+  
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJQTKNC9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {% block header %}
+    {% endblock header %}
+    <div class="content-wrapper">
+      {% block body %}
+      {% endblock body %}
+    </div>
+   
+    {% block footer %}
+    {% endblock footer %}
+    {{ standard_footer_includes }}
+    {{ require_js(get_asset_url('/q-theme/js/bootstrap.bundle.min.js')) }}
+  </body>
+</html>

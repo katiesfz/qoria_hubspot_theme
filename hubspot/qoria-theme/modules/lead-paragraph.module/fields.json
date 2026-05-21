@@ -1,0 +1,32 @@
+[
+  {
+    "default": "<p>Hello, world!</p>",
+    "label": "Rich text field",
+    "locked": false,
+    "name": "text",
+    "required": false,
+    "type": "richtext",
+    "enabled_features" : ["indents", "lists", "standard_emphasis", "advanced_emphasis", "alignment", "link", "personalize", "charmap", "nonbreaking_space", "source_code"],
+    "validation_regex": ""
+  },{
+    "id" : "style",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "Style",
+    "required" : false,
+    "locked" : false,
+    "children" : [  {
+      "id" : "style.spacing_field",
+      "name" : "spacing_field",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "default" : { }
+    }  ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } 
+]

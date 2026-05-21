@@ -1,0 +1,58 @@
+{% set notificationBars = [] %}
+
+{% for item in module.notification_bar %}
+  {% set notificationBarObj = {} %}
+	{% if item.notification_bar %}
+    {% if item.targeting_options.targeting == "inclusion" %}
+      {% if content_id is within item.targeting_options.pages %}
+        {% do notificationBarObj.update({"show" : "true"}) %}
+      {% endif %}
+      {% for pageUrl in item.targeting_options.url %}
+        {% if request.full_url is string_containing pageUrl %}
+          {% do notificationBarObj.update({"show" : "true"}) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if item.targeting_options.targeting == "exclusion" %}
+      {% do notificationBarObj.update({"show" : "true"}) %}
+      {% if content_id is within item.targeting_options.pages %}
+        {% do notificationBarObj.update({"show" : "false"}) %}
+      {% endif %}
+      {% for pageUrl in item.targeting_options.url %}
+        {% if request.full_url is string_containing pageUrl %}
+          {% do notificationBarObj.update({"show" : "false"}) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if notificationBarObj.show == "true" %}
+      {% set href = item.button.button_link.url.href %}
+      {% if item.button.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      {% set buttonExtras = "" %}
+		  {% if item.button.button_link.open_in_new_tab %}
+        {% set buttonExtras = buttonExtras ~ ' target="_blank"' %}
+      {% endif %}
+		  {% if item.button.button_link.rel %}
+        {% set buttonExtras = buttonExtras ~ 'rel="' ~ item.button.button_link.rel ~ '"' %}
+      {% endif %}
+      {% do notificationBarObj.update({"content" : item.copy, "theme" : item.theme, "button_label" : item.button.button_label, "button_href" : href, "button_extras" : buttonExtras }) %}
+      <!-- {{ notificationBarObj|pprint }} -->    
+    {% endif %}
+    {% do notificationBars.append(notificationBarObj) %}
+	{% endif %}
+{% endfor %}
+
+{% for notificationBarObj in notificationBars %}
+  {% if notificationBarObj.show == "true" %}
+  <!-- Show notification bar -->
+  <div id="notificationBar" class="w-100 shadow sticky-top notification-bar">
+    <div class="w-100 py-2 text-center d-flex flex-column flex-md-row justify-content-center align-items-center small {{ notificationBarObj.theme }}">
+      {{ notificationBarObj.content }}
+      {% if notificationBarObj.button_label %}
+        <a href="{{notificationBarObj.button_href}}" class="btn btn-sm btn-light mx-2">{{ notificationBarObj.button_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}

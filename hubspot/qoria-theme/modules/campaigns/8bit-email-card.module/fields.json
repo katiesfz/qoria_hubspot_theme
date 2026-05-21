@@ -1,0 +1,114 @@
+[
+  {
+    "id" : "accent_colour",
+    "name" : "accent_colour",
+    "display_width" : null,
+    "label" : "Accent Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "#58b78e", "Teal" ], [ "#515ba5", "Indigo" ], [ "#F2C464", "Orange" ], [ "#D96A71", "Red" ], [ "8DC9E6", "Blue" ], [ "#4D4D4D", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "#515ba5"
+  }, {
+    "id" : "content",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : ""
+  }, {
+    "id" : "link",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "id" : "link_label",
+    "name" : "link_label",
+    "display_width" : null,
+    "label" : "Link Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "cta_colour",
+    "name" : "cta_colour",
+    "display_width" : null,
+    "label" : "CTA Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "#58b78e", "Teal" ], [ "#515ba5", "Indigo" ], [ "#F2C464", "Orange" ], [ "#D96A71", "Red" ], [ "8DC9E6", "Blue" ], [ "#4D4D4D", "Dark" ], [ "#f8f8f8", "Light" ]  ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "#58b78e"
+  }, {
+    "id" : "cta_shadow_colour",
+    "name" : "cta_shadow_colour",
+    "display_width" : null,
+    "label" : "CTA Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "#58b78e", "Teal" ], [ "#515ba5", "Indigo" ], [ "#F2C464", "Orange" ], [ "#D96A71", "Red" ], [ "8DC9E6", "Blue" ], [ "#4D4D4D", "Dark" ], [ "#f8f8f8", "Light" ]  ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "#515ba5"
+  }, {
+    "id" : "cta_size",
+    "name" : "cta_size",
+    "display_width" : null,
+    "label" : "CTA Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "btn-sm", "Small" ], [ " ", "Medium" ], [ "btn-lg", "Large" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
+  },{
+    "id" : "cta_alignment",
+    "name" : "cta_alignment",
+    "display_width" : null,
+    "label" : "CTA alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "type" : "choice",
+    "default" : "inherit"
+  }
+]
