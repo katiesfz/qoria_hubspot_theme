@@ -211,9 +211,12 @@ $light: $gray-100;
 $dark:  $gray-900;
 
 $box-shadow-lg:               0 1rem 3rem rgba(0, 0, 0, .20);
+$box-shadow-md:               0 .5rem 1rem rgba(0, 0, 0, .15);
 $box-shadow:                  $box-shadow-lg;
 $box-shadow-sm:               0 .125rem .25rem rgba(var(--#{$prefix}body-color-rgb), .075) !default;
 $box-shadow-inset:            inset 0 1px 2px rgba(var(--#{$prefix}body-color-rgb), .075) !default;
+
+
 
 $border-radius: 4px;
 $border-radius-lg: 10px;
@@ -761,6 +764,19 @@ $caret-spacing:               0.5em;
 // popovers
 $popover-border-width:              0rem;
 $popover-border-radius:             map-get($spacers, 1);
+
+
+// progress-variables
+$progress-height:                   1rem !default;
+$progress-font-size:                $font-size-base * .75 !default;
+$progress-bg:                       var(--#{$prefix}secondary-bg) !default;
+$progress-border-radius:            var(--#{$prefix}border-radius) !default;
+$progress-box-shadow:               var(--#{$prefix}box-shadow-inset) !default;
+$progress-bar-color:                $white !default;
+$progress-bar-bg:                   $primary !default;
+$progress-bar-animation-timing:     1s linear infinite !default;
+$progress-bar-transition:           width .6s ease !default;
+
 
 // video cards
 

@@ -485,16 +485,14 @@
         color: $white;
         box-shadow: $box-shadow-lg;
 
-        h3 {
-            margin-bottom: 1rem;
-            font-size: $h4-font-size;
-            font-weight: $font-weight-bold;
-        } 
-
-        p {
+        div.copy {
             margin-bottom: 2rem;
-            font-size: $font-size-base;
             opacity: 0.95;
+            
+            p {
+                margin-bottom: 0.5em;
+            }
+
         }
 
         .cta-btn {

@@ -312,6 +312,7 @@ $css-col-counts: 2,3,4,5;
 
  // get backgrounds to always be under content
  section {z-index: 0;}
+
 .container, 
 .container-fluid, 
 .container-xxl, 
@@ -319,7 +320,9 @@ $css-col-counts: 2,3,4,5;
 .container-lg, 
 .container-md, 
 .container-sm {
-    z-index: 1;
+    &:not(.main) {
+        z-index: 1;
+    }
 }
 
 // colours 

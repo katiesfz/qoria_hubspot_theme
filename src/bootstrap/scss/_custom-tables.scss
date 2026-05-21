@@ -53,3 +53,68 @@
     }
   }
   
+
+/* .table-magic {
+  @include media-breakpoint-down(sm) {
+    --#{$prefix}table-striped-bg: var(--#{$prefix}table-bg);
+    --#{$prefix}table-accent-bg: var(--#{$prefix}table-bg);
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: map-get($spacers, 5);
+      padding-bottom: map-get($spacers, 5);
+      gap: map-get($spacers, 2);
+      border-bottom-width: var(--q-border-width);
+    }
+
+    td {
+      --#{$prefix}border-width: 0;
+      padding: 0;
+
+      &:before {
+        content: attr(data-label raw-string) ": ";
+        font-weight: bold;
+      }
+    }
+  } 
+} */
+
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-down($breakpoint) {
+    .table-magic#{$infix} {
+      --#{$prefix}table-striped-bg: var(--#{$prefix}table-bg);
+      --#{$prefix}table-accent-bg: var(--#{$prefix}table-bg);
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: map-get($spacers, 5);
+        padding-bottom: map-get($spacers, 5);
+        gap: map-get($spacers, 2);
+        border-bottom-width: var(--q-border-width);
+      }
+
+      td {
+        --#{$prefix}border-width: 0;
+        padding: 0;
+
+        &:before {
+          content: attr(data-label raw-string) ": ";
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
