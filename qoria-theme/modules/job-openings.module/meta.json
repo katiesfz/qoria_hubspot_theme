@@ -1,8 +1,0 @@
-{
-  "global" : true,
-  "smart_type" : "NOT_SMART",
-  "host_template_types" : [ "PAGE" ],
-  "module_id" : 114969642050,
-  "label" : "Job Openings",
-  "is_available_for_new_content" : true
-}
