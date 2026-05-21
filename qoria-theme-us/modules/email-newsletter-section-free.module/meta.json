@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "EMAIL" ],
-  "host_template_types" : [ "EMAIL" ],
-  "module_id" : 144006051171,
-  "label" : "Qoria Newsletter Sections - Expert",
-  "is_available_for_new_content" : false
-}

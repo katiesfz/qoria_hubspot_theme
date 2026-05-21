@@ -1,7 +1,0 @@
-{{ '<div style="{{module.style.spacing_field.css}}">' if module.style.spacing_field.css != "" }}
-{% if module.heading_tag == "h1" %}
-<h2 class="h1 text-{{module.style.colour}} {{ "text-decoration-partial-underline" if module.style.heading_underline }} text-{{ module.style.textalignment }}">{{module.heading|replace("p>","div>")}}</h2>
-{% else %}
-<{{module.heading_tag}} class="{{ "text-decoration-partial-underline" if module.style.heading_underline }} text-{{ module.style.textalignment }} text-{{module.style.colour}}" style="{{module.style.spacing_field.css}}">{{module.heading|replace("p>","div>")}}</{{module.heading_tag}}>
-{% endif %}
-{{ '</div>' if module.style.spacing_field.css != "" }}

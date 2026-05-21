@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "EMAIL" ],
-  "host_template_types" : [ "EMAIL" ],
-  "module_id" : 144006050670,
-  "label" : "Qoria Newsletter Section",
-  "is_available_for_new_content" : true
-}

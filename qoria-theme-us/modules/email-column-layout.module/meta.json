@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "EMAIL" ],
-  "host_template_types" : [ "EMAIL" ],
-  "module_id" : 171956419984,
-  "label" : "Qoria Email Columns",
-  "is_available_for_new_content" : true
-}

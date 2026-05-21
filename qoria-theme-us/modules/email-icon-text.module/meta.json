@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "EMAIL" ],
-  "host_template_types" : [ "EMAIL" ],
-  "module_id" : 144006720513,
-  "label" : "Icon with Text",
-  "is_available_for_new_content" : true
-}
