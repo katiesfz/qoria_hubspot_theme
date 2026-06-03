@@ -19,7 +19,7 @@
   "show_loading" : false,
   "type" : "image",
   "default" : {
-    "src" : "{{get_asset_url('../../images/qoria/qoria-logo-teal.png')}}",
+    "src" : "{{get_asset_url('../../images/qoria/logos/qoria-logo-teal.png')}}",
     "alt" : "Qoria",
     "loading" : "lazy",
     "width" : 118,

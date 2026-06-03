@@ -2,7 +2,7 @@
 {% set logoMaxWidth = 180 %}
 {% if module.region == "nz" %}
     {% set brandName = "Linewize New Zealand" %}
-    {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/email-Linewize_byqoria_white.png') %}
     {% if module.nz_type == "success" %}
         {% set footerText = module.nz_success_footer_copy %}
     {% else %}
@@ -11,48 +11,48 @@
 {% elif module.region == "au" %}
     {% if module.type == "ysafe" %}
         {% set brandName = "ySafe" %}
-        {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/ysafe_byqoria_inline_white.png') %}
+        {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/ysafe_byqoria_inline_white.png') %}
         {% set footerText = module.ysafe_footer_copy %}
         {% set profiles = module.profiles_ysafe %}
         {% set logoMaxWidth = 130 %}
     {% elif module.type == "ysafe-2" %}
         {% set brandName = "ySafe" %}
-        {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/ysafe_byqoria_inline_white.png') %}
+        {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/ysafe_byqoria_inline_white.png') %}
         {% set footerText = module.ysafe_footer_copy %}
     {% elif module.type == "success" %}
         {% set brandName = "Linewize Australia" %}
-        {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
+        {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/email-Linewize_byqoria_white.png') %}
         {% set footerText = module.au_success_footer_copy %}
         {% set logoMaxWidth = 130 %}
         {% set profiles = module.profiles_success %}
     {% else %}
         {% set brandName = "Linewize Australia" %}
-        {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
+        {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/email-Linewize_byqoria_white.png') %}
         {% set footerText = module.au_footer_copy %}
     {% endif %}
 {% elif module.region == "us" %}
     {% set brandName = "Linewize" %}
-    {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-Linewize_byqoria_white.png') %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/email-Linewize_byqoria_white.png') %}
     {% set footerText = module.us_footer_copy %}
 {% elif module.region == "uk" %}
     {% set brandName = "Smoothwall" %}
-    {% set logoWhiteSrc = get_asset_url('../../images/qoria/by-qoria-logos/email-smoothwall__byqoria_white.png') %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/email-smoothwall__byqoria_white.png') %}
     {% set footerText = module.uk_footer_copy %}
 {% elif module.region == "eu" %}
     {% set brandName = "Qoria Europe" %}
-    {% set logoWhiteSrc = get_asset_url('../../images/qoria/qoria-europe-logo-white.png') %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/qoria-europe-logo-white.png') %}
     {% set footerText = module.eu_footer_copy %}
     {% set logoMaxWidth = 146 %}
 {% elif module.region == "global" %}
     {% set brandName = "Qoria" %}
-    {% set logoWhiteSrc = get_asset_url('../../images/qoria/Qoria_Logo_White.png') %}
+    {% set logoWhiteSrc = get_asset_url('../../images/qoria/logos/Qoria_Logo_White.png') %}
     {% set footerText = module.global_footer_copy %}
 {% endif %}
 
 {% set bgSrc = get_asset_url('../../images/backgrounds/email-footer-bg-qoria.png') %}
 {% set bgColour = "#58b78e" %}
 
-{% set Qicon = get_asset_url('../../images/qoria/Q-Colour.png') %}
+{% set Qicon = get_asset_url('../../images/qoria/logos/Q-Colour.png') %}
 
 <div style="background-color:{{bgColour}}; width: 100%;" class="footer">
     <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-collapse: collapse !important;">
