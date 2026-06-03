@@ -19,7 +19,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
     <hr class="opacity-100 my-6">
     <div class="row text-start">
       <div class="col-12 col-lg-3 mb-4 me-auto">
-          {% module "module_16793700538024" path="/q-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('../../images/qoria/Qoria_Logo_White.svg')}}", "alt": "Qoria Logo", "size_type" : "auto_custom_max", "max_width" : "128"} %}
+          {% module "module_16793700538024" path="/qoria-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('../../images/qoria/Qoria_Logo_White.svg')}}", "alt": "Qoria Logo", "size_type" : "auto_custom_max", "max_width" : "128"} %}
       </div>
       <div class="col-12 col-sm-5 col-lg-3 mb-5">
             <p class="h6 mb-3">
@@ -65,7 +65,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
       </div>
       <div class="col-12 col-sm-4 col-lg-2 mb-5">
         <p class="h6 mb-3">{% text "menu_heading" label="Menu heading", value="Useful Links", no_wrapper=True %}</p>
-        {% module_block module "module_16795362141501" path="/q-theme/modules/simple_menu", orientation="vertical", label="Useful Links", no_wrapper=True %}
+        {% module_block module "module_16795362141501" path="/qoria-theme/modules/simple_menu", orientation="vertical", label="Useful Links", no_wrapper=True %}
           {% module_attribute "menu_tree" is_json=True %}[
             {
                 "contentType": null,
@@ -113,15 +113,15 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
         {% end_module_block %}
       </div>
       <div class="col-12 col-sm-3  col-lg-2 mb-5">
-      {% module "login_links" path="/q-theme/modules/simple_menu", orientation="vertical", label="Login links", export_to_template_context=True %}
+      {% module "login_links" path="/qoria-theme/modules/simple_menu", orientation="vertical", label="Login links", export_to_template_context=True %}
       {% if widget_data.login_links.menu_tree|length != 0 %}
       <p class="h6 mb-3">{% text "login_heading" label="Login heading", value="Login", no_wrapper=True %}</p>
-        {% module_block module "login_links" path="/q-theme/modules/simple_menu", orientation="vertical", label="Login links", no_wrapper=True %}
+        {% module_block module "login_links" path="/qoria-theme/modules/simple_menu", orientation="vertical", label="Login links", no_wrapper=True %}
         {% end_module_block %}
       {% endif %}
         <p class="h6 mb-3 {{"mt-5" if widget_data.login_links.menu_tree|length != 0 }}">{% text "legal_heading" label="Legal heading", value="Legal information", no_wrapper=True %}</p>
           
-        {% module_block module "legal_menu" path="/q-theme/modules/simple_menu", orientation="vertical", label="Legal links", no_wrapper=True %}
+        {% module_block module "legal_menu" path="/qoria-theme/modules/simple_menu", orientation="vertical", label="Legal links", no_wrapper=True %}
           {% module_attribute "menu_tree" is_json=True %}[
             {
                 "contentType": null,
@@ -156,7 +156,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
       </div>
       <div class="col-12 col-sm-3  col-lg-2 mb-5">
         <p class="h6 mb-3">{% text "social_heading" label="Social heading", value="Follow us", no_wrapper=True %}</p>
-        {% module "module_16793732914955" path="/q-theme/modules/social-follow", label="social-follow", no_wrapper=True %}
+        {% module "module_16793732914955" path="/qoria-theme/modules/social-follow", label="social-follow", no_wrapper=True %}
         <button type="button" class="btn btn-link btn-light text-reset p-0 fs-6 border-0 h6 mb-3 mt-5 d-none" id="showCookies" onClick="manageCookies()">Manage cookies</button>
       </div>
     </div>
