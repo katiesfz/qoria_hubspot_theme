@@ -1,0 +1,22 @@
+name: Deploy HubSpot Theme - Live
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: HubSpot Deploy Action ANZ
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_ANZ }}
+          personal_access_key: ${{ secrets.HUBSPOT_PAK_ANZ }}
+          src_dir: qoria-theme
+          dest_dir: q-theme
