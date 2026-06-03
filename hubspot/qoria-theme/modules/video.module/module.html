@@ -1,6 +1,6 @@
 {% if module.video_source == "youtube" %}
   
-  <div class="ratio ratio-{{module.aspect_ratio}} youtube-embed-container" id="{{name}}">
+  <div class="ratio ratio-{{module.aspect_ratio}} youtube-embed-container {{ "rounded-3 overflow-hidden" if module.style.rounded_corners }}" id="{{name}}">
     {% set embed = module.embed_code %}
     {% set embedParts = embed|split('src="', 2) %}
     {% set videoId = "" %}
@@ -24,10 +24,20 @@
 
         {% set embed = embedBefore ~ 'src="' ~ embedSrc ~ '"' ~ embedAfter %}
 
-
     {% endif %}
 
     {{embed|replace('iframe', 'iframe id="yt-player-' ~ name ~ '"')}}
+  </div>
+
+  <script type="text/javascript">
+
+  </script>
+
+{% elif module.video_source == "vimeo" %}
+
+  <div class="ratio ratio-{{module.aspect_ratio}} vimeo-embed-container {{ "rounded-3 overflow-hidden" if module.style.rounded_corners }}" id="{{name}}">
+    {% set embed = module.embed_code %}
+    {{embed|replace('iframe', 'iframe id="vm-player-' ~ name ~ '"')}}
   </div>
 
   <script type="text/javascript">
@@ -114,36 +124,34 @@
   
   <script>
 
-function getVideoDuration(el, id) {
-  const videoDurationEl = el;
-  const video = window.document.getElementById(id);
-  const duration = video.duration;
-  el.innerHTML = duration;
-}
-
-window.document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    
-    if (window.document.getElementById("video_duration")) {
-      getVideoDuration(window.document.getElementById("video_duration"), "video_{{ name }}");
-    } else {
-      const newSpan = window.document.createElement("span");
-      newSpan.id = "video_duration";
-      newSpan.classList.add("d-none");
-  //    console.log("span created");
-      var video = window.document.getElementById("video_{{ name }}");
-      var duration = video.duration;
-      newSpan.innerHTML = duration;
-  //    console.log("duration populated");
-      const blogPostBody = window.document.getElementById("hs_cos_wrapper_post_body");
-      blogPostBody.appendChild(newSpan);
- //     console.log("new span exists");
- //     getVideoDuration(window.document.getElementById("video_duration"), "video_{{ name }}");
+    function getVideoDuration(el, id) {
+      const videoDurationEl = el;
+      const video = window.document.getElementById(id);
+      const duration = video.duration;
+      el.innerHTML = duration;
     }
 
-  }, 4000);
+    window.document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        
+        if (window.document.getElementById("video_duration")) {
+          getVideoDuration(window.document.getElementById("video_duration"), "video_{{ name }}");
+        } else {
+          const newSpan = window.document.createElement("span");
+          newSpan.id = "video_duration";
+          newSpan.classList.add("d-none");
+      //    console.log("span created");
+          var video = window.document.getElementById("video_{{ name }}");
+          var duration = video.duration;
+          newSpan.innerHTML = duration;
+      //    console.log("duration populated");
+          const blogPostBody = window.document.getElementById("hs_cos_wrapper_post_body");
+          blogPostBody.appendChild(newSpan);
+        }
 
-})
+      }, 4000);
+
+    })
 
 
   </script>

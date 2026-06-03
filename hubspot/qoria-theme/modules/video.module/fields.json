@@ -101,7 +101,7 @@
   "required" : false,
   "locked" : false,
   "display" : "select",
-  "choices" : [ [ "file", "File" ], [ "youtube", "YouTube" ]],
+  "choices" : [ [ "file", "File" ], [ "youtube", "YouTube" ], [ "vimeo", "Vimeo" ]],
   "multiple" : false,
   "reordering_enabled" : true,
   "preset" : null,
