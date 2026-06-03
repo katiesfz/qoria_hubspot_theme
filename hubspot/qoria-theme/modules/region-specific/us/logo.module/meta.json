@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING", "EMAIL" ],
-  "module_id" : 114969642052,
-  "label" : "Logo",
-  "is_available_for_new_content" : true,
-  "icon" : "../../images/module-icons/logo.svg"
-}
