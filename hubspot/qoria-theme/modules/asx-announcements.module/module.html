@@ -78,11 +78,13 @@
             {% endif %}
             <div class="bg-white p-5">
                 <div class="row">
-                    <div class="col-12"><h2 class="fw-semibold mb-4">ASX announcements & presentations</h2></div>
+                    <div class="col-12">
+                        <a id="asx" data-hs-anchor="true"></a>
+                        <h2 class="fw-semibold mb-4">ASX announcements & presentations</h2>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-4">
-
                     <p class="mb-3">
                     {{ module.description }}
                     </p>
@@ -120,11 +122,11 @@
                             </li>
                         </ul>
                         <div class="tab-content bg-white shadow-lg" id="fqPanes">
-                            <div class="tab-pane py-4 fade show active" id="q1-tab-pane" role="tabpanel" aria-labelledby="q1-tab" tabindex="0">...</div>
-                            <div class="tab-pane py-4 fade" id="q2-tab-pane" role="tabpanel" aria-labelledby="q2-tab" tabindex="0">...</div>
-                            <div class="tab-pane py-4 fade" id="q3-tab-pane" role="tabpanel" aria-labelledby="q3-tab" tabindex="0">...</div>
-                            <div class="tab-pane py-4 fade" id="q4-tab-pane" role="tabpanel" aria-labelledby="q4-tab" tabindex="0">...</div>
-                            <div class="tab-pane fade" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">...</div>
+                            <div class="tab-pane py-4 fade show active" id="q1-tab-pane" role="tabpanel" aria-labelledby="q1-tab" tabindex="0"><p class="text-center"><i class="fa-solid fa-spinner fa-spin-pulse"></i></p></div>
+                            <div class="tab-pane py-4 fade" id="q2-tab-pane" role="tabpanel" aria-labelledby="q2-tab" tabindex="0"><p class="text-center"><i class="fa-solid fa-spinner fa-spin-pulse"></i></p></div>
+                            <div class="tab-pane py-4 fade" id="q3-tab-pane" role="tabpanel" aria-labelledby="q3-tab" tabindex="0"><p class="text-center"><i class="fa-solid fa-spinner fa-spin-pulse"></i></p></div>
+                            <div class="tab-pane py-4 fade" id="q4-tab-pane" role="tabpanel" aria-labelledby="q4-tab" tabindex="0"><p class="text-center"><i class="fa-solid fa-spinner fa-spin-pulse"></i></p></div>
+                            <div class="tab-pane fade" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0"><p class="text-center"><i class="fa-solid fa-spinner fa-spin-pulse"></i></p></div>
                         </div>
                     </div>
                 </div>
@@ -168,9 +170,9 @@
                         <div class="card mb-4">
                             <div class="card-body text-start">
                             <h5 class="card-text mb-3">Corporate governance</h5>
-                            <ul class="fa-ul ms-4 mb-0">
+                            <ul class="fa-ul ms-3 mb-0">
                             {% for doc in module.corporate_governance %}                                    
-                                <li class="mb-2 ps-1"><a href="{{doc.cg_file}}" download="{{doc.cg_name}}" target="_blank" class="text-reset text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-down-to-bracket"></i></span>{{doc.cg_name}}</a></li>
+                                <li class="mb-2 ps-2"><a href="{{doc.cg_file}}" download="{{doc.cg_name}}" target="_blank" class="text-reset text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-down-to-bracket"></i></span>{{doc.cg_name}}</a></li>
                             {% endfor %}
                             </ul>
                             </div>
@@ -184,9 +186,9 @@
                             <div class="card mb-4">
                                 <div class="card-body text-start">
                                 <h5 class="card-text mb-3">Corporate governance</h5>
-                                <ul class="fa-ul ms-4 mb-0">
+                                <ul class="fa-ul ms-3 mb-0">
                                 {% for row in corporateGovernance %}
-                                    <li class="mb-2"><a href="{{row.download_link}}" download="{{row.name}}" target="_blank" class="text-reset text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-down-to-bracket"></i></span>{{row.name}}</a></li>
+                                    <li class="mb-2 ps-2"><a href="{{row.download_link}}" download="{{row.name}}" target="_blank" class="text-reset text-decoration-none"><span class="fa-li"><i class="fas fa-arrow-down-to-bracket"></i></span>{{row.name}}</a></li>
                                 {% endfor %}
                                 </ul>
                                 </div>
@@ -201,15 +203,15 @@
                             <div class="card-body text-start">
                             <h5 class="card-text">Investor newsletter</h5>
                             <p class="card-text">Keep up to date with the latest investor developments from Qoria.</p>
-                                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-                                    <script>
-                                    hbspt.forms.create({
-                                        region: "na1",
-                                        portalId: "{{hub_id}}",
-                                        formId: "{{ module.newsletter_form.form_id }}",
-                                        submitButtonClass: "btn btn-secondary w-100 mt-2"
-                                    });
-                                    </script>
+                                {{ require_js("//js.hsforms.net/forms/embed/v2.js", "head") }}
+                                <script>
+                                hbspt.forms.create({
+                                    region: "na1",
+                                    portalId: "{{hub_id}}",
+                                    formId: "{{ module.newsletter_form.form_id }}",
+                                    submitButtonClass: "btn btn-secondary w-100 mt-2"
+                                });
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -417,6 +419,8 @@
                 q4Tab.click();
             }
         };
-    }
+    };
+
+    document.addEventListener("DOMContentLoaded", asxAnnouncementsInit);
 </script>
 
