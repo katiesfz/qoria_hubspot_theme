@@ -1,9 +1,0 @@
-{
-  "global" : true,
-  "smart_type" : "NOT_SMART",
-  "icon" : "../../../images/module-icons/square-quote.svg",
-  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 115232787099,
-  "label" : "Pullout - Careers Navigation",
-  "is_available_for_new_content" : false
-}
