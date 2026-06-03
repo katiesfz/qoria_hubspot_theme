@@ -30,7 +30,7 @@
   border-radius: var(--q-btn-border-radius);
   background-color: var(--q-btn-bg);
   box-shadow: var(--q-btn-box-shadow);
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .ai-survey .back-btn, .ai-survey .option-label, .ai-survey button, .ai-survey .next-btn,
@@ -126,16 +126,11 @@ fieldset:disabled .ai-survey .submit-btn,
 .ai-survey .submit-btn:hover:after {
   opacity: 1;
 }
-.ai-survey .btn-check + .next-btn:hover,
-.ai-survey .btn-check + .submit-btn:hover {
-  background-image: var(--q-btn-bg);
-}
 .ai-survey .next-btn:focus-visible,
 .ai-survey .submit-btn:focus-visible {
   background-image: var(--q-btn-hover-bg);
 }
-.ai-survey .btn-check:checked + .next-btn,
-.ai-survey .btn-check:checked + .submit-btn, .ai-survey :not(.btn-check) + .next-btn:active,
+.ai-survey :not(.btn-check) + .next-btn:active,
 .ai-survey :not(.btn-check) + .submit-btn:active, .ai-survey .next-btn:first-child:active,
 .ai-survey .submit-btn:first-child:active, .ai-survey .active.next-btn,
 .ai-survey .active.submit-btn, .ai-survey .show.next-btn,
@@ -573,15 +568,12 @@ fieldset:disabled .ai-survey .submit-btn,
   color: #fff;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
 }
-.ai-survey .cta-box h3 {
-  margin-bottom: 1rem;
-  font-size: 1.625rem;
-  font-weight: 700;
-}
-.ai-survey .cta-box p {
+.ai-survey .cta-box div.copy {
   margin-bottom: 2rem;
-  font-size: 1rem;
   opacity: 0.95;
+}
+.ai-survey .cta-box div.copy p {
+  margin-bottom: 0.5em;
 }
 .ai-survey .cta-box .cta-btn {
   --q-btn-color: #4d4d4d;

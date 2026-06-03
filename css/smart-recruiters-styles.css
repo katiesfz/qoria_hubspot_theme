@@ -93,10 +93,10 @@
   cursor: pointer;
 }
 .smartWidget th.srJobListJobTitle {
-  background: linear-gradient(45deg, #515ba5 0%, #58b78e 63%);
+  background: linear-gradient(45deg, #515BA5 0%, #58B78E 63%);
 }
 .smartWidget th.srJobListLocation {
-  background-color: #58b78e;
+  background-color: #58B78E;
 }
 .smartWidget .srJobListJobTitle {
   width: auto;
