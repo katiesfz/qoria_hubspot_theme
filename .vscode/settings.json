@@ -3,9 +3,8 @@
         "/.vscode/**",
         "/**/node_modules/**"
     ],
-    "liveSassCompile.settings.forceBaseDirectory": "/sass",
+    "liveSassCompile.settings.forceBaseDirectory": "/bootstrap",
     "liveSassCompile.settings.formats": [
-
         {
             "format": "expanded",
             "extensionName": ".css",
@@ -20,10 +19,14 @@
         }
     ],
     "liveSassCompile.settings.includeItems": [
+        "/scss/podcast-audio-card.scss",
+        "/scss/visibility-survey.scss",
+        "/scss/ai-survey.scss",
         "/scss/qoria-theme.scss",
         "/scss/smart-recruiters-styles.scss",
         "/scss/easy-webinar-styles.scss",
-        "/scss/qoria-theme-partner.scss"
+        "/scss/qoria-theme-partner.scss",
+        "/scss/swiper.scss"
     ],
     "liveSassCompile.settings.generateMap": false,
     "files.associations": {
@@ -42,6 +45,18 @@
     },
     "liveServer.settings.root": "",
     "liveSassCompile.settings.rootIsWorkspace": true,
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+    "chat.editor.fontSize": 16,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "compareFolders.excludeFilter": [
+        "/templates\\global",
+        "/templates\\linewize-au",
+        "/templates\\linewize-nz",
+        "/modules\\careers-pullout.module",
+        "/modules\\connect-diagram.module",
+        "/modules\\events.module",
+        "/modules\\email-table.module"
+    ],
+    "editor.hover.enabled": "onKeyboardModifier"
   
 }
