@@ -1,0 +1,92 @@
+[{
+    "name" : "unsubscribe_link",
+    "display_width" : null,
+    "label" : "Unsubscribe Link",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  },{
+    "name" : "global_footer_copy",
+    "label" : "Footer copy",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p style='color: inherit; margin-bottom: 1em;'>{{site_settings.company_name}}<br>{{site_settings.company_street_address_1}}{{ '<br>' ~ site_settings.company_street_address_2 if site_settings.company_street_address_2 }}<br>{{site_settings.company_city}}, {{site_settings.company_state}} {{site_settings.company_zip}}<br>{{site_settings.company_country}}</p><p style='color: inherit;'>Email: <a href='mailto:info@qoria.com' style='text-decoration: none; color: inherit;'>info@qoria.com</a></p>"
+  },{
+    "id" : "social_links",
+    "name" : "social_links",
+    "display_width" : null,
+    "label" : "Social links",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [{
+      "id" : "social_links.social_account",
+      "name" : "social_account",
+      "display_width" : null,
+      "label" : "Social account",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "fb", "Facebook" ], [ "tw", "Twitter" ], [ "in", "Instagram" ], [ "li", "LinkedIn" ], [ "yt", "YouTube" ], [ "custom_icon", "Custom" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fb"
+    }, {
+          "id" : "social_links.custom_image",
+          "name" : "custom_image",
+          "display_width" : null,
+          "label" : "Custom Image",
+          "required" : false,
+          "locked" : false,
+          "responsive" : true,
+          "resizable" : true,
+          "show_loading" : false,
+          "type" : "image",
+          "visibility" : {
+            "controlling_field" : "social_links.social_account",
+            "controlling_field_path" : null,
+            "controlling_value_regex" : "custom_icon",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          },
+          "default" : {
+            "size_type" : "auto",
+            "src" : "",
+            "alt" : null,
+            "loading" : "lazy"
+          }
+        }, {
+      "id" : "social_links.social_link",
+      "name" : "social_link",
+      "display_width" : null,
+      "label" : "Social link",
+      "required" : true,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "no_follow" : false,
+        "open_in_new_tab" : true,
+        "url" : {
+          "content_id" : null,
+          "href" : "https://www.facebook.com",
+          "type" : "EXTERNAL"
+        }
+      }
+    }],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group"
+}]
