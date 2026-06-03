@@ -1,0 +1,410 @@
+<!--
+  templateType: section
+  label: Case Studies
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/case-studies.png
+  description: "List of Case Studies, including videos and PDFs"
+-->
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="browse"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "css" : "",
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Browse our <strong>case studies and testimonials</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/qoria-theme/modules/pdf-list",
+            offset=0,
+            width=12,
+            card=[ {
+              "description" : "How St Roch’s implemented a robust solution to get greater visibility into students’ online behaviours.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "AU - LNW - St Roch Case Study_thumbnail",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://qoria.com/hubfs/AU%20-%20Whitepaper%20Guide%20and%20video%20thumbnails/Whitepapers%20and%20%20Guides/AU%20-%20LNW%20-%20St%20Roch%20Case%20Study_thumbnail.png",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : false,
+                "open_in_new_tab" : true,
+                "rel" : "noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 180549220269,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Read & Watch >",
+              "open_in_new_window" : true,
+              "stretched_link" : false,
+              "text" : "St Roch's Parish Primary",
+              "title" : "Case Study"
+            }, {
+              "description" : "Building a safer digital environment: St. John the Apostle Primary School’s digital journey.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "AU_LWZ_whitepaper_guides_thumbnails-Case Study-StJohns",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://qoria.com/hubfs/AU%20-%20Whitepaper%20Guide%20and%20video%20thumbnails/Whitepapers%20and%20%20Guides/AU_LWZ_whitepaper_guides_thumbnails-Case%20Study-StJohns.jpg",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 179493815059,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Read & Watch >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "St John the Apostle",
+              "title" : "Case Study"
+            }, {
+              "description" : "From a computer lab to 1:1 program: The Minarah College digital transformation story.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "AU_LWZ_whitepaper_guides_thumbnails-Case Study-Minarah",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://qoria.com/hubfs/AU%20-%20Whitepaper%20Guide%20and%20video%20thumbnails/Whitepapers%20and%20%20Guides/AU_LWZ_whitepaper_guides_thumbnails-Case%20Study-Minarah.jpg",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 179504894504,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Read & Watch >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "Minarah College",
+              "title" : "Case Study"
+            }, {
+              "description" : "Shore’s holistic approach to student digital wellbeing and character education.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "AU_LWZ_whitepaper_guides_thumbnails-Case Study-Shore",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://qoria.com/hubfs/AU%20-%20Whitepaper%20Guide%20and%20video%20thumbnails/Whitepapers%20and%20%20Guides/AU_LWZ_whitepaper_guides_thumbnails-Case%20Study-Shore.jpg",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 179497302355,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Read & Watch >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "SHORE",
+              "title" : "Case Study"
+            }, {
+              "description" : "Enhancing wellbeing and learning with technology: Coolum Beach Christian College’s journey.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "AU_LWZ_whitepaper_guides_thumbnails-Case Study-Coolum",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://qoria.com/hubfs/AU%20-%20Whitepaper%20Guide%20and%20video%20thumbnails/Whitepapers%20and%20%20Guides/AU_LWZ_whitepaper_guides_thumbnails-Case%20Study-Coolum.jpg",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 180550524851,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Read & Watch >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "Coolum Beach",
+              "title" : "Case Study"
+            }, {
+              "description" : "A 6-Year (and Counting) Commitment to Digital Safety and Wellbeing at Bayside Christian College.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "bayside",
+                "height" : 405,
+                "loading" : "lazy",
+                "max_height" : 405,
+                "max_width" : 500,
+                "src" : "https://www.linewize.co.nz/hubfs/Images/School%20crests/bayside.png",
+                "width" : 500
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 175172417965,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Read and Watch >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "Bayside Christian College",
+              "title" : "Case Study"
+            }, {
+              "description" : "<span>Iona College’s journey with Pulse:</span><br><span>A whole-school approach to wellbeing</span>.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "iona-logo-220-dark",
+                "height" : 117,
+                "loading" : "lazy",
+                "max_height" : 117,
+                "max_width" : 205,
+                "src" : "https://www.linewize.co.nz/hubfs/Images/School%20crests/iona-logo-220-dark.png",
+                "width" : 205
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 180572013713,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Watch the video >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "Iona College",
+              "title" : "Video Testimonial"
+            }, {
+              "description" : "How Heritage Christian School enhanced digital safety and wellbeing for their students with a community approach.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "Heritage-Christian-School-Logo-Blue",
+                "height" : 176,
+                "loading" : "lazy",
+                "max_height" : 176,
+                "max_width" : 200,
+                "src" : "https://www.linewize.co.nz/hubfs/Images/School%20crests/Heritage-Christian-School-Logo-Blue.png",
+                "width" : 200
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 180572014245,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Watch the video >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "Heritage Christian School",
+              "title" : "Video Testimonial"
+            }, {
+              "description" : "Australian Schools share their experience of Linewize Monitor.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "AU_LWZ_whitepaper_guides_thumbnails-Case Study-Schools",
+                "height" : 782,
+                "loading" : "lazy",
+                "max_height" : 782,
+                "max_width" : 553,
+                "src" : "https://qoria.com/hubfs/AU%20-%20Whitepaper%20Guide%20and%20video%20thumbnails/Whitepapers%20and%20%20Guides/AU_LWZ_whitepaper_guides_thumbnails-Case%20Study-Schools.jpg",
+                "width" : 553
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "href" : "https://qoria.com/hubfs/AU%20-%20Whitepapers%20(Rebranded)/AU-Case%20Study-Monitor_Australian%20Schools.pdf",
+                  "type" : "FILE"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Download PDF >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "Linewize Monitor",
+              "title" : "Case Study"
+            }, {
+              "description" : "How Linewize Pulse is supporting student voice at Moriac Primary School.",
+              "download_link" : false,
+              "image" : {
+                "alt" : "Moriac PS Logo",
+                "height" : 225,
+                "loading" : "lazy",
+                "max_height" : 225,
+                "max_width" : 225,
+                "src" : "https://qoria.com/hubfs/Moriac%20PS%20Logo.jpeg",
+                "width" : 225
+              },
+              "link" : {
+                "no_follow" : true,
+                "open_in_new_tab" : true,
+                "rel" : "nofollow noopener",
+                "sponsored" : false,
+                "url" : {
+                  "content_id" : 182377240862,
+                  "type" : "CONTENT"
+                },
+                "user_generated_content" : false
+              },
+              "link_label" : "Watch the video >",
+              "open_in_new_window" : true,
+              "stretched_link" : true,
+              "text" : "Moriac Primary School",
+              "title" : "Video Testimonial"
+            } ],
+            styles={
+              "card_style" : "2",
+              "responsive" : {
+                "desktop" : {
+                  "cards" : 2
+                },
+                "mobile" : {
+                  "cards" : 1
+                },
+                "tablet" : {
+                  "cards" : 1
+                }
+              },
+              "spacing_field" : {
+                "css" : "margin-top: 0px;",
+                "margin" : {
+                  "bottom" : { },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 0
+                  }
+                }
+              },
+              "title_size" : "h4"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

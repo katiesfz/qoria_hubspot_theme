@@ -1,0 +1,25 @@
+{
+  "label" : "Qoria Child Theme - US",
+  "preview_path" : "./templates/home.html",
+  "screenshot_path" : "./images/template-previews/home.png",
+  "enable_domain_stylesheets" : false,
+  "is_available_for_new_content" : true,
+  "extends" : "q-theme",
+  "responsive_breakpoints" : [ {
+    "mediaQuery" : "@media (max-width: 767px)",
+    "messages" : { },
+    "name" : "mobile",
+    "previewWidth" : {
+      "units" : "px",
+      "value" : 477
+    }
+  } ],
+  "author": {
+    "name": "Katie Sutcliffe",
+    "email": "marketing@qoria.com",
+    "url": "qoria.com"
+	},
+  "license" : "./license.txt",
+  "hidden_modules" : [ "@hubspot/form", "@hubspot/video_embed_lp", "@hubspot/payments", "@hubspot/gallery", "@hubspot/logo", "@hubspot/simple_menu", "@hubspot/header", "@hubspot/text", "@hubspot/section_header", "@hubspot/product", "@hubspot/icon", "@hubspot/language_switcher", "@hubspot/page_footer", "@hubspot/image_slider_gallery", "@hubspot/video", "@hubspot/logo_grid", "@hubspot/image_grid", "@hubspot/menu", "@hubspot/rss_listing", "@hubspot/whatsapp_link", "@hubspot/divider", "@hubspot/button", "@hubspot/heading" ],
+  "hide_all_default_modules" : false
+}

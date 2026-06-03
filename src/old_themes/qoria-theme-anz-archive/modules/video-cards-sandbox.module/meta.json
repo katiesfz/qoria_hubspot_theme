@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING" ],
+  "host_template_types" : [ "PAGE", "BLOG_LISTING" ],
+  "module_id" : 152551399836,
+  "label" : "Video Cards Sandbox",
+  "is_available_for_new_content" : false
+}

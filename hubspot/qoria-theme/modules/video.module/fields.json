@@ -1,0 +1,256 @@
+[ {
+  "id" : "aba40d9e-399d-421c-d64c-e64cb5f7662e",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "75164be6-25da-0720-510c-4116183e2dbc",
+    "name" : "muted",
+    "display_width" : null,
+    "label" : "Muted",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "style.rounded_corners",
+    "name" : "rounded_corners",
+    "display_width" : null,
+    "label" : "Rounded corners",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "style.play_button_colour",
+    "name" : "play_button_colour",
+    "display_width" : null,
+    "label" : "Play button colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "light", "Light" ], [ "dark", "Dark" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "light"
+  }, {
+    "id" : "b3d8f1f0-cab9-bd54-c7ce-4d20da2d42e1",
+    "name" : "autoplay",
+    "display_width" : null,
+    "label" : "Autoplay",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "d82c7aed-25b7-beed-cf44-e963093ce9c9",
+    "name" : "controls",
+    "display_width" : null,
+    "label" : "Controls",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "fa5ef2cd-5244-2265-c8ca-59febf622f8b",
+    "name" : "loop",
+    "display_width" : null,
+    "label" : "Loop",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "3690daad-2759-220a-f6db-df95861f1f9f",
+    "name" : "preload",
+    "display_width" : null,
+    "label" : "Preload",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "None" ], [ "metadata", "Metadata" ], [ "auto", "Auto" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "auto"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "muted" : false,
+    "autoplay" : false,
+    "controls" : true,
+    "loop" : false,
+    "preload" : "auto"
+  }
+}, {
+  "name" : "video_source",
+  "display_width" : null,
+  "label" : "Video source",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "file", "File" ], [ "youtube", "YouTube" ], [ "vimeo", "Vimeo" ]],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "file"
+},{
+  "id" : "embed_code",
+  "name" : "embed_code",
+  "display_width" : null,
+  "label" : "Embed code",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "video_source",
+    "controlling_value_regex" : "youtube",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "name" : "aspect_ratio",
+  "display_width" : null,
+  "label" : "Aspect ratio",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "1x1", "1:1" ], [ "4x3", "4:3" ], [ "16x9", "16:9" ], [ "21x9", "21:9" ]],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "16x9",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "video_source",
+    "controlling_value_regex" : "youtube",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "picker" : "video",
+  "id" : "00dddd19-743d-a442-5d0d-6474457cda85",
+  "name" : "video_file",
+  "display_width" : null,
+  "label" : "Video file",
+  "required" : false,
+  "locked" : false,
+  "type" : "file",
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "video_source",
+    "controlling_value_regex" : "file",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "id" : "d02ec212-7f72-28d2-ced3-26b30595fd70",
+  "name" : "custom_thumbnail",
+  "display_width" : null,
+  "label" : "Custom thumbnail",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "video_source",
+    "controlling_value_regex" : "file",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+}, {
+  "id" : "45162260-b577-2e5c-66ce-8f09ae3fa586",
+  "name" : "subtitles",
+  "display_width" : null,
+  "label" : "Subtitles",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "79d80375-8934-d0ac-e47b-c73d13443d9d",
+    "default" : null
+  },
+  "children" : [ {
+    "picker" : "file",
+    "id" : "854038be-2d7f-df96-1785-6e3f9b227d69",
+    "name" : "subtitle_file",
+    "display_width" : null,
+    "label" : "Subtitle file",
+    "inline_help_text" : "must be a .VTT file",
+    "required" : false,
+    "locked" : false,
+    "type" : "file"
+  }, {
+    "id" : "79d80375-8934-d0ac-e47b-c73d13443d9d",
+    "name" : "subs_label",
+    "display_width" : null,
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "video_source",
+    "controlling_value_regex" : "file",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+},{
+  "name" : "modal",
+  "display_width" : null,
+  "label" : "Open video in modal window",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "video_source",
+    "controlling_value_regex" : "file",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  }
+} ]

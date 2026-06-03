@@ -1,0 +1,32 @@
+{
+  "menu_tree.label" : {
+    "message" : "Eenvoudige kieslys",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "Eenvoudige kieslys",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.choices.horizontal" : {
+    "message" : "Horisontaal",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.choices.vertical" : {
+    "message" : "Vertikaal",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.label" : {
+    "message" : "Kieslysoriëntasie",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.placeholder" : {
+    "message" : "Soek",
+    "description" : "",
+    "placeholders" : null
+  }
+}

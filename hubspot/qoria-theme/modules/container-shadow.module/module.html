@@ -1,0 +1,92 @@
+<div id="{{name}}"></div>
+{% if is_in_editor %}
+    {% editor_placeholder %}
+{% endif %}
+<script>
+
+    function applyClassesToParent(placeToStart, classToFind, classesToAdd) {
+        const classList = classesToAdd.split(" ");
+        if (placeToStart.closest("." + classToFind)) {
+            if (classToFind == "dnd-row") {
+                // For rows, we need to go up two levels to reach the correct dnd-row element
+                placeToStart.closest("." + classToFind).parentElement.closest("." + classToFind).classList.add(...classList);
+            } else {
+                placeToStart.closest("." + classToFind).classList.add(...classList);
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let e = document.getElementById("{{name}}");
+
+        {% if module.apply_to_element == "column" %}
+            let eToFind = "dnd-column";
+        {% elif module.apply_to_element == "row" %}
+            let eToFind = "dnd-row";
+        {% elif module.apply_to_element == "section" %}
+            let eToFind = "dnd-section";
+        {% endif %}
+
+        let cToAdd = "";
+
+        {% if module.shadow_style == "small" %}
+            cToAdd += "shadow-sm";
+        {% elif module.shadow_style == "medium" %}
+            cToAdd += "shadow";
+        {% elif module.shadow_style == "large" %}
+            cToAdd += "shadow-lg";
+        {% elif module.shadow_style == "pullout-small" %}
+            cToAdd += "section-shadow-sm";
+        {% elif module.shadow_style == "pullout-medium" %}
+            cToAdd += "section-shadow";
+        {% elif module.shadow_style == "filter" %}
+            cToAdd += "filter-shadow";
+        {% elif module.shadow_style == "filter-small" %}
+            cToAdd += "filter-shadow-sm";
+        {% endif %}
+
+        {% if module.rounded && module.rounded_strength %}
+            {% if module.rounded is iterable %}
+                {% for rounded in module.rounded %}
+                    {% if rounded == "all" %}
+                        cToAdd += " rounded-" + "{{module.rounded_strength}}";
+                    {% endif %}
+                    {% if rounded == "top" %}
+                        cToAdd += " rounded-top-" + "{{module.rounded_strength}}";
+                    {% endif %}
+                    {% if rounded == "right" %}
+                        cToAdd += " rounded-end-" + "{{module.rounded_strength}}";
+                    {% endif %}
+                    {% if rounded == "bottom" %}
+                        cToAdd += " rounded-bottom-" + "{{module.rounded_strength}}";
+                    {% endif %}
+                    {% if rounded == "left" %}
+                        cToAdd += " rounded-start-" + "{{module.rounded_strength}}";
+                    {% endif %}
+                {% endfor %}
+            {% elif module.rounded %}
+                {% if module.rounded == "all" %}
+                    cToAdd += " rounded-" + "{{module.rounded_strength}}";
+                {% endif %}
+                {% if module.rounded == "top" %}
+                    cToAdd += " rounded-top-" + "{{module.rounded_strength}}";
+                {% endif %}
+                {% if module.rounded == "right" %}
+                    cToAdd += " rounded-end-" + "{{module.rounded_strength}}";
+                {% endif %}
+                {% if module.rounded == "bottom" %}
+                    cToAdd += " rounded-bottom-" + "{{module.rounded_strength}}";
+                {% endif %}
+                {% if module.rounded == "left" %}
+                    cToAdd += " rounded-start-" + "{{module.rounded_strength}}";
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+        cToAdd = cToAdd.trim();
+
+        applyClassesToParent(e, eToFind, cToAdd);
+
+    });
+    
+</script>

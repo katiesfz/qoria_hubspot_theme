@@ -1,0 +1,1453 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Linewize ANZ Why us
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+    {% dnd_area "dnd_area"
+    label="Body"
+    class="main p-0 overflow-hidden"
+    %}
+
+
+    {% dnd_section
+    full_width=true
+  %}
+    {% dnd_column
+      offset=0,
+      width=12
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="/q-theme/modules/hero",
+          offset=0,
+          width=12,
+          cta=[ ],
+          header="Why choose Linewize",
+          hero_type="full-image",
+          image={
+            "alt" : "linewize-us-whyusbanner",
+            "height" : 1414,
+            "loading" : "disabled",
+            "max_height" : 1333.3333333333333,
+            "max_width" : 2000,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/linewize-us-whyusbanner.jpg",
+            "width" : 2121
+          },
+          menu=123441695658,
+          page_contents=[ {
+            "anchor" : "#whylinewize",
+            "content_label" : "Why Linewize"
+          }, {
+            "anchor" : "#increasingimpact",
+            "content_label" : "Increasing impact"
+          }, {
+            "anchor" : "#meetyourteam",
+            "content_label" : "Meet the team"
+          }, {
+            "anchor" : "#privacy",
+            "content_label" : "Committed to ethics and privacy"
+          }, {
+            "anchor" : "#letsconnect",
+            "content_label" : "Let's connect"
+          } ],
+          pre_header="",
+          show_breadcrumbs="true",
+          show_share_price="false",
+          style={
+            "heading_location" : "bottom-left"
+          },
+          video=""
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+
+  {% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "80px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="intro"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=2,
+        width=8
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p style="text-align: center; font-size: 24px;"><span>We're not just a vendor. Linewize is a strategic partner to our customers. Our commitment to their long term success drives everything we do.&nbsp;</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=10,
+        width=2
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="whylinewize"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          <p>Why <strong>Linewize</strong></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/rich-text",
+            offset=0,
+            width=12,
+            row=[ {
+              "advanced" : {
+                "additional_classes" : ""
+              },
+              "column" : [ {
+                "advanced" : {
+                  "additional_classes" : ""
+                },
+                "responsive" : {
+                  "desktop" : {
+                    "columns" : 1
+                  },
+                  "mobile" : {
+                    "columns" : 1
+                  },
+                  "tablet" : {
+                    "columns" : 1
+                  }
+                },
+                "text" : "<p class='lead' style='text-align: center;'>There are many different reasons why school districts choose Linewize. But there are three factors our customers consistently tell us they value the most.</p>"
+              } ]
+            } ],
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 64
+                  },
+                  "top" : { }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=0,
+        width=12,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "alt" : "us-linewize-icons-Education",
+              "height" : 300,
+              "loading" : "lazy",
+              "max_height" : 150,
+              "max_width" : 150,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/US%20-%20Icons%20Qoria%20Brand/us-linewize-icons-Education.png",
+              "width" : 300
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h3 class='text-primary mb-4' style='text-align: center;'><strong>By their side</strong></h3>\n<p class='m-0 lead' style='text-align: center;'>Affordable</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>Free audits and trials</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>First class support</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>Focus on their success</p>\n<p class='m-0 lead' style='text-align: center;'>&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "alt" : "us-linewize-icons-Accessible",
+              "height" : 300,
+              "loading" : "lazy",
+              "max_height" : 150,
+              "max_width" : 150,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/US%20-%20Icons%20Qoria%20Brand/us-linewize-icons-Accessible.png",
+              "width" : 300
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h3 class='text-primary mb-4' style='text-align: center;'><strong>Future proof</strong></h3>\n<p class='m-0 lead' style='text-align: center;'>Strategic support</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>Ecosystem to expand into</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>Increased student protection</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>No increased IT burden</p>\n<p class='m-0 lead' style='text-align: center;'>&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "alt" : "us-linewize-icons-Future-proof",
+              "height" : 300,
+              "loading" : "lazy",
+              "max_height" : 150,
+              "max_width" : 150,
+              "size_type" : "auto_custom_max",
+              "src" : "https://www.linewize.com/hubfs/US%20-%20Icons%20Qoria%20Brand/us-linewize-icons-Future-proof.png",
+              "width" : 300
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "inherit",
+            "max_width" : 84,
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "text" : "<h3 class='text-primary mb-4' style='text-align: center;'><strong>Whole school community</strong></h3>\n<p class='m-0 lead' style='text-align: center;'>Help to engage parents and students</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>Child wellbeing expertise</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>Teacher empowerment</p>\n<hr class='border-top border-2 border-dotted border-primary'>\n<p class='m-0 lead' style='text-align: center;'>Free education resources</p>"
+        } ],
+        style={
+          "icon_arrangement" : "stacked",
+          "separators" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="increasingimpact"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        heading_underline="true",
+        style={
+          "heading_underline" : true,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 65
+              },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Increasing <strong>impact&nbsp;</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead" style="text-align: center;"><span>As the digital risks to children have increased so too has the need for schools to expand beyond filtering to a more robust provision. Linewize understands this.&nbsp;</span></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=6
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/fancy-image",
+                offset=0,
+                width=12,
+                image={
+                  "alt" : "Framework Core EN",
+                  "height" : 556,
+                  "loading" : "lazy",
+                  "max_height" : 436,
+                  "max_width" : 400,
+                  "size_type" : "auto_custom_max",
+                  "src" : "https://www.linewize.com/hubfs/Wellbeing%20Framework/Framework%20Core%20EN.png",
+                  "width" : 510
+                },
+                style={
+                  "greyscale_filter" : false
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=6,
+            width=6
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p class="lead"><strong>Student Safety and Wellbeing Framework</strong></p>
+                  Our Framework shows schools and districts how to strengthen their provision across three fundamental pillars:<br><br>&gt; Prevention &amp; Enablement <br>&gt; Early Detection &amp; Intervention <br>&gt; Education &amp; Engagement<br><br>It helps them navigate the categories of solution available to them on the market; to invest only where it's needed most; and to adopt a more strategic, outcome-led approach to student digital safety that saves time and money.
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+            {% dnd_row %}
+              {% dnd_module
+                path="/q-theme/modules/cta",
+                offset=0,
+                width=12,
+                alignment="start",
+                button_size=" ",
+                button_text="Learn more",
+                link={
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "url" : {
+                    "content_id" : 146196693051,
+                    "type" : "CONTENT"
+                  }
+                },
+                styles={
+                  "spacing_field" : {
+                    "margin" : {
+                      "bottom" : {
+                        "units" : "px",
+                        "value" : 0
+                      },
+                      "top" : {
+                        "units" : "px",
+                        "value" : 32
+                      }
+                    }
+                  }
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/anchor",
+            offset=0,
+            width=12,
+            anchor="meetyourteam"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h1",
+            heading_underline="true",
+            style={
+              "colour" : " ",
+              "heading_underline" : true,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px"
+                  },
+                  "left" : {
+                    "units" : "px"
+                  },
+                  "right" : {
+                    "units" : "px"
+                  },
+                  "top" : {
+                    "units" : "px"
+                  }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              <p>Meet the <strong>team</strong></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "32px"
+        },
+        "mobile" : {
+          "bottom" : "0px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <div class="lead">
+              <p style="text-align: center;">Our schools and districts are never alone. They are supported by a multi-disciplinary and close knit team of cyber safety experts. The skills and experience of our leaders and their respective teams support our customers in every direction - now and in the years to come.</p>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/cursive-heading",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 64
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 64
+              }
+            }
+          }
+        }
+      %}
+        {% module_attribute "heading" %}
+          <div style="text-align: center;">Our community supports your community</div>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/team-members",
+            offset=0,
+            width=12,
+            styles={
+              "greyscale_filter" : true,
+              "responsive" : {
+                "desktop" : {
+                  "cards" : 4
+                },
+                "mobile" : {
+                  "cards" : 2
+                },
+                "tablet" : {
+                  "cards" : 3
+                }
+              },
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : { }
+                }
+              }
+            },
+            team_member=[ {
+              "image" : {
+                "alt" : "Harrison-Parker_sq",
+                "height" : 600,
+                "loading" : "lazy",
+                "max_height" : 600,
+                "max_width" : 600,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/Harrison-Parker_sq.jpg",
+                "width" : 600
+              },
+              "person_name" : "Harrison Parker",
+              "title" : "Executive Vice President North America"
+            }, {
+              "image" : {
+                "alt" : "kendall-bakas",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/kendall-bakas.jpg",
+                "width" : 340
+              },
+              "person_name" : "Kendall Bakas",
+              "title" : "Director of Customer Success"
+            }, {
+              "image" : {
+                "alt" : "andrew-derbyshire",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/andrew-derbyshire.jpg",
+                "width" : 340
+              },
+              "person_name" : "Andrew Derbyshire",
+              "title" : "Director of Operations"
+            }, {
+              "image" : {
+                "alt" : "greg-hall",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/greg-hall.jpg",
+                "width" : 340
+              },
+              "person_name" : "Greg Hall",
+              "title" : "Director of Sales - Community"
+            }, {
+              "image" : {
+                "alt" : "craig-johnston",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/craig-johnston.jpg",
+                "width" : 340
+              },
+              "person_name" : "Craig Johnston",
+              "title" : "Vice President Support & Delivery"
+            }, {
+              "image" : {
+                "alt" : "AdamHeadshot",
+                "height" : 1000,
+                "loading" : "lazy",
+                "max_height" : 1000,
+                "max_width" : 1000,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/AdamHeadshot.jpg",
+                "width" : 1000
+              },
+              "person_name" : "Adam Lee",
+              "title" : "Vice President  Sales West & Business Development"
+            }, {
+              "image" : {
+                "alt" : "kylie-mcgee",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/kylie-mcgee.jpg",
+                "width" : 340
+              },
+              "person_name" : "Kylie McGee",
+              "title" : "Director of Marketing"
+            }, {
+              "image" : {
+                "alt" : "stephen-mirante",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/stephen-mirante.jpg",
+                "width" : 340
+              },
+              "person_name" : "Stephen Mirante",
+              "title" : "Vice President Sales Central & Strategic Relations"
+            }, {
+              "image" : {
+                "alt" : "TeodoraHeadshot.2021",
+                "height" : 3756,
+                "loading" : "lazy",
+                "max_height" : 600,
+                "max_width" : 600,
+                "size_type" : "auto_custom_max",
+                "src" : "https://www.linewize.com/hubfs/TeodoraHeadshot.2021.jpeg",
+                "width" : 3756
+              },
+              "person_name" : "Teodora Pavkovic",
+              "title" : "Director of Wellbeing"
+            }, {
+              "image" : {
+                "alt" : "jordan-vandyke",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/jordan-vandyke.jpg",
+                "width" : 340
+              },
+              "person_name" : "Jordan Vandyke",
+              "title" : "Vice President Sales East"
+            }, {
+              "image" : {
+                "alt" : "kallie-waguespack",
+                "height" : 340,
+                "loading" : "lazy",
+                "max_height" : 340,
+                "max_width" : 340,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.com/hubfs/kallie-waguespack.jpg",
+                "width" : 340
+              },
+              "person_name" : "Kalli Waguespack",
+              "title" : "Director of Channel"
+            } ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "-11px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/anchor",
+            offset=0,
+            width=12,
+            anchor="privacy"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h1",
+            heading_underline="true",
+            style={
+              "heading_underline" : true,
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px"
+                  },
+                  "left" : {
+                    "units" : "px"
+                  },
+                  "right" : {
+                    "units" : "px"
+                  },
+                  "top" : {
+                    "units" : "px"
+                  }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              <p>Committed to<strong> ethics and privacy</strong></p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "32px"
+        },
+        "mobile" : {
+          "bottom" : "0px"
+        }
+      }
+    %}
+      {% dnd_column
+        offset=0,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=1,
+        width=10
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            offset=0,
+            width=12
+          %}
+            {% module_attribute "html" %}
+              <p class="lead" style="text-align: center;">Ensuring the digital safety and well-being of children requires a dual commitment to safeguarding from harm <em>and</em> protecting privacy. One cannot be achieved without the other. Linewize is committed to setting the highest standards across both.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=11,
+        width=1
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=6,
+        width=6
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12,
+            hidden={
+              "mobile" : true
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "20px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "0px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row
+      padding={
+        "default" : {
+          "bottom" : "30px",
+          "top" : "30px"
+        }
+      }
+    %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=0,
+        width=6,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Linewize Ethics Committee: </strong>a cross departmental group keeps us ethically accountable in all areas.</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Guidelines&nbsp;<br></strong>Rigorous guidelines and frameworks ensure <span>each new product feature, policy or customer guidance is 100% compliant and impartial.</span></p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>iKeepSafe Certifications<br></strong>We uphold the highest levels of student data privacy demonstrated through our maximum four iKeepSafe accreditations.&nbsp;</p>\n<p>&nbsp;<img src='https://www.linewize.com/hubfs/cspc.png' width='54' height='54' loading='lazy' alt='cspc' style='height: auto; max-width: 100%; width: 54px;'> <img src='https://www.linewize.com/hubfs/coppa.png' width='54' height='54' loading='lazy' alt='coppa' style='height: auto; max-width: 100%; width: 54px;'> <img src='https://www.linewize.com/hubfs/ferpa.png' width='55' height='55' loading='lazy' alt='ferpa' style='height: auto; max-width: 100%; width: 55px;'> <img src='https://www.linewize.com/hubfs/atlis.png' width='57' height='57' loading='lazy' alt='atlis' style='height: auto; max-width: 100%; width: 57px;'></p>\n<p>&nbsp;</p>"
+        } ],
+        style={
+          "absolute_icon_size" : "fa-2x",
+          "display_as_list" : true,
+          "icon_alignment" : "align-items-start",
+          "relative_icon_size" : "fa-2xl",
+          "sizing" : "absolute",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 8
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 8
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 9
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 19
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+      {% dnd_module
+        path="/q-theme/modules/icon-and-text-group",
+        offset=6,
+        width=6,
+        icon_and_text=[ {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Stakeholder engagement<br></strong>We collaborate with governments, policy makers, and advocates around the world to drive education and understanding on all sides.&nbsp;&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>Technology sector standards<br></strong>We help social media and other companies to understand and uphold best practices in parental empowerment.&nbsp;</p>"
+        }, {
+          "icon" : {
+            "absolute_icon_size" : "fa-2x",
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "check",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_shape" : "icon-only",
+            "icon_style" : "fas",
+            "max_width" : 52,
+            "relative_icon_size" : "fa-xl",
+            "sizing" : "inherit"
+          },
+          "icon_alignment" : "align-items-center",
+          "text" : "<p><strong>School and community education<br></strong>We provide schools and their communities with transparency, education and understanding in multiple forms.&nbsp;<br><br></p>\n<p><strong><a href='http://qoria.com/ethical-practices' rel='noopener' target='_blank'>Learn more about our ethical practices.</a></strong>&nbsp;</p>"
+        } ],
+        style={
+          "absolute_icon_size" : "fa-2x",
+          "display_as_list" : true,
+          "icon_alignment" : "align-items-start",
+          "relative_icon_size" : "fa-2xl",
+          "sizing" : "absolute"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section 
+max_width=1280 %}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="letsconnect"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+
+    {% end_dnd_area %}
+{% global_partial path="../partials/lets-connect.html" %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

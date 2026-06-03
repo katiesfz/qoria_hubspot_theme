@@ -1,0 +1,426 @@
+{% if module.source_table || dynamic_page_hubdb_table_id %}
+
+    {% if module.selection == "auto" %}
+
+        {# select the hubDB #}
+        {% if module.source_table %}
+            {% set tableId = module.source_table %}
+        {% else %}
+            {% set tableId = dynamic_page_hubdb_table_id %}
+        {% endif %}
+
+        {# build filter query string #}
+        {% set filterArr = [] %}
+        {% if module.filter %}
+            {% for filt in module.filter %}
+                {% set oneFilter = filt.filter_property ~ "__" ~ filt.filter_operator ~ "=" ~ filt.filter_value %}
+                {% do filterArr.append(oneFilter) %}
+            {% endfor %}
+        {% endif %}
+
+        {# if there are multiple secondary filter options in the UI we add more filter queries here #}
+        {% set additionalFilters = [] %}
+
+        {% set queryKeys = [] %}
+        {% if request.query_dict %}
+            {% for key, val in request.query_dict.items() %}
+                {% do queryKeys.append(key) %}
+            {% endfor %}
+        {% endif %}
+
+        {% if module.filter_options %}
+            {% for filt in module.filter_options %}
+                {% if queryKeys is containing filt && request.query_dict[filt] != "show-all" %}
+                    {% set newQuery = filt ~ "__contains=" ~ request.query_dict[filt] %}
+                    {% do filterArr.append(newQuery) %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if module.filter_options_group %}
+            {% for col in module.filter_options_group %}
+                {% if col.include_filter %}
+                    {% if queryKeys is containing col.filter_property && request.query_dict[col.filter_property] != "show-all" %}
+                        {% set newQuery = col.filter_property ~ "__contains=" ~ request.query_dict[col.filter_property] %}
+                        {% do filterArr.append(newQuery) %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+            
+        {% set filterString = filterArr|join("&") %}
+
+        {# get filtered table rows #}
+        {% set rows = hubdb_table_rows(tableId, filterString) %}
+
+    {% elif module.selection == "manual" %}
+        {# call in all rows because calling a single row is limited to 10 per page and you can't use OR in filter query strings #}
+        {% set table = hubdb_table_rows(tableId) %}
+
+        {# now we filter them with HubL #}
+        {% set rows = [] %}
+        {% for row in table %}
+            {% if row.hs_id is in module.row_id %}
+                {% do rows.append(row) %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {# set posts per page #}
+    {% if module.styles.items_per_page %}
+        {% set itemsPerPage = module.styles.items_per_page|int %}
+    {% else %}
+        {% set itemsPerPage = 10 %}
+    {% endif %}
+
+    {% set subFilters = [] %}
+    {% set categories = [] %}
+
+    {% if module.filter_options_group && module.filter_options_group|length > 0 %}
+        {% for col in module.filter_options_group %}
+            {% set newCat = {} %}
+            {% do newCat.put("name", col.filter_property) %}
+            {% if col.include_filter %}
+                {% do subFilters.append({"name": col.filter_property, "options": []}) %}
+                {% do newCat.put("filter", "true") %}
+                {% do newCat.put("options", []) %}
+            {% endif %}
+            {% if col.include_badge %}
+                {% do newCat.put("badge", "true") %}
+                {% do newCat.put("colour", col.badge_colour) %}
+            {% endif %}
+        {% do categories.append(newCat) %}
+        {% endfor %}
+    {% endif %}
+
+
+    {# remove unused filter options #}
+        <script>
+            // subFilters
+            //console.log({{subFilters|tojson}});
+            {% for category in categories %}
+                {% if (rows.objects|map(attribute=category.name))[0] is iterable %}
+                    {% set nestedFilters = [] %}
+                    {% for filterArray in rows.objects|map(attribute=category.name) %}
+                        {% do nestedFilters.extend(filterArray) %}
+                    {% endfor %}
+                    {% set usedFilterOptions = nestedFilters|unique %}
+                {% else %}
+                    {% set usedFilterOptions = rows.objects|map(attribute=category.name)|unique %}
+                {% endif %}
+                {% do category.update({"options": usedFilterOptions}) %}
+            {% endfor %}
+            {% for filter in subFilters %}
+                // rows filtered to {{filter.name}}
+                // console.log({{ rows.objects|map(attribute=filter.name)|tojson}});
+                // filter
+                // console.log({{ filter|tojson}});
+                {% if (rows.objects|map(attribute=filter.name))[0] is iterable %}
+                    // filtered row filter is iterable
+                    // console.log({{(rows.objects|map(attribute=filter.name))[0]|tojson}});
+                    {% set nestedFilters = [] %}
+                    {% for filterArray in rows.objects|map(attribute=filter.name) %}
+                        // filterArray is:
+                        // console.log({{filterArray|tojson}});
+                        {% do nestedFilters.extend(filterArray) %}
+                    {% endfor %}
+
+                    // console.log({{nestedFilters|tojson}});
+                    {% set usedFilterOptions = nestedFilters|unique %}
+                {% else %}
+                    // filtered row is NOT iterable
+                    {% set usedFilterOptions = rows.objects|map(attribute=filter.name)|unique %}
+                {% endif %}
+                // console.log({{ usedFilterOptions|tojson}});
+                {% do filter.update({"options": usedFilterOptions}) %}
+            {% endfor %}
+            // console.log({{subFilters|tojson}});
+        </script>
+
+
+    {% set rowsEditable = rows|tojson|fromjson %}
+
+    {# redefine image urls to be resized #}
+     {% for row in rowsEditable.objects %}
+        {% set thumbUrl = resize_image_url(row.thumbnail.url, 0, 0, 400, true, false) %}
+        {% set resizedUrl = resize_image_url(row.thumbnail.url, 0, 0, 1500, true, false) %}
+        {% do row.thumbnail.put("resized_url_thumb", thumbUrl) %}
+        {% do row.thumbnail.put("resized_url", resizedUrl) %}
+     {% endfor %}
+
+    {% require_css %}
+    <style>
+        {% scope_css %}
+            {% if module.styles.custom_max_sizing == "true" %}
+                .card-img {
+                    max-height: {{ module.styles.max_height }}px;
+                    max-width: {{ module.styles.max_width }}px;
+                }
+            {% endif %}
+
+            .card-img {
+                aspect-ratio: 16 / 9;
+                }
+            .badges-container {
+                position: absolute;
+                padding-top: 8px;
+                bottom: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                justify-content: start;
+            }
+        {% end_scope_css %}
+    </style>
+    {% end_require_css %}
+
+        <div class="container-fluid blog-listing g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}  transition-property: height; transition-duration: 500ms;" id="hubdb_resources_{{name|replace('-','_')}}">
+            {% if subFilters|length > 0 || module.text_search %}
+                <div class="row pb-5 g-0">
+                    <div class="col-12 filter-tags-container bg-gradient-primary p-3 p-md-4 mb-4">
+                        <form id="hubdbFilter" method="get" class="row form-white hs-form">
+                            {% if subFilters|length > 0 %}
+                                {% for filter in subFilters %}
+                                    <div class="col-12 col-sm-6 col-lg-3 mb-1">
+                                        <div class="input">
+                                            <select class="form-control filter-dropdown hs-input" name="{{filter.name}}" form="hubdbFilter">
+                                                <option value="all" data-filter="all" data-category="{{filter.name}}">Filter by {{hubdb_table_column(tableId, filter.name).label}}</option>
+                                                <option value="all" data-filter="all" data-category="{{filter.name}}">Show All</option>
+                                                {% set options = hubdb_table_column(tableId, filter.name).options %}
+                                                {% set options = filter.options %}
+                                                {% for option in options %}
+                                                    {% if option.name == request.query_dict[filter.name] %}
+                                                        <option selected="selected" value="{{ option.name }}" data-filter="{{option.name}}" data-category="{{filter.name}}">{{ option.label }}</option>
+                                                    {% else %}
+                                                        <option value="{{ option.name }}" data-filter="{{option.name}}" data-category="{{filter.name}}">{{ option.label }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            {% if module.text_search %}
+                                <div class="col-12 col-sm col-lg mb-1">
+                                    <div class="input">
+                                        <input type="text" class="form-control search-input hs-input" name="search" id="searchInput" placeholder="Search..." value="{{request.query_dict.search}}">
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row g-0">
+                    <div class="col-12 filter-tags-container text-center pb-4 bg-gradient-primary p-3 p-md-4 mb-4 form-white hs-form ">
+                        {% if module.text_search %}
+                        <div class="row">
+                            <div class="col-12 mb-2">
+                                <div class="input">
+                                    <input type="text" class="search-control hs-input" name="search" id="searchInput" placeholder="Search..." value="{{request.query_dict.search}}">
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if subFilters|length > 0 %}
+                            {% for option in subFilters %}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="#" data-filter="all" class="btn btn-blog-filter-secondary me-2 mb-2 active" aria-pressed="true">All</a>
+                                        {% set options = hubdb_table_column(tableId, option).options %}
+                                        {% for choice in options %}
+                                            <a href="#" data-filter="{{choice.name}}" data-category="{{option}}" class="btn btn-blog-filter-secondary me-2 mb-2">{{choice.label}}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="row g-0">
+                <div class="col" style="transition-property: height; transition-duration: 500ms; overflow: hidden; filter: drop-shadow({{module.styles.shadow}});">
+                    <div class="pages-container row flex-wrap row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3">
+
+                    </div>
+                </div>
+            </div>
+            {% if module.styles.pagination %}
+                <div class="row pt-4 mt-auto">
+                    <div class="col text-center">
+                        <nav class="pagination-container" id="pagination" aria-label="Pagination">
+                        
+                        </nav>
+                    </div>
+                </div>
+            {% endif %}
+            
+            {% if !dynamic_page_hubdb_table_id %}
+                <div class="modal-container"></div>
+            {% endif %}
+        </div>
+    <script>
+
+
+        {% set cardClasses = [] %}    
+        {% if module.styles.inset_card %}
+            {% do cardClasses.append("card-inset") %}
+        {% endif %}
+
+        {% if module.styles.card_colour != "none" %}
+            {% do cardClasses.append(module.styles.card_colour) %}
+        {% endif %}
+
+        {% if module.styles.border_colour != "none" %}
+            {% do cardClasses.append("border") %}
+            {% do cardClasses.append("border-1") %}
+            {% do cardClasses.append(module.styles.border_colour) %}
+        {% endif %}
+
+        {% if module.styles.shadow != "none" %}
+            {% do cardClasses.append(module.styles.shadow) %}
+        {% endif %}
+
+        {% if module.styles.equal_heights %}
+            {% do cardClasses.append("h-100") %}
+            {% do cardClasses.append("d-flex") %}
+            {% do cardClasses.append("flex-column") %}
+        {% endif %}
+
+        {% set cardHeaderClasses = [] %}
+
+        {% if module.styles.image_fit == "cover" %}
+            {% do cardHeaderClasses.append("card-img-top") %}
+        {% else %}
+            {% do cardHeaderClasses.append("card-header") %}
+            {% do cardHeaderClasses.append("bg-transparent") %}
+        {% endif %}
+
+
+        {% set cardBodyClasses = [] %} 
+
+        {% if module.styles.equal_heights %}
+            {% do cardBodyClasses.append("d-flex") %}
+            {% do cardBodyClasses.append("flex-column") %}
+
+        {% endif %}
+
+        {% if module.styles.inset_card %}
+            {% do cardBodyClasses.append(module.styles.body_colour) %}
+        {% else %}
+            {% if module.styles.card_colour != "none" %}
+                {% do cardBodyClasses.append(module.styles.card_colour) %}
+            {% endif %}
+        {% endif %}
+
+        {% do cardBodyClasses.append("text-" ~ module.styles.textalignment) %}
+
+        
+        {% if module.styles.play_button != "none" %}
+            {% if module.styles.play_button == "light" %}
+                {% set playButton = "light" %}
+            {% elif module.styles.play_button == "dark" %}
+                {% set playButton = "dark" %}
+            {% endif %}
+        {% endif %}
+
+        {% if !dynamic_page_hubdb_table_id %}
+            {% set useModals = "true" %}
+        {% endif %}
+
+        {% set ctaClasses = [] %}
+        {% if module.styles.cta_style %}
+            {% if module.styles.cta_style != "text-" %}
+                {% do ctaClasses.append("mt-3") %}
+                {% set ctaType = module.styles.cta_style ~ module.styles.cta_colour %}
+                {% for class in ctaType|split(" ") %}
+                    {% do ctaClasses.append(class) %}
+                {% endfor %}
+                {% if module.styles.cta_size != " " %}
+                    {% do ctaClasses.append(module.styles.cta_size) %}
+                {% endif %}
+            {% else %}
+                {% do ctaClasses.append("mt-3") %}
+                {% do ctaClasses.append("text-decoration-none") %}
+                {% do ctaClasses.append("fw-semibold") %}
+                {% do ctaClasses.append("lh-1") %}
+                {% do ctaClasses.append("text-" ~ module.styles.cta_colour) %}
+            {% endif %}
+        {% else %}
+            {% do ctaClasses.append("mt-3") %}
+            {% do ctaClasses.append("text-decoration-none") %}
+            {% do ctaClasses.append("fw-semibold") %}
+            {% do ctaClasses.append("lh-1") %}
+        {% endif %}
+        {% if module.styles.cta_alignment == "start" %}
+            {% do ctaClasses.append("me-auto") %}
+        {% elif module.styles.cta_alignment == "center" %}
+            {% do ctaClasses.append("mx-auto") %}
+        {% else %}
+            {% do ctaClasses.append("ms-auto") %}
+        {% endif %}
+        {% if module.styles.stretched_link %}
+            {% do ctaClasses.append("stretched-link") %}
+        {% endif %}
+        
+        {% if module.link_label %}
+            {% set linkLabel = module.link_label %}
+        {% else %}
+            {% set linkLabel = "Learn more" %}
+        {% endif %}
+
+        {% set cardFooterClasses = [] %}
+        {% do cardFooterClasses.append("text-" ~ module.styles.textalignment) %}
+
+        {% if module.styles.inset_card %}
+            {% do cardFooterClasses.append(module.styles.body_colour) %}
+        {% else %}
+            {% do cardFooterClasses.append("bg-transparent") %}
+        {% endif %}
+
+
+    </script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const outerContainer = document.getElementById("hubdb_resources_{{name|replace('-','_')}}");
+            const filterContainer = outerContainer.getElementsByClassName("filter-tags-container")[0];
+            
+            const settings_{{name|replace("-","_")}} = {
+                itemsPerPage: {{ itemsPerPage }},
+                cardClasses: {{cardClasses|tojson}},
+                cardHeaderClasses: {{cardHeaderClasses|tojson}},
+                cardBodyClasses: {{cardBodyClasses|tojson}},
+                cardFooterClasses: {{cardFooterClasses|tojson}},
+                {{ "playButton: " ~ playButton|tojson ~ "," if playButton }}
+                useModals: {{useModals|default("false")}},
+                {{ "subheadingColumn: " ~ module.subheading|tojson ~ "," if module.subheading }}
+                cardAlignment: "{{module.styles.textalignment|escapejson}}",
+                ctaClasses: {{ctaClasses|tojson}},
+                linkLabel: "{{linkLabel|escapejson}}",
+                {{ "ctaColumn: " ~ module.cta_column|tojson ~ "," if module.cta_column }}
+                {{ "customUrlColumn: " ~ module.custom_url_column|tojson ~ "," if module.custom_url_column }}
+                equalHeight: true,
+                equalHeightImages: true,
+                {{ "imageLoading: " ~ module.styles.image_loading|tojson ~ "," if module.image_loading && module.image_loading != "none"  }}
+                requestPath: {{request.path|tojson}},
+                {% if categories|length > 0 %}
+                    categories: {{categories|tojson}},
+                {% endif %}
+                {%- if module.filter_options_group|length > 0 %}
+                filterContainer: outerContainer.getElementsByClassName("filter-tags-container")[0],
+                {% endif -%}
+            };
+
+            const resourcesContainer = document.getElementById("hubdb_resources_{{name|replace("-","_")}}");
+            const resourcesArray = {{ rowsEditable.objects|tojson }};
+            const resourcesSettingsDict = settings_{{name|replace("-","_")}};
+
+            hubDbResourcesListing(resourcesArray, resourcesContainer, resourcesSettingsDict);
+        });
+    </script>
+{% endif %}

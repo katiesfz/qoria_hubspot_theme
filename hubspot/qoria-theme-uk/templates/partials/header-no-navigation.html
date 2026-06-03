@@ -1,0 +1,40 @@
+<!--
+templateType: global_partial
+label: Smoothwall Header - No Nav
+-->
+
+    <!-- resize the top nav - only for Smoothwall -->
+    <style>
+    .navbar-nav .nav-link {
+      --q-nav-link-font-size: 15px;
+      --q-navbar-nav-link-padding-x: 0.8rem;
+    }
+  </style>
+  <!-- end resize code -->
+
+  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/brands.min.css")) }}
+  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/light.min.css")) }}
+  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/regular.min.css")) }}
+  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/solid.min.css")) }}
+  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/thin.min.css")) }}
+
+  {% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+  {% set breakpoint = widget_data.navigation.breakpoint %}
+      {% if breakpoint == "always" %}
+          {% set navbarExpand = "" %}
+      {% elif breakpoint == "never" %}
+          {% set navbarExpand = "navbar-expand" %}
+      {% else %}
+          {% set navbarExpand = "navbar-expand-" + breakpoint %}
+      {% endif %}
+    
+
+  <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
+    <nav class="navbar {{navbarExpand}}">
+      <div class="container-xxl position-relative"> 
+        {% module "logo" path="/qoria-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+
+      </div>
+    </nav>
+  </header>

@@ -1,0 +1,107 @@
+{
+  "name" : {
+    "message" : "Razdelilnik",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.alignment.alignment.default.horizontal_align" : {
+    "message" : "SREDIŠČE",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.alignment.alignment.label" : {
+    "message" : "Poravnava",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.alignment.label" : {
+    "message" : "Poravnava",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.label" : {
+    "message" : "Stili",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.line.color.label" : {
+    "message" : "Barva",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.line.label" : {
+    "message" : "Linija",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.line.style.choices.dashed" : {
+    "message" : "Črtkano",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.line.style.choices.dotted" : {
+    "message" : "Pikčasto",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.line.style.choices.solid" : {
+    "message" : "Enobarvno",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.line.style.label" : {
+    "message" : "Slog",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.line.thickness.label" : {
+    "message" : "Debelina",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.size.label" : {
+    "message" : "Velikost",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.size.width.help_text" : {
+    "message" : "Odstotek površine, kamor je nameščen delilnik.",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.size.width.label" : {
+    "message" : "Širina",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.spacing.label" : {
+    "message" : "Razmik",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.spacing.spacing.default.margin.bottom.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.spacing.spacing.default.margin.bottom.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.spacing.spacing.default.margin.top.units" : {
+    "message" : "px",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.spacing.spacing.default.margin.top.value" : {
+    "message" : "10",
+    "description" : "",
+    "placeholders" : null
+  },
+  "styles.spacing.spacing.label" : {
+    "message" : "Razmik",
+    "description" : "",
+    "placeholders" : null
+  }
+}

@@ -1,0 +1,179 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: Linewize US - 404 error
+  screenshotPath: ../../images/template-previews/404.png
+-->
+
+{% extends "../layouts/system-base.html" %}
+
+{% set pageTitle = "Error 404 | Page not found" %}
+
+
+{% block header %}
+  <div class="header-wrapper sticky-top shadow-sm">
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+    
+    {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+    {% set breakpoint = widget_data.navigation.breakpoint %}
+        {% if breakpoint == "always" %}
+            {% set navbarExpand = "" %}
+        {% elif breakpoint == "never" %}
+            {% set navbarExpand = "navbar-expand" %}
+        {% else %}
+            {% set navbarExpand = "navbar-expand-" + breakpoint %}
+        {% endif %}
+      
+    <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
+        <nav class="navbar {{navbarExpand}}">
+      <div class="container-xxl position-relative"> 
+        {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="far fa-xl fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+    
+            {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", menu="123441695658", max_levels="3", megamenu=True, megamenu_descriptions=[{"description" : "<h3><strong>About Linewize</strong></h3><p>We help schools to advance beyond free provision to build safe and smart digital communities that protect and support students on all sides.</p>","match_label" : "About Us"}, {"description" : "<h3><strong>Solutions</strong></h3><p>We provide the most comprehensive suite of digital safety and wellbeing solutions in the world.</p><p>They are built around three fundamental health and safety pillars your school will already be familiar with.</p>","match_label" : "Solutions"}], no_wrapper=True %}
+    
+                <div class="navbar-search d-flex ms-{{breakpoint}}-6 mb-3 mb-{{breakpoint}}-0">
+                  {% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}
+                </div>
+                {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
+                {% if widget_data.cta.link.url != "" %}
+                  <div class="d-flex ms-{{breakpoint}}-6">
+                  {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+    
+                  </div>
+                {% endif %}
+          </div>
+      </div>
+        </nav>
+    </header>
+  </div>
+{% endblock header %}
+{% block body %}
+
+{# hero banner #}
+
+{% module "Header"
+  path="/q-theme/modules/hero",
+  offset=0,
+  width=12,
+  cta=[ ],
+  header="<strong>404</strong>",
+  hero_type="full-image",
+  image={
+    "alt" : "404 banner",
+    "height" : 1080,
+    "loading" : "disabled",
+    "max_height" : 1080,
+    "max_width" : 1920,
+    "size_type" : "auto",
+    "src" : get_asset_url("..//qoria-theme/images/qoria/photos/404_banner.jpg"),
+    "width" : 1920
+  },
+  page_contents=[],
+  pre_header="",
+  show_share_price=false,
+  show_breadcrumbs=false
+%}
+
+<section style=" padding-top: 80px; padding-bottom: 80px;">
+  <div class="container-xxl">
+    {% module "Heading"
+    path="/q-theme/modules/heading",
+    heading ="Looks like that page can't be found",
+    style={
+      "spacing_field" : {
+        "margin" : {
+          "bottom" : {
+            "units" : "px",
+            "value" : 50
+          },
+          "top" : { }
+        }
+      }
+    }
+    %}
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        {% module "Rich Text"
+        path="@hubspot/rich_text",
+        html="<p class=\"lead fw-semibold\">Don't worry, it's easy to get lost in the digital environment.</p><p class=\"lead\">Let's get you back on track.</p>"
+        %}
+
+        
+        {% module "CTA"
+        path="/q-theme/modules/cta",
+        alignment="start",
+        button_text="Return home",
+        link={
+          "no_follow" : false,
+          "open_in_new_tab" : false,
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : "/"
+          }
+        },
+        styles={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 30
+              }
+            }
+          }
+        }
+      %}
+      </div>
+      <div class="col-12 col-lg-4">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-light" style=" padding-top: 80px; padding-bottom: 80px;">
+  <div class="container-xxl">
+    {% module "Heading"
+    path="/q-theme/modules/heading",
+    heading ="Can't find what you're looking for?",
+    style={
+      "spacing_field" : {
+        "margin" : {
+          "bottom" : {
+            "units" : "px",
+            "value" : 50
+          },
+          "top" : { }
+        }
+      }
+    }
+    %}
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        {% module "Rich Text"
+        path="@hubspot/rich_text",
+        html="<p style=\"font-weight: bold;\"><a class=\"text-reset text-decoration-none\" href=\"/solutions\" rel=\"noopener\">Our solutions</a></p><p style=\"font-weight: bold;\"><a class=\"text-reset text-decoration-none\" href=\"/resources\" rel=\"noopener\">Resources</a></p><p style=\"font-weight: bold;\"><a class=\"text-reset text-decoration-none\" href=\"/contact\" rel=\"noopener\">Contact us</a></p><p style=\"font-weight: bold;\"><a class=\"text-reset text-decoration-none\" href=\"/demo\" rel=\"noopener\">Book a demo</a></p>"
+        %}
+
+      </div>
+      <div class="col-12 col-lg-4">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}
+
+

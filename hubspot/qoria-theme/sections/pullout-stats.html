@@ -1,0 +1,63 @@
+<!--
+  templateType: section
+  label: Pullout section - Stats
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/pullout-stats.jpg
+  description: "A pullout section with a shadow and options for colours to display important information."
+-->
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/pullout",
+        offset=0,
+        width=12,
+        row=[ {
+          "column" : [ context.col1 || {
+            "column_styles" : {
+              "background_colour" : "bg-gradient-primary text-white",
+              "background_image" : "q-tail-1"
+            },
+            "expert_use" : { },
+            "pre_heading" : "Young lives helped:",
+            "statistic" : "127,000",
+            "statistic_font_size" : "display-1",
+            "text" : "<p><strong>In 2,637 schools in 16 countries</strong></p>"
+          }, context.col2 || {
+            "column_styles" : {
+              "background_colour" : "bg-red text-white",
+              "background_image" : "q-tail-1"
+            },
+            "expert_use" : { },
+            "pre_heading" : "Schools supported:",
+            "statistic" : "13,000",
+            "statistic_font_size" : "display-1",
+            "text" : "<p>Across three continents</p>"
+          }, context.col3 || {
+            "column_styles" : {
+              "background_colour" : "bg-orange text-white",
+              "background_image" : "q-tail-1"
+            },
+            "expert_use" : { },
+            "pre_heading" : "Impact:",
+            "statistic" : "A vulnerable child identified every 5&nbsp;minutes",
+            "statistic_font_size" : "display-6",
+            "text" : ""
+          } ],
+          "expert_use" : { }
+        } ],
+        style={
+          "background_colour" : context.bgColour || "none"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

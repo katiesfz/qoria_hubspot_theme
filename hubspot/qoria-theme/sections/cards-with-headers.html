@@ -1,0 +1,80 @@
+<!--
+  templateType: section
+  label: Cards with headers
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/cards-with-headers.png
+  description: "Three cards with headers"
+-->
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_underline=true
+      %}
+        {% module_attribute "heading" %}
+          Our <strong>values</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "bg-primary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>We remember the importance of what we do. We don’t just turn up; we show up with integrity and will not give up until:</p>\n<p>\\\\ &nbsp; &nbsp;The job is done<br>\\\\ &nbsp; &nbsp;The customer is happy<br>\\\\ &nbsp; &nbsp;The teammate is supported<br>\\\\ &nbsp; &nbsp;The child is protected</p>\n<p>We own what we do and we stand behind it.</p>",
+          "title" : "<p>Care, <br>always.</p>"
+        }, {
+          "accent_colour" : "bg-secondary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>We’re curious and we start with questions.</p>\n<p>We're open to new ideas, to taking risks, and to learning from our mistakes.</p>\n<p>We want to be challenged in an ongoing pursuit of excellence.</p>",
+          "title" : "<p>Learn. Solve. Repeat.</p>"
+        }, {
+          "accent_colour" : "bg-red text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>We want others to win. So we support, challenge and champion them.</p>\n<p>We play our own part, with the team, customers and community front of mind.</p>\n<p>We’re transparent and we communicate openly.</p>\n<p>We trust and believe in each other. So we ask for help, and we get it.</p>",
+          "title" : "<p>Win <br>together.</p>"
+        } ],
+        styles={
+          "responsive" : {
+            "breakpoints" : {
+              "mobile" : 1,
+              "tablet" : 3
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

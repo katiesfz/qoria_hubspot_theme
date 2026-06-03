@@ -1,0 +1,304 @@
+[ {
+  "id" : "alignment",
+  "name" : "alignment",
+  "label" : "Alignment",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null
+}, {
+  "id" : "link",
+  "name" : "link",
+  "label" : " Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "href" : "www.hubspot.com",
+      "content_id" : null
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "download",
+  "name" : "download",
+  "label" : "Download",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "link",
+      "controlling_value_regex" : "EXTERNAL",
+      "property" : "url.type",
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "link",
+      "controlling_value_regex" : "FILE",
+      "property" : "url.type",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "download_file",
+  "name" : "download_file",
+  "label" : "Download name",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ {
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "EXTERNAL",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      }, {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "FILE",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    } ]
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "download_on_page_load",
+  "name" : "download_on_page_load",
+  "label" : "Download automatically",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "download",
+      "controlling_value_regex" : "true",
+      "property" : "",
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ {
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "EXTERNAL",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      }, {
+        "controlling_field" : null,
+        "controlling_field_path" : "link",
+        "controlling_value_regex" : "FILE",
+        "property" : "url.type",
+        "operator" : "EQUAL",
+        "access" : null
+      } ],
+      "children" : [ ]
+    } ]
+  },
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "button_text",
+  "name" : "button_text",
+  "label" : "Button text",
+  "required" : true,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Add a button link here"
+}, {
+  "id" : "button_colour",
+  "name" : "button_colour",
+  "label" : "Button Colour",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "primary"
+}, {
+  "id" : "button_style",
+  "name" : "button_style",
+  "label" : "Button Style",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "-", "Normal" ], [ "-outline-", "Outline" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "-"
+}, {
+  "id" : "text_colour",
+  "name" : "text_colour",
+  "label" : "Text colour",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "button_style",
+    "controlling_value_regex" : "-",
+    "property" : null,
+    "operator" : "NOT_EQUAL",
+    "access" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "text-white", "Light" ], [ "text-dark", "Dark" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "text-dark"
+}, {
+  "id" : "button_size",
+  "name" : "button_size",
+  "label" : "Button Size",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "btn-sm", "Small" ], [ " ", "Standard" ], [ "btn-lg", "Large" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : " "
+}, {
+  "id" : "word_wrap",
+  "name" : "word_wrap",
+  "label" : "Enable word wrap",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "advanced",
+  "name" : "advanced",
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "advanced.additional_classes",
+    "name" : "additional_classes",
+    "label" : "Additional Classes",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "advanced.trigger_modal",
+    "name" : "trigger_modal",
+    "label" : "Trigger modal",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "advanced.modal_id",
+    "name" : "modal_id",
+    "label" : "Modal ID",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "trigger_modal" : false
+  }
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

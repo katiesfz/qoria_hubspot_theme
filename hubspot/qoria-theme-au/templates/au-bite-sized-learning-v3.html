@@ -1,0 +1,588 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize Bite Sized Learning Bridge V3
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "./layouts/base.html" %}
+
+
+{% block body %}
+<style>
+  .bite-sized-learning .hero {
+    background-image: url(https://www.linewize.io/hubfs/Images%20%28Review%20by%20Mitra%29/backgrounds/iStock-611904222-banner.jpg) !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding-top: 128px !important;
+    padding-bottom: 64px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .bite-sized-learning .hero > .row-fluid {
+    max-width: 1280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .bite-sized-learning .content {
+    background-image: linear-gradient(rgba(238, 238, 238, 1), rgba(238, 238, 238, 1)) !important;
+    background-position: left top !important;
+    background-size: auto !important;
+    background-repeat: no-repeat !important;
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .bite-sized-learning .content > .row-fluid {
+    max-width: 1280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .bite-sized-learning .content .form {
+    background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) !important;
+    background-position: left top !important;
+    background-size: auto !important;
+    background-repeat: no-repeat !important;
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    box-shadow: 0 .125rem .25rem rgba(var(--q-body-color-rgb), 0.075) !important;
+  }
+
+  .bite-sized-learning .content .span8 {
+    padding-right: 32px !important;
+  }
+
+  @media (max-width: 767px) {
+    .bite-sized-learning .hero {
+        padding-top: 64px !important;
+        padding-bottom: 32px !important;
+    }
+
+    .bite-sized-learning .content {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+    }
+
+    .bite-sized-learning .content .span8 {
+      padding-right: 0px !important;
+    }
+  }
+</style>
+
+  {% if dynamic_page_hubdb_row %}
+    <div class="container-fluid main p-0 overflow-hidden g-0 bite-sized-learning">
+      <div class="row-fluid-wrapper hero text-light">
+        <div class="row-fluid">
+          <div class="span8">
+            <p class="fw-normal fs-5 mb-3"><a href="{{request.scheme ~ "://" ~ request.domain}}/bite-sized-learning" class="text-reset">Bite-Sized Learning</a> <i class="far fa-chevron-right fa-xs mx-2" style="vertical-align: baseline;"></i> <a class="text-reset" href="{{request.scheme ~ "://" ~ request.domain}}/bite-sized-learning/{{dynamic_page_hubdb_row.product.name}}">{{dynamic_page_hubdb_row.product.label}}</a></p>
+            <h1 class="h1"><strong>{{ dynamic_page_hubdb_row.name }}</strong></h1>
+            <p class="lead">{{ dynamic_page_hubdb_row.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid-wrapper content">
+        {% if dynamic_page_hubdb_row.file.url is string_containing ".mp4" %}
+          {% set resourceType = "video" %}
+        {% elif dynamic_page_hubdb_row.file.url is string_containing ".ogg" %}
+          {% set resourceType = "video" %}
+        {% elif dynamic_page_hubdb_row.file.url is string_containing ".webm" %}
+          {% set resourceType = "video" %}
+        {% else %}
+          {% set resourceType = "file" %}
+        {% endif %}
+
+          <div class="row-fluid">
+            <div class="span8">
+              {% if resourceType == "video" %}
+                {% module
+                    "video"
+                    path="/q-theme/modules/video",
+                    custom_thumbnail={
+                      "src": "{{ resize_image_url(dynamic_page_hubdb_row.thumbnail.url, 0, 0, 1500, true, false) }}"
+                    },
+                    style={
+                      "controls" : true,
+                      "play_button_colour" : "dark"
+                    },
+                    video_file="{{ dynamic_page_hubdb_row.file.url }}"
+                  %}
+              {% else %}
+                <img src="{{ resize_image_url(dynamic_page_hubdb_row.thumbnail.url, 0, 0, 1500, true, false) }}" class="img-fluid rounded rounded-4 w-100" style="aspect-ratio: 16 / 9; object-fit: cover;">
+              {% endif %}
+              <div class="row g-4 mt-3">
+                <div class="col-12 col-md-6 d-flex flex-column">
+                  {% if dynamic_page_hubdb_row.previous %}
+                    <p class="fw-bold fs-5">
+                      Previous Lesson
+                    </p>
+                    {% for previous in dynamic_page_hubdb_row.previous %}
+                      <div class="bg-white rounded-lg shadow-sm p-3 d-flex align-items-center position-relative flex-grow-1">
+                        <div class="pe-3">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa-stack-2x fas fa-circle text-light"></i>
+                            <i class="fa-stack-1x fas fa-play text-secondary" style="margin-left: .1em;"></i>
+                          </span>
+                        </div>
+                        <div>
+                          <p class="fw-bold mb-0">
+                          <a href="/{{ content.slug }}/{{ previous.hs_path }}" class="stretched-link text-reset">{{previous.name}}</a></p>
+                          <p class="mb-0">
+                            {{ previous.description|striptags|truncate(70, False) }}
+                          </p>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <div class="col-12 col-md-6 d-flex flex-column">
+                  {% if dynamic_page_hubdb_row.next %}
+                    <p class="fw-bold fs-5">
+                      Next Lesson
+                    </p>
+                    {% for next in dynamic_page_hubdb_row.next %}
+                      <div class="bg-white rounded-lg shadow-sm p-3 d-flex align-items-center position-relative flex-grow-1">
+                        <div class="pe-3">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa-stack-2x fas fa-circle text-light"></i>
+                            <i class="fa-stack-1x fas fa-play text-secondary" style="margin-left: .1em;"></i>
+                          </span>
+                        </div>
+                        <div>
+                          <p class="fw-bold mb-0">
+                            <a href="/{{ content.slug }}/{{ next.hs_path }}" class="stretched-link text-reset">
+                            {{next.name}}
+                            </a>
+                          </p>
+                          <p class="mb-0">
+                            {{ next.description|striptags|truncate(70, False) }}
+                          </p>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="span4">
+              {% if resourceType != "video" %}
+                <a href="{{ dynamic_page_hubdb_row.file.url }}" download class="btn btn-lg btn-secondary w-100 mb-4">Download</a>
+              {% endif %}
+              {% if dynamic_page_hubdb_row.resources %}
+                <div class="form mb-4">
+                  <div class=" row gx-0 gy-4">
+                    {% if dynamic_page_hubdb_row.resources %}
+                      <div class="col-12">
+                        <h4>
+                          Supporting Resources
+                        </h4>
+                        <ul class="fa-ul fs-6 mb-0">
+                          {% for resource in dynamic_page_hubdb_row.resources %}
+                          <li class="pb-2 ps-2"><a href="{{ resource.url }}" class="text-reset"><span class="fa-li"><i class="far fa-arrow-to-bottom"></i></span>{{ resource.name }}</a></li> 
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+              <div class="form">
+                <h4 class="fw-normal"><strong>Have you got any questions?</strong><br>Ask our support team.</h4>
+                <p class="mb-md-4 mb-2">Submit your question below and it will be emailed to the Support Team. Please provide as much context as possible.</p>
+                  {% module "query_form"
+                    export_to_template_context="true",
+                    path="/q-theme/modules/form",
+                    form={
+                      "form_id" : "3c6e8257-cf2e-4dfc-9a2c-e11a18fb6edc",
+                      "form_type" : "HUBSPOT",
+                      "message" : "<p>Thanks for submitting your question. Our support team will reach out via email.</p>",
+                      "response_type" : "inline"
+                    },
+                    heading_tag="h3",
+                    heading_underline=false,
+                    show_title=false,
+                    style={
+                      "form_style" : " "
+                    },
+                    advanced={
+                      "on_form_submitted" : "replaceForm(); showConfirmation();"
+                    },
+                    override_values=[ {
+                      "property_id" : "enquiry_information",
+                      "property_value" : "{{ dynamic_page_hubdb_row.product.label }}"
+                    } ]
+                  %}
+                  {% module "query_form_render"
+                    path="/q-theme/modules/form",
+                    form={{widget_data.query_form.form}},
+                    heading_tag="{{widget_data.query_form.heading_tag}}",
+                    heading_underline="{{widget_data.query_form.heading_underline}}",
+                    show_title="{{widget_data.query_form.show_title}}",
+                    style={{widget_data.query_form.style}},
+                    advanced={{widget_data.query_form.advanced}},
+                    override_values={{widget_data.query_form.override_values}}
+                  %}
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+  <script>
+    function showConfirmation() {
+      var alert = '<div class="alert alert-success fade show position-absolute" role="alert" id="confirmationAlert">{{ widget_data.query_form.form.message }}</div>';
+      $("#alertContainer").html(alert);
+      setTimeout(function(){
+        $("#alertContainer #confirmationAlert").alert('close');
+      }, 5000);
+    }
+
+    function replaceForm(){
+      form_query_form_render();
+    }
+
+  </script>
+
+  {% elif dynamic_page_hubdb_table_id %}
+    {% dnd_area "dnd_area"
+      label="Body"
+      class="main p-0 overflow-hidden"
+      %}
+      {% dnd_section
+        full_width=false,
+        max_width=1280
+        %}
+        {% dnd_column
+          offset=0,
+          width=12
+          %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/hero",
+              offset=0,
+              width=12,
+              cta=[ ],
+              header="Parent Control Tools (Qustodio)",
+              hero_type="full-image",
+              image={
+                "alt" : "Linewize AU - Parent sitting at the kitchen table using her smartphone, demonstrating Classwize remote classroom management",
+                "height" : 1414,
+                "loading" : "disabled",
+                "max_height" : 1323.3504913430043,
+                "max_width" : 2000,
+                "size_type" : "auto_custom_max",
+                "src" : "https://www.linewize.co.nz/hubfs/AU-Linewize-Web%20Banners%20(KEEP)/AU%20-%20Web%20Header%20banners-Qustodio.jpg",
+                "width" : 2137
+              },
+              menu="115248177746",
+              page_contents=[ ],
+              pre_header="Bite-Sized Learning",
+              show_breadcrumbs=false,
+              show_share_price=false,
+              style={
+                "heading_location" : "bottom-left"
+              },
+              video=""
+              %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+
+      {% dnd_section
+        background_color="rgba(238, 238, 238, 1)",
+        padding={
+          "default" : {
+            "bottom" : "64px",
+            "left" : "16px",
+            "right" : "16px",
+            "top" : "64px"
+          },
+          "mobile" : {
+            "bottom" : "32px",
+            "top" : "32px"
+          }
+        },
+        full_width=false,
+        max_width=1280
+      %}
+        {% dnd_column
+          offset=0,
+          width=6,
+          padding={
+            "default" : {
+              "right" : "32px"
+            }
+          }
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="text-secondary"><a href="https://www.linewize.io/bite-sized-learning" class="text-reset"><i class="fa fal fa-sm fa-chevron-left me-2"></i>Back to Bite-Sized Learning</a></p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <h2 class="h1 mb-5">Welcome to <strong>Qustodio</strong></h2>
+                <p class="lead">Linewize Connect enables schools to provide parents with advanced controls for school devices outside of school hours, allowing them to play an active role in their child’s digital life. Qustodio extends digital visibility and control of school devices to parents allowing parents to steer and direct their children’s online behaviours and habits.</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=6,
+          width=6,
+          padding={
+            "default" : {
+              "left" : "32px"
+            }
+          }
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/q-theme/modules/video",
+              offset=0,
+              width=12,
+              custom_thumbnail={
+                "alt" : "AU_LWZ_2024_Connect_Video_thumb (keep)",
+                "height" : 351,
+                "loading" : "lazy",
+                "max_height" : 351,
+                "max_width" : 600,
+                "size_type" : "auto",
+                "src" : "https://www.linewize.co.nz/hubfs/ANZ-Linewize-Custom%20Video%20Thumbnails/AU_LWZ_2024_Connect_Video_thumb%20(keep).png",
+                "width" : 600
+              },
+              style={
+                "controls" : true,
+                "play_button_colour" : "dark"
+              },
+              video_file="https://www.linewize.co.nz/hubfs/AU-Linewize-Product%20Videos%20(KEEP)/AU%20LWZ%202024%20Connect%20Video%20(Parental%20Controls).mp4"
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+
+      {% dnd_section
+        padding={
+          "default" : {
+            "bottom" : "64px",
+            "left" : "16px",
+            "right" : "16px",
+            "top" : "64px"
+          },
+          "mobile" : {
+            "bottom" : "32px",
+            "top" : "32px"
+          }
+        },
+        full_width=false,
+        max_width=1280
+        %}
+        {% dnd_column
+          offset=0,
+          width=12
+        %}
+          {% dnd_row %}
+            {% dnd_column
+              offset=0,
+              width=7
+            %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="/q-theme/modules/heading",
+                  offset=0,
+                  width=12,
+                  heading_tag="h1",
+                  heading_underline="true",
+                  style={
+                    "heading_underline" : true,
+                    "spacing_field" : {
+                      "margin" : {
+                        "bottom" : { },
+                        "top" : {
+                          "units" : "px",
+                          "value" : 8
+                        }
+                      }
+                    },
+                    "textalignment" : "start"
+                  }
+                %}
+                  {% module_attribute "heading" %}
+                    <p><span><strong>Discover how to get the most<br></strong>out of Qustodio</span></p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+            {% dnd_column
+              offset=7,
+              width=5
+            %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/horizontal_spacer",
+                  offset=0,
+                  width=12
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+          {% end_dnd_row %}
+          {% dnd_row
+            padding={
+              "default" : {
+                "bottom" : "32px"
+              }
+            }
+          %}
+            {% dnd_module
+              path="/q-theme/modules/pullout-simple",
+              offset=0,
+              width=12,
+              row=[ {
+                "advanced" : {
+                  "additional_classes" : "align-items-center"
+                },
+                "column" : [ {
+                  "advanced" : {
+                    "additional_classes" : "p-3 p-md-5"
+                  },
+                  "column_styles" : {
+                    "background_colour" : "none",
+                    "background_image_file" : {
+                      "loading" : "lazy"
+                    },
+                    "background_size" : "cover"
+                  },
+                  "link" : {
+                    "no_follow" : false,
+                    "open_in_new_tab" : true,
+                    "sponsored" : false,
+                    "url" : {
+                      "href" : "",
+                      "type" : "EXTERNAL"
+                    },
+                    "user_generated_content" : false
+                  },
+                  "link_label" : "",
+                  "link_stretched" : false,
+                  "text" : "<p class='h5'>Search the full knowledge base for answers to common Qustodio questions.</p>"
+                }, {
+                  "advanced" : {
+                    "additional_classes" : "p-3 p-md-5",
+                    "additional_col_classes" : "col-12 col-md-auto"
+                  },
+                  "column_styles" : {
+                    "background_colour" : "none",
+                    "background_image_file" : {
+                      "loading" : "lazy"
+                    },
+                    "background_size" : "cover"
+                  },
+                  "link" : {
+                    "no_follow" : false,
+                    "open_in_new_tab" : true,
+                    "sponsored" : false,
+                    "url" : {
+                      "href" : "https://help.qustodio.com/hc/en-us",
+                      "type" : "EXTERNAL"
+                    },
+                    "user_generated_content" : false
+                  },
+                  "link_label" : "",
+                  "link_stretched" : false,
+                  "text" : "<a href='https://help.qustodio.com/hc/en-us' class='btn btn-secondary'>Visit the Help Center</a>"
+                } ]
+              } ],
+              style={
+                "background_colour" : "bg-light text-dark",
+                "background_image" : "none",
+                "overlay" : false,
+                "shadow" : false,
+                "shadow_style" : "shadow"
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_column
+              offset=0,
+              width=12
+            %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="/q-theme/modules/hubdb-resources-sandbox",
+                  offset=0,
+                  width=12,
+                  filter=[ {
+                    "filter_operator" : "eq",
+                    "filter_property" : "product",
+                    "filter_value" : "Qustodio"
+                  } ],
+                  cta_column="cta",
+                  custom_url_column="link",
+                  filter_options_group=[ {
+                    "badge_colour" : "orange-subtle",
+                    "filter_property" : "audience",
+                    "include_badge" : true,
+                    "include_filter" : true
+                  }, {
+                    "badge_colour" : "orange-solid",
+                    "filter_property" : "format",
+                    "include_badge" : true,
+                    "include_filter" : true
+                  } ],
+                  styles={
+                    "border_colour" : "border-secondary",
+                    "equal_height_img" : true,
+                    "image_fit" : "contain",
+                    "items_per_page" : 9,
+                    "responsive" : {
+                      "desktop" : {
+                        "cards" : 3
+                      },
+                      "tablet" : {
+                        "cards" : 2
+                      }
+                    }
+                  },
+                  text_search=true
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+  {% else %}
+    {% dnd_area "dnd_area"
+      label="Body"
+      class="main p-0 overflow-hidden"
+      %}
+    {% end_dnd_area %}
+  {% endif %}
+{% endblock body %}
+
+{% block footer %}
+  {% global_partial path="./partials/footer.html" %}
+{% endblock footer %}

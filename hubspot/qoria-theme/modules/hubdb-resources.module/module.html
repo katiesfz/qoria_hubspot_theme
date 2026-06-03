@@ -1,0 +1,922 @@
+{% if module.source_table || dynamic_page_hubdb_table_id %}
+
+    {% if module.selection == "auto" %}
+
+        {# select the hubDB #}
+        {% if module.source_table %}
+            {% set tableId = module.source_table %}
+        {% else %}
+            {% set tableId = dynamic_page_hubdb_table_id %}
+        {% endif %}
+
+        {# build filter query string #}
+        {% set filterArr = [] %}
+        {% if module.filter %}
+            {% for filt in module.filter %}
+                {% set oneFilter = filt.filter_property ~ "__" ~ filt.filter_operator ~ "=" ~ filt.filter_value %}
+                {% do filterArr.append(oneFilter) %}
+            {% endfor %}
+        {% endif %}
+
+
+        {# if there are multiple secondary filter options in the UI we add more filter queries here #}
+        {% set additionalFilters = [] %}
+
+        {% set queryKeys = [] %}
+        {% if request.query_dict %}
+            {% for key, val in request.query_dict.items() %}
+                {% do queryKeys.append(key) %}
+            {% endfor %}
+        {% endif %}
+
+        {% if module.filter_options %}
+            {% for filt in module.filter_options %}
+                {% if queryKeys is containing filt && request.query_dict[filt] != "show-all" %}
+                    {% set newQuery = filt ~ "__contains=" ~ request.query_dict[filt] %}
+                    {% do filterArr.append(newQuery) %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+            
+        {% set filterString = filterArr|join("&") %}
+
+
+            <script>
+        //    console.log("{{filterString}}");
+        </script>
+        {# get filtered table rows #}
+        {% set rows = hubdb_table_rows(tableId, filterString) %}
+
+    {% elif module.selection == "manual" %}
+        {# call in all rows because calling a single row is limited to 10 per page and you can't use OR in filter query strings #}
+        {% set table = hubdb_table_rows(tableId) %}
+        {# now we filter them with HubL #}
+        {% set rows = [] %}
+        {% for row in table %}
+            {% if row.hs_id is in module.row_id %}
+                {% do rows.append(row) %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {# set posts per page #}
+    {% if module.styles.items_per_page %}
+        {% set itemsPerPage = module.styles.items_per_page|int %}
+    {% else %}
+        {% set itemsPerPage = 10 %}
+    {% endif %}
+
+    <script>
+//    console.log("{{filterString|escape_js}}");
+ //   console.log({{rows|tojson}});
+ //   console.log("{{videoIds|string}}");
+    </script>
+    <script>
+
+   // console.log("{{module.styles.custom_max_sizing}}");
+
+    // build rows object
+    const hubdbRows_{{name|replace("-","_")}} = {{ rows.objects|tojson }};
+ //       console.log(hubdbRows_{{name|replace("-","_")}});
+ //       console.log("{{ rows.objects[0] }}");
+ //       console.log("{{ rows.objects[0].video2 }}");
+ //    console.log("{{ file_by_id(rows.objects[0].video2)|pprint }}");
+    </script>
+
+    {% require_css %}
+    <style>
+        {% scope_css %}
+            {% if module.styles.custom_max_sizing == "true" %}
+                .card-img {
+                    max-height: {{ module.styles.max_height }}px;
+                    max-width: {{ module.styles.max_width }}px;
+                }
+            {% endif %}
+        {% end_scope_css %}
+    </style>
+    {% end_require_css %}
+
+        <div class="container-fluid blog-listing g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}  transition-property: height; transition-duration: 500ms;" id="hubdb_resources_{{name|replace('-','_')}}">
+            {% if module.filter_options %}
+                {% if module.filter_options|length > 1 %}
+                    <div class="row pb-5">
+                        <div class="col-12 filter-tags-container">
+                            <form id="hubdbFilter" method="get" class="row">
+                                {% for option in module.filter_options %}
+                                    <div class="col-12 col-sm-6 col-lg-3 mb-1">
+                                        <select class="form-control" name="{{option}}" form="hubdbFilter" onChange="this.form.submit()">
+                                            <option value="show-all">Filter by {{hubdb_table_column(tableId, option).label}}</option>
+                                            <option value="show-all">Show All</option>
+                                            {% set options = hubdb_table_column(tableId, option).options %}
+                                            {% for choice in options %}
+                                                {% if choice.name == request.query_dict[option] %}
+                                                    <option selected="selected" value="{{ choice.name }}">{{ choice.label }}</option>
+                                                {% else %}
+                                                    <option value="{{ choice.name }}">{{ choice.label }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                {% endfor %}
+                            </form>
+                        </div>
+                    </div>
+                {% else %}
+                    {% for option in module.filter_options %}
+                        <div class="row">
+                            <div class="col filter-tags-container text-center pb-4">
+                                <a href="#" data-filter="all" class="btn btn-blog-filter-secondary me-2 mb-2 active" aria-pressed="true">All</a>
+                                {% set options = hubdb_table_column(tableId, option).options %}
+                                {% for choice in options %}
+                                    <a href="#" data-filter="{{choice.name}}" data-category="{{option}}" class="btn btn-blog-filter-secondary me-2 mb-2">{{choice.label}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}       
+            <div class="row g-0">
+                <div class="col" id="pagesContainer" style="transition-property: height; transition-duration: 500ms; overflow: hidden; filter: drop-shadow({{module.styles.shadow}});">
+                    <div id="videoContainer_{{name}}" class="row flex-wrap row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3 pages-container">
+
+                    </div>
+                </div>
+            </div>
+            {% if module.styles.pagination %}
+                <div class="row pt-4 mt-auto">
+                    <div class="col text-center">
+                        <nav class="pagination-container" id="pagination" aria-label="Pagination">
+                        
+                        </nav>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div id="modal_container_{{name|replace('-','_')}}">
+        </div>
+
+    <script>
+
+    // init: 
+    var contentsAll = hubdbRows_{{name|replace("-","_")}};
+    var contents = contentsAll;
+    var itemsPerPage = {{itemsPerPage}};
+    var outerContainer = document.getElementById("hubdb_resources_{{name|replace('-','_')}}");
+    var elementContainer = outerContainer.getElementsByClassName("pages-container")[0];
+    var modalContainer = document.getElementById("modal_container_{{name|replace('-','_')}}");
+    var paginationContainer = outerContainer.getElementsByClassName("pagination-container")[0];
+    var curPage = 1;
+
+    // print single video card
+    function hubdbVideoTemplate(row, index){
+
+        const newCol = document.createElement("div");
+        newCol.classList.add("col");
+
+        const newPost = document.createElement("div");
+
+        newPost.classList.add("card-video");
+
+        
+        {% if module.styles.inset_card %}
+            newPost.classList.add("card-inset");
+        {% endif %}
+
+        {% if module.styles.card_colour != "none" %}
+            newPost.classList.add("{{module.styles.card_colour}}");
+        {% endif %}
+
+        {% if module.styles.border_colour != "none" %}
+            newPost.classList.add("{{module.styles.border_colour}}", "border-1", "border");
+        {% endif %}
+
+        {% if module.styles.shadow != "none" %}
+            newPost.classList.add("{{module.styles.shadow}}");
+        {% endif %}
+
+        {% if module.styles.equal_heights %}
+            newPost.classList.add("h-100", "d-flex", "flex-column");
+        {% endif %}
+
+        const newCardBody = document.createElement("div");
+
+        {% if module.styles.equal_heights %}
+            newCardBody.classList.add("d-flex", "flex-column");
+        {% endif %}
+
+        {% if module.styles.inset_card %}
+            newCardBody.classList.add("{{module.styles.body_colour}}");
+        {% else %}
+            {% if module.styles.card_colour != "none" %}
+                newCardBody.classList.add("{{module.styles.card_colour}}");
+            {% endif %}
+        {% endif %}
+
+        newCardBody.classList.add("card-body", "text-{{ module.styles.textalignment }}");
+
+        let newContent = "";
+
+        const cardHeader = document.createElement("div");
+        const featuredImageContainer = document.createElement("div");
+
+        // featured image
+        if (row.thumbnail){
+
+        {% if module.styles.image_fit == "cover" %}
+            cardHeader.classList.add("card-img-top");
+        {% else %}
+            cardHeader.classList.add("card-header", "bg-transparent");
+        {% endif %}
+
+            const featuredImage = document.createElement("img");
+
+            
+            featuredImage.src = row.thumbnail.url;
+            featuredImage.classList.add("img-fluid");
+            featuredImage.classList.add("card-img");
+            {% if module.styles.image_fit != "cover" %}
+                featuredImage.classList.add("img-header");
+            {% endif %}
+            {% if module.styles.equal_height_img %}
+                featuredImage.classList.add("img-normalise");
+            {% endif %}
+            featuredImage.alt = row.name;
+            {% if module.styles.loading != "none" %}
+            loading="{{module.styles.loading}}";
+            {% endif %}
+            {% if module.styles.image_fit == "contain" %}
+            featuredImage.style = "object-fit: contain";
+            {% endif %}
+            
+
+        // play button
+        {% if module.styles.play_button != "none" %}
+            featuredImageContainer.classList.add("position-relative");
+            let playButton = document.createElement("div");
+            playButton.classList.add("play-button");
+            {% if module.styles.play_button == "light" %}
+                playButton.classList.add("play-button-light");
+            {% elif module.styles.play_button == "dark" %}
+                playButton.classList.add("play-button-dark");
+            {% endif %}
+
+            {% if !dynamic_page_hubdb_table_id %}
+                playButton.dataset.bsToggle = "modal";
+                let modalTarget = "#videoModal_{{name|replace("-","_")}}_" + index;
+                playButton.dataset.bsTarget = modalTarget;
+                let modalVideo = "video_{{name|replace("-","_")}}_" + index;
+                playButton.addEventListener("click", function(){
+                    playVideo(modalVideo);
+                });
+            {% endif %}
+        {% endif %}
+        
+        {% if module.styles.image_fit == "cover" %}
+            cardHeader.classList.add("card-img-top");
+        {% endif %}
+        
+        featuredImageContainer.append(featuredImage);
+        {% if module.styles.play_button != "none" %}
+            featuredImageContainer.append(playButton);
+        {% endif %}
+        cardHeader.append(featuredImageContainer);
+
+
+        }
+
+        // print name
+        newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-3 align-items-center">';
+            newContent += '<div>';
+                newContent += '<h5 class="text-{{module.styles.textalignment}} mb-0">' + row.name + '</h5>';
+            newContent += '</div>';
+        newContent += '</div>';
+
+        // print description
+        if (row.description){
+            newContent += '<div class="card-text text-dark">' + row.description + '</div>';
+        }
+
+        newCardBody.innerHTML = newContent;
+
+        const newFooter = document.createElement("div");
+        newFooter.classList.add("card-footer", "text-{{ module.styles.textalignment }}", "d-flex", "align-items-center");
+
+        {% if module.styles.inset_card %}
+            newFooter.classList.add("{{module.styles.body_colour}}");
+        {% else %}
+            newFooter.classList.add("bg-transparent");
+        {% endif %}
+
+        let newFooterInner = "";
+
+            // print duration
+            if (row.duration){
+            newFooterInner += '<span class="me-auto badge text-bg-blue "><i class="fal fa-stopwatch me-1 fa-sm"></i> ' + row.duration + '</span>';
+            }
+
+            
+            // print link
+            let ctaClasses = [];
+            {% if module.styles.cta_style %}
+                {% if module.styles.cta_style != "text-" %}
+                    ctaClasses.push("mt-3");
+                    {% set ctaType = module.styles.cta_style ~ module.styles.cta_colour %}
+                        {% for class in ctaType|split(" ") %}
+                            ctaClasses.push("{{class}}");
+                        {% endfor %}
+                        {% if module.styles.cta_size != " " %}
+                            ctaClasses.push("{{module.styles.cta_size}}");
+                        {% endif %}
+                {% else %}
+                    ctaClasses.push("mt-3");
+                    ctaClasses.push("text-decoration-none");
+                    ctaClasses.push("fw-semibold");
+                    ctaClasses.push("lh-1");
+                    ctaClasses.push("text-" + "{{module.styles.cta_colour}}");
+                {% endif %}
+            {% else %}
+                ctaClasses.push("mt-3");
+                ctaClasses.push("text-decoration-none");
+                ctaClasses.push("fw-semibold");
+                ctaClasses.push("lh-1");
+            {% endif %}
+            {% if module.styles.cta_alignment == "start" %}
+                ctaClasses.push("me-auto");
+            {% elif module.styles.cta_alignment == "center" %}
+                ctaClasses.push("mx-auto");
+            {% else %}
+                ctaClasses.push("ms-auto");
+            {% endif %}
+            {% if module.styles.stretched_link %}
+                ctaClasses.push("stretched-link");
+            {% endif %}
+
+                let cardLink = document.createElement("a");
+                if (row.hs_path) {
+                    cardLink.href = "{{request.path}}/" + row.hs_path;
+                } else if (row.video) {
+                    cardLink.href = "#";
+                    cardLink.dataset.bsToggle = "modal";
+                    let modalTarget = "#videoModal_{{name|replace("-","_")}}_" + index;
+                    cardLink.dataset.bsTarget = modalTarget;
+                    let modalVideo = "video_{{name|replace("-","_")}}_" + index;
+                    cardLink.setAttribute("onclick","playVideo('" + modalVideo + "');");  
+                    cardLink.addEventListener("click", function(){
+                        playVideo(modalVideo);
+                    });
+                } else {
+                    cardLink.href = row.page_link;
+                }
+                cardLink.innerHTML = "Watch video";
+           //     console.log(ctaClasses);
+
+           
+                cardLink.classList.add(...ctaClasses);
+                newFooterInner += cardLink.outerHTML;
+            
+        newFooter.innerHTML = newFooterInner;
+
+        newPost.append(cardHeader);
+        newPost.append(newCardBody);
+        newPost.append(newFooter);
+        
+        newCol.append(newPost);
+
+        return newCol;
+    }
+
+
+    
+    // print single resource card
+    function hubdbResourceTemplate(row, index){
+
+        const newCol = document.createElement("div");
+        newCol.classList.add("col");
+
+        const newPost = document.createElement("div");
+
+        newPost.classList.add("card");
+
+        
+        {% if module.styles.inset_card %}
+            newPost.classList.add("card-inset");
+        {% endif %}
+
+        {% if module.styles.card_colour != "none" %}
+            newPost.classList.add("{{module.styles.card_colour}}");
+        {% endif %}
+
+        {% if module.styles.border_colour != "none" %}
+            newPost.classList.add("{{module.styles.border_colour}}", "border-1", "border");
+        {% endif %}
+
+        {% if module.styles.shadow != "none" %}
+            newPost.classList.add("{{module.styles.shadow}}");
+        {% endif %}
+
+        {% if module.styles.equal_heights %}
+            newPost.classList.add("h-100", "d-flex", "flex-column");
+        {% endif %}
+
+        const newCardBody = document.createElement("div");
+
+        {% if module.styles.equal_heights %}
+            newCardBody.classList.add("d-flex", "flex-column");
+        {% endif %}
+
+        {% if module.styles.inset_card %}
+            newCardBody.classList.add("{{module.styles.body_colour}}");
+        {% else %}
+            {% if module.styles.card_colour != "none" %}
+                newCardBody.classList.add("{{module.styles.card_colour}}");
+            {% endif %}
+        {% endif %}
+
+        newCardBody.classList.add("card-body", "text-{{ module.styles.textalignment }}");
+
+        let newContent = "";
+
+        const cardHeader = document.createElement("div");
+        const featuredImageContainer = document.createElement("div");
+
+        // featured image
+        if (row.thumbnail){
+
+
+        {% if module.styles.image_fit == "cover" %}
+            cardHeader.classList.add("card-img-top");
+        {% else %}
+            cardHeader.classList.add("card-header", "bg-transparent");
+        {% endif %}
+
+            const featuredImage = document.createElement("img");
+
+            featuredImage.src = row.thumbnail.url;
+            featuredImage.classList.add("img-fluid");
+            featuredImage.classList.add("card-img");
+            {% if module.styles.image_fit != "cover" %}
+                featuredImage.classList.add("img-header");
+            {% endif %}
+            {% if module.styles.equal_height_img %}
+                featuredImage.classList.add("img-normalise");
+            {% endif %}
+            featuredImage.alt = row.name;
+            {% if module.styles.loading != "none" %}
+            loading="{{module.styles.loading}}";
+            {% endif %}
+            {% if module.styles.image_fit == "contain" %}
+            featuredImage.style = "object-fit: contain";
+            {% endif %}
+        
+        {% if module.styles.image_fit == "cover" %}
+            cardHeader.classList.add("card-img-top");
+        {% endif %}
+        
+        featuredImageContainer.append(featuredImage);
+        cardHeader.append(featuredImageContainer);
+
+        }
+
+        // print name
+        newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-3 align-items-center">';
+            newContent += '<div>';
+                newContent += '<h5 class="text-{{module.styles.textalignment}} mb-0">' + row.name + '</h5>';
+            newContent += '</div>';
+        newContent += '</div>';
+
+        // print description
+        if (row.description){
+            newContent += '<div class="card-text text-dark">' + row.description + '</div>';
+        }
+
+        newCardBody.innerHTML = newContent;
+
+        const newFooter = document.createElement("div");
+        newFooter.classList.add("card-footer", "text-{{ module.styles.textalignment }}", "d-flex", "align-items-center");
+
+        {% if module.styles.inset_card %}
+            newFooter.classList.add("{{module.styles.body_colour}}");
+        {% else %}
+            newFooter.classList.add("bg-transparent");
+        {% endif %}
+
+        let newFooterInner = "";
+
+            
+            // print link
+            let ctaClasses = [];
+            {% if module.styles.cta_style %}
+                {% if module.styles.cta_style != "text-" %}
+                    ctaClasses.push("mt-3");
+                    {% set ctaType = module.styles.cta_style ~ module.styles.cta_colour %}
+                        {% for class in ctaType|split(" ") %}
+                            ctaClasses.push("{{class}}");
+                        {% endfor %}
+                        {% if module.styles.cta_size != " " %}
+                            ctaClasses.push("{{module.styles.cta_size}}");
+                        {% endif %}
+                {% else %}
+                    ctaClasses.push("mt-3");
+                    ctaClasses.push("text-decoration-none");
+                    ctaClasses.push("fw-semibold");
+                    ctaClasses.push("lh-1");
+                    ctaClasses.push("text-" + "{{module.styles.cta_colour}}");
+                {% endif %}
+            {% else %}
+                ctaClasses.push("mt-3");
+                ctaClasses.push("text-decoration-none");
+                ctaClasses.push("fw-semibold");
+                ctaClasses.push("lh-1");
+            {% endif %}
+            {% if module.styles.cta_alignment == "start" %}
+                ctaClasses.push("me-auto");
+            {% elif module.styles.cta_alignment == "center" %}
+                ctaClasses.push("mx-auto");
+            {% else %}
+                ctaClasses.push("ms-auto");
+            {% endif %}
+            {% if module.styles.stretched_link %}
+                ctaClasses.push("stretched-link");
+            {% endif %}
+            
+                let cardLink = document.createElement("a");
+                if (row.hs_path) {
+                    cardLink.href = "{{request.path}}/" + row.hs_path;
+                } else {
+                    cardLink.href = row.page_link;
+                }
+                cardLink.innerHTML = "Learn more";
+           //     console.log(ctaClasses);
+                cardLink.classList.add(...ctaClasses);
+                newFooterInner += cardLink.outerHTML;
+            
+        newFooter.innerHTML = newFooterInner;
+
+        newPost.append(cardHeader);
+        newPost.append(newCardBody);
+        newPost.append(newFooter);
+        
+        newCol.append(newPost);
+
+        return newCol;
+    }
+
+    // print related modal
+
+    function modalTemplate(row, index){
+
+    
+        const newModal = document.createElement("div");
+            newModal.classList.add("modal","fade");
+            let modalId = 'videoModal_{{name|replace("-","_")}}_' + index;
+            newModal.id = modalId;
+            newModal.ariaHidden = "true";
+            newModal.ariaLabelledby = "{{name}}";
+            newModal.tabIndex = "-1";
+
+        let newModalDialog = "";
+            
+            newModalDialog += '<div class="modal-dialog modal-lg modal-dialog-centered">';
+                newModalDialog += '<div class="modal-content overflow-hidden">';
+                    newModalDialog += '<div class="modal-body p-0">';
+                        newModalDialog += '<div class="position-relative">';
+                            let videoPoster = "";
+                            if (row.thumbnail){
+                                videoPoster += 'poster="' + row.thumbnail.url + '"';
+                            }
+                            newModalDialog += '<video id="video_{{name|replace("-","_")}}_' + index + '" width="100%" class="d-block" preload="metadata" ' + videoPoster + ' controlsList="nodownload noremoteplayback">';
+                            
+                            let videoUrl = row.video.url.toLowerCase();
+                            let videoType = "";
+
+                            if (videoUrl.includes(".mp4")){
+                                let videoType = "video/mp4";
+                            } else if (videoUrl.includes(".ogg")){
+                                let videoType = "video/ogg";
+                            } else if (videoUrl.includes(".webm")){
+                                let videoType = "video/webm";
+                            }
+
+                            newModalDialog += '<source src="' + row.video.url + '" ' + videoType + '>';
+                            newModalDialog += 'Your browser does not support the video tag.';
+                            newModalDialog += '</video>';
+
+                            newModalDialog += '<button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close" onclick="pauseVideo(\'video_{{name|replace('-','_')}}_' + index + '\')"></button>';
+                        newModalDialog += '</div>';
+                    newModalDialog += '</div>';
+                newModalDialog += '</div>';
+            newModalDialog += '</div>';
+
+            newModal.innerHTML = newModalDialog;
+
+            return newModal;
+
+
+    }
+
+    </script>
+
+    <script>
+
+        // pagination - 
+        function pagination2(curPage) {
+
+            // if the pagination container doesn't exist, don't bother continuing
+            if (!paginationContainer) {
+                return;
+            }
+
+            var pageCount = Math.ceil(contents.length / itemsPerPage); // total pages
+            const numPadding = 2; // how many numbers on either side of the current page number before we break with a "..."
+
+
+            //    console.log(pageCount);
+
+            // clear existing pagination
+            paginationContainer.innerHTML = '';
+
+            // if there's more than one page
+            if (pageCount > 1){
+                const paginationUl = document.createElement("ul");
+                paginationUl.classList.add("pagination", "justify-content-center");
+
+                // if the page isn't the first page, add a previous link
+                if (curPage != 1) {
+                    const prevLi = document.createElement("li");
+                    prevLi.classList.add("page-item")
+
+                    const prevLink = document.createElement("a");
+                    prevLink.classList.add("page-link");
+                    prevLink.id = "previousLink";
+                    prevLink.href="#hubdb_resources_{{name|replace('-','_')}}";
+                    prevLink.innerHTML = '<i class="fa far fa-chevrons-left fa-2xs"></i> Previous';
+
+                    // on previous click, run the goToPage function on the current page value - 1 and update the current page value
+                    prevLink.addEventListener("click", () => {
+                        // event.preventDefault();
+                        goToPage2(curPage - 1);
+                    });
+
+                    prevLi.appendChild(prevLink);
+                    paginationUl.appendChild(prevLi);
+                }
+
+
+
+                // build pagination numbers  
+                var firstEllipses = false;
+                var secondEllipses = false;
+
+                for (let i=1; i <= pageCount; i++){
+                
+                    // if the number is within the padding of the current page, then show it
+                    if (((curPage - numPadding) <= (i) && (i) <= (curPage + numPadding)) || (i == 1) || (i == pageCount)) {
+                        const newPageLi = document.createElement("li");
+                        newPageLi.classList.add("page-item");
+
+                        // highlight the active page number
+                        if (i == curPage){
+                            newPageLi.ariaCurrent = "page";
+                            newPageLi.classList.add("active");
+                        }
+
+                        // add page link to the page number
+                        const newLink = document.createElement("a");
+                        newLink.classList.add("page-link", "page-link-number");
+                        newLink.innerHTML = i;
+                        newLink.dataset.destination = i;
+                        newLink.href = "#hubdb_resources_{{name|replace('-','_')}}";
+
+                        newLink.addEventListener("click", () => {
+                            event.preventDefault();
+                            goToPage2(i);
+                        });
+                        
+                        newPageLi.appendChild(newLink);
+                        paginationUl.appendChild(newPageLi);
+                    } else {
+                        
+                        if (!firstEllipses) {
+                            if (1 < (i) && (i) < (curPage - numPadding)) {
+                            const ellipsesLi = document.createElement("li");
+                            ellipsesLi.classList.add("page-item","first-ellipses");
+
+                            const ellipses = document.createElement("span");
+                            ellipses.classList.add("page-link");
+                            ellipses.innerHTML = "...";
+                            
+                            ellipsesLi.appendChild(ellipses);
+
+                            paginationUl.appendChild(ellipsesLi);
+
+                            firstEllipses = true;
+                            continue;
+                            }
+                        }
+
+                        if (!secondEllipses) {
+                            if ((curPage + numPadding) < (i) && (i) < pageCount) {
+                                const ellipsesLi = document.createElement("li");
+                                ellipsesLi.classList.add("page-item","second-ellipses");
+
+                                const ellipses = document.createElement("span");
+                                ellipses.classList.add("page-link");
+                                ellipses.innerHTML = "...";
+                                
+                                ellipsesLi.appendChild(ellipses);
+
+                                paginationUl.appendChild(ellipsesLi);
+
+                                secondEllipses = true;
+                                continue;
+                            }
+                        }
+                    }
+                }
+
+                // if the page isn't the last page, add a next link
+                if (curPage != pageCount) {
+                    
+                    const nextLi = document.createElement("li");
+                    nextLi.classList.add("page-item")
+
+                    const nextLink = document.createElement("a");
+                    nextLink.classList.add("page-link");
+                    nextLink.id = "nextLink";
+                    nextLink.href="#hubdb_resources_{{name|replace('-','_')}}";
+                    
+                    nextLink.innerHTML = 'Next <i class="fa far fa-chevrons-right fa-2xs"></i>';
+
+                    nextLink.addEventListener("click", () => {
+                        
+                    //    console.log("next");
+                        goToPage2(curPage + 1);
+                    });
+                    
+                    nextLi.appendChild(nextLink);
+                    paginationUl.appendChild(nextLi);
+                }
+
+                // replace contents of the pagination container
+                paginationContainer.appendChild(paginationUl);
+            }
+        }
+
+        </script>
+        <script>
+
+        // to use blogFilter(), set a contentsAll array, include a .filter-tags-container div with a tags that have a data-filter property to filter with
+
+        function blogFilter(){
+
+            contents = contentsAll;
+                
+            {% if module.filter_options %}
+                // filter options
+                    // {{ module.filter_options|length }}
+                {% if module.filter_options|length == 1 %}
+                    // length is 1
+
+                    contents = contentsAll;
+                    var activeFilter = document.querySelector(".filter-tags-container .active").dataset.filter;
+                    var filterButtons = document.querySelectorAll('.filter-tags-container a');
+
+               //     console.log(filterButtons);
+        
+                    // when filter button is clicked, switch active button, assign filter, update contents variable, update pagination, and go to page 1
+                    filterButtons.forEach(function (i) {
+                        i.addEventListener('click', function() {
+                            event.preventDefault();
+                            filterButtons.forEach(function (j) {
+                                j.classList.remove("active");
+                            });
+                            i.classList.add("active");
+                            activeFilter = i.dataset.filter;
+                            activeCategory = i.dataset.category;
+                  //          console.log(activeFilter);
+                            filterContents(activeCategory, activeFilter);
+                  //          console.log(contents);
+                            goToPage2(1);
+                        });
+                    });
+        
+                    // filter contents to active filter
+                    function filterContents(category, filter) {
+                        contents = contentsAll.filter(function (el) {
+                            if (filter == "all") {
+                                return true;
+                            } else {
+                                // iterate through the categories
+                                //    console.log(el[category]);
+                                for (i = 0; i < el[category].length; i++) {
+                                    // check if category is an array
+                                    if (Array.isArray(el[category][i])) {
+                                        console.log(el[category][i]);
+                                      //  for (i = 0; i < el[category][i].length; i++) {
+                                      //      if el[category]
+                                      //      return el[category][i].name == filter;
+                                      //  }
+                                    } else {
+                                        return el[category][i].name == filter;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                {% endif %}
+            {% endif %}
+            //   console.log(contents);
+        }
+
+        // clear container, and fill with current filtered contents variable items
+        // to use goToPage2(), set an elementContainer, modalContainer and an itemTemplate() and contents
+        function goToPage2(pageNum) {
+            elementContainer.innerHTML = '';
+            modalContainer.innerHTML = '';
+            curPage = pageNum;
+
+            //    console.log("current page: " + curPage);
+
+            const prevRange = (pageNum - 1) * itemsPerPage;
+            const currRange = pageNum * itemsPerPage;
+
+            if (contents.length > 0){
+                contents.forEach((item, index) => {
+                    if (index >= prevRange && index < currRange) {
+                        if (item.video) {
+                        //    console.log(item.video.url)
+                            }
+                    }
+                });
+            }
+
+            if (contents.length > 0){
+                contents.forEach((item, index) => {
+                    if (index >= prevRange && index < currRange) {
+                        if (item.video) {
+                            elementContainer.appendChild(hubdbVideoTemplate(item, index));
+                        } else {
+                            elementContainer.appendChild(hubdbResourceTemplate(item, index));
+                        }
+                //        console.log(item.video);
+                        {% if !dynamic_page_hubdb_table_id %}
+                    //       console.log(item);
+                            if (item.video) {
+                        modalContainer.appendChild(modalTemplate(item, index));
+                        }
+                        {% endif %}
+                    }
+                });
+            } else {
+                elementContainer.innerHTML = "<div class='col-12 col-md-12 col-lg-12'><h2>No results match your filters.</h2></div>"
+            }
+
+            
+            
+            {% if module.styles.equal_height_img %}
+            var cardImages = document.getElementsByClassName("img-normalise");
+
+            for (let i=0; i<cardImages.length; i++) {
+                if (cardImages[i].complete) {
+                    normaliseHeightsMin("#hubdb_resources_{{name|replace("-","_")}} .img-normalise");
+                } else {
+                    cardImages[i].addEventListener('load', () => {normaliseHeightsMin("#hubdb_resources_{{name|replace("-","_")}} .img-normalise");})
+                }
+            }
+             setTimeout(normaliseHeightsMin,300,"#hubdb_resources_{{name|replace("-","_")}} .img-normalise");
+            {% endif %}
+
+            pagination2(curPage);
+        }
+
+    </script>
+
+    <script>
+
+        window.addEventListener("load", function() {
+
+            if(document.readyState == 'complete') {
+            {% if module.filter_options %}    
+           blogFilter();
+            {% endif %}
+
+                goToPage2(1);
+                {% if module.styles.equal_height_img %}
+
+                    var cardImages = document.getElementsByClassName("img-normalise");
+
+                    for (let i=0; i<cardImages.length; i++) {
+                        if (cardImages[i].complete) {
+                            normaliseHeightsMin("#hubdb_resources_{{name|replace("-","_")}} .img-normalise");
+                        } else {
+                            cardImages[i].addEventListener('load', () => {normaliseHeightsMin("#hubdb_resources_{{name|replace("-","_")}} .img-normalise");})
+                        }
+                    }
+                    $(window).on('load resize orientationchange', normaliseHeightsMin("#hubdb_resources_{{name|replace("-","_")}} .img-normalise"));
+                {% endif %}
+            }
+        });
+
+    </script>
+{% endif %}

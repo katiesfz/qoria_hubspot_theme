@@ -1,0 +1,205 @@
+<!--
+  templateType: section
+  label: Pullout - Trial Promotion
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/pullout-promotion.png
+  description: "A pullout promoting free trials of products."
+-->
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "0px",
+      "top" : "0px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/qoria-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h1",
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                }
+              },
+              "textalignment" : "center"
+            }
+          %}
+            {% module_attribute "heading" %}
+              Take advantage of our <strong>free support trials</strong>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_column
+            offset=0,
+            width=2
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=2,
+            width=8,
+            padding={
+              "default" : {
+                "bottom" : "32px"
+              },
+              "mobile" : {
+                "bottom" : "32px"
+              }
+            }
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/rich_text",
+                offset=0,
+                width=12
+              %}
+                {% module_attribute "html" %}
+                  <p class="lead" style="text-align: center; font-size: 22px;">With so many options, how do you choose the best tools for your organisation? We remove the guesswork with our no-cost support trials. Linewize Monitor and Linewize Pulse trials come with evidential impact analyses and next step recommendations.&nbsp;<a href="/solutions" rel="noopener"></a></p>
+                {% end_module_attribute %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+          {% dnd_column
+            offset=10,
+            width=2
+          %}
+            {% dnd_row %}
+              {% dnd_module
+                path="@hubspot/horizontal_spacer",
+                offset=0,
+                width=12,
+                hidden={
+                  "mobile" : true
+                }
+              %}
+              {% end_dnd_module %}
+            {% end_dnd_row %}
+          {% end_dnd_column %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/card",
+        offset=0,
+        width=12,
+        advanced={
+          "additional_classes" : ""
+        },
+        card=[ {
+          "accent_colour" : "bg-gradient-primary-reverse text-white",
+          "cta_colour" : "light",
+          "cta_size" : "btn-sm",
+          "cta_style" : "btn btn-outline-",
+          "image" : {
+            "alt" : "LNW-US-Banner-iStock-cropped",
+            "height" : 689,
+            "loading" : "lazy",
+            "max_height" : 689,
+            "max_width" : 1920,
+            "size_type" : "auto_custom_max",
+            "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/LNW-US-Banner-iStock-cropped.jpeg",
+            "width" : 1920
+          },
+          "image_overlap" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 149400156557,
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Learn more",
+          "text" : "Assess your students' online safety for 30 days. See who may be at risk.",
+          "title" : "<strong>Linewize Monitor <br>Free 30-day Student Safety Audit</strong>"
+        }, {
+          "accent_colour" : "bg-gradient-primary-reverse text-white",
+          "cta_colour" : "light",
+          "cta_size" : "btn-sm",
+          "cta_style" : "btn btn-outline-",
+          "image" : {
+            "alt" : "US-Linewize-Banners-pulse-cropped",
+            "height" : 689,
+            "loading" : "lazy",
+            "max_height" : 689,
+            "max_width" : 1920,
+            "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/US-Linewize-Banners-pulse-cropped.jpeg",
+            "width" : 1920
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "content_id" : 148716905780,
+              "type" : "CONTENT"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Learn more",
+          "text" : "Identify students who may need help. Assess wellbeing levels across your school to guide decision making.",
+          "title" : "<strong>Linewize Pulse<br>Free 30-day Wellbeing Analysis</strong>"
+        } ],
+        styles={
+          "accent" : false,
+          "card_colour" : "bg-gradient-primary text-white",
+          "responsive" : {
+            "desktop" : {
+              "cards" : 3
+            },
+            "tablet" : {
+              "cards" : 3
+            }
+          },
+          "row_alignment" : "center",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center",
+          "title_accent" : false
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

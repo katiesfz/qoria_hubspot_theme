@@ -1,0 +1,9 @@
+[ {
+  "id" : "menu",
+  "name" : "menu",
+  "label" : "Menu",
+  "required" : false,
+  "locked" : false,
+  "type" : "menu",
+  "display_width" : null
+} ]

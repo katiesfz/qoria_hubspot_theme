@@ -1,0 +1,234 @@
+[ {
+  "id" : "22f3fd54-3d57-776f-367c-68dc19c8d063",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.spacing_field",
+    "name" : "spacing_field",
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : {
+    "spacing_field" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    },
+    "background_colour" : "none",
+    "background_image" : "none",
+    "overlay" : true,
+    "shadow" : true
+  }
+}, {
+  "id" : "2f82f0ae-499b-4598-4d20-5c46cace631e",
+  "name" : "row",
+  "label" : "Row",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "c2b6450b-442b-599a-558c-8c45d1c10554",
+    "name" : "column",
+    "label" : "Column",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "text",
+      "name" : "text",
+      "label" : "Body text",
+      "required" : false,
+      "locked" : false,
+      "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+      "display_width" : null,
+      "type" : "richtext",
+      "default" : "<p class='fs-6 fw-bold'>Across three continents</p>"
+    }, {
+      "id" : "link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "display_width" : null,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      }
+    }, {
+      "id" : "link_label",
+      "name" : "link_label",
+      "label" : "Link Label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "display_width" : null,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "link_stretched",
+      "name" : "link_stretched",
+      "label" : "Stretched Link",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "display_width" : null,
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "8876fed4-374b-c04a-d6e7-7f811d14bf8f",
+      "name" : "advanced",
+      "label" : "Advanced",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "2f90eb36-9aa2-7fc5-7a7f-5cd81d343716",
+        "name" : "additional_classes",
+        "label" : "Additional classes",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "display_width" : null,
+        "type" : "text"
+      }, {
+        "id" : "col.advanced.additional_col_classes",
+        "name" : "additional_col_classes",
+        "label" : "Additional column classes",
+        "required" : false,
+        "locked" : false,
+        "allow_new_line" : false,
+        "display_width" : null,
+        "type" : "text"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "display_width" : null,
+      "type" : "group",
+      "default" : { }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "display_width" : null,
+    "type" : "group",
+    "default" : {
+      "text" : "<p>Across three continents</p>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      },
+      "link_label" : "",
+      "link_stretched" : false,
+      "column_styles" : {
+        "background_colour" : "none"
+      },
+      "advanced" : { }
+    }
+  }, {
+    "id" : "e542494d-0a99-be46-b594-dd2c2ff2c8ba",
+    "name" : "advanced",
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "297be8cb-b67f-ae5a-8991-f024c147057d",
+      "name" : "additional_classes",
+      "label" : "Additional classes",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "display_width" : null,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "display_width" : null,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : {
+    "column" : {
+      "text" : "<p>Across three continents</p>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false,
+        "sponsored" : false,
+        "user_generated_content" : false
+      },
+      "link_label" : "",
+      "link_stretched" : false,
+      "column_styles" : {
+        "background_colour" : "none"
+      },
+      "advanced" : { }
+    },
+    "advanced" : { }
+  }
+} ]

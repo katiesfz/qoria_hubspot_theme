@@ -1,0 +1,108 @@
+<div class="ai-survey" id="survey">
+    <!-- Survey form will be generated dynamically from JS config -->
+</div>
+
+<div id="results">
+    <div class="total-score-box">
+        <h3>Overall Readiness Status</h3>
+        <div class="big-score" id="totalScoreValue">Pending...</div>
+        <div id="totalScoreMax">Weighted Analysis</div>
+    </div>
+
+    <div class="results-intro">
+        <p>
+            Based on your responses, here's how well you're doing in your AI safeguarding journey.
+        </p>
+    </div>
+
+    <div class="score-card">
+        <div class="score-header">
+            <span class="score-title">Protect</span>
+        </div>
+        <div class="score-bar-bg">
+            <div class="score-bar-fill" id="protectBar"></div>
+        </div>
+        <div class="score-status" id="protectStatus"></div>
+        <div class="feedback-dropdown">
+            <div class="summary" data-bs-toggle="collapse" href="#protectFeedback" role="button" aria-expanded="false" aria-controls="protectFeedback">View Recommendations</div>
+            <div class="feedback-text collapse" id="protectFeedback"></div>
+        </div>
+    </div>
+
+    <div class="score-card">
+        <div class="score-header">
+            <span class="score-title">Detect</span>
+        </div>
+        <div class="score-bar-bg">
+            <div class="score-bar-fill" id="detectBar"></div>
+        </div>
+        <div class="score-status" id="detectStatus"></div>
+        <div class="feedback-dropdown">                
+            <div class="summary" data-bs-toggle="collapse" href="#detectFeedback" role="button" aria-expanded="false" aria-controls="detectFeedback">View Recommendations</div>
+            <div class="feedback-text collapse" id="detectFeedback"></div>
+        </div>
+    </div>
+
+    <div class="score-card">
+        <div class="score-header">
+            <span class="score-title">Empower</span>
+        </div>
+        <div class="score-bar-bg">
+            <div class="score-bar-fill" id="empowerBar"></div>
+        </div>
+        <div class="score-status" id="empowerStatus"></div>
+        <div class="feedback-dropdown">
+            <div class="summary" data-bs-toggle="collapse" href="#empowerFeedback" role="button" aria-expanded="false" aria-controls="empowerFeedback">View Recommendations</div>
+            <div class="feedback-text collapse" id="empowerFeedback"></div>
+        </div>
+    </div>
+
+    <div class="summary-dropdown" id="summaryAccordion">
+        <div class="summary" data-bs-toggle="collapse" href="#summaryList" role="button" aria-expanded="false" aria-controls="summaryList">View Your Full Responses</div>
+        <div class="summary-box collapse" id="summaryList"></div>
+    </div>
+
+    <div class="cta-box">
+        <h3>How to improve your AI safeguarding with Smoothwall</h3>
+        <p>
+            Smoothwall Filter, Monitor and Online Safety Hub are designed from the ground up to address AI risk head-on. Book an informal, no-obligation demo to compare with your existing solutions and learn what's possible.
+        </p>
+        <a href="https://smoothwall.com/ai-checklist-demo-follow-up" target="_blank" class="btn cta-btn">Book a demo today</a>
+    </div>
+    <button id="printBtn" class="submit-btn" style="width: 100%; margin-top: 20px"><span>Print / Save Results</span></button>
+</div>
+
+<div class="modal fade" id="surveyFormModal" tabindex="-1" aria-labelledby="surveyFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-gradient-primary text-white">
+            <div class="modal-header border-0 p-3">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-5 py-4 pt-2">
+                <div id="hubspotFormTarget"></div>
+                {% if is_in_page_editor || request.query_dict.hs_preview %}
+                    <button type="button" id="skipToResults" class="submit-btn"><span>Skip to results</span></button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ai-survey-progress-container">
+    <div class="progress-wrapper">
+        <div class="progress w-100" role="progressbar" aria-label="AI Survey Progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" id="progressBar" style="width: 20%"></div>
+        </div>
+        <div class="progress-text" id="progressText">Step 1 of 5</div>
+    </div>
+</div>
+
+<script>
+// Inject generated HTML into the survey container
+document.addEventListener('DOMContentLoaded', function() {
+    const surveyContainer = document.getElementById('survey');
+    if (surveyContainer && typeof HTMLGenerator !== 'undefined') {
+        surveyContainer.innerHTML = HTMLGenerator.generateFormHTML();
+    }
+});
+</script>

@@ -1,0 +1,107 @@
+{
+  "name": {
+    "message": "מפריד",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.default.horizontal_align": {
+    "message": "CENTER",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.alignment.label": {
+    "message": "יישור",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.alignment.label": {
+    "message": "יישור",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.label": {
+    "message": "סגנונות",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.color.label": {
+    "message": "צבע",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.label": {
+    "message": "שורה",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dashed": {
+    "message": "מקווקו",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.dotted": {
+    "message": "מנוקד",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.choices.solid": {
+    "message": "מלא",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.style.label": {
+    "message": "סגנון",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.line.thickness.label": {
+    "message": "עובי",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.label": {
+    "message": "גודל",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.help_text": {
+    "message": "אחוז האזור שבו ממוקם המפריד",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.size.width.label": {
+    "message": "רוחב",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.label": {
+    "message": "מרווח",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.units": {
+    "message": "px",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.bottom.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.units": {
+    "message": "px",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.default.margin.top.value": {
+    "message": "10",
+    "description": "",
+    "placeholders": null
+  },
+  "styles.spacing.spacing.label": {
+    "message": "מרווח",
+    "description": "",
+    "placeholders": null
+  }
+}

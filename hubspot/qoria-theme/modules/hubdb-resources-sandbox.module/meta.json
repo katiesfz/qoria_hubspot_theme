@@ -1,0 +1,11 @@
+{
+  "global" : false,
+  "host_template_types" : [ "BLOG_LISTING", "PAGE" ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/custom-functions.js",
+    "name" : "custom-functions.js"
+  } ],
+  "label" : "HubDB Video Cards (SANDBOX)",
+  "is_available_for_new_content" : false
+}

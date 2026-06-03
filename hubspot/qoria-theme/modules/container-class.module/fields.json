@@ -1,0 +1,26 @@
+[{
+  "id" : "apply_to_element",
+  "name" : "apply_to_element",
+  "display_width" : null,
+  "label" : "Apply to element",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "column", "Column" ], [ "row", "Row" ], [ "section", "Section" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice"
+},{
+  "id" : "classes",
+  "name" : "classes",
+  "display_width" : null,
+  "label" : "Classes to add",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+}]

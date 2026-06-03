@@ -1,0 +1,47 @@
+{% set size = "24px" %}
+{% set borderRadius = "3px" %}
+{% set linkStyle = "border-width:0px;border:0px;text-decoration:none;" %}
+
+{% macro render_social_icon(networkName) %}
+	{% set network = module[networkName] %}
+  {% if (networkName == "pinterest" and network.pinterest_media and network.enabled) or (networkName != "pinterest" and network.enabled) %}
+    {% if networkName == "pinterest" %}
+      {% set pinterest_media = module.pinterest.pinterest_media.src %}
+    {% endif %}
+    {% set urlOperator = "&" if "?" in page_meta.canonical_url else "?" %}
+    {% if module.link %}
+			{% set social_link_url = module.link ~ urlOperator ~ "utm_medium=social&utm_source="|safe ~ networkName %}
+    {% elif content.email_type.blogRssChild %}
+      {% set social_link_url = content.rss_email_url %}
+    {% else %}
+			{% set social_link_url = page_meta.canonical_url ~ urlOperator ~ "utm_medium=social&utm_source="|safe ~ networkName %}
+		{% endif %}
+
+    {% if networkName == "facebook" %}
+      {% set icon = '<i class="fa-brands fa-square-facebook fa-2x" style="color: #1877F2"></i>' %}
+    {% elif networkName == "twitter" %}
+      {% set icon = '<i class="fa-brands fa-square-x-twitter fa-2x" style="color: #000000;"></i>' %}
+    {% elif networkName == "linkedin" %}
+      {% set icon = '<span class="fa-stack fa-1x align-top" style="color: #0077B5; width: 2em;">
+        <i class="fa-solid fa-square fa-stack-2x"></i>
+        <i class="fa-brands fa-linkedin-in fa-stack-1x fa-inverse"></i>
+      </span>' %}
+    {% elif networkName == "pinterest" %}
+      {% set icon = '<i class="fa-brands fa-square-pinterest fa-2x" style="color: #E60023;"></i>' %}
+    {% elif networkName == "email" %}
+      {% set icon = '<i class="fa-solid fa-square-envelope fa-2x" style="color: #515ba5;"></i>' %}
+    {% endif %}
+
+    <a href="{{ network.custom_link_format }}" target="_blank" rel="noopener" class="me-2" style="{{ linkStyle }}" >
+      {{icon}}
+    </a>
+	{% endif %}
+{% endmacro %}
+
+<div class="">
+  {{ render_social_icon('facebook') }}
+  {{ render_social_icon('linkedin') }}
+  {{ render_social_icon('twitter') }}
+  {{ render_social_icon('pinterest') }}
+  {{ render_social_icon('email') }}
+</div>

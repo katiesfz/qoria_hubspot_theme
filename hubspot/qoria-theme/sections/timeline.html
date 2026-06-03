@@ -1,0 +1,122 @@
+<!--
+  templateType: section
+  label: Timeline
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/timeline.png
+  description: "Timeline panel"
+-->
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "64px",
+      "right" : "64px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor={{ context.anchor || "ourJourney" }}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_underline=true
+      %}
+        {% module_attribute "heading" %}
+          Our <strong>journey so far</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        offset=0,
+        width=12
+      %}
+        {% module_attribute "html" %}
+          <p class="lead">Two decades, forty five somethings, one IPO and something else. Our journey continues.</p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/qoria-theme/modules/timeline",
+        offset=0,
+        width=12,
+        slide=[ {
+          "background_colour" : "bg-teal text-white arrow-teal",
+          "date" : "2016",
+          "date_timeline" : "2016",
+          "description" : "Family Zone is launched to the Australian public.",
+          "milestone" : "Australia launch"
+        }, {
+          "background_colour" : "bg-indigo text-white arrow-indigo",
+          "date" : "2016",
+          "date_timeline" : "2016",
+          "description" : "Family Zone is launched to the Australian public.",
+          "milestone" : "Australia launch"
+        }, {
+          "background_colour" : "bg-red text-white arrow-red",
+          "date" : "2016",
+          "date_timeline" : "2016",
+          "description" : "Family Zone is launched to the Australian public.",
+          "milestone" : "Australia launch"
+        }, {
+          "background_colour" : "bg-orange text-white arrow-orange",
+          "date" : "2016",
+          "date_timeline" : "2016",
+          "description" : "Family Zone is launched to the Australian public.",
+          "milestone" : "Australia launch"
+        }, {
+          "background_colour" : "bg-teal text-white arrow-teal",
+          "date" : "2016",
+          "date_timeline" : "2016",
+          "description" : "Family Zone is launched to the Australian public.",
+          "milestone" : "Australia launch"
+        }, {
+          "background_colour" : "bg-indigo text-white arrow-indigo",
+          "date" : "2016",
+          "date_timeline" : "2016",
+          "description" : "Family Zone is launched to the Australian public.",
+          "milestone" : "Australia launch"
+        } ],
+        style={
+          "autoplay" : false,
+          "controls" : true,
+          "dark_or_light" : "text-dark",
+          "indicators" : true,
+          "responsive" : {
+            "desktop" : {
+              "slides_to_display" : 4
+            },
+            "tablet" : {
+              "slides_to_display" : 2
+            }
+          }
+        },
+        unique_carousel_name="timeline"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

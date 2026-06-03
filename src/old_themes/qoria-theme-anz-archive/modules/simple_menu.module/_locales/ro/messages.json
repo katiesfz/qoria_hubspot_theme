@@ -1,0 +1,32 @@
+{
+  "menu_tree.label" : {
+    "message" : "Meniu simplu",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "Meniu simplu",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.choices.horizontal" : {
+    "message" : "Orizontal",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.choices.vertical" : {
+    "message" : "Vertical",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.label" : {
+    "message" : "Orientare meniu",
+    "description" : "",
+    "placeholders" : null
+  },
+  "orientation.placeholder" : {
+    "message" : "Căutare",
+    "description" : "",
+    "placeholders" : null
+  }
+}

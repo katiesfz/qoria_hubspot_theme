@@ -1,0 +1,39 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize AU LP - No Footer
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block header %}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+{% endblock header %}
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+  {% include_dnd_partial
+    path="../../sections/hero-banner.html"
+    context={
+      "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>"
+    }
+  %}
+
+  {% include_dnd_partial
+    path="../../sections/introduction.html"
+  %}
+
+{% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+{% endblock footer %}

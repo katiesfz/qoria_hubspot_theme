@@ -1,0 +1,14 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 148078374305,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/jquery/jquery-3.6.4.min.js",
+    "name" : "jquery-3.6.4.min.js"
+  } ],
+  "label" : "Pullout - Download CTA",
+  "icon" : "../../images/module-icons/square-quote.svg",
+  "is_available_for_new_content" : true
+}

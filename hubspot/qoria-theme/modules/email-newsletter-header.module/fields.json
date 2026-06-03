@@ -1,0 +1,127 @@
+[ {
+  "id" : "date",
+  "name" : "date_field",
+  "display_width" : null,
+  "label" : "Date",
+  "required" : false,
+  "locked" : false,
+  "type" : "date",
+  "default" : null
+}, {
+  "id" : "logo",
+  "name" : "logo",
+  "display_width" : null,
+  "label" : "Logo",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "src" : "{{get_asset_url('../../images/qoria/logos/qoria-logo-teal.png')}}",
+    "alt" : "Qoria",
+    "loading" : "lazy",
+    "width" : 118,
+    "height" : 35,
+    "size_type" : "exact"
+  }
+}, {
+  "id" : "title",
+  "name" : "newsletter_title",
+  "display_width" : null,
+  "label" : "Newsletter Title",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "src" : "{{get_asset_url('../../images/qoria/Q-Bulletin.png')}}",
+    "alt" : "Q Bulletin",
+    "loading" : "lazy",
+    "width" : 600,
+    "height" : 109,
+    "size_type" : "exact"
+  }
+}, {
+  "id" : "nav_item",
+  "name" : "nav_item",
+  "display_width" : null,
+  "label" : "Nav Item",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 6,
+    "sorting_label_field" : "nav_item.text",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "nav_item.text",
+    "name" : "nav_text",
+    "display_width" : null,
+    "label" : "Nav Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "News"
+  }, {
+    "id" : "nav_item.link",
+    "name" : "nav_link",
+    "display_width" : null,
+    "label" : "Nav Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "type" : "BLOG",
+        "href" : null,
+        "content_id" : 31270472551
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ {
+    "nav_text" : "News",
+    "nav_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "nav_text" : "Updates",
+    "nav_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "nav_text" : "Insights",
+    "nav_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : null
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ]
+} ]

@@ -1,0 +1,56 @@
+<!--
+templateType: global_partial
+label: Regional Selection Modal
+description: "Regional selection modal"
+screenshotPath: ../images/section-previews/screenshot_Footer.png
+-->
+
+{{ require_js(get_asset_url("../../../js/custom-functions.js"), "footer") }}
+
+{% set regionalHomepages = {
+    nz: {
+        label: "New Zealand",
+        url: "https://linewize.co.nz/"
+    },
+    au: {
+        label: "Australia",
+        url: "https://www.linewize.io/"
+    },
+    us: {
+        label: "US",
+        url: "https://www.linewize.com/"
+    }
+} %}
+
+{% if request.geoip_country == "nz" %}
+    {% set country = "New Zealand" %}
+    {% set destination = "https://linewize.co.nz/" %}
+{% elif request.geoip_country == "au" %}
+    {% set country = "Australia" %}
+    {% set destination = "https://www.linewize.io/" %}
+{% elif request.geoip_country == "us" %}
+    {% set country = "US" %}
+    {% set destination = "https://www.linewize.com/" %}
+{% endif %}
+
+<div class="modal fade" style="" id="regionModal" tabindex="-1" aria-labelledby="Region Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-gradient-primary text-bg-primary">
+            <div class="modal-header border-0 ">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-md-5 px-md-5 ">
+                <p class="h3" dir="ltr"><strong>This Linewize site doesn't match your location</strong></p>
+                <p class="lead" dir="ltr">Based on your location, we think you may prefer the {{country}} website.</p>
+                </div>
+                <div class="modal-footer border-0 pt-0 pb-md-5 px-md-5">
+                <a class="ms-auto btn btn-light" href="{{destination}}" id="button_Region_Select_Modal_" rel="">
+                {{country}} site
+                </a>
+                <a class=" btn btn-outline-light    ms-0" href="#" id="button_Region_Select_Modal_" data-bs-dismiss="modal" onclick="setCookie('closedRegionModal','true',1)" rel="" target="_self">
+                Cancel
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

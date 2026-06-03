@@ -1,0 +1,9 @@
+.notification-bar p {
+    margin-bottom: 0;
+  }
+  
+  .notification-bar {
+      max-height: 0px;
+      overflow: hidden;
+      transition: max-height 2s;
+  }

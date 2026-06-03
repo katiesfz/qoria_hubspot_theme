@@ -1,4 +1,5 @@
 [{
+  
   "id" : "sections",
   "name" : "sections",
   "display_width" : null,
@@ -195,61 +196,4 @@
       }]
     }
   ]
-},{
-  "id" : "style",
-  "name" : "style",
-  "display_width" : null,
-  "label" : "Style",
-  "required" : false,
-  "locked" : false,
-  "children" : [{
-    "id" : "style.event_style",
-    "name" : "event_style",
-    "display_width" : null,
-    "label" : "Event Style",
-    "required" : false,
-    "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "1", "Style 1" ], [ "2", "Style 2" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "default" : "1"
-  }, {
-    "id" : "style.include_filter",
-    "name" : "include_filter",
-    "display_width" : null,
-    "label" : "Include filter",
-    "required" : false,
-    "locked" : false,
-    "display" : "toggle",
-    "type" : "boolean",
-    "default" : false
-  }, {
-    "id" : "style.filter_type",
-    "name" : "filter_type",
-    "display_width" : null,
-    "label" : "Filter type",
-    "required" : false,
-    "locked" : true,
-    "display" : "select",
-    "choices" : [ [ "month", "Month" ], [ "state", "State" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "visibility" : {
-      "controlling_field" : null,
-      "controlling_field_path" : "style.include_filter",
-      "controlling_value_regex" : "true",
-      "property" : null,
-      "operator" : "EQUAL",
-      "access" : null
-    },
-    "default" : "month"
-  }],
-  "tab" : "STYLE",
-  "expanded" : false,
-  "type" : "group"
-} ]
+}]

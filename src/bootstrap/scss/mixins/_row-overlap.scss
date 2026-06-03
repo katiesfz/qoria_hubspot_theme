@@ -1,0 +1,84 @@
+
+@mixin row-overlap-break-correction($col-count, $overlap-px) {
+    // 1. Left Edge Correction (Start of new line)
+    // Target columns that start a new wrapped line (e.g., 3rd, 5th, 7th for $col-count=2)
+    // This overrides the default negative margin with a positive margin.
+    > *:nth-child(#{$col-count}n + 1) {
+        margin-left: $overlap-px !important;
+        //   z-index: 2 !important;
+    }
+
+    // 2. Right Edge Correction (End of line)
+    // Target columns that end a wrapped line (e.g., 2nd, 4th, 6th for $col-count=2)
+    //   > *:nth-child(#{$col-count}n) {
+    //       // This adds a positive right margin to compensate for the row's negative margin-right,
+    //       // preventing horizontal overflow on the right side.
+    //       margin-right: $overlap-px !important;
+    //   }
+}
+
+@mixin row-overlap( 
+    $columns: $grid-columns,
+    $gutter: 0,
+    $breakpoints: $grid-breakpoints,
+    $overlap-px: $overlap-amount
+) {
+
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns 
+           //  .col#{$infix} { 
+           //     margin-left: calc(-1 * $overlap-px);
+           //  }
+
+            &.row-cols#{$infix}-auto > * { 
+                > *:nth-child(n + 2) {
+                    margin-left: calc(-1 * $overlap-px);
+                }
+                > *:first-child {
+                    margin-left: $overlap-px;
+                    //    z-index: 2;
+                }
+            }
+
+            @if $grid-row-columns > 0 {
+                @for $i from 2 through $grid-row-columns {
+                    &.row-cols#{$infix}-#{$i} {
+                        // @include row-cols($i);
+                        margin-left: calc(-1 * $overlap-px);
+
+                        > * {
+                            transition: margin-left 0.3s ease;
+                            margin-left: calc(-1 * $overlap-px) !important;
+                        }
+
+                        > *:nth-child(#{$i}n + 1) {
+                            margin-left: $overlap-px !important;
+                            //   z-index: 2 !important;
+                        }
+                    }
+                }
+            }
+
+            .col#{$infix}-auto {
+                &:nth-child(n + 2) {
+                    margin-left: calc(-1 * $overlap-px);
+                }
+                &:first-child {
+                    margin-left: $overlap-px;
+                    //    z-index: 2;
+                }
+            }
+
+            @if $columns > 0 {
+                @for $i from 1 through $columns {
+                    //  .col#{$infix}-#{$i} {
+                    //    // @include make-col($i, $columns);
+                    //  }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1494 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Linewize US Latest
+  screenshotPath: ../../images/template-previews/landing-page.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+{% dnd_area "dnd_area"
+label="Body"
+class="main p-0 overflow-hidden"
+%}
+
+
+{% dnd_section
+  full_width=true
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/hero",
+        offset=0,
+        width=12,
+        cta=[ ],
+        header="<strong>Linewize Latest</strong><br>Customer update - March 2024",
+        hero_type="full-video",
+        image={
+          "alt" : "US-Linewize-Banners-latest",
+          "height" : 1280,
+          "loading" : "disabled",
+          "max_height" : 1280,
+          "max_width" : 1920,
+          "size_type" : "auto",
+          "src" : "https://www.linewize.com/hubfs/US%20-%20Header%20Banners/US-Linewize-Banners-latest.jpg",
+          "width" : 1920
+        },
+        menu=144245053496,
+        page_contents=[ {
+          "anchor" : "#latest-product-news",
+          "content_label" : "Latest Product News"
+        }, {
+          "anchor" : "#linewize-on-the-road",
+          "content_label" : "Linewize on the road"
+        }, {
+          "anchor" : "#latest-knowledge",
+          "content_label" : "Latest Knowledge"
+        }, {
+          "anchor" : "#take-a-closer-look",
+          "content_label" : "Take a closer look"
+        }, {
+          "anchor" : "#meet-the-team",
+          "content_label" : "Get to know the team"
+        } ],
+        pre_header="",
+        show_breadcrumbs=true,
+        show_share_price=false,
+        style={
+          "heading_location" : "bottom-left"
+        },
+        video="https://www.linewize.com/hubfs/Latest-banner.mp4"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% dnd_section
+  background_color="rgba(235, 235, 235, 1)",
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="latest-product-news"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Latest <strong>Product News</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "bg-secondary text-white",
+          "cta_colour" : "secondary",
+          "cta_size" : " ",
+          "cta_style" : "btn btn-",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : true,
+            "sponsored" : false,
+            "url" : {
+              "href" : "https://help.linewize.com/hc/en-gb/articles/7376531810332-School-Manager-Content-Modification",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Read more",
+          "pre_header" : "<strong>Content Modification for Hiding YouTube Shorts</strong>",
+          "preheader_size" : "h5",
+          "preheader_toggle" : true,
+          "text" : "<p style='text-align: left;'><span>YouTube Shorts is another major distraction for Students as they can click the button or navigate to the URL and endlessly scroll short videos similar to Instagram Reels. This feature is intended to hide visibility of that content. </span></p>",
+          "title" : "<p>School Manager</p>",
+          "title_size" : "h5"
+        }, {
+          "accent_colour" : "bg-secondary text-white",
+          "cta_colour" : "secondary",
+          "cta_size" : " ",
+          "cta_style" : "btn btn-",
+          "download" : false,
+          "download_file" : "",
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_style" : "inherit",
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "icon_toggle" : false,
+          "image" : {
+            "loading" : "lazy"
+          },
+          "image_overlap" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "href" : "https://help.linewize.com/hc/en-gb/articles/12836599000476-Student-Wellbeing-Report-in-School-Manager#h_01HQPK3T02QZJVW6SYZAKS0C5M",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Read more",
+          "multiple_text" : false,
+          "overlap" : "0",
+          "override_colour" : " ",
+          "pre_header" : "<strong>Student Wellbeing Report</strong>",
+          "preheader_size" : "h5",
+          "preheader_toggle" : true,
+          "stretched_link" : false,
+          "text" : "<p>School Manager’s Student Wellbeing Report helps you identify students who may be at risk by examining their Red Flag and Blocked network activity.</p>",
+          "text_group" : [ ],
+          "title" : "<p><strong>School Manager</strong></p>",
+          "title_size" : "h5"
+        }, {
+          "accent_colour" : "bg-secondary text-white",
+          "cta_colour" : "secondary",
+          "cta_size" : " ",
+          "cta_style" : "btn btn-",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : true,
+            "sponsored" : false,
+            "url" : {
+              "href" : "https://monitorhelp.smoothwall.com/hc/en-us/articles/6815083820956-Using-Your-Monitor-Dashboard",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Read more",
+          "pre_header" : "<strong>Expanded CSV Export</strong>",
+          "preheader_size" : "h5",
+          "preheader_toggle" : true,
+          "text" : "<p>To make reporting even easier we’ve now added 2 new columns to all your Monitor CSV exports. This means that any information which is added as Notes when you log events, together with the Status of the event itself will now appear in your export.</p>",
+          "title" : "<p>Monitor</p>",
+          "title_size" : "h5"
+        }, {
+          "accent_colour" : "bg-secondary text-white",
+          "cta_colour" : "secondary",
+          "cta_size" : " ",
+          "cta_style" : "btn btn-",
+          "download" : false,
+          "download_file" : "",
+          "icon" : {
+            "absolute_icon_size" : "fa-3x",
+            "custom_icon_height" : false,
+            "custom_image" : {
+              "loading" : "lazy",
+              "size_type" : "auto",
+              "src" : ""
+            },
+            "icon_code" : "",
+            "icon_colour" : "inherit",
+            "icon_field" : {
+              "name" : "Check Circle",
+              "type" : "REGULAR",
+              "unicode" : "f058"
+            },
+            "icon_style" : "inherit",
+            "relative_icon_size" : " ",
+            "sizing" : "inherit"
+          },
+          "icon_toggle" : false,
+          "image" : {
+            "loading" : "lazy"
+          },
+          "image_overlap" : false,
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : false,
+            "sponsored" : false,
+            "url" : {
+              "href" : "",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "",
+          "multiple_text" : false,
+          "overlap" : "0",
+          "override_colour" : " ",
+          "pre_header" : "<strong>Call Alert Prioritization</strong>",
+          "preheader_size" : "h5",
+          "preheader_toggle" : true,
+          "stretched_link" : false,
+          "text" : "<p>It's now even easier to manage your Monitor Safeguarding Alert contacts. When setting up an Alerting Profile, you can now choose whether each contact should receive Phone Alerts, Email Alerts or both. You can also select the order of priority in which the moderation team call your contacts.<br><br></p>",
+          "text_group" : [ ],
+          "title" : "<p>Monitor</p>",
+          "title_size" : "h5"
+        } ],
+        styles={
+          "accent" : false,
+          "accent_heading" : false,
+          "accent_preheading" : true,
+          "card_colour" : "bg-white",
+          "responsive" : {
+            "breakpoints" : {
+              "mobile" : 1,
+              "tablet" : 3
+            },
+            "desktop" : {
+              "cards" : 2
+            },
+            "tablet" : {
+              "cards" : 2
+            }
+          },
+          "row_alignment" : "start",
+          "shadow" : "shadow-lg",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 16
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "p-4 align-items-center"
+          },
+          "column" : [ {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<div>\n<h4><strong>Beta Opportunity</strong></h4>\n</div>\n<p>If you are a Chrome-only district with anywhere from 1,500 – 5,000 students and are interested in joining a beta to test a Chrome extension, please email tina.searcy@linewize.com for information.</p>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-white text-dark",
+          "background_image" : "none",
+          "overlay" : false,
+          "shadow" : true,
+          "shadow_style" : "shadow",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 10
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 10
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 40
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 10
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/pullout-simple",
+            offset=0,
+            width=12,
+            row=[ {
+              "advanced" : {
+                "additional_classes" : "p-4 align-items-center"
+              },
+              "column" : [ {
+                "advanced" : { },
+                "column_styles" : {
+                  "background_colour" : "none",
+                  "background_image_file" : {
+                    "loading" : "lazy"
+                  },
+                  "background_size" : "cover"
+                },
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "sponsored" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  },
+                  "user_generated_content" : false
+                },
+                "link_label" : "",
+                "link_stretched" : false,
+                "text" : "<h4><strong>Visit our Customer Support Portal</strong></h4>\n<p class='fs-6'>Take a look at our customer support portal where you can submit a request, manage existing tickets, and view our product documentation.&nbsp;</p>\n<a href='https://help.linewize.com/hc/en-gb' class='btn btn-white' rel='noopener' target='_blank'>Visit the portal</a>"
+              }, {
+                "advanced" : {
+                  "additional_col_classes" : "col-12 col-md-3 col-lg-2"
+                },
+                "column_styles" : {
+                  "background_colour" : "none",
+                  "background_image_file" : {
+                    "loading" : "lazy"
+                  },
+                  "background_size" : "cover"
+                },
+                "link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : false,
+                  "sponsored" : false,
+                  "url" : {
+                    "href" : "",
+                    "type" : "EXTERNAL"
+                  },
+                  "user_generated_content" : false
+                },
+                "link_label" : "",
+                "link_stretched" : false,
+                "text" : "<img src='https://www.linewize.com/hubfs/us-lwz-faq2-1.png' width='150' height='149' loading='lazy' alt='us-lwz-faq2-1' style='height: auto; max-width: 100%; width: 150px; margin-left: auto; margin-right: auto; display: block;'>\n<p>&nbsp;</p>"
+              } ]
+            } ],
+            style={
+              "background_colour" : "bg-gradient-primary text-white",
+              "background_image" : "none",
+              "overlay" : false,
+              "shadow" : true,
+              "shadow_style" : "shadow",
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 0
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 0
+                  }
+                },
+                "padding" : {
+                  "bottom" : {
+                    "units" : "px",
+                    "value" : 10
+                  },
+                  "left" : {
+                    "units" : "px",
+                    "value" : 10
+                  },
+                  "right" : {
+                    "units" : "px",
+                    "value" : 40
+                  },
+                  "top" : {
+                    "units" : "px",
+                    "value" : 10
+                  }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="linewize-on-the-road"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : -20
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Linewize <strong>on the road</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/lead-paragraph",
+        offset=0,
+        width=12,
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 32
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+        {% module_attribute "text" %}
+          <p style="text-align: center;"><span>Meet our team in March and April</span></p>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=3
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=3,
+        width=6,
+        padding={
+          "default" : {
+            "left" : "16px"
+          }
+        }
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/events",
+            offset=0,
+            width=12,
+            add_to_diary="",
+            event=[ {
+              "calendar_object" : {
+                "description" : "",
+                "event_end" : 1706306400000,
+                "event_start" : 1706104800000,
+                "location" : "Atlantic City, NJ",
+                "title" : "TechSpo"
+              },
+              "event_date" : "March 5",
+              "event_name" : "Texas CTO Spring Summit - Cypress, TX",
+              "event_site_label" : "",
+              "include_calendar_link" : false,
+              "url" : {
+                "href" : "https://techspo.co/",
+                "type" : "EXTERNAL"
+              }
+            }, {
+              "calendar_object" : { },
+              "event_date" : "March 10-12",
+              "event_name" : "Brainstorm WI - Wisconsin Dells, WI",
+              "include_calendar_link" : false,
+              "url" : { }
+            }, {
+              "calendar_object" : { },
+              "event_date" : "March 13-15",
+              "event_name" : "MACUL - Grand Rapids, MI",
+              "include_calendar_link" : false,
+              "url" : { }
+            }, {
+              "calendar_object" : { },
+              "event_date" : "March 14-15",
+              "event_name" : "NETA - Omaha, NE",
+              "include_calendar_link" : false,
+              "url" : { }
+            }, {
+              "calendar_object" : { },
+              "event_date" : "March 21-23",
+              "event_name" : "CUE - Palm Springs, CA",
+              "include_calendar_link" : false,
+              "url" : { }
+            }, {
+              "calendar_object" : { },
+              "event_date" : "March 24-26",
+              "event_name" : "RTM Spring CIO Congress - Carlsbad, CA",
+              "include_calendar_link" : false,
+              "url" : { }
+            }, {
+              "calendar_object" : { },
+              "event_date" : "April 8-10",
+              "event_name" : "CoSN National Conference - Miami, FL",
+              "include_calendar_link" : false,
+              "url" : { }
+            } ],
+            style={
+              "event_style" : "2",
+              "include_filter" : false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column
+        offset=9,
+        width=3
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/horizontal_spacer",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/divider",
+        offset=0,
+        width=12,
+        styles={
+          "line" : {
+            "style" : "dotted"
+          },
+          "size" : {
+            "width" : 100
+          },
+          "spacing" : {
+            "spacing" : {
+              "margin" : {
+                "bottom" : {
+                  "units" : "px",
+                  "value" : 0
+                },
+                "top" : {
+                  "units" : "px",
+                  "value" : 64
+                }
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "32px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="latest-knowledge"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Latest <strong>Knowledge</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "none",
+          "cta_colour" : "primary",
+          "cta_style" : "btn btn-",
+          "image" : {
+            "alt" : "video-card-2",
+            "height" : 640,
+            "max_height" : 640,
+            "max_width" : 1272,
+            "src" : "https://www.linewize.com/hubfs/video-card-2.png",
+            "width" : 1272
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : true,
+            "sponsored" : false,
+            "url" : {
+              "href" : "https://familyzone.zoom.us/webinar/register/9517092198611/WN_UgBcQDitTC2VmzIhBDEFKQ",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Reserve your spot",
+          "override_colour" : " ",
+          "pre_header" : "<strong>Live training series</strong>",
+          "preheader_size" : "p",
+          "preheader_toggle" : true,
+          "text" : "<p><span>We're excited to announce our first live training session on Linewize Monitor on Wednesday, March 13 at 2pm EST.</span></p>\n<p><span>Join the Linewize team as we discuss how to leverage key features and functionalities to enhance your Monitor experience.&nbsp;</span></p>\n<p><span>During this session, we’ll cover several Monitor topics, including:</span></p>\n<p><span>✔️ Alerting Profiles and Contacts<br>✔️ Integrating Monitor<br>✔️ Events and Reports</span></p>\n<p><span>Our training series is a great opportunity to learn more about Monitor and other Linewize solutions alongside your peers, and ask any questions you might have in real-time.</span></p>",
+          "title" : "<strong>Linewize Monitor</strong>",
+          "title_size" : "h3"
+        }, {
+          "accent_colour" : "none",
+          "cta_colour" : "light",
+          "cta_style" : "btn btn-outline-",
+          "image" : {
+            "alt" : "video-card-mock1",
+            "height" : 640,
+            "loading" : "lazy",
+            "max_height" : 640,
+            "max_width" : 1272,
+            "src" : "https://www.linewize.com/hubfs/video-card-mock1.png",
+            "width" : 1272
+          },
+          "link" : {
+            "no_follow" : false,
+            "open_in_new_tab" : true,
+            "sponsored" : false,
+            "url" : {
+              "href" : "https://sites.google.com/linewize.com/learning-resources/home/school-manager/school-manager-on-demand-learning?authuser=0&pli=1",
+              "type" : "EXTERNAL"
+            },
+            "user_generated_content" : false
+          },
+          "link_label" : "Reserve your spot",
+          "override_colour" : "bg-gradient-primary text-white",
+          "pre_header" : "<p><strong>School Manager Live Training Series</strong></p>",
+          "preheader_size" : "p",
+          "preheader_toggle" : true,
+          "text" : "<p>We've made recording available of our School Manager live training sessions.&nbsp;</p>\n<p><strong>Session One:</strong> Filter Solution overview, setting rules and priorities, how-tos and more. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\n<p><strong>Session Two: </strong>Filter Reporting Use- Learn more about Advanced Search, User Journey, Red Flag reporting, and more.&nbsp;</p>",
+          "title" : "<p><strong>Session Recordings</strong></p>",
+          "title_size" : "h3"
+        } ],
+        styles={
+          "accent" : false,
+          "card_colour" : "bg-white",
+          "responsive" : {
+            "desktop" : {
+              "cards" : 2
+            }
+          },
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 10
+              },
+              "left" : { },
+              "right" : {
+                "units" : "px",
+                "value" : 10
+              },
+              "top" : { }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "p-4 align-items-center"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_col_classes" : "ps-2 col-auto"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<div class='fs-6' style='text-align: center;'><strong>Read and watch more about our trending topics of the day in our blog.</strong></div>"
+          }, {
+            "advanced" : {
+              "additional_col_classes" : "ps-2 col-auto"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<a href='https://www.linewize.com/blog' class='btn btn-indigo mx-4' rel='noopener' target='_blank' align='right'>Visit the blog</a>"
+          }, {
+            "advanced" : {
+              "additional_col_classes" : "order-last"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : ""
+          }, {
+            "advanced" : {
+              "additional_col_classes" : "order-first"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : ""
+          } ]
+        } ],
+        style={
+          "background_colour" : "none",
+          "background_image" : "none",
+          "overlay" : false,
+          "shadow" : true,
+          "shadow_style" : "shadow-lg",
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 10
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "left" : {
+                "units" : "px",
+                "value" : 10
+              },
+              "right" : {
+                "units" : "px",
+                "value" : 10
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+  background_color="rgba(255, 255, 255, 1)",
+  padding={
+    "default" : {
+      "bottom" : "32px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "64px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column
+        offset=0,
+        width=12
+      %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/q-theme/modules/cursive-heading",
+            offset=0,
+            width=12,
+            heading_tag="h3",
+            style={
+              "spacing_field" : {
+                "margin" : {
+                  "bottom" : { },
+                  "top" : { }
+                }
+              }
+            }
+          %}
+            {% module_attribute "heading" %}
+              Get to know our team
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h3"
+      %}
+        {% module_attribute "heading" %}
+
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/rich-text",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "pb-2"
+          },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : {
+                "columns" : 1
+              },
+              "mobile" : {
+                "columns" : 1
+              },
+              "tablet" : {
+                "columns" : 1
+              }
+            },
+            "text" : "<p><strong>Staff Spotlight:&nbsp;Deployment Team</strong></p>"
+          } ]
+        }, {
+          "advanced" : { },
+          "column" : [ {
+            "advanced" : { },
+            "responsive" : {
+              "desktop" : {
+                "columns" : 2
+              },
+              "mobile" : {
+                "columns" : 1
+              },
+              "tablet" : {
+                "columns" : 1
+              }
+            },
+            "text" : "<p><span>The deployment teams play a crucial role in maximizing the value of Linewize for customers. These teams are instrumental in implementing Linewize solutions efficiently and effectively, ensuring seamless integration with existing systems and networks. They work closely with customers to understand their unique requirements, customize configurations, and provide tailored training to end-users. Additionally, deployment teams contribute to the successful onboarding of Linewize, optimizing its features to meet specific needs. Their expertise enhances customer satisfaction by delivering a smooth and streamlined deployment process, ultimately empowering organizations to leverage Linewize for robust and tailored internet filtering and security solutions.</span></p>\n<p><span data-sheets-root='1' data-sheets-value='{&quot;1&quot;:2,&quot;2&quot;:&quot;At Linewize, we know how important it is to keep students safe and engaged in their learning environment. That’s why our technical support team is always ready to provide you with the best support services possible. Our team is made up of experts who understand the challenges and opportunities of education technology, and who can offer you not only solutions, but also insights and ideas to help your school thrive. Whether it’s implementing cutting-edge cybersecurity measures, or resolving technical issues quickly and efficiently, our engineers have the skills and tools to ensure your students can learn without interruptions. \\n\\nOur technical support team is more than just a service provider, it’s a partner in creating a positive and impactful learning experience for your students. You can trust us to deliver the highest standards of support in this fast-changing world of education technology, and to give you the peace of mind that comes with knowing that Linewize is always there for your staff, your students, and your IT team too!&quot;}' data-sheets-userformat='{&quot;2&quot;:961,&quot;3&quot;:{&quot;1&quot;:0},&quot;9&quot;:0,&quot;10&quot;:0,&quot;11&quot;:4,&quot;12&quot;:0}'><img src='https://www.linewize.com/hubfs/VP%20Support%20and%20Delivery.png' width='318' height='119' loading='lazy' alt='VP Support and Delivery' style='height: auto; max-width: 100%; width: 318px;'></span></p>"
+          } ]
+        } ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+
+
+
+{% dnd_section
+  padding={
+    "default" : {
+      "bottom" : "64px",
+      "left" : "16px",
+      "right" : "16px",
+      "top" : "32px"
+    },
+    "mobile" : {
+      "bottom" : "32px",
+      "top" : "32px"
+    }
+  },
+  full_width=false,
+  max_width=1280
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="take-a-closer-look"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_tag="h1",
+        style={
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : { },
+              "top" : { }
+            }
+          },
+          "textalignment" : "center"
+        }
+      %}
+        {% module_attribute "heading" %}
+          Take a <strong>closer look at...</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/pullout-simple",
+        offset=0,
+        width=12,
+        row=[ {
+          "advanced" : {
+            "additional_classes" : "px-7 py-5"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_col_classes" : ""
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : ""
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "align-items-center mx-7"
+          },
+          "column" : [ {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h4>Learn about Community</h4>\n<p class='fs-6'><span>Do you have Linewize Community? Make the most of your Online Safety Hub, and leverage Qustodio to provide parental visibility and control.</span></p>\n<a href='/solutions/online-safety-hub' class='btn btn-secondary mt-3' rel='noopener'>Read more</a>"
+          }, {
+            "advanced" : {
+              "additional_col_classes" : "col-md-5 text-center"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<p><img src='https://www.linewize.com/hubfs/CommunityMockup_04-1.png' width='400' height='227' loading='lazy' alt='CommunityMockup_04-1' style='height: auto; max-width: 100%; width: 400px;'></p>"
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "py-5 px-7"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_col_classes" : "border-bottom border-2 border-dotted border-white"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : ""
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "align-items-center mx-7"
+          },
+          "column" : [ {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h4>Deep dive into product information</h4>\n<p class='fs-6'>Don't have the full Linewize suite of solutions? Learn more about the features and benefits of each tool, and how they can be used to protect students in your district.</p>\n<a href='/resources/product-guides' class='btn btn-secondary mt-3' rel='noopener' target='_blank'>Read our product guides</a>"
+          }, {
+            "advanced" : {
+              "additional_col_classes" : "col-md-5 text-center"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<p><img src='https://www.linewize.com/hubfs/US%20-%20Web%20Thumbnails%20-%20Documents%20and%20Video/US-LWZ_Productbrochure-stack-thumbnail.png' width='400' height='237' loading='lazy' alt='US-LWZ_Productbrochure-stack-thumbnail' style='height: auto; max-width: 100%; width: 400px;'></p>"
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "py-5 px-7"
+          },
+          "column" : [ {
+            "advanced" : {
+              "additional_col_classes" : "border-bottom border-2 border-dotted border-white"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : ""
+          } ]
+        }, {
+          "advanced" : {
+            "additional_classes" : "align-items-center mx-7 pb-5"
+          },
+          "column" : [ {
+            "advanced" : { },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<h4>Demo a new solution</h4>\n<p class='fs-6'>If you're interested in exploring any Linewize products you don't currently have, please feel free to schedule a quick demo!&nbsp;</p>\n<a href='/demo' class='btn btn-secondary mt-3' rel='noopener' target='_blank'>Request a demo</a>"
+          }, {
+            "advanced" : {
+              "additional_col_classes" : "col-md-5 text-center"
+            },
+            "column_styles" : {
+              "background_colour" : "none",
+              "background_image_file" : {
+                "loading" : "lazy"
+              },
+              "background_size" : "cover"
+            },
+            "link" : {
+              "no_follow" : false,
+              "open_in_new_tab" : false,
+              "sponsored" : false,
+              "url" : {
+                "href" : "",
+                "type" : "EXTERNAL"
+              },
+              "user_generated_content" : false
+            },
+            "link_label" : "",
+            "link_stretched" : false,
+            "text" : "<p><img src='https://www.linewize.com/hubfs/GIFs/screenshotHistory_sm_looped.gif' width='318' height='219' loading='eager' alt='screenshotHistory_sm_looped' style='height: auto; max-width: 100%; width: 318px;'></p>\n<p>&nbsp;</p>"
+          } ]
+        } ],
+        style={
+          "background_colour" : "bg-gradient-primary text-white",
+          "overlay" : false,
+          "spacing_field" : {
+            "margin" : {
+              "bottom" : {
+                "units" : "px",
+                "value" : 0
+              },
+              "top" : {
+                "units" : "px",
+                "value" : 0
+              }
+            },
+            "padding" : {
+              "bottom" : {
+                "units" : "px"
+              },
+              "left" : {
+                "units" : "px"
+              },
+              "right" : {
+                "units" : "px"
+              },
+              "top" : {
+                "units" : "px"
+              }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+{% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+{% endblock footer %}

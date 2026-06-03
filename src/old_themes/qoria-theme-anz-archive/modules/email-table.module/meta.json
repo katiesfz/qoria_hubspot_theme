@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "EMAIL" ],
+  "host_template_types" : [ "EMAIL" ],
+  "module_id" : 171841050286,
+  "label" : "Table",
+  "icon" : "../../images/module-icons/table.svg",
+  "is_available_for_new_content" : true
+}

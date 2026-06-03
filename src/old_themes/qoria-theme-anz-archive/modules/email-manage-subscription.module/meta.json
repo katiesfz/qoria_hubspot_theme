@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "content_types" : [ "EMAIL" ],
+  "host_template_types" : [ "EMAIL" ],
+  "module_id" : 161936960933,
+  "label" : "Qoria Manage Subscription Footer",
+  "is_available_for_new_content" : true
+}

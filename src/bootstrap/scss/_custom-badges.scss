@@ -1,0 +1,9 @@
+@each $color, $map in $badge-colors {
+  $bg-color:    map-get($map, "bg");
+  $text-color:  map-get($map, "text");
+  .badge-#{$color} {
+    --#{$prefix}badge-color: #{$text-color};
+    --#{$prefix}badge-bg-color: #{$bg-color};
+    background-color:  var(--#{$prefix}badge-bg-color);
+  }
+}

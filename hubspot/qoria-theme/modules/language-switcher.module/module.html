@@ -1,0 +1,170 @@
+{% if is_in_editor %}
+    <button class="btn px-2 py-3 btn-link text-reset text-decoration-none dropdown-toggle dropdown-toggle-sm d-flex flex-row align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Choose language">
+    <i class="fa{{ "-xs me-1" if module.include_button_label }} far fa-globe"></i>
+    {% if module.include_button_label %}
+        Location (Language)
+    {% endif %}
+    </button>
+{% else %}
+
+
+    {% from '/q-theme/assets/macros.html' import regionName %}
+
+    {# init manual and auto language lists #}
+    {% set manualLangs = [] %}
+    {% set autoLangs = [] %}
+
+    {# split current lang code to lang and region #}
+    {% if content.language %}
+        {% set splitLang = content.language|split("-") %}
+        {% set contentLanguage = splitLang[0] %}
+        {% set contentRegion = splitLang[1] %}
+    {% endif %}
+
+    {# if there's no region code in the language, check for a manual region set in the module #}
+    {% if !contentRegion %}
+        {% set contentRegion = module.cur_region %}
+    {% endif %}
+
+    {# if there's no contentLanguage, set the default to en #}
+    {% if !contentLanguage %}
+        {% set contentLanguage = "en" %}
+    {% endif %}
+
+    {# include the current page language in the auto list #}
+    {% do autoLangs.append({"language": contentLanguage, "url": content.absolute_url, "region": contentRegion, "locale": content.language, "country_name": regionName(contentRegion)}) %}
+
+    {# getting auto languages #}
+    {% if content.translations %}
+        {% for translation in content.translations %}
+            {# split current lang code to lang and region #}
+            {% set splitTranslation = translation.language|split("-") %}
+            {% set translationLanguage = splitTranslation[0] %}
+            {% set translationRegion = splitTranslation[1] %}
+            {# if there's no region check for a manual region set in the module #}
+            {% if !translationRegion %}
+                {% set translationRegion = module.cur_region %}
+            {% endif %}
+            {% set curLang = {"url":translation.absolute_url,"language":translationLanguage,"region":translationRegion, "locale":translation.language, "country_name": regionName(translationRegion)} %}
+            {% do autoLangs.append(curLang) %}
+        {% endfor %}
+    {% endif %}
+
+    {# getting manual languages #}
+    {% if module.manual_item|length gt 0 %}
+        {% for lang in module.manual_item %}
+            {% set langCode = lang.language ~ ("-" ~ lang.region if lang.region) %}
+            {% set curLang = {"url": lang.url,"language":lang.language,"region":lang.region, "locale": langCode, "country_name": regionName(lang.region)} %}
+            {% do manualLangs.append(curLang) %}
+        {% endfor %}
+    {% endif %}
+
+    {# combine the two #}
+    {% set comboLangsAll = autoLangs + manualLangs %}
+
+    {# filter to unique language-region combinations #} 
+    {% set comboLangs = comboLangsAll|unique %}
+
+
+    {% if module.language_selection == "auto" %}
+
+        {% set langList = autoLangs|sort(false, false, "country_name") %}
+
+    {% elif module.language_selection == "combination" %}
+
+        {% set langList = comboLangs|sort(false, false, "country_name") %}
+
+    {% elif module.language_selection == "manual" %}
+
+        {% set langList = manualLangs|sort(false, false, "country_name") %}
+        
+    {% endif %}
+
+    {% if langList|length > 1 %}
+
+        {% if langList|length == 2 %}
+            {# language button is a toggler #}
+
+            {# remove current language from languages list #}
+            {% set otherLang = langList|selectattr("locale", "ne", content.language) %}
+            {% for translation in otherLang %}
+                <a class="btn p-1 btn-link text-reset text-decoration-none d-flex flex-row align-items-center" href="{{translation.url}}" type="button" title="{{ locale_name(translation.language, translation.language) }}">
+                    <i class="fa far fa-globe me-2"></i>
+                    <div class="small">
+                    {{ locale_name(translation.language, translation.language) }}
+                    </div>
+                </a>
+            {% endfor %}
+
+        {% else %}
+
+            {# language button is a dropdown #}
+
+                <div class="dropdown-center hs-skip-lang-url-rewrite">
+                <button class="btn px-2 py-3 btn-link text-reset text-decoration-none dropdown-toggle dropdown-toggle-sm d-flex flex-row align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Choose language">
+                <i class="fa{{ "-xs me-1" if module.include_button_label }} far fa-globe"></i>
+                {% if module.include_button_label %}
+                    {% if contentRegion %}
+                        {{ regionName(contentRegion) }}
+                    {% else %}
+                        {{ locale_name(content.language, content.language) }}
+                    {% endif %}
+                {% endif %}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    {# if there are more languages for this region, show those first #}
+                    {% if langList|selectattr('region', "eq", contentRegion)|length > 1 %}
+                        {% for language in langList|selectattr('region', "eq", contentRegion)|sort(false, false, 'language') %}
+                            <li><a class="dropdown-item hs-skip-lang-url-rewrite" data-language="{{language.language}}" lang="{{language.language}}" href="{{language.url}}">
+                                {{ (language.country_name ~ " (") if language.country_name -}} 
+                                {%- if module.display_mode == "localized" -%}
+                                    {{ locale_name(language.language, language.language) }}
+                                {%- elif module.display_mode == "pagelang" -%}
+                                    {{ locale_name(language.language, content.language) }}
+                                {%- elif module.display_mode == "hybrid" -%}
+                                    {{ locale_name(language.language, content.language) }}/{{ locale_name(language.language, language.language) }}
+                                {%- endif -%}
+                                {{- ")" if language.country_name }} 
+                                </a>
+                            </li>
+                        {% endfor %}
+                        <li><hr class="dropdown-divider"></li>
+                    {% endif %}
+                    <li><p class="dropdown-header h6">All countries and languages</p></li>
+                    {# if Global is listed, show that first #}
+                    {% if langList|selectattr('region', "eq", "global") %}
+                        {% for language in langList|selectattr('region', "eq", "global") %}
+                            <li><a class="dropdown-item hs-skip-lang-url-rewrite" data-language="{{language.language}}" lang="{{language.language}}" href="{{language.url}}">
+                                {{ (language.country_name ~ " (") if language.country_name -}} 
+                                {%- if module.display_mode == "localized" -%}
+                                    {{ locale_name(language.language, language.language) }}
+                                {%- elif module.display_mode == "pagelang" -%}
+                                    {{ locale_name(language.language, content.language) }}
+                                {%- elif module.display_mode == "hybrid" -%}
+                                    {{ locale_name(language.language, content.language) }}/{{ locale_name(language.language, language.language) }}
+                                {%- endif -%}
+                                {{- ")" if language.country_name }} 
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    {% for language in langList|selectattr('region', "ne", "global") %}
+                        <li><a class="dropdown-item hs-skip-lang-url-rewrite" data-language="{{language.language}}" lang="{{language.language}}" href="{{language.url}}">
+                            {{ (language.country_name ~ " (") if language.country_name -}} 
+                            {%- if module.display_mode == "localized" -%}
+                                {{ locale_name(language.language, language.language) }}
+                            {%- elif module.display_mode == "pagelang" -%}
+                                {{ locale_name(language.language, content.language) }}
+                            {%- elif module.display_mode == "hybrid" -%}
+                                {{ locale_name(language.language, content.language) }}/{{ locale_name(language.language, language.language) }}
+                            {%- endif -%}
+                            {{- ")" if language.country_name }} 
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        {% endif %}
+    {% endif %}
+{% endif %}

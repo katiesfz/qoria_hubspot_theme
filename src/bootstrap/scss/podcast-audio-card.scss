@@ -1,0 +1,289 @@
+// Configuration
+@import "functions";
+
+// Custom variables
+@import "custom-variables";
+
+// scss-docs-start import-stack
+// Configuration
+@import "variables";
+@import "variables-dark";
+@import "maps";
+//custom maps
+@import "custom-maps";
+@import "mixins";
+@import "custom-mixins";
+@import "utilities";
+
+$form-range-track-width:          100%;
+$form-range-track-height:         .5rem;
+$form-range-track-cursor:         pointer;
+$form-range-track-bg:             rgba($white, .5);
+$form-range-track-border-radius:  1rem;
+$form-range-track-box-shadow:     var(--#{$prefix}box-shadow-inset);
+$form-range-track-lower-bg:       rgba($white, 1);
+
+$form-range-thumb-width:                   1rem;
+$form-range-thumb-height:                  $form-range-thumb-width;
+$form-range-thumb-bg:                      $component-active-bg;
+$form-range-thumb-border:                  0;
+$form-range-thumb-border-radius:           1rem;
+$form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1);
+$form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow;
+$form-range-thumb-focus-box-shadow-width:  $input-focus-width; // For focus box shadow issue in Edge
+$form-range-thumb-active-bg:               tint-color($component-active-bg, 70%);
+$form-range-thumb-disabled-bg:             var(--#{$prefix}secondary-color);
+$form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+
+//@import "forms/form-range-placeholder";
+
+@import "custom-range-slider-placeholder";
+
+.podcast-audio-card {
+    background: white;
+    border-radius: $border-radius-lg; // was 20px
+    border: 1px solid $light;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+    transition: 0.3s ease;
+    color: $dark;
+    &:hover {
+        //box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        //transform: translateY(-5px);
+    }
+
+    &.is-active {
+        .card-back {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .card-front {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    .card-front, .card-back {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        transition: opacity 0.3s ease;
+        background-color: $white;
+        width: 100%;
+        border-radius: inherit;
+        
+        .card-title {
+            font-weight: $font-weight-bold;
+            margin-bottom: $spacer; // was 12px
+            line-height: $headings-line-height;
+        }
+
+        .card-tag {
+            font-size: $font-size-sm; // was 0.8rem
+            font-weight: $font-weight-bold;
+            //text-transform: uppercase;
+            //letter-spacing: 1px;
+            margin-bottom: map-get($spacers, 2); // was 8px;
+        }
+
+        .card-excerpt {
+            flex-grow: 1;
+            font-size: $font-size-base;
+            line-height: $line-height-base;
+            opacity: 0.9;
+        }
+    }
+
+    /* Default State */
+    .card-front {
+        padding: map-get($spacers, 3); // 24px
+        color: $dark;
+        
+        @include media-breakpoint-up(md) {
+            padding: map-get($spacers, 4);
+        }
+
+        .card-image {
+            height: 180px;
+            border-radius: $border-radius-lg; // was 12px
+            margin-bottom: map-get($spacers, 4); // was 20px
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: $indigo-10;
+        }
+        .card-title {
+            font-size: $h5-font-size; // was 1.4rem
+            font-weight: $font-weight-bold;
+            margin-bottom: $spacer; // was 12px
+            line-height: $headings-line-height;
+            color: #1a1a1a;
+        }
+        .card-excerpt {
+            color: $dark; // was #4a5568;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;    
+            max-height: calc(3em * $line-height-base);
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: map-get($spacers, 4); // was 20px
+            border-top: 1px solid $gray-200; // was #e2e8f0
+            margin-top: auto; // was 20px
+            .length-info {
+                display: flex;
+                align-items: center;
+                gap: map-get($spacers, 2); // was 8px
+                font-weight: $font-weight-bold; // was 600
+                font-size: $font-size-sm; // was .9rem
+            }
+            .play-btn-round {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                border: 1.5px solid $dark;
+                background: transparent;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 0.2s ease;
+                padding: 0;
+                outline: none;
+                color: $dark;
+            }
+            .play-btn-round svg {
+                width: 18px;
+                height: 18px;
+                fill: #1a1a1a;
+                margin-left: 3px;
+            }
+            .play-btn-round:hover {
+                background: $dark;
+                color: $white;
+            }
+        }
+    }
+
+    /* Playing / Active View Overlay */
+    .card-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        background-image: url("https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Podcast-Background.png?width=860&t=1778075489274");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        color: white;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 5;
+        
+        padding: map-get($spacers, 4) map-get($spacers, 3); // padding: 32px 24px;
+        
+        @include media-breakpoint-up(md) {
+            padding: map-get($spacers, 5) map-get($spacers, 4); // padding: 32px 24px;
+        }
+
+        > div:first-child {
+            padding: map-get($spacers, 5) 0; // was 40px
+        }
+
+        .card-title {
+            font-size: $h3-font-size; // WAS 1.8REM
+            //font-weight: $font-weight-bold;
+            // margin-bottom: 16px;
+            // line-height: $headings-line-height;
+            color: white;
+        }
+
+        .card-tag {
+            //font-size: $font-size-sm; // was 0.8rem
+            // font-weight: 700;
+            //text-transform: uppercase;
+            //letter-spacing: 2px;
+            opacity: 0.8;
+            // margin-bottom: 12px;
+            // display: flex;
+            // gap: 5px;
+            // align-items: center;
+        }
+
+        .card-excerpt {
+            // font-size: 0.95rem; // was .95rem
+            // color: $gray-900; // was #4a5568;
+            color: $white;
+        }
+
+        /* Custom Audio Player UI */
+        .player-ui {
+            margin-top: auto;
+
+            .range-slider {
+                @extend %range-slider;
+                
+                &__values {
+                    @extend %range-slider__values;
+                }
+
+                &__progress {
+                    @extend %range-slider__progress;
+                }
+            }
+
+            
+          //  .seeker {
+          //      width: 100%;
+          //      -webkit-appearance: none;
+          //      background: transparent; 
+          //      height: 4px;
+          //      border-radius: 2px;
+          //      outline: none;
+          //      cursor: pointer;
+          //      margin-bottom: 10px;
+          //  }
+            
+            .time-flex {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.85rem;
+                opacity: 0.8;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .pause-btn-large {
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.8);
+                border: none;
+                color: $primary-500;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: $box-shadow-md;
+                transition: background-color 0.2s ease;
+                padding: 0;
+                outline: none;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 1);
+                }
+            }
+            //.pause-btn-large svg {
+            //    width: 24px;
+            //    height: 24px;
+            //    fill: #58b78e;
+            //}
+        }
+    }
+}

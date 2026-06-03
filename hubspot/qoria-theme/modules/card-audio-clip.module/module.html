@@ -1,0 +1,105 @@
+{% require_css %}
+  <style>
+  {% scope_css %}
+    .card-front .card-tag {
+      color: var(--q-{{ module.styles.card.preheader_colour }});
+    }
+
+    .row {
+      {% if module.styles.row.vertical_gutter == "inherit" %}
+        --q-gutter-y: var(--q-gutter-x);
+      {% endif %}
+      justify-content: 
+        {%- if module.styles.row.alignment.horizontal_align == "LEFT" -%}
+          start
+        {%- elif module.styles.row.alignment.horizontal_align == "CENTER" -%}
+          center 
+        {%- else -%}
+          end
+        {%- endif -%};
+    }
+  {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+{% macro podcastAudioCard(card)  %}
+  <article class="podcast-audio-card {{ module.styles.card.shadow }}">
+    <audio class="card-audio" src="{{card.audio_file}}" preload="metadata"></audio>
+
+    <div class="card-front podcast-audio-card-inner">
+      {% if card.image.src %}
+        <div class="card-image" style="background-image: url('{{ resize_image_url(card.image.src, 0, 0, 500) }}');"></div>
+      {% endif %}
+      {% if card.preheader %}
+      <p class="card-tag" style="{{ card.style_overrides.preheader_colour && card.style_overrides.preheader_colour != ' ' ? 'color: var(--q-' + card.style_overrides.preheader_colour + ');' : '' }}">{{card.preheader}}</p>
+      {% endif %}
+      <h3 class="card-title">{{card.title}}</h3>
+      <p class="card-excerpt">{{card.text}}</p>
+        
+      <div class="card-footer">
+        <div class="length-info">
+          <i class="far fa-clock"></i>
+          LENGTH: <span class="total-time-default">--:--</span>
+        </div>
+        <button class="play-btn-round" type="button">
+          <i class="fal fa-play fa-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="card-back podcast-audio-card-inner">
+      <div>
+        {% if card.preheader %}
+          <p class="card-tag">{{card.preheader}}</p>
+        {% endif %}
+          <h3 class="card-title">{{card.title}}</h3>
+          <p class="card-excerpt">{{card.text}}</p>
+      </div>
+        
+      <div class="player-ui">
+          <div class="range-slider" style='--min:0; --max:100; --value:0; --text-value:"0";'>
+            <input type="range" min="0" max="100" value="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+            <!--<output></output>-->
+            <div class='range-slider__progress'></div>
+          </div>
+          <!--<input type="range" class="seeker form-range" value="0" min="0" max="100"> -->
+          <div class="time-flex">
+              <span class="current-time">00:00</span>
+              <span>-<span class="total-time-active">--:--</span></span>
+          </div>
+          <button class="pause-btn-large" type="button">
+            <i class="fas fa-pause fa-lg"></i>
+          </button>
+      </div>
+    </div>
+  </article>
+{% endmacro %}
+
+
+
+<div class="container-fluid g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}" id="cards-{{name}}" {{module.advanced.additional_markup}}>
+  <div class="row row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} 
+  {%- if module.styles.row.vertical_gutter|int("") != "" %} gy-{{module.styles.row.vertical_gutter}}{% endif -%}
+  {%- if module.styles.row.horizontal_gutter|int("") != "" %} gx-{{module.styles.row.horizontal_gutter}}{% endif -%}
+  ">
+    {% for card in module.card %}
+      <div class="col">
+        {{ podcastAudioCard(card) }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  const handleHeightNormalisation{{name|replace("-","_")}} = () => {
+      normaliseHeightsMd('#cards-{{name}} .podcast-audio-card-inner');
+  };
+
+  window.addEventListener('load', handleHeightNormalisation{{name|replace("-","_")}});
+  window.addEventListener('resize', handleHeightNormalisation{{name|replace("-","_")}});
+  window.addEventListener('orientationchange', handleHeightNormalisation{{name|replace("-","_")}});
+  
+});
+</script>

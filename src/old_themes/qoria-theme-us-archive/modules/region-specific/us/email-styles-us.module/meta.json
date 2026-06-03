@@ -1,0 +1,9 @@
+{
+  "global" : true,
+  "content_types" : [ "EMAIL" ],
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "EMAIL" ],
+  "module_id" : 140020579358,
+  "label" : "Email Styles - US LWZ",
+  "is_available_for_new_content" : true
+}

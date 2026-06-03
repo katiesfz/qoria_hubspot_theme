@@ -1,0 +1,265 @@
+@use "sass:map";
+
+//@import "mixins/banner";
+//@include bsBanner("");
+
+
+// scss-docs-start import-stack
+// Configuration
+@import "_functions";
+
+// Custom variables
+//@import "_custom-fonts";
+@import "_custom-variables";
+@import "_custom-variables-partner";
+
+// scss-docs-start import-stack 
+// Configuration
+@import "_variables";
+@import "variables-dark"; 
+@import "maps";
+//custom maps
+@import "_custom-maps";
+@import "mixins";
+@import "utilities";
+
+
+
+// Custom overrides
+@import "_custom-mixins";
+@import "_custom-utilities";
+
+
+// Layout & components
+//@import "root";
+
+:root,
+[data-bs-theme="light"] {
+  // Note: Custom variable values only support SassScript inside `#{}`.
+
+  // Colors
+  //
+  // Generate palettes for full colors, grays, and theme colors.
+
+  @each $color, $value in $colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-rgb {
+    --#{$prefix}#{$color}-rgb: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-text {
+    --#{$prefix}#{$color}-text: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-bg-subtle {
+    --#{$prefix}#{$color}-bg-subtle: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-border-subtle {
+    --#{$prefix}#{$color}-border-subtle: #{$value};
+  }
+}
+
+// custom
+@import "_custom-root";
+//@import "reboot";
+//@import "type";
+//@import "grid";
+//@import "tables";
+
+// Table variants
+//
+// Table variants set the table cell backgrounds, border colors
+// and the colors of the striped, hovered & active tables
+
+@each $color, $value in $table-variants {
+  @include table-variant($color, $value);
+}
+
+
+
+
+
+
+//@import "forms";
+//@import "buttons";
+
+
+
+
+//
+// Alternate buttons
+//
+
+// scss-docs-start btn-variant-loops
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @if $color == "light" {
+      @include button-variant(
+        $value,
+        $value,
+        $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
+        $hover-border: shade-color($value, $btn-hover-border-shade-amount),
+        $active-background: shade-color($value, $btn-active-bg-shade-amount),
+        $active-border: shade-color($value, $btn-active-border-shade-amount)
+      );
+    } @else if $color == "dark" {
+      @include button-variant(
+        $value,
+        $value,
+        $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
+        $hover-border: tint-color($value, $btn-hover-border-tint-amount),
+        $active-background: tint-color($value, $btn-active-bg-tint-amount),
+        $active-border: tint-color($value, $btn-active-border-tint-amount)
+      );
+    } @else {
+      @include button-variant($value, $value);
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+// scss-docs-end btn-variant-loops
+
+
+
+//@import "transitions";
+//@import "dropdown";
+//@import "button-group";
+//@import "nav";
+//@import "navbar";
+//@import "card";
+// @import "accordion";
+
+// custom components
+//@import "_custom-card";
+//@import "_custom-grid";
+//@import "_custom-buttons";
+
+
+
+.btn-blog-filter-secondary {
+
+  @include button-variant(
+    $background: transparent,
+    $border: transparent,
+    $color: $dark,
+    $hover-background: rgba($dark, 0.1),
+    $hover-border: none,
+    $hover-color: $dark,
+    $active-background: $secondary,
+    $active-border: none,
+    $active-color: color-contrast($secondary)
+  );
+  
+  --#{$prefix}btn-active-shadow: none;
+  
+  &.active {
+    box-shadow: none !important;
+  }
+
+
+}
+
+//@import "_custom-tables";
+//@import "_custom-accordion";
+
+
+//
+// Base styles
+//
+
+.accordion {
+  
+  .accordion-collapse {
+
+    &:before {
+      background-image: linear-gradient(45deg, $light 0%, $light 33%, $primary 66%, $secondary 91%);
+    }
+
+  }
+
+}
+  
+  
+
+//@import "_custom-forms";
+//@import "_custom-card-video";
+//@import "_custom-card-testimonial";
+//@import "_custom-animations";
+
+// Helpers
+//@import "helpers";
+
+
+@import "helpers/color-bg";
+@import "helpers/colored-links";
+
+// Utilities
+//@import "utilities/api";
+// scss-docs-end import-stack
+
+// Text
+
+.bg-gradient-primary {
+    background-color: $primary;
+    background: $primary-gradient border-box;
+}
+
+.bg-gradient-primary-reverse {
+    background-color: $primary;
+    background: $primary-gradient-reverse border-box;
+}
+
+.bg-gradient-primary-extended {
+    background-color: $secondary;
+    background: $primary-gradient-extended border-box;
+}
+
+.bg-gradient-primary-subtle {
+    background-color: $primary;
+    background: $primary-gradient-subtle border-box;
+}
+
+.bg-gradient-primary-transparent {
+    background-color: $primary;
+    background: linear-gradient(45deg, $primary 0%, transparent 100%) border-box;
+}
+
+.bg-gradient-secondary-transparent {
+    background-color: $secondary;
+    background: linear-gradient(45deg, $secondary 0%, transparent 100%) border-box;
+}
+
+/* custom buttons */
+
+@each $color, $value in $button-colors {
+    .btn-outline-#{$color} {
+      @include button-outline-variant($value);
+    }
+    
+    }
+
+@each $color, $value in $additional-button-colors {
+    .btn-#{$color} {
+      @include button-variant($value, $value);
+    }
+    
+    }
+
+
+@each $color, $value in $theme-colors {
+    .arrow-#{$color}:after {
+      color: $value;
+    }
+    }

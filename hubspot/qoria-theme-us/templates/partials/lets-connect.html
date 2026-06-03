@@ -1,0 +1,84 @@
+<!--
+templateType: global_partial
+label: Linewize US CTA
+description: "Let's Connect section with links to Contact Us and newsletter sign-up popup window."
+screenshotPath: ../images/section-previews/screenshot_Footer.png
+-->
+
+{% dnd_area "dnd_cta"
+label="CTA"
+class="main p-0 overflow-hidden lets-connect"
+%}
+    {% dnd_section
+    background_color="rgba(255, 255, 255, 1)",
+    padding={
+        "default" : {
+        "bottom" : "64px",
+        "left" : "16px",
+        "right" : "16px",
+        "top" : "32px"
+        },
+        "mobile" : {
+        "bottom" : "32px",
+        "left" : "16px",
+        "right" : "16px",
+        "top" : "16px"
+        }
+    },
+    max_width=1280
+    %}
+    {% dnd_column
+        offset=0,
+        width=12
+    %}
+        {% dnd_row %}
+            {% dnd_module
+                path="/qoria-theme/modules/anchor",
+                offset=0,
+                width=12,
+                anchor={{context.anchor || "letsconnect" }}
+            %}
+            {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+        {% dnd_module
+            path="/qoria-theme/modules/heading",
+            offset=0,
+            width=12,
+            heading_tag="h2",
+            heading_underline="true",
+            style={
+            "heading_underline" : true,
+            "spacing_field" : {
+                "margin" : {
+                "bottom" : { },
+                "top" : { }
+                }
+            },
+            "textalignment" : "center"
+            }
+        %}
+            {% module_attribute "heading" %}
+            Let's <strong>connect</strong>
+            {% end_module_attribute %}
+        {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+        {% dnd_module
+            path="/qoria-theme-us/modules/contact-us-pullout-us",
+            offset=0,
+            width=12
+        %}
+        {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/newsletter-modal-us",
+              offset=0,
+              width=12
+            %}
+            {% end_dnd_module %}
+        {% end_dnd_row %}
+    {% end_dnd_column %}
+    {% end_dnd_section %}
+{% end_dnd_area %}
