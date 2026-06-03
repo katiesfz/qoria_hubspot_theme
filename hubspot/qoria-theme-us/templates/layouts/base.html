@@ -6,7 +6,7 @@
   {% block head %}
     {# Featured image fallback #}
     {% unless content.featured_image %}
-      <meta name="twitter:image" content="{{ get_asset_url('../../images/qoria/opengraph/Linewize-OG.png') }}">
+      <meta name="twitter:image" content="{{ get_asset_url('/qoria-theme/images/qoria/opengraph/Linewize-OG.png') }}">
     {% endunless %}
 
     {{ require_js(get_asset_url("../../child.js")) }}
