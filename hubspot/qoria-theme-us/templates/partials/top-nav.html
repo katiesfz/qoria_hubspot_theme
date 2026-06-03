@@ -5,7 +5,7 @@ label: Linewize US Top Nav
 
 {% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
 
-{% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+{% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
 {% set breakpoint = widget_data.navigation.breakpoint %}
 {% if breakpoint == "always" %}
     {% set navbarExpand = "" %}
@@ -18,7 +18,7 @@ label: Linewize US Top Nav
 <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
 {% if widget_data.show_language_switcher.value == true %}
   <div class="d-flex d-{{breakpoint}}-none">          
-    {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False %}
+    {% module "language-switcher" path="/qoria-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False %}
   </div>
 {% endif %}
 
@@ -27,31 +27,31 @@ label: Linewize US Top Nav
 </button>
 </div>
 <div class="collapse navbar-collapse" id="navbarNav">
-{% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
+{% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
 
-{% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
+{% module "cta" path="/qoria-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
 
 {% if widget_data.cta.link.url != "" %}
 <div class="d-flex d-{{breakpoint}}-none">
-{% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+{% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
 
 </div>
 {% endif %}
 
 {% if widget_data.cta.link.url != "" %}
 <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-{% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+{% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
 
 </div>
 {% endif %}
 
 <div class="navbar-search d-flex ms-{{breakpoint}}-3 my-3 my-{{breakpoint}}-0">
-{% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}
+{% module "search" path="/qoria-theme/modules/search_input", label="Search" no_wrapper=true %}
 </div>
 
 {% if widget_data.show_language_switcher.value == true %}
 <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-{% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}" %}
+{% module "language-switcher" path="/qoria-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}" %}
 </div>
 {% endif %}
 
