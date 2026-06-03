@@ -17,7 +17,7 @@
 {% require_css %}
   <style>
     .bg-multiply-microphone::before {
-      background-image: url({{ get_asset_url('../../images/qoria/photos/microphone-rt.jpg') }});
+      background-image: url({{ get_asset_url('/qoria-theme/images/qoria/photos/microphone-rt.jpg') }});
       background-position: bottom right;
       background-size: auto;
       content: "";
@@ -70,22 +70,22 @@
       <div class="col-12 col-md-3">
         <h4>Episode details</h4>
         {% if widget_data.transcript.file_field || is_in_blog_post_editor %}
-          <a href="{{ widget_data.transcript.file_field }}" class="btn btn-primary rounded-pill d-block mb-2 text-start"><img src="{{ get_asset_url('../../images/qoria/icons/audio-bubble.png') }}" style="width: 24px;" class="me-3">Transcript download</a>
+          <a href="{{ widget_data.transcript.file_field }}" class="btn btn-primary rounded-pill d-block mb-2 text-start"><img src="{{ get_asset_url('/qoria-theme/images/qoria/icons/audio-bubble.png') }}" style="width: 24px;" class="me-3">Transcript download</a>
         {% endif %}
         {% if widget_data.duration.value != "" || is_in_blog_post_editor %}
           <div class="rounded-pill d-block mb-2 btn btn-outline-light fw-bold disabled text-start">
-            <img src="{{ get_asset_url('../../images/qoria/icons/clock.png') }}" style="width: 24px;" class="me-3"><span style="vertical-align: middle;">Run time: </span><span style="vertical-align: middle;" id="duration-yt-player-podcast_video"></span>
+            <img src="{{ get_asset_url('/qoria-theme/images/qoria/icons/clock.png') }}" style="width: 24px;" class="me-3"><span style="vertical-align: middle;">Run time: </span><span style="vertical-align: middle;" id="duration-yt-player-podcast_video"></span>
           </div>
         {% endif %}
         {% if content.blog_post_author.display_name || is_in_blog_post_editor %}
-          <div class="rounded-pill d-block mb-2 btn btn-outline-light fw-bold disabled text-start"><img src="{{ get_asset_url('../../images/qoria/icons/microphone.png') }}" style="width: 24px;" class="me-3">Host: {{content.blog_post_author.display_name}}</div>
+          <div class="rounded-pill d-block mb-2 btn btn-outline-light fw-bold disabled text-start"><img src="{{ get_asset_url('/qoria-theme/images/qoria/icons/microphone.png') }}" style="width: 24px;" class="me-3">Host: {{content.blog_post_author.display_name}}</div>
         {% endif %}
         <hr>
         <a href="{{widget_data.youtube_link.value}}" rel="noopener">
-          <img src="{{ get_asset_url('../../images/qoria/icons/youtube-red.png') }}" width="50" height="50" loading="lazy" alt="YouTube" style="height: auto; max-width: 100%; width: 50px; margin: 10px 20px 0px 0px;">
+          <img src="{{ get_asset_url('/qoria-theme/images/qoria/icons/youtube-red.png') }}" width="50" height="50" loading="lazy" alt="YouTube" style="height: auto; max-width: 100%; width: 50px; margin: 10px 20px 0px 0px;">
         </a>
         <a href="{{widget_data.spotify_link.value}}" rel="noopener">
-          <img src="{{ get_asset_url('../../images/qoria/icons/spotify-green.png') }}" width="50" height="50" loading="lazy" alt="Spotify" style="height: auto; max-width: 100%; width: 50px; margin: 10px 20px 0px 0px;">
+          <img src="{{ get_asset_url('/qoria-theme/images/qoria/icons/spotify-green.png') }}" width="50" height="50" loading="lazy" alt="Spotify" style="height: auto; max-width: 100%; width: 50px; margin: 10px 20px 0px 0px;">
         </a>
       </div>
     {% endif %}
@@ -360,7 +360,7 @@
         "max_height" : 1030,
         "max_width" : 797,
         "size_type" : "auto",
-        "src" : get_asset_url('../../images/qoria/misc/quote-graphic.png'),
+        "src" : get_asset_url('/qoria-theme/images/qoria/misc/quote-graphic.png'),
         "width" : 797
       },
       style={
