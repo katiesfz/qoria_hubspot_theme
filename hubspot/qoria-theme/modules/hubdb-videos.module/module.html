@@ -299,32 +299,27 @@
 
         }
 
-
-        {% if module.subheading && module.subheading != "" %}
+        if (row.{{module.subheading}}) {
             // print name
             newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-2 align-items-center">';
                 newContent += '<div>';
                     newContent += '<h5 class="text-{{module.styles.textalignment}} mb-0">' + row.name + '</h5>';
                 newContent += '</div>';
             newContent += '</div>';
-
             // print subheading
             newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-2 align-items-center">';
                 newContent += '<div>';
                     newContent += '<p class="text-{{module.styles.textalignment}} mb-0 fw-bold">' + row.{{module.subheading}}.label + '</p>';
                 newContent += '</div>';
             newContent += '</div>';
-
-        {% else %}
-
+        } else {
             // print name
             newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-3 align-items-center">';
                 newContent += '<div>';
                     newContent += '<h5 class="text-{{module.styles.textalignment}} mb-0">' + row.name + '</h5>';
                 newContent += '</div>';
             newContent += '</div>';
-
-        {% endif %}
+        }
 
 
         // print description
