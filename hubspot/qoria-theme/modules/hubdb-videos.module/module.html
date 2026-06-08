@@ -49,6 +49,12 @@
                 {% endfor %}
             {% endif %}
         {# end secondary filter section #}
+
+
+        {# up the table row limit #}
+        {% set limitQuery = "limit=10000" %}
+        {% do filterArr.append(limitQuery) %}
+
             
         {% set filterString = filterArr|join("&") %}
 
@@ -170,14 +176,14 @@
     <script>
 
     // init: 
-    var contentsAll = hubdbRows_{{name|replace("-","_")}};
-    var contents = contentsAll;
-    var itemsPerPage = {{itemsPerPage}};
-    var outerContainer = document.getElementById("hubdb_videos_{{name|replace('-','_')}}");
-    var elementContainer = outerContainer.getElementsByClassName("pages-container")[0];
-    var modalContainer = document.getElementById("modal_container_{{name|replace('-','_')}}");
-    var paginationContainer = outerContainer.getElementsByClassName("pagination-container")[0];
-    var curPage = 1;
+    const contentsAll = hubdbRows_{{name|replace("-","_")}};
+    let contents = contentsAll;
+    const itemsPerPage = {{itemsPerPage}};
+    const outerContainer = document.getElementById("hubdb_videos_{{name|replace('-','_')}}");
+    const elementContainer = outerContainer.getElementsByClassName("pages-container")[0];
+    const modalContainer = document.getElementById("modal_container_{{name|replace('-','_')}}");    
+    const paginationContainer = outerContainer.getElementsByClassName("pagination-container")[0];
+    let curPage = 1;
 
     // print single blog post
     function hubdbVideoTemplate(row, index){
@@ -299,7 +305,9 @@
 
         }
 
-        if (row.{{module.subheading}}) {
+        const subheading = "{{module.subheading ? module.subheading : ""}}";
+
+        if (subheading != "") {
             // print name
             newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-2 align-items-center">';
                 newContent += '<div>';
@@ -309,7 +317,7 @@
             // print subheading
             newContent += '<div class="d-flex justify-content-{{ module.styles.textalignment }} mb-2 align-items-center">';
                 newContent += '<div>';
-                    newContent += '<p class="text-{{module.styles.textalignment}} mb-0 fw-bold">' + row.{{module.subheading}}.label + '</p>';
+                    newContent += '<p class="text-{{module.styles.textalignment}} mb-0 fw-bold">' + row[subheading].label + '</p>';
                 newContent += '</div>';
             newContent += '</div>';
         } else {
