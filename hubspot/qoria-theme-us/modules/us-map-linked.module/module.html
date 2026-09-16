@@ -5258,12 +5258,14 @@
 		</svg>
 
 	</div>
-	<div class="key p-3 mt-3 mx-auto w-auto d-inline-block text-start">
-		<div class="d-none d-{{module.style.breakpoint}}-block">
-			<div class="bg-secondary rounded-circle d-inline-block align-middle me-1" style="height: 0.5em; width: 0.5em;"></div>
+	{% if module.location_label %}
+		<div class="key p-3 mt-3 mx-auto w-auto d-inline-block text-start">
+			<div class="d-none d-{{module.style.breakpoint}}-block">
+				<div class="bg-secondary rounded-circle d-inline-block align-middle me-1" style="height: 0.5em; width: 0.5em;"></div>
 				<span class="align-middle">{{module.location_label}}</span>
+			</div>
 		</div>
-	</div>
+	{% endif %}
 </div>
 
 
