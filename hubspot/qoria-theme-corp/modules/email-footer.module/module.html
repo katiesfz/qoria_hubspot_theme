@@ -1,29 +1,29 @@
 
 {% set logoMaxWidth = 120 %}
-{% set logoWhiteSrc = get_asset_url('/qoria-theme/images/qoria/logos/Qoria_Logo_White.png') %}
+{% set logoWhiteSrc = get_asset_url('/q-theme/images/qoria/logos/Qoria_Logo_White.png') %}
 {% set footerText = module.global_footer_copy %}
 
-{% set bgSrc = get_asset_url('/qoria-theme/images/backgrounds/email-footer-bg-qoria.png') %}
+{% set bgSrc = get_asset_url('/q-theme/images/backgrounds/email-footer-bg-qoria.png') %}
 {% set bgColour = "#58b78e" %}
 
-{% set Qicon = get_asset_url('/qoria-theme/images/qoria/logos/Q-Colour.png') %}
+{% set Qicon = get_asset_url('/q-theme/images/qoria/logos/Q-Colour.png') %}
 
 {% macro social_links(social_links) %}
     {% for link in social_links %}
         {% if link.social_account == "li" %}
-            {% set iconSrc = get_asset_url('/qoria-theme/images/qoria/email/linkedin-in-20.png') %}
+            {% set iconSrc = get_asset_url('/q-theme/images/qoria/email/linkedin-in-20.png') %}
             {% set socialName = "LinkedIn" %}
         {% elif link.social_account == "fb" %}
-            {% set iconSrc = get_asset_url('/qoria-theme/images/qoria/email/facebook-f-20.png') %}
+            {% set iconSrc = get_asset_url('/q-theme/images/qoria/email/facebook-f-20.png') %}
             {% set socialName = "Facebook" %}
         {% elif link.social_account == "tw" %}
-            {% set iconSrc = get_asset_url('/qoria-theme/images/qoria/email/twitter-x-20.png') %}
+            {% set iconSrc = get_asset_url('/q-theme/images/qoria/email/twitter-x-20.png') %}
             {% set socialName = "Twitter / X" %}
         {% elif link.social_account == "in" %}
-            {% set iconSrc = get_asset_url('/qoria-theme/images/qoria/email/instagram-20.png') %}
+            {% set iconSrc = get_asset_url('/q-theme/images/qoria/email/instagram-20.png') %}
             {% set socialName = "Instagram" %}
         {% elif link.social_account == "yt" %}
-            {% set iconSrc = get_asset_url('/qoria-theme/images/qoria/email/youtube-20.png') %}
+            {% set iconSrc = get_asset_url('/q-theme/images/qoria/email/youtube-20.png') %}
             {% set socialName = "YouTube" %}
         {% elif link.social_account == "custom_icon" %}
             {% set iconSrc = link.custom_image.src %}

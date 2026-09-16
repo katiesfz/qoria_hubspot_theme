@@ -4,12 +4,12 @@ label: Linewize AU Header - No navigation
 -->
 
 
-{{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/brands.min.css")) }}
-{{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
-{{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/light.min.css")) }}
-{{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/regular.min.css")) }}
-{{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/solid.min.css")) }}
-{{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/thin.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
+{{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
 
 {% set breakpoint = widget_data.navigation.breakpoint %}
     {% if breakpoint == "always" %}
@@ -23,12 +23,12 @@ label: Linewize AU Header - No navigation
 <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
   <nav class="navbar {{navbarExpand}}">
     <div class="container-xxl position-relative"> 
-      {% module "logo" path="/qoria-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand me-auto"} override_default_logo=False, no_wrapper=True %}
+      {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand me-auto"} override_default_logo=False, no_wrapper=True %}
       
-        {% module "cta" path="/qoria-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
+        {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
           {% if widget_data.cta.link.url != "" %}
             <div class="d-flex ms-{{breakpoint}}-6">
-            {% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+            {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
 
             </div>
           {% endif %}
