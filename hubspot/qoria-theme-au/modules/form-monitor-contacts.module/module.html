@@ -1,0 +1,444 @@
+{{ require_js("//js.hsforms.net/forms/embed/v2.js", "head") }}
+<form class="row g-4 hs-form" id="monitor-contact-form">
+    <div class="col-12">
+        <h2>Your details</h2>
+    </div>
+    <div class="col-md-6 hs-form__field hs-form__field-firstname hs-firstname">
+        <label id="firstname-label" for="firstname-input" class="hs-form__field__label" data-required="true">
+            <span lang="en">First name</span><span class="hs-form__field__label__required">*</span>
+        </label>
+        <input aria-invalid="false" aria-required="true" autocomplete="given-name" inputmode="text" id="firstname-input" class="hs-input hs-form__field__input" type="text" name="firstname" value="" required>
+    </div>
+    <div class="col-md-6 hs-form__field hs-form__field-lastname hs-lastname">
+        <label id="lastname-label" for="lastname-input" class="hs-form__field__label" data-required="true">
+            <span lang="en">Last name</span><span class="hs-form__field__label__required">*</span>
+        </label>
+        <input aria-invalid="false" aria-required="true" autocomplete="family-name" inputmode="text" id="lastname-input" class="hs-input hs-form__field__input" type="text" name="lastname" value="" required>
+    </div>
+    <div class="col-md-12 hs-form__field hs-form__field-email hs-email">
+        <label id="email-label" for="email-input" class="hs-form__field__label" data-required="true">
+            <span lang="en">Email</span><span class="hs-form__field__label__required">*</span>
+        </label>
+        <input aria-invalid="false" autocomplete="email" inputmode="email" id="email-input" class="hs-input hs-form__field__input" type="email" name="email" required value="">
+    </div>
+    <div class="col-md-12 hs-form__field hs-form__field-name_of_school hs-name_of_school">
+        <label id="name_of_school-label" for="name_of_school-input" class="hs-form__field__label" data-required="true">
+            <span lang="en">School name</span><span class="hs-form__field__label__required">*</span>
+        </label>
+        <input aria-invalid="false" inputmode="text" id="name_of_school-input" class="hs-input hs-form__field__input" type="text" name="name_of_school" required value="">
+    </div>
+    <div class="col-12 pt-5">
+        <h2>Monitor Stakeholders</h2>
+    </div>
+    <div id="additional-contacts-container" class="col-12">
+    </div>
+    <div class="col-12 text-end d-flex flex-column flex-md-row flex-wrap align-items-end justify-content-end row-gap-2 column-gap-2">
+        <button type="button" id="add-contact-btn" class="btn btn-outline-primary">+ Add a contact</button>
+        <button type="submit" id="submit-btn" class="btn btn-primary">Submit all</button>
+    </div>
+</form>
+<div id="form-feedback" style="display:none;" role="alert" aria-live="assertive">
+</div>
+
+<style>
+
+#monitor-contact-form {
+    --q-danger: var(--q-red);
+}
+
+#monitor-contact-form #additional-contacts-container {
+  }
+
+.hs-form .hs-input {
+    border-width: 1px;
+}
+
+#monitor-contact-form {
+    counter-reset: contact;
+}
+#monitor-contact-form .contact-heading::before {
+  counter-increment: contact;
+  content: "Stakeholder " counter(contact);
+}
+
+#monitor-contact-form .contact-block {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease-in-out; 
+    align-items: start;
+    overflow: hidden;
+}
+
+
+#monitor-contact-form .contact-block.show {
+  grid-template-rows: 1fr;
+}
+
+#monitor-contact-form .contact-block .contact-block-inner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+#monitor-contact-form .contact-block .contact-block-padding {
+    transition: all 400ms ease;
+    border-top: 1px solid #ffffff;
+}
+
+
+#monitor-contact-form .contact-block:first-of-type .contact-block-padding {
+    padding-top: 0 !important;
+}
+
+#monitor-contact-form .contact-block + .contact-block .contact-block-padding {
+    border-top: 1px solid #cccccc;
+}
+
+#monitor-contact-form .contact-block + .contact-block {
+
+}
+
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Configuration constants - Replace with your details
+    const PORTAL_ID = '7977292';
+    const FORM_GUID = '609f0185-4d17-45d5-97a8-3a1d5b5ff369'; 
+    const API_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
+
+    const container = document.getElementById('additional-contacts-container');
+    const addBtn = document.getElementById('add-contact-btn');
+    const form = document.getElementById('monitor-contact-form');
+    const feedback = document.getElementById('form-feedback');
+    let contactCounter = 0; // Initialize a counter for unique IDs for dynamically added contacts
+    const defaultContactBlock = container.innerHTML;
+
+    function removeContact(event) { // Corrected: accept event parameter
+        event.preventDefault(); // Prevent default action for the button click
+
+        const button = event.target.closest('.btn-remove'); // Use closest for robustness
+        const contactBlock = button.closest('.contact-block');
+
+        if (!contactBlock) return; // Guard clause
+
+        contactBlock.classList.toggle('show');
+
+        // Determine the element to focus *before* the block is removed
+        const allContactBlocks = Array.from(container.querySelectorAll('.contact-block'));
+        const indexToRemove = allContactBlocks.indexOf(contactBlock);
+        let elementToFocus = null;
+
+        if (allContactBlocks.length > 1) { // If there will be other blocks remaining
+            const targetBlockForFocus = (indexToRemove === 0 && allContactBlocks.length > 1)
+                ? allContactBlocks[1] // If removing first, focus next
+                : allContactBlocks[indexToRemove - 1]; // Otherwise, focus previous
+            elementToFocus = targetBlockForFocus?.querySelector('.add-jobtitle');
+        } else {
+            elementToFocus = addBtn; // If no additional contacts left, focus on the "Add Another" button
+        }
+
+        setTimeout(() => {
+            contactBlock.remove();
+            elementToFocus?.focus(); // Apply focus *after* the element has been removed from the DOM
+            removeBtnCheck();
+        }, 500);
+    }
+
+    function removeBtnCheck(){
+        const allContactBlocks = Array.from(container.querySelectorAll('.contact-block'));
+        if (allContactBlocks.length > 1) {
+            allContactBlocks.forEach((contactBlock) => {
+                contactBlock.querySelector(".btn-remove").classList.remove("d-none");
+            });
+        } else {
+            allContactBlocks.forEach((contactBlock) => {
+                contactBlock.querySelector(".btn-remove").classList.add("d-none");
+            });
+        }
+    }
+
+    function addContact() { // Corrected: no contactNum parameter, use internal counter
+        const newBlock = document.createElement('div');
+        contactCounter++; // Increment for each new contact block
+        newBlock.classList.add('contact-block');
+        const uniqueIdPrefix = `contact-${contactCounter}-`; // Generate unique IDs
+        newBlock.insertAdjacentHTML('beforeend', `<div class="contact-block-inner">
+            <div class="py-4 py-md-6 row-gap-4 row contact-block-padding">
+                <div class="col-12 mt-0 d-flex flex-column flex-md-row justify-content-between align-items-start column-gap-4">
+                    <h3 class="contact-heading"></h3>
+                    <button type="button" class="btn btn-red btn-sm btn-remove"><i class="fas fa-x me-2 fa-xs d-inline-block align-center"></i>Remove this contact</button>
+                </div>
+                <div class="col-md-6 hs-form__field hs-form__field-firstname hs-firstname">
+                    <label for="${uniqueIdPrefix}firstname-input" class="hs-form__field__label" data-required="true">
+                        <span lang="en">First name</span><span class="hs-form__field__label__required">*</span>
+                    </label>
+                    <input aria-invalid="false" aria-required="true" autocomplete="given-name" inputmode="text" id="${uniqueIdPrefix}firstname-input" class="hs-input hs-form__field__input add-firstname" type="text" required value="">
+                </div>
+                <div class="col-md-6 hs-form__field hs-form__field-lastname hs-lastname">
+                    <label for="${uniqueIdPrefix}lastname-input" class="hs-form__field__label" data-required="true">
+                        <span lang="en">Last name</span><span class="hs-form__field__label__required">*</span>
+                    </label>
+                    <input aria-invalid="false" aria-required="true" inputmode="text" autocomplete="family-name" id="${uniqueIdPrefix}lastname-input" class="hs-input hs-form__field__input add-lastname" type="text" value="" required>
+                </div>
+                <div class="col-md-12 hs-form__field hs-form__field-email hs-email">
+                    <label for="${uniqueIdPrefix}email-input" class="hs-form__field__label" data-required="true">
+                        <span lang="en">Email</span><span class="hs-form__field__label__required">*</span>
+                    </label>
+                    <input aria-invalid="false" aria-required="true" inputmode="email" autocomplete="email" id="${uniqueIdPrefix}email-input" class="hs-input hs-form__field__input add-email" type="email" required value="">
+                </div>
+                <div class="col-md-12 hs-form__field hs-form__field-jobtitle hs-jobtitle">
+                    <label for="${uniqueIdPrefix}jobtitle-input" class="hs-form__field__label" data-required="true">
+                        <span lang="en">Job title</span><span class="hs-form__field__label__required">*</span>
+                    </label>
+                    <input aria-invalid="false" aria-required="true" inputmode="text" autocomplete="job-title" id="${uniqueIdPrefix}jobtitle-input" class="hs-input hs-form__field__input add-jobtitle" type="text" required value="">
+                </div>
+            </div>
+        </div>`);
+        container.appendChild(newBlock);
+        newBlock.offsetHeight; 
+        newBlock.classList.toggle('show');
+        setupLiveValidation(newBlock); // Apply live validation to new block's fields
+        
+        removeBtnCheck();
+        
+        if (contactCounter == 1) { return }
+        // Focus the first input of the newly added block
+        const firstInput = newBlock.querySelector('.add-firstname');
+        if (firstInput) {
+            firstInput.focus();
+        }
+
+    }
+
+    // Function to apply live validation listeners to fields within a container
+    function setupLiveValidation(containerElement) {
+        const requiredInputs = containerElement.querySelectorAll('input[required], textarea[required], select[required]');
+
+        requiredInputs.forEach(input => {
+            // Initial check on load (optional, but good for pre-filled forms)
+            //validateField(input);
+
+            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('input', () => validateField(input)); // Also validate on input for immediate feedback
+        });
+    }
+
+    function validateField(input) {
+        let isFieldValid = true;
+        const value = input.value.trim();
+        let errorMessage = ''; // Initialize errorMessage
+
+        const errorId = input.id + '-error-message';
+        let errorElement = document.getElementById(errorId);
+
+        // Check for required fields
+        if (input.required && value === '') {
+            isFieldValid = false;
+            errorMessage = 'Please complete this required field.';
+        }
+        // Check email format if it's an email input and not empty
+        else if (input.type === 'email' && value !== '') {
+            // A simple regex for client-side email validation.
+            // For more robust validation, server-side checks are recommended.
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isFieldValid = false;
+                errorMessage = 'Email must be formatted correctly.';
+            }
+        }
+
+        if (!isFieldValid) {
+            input.classList.add('invalid', 'error'); // Add 'invalid' and 'error' classes for styling
+            input.setAttribute('aria-invalid', 'true'); // Inform assistive technologies
+
+            if (!errorElement) {
+                errorElement = document.createElement('div');
+                errorElement.id = errorId;
+                errorElement.classList.add('hs-error-msg');
+                errorElement.setAttribute('role', 'alert'); // Make it an ARIA live region
+                input.parentNode.insertBefore(errorElement, input.nextSibling); // Insert after the input
+            }
+            errorElement.textContent = errorMessage; // Set the specific error message
+            input.setAttribute('aria-describedby', errorId); // Link input to error message
+        } else {
+            input.classList.remove('invalid', 'error'); // Remove classes if valid
+            input.setAttribute('aria-invalid', 'false'); // Inform assistive technologies
+            if (errorElement) {
+                errorElement.remove(); // Remove the error message element
+            }
+            input.removeAttribute('aria-describedby'); // Remove aria-describedby when valid
+        }
+        return isFieldValid; // Return the validation status
+    }
+
+    function init() {
+        addContact();
+    }
+
+    // 1. Function to handle duplicating field sets
+    addBtn.addEventListener('click', function () {
+        addContact();
+    });
+
+    // Event delegation for dynamically added remove buttons
+    container.addEventListener('click', function(event) {
+        const removeButton = event.target.closest('.btn-remove');
+        if (removeButton) {
+            event.preventDefault(); // Prevent default action for the button click
+            removeContact(event);
+        }
+    });
+
+    // Helper to safely grab cookie values
+    function getCookie(name) {
+        let value = "; " + document.cookie;
+        let parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    // 2. Main submit handler
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Perform validation on all fields before submission
+        let formIsValid = true;
+        const allFormInputs = form.querySelectorAll('input[required], textarea[required], select[required], input[type="email"]'); // Include email fields for validation check
+        allFormInputs.forEach(input => {
+            // Re-validate and check the return value to ensure all fields are processed
+            if (!validateField(input)) {
+                formIsValid = false;
+            }
+        });
+
+        if (!formIsValid) {
+            // Optionally scroll to the first invalid field
+            const firstInvalidField = form.querySelector('.invalid');
+            if (firstInvalidField) { // Use .invalid class for consistency
+                firstInvalidField.focus();
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            feedback.innerHTML = `<div class="alert alert-red alert-dismissible mt-4 fade show" role="alert">
+                <strong>Please correct the highlighted fields.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+            return; // Prevent form submission
+        }
+        
+        // Collect primary contact elements
+        const primaryData = {
+            firstname: document.getElementById('firstname-input').value,
+            lastname: document.getElementById('lastname-input').value,
+            email: document.getElementById('email-input').value,
+            schoolname: document.getElementById('name_of_school-input').value
+        };
+
+        // Collect all generated additional contacts
+        const additionalBlocks = document.querySelectorAll('.contact-block');
+        const contactsPayloads = [];
+
+        // Format primary contact payload (Includes tracking cookie)
+        contactsPayloads.push({
+        submittedAt: Date.now(),
+        fields: [
+            { objectTypeId: '0-1', name: "firstname", value: primaryData.firstname },
+            { objectTypeId: '0-1', name: "lastname", value: primaryData.lastname },
+            { objectTypeId: '0-1', name: "email", value: primaryData.email },
+            { objectTypeId: '0-1', name: "schoolname", value: primaryData.schoolname }
+        ],
+        context: {
+            hutk: getCookie('hubspotutk'),
+            pageUri: window.location.href,
+            pageName: document.title
+        }
+        //legalConsentOptions: {
+        //    consent: {
+        //        consentToProcess: false,
+        //        text: "",
+        //        communications: [
+        //            {subscriptionTypeId: , value: false},
+        //        ]
+        //    }
+        //}
+        });
+
+        // Format additional contact payloads (Excludes tracking cookie to prevent deduplication/merging)
+        additionalBlocks.forEach(block => {
+            const firstname = block.querySelector('.add-firstname').value;
+            const lastname = block.querySelector('.add-lastname').value;
+            const email = block.querySelector('.add-email').value;
+            const jobtitle = block.querySelector('.add-jobtitle').value;
+            const schoolname = document.getElementById('name_of_school-input').value;
+
+            contactsPayloads.push({
+                submittedAt: Date.now(),
+                fields: [
+                { objectTypeId: '0-1', name: "registered_first_name", value: firstname },
+                { objectTypeId: '0-1', name: "registered_last_name", value: lastname },
+                { objectTypeId: '0-1', name: "email", value: email },
+                { objectTypeId: '0-1', name: "registered_job_title", value: jobtitle },
+                { objectTypeId: '0-1', name: "registered_school_name", value: primaryData.schoolname }
+                ],
+                context: {
+                pageUri: window.location.href,
+                pageName: document.title
+                }
+            });
+        });
+
+        // 3. Process submissions sequentially using Fetch API
+        feedback.style.display = 'block';
+       // feedback.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+       //     <strong>All contacts submitted successfully!</strong>
+       //     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       //     </div>`;
+        //feedback.innerText = "Processing submissions...";
+        
+        let successCount = 0;
+
+        for (const payload of contactsPayloads) {
+        try {
+            const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+            successCount++;
+            } else {
+            console.error("Submission failed for a record: ", await response.json());
+            }
+        } catch (error) {
+            console.error("Network error occurred during submission: ", error);
+        }
+        }
+
+        // Update frontend UI with results
+        if (successCount === contactsPayloads.length) {
+        feedback.innerHTML = `<div class="alert alert-teal alert-dismissible mt-4 fade" role="alert">
+            <strong>All contacts submitted successfully!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`; // Removed redundant role="alert"
+        feedback.offsetHeight; 
+        feedback.querySelector(".alert").classList.add("show");
+        feedback.offsetHeight; 
+        setTimeout(() => {
+            feedback.querySelector(".alert").classList.remove("show");
+        }, 5000);
+        //feedback.innerText = "All contacts submitted successfully!";
+        form.reset();
+        // Remove dynamically generated fields, leaving only the initial state
+        container.innerHTML = "";
+        addContact();
+        } else {
+        feedback.innerHTML = `<div class="alert alert-red alert-dismissible mt-4 fade" role="alert">
+            <strong>Submitted ${successCount} out of ${contactsPayloads.length} contacts.</strong> Check browser logs for errors.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`; // Removed redundant role="alert"
+        feedback.offsetHeight; 
+        feedback.querySelector(".alert").classList.add("show");
+        }
+    });
+    init();
+    setupLiveValidation(form); // Apply live validation to initial form fields
+    });
+</script>
