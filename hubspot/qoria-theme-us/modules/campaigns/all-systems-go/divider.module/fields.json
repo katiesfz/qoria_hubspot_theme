@@ -1,0 +1,145 @@
+[ {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+      "id" : "styles.divider_style",
+      "name" : "divider_style",
+      "display_width" : null,
+      "label" : "Divider style",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "stripe", "Stripe" ], [ "control-panel", "Control Panel" ], [ "rivet", "Rivet" ], ["dotted", "Dotted"]],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "stripe"
+    }, {
+    "id" : "styles.size",
+    "name" : "size",
+    "display_width" : null,
+    "label" : "Size",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.size.width",
+      "name" : "width",
+      "display_width" : null,
+      "label" : "Width",
+      "help_text" : "Percentage of the area the divider is placed into.",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "aliases_mapping" : {
+        "property_aliases_paths" : {
+          "width" : [ "width" ]
+        }
+      },
+      "min" : 1,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "%",
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "styles.size.height",
+      "name" : "height",
+      "display_width" : null,
+      "label" : "Height",
+      "help_text" : "Height of the divider in pixels.",
+      "required" : true,
+      "locked" : false,
+      "display" : "text",
+      "min" : 1,
+      "max" : 300,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 50
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.alignment",
+    "name" : "alignment",
+    "display_width" : null,
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "styles.size.width",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "100",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "styles.alignment.alignment",
+      "name" : "alignment",
+      "display_width" : null,
+      "label" : "Alignment",
+      "required" : false,
+      "locked" : false,
+      "alignment_direction" : "HORIZONTAL",
+      "type" : "alignment",
+      "default" : {
+        "horizontal_align" : "CENTER"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.spacing",
+    "name" : "spacing",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.spacing.spacing",
+      "name" : "spacing",
+      "display_width" : null,
+      "label" : "Spacing",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : null,
+        "access" : null,
+        "hidden_subfields" : {
+          "padding" : true
+        }
+      },
+      "type" : "spacing",
+      "default" : {
+        "margin" : {
+          "top" : {
+            "value" : "10",
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : "10",
+            "units" : "px"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+} ]

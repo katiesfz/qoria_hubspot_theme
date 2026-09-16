@@ -1,0 +1,49 @@
+{% if module.cta_group %}
+  <div class="d-block text-md-{{ module.alignment }} text-center" style="{{module.styles.spacing_field.css}}">
+  <div class="{{ "input-group " if module.group_buttons }}{{"d-flex flex-wrap " if !module.group_buttons}}{{ ("gap-" ~ module.gap ~ " ") if module.mobile_gap == "inherit" else ("gap-" ~ module.mobile_gap ~ " ") }}{{ "gap-md-" ~ module.gap ~ " " if !module.group_buttons }} justify-content-md-{{ module.alignment }} justify-content-{{ module.alignment if module.mobile_alignment == "inherit" else module.mobile_alignment}}">
+  {% for cta in module.cta_group %}
+    {% if cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" ~ cta.link.url.href %}
+      {% else %}
+        {% unless (cta.link.url.href is string_containing "//") 
+          or (!cta.link is string_startingwith "tel:") 
+          or !cta.link.url.href 
+        %}
+          {% set href = "//" ~ cta.link.url.href %}
+        {% else %}
+          {% set href = cta.link.url.href || "" %}
+        {% endunless %}
+    {% endif %}
+      
+    {% if cta.advanced.trigger_modal %}
+      {% set href = "#" %}
+    {% endif %}
+    
+    {% set rel = (cta.link.open_in_new_tab ? "noopener " : null) ~ (cta.link.no_follow ? "nofollow" : null) %}
+      <a class="btn btn-{{cta.button_colour}} {{cta.button_size}} {% if cta.button_style != "-" %}{{cta.text_colour}}{% endif %} {{ cta.advanced.additional_classes }}" href="{{ href }}"
+          id="button_{{ name }}"
+        {% if cta.advanced.trigger_modal %}
+              data-bs-toggle="modal"
+            data-bs-target="#{{ cta.advanced.modal_id }}"
+          {% endif %}
+          {% if cta.advanced.tabs %}
+                data-bs-toggle="tab"
+              data-bs-target="#{{ cta.advanced.tabs_target }}" type="button" role="tab" aria-controls="{{ cta.advanced.tabs_target }}" aria-selected="false"
+            {% endif %}
+          {% if cta.link.open_in_new_tab %}target="_blank"{% endif %}
+          {% if cta.download %}
+            {% if cta.download_file %}
+              download="{{cta.download_file}}"
+            {% else %}
+                download
+            {% endif %}
+          {% endif %}
+          rel="{{ rel }}">
+        {{ cta.button_text }}
+      </a>
+  {% endfor %}
+  </div>
+  </div>
+{% endif %}
+  
+  
