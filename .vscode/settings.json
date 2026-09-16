@@ -3,18 +3,18 @@
         "/.vscode/**",
         "/**/node_modules/**"
     ],
-    "liveSassCompile.settings.forceBaseDirectory": "/bootstrap",
+    "liveSassCompile.settings.forceBaseDirectory": "/src/bootstrap",
     "liveSassCompile.settings.formats": [
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "/css",
+            "savePath": "/src/bootstrap/dist/css",
             "savePathReplacementPairs": null
         },
         {
             "format": "compressed",
             "extensionName": ".min.css",
-            "savePath": "/css",
+            "savePath": "/src/bootstrap/dist/css",
             "savePathReplacementPairs": null
         }
     ],
@@ -26,15 +26,14 @@
         "/scss/smart-recruiters-styles.scss",
         "/scss/easy-webinar-styles.scss",
         "/scss/qoria-theme-partner.scss",
-        "/scss/swiper.scss"
+        "/scss/swiper.scss",
+        "/scss/all-systems-go.scss"
     ],
     "liveSassCompile.settings.generateMap": false,
     "files.associations": {
         "*.html": "html-hubl",
         "*.css": "css-hubl"
     },
-    "liveSassCompile.settings.autoprefix": [
-    ],
     "search.exclude": {
         "**/node_modules": false
     },
@@ -57,6 +56,10 @@
         "/modules\\events.module",
         "/modules\\email-table.module"
     ],
-    "editor.hover.enabled": "onKeyboardModifier"
+    "editor.hover.enabled": "onKeyboardModifier",
+    "diffEditor.diffAlgorithm": "legacy",
+    "liveSassCompile.settings.autoprefix": [
+
+    ]
   
 }
