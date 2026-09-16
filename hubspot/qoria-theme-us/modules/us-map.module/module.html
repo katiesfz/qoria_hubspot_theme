@@ -5223,16 +5223,17 @@
 			buildQuoteMarker("{{location.state}}", "{{location.zip|trim|truncate(3,true,"") if location.zip else "769"}}", {{location.popup_toggle if location.popup_toggle else false}}, "{{location.popup.author if location.popup_toggle}}{{", " + location.popup.role if (location.popup_toggle && location.popup.role)}}", "{{location.popup.quote if location.popup_toggle}}", "{{location.popup.accent_colour if location.popup_toggle}}");
 		{% endfor %}
 
+		{% if hub_id == 5840292 %}
 		// TEMPORARY hack - use a hubdb to post the zip codes
-		{% set zips = hubdb_table_rows(7922097, "limit=3000") %}
+			{% set zips = hubdb_table_rows(7922097, "limit=3000") %}
 
-		{% for zip in zips %}
-			{% if zip.zip_code != null  %}
-			buildQuoteMarker("{{zip.state}}", "{{zip.zip_code|trim|truncate(3,true,"")}}", false, "", "", "");
-			{% endif %}
-		{% endfor %}
-
+			{% for zip in zips %}
+				{% if zip.zip_code != null  %}
+				buildQuoteMarker("{{zip.state}}", "{{zip.zip_code|trim|truncate(3,true,"")}}", false, "", "", "");
+				{% endif %}
+			{% endfor %}
 		// end temporary hack
+		{% endif %}
 
 		const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
 		const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
