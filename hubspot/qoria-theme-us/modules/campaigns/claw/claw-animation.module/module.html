@@ -1,0 +1,108 @@
+<style>
+
+    @keyframes swing {
+      0% {
+        transform: rotate(-5deg);
+      }
+      100% {
+        transform: rotate(5deg);
+      }
+    }
+
+    .claw-grabber {
+        position: relative;
+        overflow: hidden;
+        background-color: #58b78e;
+        border-radius: 100%;
+        width: 100%;
+        padding-bottom: 100%;
+        perspective: 100px;
+        transform-style: preserve-3d;
+    }
+
+    .claw-grabber .plushie-group {
+        width: 90%;
+        position: absolute;
+        bottom: -11%;
+        left: 5%;
+    }
+
+    .claw-grabber .plushie-group-shadow {
+        width: 110%;
+        position: absolute;
+        bottom: 0px;
+        left: -5%;
+    }
+
+    .claw-grabber .grabber-base {
+        width: 20%;
+        position: absolute;
+        top: 0;
+        left: 40%;
+    }
+
+    .claw-grabber .grabber-claw {
+        transform-origin: top center;
+        width: 28%;
+        position: absolute;
+        top: 2%;
+        left: 36%;
+        animation: swing 1s alternate infinite ease-in-out;
+    }
+</style>
+
+<div class="claw-grabber"  data-parallax-container>
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/plushie-group-shadow.svg') }}"  data-parallax-speed="-0.15"  class="plushie-group-shadow" id="plushieGroupShadow">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/plushie-group.svg') }}"  data-parallax-speed="0"  class="plushie-group" id="plushieGroup">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/grabber-grabber.svg') }}"  data-parallax-speed="0"  class="grabber-claw" id="">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/grabber-base.svg') }}"  data-parallax-speed="0"  class="grabber-base" id="">
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const containers = document.querySelectorAll("[data-parallax-container]");
+
+  containers.forEach((container) => {
+    const layers = container.querySelectorAll("[data-parallax-speed]");
+    let isVisible = false;
+
+    // 1. Only run calculations if the card is physically visible on-screen
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) requestAnimationFrame(tick);
+      });
+    }, { threshold: 0 });
+
+    observer.observe(container);
+
+    function tick() {
+      if (!isVisible) return;
+
+      // 2. Measure the card's relative position within the viewport
+      const rect = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // 3. Find the exact centre point calculation of the card relative to viewport
+      const containerCenter = rect.top + rect.height / 2;
+      const viewportCenter = viewportHeight / 2;
+      const distanceFromCenter = containerCenter - viewportCenter;
+
+      // 4. Translate layers based on their specific speed multiplier
+      layers.forEach((layer) => {
+        const speed = parseFloat(layer.getAttribute("data-parallax-speed"));
+        const yOffset = distanceFromCenter * speed;
+        
+        // Preserve the base scale required for the image edge buffer
+        // const baseScale = layer.classList.contains("bg-layer") ? 1.3 : 1.15;
+        
+        layer.style.transform = `translateY(${yOffset}px) scale(1)`;
+      });
+
+      // Continue animating smoothly as long as the card stays visible
+      requestAnimationFrame(tick);
+    }
+  });
+});
+</script>

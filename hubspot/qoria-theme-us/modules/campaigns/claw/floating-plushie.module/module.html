@@ -1,0 +1,38 @@
+<style>
+    @keyframes float {
+        0% {
+            transform: translateY(10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .floating-plushie {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .floating-plushie .plushie {
+        width: 90%;
+        z-index: 2;
+        animation: float 2s alternate infinite ease-in-out;
+    }
+
+    .floating-plushie .plushie-shadow {
+        width: 100%;
+        z-index: 1;
+    }
+
+</style>
+
+<div class="floating-plushie">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/plushie-portrait.svg') }}" class="plushie" style="animation-delay: {{module.delay}}ms;">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/shadow.svg') }}" class="plushie-shadow">
+</div>

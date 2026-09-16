@@ -1,0 +1,182 @@
+{% require_css %}
+  <style>
+
+    .claw-card {
+      --q-card-spacer-y: 3em;
+      --q-card-spacer-x: 2.5em;
+      border-radius: .25em;
+      background-color: #515ba5;
+      background: #515BA5;
+      background: linear-gradient(180deg,rgba(81, 91, 165, 1) 0%, rgba(28, 36, 94, 1) 100%);
+      z-index: 1;
+      position: relative;
+      color: #ffffff;
+      
+    }
+    .claw-card:before {
+      display: block;
+      position: absolute;
+      top: 1em;
+      left: 1em;
+      bottom: 1em;
+      border-radius: 1em;
+      right: 1em;
+      border: 1px solid #ffffff54;
+      content: "";    
+      pointer-events: none;
+    }
+
+    .claw-card .card-footer {
+      background-color: transparent;
+    }
+
+    .claw-card:after {
+      display: block;
+      position: absolute;
+      top: 2.5em;
+      right: 2.5em;
+      width: 1.5em;
+      height: 2px;
+      background-color: #58b78e;
+      border-radius: 1em;
+      border: 1px solid #00ff91;
+      content: "";    
+      pointer-events: none;
+      box-shadow: 0px 0px 10px 0px #00f1ff;
+    }
+
+  </style>
+{% end_require_css %}
+
+{% if is_in_page_editor %}
+  <style>
+  </style>
+{% endif %}
+
+<div class="container-fluid g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}" id="{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }}" {{module.advanced.additional_markup}}>
+<div class="row gy-3 row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} justify-content-{{module.styles.row_alignment}}">
+  {% for card in module.card %}
+
+    {% if card.background.background_type != "inherit" %}
+        {% if card.background.background_type == "color" and card.background.color.color %}
+          {% set cardStyles = "background-color: rgba({{ card.background.color.color|convert_rgb }}, {{ card.background.color.opacity / 100 }});" %}
+        {% elif card.background.background_type == "gradient" %}
+          {% set cardStyles = "background: {{ card.background.gradient.css }};" %}
+        {% elif card.background.background_type == "image" %}
+          {% set cardStyles = "background-image: url({{ card.background.image.src }}); background-size: cover;" %}
+        {% else %}
+          {% set cardStyles = "" %}
+        {% endif %}
+    {% endif %}
+
+    <div class="col {{ card.advanced.col_classes }}">
+      <div class="card claw-card h-100 d-flex flex-column {{ card.advanced.card_classes }} {{ module.styles.shadow }}" style="{{cardStyles}}">
+        
+
+            {% set headingColour = " " %}
+            {% set preHeadingColour = " " %}
+
+            <div class="card-body text-{{ module.styles.textalignment }}">
+              <div class="d-flex justify-content-{{ module.styles.textalignment }} mb-3 align-items-center">
+                <div>
+                  {% if card.title != "" %}
+                    <h5 class="text-{{module.styles.textalignment}} {{ card.title_size if card.title_size else "h5" }} {{ headingColour }} mb-0">{{ card.title }}</h5>
+                  {% endif %}
+                </div>
+              </div>
+                
+              <div class="card-text flex-grow-1">
+              {{ card.text }}
+              </div>
+            </div>
+
+            {% if card.link.url.href %}
+              <div class="card-footer">
+                {% if card.cta_style %}
+                  {% if card.cta_style != "text-" %}
+                    {% set ctaClasses = card.cta_size ~ " " ~ card.cta_style ~ card.cta_colour %}
+                  {% else %}
+                    {% set ctaClasses = "text-" ~ card.cta_colour ~ " text-decoration-none fw-semibold" %}
+                  {% endif %}
+                {% else %}
+                  {% set ctaClasses = "text-reset text-decoration-none fw-semibold" %}
+                {% endif %}
+                {% if (card.cta_alignment) && (card.cta_alignment != "inherit") %}
+                  {% if card.cta_alignment == "center" %}
+                    {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+                  {% elif card.cta_alignment == "end" %}
+                    {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+                  {% elif card.cta_alignment == "start" %}
+                    {% set ctaClasses = ctaClasses ~ " me-auto" %}
+                  {% endif %}
+                {% else %}
+                  {% if module.styles.textalignment == "center" %}
+                    {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+                  {% elif module.styles.textalignment == "end" %}
+                    {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+                  {% elif module.styles.textalignment == "start" %}
+                    {% set ctaClasses = ctaClasses ~ " me-auto" %}
+                  {% endif %}
+                {% endif %}
+                <a href="{{card.link.url.href}}" 
+                class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
+                {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+                >
+                {% if (card.link_label|striptags) is string_containing "->" %}
+                  {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
+                {% elif (card.link_label|striptags) is string_containing " >" %}
+                  {% set linkLabel = card.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
+                {% else %}
+                  {% set linkLabel = card.link_label %}
+                {% endif %}
+                {{linkLabel}}</a>
+              </div>
+            {% endif %}
+      </div>
+    </div>
+  {%endfor%}
+</div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const handleHeaderHeightNormalisation{{name|replace("-","_")}} = () => {
+      normaliseHeightsMd('#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-header');
+  };
+
+  window.addEventListener('load', handleHeaderHeightNormalisation{{name|replace("-","_")}});
+  window.addEventListener('resize', handleHeaderHeightNormalisation{{name|replace("-","_")}});
+  window.addEventListener('orientationchange', handleHeaderHeightNormalisation{{name|replace("-","_")}});
+  
+  {% if module.styles.normalise_image_headers %}
+    {% if module.styles.image_header_fit == "cover" %}
+
+        const handleImageHeightNormalisation{{name|replace("-","_")}} = () => {
+            normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-img-top")
+        };
+
+        window.addEventListener('load', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('resize', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('orientationchange', handleImageHeightNormalisation{{name|replace("-","_")}});
+
+    {% elif module.styles.image_header_fit == "contain" || module.styles.image_header_fit == "contain-variable" %}
+
+        const handleImageHeightNormalisation{{name|replace("-","_")}} = () => {
+            normaliseHeightsMd("#{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }} .card-body .img-header")
+        };
+
+        window.addEventListener('load', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('resize', handleImageHeightNormalisation{{name|replace("-","_")}});
+        window.addEventListener('orientationchange', handleImageHeightNormalisation{{name|replace("-","_")}});
+
+    {% endif %}
+  {% endif %}
+
+  
+});
+</script>
+
+
