@@ -359,7 +359,11 @@ const parseCookie = function (input) {
             mergedValue[key] = defaultCookieValue[key];
         }
         for (const key in parsedCookieValue) {
-            mergedValue[key] = parsedCookieValue[key];
+            if (key == "limitSensitiveInfo") {
+              mergedValue[key] = parsedCookieValue[key] == false ? false : true;
+              continue;
+            }
+            mergedValue[key] = parsedCookieValue[key] == true ? true : false;
         }
         return mergedValue;
     } else {
@@ -448,12 +452,12 @@ const processData = () => {
         limitSpiValue = true;
     }
     updateConsentState(updatedConsent);
-    dataLayerPush({"limit_spi": limitSpiValue});
     hspPush(["setHubSpotConsent", {
       analytics: updatedConsent.analytics_storage === "granted" ? true : false,
       advertisement: updatedConsent.ad_storage === "granted" ? true : false,
       functionality: updatedConsent.functionality_storage === "granted" ? true : false
     }]);
+    dataLayerPush({'event': 'consent_processed', 'consent_settings': updatedConsent, 'limit_spi': limitSpiValue});
   }
 };
 processData();
@@ -1105,6 +1109,57 @@ scenarios:
     assertThat(hspLog[0].length).isEqualTo(2);
     assertThat(hspLog[0][0]).isEqualTo("setHubSpotConsent");
     assertThat(hspLog[0][1]).isEqualTo({analytics: false, advertisement: false, functionality: false});
+- name: Updates set correctly - Bad Cookie Provided
+  code: |-
+    const setDefaultConsentState = require('setDefaultConsentState');
+    const mockData = {
+      command: 'update'
+    };
+    let pushLog = [];
+    let hspLog = [];
+
+    mock('createQueue', function(queueName) {
+      if (queueName === 'dataLayer') {
+        return function(payload) {
+          pushLog.push(payload);
+        };
+      }
+      if (queueName === '_hsp') {
+        return function(payload) {
+          hspLog.push(payload);
+        };
+      }
+    });
+
+    setDefaultConsentState({
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+    });
+
+    mock('getCookieValues', () => ['{"analytics":true,"advertisement":false,"functional":true,"limitSensitiveInfo":"badValue"}']);
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+
+    // Verify that the tag finished successfully.
+    assertApi('gtmOnSuccess').wasCalled();
+    assertApi('updateConsentState').wasCalledWith({
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      personalization_storage: 'granted',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+    });
+    assertThat(pushLog.length).isEqualTo(1);
+    assertThat(pushLog[0].limit_spi).isEqualTo(true);
+    assertThat(hspLog.length).isEqualTo(1);
+    assertThat(hspLog[0].length).isEqualTo(2);
+    assertThat(hspLog[0][0]).isEqualTo("setHubSpotConsent");
+    assertThat(hspLog[0][1]).isEqualTo({analytics: true, advertisement: false, functionality: true});
 - name: Wait for update set correctly
   code: |-
     const mockData = {
@@ -1169,12 +1224,12 @@ scenarios:
     assertApi('gtagSet').wasCalledWith('ads_data_redaction',true);"
 - name: ad_user_data Default not set - Bad Value
   code: "const mockData = {\n  command: 'default',\n  defaultSettings: [\n    {\n\
-    \      'region':'',\n      'adStorage':'denied',\n      'analyticsStorage':'denied',\n\
+    \      'region':'',\n      'adStorage':'denied',\n      'analyticsStorage':'granted',\n\
     \      'adUserData':'dneied',\n      'adPersonalization':'denied',\n      'limitSpi':\
     \ true\n    }\n  ],  \n};\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\
     \n// Verify that the tag finished successfully.\nassertApi('gtmOnSuccess').wasCalled();\n\
     assertApi('setDefaultConsentState').wasCalledWith({\n  ad_storage: 'denied',\n\
-    \  analytics_storage: 'denied',\n  ad_personalization: 'denied',\n});"
+    \  analytics_storage: 'granted',\n  ad_personalization: 'denied',\n});"
 - name: ad_personalization Default not set - Bad Value
   code: "const mockData = {\n  command: 'default',\n  defaultSettings: [\n    {\n\
     \      'region':'',\n      'adStorage':'denied',\n      'analyticsStorage':'denied',\n\
@@ -1187,6 +1242,6 @@ scenarios:
 
 ___NOTES___
 
-Created on 6/15/2026, 11:32:57 AM
+Created on 6/24/2026, 2:56:48 PM
 
 
