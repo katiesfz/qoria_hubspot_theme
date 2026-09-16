@@ -1,0 +1,15 @@
+<button type="button" class="{{module.classes}} d-none" id="{{name|replace('-','')}}" onClick="qoriaCookieConsentManager.cookieConsentBanner.show()">Your Privacy Choices <img src="{{get_asset_url('../../images/privacyoptions.svg')}}" style="height: 1rem; width: auto; margin-left: .25em; vertical-align: bottom;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon"></button>
+
+{% require_js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const _hsq = window._hsq = window._hsq || [];
+            const manageCookiesBtn = document.getElementById('{{name|replace('-','')}}');
+            _hsq.push(['addPrivacyConsentListener', function(consent) {
+                if (consent.categories) {
+                manageCookiesBtn.classList.remove('d-none');
+                }
+            }]);
+        });
+</script>
+{% end_require_js %}

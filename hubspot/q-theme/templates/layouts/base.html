@@ -1,0 +1,74 @@
+<!--
+    templateType: none
+-->
+<!doctype html>
+<html lang="{{ html_lang if html_lang else "en" }}">
+  <head>
+    <meta charset="utf-8">
+    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
+    <meta name="description" content="{{ content.meta_description }}">
+
+    {# ===== Twitter Card ===== #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page_meta.html_title or pageTitle }}">
+    <meta name="twitter:description" content="{{ content.meta_description }}">
+
+    {# Use featured image if exists #}
+    {% if content.featured_image %}
+      <meta name="twitter:image" content="{{ content.featured_image }}">
+    {% endif %}
+
+    {# Preload main theme CSS earlier for faster discovery #}
+    {{ require_css(get_asset_url('../../css/qoria-theme.min.css'), { async: true }) }}
+
+    {{ require_css(get_asset_url("../../assets/fontawesome6/css/brands.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome6/css/fontawesome.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome6/css/light.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome6/css/regular.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome6/css/solid.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome6/css/thin.min.css")) }}
+
+    <script>
+      window.bootstrapReadyQueue = window.bootstrapReadyQueue || [];
+
+      function onBootstrapReady(callback) {
+        if (window.bootstrapReadyQueue.isLoaded) {
+          callback();
+        } else {
+          window.bootstrapReadyQueue.push(callback);
+        }
+      }
+
+      function executeBootstrapQueue() {
+        window.bootstrapReadyQueue.isLoaded = true;
+        window.bootstrapReadyQueue.forEach(callback => callback());
+      }
+    </script>
+
+    <script async src="{{get_asset_url('../../js/bootstrap.bundle.min.js')}}" onload="executeBootstrapQueue()"></script>
+    
+    {{ standard_header_includes }}
+
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+
+    {% block body_top %}
+    {% endblock %}
+
+    {% block header %}
+    {% endblock header %}
+
+    <div class="content-wrapper" data-bs-spy="scroll" data-bs-target="#pageContents">
+    {% block body %}
+    {% endblock body %}
+    </div>
+    
+    {% block footer %}
+    {% endblock footer %}
+
+    {{ standard_footer_includes }}
+
+  </body>
+</html>

@@ -1,0 +1,88 @@
+[ {
+  "id" : "hubdb",
+  "name" : "hubdb",
+  "display_width" : null,
+  "label" : "ASX Announcement HubDB",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable"
+}, {
+  "id" : "title_reports",
+  "name" : "title_reports",
+  "display_width" : null,
+  "label" : "Annual Reports Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Annual Reports"
+}, {
+  "id" : "description_reports",
+  "name" : "description_reports",
+  "display_width" : null,
+  "label" : "Annual Reports Description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Download and view our annual reports by clicking on the following links."
+}, {
+  "id" : "title_announcements",
+  "name" : "title_announcements",
+  "display_width" : null,
+  "label" : "ASX Announcements Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "ASX announcements & presentations"
+}, {
+  "id" : "description",
+  "name" : "description",
+  "display_width" : null,
+  "label" : "ASX Announcements Description",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : true,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Browse our list of announcements for all the latest ASX updates and insights."
+},{
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+      "margin" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group"
+} ]

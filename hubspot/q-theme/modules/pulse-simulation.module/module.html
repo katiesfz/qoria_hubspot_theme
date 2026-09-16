@@ -1,0 +1,257 @@
+<!-- module html  -->
+<div id="pulseSimContainer">
+    <div id="question">
+    </div>
+    <div id="answers">
+    </div>
+</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            showQuestion(id = 1);
+            // console.log("{{local_dt}}");
+        });
+    </script>
+
+    <script>
+            var pulseQuestions = [{
+            "id": 1,
+            "question": "Hi {{contact.firstname}}, how are you feeling today?",
+            "subtext": "Who sees my responses?",
+            "options": [
+                {
+                    "text": "<i class='fa fas fa-circle me-2' style='color: #62bc45'></i> I'm feeling great",
+                    "status": "active"
+                },
+                {
+                    "text": "<i class='fa fas fa-circle me-2' style='color: #82dd63'></i> I'm feeling positive",
+                    "status": "disabled"
+                },
+                {
+                    "text": "<i class='fa fas fa-circle me-2' style='color: #fde201'></i> I'm feeling in the middle",
+                    "status": "disabled"
+                },
+                {
+                    "text": "<i class='fa fas fa-circle me-2' style='color: #ff8002'></i> I'm feeling negative",
+                    "status": "disabled"
+                },
+                {
+                    "text": "<i class='fa fas fa-circle me-2' style='color: #fd2502'></i> I need some help",
+                    "status": "active"
+                }
+            ]        
+            },{
+            "id": 2,
+            "question": "Which of these best describes how you are feeling?",
+            "subtext": "Who sees my responses?",
+            "options": [
+                {
+                    "text": "Proud",
+                    "status": "active"
+                },
+                {
+                    "text": "Excited",
+                    "status": "active"
+                },
+                {
+                    "text": "Loved",
+                    "status": "active"
+                },
+                {
+                    "text": "Interested",
+                    "status": "active"
+                },
+                {
+                    "text": "Balanced",
+                    "status": "active"
+                },
+                {
+                    "text": "Neutral",
+                    "status": "active"
+                },
+                {
+                    "text": "Calm",
+                    "status": "active"
+                },
+                {
+                    "text": "Satisfied",
+                    "status": "active"
+                },
+                {
+                    "text": "Confident",
+                    "status": "active"
+                },
+                {
+                    "text": "Happy",
+                    "status": "active"
+                },
+                {
+                    "text": "Inspired",
+                    "status": "active"
+                },
+                {
+                    "text": "Indifferent",
+                    "status": "active"
+                },
+                {
+                    "text": "Content",
+                    "status": "active"
+                },
+                {
+                    "text": "Grateful",
+                    "status": "active"
+                },
+                {
+                    "text": "Serene",
+                    "status": "active"
+                },
+                {
+                    "text": "Fulfilled",
+                    "status": "active"
+                },
+                {
+                    "text": "Wondrous",
+                    "status": "active"
+                },
+                {
+                    "text": "Hopeful",
+                    "status": "active"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "question": "Do you feel confident that you can go to a teacher if you are worried or concerned about something?",
+            "subtext": "Who sees my responses?",
+            "options": [
+                {
+                    "text": "All the time",
+                    "status": "active"
+                },
+                {
+                    "text": "Most of the time",
+                    "status": "active"
+                },
+                {
+                    "text": "Sometimes",
+                    "status": "active"
+                },
+                {
+                    "text": "Unsure",
+                    "status": "active"
+                },
+                {
+                    "text": "Not at all",
+                    "status": "active"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "question": "Hey ${contact.firstname}, sorry to hear you're not feeling great, but that's why we're here.</p><p>Who would you like to ask for help?",
+            "subtext": "Who sees my responses?",
+            "options": [
+                {
+                    "text": "Terry Teacher",
+                    "status": "active"
+                },
+                {
+                    "text": "Carol Counsellor",
+                    "status": "active"
+                },
+                {
+                    "text": "Yvette French",
+                    "status": "active"
+                },
+                {
+                    "text": "Patricia Principal",
+                    "status": "active"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "question": "All set, you'll receive a notification when $answer4 sees your message. Need help right now?",
+            "subtext": "Who sees my responses?",
+            "options": [
+                {
+                    "text": "Childline",
+                    "status": "active"
+                },
+                {
+                    "text": "Samaritans",
+                    "status": "active"
+                },
+                {
+                    "text": "No thanks",
+                    "status": "active"
+                }
+            ]
+        }
+        ];
+    </script>
+
+    <script>
+
+
+    const container = document.getElementById("pulseSimContainer");
+    const questionContainer = document.getElementById("question");
+    const answersContainer = document.getElementById("answers");
+    var submittedAnswers = [];
+        
+        function showQuestion(id = 1) {
+
+        let questionData = pulseQuestions.find(item => item.id === id);
+
+        // clear question and answer container
+
+        questionContainer.innerHTML = "";
+        answersContainer.innerHTML = "";
+
+
+        // print new question
+
+        const newQuestion = new DocumentFragment();
+
+        let newQuestionText = document.createElement("p");
+        newQuestionText.classList.add("question");
+        newQuestionText.innerText = questionData["question"];
+
+        newQuestion.append(newQuestionText);
+        questionContainer.append(newQuestion);
+
+        // print answers
+
+        const newAnswers = new DocumentFragment();
+        var answersData = questionData["options"];
+        for (let i=0; i < answersData.length; i++) {
+            let newOption = document.createElement("a");
+            newOption.innerHTML = answersData[i].text;
+            if (answersData[i].status == "disabled") {
+                newOption.classList.add("btn-disabled");
+            }
+            newOption.classList.add("btn","btn-sm", "btn-light", "rounded-pill", "mb-2", "me-2", "pulse-answer");
+            newOption.id = "answer" + [i];
+            
+            newAnswers.append(newOption);
+        }
+        answersContainer.append(newAnswers);
+
+        }
+
+        function submitAnswer(id = 1) {
+
+            // collect answer buttons
+
+            // add click listener
+
+            // create new object of answer id and answer
+            
+            // add object to answers array
+
+
+        }
+
+
+
+    </script>

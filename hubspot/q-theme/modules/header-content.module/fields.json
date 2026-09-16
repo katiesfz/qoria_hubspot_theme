@@ -1,0 +1,1130 @@
+[
+  {
+    "id": "breakpoint",
+    "name": "breakpoint",
+    "display_width": null,
+    "label": "Breakpoint",
+    "required": false,
+    "locked": false,
+    "display": "select",
+    "choices": [["always", "Always"], ["sm", "Small"], ["md", "Medium"], ["lg", "Large"], ["xl", "Extra large"], ["never", "Never"]],
+    "multiple": false,
+    "reordering_enabled": true,
+    "preset": null,
+    "type": "choice",
+    "default": "lg"
+  },
+  {
+    "id": "enable_logo",
+    "name": "enable_logo",
+    "label": "Enable logo",
+    "type": "boolean",
+    "default": true,
+    "display": "toggle"
+  },
+  {
+    "id": "logo",
+    "name": "logo",
+    "label": "Logo settings",
+    "type": "group",
+    "tab": "CONTENT",
+    "expanded": true,
+    "visibility": {
+      "controlling_field": "enable_logo",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "children":[{
+      "id" : "logo.override_default_logo",
+      "name" : "override_default_logo",
+      "display_width" : null,
+      "label" : "Override Default Logo",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "name" : "logo",
+      "display_width" : null,
+      "label" : "Logo",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "logo.override_default_logo",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      }
+    }, {
+      "name" : "inverted_logo",
+      "display_width" : null,
+      "label" : "Inverted logo",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "logo.override_default_logo",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "",
+        "alt" : null,
+        "loading" : "lazy"
+      }
+    }, {
+      "name" : "link_url",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "logo.override_default_logo",
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT" ],
+      "type" : "url",
+      "default" : {
+        "content_id" : null,
+        "href" : "/",
+        "type" : "EXTERNAL"
+      }
+    }, {
+      "name" : "expert_settings",
+      "display_width" : null,
+      "label" : "Expert Settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "name" : "custom_classes",
+        "display_width" : null,
+        "label" : "Custom Classes",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : { }
+    }]
+  },
+  {
+    "id": "enable_dropdown_navigation",
+    "name": "enable_dropdown_navigation",
+    "label": "Enable dropdown navigation",
+    "type": "boolean",
+    "default": true,
+    "display": "toggle"
+  },
+  {
+    "id": "dropdown_navigation",
+    "name": "dropdown_navigation",
+    "label": "Dropdown navigation settings",
+    "type": "group",
+    "tab": "CONTENT",
+    "expanded": true,
+    "visibility": {
+      "controlling_field": "enable_dropdown_navigation",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "children": [
+      {
+        "id": "dropdown_navigation.menu",
+        "name": "menu",
+        "display_width": null,
+        "label": "Menu",
+        "required": false,
+        "locked": false,
+        "type": "menu"
+      },
+      {
+        "id": "dropdown_navigation.max_levels",
+        "name": "max_levels",
+        "display_width": null,
+        "label": "Max levels",
+        "inline_help_text": "Determines the number of menu tree children that can be expanded in the menu",
+        "required": false,
+        "locked": false,
+        "display": "text",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "type": "number"
+      },
+      {
+        "id": "dropdown_navigation.megamenu",
+        "name": "megamenu",
+        "display_width": null,
+        "label": "Megamenu",
+        "required": false,
+        "locked": false,
+        "display": "toggle",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "dropdown_navigation.megamenu_descriptions",
+        "name": "megamenu_descriptions",
+        "display_width": null,
+        "label": "Megamenu Descriptions",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+          "min": null,
+          "max": null,
+          "sorting_label_field": "match_label",
+          "default": null
+        },
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "dropdown_navigation.megamenu",
+          "controlling_value_regex": "true",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "children": [
+          {
+            "id": "dropdown_navigation.megamenu_descriptions.match_label",
+            "name": "match_label",
+            "display_width": null,
+            "label": "Match label",
+            "required": false,
+            "locked": false,
+            "validation_regex": "",
+            "allow_new_line": false,
+            "show_emoji_picker": false,
+            "type": "text",
+            "default": ""
+          },
+          {
+            "id": "dropdown_navigation.megamenu_descriptions.description",
+            "name": "description",
+            "display_width": null,
+            "label": "Description",
+            "required": false,
+            "locked": false,
+            "type": "richtext",
+            "default": "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "type": "group"
+      },
+      {
+        "id": "dropdown_navigation.megamenu_custom_headings",
+        "name": "megamenu_custom_headings",
+        "display_width": null,
+        "label": "Megamenu Custom Headings",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+          "min": null,
+          "max": null,
+          "sorting_label_field": "match_label",
+          "default": null
+        },
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "dropdown_navigation.megamenu",
+          "controlling_value_regex": "true",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "children": [
+          {
+            "id": "dropdown_navigation.megamenu_custom_headings.match_label",
+            "name": "match_label",
+            "display_width": null,
+            "label": "Match label",
+            "required": false,
+            "locked": false,
+            "validation_regex": "",
+            "allow_new_line": false,
+            "show_emoji_picker": false,
+            "type": "text",
+            "default": ""
+          },
+          {
+            "id": "dropdown_navigation.megamenu_custom_headings.heading",
+            "name": "heading",
+            "display_width": null,
+            "label": "Heading",
+            "required": false,
+            "locked": false,
+            "type": "richtext",
+            "default": "<h4>This is a title</h4>"
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "type": "group"
+      },
+      {
+        "id": "dropdown_navigation.megamenu_custom_menu",
+        "name": "megamenu_custom_menu",
+        "display_width": null,
+        "label": "Megamenu Custom Menu",
+        "required": false,
+        "locked": false,
+        "occurrence": {
+          "min": null,
+          "max": null,
+          "sorting_label_field": "match_label",
+          "default": null
+        },
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "dropdown_navigation.megamenu",
+          "controlling_value_regex": "true",
+          "property": null,
+          "operator": "EQUAL",
+          "access": null
+        },
+        "children": [
+          {
+            "id": "dropdown_navigation.megamenu_custom_menu.match_label",
+            "name": "match_label",
+            "display_width": null,
+            "label": "Match label",
+            "required": false,
+            "locked": false,
+            "validation_regex": "",
+            "allow_new_line": false,
+            "show_emoji_picker": false,
+            "type": "text",
+            "default": ""
+          },
+          {
+            "id": "dropdown_navigation.megamenu_custom_menu.megamenu_custom_menu_items",
+            "name": "megamenu_custom_menu_items",
+            "display_width": null,
+            "label": "Menu items",
+            "required": false,
+            "locked": false,
+            "occurrence": {
+              "min": null,
+              "max": null,
+              "sorting_label_field": "rich_text",
+              "default": null
+            },
+            "children": [
+              {
+                "id": "dropdown_navigation.megamenu_custom_menu.megamenu_custom_menu_items.rich_text",
+                "name": "rich_text",
+                "display_width": null,
+                "label": "Link Content",
+                "required": false,
+                "locked": false,
+                "type": "richtext",
+                "default": "<h4>This is a title</h4>"
+              },
+              {
+                "id": "dropdown_navigation.megamenu_custom_menu.megamenu_custom_menu_items.link_field",
+                "name": "link_field",
+                "display_width": null,
+                "label": "Link",
+                "required": false,
+                "locked": false,
+                "supported_types": [
+                  "EXTERNAL",
+                  "CONTENT",
+                  "FILE",
+                  "EMAIL_ADDRESS",
+                  "BLOG"
+                ],
+                "show_advanced_rel_options": true,
+                "type": "link",
+                "default": {
+                  "url": {
+                    "content_id": null,
+                    "type": "EXTERNAL",
+                    "href": ""
+                  },
+                  "open_in_new_tab": false,
+                  "no_follow": false
+                }
+              }
+            ],
+            "tab": "CONTENT",
+            "expanded": false,
+            "type": "group"
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "type": "group"
+      }
+    ]
+  },
+  {
+    "id": "enable_cta",
+    "name": "enable_cta",
+    "label": "Enable CTA",
+    "type": "boolean",
+    "default": true,
+    "display": "toggle"
+  },
+  {
+    "id": "cta",
+    "name": "cta",
+    "label": "CTA settings",
+    "type": "group",
+    "tab": "CONTENT",
+    "expanded": true,
+    "visibility": {
+      "controlling_field": "enable_cta",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "children": [
+      {
+        "id": "cta.alignment",
+        "name": "alignment",
+        "display_width": null,
+        "label": "Alignment",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [["start", "Left"], ["center", "Center"], ["end", "Right"]],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice"
+      },
+      {
+        "id": "cta.small_alignment",
+        "name": "small_alignment",
+        "display_width": null,
+        "label": "Alignment on small screens",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [["default", "Default"], ["start", "Left"], ["center", "Center"], ["end", "Right"]],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "default": "default",
+        "type": "choice"
+      },
+      {
+        "id": "cta.link",
+        "name": "link",
+        "display_width": null,
+        "label": " Link",
+        "required": false,
+        "locked": false,
+        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS"],
+        "show_advanced_rel_options": false,
+        "type": "link",
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "www.hubspot.com",
+            "content_id": null
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "id": "cta.download",
+        "name": "download",
+        "display_width": null,
+        "label": "Download",
+        "required": false,
+        "locked": false,
+        "display": "toggle",
+        "type": "boolean",
+        "visibility_rules": "ADVANCED",
+        "advanced_visibility": {
+          "boolean_operator": "OR",
+          "criteria": [
+            {
+              "controlling_field": null,
+              "controlling_field_path": "cta.link",
+              "controlling_value_regex": "EXTERNAL",
+              "property": "url.type",
+              "operator": "EQUAL",
+              "access": null
+            },
+            {
+              "controlling_field": null,
+              "controlling_field_path": "cta.link",
+              "controlling_value_regex": "FILE",
+              "property": "url.type",
+              "operator": "EQUAL",
+              "access": null
+            }
+          ],
+          "children": []
+        },
+        "default": false
+      },
+      {
+        "id": "cta.download_file",
+        "name": "download_file",
+        "display_width": null,
+        "label": "Download name",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "visibility_rules": "ADVANCED",
+        "advanced_visibility": {
+          "boolean_operator": "AND",
+          "criteria": [
+            {
+              "controlling_field": null,
+              "controlling_field_path": "cta.download",
+              "controlling_value_regex": "true",
+              "property": "",
+              "operator": "EQUAL",
+              "access": null
+            }
+          ],
+          "children": [
+            {
+              "boolean_operator": "OR",
+              "criteria": [
+                {
+                  "controlling_field": null,
+                  "controlling_field_path": "cta.link",
+                  "controlling_value_regex": "EXTERNAL",
+                  "property": "url.type",
+                  "operator": "EQUAL",
+                  "access": null
+                },
+                {
+                  "controlling_field": null,
+                  "controlling_field_path": "cta.link",
+                  "controlling_value_regex": "FILE",
+                  "property": "url.type",
+                  "operator": "EQUAL",
+                  "access": null
+                }
+              ]
+            }
+          ]
+        },
+        "default": ""
+      },
+      {
+        "id": "cta.download_on_page_load",
+        "name": "download_on_page_load",
+        "display_width": null,
+        "label": "Download automatically",
+        "required": false,
+        "locked": false,
+        "display": "toggle",
+        "type": "boolean",
+        "visibility_rules": "ADVANCED",
+        "advanced_visibility": {
+          "boolean_operator": "AND",
+          "criteria": [
+            {
+              "controlling_field": null,
+              "controlling_field_path": "cta.download",
+              "controlling_value_regex": "true",
+              "property": "",
+              "operator": "EQUAL",
+              "access": null
+            }
+          ],
+          "children": [
+            {
+              "boolean_operator": "OR",
+              "criteria": [
+                {
+                  "controlling_field": null,
+                  "controlling_field_path": "cta.link",
+                  "controlling_value_regex": "EXTERNAL",
+                  "property": "url.type",
+                  "operator": "EQUAL",
+                  "access": null
+                },
+                {
+                  "controlling_field": null,
+                  "controlling_field_path": "cta.link",
+                  "controlling_value_regex": "FILE",
+                  "property": "url.type",
+                  "operator": "EQUAL",
+                  "access": null
+                }
+              ]
+            }
+          ]
+        },
+        "default": false
+      },
+      {
+        "id": "cta.button_text",
+        "name": "button_text",
+        "display_width": null,
+        "label": "Button text",
+        "required": true,
+        "locked": false,
+        "validation_regex": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "default": "Add a button link here"
+      },
+      {
+        "id": "cta.button_colour",
+        "name": "button_colour",
+        "display_width": null,
+        "label": "Button Colour",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [["primary", "Primary"], ["secondary", "Secondary"], ["teal", "Teal"], ["indigo", "Indigo"], ["orange", "Orange"], ["red", "Red"], ["dark", "Dark"], ["light", "Light"]],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "primary"
+      },
+      {
+        "id": "cta.button_style",
+        "name": "button_style",
+        "display_width": null,
+        "label": "Button Style",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [["-", "Normal"], ["-outline-", "Outline"]],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "-"
+      },
+      {
+        "id": "cta.text_colour",
+        "name": "text_colour",
+        "display_width": null,
+        "label": "Text colour",
+        "required": false,
+        "locked": false,
+        "visibility": {
+          "controlling_field": null,
+          "controlling_field_path": "cta.button_style",
+          "controlling_value_regex": "-",
+          "property": null,
+          "operator": "NOT_EQUAL",
+          "access": null
+        },
+        "display": "select",
+        "choices": [["text-white", "Light"], ["text-dark", "Dark"]],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": "text-dark"
+      },
+      {
+        "id": "cta.button_size",
+        "name": "button_size",
+        "display_width": null,
+        "label": "Button Size",
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "choices": [["btn-sm", "Small"], [" ", "Standard"], ["btn-lg", "Large"]],
+        "multiple": false,
+        "reordering_enabled": true,
+        "preset": null,
+        "type": "choice",
+        "default": " "
+      },
+      {
+        "id": "cta.word_wrap",
+        "name": "word_wrap",
+        "display_width": null,
+        "label": "Enable word wrap",
+        "required": false,
+        "locked": false,
+        "display": "toggle",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "cta.advanced",
+        "name": "advanced",
+        "display_width": null,
+        "label": "Advanced",
+        "required": false,
+        "locked": false,
+        "children": [
+          {
+            "id": "cta.advanced.additional_classes",
+            "name": "additional_classes",
+            "display_width": null,
+            "label": "Additional Classes",
+            "required": false,
+            "locked": false,
+            "validation_regex": "",
+            "allow_new_line": false,
+            "show_emoji_picker": false,
+            "type": "text"
+          },
+          {
+            "id": "cta.advanced.trigger_modal",
+            "name": "trigger_modal",
+            "display_width": null,
+            "label": "Trigger modal",
+            "required": false,
+            "locked": false,
+            "display": "toggle",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "id": "cta.advanced.modal_id",
+            "name": "modal_id",
+            "display_width": null,
+            "label": "Modal ID",
+            "required": false,
+            "locked": false,
+            "validation_regex": "",
+            "allow_new_line": false,
+            "show_emoji_picker": false,
+            "type": "text"
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "type": "group",
+        "default": {
+          "trigger_modal": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "enable_language_switcher",
+    "name": "enable_language_switcher",
+    "label": "Enable language switcher",
+    "type": "boolean",
+    "default": true,
+    "display": "toggle"
+  },
+  {
+    "id": "language_switcher",
+    "name": "language_switcher",
+    "label": "Language switcher settings",
+    "type": "group",
+    "tab": "CONTENT",
+    "expanded": true,
+    "visibility": {
+      "controlling_field": "enable_language_switcher",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "children": [
+      {
+        "name": "language_selection",
+        "label": "Language selection",
+        "help_text": "How the module decides on what languages to show. Automatic shows the language options for the page within HubSpot settings. Manual allows you to select languages and decide on URLs manually. Combination includes both.",
+        "sortable": false,
+        "required": true,
+        "locked": false,
+        "display": "select",
+        "placeholder": "Search",
+        "choices": [
+          ["auto", "Automatic"],
+          ["manual", "Manual"],
+          ["combination", "Combination"]
+        ],
+        "type": "choice",
+        "default": "auto"
+      }, {
+        "name" : "manual_item",
+        "display_width" : null,
+        "label" : "Manual language",
+        "required" : false,
+        "locked" : false,
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : "language",
+          "default" : null
+        },
+        "children" : [ {
+          "name": "region",
+          "label": "Region",
+          "sortable": false,
+          "required": false,
+          "locked": false,
+          "display": "select",
+          "placeholder": "Search",
+          "choices": [
+            ["global","Global"],["af","Afghanistan"],["al","Albania"],["dz","Algeria"],["ad","Andorra"],["ao","Angola"],["ai","Anguilla"],["ag","Antigua and Barbuda"],["ar","Argentina"],["am","Armenia"],["aw","Aruba"],["au","Australia"],["at","Austria"],["az","Azerbaijan"],["bs","Bahamas"],["bh","Bahrain"],["bd","Bangladesh"],["bb","Barbados"],["by","Belarus"],["be","Belgium"],["bz","Belize"],["bj","Benin"],["bm","Bermuda"],["bt","Bhutan"],["bo","Bolivia"],["ba","Bosnia and Herzegovina"],["bw","Botswana"],["br","Brazil"],["bn","Brunei Darussalam"],["bg","Bulgaria"],["bf","Burkina Faso"],["bi","Burundi"],["kh","Cambodia"],["cm","Cameroon"],["ca","Canada"],["cv","Cape Verde"],["ky","Cayman Islands"],["cf","Central African Republic"],["td","Chad"],["cl","Chile"],["cn","China"],["cx","Christmas Island"],["cc","Cocos (Keeling) Islands"],["co","Colombia"],["km","Comoros"],["cg","Congo"],["ck","Cook Islands"],["cr","Costa Rica"],["ci","Cote D'Ivoire (Ivory Coast)"],["hr","Croatia (Hrvatska)"],["cu","Cuba"],["cy","Cyprus"],["cz","Czech Republic"],["cd","Democratic Republic of the Congo"],["dk","Denmark"],["dj","Djibouti"],["dm","Dominica"],["do","Dominican Republic"],["ec","Ecuador"],["eg","Egypt"],["sv","El Salvador"],["gq","Equatorial Guinea"],["er","Eritrea"],["ee","Estonia"],["et","Ethiopia"],["europe","Europe"],["fk","Falkland Islands (Malvinas)"],["fo","Faroe Islands"],["fm","Federated States of Micronesia"],["fj","Fiji"],["fi","Finland"],["fr","France"],["gf","French Guiana"],["pf","French Polynesia"],["tf","French Southern Territories"],["ga","Gabon"],["gm","Gambia"],["ge","Georgia"],["de","Germany"],["gh","Ghana"],["gi","Gibraltar"],["gb","Great Britain (UK)"],["gr","Greece"],["gl","Greenland"],["gd","Grenada"],["gp","Guadeloupe"],["gt","Guatemala"],["gn","Guinea"],["gw","Guinea-Bissau"],["gy","Guyana"],["ht","Haiti"],["hn","Honduras"],["hk","Hong Kong"],["hu","Hungary"],["is","Iceland"],["in","India"],["id","Indonesia"],["ir","Iran"],["iq","Iraq"],["ie","Ireland"],["il","Israel"],["it","Italy"],["jm","Jamaica"],["jp","Japan"],["jo","Jordan"],["kz","Kazakhstan"],["ke","Kenya"],["ki","Kiribati"],["kp","Korea (North)"],["kr","Korea (South)"],["kw","Kuwait"],["kg","Kyrgyzstan"],["la","Laos"],["lv","Latvia"],["lb","Lebanon"],["ls","Lesotho"],["lr","Liberia"],["ly","Libya"],["li","Liechtenstein"],["lt","Lithuania"],["lu","Luxembourg"],["mo","Macao"],["mk","Macedonia"],["mg","Madagascar"],["mw","Malawi"],["my","Malaysia"],["mv","Maldives"],["ml","Mali"],["mt","Malta"],["mh","Marshall Islands"],["mq","Martinique"],["mr","Mauritania"],["mu","Mauritius"],["yt","Mayotte"],["mx","Mexico"],["md","Moldova"],["mc","Monaco"],["mn","Mongolia"],["ms","Montserrat"],["ma","Morocco"],["mz","Mozambique"],["mm","Myanmar"],["na","Namibia"],["nr","Nauru"],["np","Nepal"],["nl","Netherlands"],["an","Netherlands Antilles"],["nc","New Caledonia"],["nz","New Zealand (Aotearoa)"],["ni","Nicaragua"],["ne","Niger"],["ng","Nigeria"],["nu","Niue"],["nf","Norfolk Island"],["nam", "North America"],["mp","Northern Mariana Islands"],["no","Norway"],["gg","NULL"],["om","Oman"],["pk","Pakistan"],["pw","Palau"],["ps","Palestinian Territory"],["pa","Panama"],["pg","Papua New Guinea"],["py","Paraguay"],["pe","Peru"],["ph","Philippines"],["pn","Pitcairn"],["pl","Poland"],["pt","Portugal"],["qa","Qatar"],["re","Reunion"],["ro","Romania"],["ru","Russian Federation"],["rw","Rwanda"],["gs","S. Georgia and S. Sandwich Islands"],["sh","Saint Helena"],["kn","Saint Kitts and Nevis"],["lc","Saint Lucia"],["pm","Saint Pierre and Miquelon"],["vc","Saint Vincent and the Grenadines"],["ws","Samoa"],["sm","San Marino"],["st","Sao Tome and Principe"],["sa","Saudi Arabia"],["sn","Senegal"],["sc","Seychelles"],["sl","Sierra Leone"],["sg","Singapore"],["sk","Slovakia"],["si","Slovenia"],["sb","Solomon Islands"],["so","Somalia"],["za","South Africa"],["es","Spain"],["lk","Sri Lanka"],["sd","Sudan"],["sr","Suriname"],["sj","Svalbard and Jan Mayen"],["sz","Swaziland"],["se","Sweden"],["ch","Switzerland"],["sy","Syria"],["tw","Taiwan"],["tj","Tajikistan"],["tz","Tanzania"],["th","Thailand"],["tg","Togo"],["tk","Tokelau"],["to","Tonga"],["tt","Trinidad and Tobago"],["tn","Tunisia"],["tr","Turkey"],["tm","Turkmenistan"],["tc","Turks and Caicos Islands"],["tv","Tuvalu"],["ug","Uganda"],["ua","Ukraine"],["ae","United Arab Emirates"],["us","United States of America"],["uy","Uruguay"],["uz","Uzbekistan"],["vu","Vanuatu"],["ve","Venezuela"],["vn","Viet Nam"],["vg","Virgin Islands (British)"],["vi","Virgin Islands (U.S.)"],["wf","Wallis and Futuna"],["eh","Western Sahara"],["ye","Yemen"],["zr","Zaire (former)"],["zm","Zambia"],["zw","Zimbabwe"]],
+          "type": "choice"
+        }, {
+          "name": "language",
+          "label": "Language",
+          "sortable": false,
+          "required": true,
+          "locked": false,
+          "display": "select",
+          "default": "en",
+          "placeholder": "Search",
+          "choices": [
+            ["ab","Abkhazian"],["aa","Afar"],["af","Afrikaans"],["sq","Albanian"],["am","Amharic"],["ar","Arabic"],["an","Aragonese"],["hy","Armenian"],["as","Assamese"],["ae","Avestan"],["ay","Aymara"],["az","Azerbaijani"],["ba","Bashkir"],["eu","Basque"],["be","Belarusian"],["bn","Bengali"],["bh","Bihari"],["bi","Bislama"],["bs","Bosnian"],["br","Breton"],["bg","Bulgarian"],["my","Burmese"],["ca","Catalan"],["ch","Chamorro"],["ce","Chechen"],["zh","Chinese"],["cu","Church Slavic; Slavonic; Old Bulgarian"],["cv","Chuvash"],["kw","Cornish"],["co","Corsican"],["hr","Croatian"],["cs","Czech"],["da","Danish"],["dv","Divehi; Dhivehi; Maldivian"],["nl","Dutch"],["dz","Dzongkha"],["en","English"],["eo","Esperanto"],["et","Estonian"],["fo","Faroese"],["fj","Fijian"],["fi","Finnish"],["fr","French"],["gd","Gaelic; Scottish Gaelic"],["gl","Galician"],["ka","Georgian"],["de","German"],["el","Greek, Modern (1453-)"],["gn","Guarani"],["gu","Gujarati"],["ht","Haitian; Haitian Creole"],["ha","Hausa"],["he","Hebrew"],["hz","Herero"],["hi","Hindi"],["ho","Hiri Motu"],["hu","Hungarian"],["is","Icelandic"],["io","Ido"],["id","Indonesian"],["ia","Interlingua (International Auxiliary Language Association)"],["ie","Interlingue"],["iu","Inuktitut"],["ik","Inupiaq"],["ga","Irish"],["it","Italian"],["ja","Japanese"],["jv","Javanese"],["kl","Kalaallisut"],["kn","Kannada"],["ks","Kashmiri"],["kk","Kazakh"],["km","Khmer"],["ki","Kikuyu; Gikuyu"],["rw","Kinyarwanda"],["ky","Kirghiz"],["kv","Komi"],["ko","Korean"],["kj","Kuanyama; Kwanyama"],["ku","Kurdish"],["lo","Lao"],["la","Latin"],["lv","Latvian"],["li","Limburgan; Limburger; Limburgish"],["ln","Lingala"],["lt","Lithuanian"],["lb","Luxembourgish; Letzeburgesch"],["mk","Macedonian"],["mg","Malagasy"],["ms","Malay"],["ml","Malayalam"],["mt","Maltese"],["gv","Manx"],["mi","Maori"],["mr","Marathi"],["mh","Marshallese"],["mo","Moldavian"],["mn","Mongolian"],["na","Nauru"],["nv","Navaho, Navajo"],["nd","Ndebele, North"],["nr","Ndebele, South"],["ng","Ndonga"],["ne","Nepali"],["se","Northern Sami"],["no","Norwegian"],["nb","Norwegian Bokmal"],["nn","Norwegian Nynorsk"],["ny","Nyanja; Chichewa; Chewa"],["oc","Occitan (post 1500); Provencal"],["or","Oriya"],["om","Oromo"],["os","Ossetian; Ossetic"],["pi","Pali"],["pa","Panjabi"],["fa","Persian"],["pl","Polish"],["pt","Portuguese"],["ps","Pushto"],["qu","Quechua"],["rm","Raeto-Romance"],["ro","Romanian"],["rn","Rundi"],["ru","Russian"],["sm","Samoan"],["sg","Sango"],["sa","Sanskrit"],["sc","Sardinian"],["sr","Serbian"],["sn","Shona"],["ii","Sichuan Yi"],["sd","Sindhi"],["si","Sinhala; Sinhalese"],["sk","Slovak"],["sl","Slovenian"],["so","Somali"],["st","Sotho, Southern"],["es","Spanish; Castilian"],["su","Sundanese"],["sw","Swahili"],["ss","Swati"],["sv","Swedish"],["tl","Tagalog"],["ty","Tahitian"],["tg","Tajik"],["ta","Tamil"],["tt","Tatar"],["te","Telugu"],["th","Thai"],["bo","Tibetan"],["ti","Tigrinya"],["to","Tonga (Tonga Islands)"],["ts","Tsonga"],["tn","Tswana"],["tr","Turkish"],["tk","Turkmen"],["tw","Twi"],["ug","Uighur"],["uk","Ukrainian"],["ur","Urdu"],["uz","Uzbek"],["vi","Vietnamese"],["vo","Volapuk"],["wa","Walloon"],["cy","Welsh"],["fy","Western Frisian"],["wo","Wolof"],["xh","Xhosa"],["yi","Yiddish"],["yo","Yoruba"],["za","Zhuang; Chuang"],["zu","Zulu"]      ],
+          "type": "choice"
+        }, {
+          "name" : "url",
+          "display_width" : null,
+          "label" : "URL",
+          "required" : true,
+          "default": "qoria.com",
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "visibility_rules" : "ADVANCED",
+        "advanced_visibility" : {
+          "boolean_operator" : "OR",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "language_switcher.language_selection",
+            "controlling_value_regex" : "manual",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          },{
+            "controlling_field" : null,
+            "controlling_field_path" : "language_switcher.language_selection",
+            "controlling_value_regex" : "combination",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : []
+        },
+        "type" : "group"
+      }, {
+        "name": "cur_region",
+        "label": "Current region",
+        "sortable": false,
+        "required": false,
+        "locked": false,
+        "display": "select",
+        "placeholder": "Search",
+        "choices": [
+          ["global","Global"],["af","Afghanistan"],["al","Albania"],["dz","Algeria"],["ad","Andorra"],["ao","Angola"],["ai","Anguilla"],["ag","Antigua and Barbuda"],["ar","Argentina"],["am","Armenia"],["aw","Aruba"],["au","Australia"],["at","Austria"],["az","Azerbaijan"],["bs","Bahamas"],["bh","Bahrain"],["bd","Bangladesh"],["bb","Barbados"],["by","Belarus"],["be","Belgium"],["bz","Belize"],["bj","Benin"],["bm","Bermuda"],["bt","Bhutan"],["bo","Bolivia"],["ba","Bosnia and Herzegovina"],["bw","Botswana"],["br","Brazil"],["bn","Brunei Darussalam"],["bg","Bulgaria"],["bf","Burkina Faso"],["bi","Burundi"],["kh","Cambodia"],["cm","Cameroon"],["ca","Canada"],["cv","Cape Verde"],["ky","Cayman Islands"],["cf","Central African Republic"],["td","Chad"],["cl","Chile"],["cn","China"],["cx","Christmas Island"],["cc","Cocos (Keeling) Islands"],["co","Colombia"],["km","Comoros"],["cg","Congo"],["ck","Cook Islands"],["cr","Costa Rica"],["ci","Cote D'Ivoire (Ivory Coast)"],["hr","Croatia (Hrvatska)"],["cu","Cuba"],["cy","Cyprus"],["cz","Czech Republic"],["cd","Democratic Republic of the Congo"],["dk","Denmark"],["dj","Djibouti"],["dm","Dominica"],["do","Dominican Republic"],["ec","Ecuador"],["eg","Egypt"],["sv","El Salvador"],["gq","Equatorial Guinea"],["er","Eritrea"],["ee","Estonia"],["et","Ethiopia"],["europe","Europe"],["fk","Falkland Islands (Malvinas)"],["fo","Faroe Islands"],["fm","Federated States of Micronesia"],["fj","Fiji"],["fi","Finland"],["fr","France"],["gf","French Guiana"],["pf","French Polynesia"],["tf","French Southern Territories"],["ga","Gabon"],["gm","Gambia"],["ge","Georgia"],["de","Germany"],["gh","Ghana"],["gi","Gibraltar"],["gb","Great Britain (UK)"],["gr","Greece"],["gl","Greenland"],["gd","Grenada"],["gp","Guadeloupe"],["gt","Guatemala"],["gn","Guinea"],["gw","Guinea-Bissau"],["gy","Guyana"],["ht","Haiti"],["hn","Honduras"],["hk","Hong Kong"],["hu","Hungary"],["is","Iceland"],["in","India"],["id","Indonesia"],["ir","Iran"],["iq","Iraq"],["ie","Ireland"],["il","Israel"],["it","Italy"],["jm","Jamaica"],["jp","Japan"],["jo","Jordan"],["kz","Kazakhstan"],["ke","Kenya"],["ki","Kiribati"],["kp","Korea (North)"],["kr","Korea (South)"],["kw","Kuwait"],["kg","Kyrgyzstan"],["la","Laos"],["lv","Latvia"],["lb","Lebanon"],["ls","Lesotho"],["lr","Liberia"],["ly","Libya"],["li","Liechtenstein"],["lt","Lithuania"],["lu","Luxembourg"],["mo","Macao"],["mk","Macedonia"],["mg","Madagascar"],["mw","Malawi"],["my","Malaysia"],["mv","Maldives"],["ml","Mali"],["mt","Malta"],["mh","Marshall Islands"],["mq","Martinique"],["mr","Mauritania"],["mu","Mauritius"],["yt","Mayotte"],["mx","Mexico"],["md","Moldova"],["mc","Monaco"],["mn","Mongolia"],["ms","Montserrat"],["ma","Morocco"],["mz","Mozambique"],["mm","Myanmar"],["na","Namibia"],["nr","Nauru"],["np","Nepal"],["nl","Netherlands"],["an","Netherlands Antilles"],["nc","New Caledonia"],["nz","New Zealand (Aotearoa)"],["ni","Nicaragua"],["ne","Niger"],["ng","Nigeria"],["nu","Niue"],["nf","Norfolk Island"],["nam", "North America"],["mp","Northern Mariana Islands"],["no","Norway"],["gg","NULL"],["om","Oman"],["pk","Pakistan"],["pw","Palau"],["ps","Palestinian Territory"],["pa","Panama"],["pg","Papua New Guinea"],["py","Paraguay"],["pe","Peru"],["ph","Philippines"],["pn","Pitcairn"],["pl","Poland"],["pt","Portugal"],["qa","Qatar"],["re","Reunion"],["ro","Romania"],["ru","Russian Federation"],["rw","Rwanda"],["gs","S. Georgia and S. Sandwich Islands"],["sh","Saint Helena"],["kn","Saint Kitts and Nevis"],["lc","Saint Lucia"],["pm","Saint Pierre and Miquelon"],["vc","Saint Vincent and the Grenadines"],["ws","Samoa"],["sm","San Marino"],["st","Sao Tome and Principe"],["sa","Saudi Arabia"],["sn","Senegal"],["sc","Seychelles"],["sl","Sierra Leone"],["sg","Singapore"],["sk","Slovakia"],["si","Slovenia"],["sb","Solomon Islands"],["so","Somalia"],["za","South Africa"],["es","Spain"],["lk","Sri Lanka"],["sd","Sudan"],["sr","Suriname"],["sj","Svalbard and Jan Mayen"],["sz","Swaziland"],["se","Sweden"],["ch","Switzerland"],["sy","Syria"],["tw","Taiwan"],["tj","Tajikistan"],["tz","Tanzania"],["th","Thailand"],["tg","Togo"],["tk","Tokelau"],["to","Tonga"],["tt","Trinidad and Tobago"],["tn","Tunisia"],["tr","Turkey"],["tm","Turkmenistan"],["tc","Turks and Caicos Islands"],["tv","Tuvalu"],["ug","Uganda"],["ua","Ukraine"],["ae","United Arab Emirates"],["us","United States of America"],["uy","Uruguay"],["uz","Uzbekistan"],["vu","Vanuatu"],["ve","Venezuela"],["vn","Viet Nam"],["vg","Virgin Islands (British)"],["vi","Virgin Islands (U.S.)"],["wf","Wallis and Futuna"],["eh","Western Sahara"],["ye","Yemen"],["zr","Zaire (former)"],["zm","Zambia"],["zw","Zimbabwe"]],
+        "type": "choice"
+      }, {
+        "name": "display_mode",
+        "label": "Display mode",
+        "help_text": "The language of the text in the language switcher. PageLang means the names of languages will display in the language of the page the switcher is on. Localized means the name of each language will display in that language. Hybrid is a combination of the two.",
+        "sortable": false,
+        "required": true,
+        "locked": false,
+        "display": "select",
+        "placeholder": "Search",
+        "choices": [
+          ["localized", "Localized"],
+          ["pagelang", "PageLang"],
+          ["hybrid", "Hybrid"]
+        ],
+        "type": "choice",
+        "default": "localized"
+      },{
+        "name" : "include_button_label",
+        "label" : "Include button label",
+        "required" : false,
+        "locked" : false,
+        "type" : "boolean",
+        "display":"checkbox",
+        "default" : true
+      }
+   ]
+  },
+  {
+    "id": "enable_search_input",
+    "name": "enable_search_input",
+    "label": "Enable search input",
+    "type": "boolean",
+    "default": true,
+    "display": "toggle"
+  },
+  {
+    "id": "search_input",
+    "name": "search_input",
+    "label": "Search input settings",
+    "type": "group",
+    "tab": "CONTENT",
+    "expanded": true,
+    "visibility": {
+      "controlling_field": "enable_search_input",
+      "controlling_field_path": null,
+      "controlling_value_regex": "true",
+      "property": null,
+      "operator": "EQUAL",
+      "access": null
+    },
+    "children": [
+      {
+        "id" : "search_input.field_label",
+        "name" : "field_label",
+        "display_width" : null,
+        "label" : "Label text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      }, {
+        "id" : "search_input.placeholder",
+        "name" : "placeholder",
+        "display_width" : null,
+        "label" : "Placeholder text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Search"
+      }, {
+        "id" : "search_input.include_search_button",
+        "name" : "include_search_button",
+        "display_width" : null,
+        "label" : "Include search button",
+        "required" : false,
+        "locked" : false,
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "search_input.results",
+        "name" : "results",
+        "display_width" : null,
+        "label" : "Results",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "search_input.results.use_custom_search_results_template",
+          "name" : "use_custom_search_results_template",
+          "display_width" : null,
+          "label" : "Use custom search results page",
+          "inline_help_text" : "Turn this setting on to use a custom search results page instead of the default global search results page.",
+          "required" : false,
+          "locked" : false,
+          "display" : "toggle",
+          "type" : "boolean",
+          "default" : false
+        }, {
+          "id" : "search_input.results.path_id",
+          "name" : "path_id",
+          "display_width" : null,
+          "label" : "Search results page",
+          "inline_help_text" : "This is where people will go when they click to search their search term. Make sure to choose a page that contains the search results module.",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : "search_input.results.use_custom_search_results_template",
+            "controlling_field_path" : null,
+            "controlling_value_regex" : "true",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null
+          },
+          "type" : "page"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group"
+      }, {
+        "id" : "search_input.content_types",
+        "name" : "content_types",
+        "display_width" : null,
+        "label" : "Search results include",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "search_input.content_types.website_pages",
+          "name" : "website_pages",
+          "display_width" : null,
+          "label" : "Website pages",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : null,
+            "controlling_field_path" : null,
+            "controlling_value_regex" : null,
+            "property" : null,
+            "operator" : "NOT_EMPTY",
+            "access" : {
+              "operator" : "HAS_ALL",
+              "scopes" : [ "sitepages-access" ]
+            }
+          },
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : true
+        }, {
+          "id" : "search_input.content_types.landing_pages",
+          "name" : "landing_pages",
+          "display_width" : null,
+          "label" : "Landing pages",
+          "required" : false,
+          "locked" : false,
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : false
+        }, {
+          "id" : "search_input.content_types.blog_posts",
+          "name" : "blog_posts",
+          "display_width" : null,
+          "label" : "Blog posts",
+          "required" : false,
+          "locked" : false,
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : true
+        }, {
+          "id" : "search_input.content_types.knowledge_articles",
+          "name" : "knowledge_articles",
+          "display_width" : null,
+          "label" : "Knowledge articles",
+          "required" : false,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field" : null,
+            "controlling_field_path" : null,
+            "controlling_value_regex" : null,
+            "property" : null,
+            "operator" : null,
+            "access" : {
+              "operator" : "HAS_ALL",
+              "scopes" : [ "service-knowledge-access" ]
+            }
+          },
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : false
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : {
+          "website_pages" : true,
+          "landing_pages" : false,
+          "blog_posts" : true,
+          "knowledge_articles" : false
+        }
+      }, {
+        "id" : "search_input.domains",
+        "name" : "domains",
+        "display_width" : null,
+        "label" : "Domains",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "www.linewize.io",
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : null,
+          "default" : null
+        }
+      }, {
+        "id" : "search_input.languages",
+        "name" : "languages",
+        "display_width" : null,
+        "label" : "Languages",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "",
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : null,
+          "default" : null
+        }
+      }, {
+        "id" : "search_input.blogs",
+        "name" : "blogs",
+        "display_width" : null,
+        "label" : "Blogs",
+        "required" : false,
+        "locked" : false,
+        "type" : "blog",
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : null,
+          "default" : null
+        },
+        "visibility" : {
+          "controlling_field" : "search_input.content_types.blog_posts",
+          "controlling_field_path" : "search_input.content_types.blog_posts",
+          "controlling_value_regex" : true,
+          "property" : null,
+          "operator" : "EQUAL"
+        }
+      }
+    ]
+  }
+]

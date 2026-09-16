@@ -1,0 +1,9 @@
+{% require_css %}
+<style>
+    #hs-eu-cookie-confirmation {display: none !important;}
+    {% if is_in_editor %}
+        #cookieConsentBanner {display: none;}
+    {% endif %}
+</style>
+{% end_require_css%}
+
