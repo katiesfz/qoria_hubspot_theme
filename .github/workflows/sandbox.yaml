@@ -5,9 +5,13 @@ on:
     branches:
       - sandbox
 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    environment: sandbox
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -15,7 +19,7 @@ jobs:
       - name: HubSpot Deploy Action Sandbox
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
-          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_SANDBOX }}
+          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
           personal_access_key: ${{ secrets.HS_PAK_KS }}
           src_dir: hubspot
           dest_dir: /
