@@ -1,5 +1,3 @@
-
-
 <section class="{{ module.style.shadow_style if module.style.shadow }}" style="transform-style: preserve-3d; -webkit-transform-style: preserve-3d; position-relative; {{"position: relative; z-index: 2; margin-top: -24px;" if module.style.overlay }}">
     <div style="{{module.style.spacing_field.css}}" class="container-fluid g-0 position-relative {{ module.style.background_colour if module.style.background_colour != "none" }}{{ (" bg-" ~ module.style.background_image) if module.style.background_image != "none" && module.style.background_image != "custom" }}" 
     style="{{ "background-image: url('" ~ module.style.background_image_file.src ~ "'); background-size: " ~ module.style.background_size ~ "; background-position: center center;" if module.style.background_image == "custom" }}">
