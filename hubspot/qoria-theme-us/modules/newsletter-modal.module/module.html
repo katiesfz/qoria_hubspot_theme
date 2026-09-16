@@ -1,6 +1,7 @@
 {% if is_in_page_editor %}
   {% editor_placeholder %}
 {% endif %}
+{{ require_js("//js.hsforms.net/forms/embed/v2.js", "head") }}
 <div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-gradient-primary text-white">
@@ -19,7 +20,6 @@
           </p>
           {% endif %}
           
-            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
             <script>
                 hbspt.forms.create({
                 portalId: "{{hub_id}}",
@@ -35,9 +35,5 @@
 </div>
 
 <script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-});
 
 </script>

@@ -1,6 +1,6 @@
 <!--
   templateType: section
-  label: Let's Connect US
+  label: Let's Connect
   isAvailableForNewContent: true
   screenshotPath: ../images/section-previews/lets-connect.png
   description: "Contact CTA US"
@@ -20,6 +20,7 @@ padding={
     "top" : "32px"
   }
 },
+full_width=false,
 max_width=1280
 %}
 {% dnd_column
@@ -28,10 +29,19 @@ max_width=1280
 %}
   {% dnd_row %}
     {% dnd_module
-      path="/qoria-theme/modules/heading",
+        path="/qoria-theme-us/modules/anchor",
+        offset=0,
+        width=12,
+        anchor="letsconnect"
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_module
+      path="/qoria-theme-us/modules/heading",
       offset=0,
       width=12,
-      heading_tag="h2",
+      heading_tag="h1",
       heading_underline="true",
       style={
         "heading_underline" : true,
@@ -52,7 +62,7 @@ max_width=1280
 
   {% dnd_row %}
     {% dnd_module
-      path="/qoria-theme-us/modules/contact-us-pullout-us",
+      path="/qoria-theme-us/modules/contact-us-pullout",
       offset=0,
       width=12
     %}
@@ -60,7 +70,7 @@ max_width=1280
   {% end_dnd_row %}
   {% dnd_row %}
     {% dnd_module
-      path="/qoria-theme-us/modules/newsletter-modal-us",
+      path="/qoria-theme-us/modules/newsletter-modal",
       offset=0,
       width=12
     %}
