@@ -1,5 +1,3 @@
-@use "sass:color";
-
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
@@ -338,7 +336,7 @@ $success-bg-subtle:       $green-100 !default;
 $info-bg-subtle:          $cyan-100 !default;
 $warning-bg-subtle:       $yellow-100 !default;
 $danger-bg-subtle:        $red-100 !default;
-$light-bg-subtle:         color.mix($gray-100, $white) !default;
+$light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 
 $primary-border-subtle:   $blue-200 !default;
@@ -349,14 +347,6 @@ $warning-border-subtle:   $yellow-200 !default;
 $danger-border-subtle:    $red-200 !default;
 $light-border-subtle:     $gray-200 !default;
 $dark-border-subtle:      $gray-500 !default;
-
-$primary-text-emphasis:   shade-color($primary, 60%);
-$secondary-text-emphasis: shade-color($secondary, 60%);
-$blue-text-emphasis:   shade-color($blue, 60%);
-$red-text-emphasis:      shade-color($red, 60%);
-$orange-text-emphasis:   shade-color($orange, 60%);
-$light-text-emphasis:     $gray-700;
-$dark-text-emphasis:      $gray-700;
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
@@ -650,7 +640,7 @@ $display-font-sizes: (
   2: 4.5rem,
   3: 4rem,
   4: 3.5rem,
-  5: 3rem, 
+  5: 3rem,
   6: 2.5rem
 ) !default;
 
@@ -827,7 +817,7 @@ $btn-border-radius:           $border-radius !default;
 $btn-border-radius-sm:        $border-radius-sm !default;
 $btn-border-radius-lg:        $border-radius-lg !default;
 
-$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, transform .15s ease-in-out,  !default;
+$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 $btn-hover-bg-shade-amount:       15% !default;
 $btn-hover-bg-tint-amount:        15% !default;
@@ -1024,7 +1014,6 @@ $form-range-track-cursor:         pointer !default;
 $form-range-track-bg:             var(--#{$prefix}tertiary-bg) !default;
 $form-range-track-border-radius:  1rem !default;
 $form-range-track-box-shadow:     $box-shadow-inset !default;
-$form-range-track-lower-bg:       var(--#{$prefix}secondary-bg) !default;
 
 $form-range-thumb-width:                   1rem !default;
 $form-range-thumb-height:                  $form-range-thumb-width !default;

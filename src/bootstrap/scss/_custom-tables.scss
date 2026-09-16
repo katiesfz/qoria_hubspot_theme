@@ -84,6 +84,49 @@
   } 
 } */
 
+.table-header-sticky {
+  thead {
+    position: sticky;
+    top: var(--#{$prefix}header-height);
+    z-index: 1;
+    background: #fff;
+  }
+}
+
+.table-sticky-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.table-sticky {
+  border-collapse: separate;
+  border-spacing: 0;
+  //width: max-content;
+  min-width: 100%;
+  thead th {
+    //position: sticky;
+    //top: var(--#{$prefix}header-height);
+    z-index: 2;
+    background-color: #fff;
+
+    position: relative;
+    will-change: transform;
+
+    &:first-child {
+      position: sticky;
+      
+      left: 0;
+      z-index: 3;
+    }
+  }
+  tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color:#fff;
+  }
+}
+
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);

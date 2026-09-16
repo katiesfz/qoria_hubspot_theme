@@ -2,7 +2,7 @@
 // General form controls (plus a few specific high-level interventions)
 //
 
-.form-control {
+%form-control {
   display: block;
   width: 100%;
   padding: $input-padding-y $input-padding-x;
@@ -105,7 +105,7 @@
 // Apply class to a readonly input to make it appear like regular plain
 // text (without any border, background color, focus indicator)
 
-.form-control-plaintext {
+%form-control-plaintext {
   display: block;
   width: 100%;
   padding: $input-padding-y 0;
@@ -134,7 +134,7 @@
 //
 // Repeated in `_input_group.scss` to avoid Sass extend issues.
 
-.form-control-sm {
+%form-control-sm {
   min-height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
   @include font-size($input-font-size-sm);
@@ -147,7 +147,7 @@
   }
 }
 
-.form-control-lg {
+%form-control-lg {
   min-height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
   @include font-size($input-font-size-lg);
@@ -163,7 +163,7 @@
 // Make sure textareas don't shrink too much when resized
 // https://github.com/twbs/bootstrap/pull/29124
 // stylelint-disable selector-no-qualifying-type
-textarea {
+%textarea {
   &.form-control {
     min-height: $input-height;
   }
@@ -178,7 +178,7 @@ textarea {
 }
 // stylelint-enable selector-no-qualifying-type
 
-.form-control-color {
+%form-control-color {
   width: $form-color-width;
   height: $input-height;
   padding: $input-padding-y;

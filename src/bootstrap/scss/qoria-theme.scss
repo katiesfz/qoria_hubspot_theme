@@ -1,5 +1,5 @@
-@import "mixins/banner";
-@include bsBanner("");
+//@import "mixins/banner";
+//@include bsBanner("");
 
 
 // scss-docs-start import-stack
@@ -736,6 +736,7 @@ a[data-hs-anchor="true"]{
                 transition: 1s; 
                 outline: none; 
                 cursor: text; 
+                appearance: none;
                 -webkit-appearance: none; 
                 color: #999; 
                 box-sizing: border-box;
@@ -880,6 +881,7 @@ a[data-hs-anchor="true"]{
                     transition: 1s; 
                     outline: none; 
                     cursor: pointer; 
+                    appearance: none;
                     -webkit-appearance: none; 
                     color: #999; 
                     box-sizing: border-box;
@@ -1028,6 +1030,7 @@ a[data-hs-anchor="true"]{
         transition: 1s; 
         outline: none; 
         cursor: text; 
+        appearance: none;
         -webkit-appearance: none; 
         color: $gray-900; 
         box-sizing: border-box;
@@ -1633,3 +1636,7 @@ button, [type=button],[type=reset],[type=submit] {
 .cursor-wait {cursor: wait;}
 .cursor-zoom-in {cursor: zoom-in;}
 .cursor-zoom-out {cursor: zoom-out;}
+
+.sticky-scrollbar {
+    overflow: auto;
+}
