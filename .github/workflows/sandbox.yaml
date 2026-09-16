@@ -22,4 +22,4 @@ jobs:
           account_id: ${{ vars.HS_ACCT_ID_ANZ }}
           personal_access_key: ${{ secrets.HS_PAK_KS }}
           src_dir: hubspot
-          dest_dir: /
+          dest_dir: .
