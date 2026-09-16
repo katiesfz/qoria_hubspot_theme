@@ -10,7 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    environment: sandbox
+    environment: staging
 
     steps:
       - name: Checkout
