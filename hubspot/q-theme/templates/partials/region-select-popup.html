@@ -16,23 +16,24 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onclick="setCookie('closedRegionModal','true',1)"></button>
             </div>
             <div class="modal-body pt-md-5 px-md-5 ">
-                <p class="h3" dir="ltr"><strong>This Linewize site doesn't match your location</strong></p>
+                <p class="h3" dir="ltr"><strong>This <span data-site-name></span> site doesn't match your location</strong></p>
                 <p class="lead" dir="ltr">Based on your location, we think you may prefer the <span data-region-name></span> website.</p>
-                </div>
-                <div class="modal-footer border-0 pt-0 pb-md-5 px-md-5">
+            </div>
+            <div class="modal-footer border-0 pt-0 pb-md-5 px-md-5">
                 <a class="ms-auto btn btn-light" data-region-link href="#" id="button_Region_Select_Modal_" rel="">
-                <span data-region-name></span> site
+                Visit <span data-region-name></span>
                 </a>
-                <a class=" btn btn-outline-light    ms-0" href="#" id="button_Region_Select_Modal_" data-bs-dismiss="modal" onclick="setCookie('closedRegionModal','true',1)" rel="" target="_self">
-                Cancel
+                <a class=" btn btn-outline-light ms-0" href="#" id="button_Region_Select_Modal_" data-bs-dismiss="modal" onclick="setCookie('closedRegionModal','true',1)" rel="" target="_self">
+                Stay on <span data-site-name></span>
                 </a>
             </div>
         </div>
     </div>
 </div>
-
+{% unless is_in_editor %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         initRegionRedirectModal();
     });
 </script>
+{% endunless %}
