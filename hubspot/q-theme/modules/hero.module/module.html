@@ -177,8 +177,13 @@
                         {% if module.cta|length > 0 %}
                             <div class="mt-4">
                                 {%for cta in module.cta %}
-                                    <a href="{{cta.cta_link.url.href}}" {% if cta.cta_link.open_in_new_tab %}target="_blank"{% endif %} class="btn mb-1 {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
-                                    </a>
+                                    {% if cta.cta_type == "default" %}
+                                        <a href="{{cta.cta_link.url.href}}" {% if cta.cta_link.open_in_new_tab %}target="_blank"{% endif %} class="btn mb-1 {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
+                                        </a>
+                                    {% endif %}
+                                    {% if cta.cta_type == "hubspot-cta" %}
+                                        {{ cta(cta.cta_embed) }}
+                                    {% endif %}
                                 {%endfor%}
                             </div>
                         {%endif%}
@@ -236,9 +241,13 @@
                     <div class="ms-4 ms-xxl-0">
                         {%for cta in module.cta %}
                             <!-- run macro with link, label, style, colour? -->
-
-                            <a href="{{cta.cta_link.url.href}}" {% if cta.cta_link.open_in_new_tab %}target="_blank"{% endif %} class="btn mb-1 {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
-                            </a>
+                            {% if cta.cta_type == "default" %}
+                                <a href="{{cta.cta_link.url.href}}" {% if cta.cta_link.open_in_new_tab %}target="_blank"{% endif %} class="btn mb-1 {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
+                                </a>
+                            {% endif %}
+                            {% if cta.cta_type == "hubspot-cta" %}
+                                {{ cta(cta.cta_embed) }}
+                            {% endif %}
                         {%endfor%}
                     </div>
                 </div>

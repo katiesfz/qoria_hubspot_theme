@@ -373,6 +373,36 @@
     "default" : null
   },
   "children" : [ {
+    "id": "cta.cta_type",
+    "name" : "cta_type",
+    "display_width" : null,
+    "label" : "CTA Type",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "default", "Default" ], [ "hubspot-cta", "HubSpot CTA" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "default"
+  },{
+    "id" : "cta.cta_embed",
+    "name": "cta_embed",
+    "label": "HubSpot CTA",
+    "required": false,
+    "locked": false,
+    "type": "cta",
+    "default": null,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "cta.cta_type",
+      "controlling_value_regex" : "hubspot-cta",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
+  },{
     "id" : "0fea1669-07f5-082d-6998-7d4373dae3d3",
     "name" : "cta_label",
     "display_width" : null,
@@ -382,7 +412,15 @@
     "validation_regex" : "",
     "allow_new_line" : false,
     "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "cta.cta_type",
+      "controlling_value_regex" : "default",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
   }, {
     "id" : "f0277453-a687-9e70-8b49-5937ee9b669f",
     "name" : "cta_link",
@@ -401,6 +439,14 @@
       },
       "open_in_new_tab" : false,
       "no_follow" : false
+    },
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "cta.cta_type",
+      "controlling_value_regex" : "default",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
     }
   }, {
     "id" : "bcea8170-0cc3-8748-b293-6036a2320e6b",
@@ -415,7 +461,15 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : "-"
+    "default" : "-",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "cta.cta_type",
+      "controlling_value_regex" : "default",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
   }, {
     "id" : "6a163ac8-a1ec-0aef-0e9c-d656bf607e69",
     "name" : "colour",
@@ -429,7 +483,15 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : "primary"
+    "default" : "primary",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "cta.cta_type",
+      "controlling_value_regex" : "default",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
   }, {
     "id" : "cta.size",
     "name" : "size",
@@ -443,7 +505,15 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : " "
+    "default" : " ",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "cta.cta_type",
+      "controlling_value_regex" : "default",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
