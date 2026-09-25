@@ -86,8 +86,38 @@
   "label" : "CTA",
   "required" : false,
   "locked" : false,
-  "children" : [ 
+  "children" : [
     {
+      "id": "cta_type",
+      "name" : "cta_type",
+      "display_width" : null,
+      "label" : "CTA Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "default", "Default" ], [ "hubspot-cta", "HubSpot CTA" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "default"
+    },{
+      "id" : "cta_embed",
+      "name": "cta_embed",
+      "label": "HubSpot CTA",
+      "required": false,
+      "locked": false,
+      "type": "cta",
+      "default": null,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta_group.cta_type",
+        "controlling_value_regex" : "hubspot-cta",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      }
+    },{
       "id" : "link",
       "name" : "link",
       "display_width" : null,
@@ -97,6 +127,14 @@
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta_group.cta_type",
+        "controlling_value_regex" : "default",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
       "default" : {
         "url" : {
           "type" : "EXTERNAL",
@@ -117,22 +155,33 @@
       "type" : "boolean",
       "visibility_rules" : "ADVANCED",
       "advanced_visibility" : {
-        "boolean_operator" : "OR",
-        "criteria" : [ {
+        "boolean_operator" : "AND",
+        "criteria" : [{
+          "boolean_operator" : "OR",
+          "criteria" : [ {
+            "controlling_field" : null,
+            "controlling_field_path" : "cta_group.link",
+            "controlling_value_regex" : "EXTERNAL",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
+          },{
+            "controlling_field" : null,
+            "controlling_field_path" : "cta_group.link",
+            "controlling_value_regex" : "FILE",
+            "property" : "url.type",
+            "operator" : "EQUAL",
+            "access" : null
+          } ],
+          "children" : []
+        }, {
           "controlling_field" : null,
-          "controlling_field_path" : "cta_group.link",
-          "controlling_value_regex" : "EXTERNAL",
-          "property" : "url.type",
+          "controlling_field_path" : "cta_group.cta_type",
+          "controlling_value_regex" : "default",
+          "property" : null,
           "operator" : "EQUAL",
           "access" : null
-        },{
-          "controlling_field" : null,
-          "controlling_field_path" : "cta_group.link",
-          "controlling_value_regex" : "FILE",
-          "property" : "url.type",
-          "operator" : "EQUAL",
-          "access" : null
-        } ],
+        }],
         "children" : []
       },
       "default" : false
@@ -150,15 +199,21 @@
       "visibility_rules" : "ADVANCED",
       "advanced_visibility" : {
         "boolean_operator" : "AND",
-        "criteria" : [ {
+        "criteria" : [{
+          "controlling_field" : null,
+          "controlling_field_path" : "cta_group.cta_type",
+          "controlling_value_regex" : "default",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },{
           "controlling_field" : null,
           "controlling_field_path" : "cta_group.download",
           "controlling_value_regex" : "true",
           "property" : "",
           "operator" : "EQUAL",
           "access" : null
-        } ],
-        "children" : [{
+        },{
           "boolean_operator" : "OR",
           "criteria" : [ {
             "controlling_field" : null,
@@ -178,11 +233,11 @@
         }]
       },
       "default" : ""
-    },  {
+    }, {
       "id" : "button_text",
       "name" : "button_text",
       "display_width" : null,
-      "label" : "Button text",
+      "label" : "Button text (or identifier if HubSpot CTA)",
       "required" : true,
       "locked" : false,
       "validation_regex" : "",
@@ -203,7 +258,15 @@
       "reordering_enabled" : true,
       "preset" : null,
       "type" : "choice",
-      "default" : "primary"
+      "default" : "primary",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta_group.cta_type",
+        "controlling_value_regex" : "default",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      }
     }, {
       "id" : "button_style",
       "name" : "button_style",
@@ -217,7 +280,15 @@
       "reordering_enabled" : true,
       "preset" : null,
       "type" : "choice",
-      "default" : "-"
+      "default" : "-",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta_group.cta_type",
+        "controlling_value_regex" : "default",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      }
     }, {
       "id" : "text_colour",
       "name" : "text_colour",
@@ -225,13 +296,24 @@
       "label" : "Text colour",
       "required" : false,
       "locked" : false,
-      "visibility" : {
-        "controlling_field" : null,
-        "controlling_field_path" : "cta_group.button_style",
-        "controlling_value_regex" : "-",
-        "property" : null,
-        "operator" : "NOT_EQUAL",
-        "access" : null
+      "visibility_rules" : "ADVANCED",
+      "advanced_visibility" : {
+        "boolean_operator" : "AND",
+        "criteria" : [{
+          "controlling_field" : null,
+          "controlling_field_path" : "cta_group.cta_type",
+          "controlling_value_regex" : "default",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },{
+          "controlling_field" : null,
+          "controlling_field_path" : "cta_group.button_style",
+          "controlling_value_regex" : "-",
+          "property" : "",
+          "operator" : "NOT_EQUAL",
+          "access" : null
+        }]
       },
       "display" : "select",
       "choices" : [ [ "text-white", "Light" ], [ "text-dark", "Dark" ], [ " ", "Inherit" ] ],
@@ -253,7 +335,15 @@
       "reordering_enabled" : true,
       "preset" : null,
       "type" : "choice",
-      "default" : " "
+      "default" : " ",
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta_group.cta_type",
+        "controlling_value_regex" : "default",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      }
     }, {
       "id" : "advanced",
       "name" : "advanced",
@@ -261,6 +351,14 @@
       "label" : "Advanced",
       "required" : false,
       "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : "cta_group.cta_type",
+        "controlling_value_regex" : "default",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
       "children" : [ {
         "id" : "advanced.additional_classes",
         "name" : "additional_classes",

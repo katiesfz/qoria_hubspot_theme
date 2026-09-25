@@ -2,24 +2,28 @@
   <div class="d-block text-md-{{ module.alignment }} text-center" style="{{module.styles.spacing_field.css}}">
   <div class="{{ "input-group " if module.group_buttons }}{{"d-flex flex-wrap " if !module.group_buttons}}{{ ("gap-" ~ module.gap ~ " ") if module.mobile_gap == "inherit" else ("gap-" ~ module.mobile_gap ~ " ") }}{{ "gap-md-" ~ module.gap ~ " " if !module.group_buttons }} justify-content-md-{{ module.alignment }} justify-content-{{ module.alignment if module.mobile_alignment == "inherit" else module.mobile_alignment}}">
   {% for cta in module.cta_group %}
-    {% if cta.link.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" ~ cta.link.url.href %}
-      {% else %}
-        {% unless (cta.link.url.href is string_containing "//") 
-          or (!cta.link is string_startingwith "tel:") 
-          or !cta.link.url.href 
-        %}
-          {% set href = "//" ~ cta.link.url.href %}
+    {% if cta.cta_type == "hubspot-cta" %}
+      {{ cta(cta.cta_embed) }}
+    {% endif %}
+    {% if cta.cta_type == "default" || !cta.cta_type %}
+      {% if cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" ~ cta.link.url.href %}
         {% else %}
-          {% set href = cta.link.url.href || "" %}
-        {% endunless %}
-    {% endif %}
+          {% unless (cta.link.url.href is string_containing "//") 
+            or (!cta.link is string_startingwith "tel:") 
+            or !cta.link.url.href 
+          %}
+            {% set href = "//" ~ cta.link.url.href %}
+          {% else %}
+            {% set href = cta.link.url.href || "" %}
+          {% endunless %}
+      {% endif %}
+        
+      {% if cta.advanced.trigger_modal %}
+        {% set href = "#" %}
+      {% endif %}
       
-    {% if cta.advanced.trigger_modal %}
-      {% set href = "#" %}
-    {% endif %}
-    
-    {% set rel = (cta.link.open_in_new_tab ? "noopener " : null) ~ (cta.link.no_follow ? "nofollow" : null) %}
+      {% set rel = (cta.link.open_in_new_tab ? "noopener " : null) ~ (cta.link.no_follow ? "nofollow" : null) %}
       <a class="btn btn{{ cta.button_style }}{{cta.button_colour}} {{cta.button_size}} {% if cta.button_style != "-" %}{{cta.text_colour}}{% endif %} {{ cta.advanced.additional_classes }}" href="{{ href }}"
           id="button_{{ name }}"
         {% if cta.advanced.trigger_modal %}
@@ -41,6 +45,7 @@
           rel="{{ rel }}">
         {{ cta.button_text }}
       </a>
+    {% endif %}
   {% endfor %}
   </div>
   </div>
