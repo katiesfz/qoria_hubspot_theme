@@ -1,0 +1,138 @@
+[ {
+    "id" : "profile_image",
+    "name" : "profile_image",
+    "display_width" : null,
+    "label" : "Profile image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "https://www.linewize.io/hubfs/Signatures_Assets/email-sig-image-example-tim.jpg",
+      "loading" : "lazy",
+      "width" : 60,
+      "height" : 60
+    }
+  },{
+    "id" : "profile_image_circle",
+    "name" : "profile_image_circle",
+    "display_width" : null,
+    "label" : "Crop to circle",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  },{
+    "id" : "full_name",
+    "name" : "full_name",
+    "display_width" : null,
+    "label" : "Full name",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Tim Levy"
+  }, {
+    "id" : "job_title",
+    "name" : "job_title",
+    "display_width" : null,
+    "label" : "Job title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Managing Director"
+  }, {
+    "id" : "phone",
+    "name" : "phone",
+    "display_width" : null,
+    "label" : "Phone",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "0113 486 1968"
+  },{
+  "name": "logo",
+  "label": "Logo",
+  "required": false,
+  "locked": false,
+  "type": "logo",
+  "show_loading": false,
+  "default": {
+    "override_inherited_src": false,
+    "src": null,
+    "alt": null,
+    "loading": "eager"
+  }
+},{
+    "id": "logo_link",
+    "name": "logo_link",
+    "label": "Logo link",
+    "help_text": "If no url is specified, your logo will link to your primary domain",
+    "sortable": false,
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": null
+  },{
+    "id": "facebook_link",
+    "name": "facebook_link",
+    "label": "Facebook link",
+    "sortable": false,
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": null
+  },{
+    "id": "linkedin_link",
+    "name": "linkedin_link",
+    "label": "LinkedIn link",
+    "sortable": false,
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": null
+  },{
+    "id": "x_link",
+    "name": "x_link",
+    "label": "X link",
+    "sortable": false,
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": null
+  },{
+    "id": "youtube_link",
+    "name": "youtube_link",
+    "label": "YouTube link",
+    "sortable": false,
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text",
+    "default": null
+  }]
