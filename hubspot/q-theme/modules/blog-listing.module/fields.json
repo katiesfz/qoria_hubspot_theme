@@ -105,11 +105,7 @@
   "preset" : null,
   "type" : "choice",
   "default" : "popular_all_time"
-}, 
-
-
-
-{
+}, {
   "id" : "tag_field",
   "name" : "tag_field",
   "display_width" : null,
@@ -225,9 +221,7 @@
   "prefix" : "",
   "suffix" : "",
   "type" : "number"
-}, 
-
-{
+}, {
   "id" : "custom_min_read",
   "name" : "custom_min_read",
   "display_width" : null,
@@ -256,9 +250,7 @@
     "operator" : "EQUAL",
     "access" : null
   }
-}, 
-
-{
+}, {
   "id" : "pullouts",
   "name" : "pullouts",
   "display_width" : null,
@@ -425,6 +417,17 @@
     "display_width" : null,
     "label" : "Equal Height Images",
     "inline_help_text" : "Keep images at equal heights.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  },  {
+    "id" : "styles.show_tag",
+    "name" : "show_tag",
+    "display_width" : null,
+    "label" : "Show tag",
+    "inline_help_text" : "Show the \"Article\" tag on the blog thumbnail.",
     "required" : false,
     "locked" : false,
     "display" : "toggle",
