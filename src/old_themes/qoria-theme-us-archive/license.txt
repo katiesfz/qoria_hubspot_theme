@@ -1,6 +1,0 @@
-Copyright (c) 2026 Qoria Ltd
-All rights reserved.
-
-This HubSpot theme and all its associated assets are the exclusive property of Qoria Ltd.
-Unauthorized copying, modification, distribution, or use of this theme, via any medium, is strictly prohibited.
-This theme is intended solely for internal use on Qoria Ltd's HubSpot accounts.
