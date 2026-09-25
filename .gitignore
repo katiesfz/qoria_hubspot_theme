@@ -1,9 +1,9 @@
 hubspot-defaults/
 node_modules
-hubspot.config.yml
 deploy.sh
 html-emails/
 archive-modules/
 .vscode/
 /smoothwall/
 .vscode
+src/old_themes
