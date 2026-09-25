@@ -564,8 +564,10 @@ function initCookieConsent() {
     window.qoriaCookieConsentManager = cookieConsentManager();
 }
 
-if (document.readyState === 'complete') {
-    initCookieConsent();
-} else {
-    window.addEventListener('load', initCookieConsent);
+if (!window.qoriaIsInEditor) {
+    if (document.readyState === 'complete') {
+        initCookieConsent();
+    } else {
+        window.addEventListener('load', initCookieConsent);
+    }
 }
