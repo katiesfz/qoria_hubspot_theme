@@ -118,6 +118,7 @@
   "help_text" : "Styling options are managed in the form settings.",
   "inline_help_text" : "Must be set to raw HTML for correct styling.",
   "required" : false,
+  "disable_inline_form_editing": true,
   "locked" : false,
   "type" : "form",
   "default" : {
