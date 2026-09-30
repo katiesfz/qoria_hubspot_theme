@@ -172,7 +172,7 @@
       display: inline-block;
       margin-left: $spacing;
       vertical-align: $vertical-align;
-      font-family: var(--fa-style-family,"Font Awesome 6 Pro");
+      font-family: var(--fa-style-family-classic,"Font Awesome 7 Pro");
       font-weight: var(--fa-style,900);
       font-size: $width;
       line-height: .08333em;
@@ -200,7 +200,7 @@
         display: inline-block;
         margin-right: $spacing;
         vertical-align: $vertical-align;
-        font-family: var(--fa-style-family,"Font Awesome 6 Pro");
+        font-family: var(--fa-family,"Font Awesome 6 Pro");
         font-weight: var(--fa-style,900);
         font-size: $width;
         line-height: .08333em;

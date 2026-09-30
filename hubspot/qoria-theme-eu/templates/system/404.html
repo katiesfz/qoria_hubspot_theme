@@ -12,12 +12,12 @@
 
 {% block header %}
   <div class="header-wrapper sticky-top shadow-sm">
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/brands.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/fontawesome.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/light.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/regular.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/solid.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/thin.min.css")) }}
     
     {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
     {% set breakpoint = widget_data.navigation.breakpoint %}
