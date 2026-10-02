@@ -1,0 +1,6 @@
+{
+  "global" : false,
+  "host_template_types" : [ "BLOG_LISTING", "PAGE" ],
+  "label" : "Blog Tag Descriptions",
+  "is_available_for_new_content" : true
+}

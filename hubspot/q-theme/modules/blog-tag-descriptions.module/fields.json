@@ -1,0 +1,39 @@
+[{
+  "children": [
+    {
+      "id" : "tag_descriptions.tag",
+      "name" : "tag",
+      "display_width" : null,
+      "label" : "Select tag",
+      "required" : false,
+      "locked" : false,
+      "tag_value" : "SLUG",
+      "type" : "tag",
+      "default" : ""
+    },{
+      "id": "tag_descriptions.description",
+      "name" : "description",
+      "display_width" : null,
+      "label" : "Description",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }
+  ],
+  "name" : "tag_descriptions",
+  "label" : "Tag descriptions",
+  "required" : false,
+  "locked" : false,
+  "type" : "group",
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "tag_descriptions.tag",
+    "default" : null
+  },
+  "default" : null
+}]

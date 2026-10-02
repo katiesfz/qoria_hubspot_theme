@@ -23,6 +23,8 @@
 
     </style>
 
+  {% module "tag_descriptions" path="/q-theme/modules/blog-tag-descriptions" %}
+
   {% if blog_author %}
 
     {% set bioParts = blog_author.bio|split("|",2) %}
@@ -122,7 +124,7 @@
             {% module
               "blog listing",
               path="/q-theme/modules/blog-listing",
-              blog_field=group.id,
+              blog_field="{{group.id}}",
               custom_limit=true,
               number_of_posts=3,
               enable_tag_filtering="true",
@@ -175,9 +177,94 @@
 
 
 
+  {% elif tag %}
 
+    {% set tag_descriptions = {} %}
 
-    
+    {% for tag_description in content.widgets.tag_descriptions.body.tag_descriptions %}
+      {% if tag_description.tag and tag_description.description %}
+        {% set tag_key = tag_description.tag %}
+        {% do tag_descriptions.put(tag_key, tag_description.description) %}
+      {% endif %}
+    {% endfor %}
+
+    {% set current_slug = blog_tag.slug %}
+    {% set custom_description = tag_descriptions[current_slug] || blog.description %}
+
+    {% if custom_description %}
+      <meta name="description" content="{{ custom_description|escape_attr }}">
+    {% endif %}
+
+    <section class="blog-tag-header">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8">
+            <h1 class="display-3 fw-bold blog-tag-title">{{ blog_tag.label }}</h1>
+            {% if custom_description %}
+              <p class="h4 fw-light blog-tag-desc">{{ custom_description|trim }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-listing py-md-7 py-4">
+      <div class="container-xl">
+        <div class="row">
+          <div class="col-12">
+            {% module
+              "blog listing",
+              path="/q-theme/modules/blog-listing",
+              blog_field="{{group.id}}",
+              custom_limit=true,
+              number_of_posts=3,
+              enable_tag_filtering="true",
+              post_type="latest",
+              pullouts=[ ],
+              styles={
+                "equal_height_img" : true,
+                "pagination" : true,
+                "responsive" : {
+                  "desktop" : {
+                    "cards" : 3
+                  }
+                },
+                "spacing_field" : {
+                  "margin" : {
+                    "bottom" : { },
+                    "top" : { }
+                  }
+                }
+              },
+              tag_field=[{{blog_tag.id}}],
+              tag_filter_option=[ {
+                "id" : 10548558613,
+                "name" : "School Filtering",
+                "slug" : "school-filtering"
+              }, {
+                "id" : 10767877681,
+                "name" : "CTO",
+                "slug" : "cto"
+              }, {
+                "id" : 10767877532,
+                "name" : "Superintendent",
+                "slug" : "superintendent"
+              }, {
+                "id" : 10767939443,
+                "name" : "Network Admin",
+                "slug" : "network-admin"
+              }, {
+                "id" : 10551939630,
+                "name" : "BYOD",
+                "slug" : "byod"
+              }, null ],
+              timeframe="popular_past_month"
+            %}
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     
   {% else %}

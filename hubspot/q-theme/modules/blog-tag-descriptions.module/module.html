@@ -1,0 +1,12 @@
+{% if tag %}
+  
+  {% set tag_descriptions = {} %}
+
+  {% for tag_description in module.tag_descriptions %}
+    {% if tag_description.tag and tag_description.description %}
+      {% set tag_key = tag_description.tag %}
+      {% do tag_descriptions.put(tag_key, tag_description.description) %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
