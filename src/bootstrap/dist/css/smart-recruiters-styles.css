@@ -131,10 +131,7 @@
   background: #eeeeee none;
 }
 .smartWidget .srSearch {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -151,11 +148,7 @@
   overflow: hidden;
   border-right: 1px solid #cccccc;
   margin-right: -1px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 .smartWidget .srSearchInput {
@@ -175,14 +168,11 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 23px;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  -webkit-box-shadow: inset 0 1px 1px 0 #eeeeee;
   box-shadow: inset 0 1px 1px 0 #eeeeee;
 }
 .smartWidget .srSearchInput:focus {
   border: 1px solid #aaaaaa;
-  -webkit-box-shadow: inset 0 0 0 0 #eeeeee;
   box-shadow: inset 0 0 0 0 #eeeeee;
 }
 .smartWidget .srSearchButton {
@@ -202,7 +192,6 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 23px;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   cursor: pointer;
 }
@@ -332,7 +321,6 @@
   vertical-align: middle;
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   cursor: default;
 }

@@ -35,7 +35,9 @@
   background-color: #f2e2bf;
   background-clip: padding-box;
   border: 1px solid #cfb88e;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border-radius: 4px;
   box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.1);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -83,6 +85,10 @@
   display: block;
   padding: 0;
 }
+.hs-form.asg-form .hs-input::-moz-placeholder, .hs-form.asg-form .hsfc-Input::-moz-placeholder, .hsfc-Form.asg-form .hs-input::-moz-placeholder, .hsfc-Form.asg-form .hsfc-Input::-moz-placeholder {
+  color: var(--q-secondary-color);
+  opacity: 1;
+}
 .hs-form.asg-form .hs-input::placeholder,
 .hs-form.asg-form .hsfc-Input::placeholder,
 .hsfc-Form.asg-form .hs-input::placeholder,
@@ -112,7 +118,7 @@
   border-width: 0;
   border-inline-end-width: 1px;
   border-radius: 0;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .hs-form.asg-form .hs-input::file-selector-button,
@@ -161,7 +167,9 @@
 .hs-form.asg-form .hsfc-Select select, .hs-form.asg-form select.hs-input,
 .hsfc-Form.asg-form .hsfc-Select select,
 .hsfc-Form.asg-form select.hs-input {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 .hs-form.asg-form .hsfc-Select select:focus, .hs-form.asg-form select.hs-input:focus,
 .hsfc-Form.asg-form .hsfc-Select select:focus,
@@ -238,8 +246,11 @@
   background-position: center;
   background-size: contain;
   border: var(--q-border-width) solid #cfb88e;
-  appearance: none;
-  print-color-adjust: exact;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
 }
 .hs-form.asg-form .inputs-list input[type=checkbox],
 .hs-form.asg-form .inputs-list [type=checkbox].hsfc-Choice__input,

@@ -167,7 +167,6 @@
   position: absolute;
   left: 0;
   top: calc(50% - max(var(--track-height), var(--thumb-size)) / 2 + var(--ticks-gap) / 2 * var(--flip-y, -1));
-  cursor: -webkit-grab;
   cursor: grab;
   outline: none;
   background: none;
@@ -176,7 +175,8 @@
   pointer-events: none;
 }
 .podcast-audio-card .card-back .player-ui .range-slider > input::-webkit-slider-thumb {
-  appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
   height: var(--thumb-size);
   width: var(--thumb-size);
   transform: var(--thumb-transform);
@@ -185,10 +185,12 @@
   box-shadow: var(--thumb-shadow);
   border: none;
   pointer-events: auto;
+  -webkit-transition: 0.1s;
   transition: 0.1s;
 }
 .podcast-audio-card .card-back .player-ui .range-slider > input::-moz-range-thumb {
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   height: var(--thumb-size);
   width: var(--thumb-size);
   transform: var(--thumb-transform);
@@ -197,6 +199,7 @@
   box-shadow: var(--thumb-shadow);
   border: none;
   pointer-events: auto;
+  -moz-transition: 0.1s;
   transition: 0.1s;
 }
 .podcast-audio-card .card-back .player-ui .range-slider > input::-ms-thumb {
@@ -209,6 +212,7 @@
   box-shadow: var(--thumb-shadow);
   border: none;
   pointer-events: auto;
+  -ms-transition: 0.1s;
   transition: 0.1s;
 }
 .podcast-audio-card .card-back .player-ui .range-slider > input:hover {

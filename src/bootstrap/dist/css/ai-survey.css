@@ -25,12 +25,14 @@
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   border: var(--q-btn-border-width) solid var(--q-btn-border-color);
   border-radius: var(--q-btn-border-radius);
   background-color: var(--q-btn-bg);
   box-shadow: var(--q-btn-box-shadow);
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .ai-survey .back-btn, .ai-survey .option-label, .ai-survey button, .ai-survey .next-btn,
