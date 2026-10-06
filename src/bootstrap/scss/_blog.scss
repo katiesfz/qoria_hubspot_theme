@@ -419,3 +419,48 @@ padding-bottom: 6rem;
         padding-top: 10rem;
     }
 }
+
+
+.blog-tag-header {
+    background-color: #000000;
+    position: relative;
+    padding-top: 4rem;
+    z-index: -1;
+    color: #ffffff;    
+    text-align: center;
+    padding-bottom: 2rem;
+    &::before {
+        background-image: url("https://www.linewize.com/hubfs/US-Linewize-Banners-school-manager2.jpg");
+        background-size: cover;
+        background-position: center right;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        opacity: 0.2;
+        z-index: -1;
+    }
+}
+.blog-tag-title {
+}
+
+.blog-tag-desc {
+    margin-top: 1.5rem;
+}
+
+
+@include media-breakpoint-up(md) {
+    .blog-tag-header {
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .blog-tag-header {
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+    }
+}

@@ -650,7 +650,7 @@ $accordion-button-padding-y:              $accordion-padding-y !default;
 $accordion-button-padding-x:              $accordion-padding-x !default;
 $accordion-button-color:                  var(--#{$prefix}body-color);
 $accordion-button-bg:                     var(--#{$prefix}body-bg);
-$accordion-transition:                    height 300ms ease;
+$accordion-transition:                    height 500ms ease, background-color 500ms ease, width 500ms ease;
 $accordion-button-active-bg:              var(--#{$prefix}light);
 $accordion-button-active-color:           $dark;
 

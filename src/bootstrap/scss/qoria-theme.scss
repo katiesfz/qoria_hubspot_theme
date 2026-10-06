@@ -73,8 +73,6 @@
 @import "offcanvas";
 @import "placeholders";
 
-
-
 @import "_custom-badges";
 
 // Helpers
@@ -521,7 +519,7 @@ $css-col-counts: 2,3,4,5;
 .wellbeing-popup {
     position: absolute;
     filter: drop-shadow($box-shadow);
-    transition: opacity 400ms ease;
+    @include transition(opacity 400ms ease);
     opacity: 0; 
     visibility: hidden;
     transform: translate(-50%, -100%); 
@@ -732,15 +730,13 @@ a[data-hs-anchor="true"]{
                 width: 100%; 
                 border-radius: 50em; 
                 padding: 1em 1em 1em 3em; 
-                -webkit-transition: 1s; 
-                transition: 1s; 
+                @include transition(width 1s ease, background-color 1s ease, padding-right 1s ease, padding-left 1s ease);
                 outline: none; 
                 cursor: text; 
                 appearance: none;
                 -webkit-appearance: none; 
                 color: #999; 
                 box-sizing: border-box;
-                transition-property: width, background-color, padding-right, padding-left;
                 height: 3em;
                 border: 0;
                 width: 100%;
@@ -852,10 +848,8 @@ a[data-hs-anchor="true"]{
             .navbar-search {
                 flex-grow: 0.00001;
                 flex-shrink: 0;
-                flex-basis: 0;
-                transition-property: flex-grow;
-                -webkit-transition: 1s; 
-                transition: 1s; 
+                flex-basis: 0;                
+                @include transition(flex-grow 1s ease);
                 // position: relative;
 
                 &::after {         
@@ -877,15 +871,13 @@ a[data-hs-anchor="true"]{
                     width: 0; 
                     border-radius: 50em; 
                     padding: 1em 1em 1em 2em;
-                    -webkit-transition: 1s; 
-                    transition: 1s; 
+                    @include transition(width 1s ease, background-color 1s ease, padding-right 1s ease, padding-left 1s ease);
                     outline: none; 
                     cursor: pointer; 
                     appearance: none;
                     -webkit-appearance: none; 
                     color: #999; 
                     box-sizing: border-box;
-                    transition-property: width, background-color, padding-right, padding-left;
                     height: 3em;
                     border: 0;
                     width: 100%;
@@ -1026,8 +1018,7 @@ a[data-hs-anchor="true"]{
 
     .hs-search-field__input {
         padding: 1em;
-        -webkit-transition: 1s; 
-        transition: 1s; 
+        @include transition(padding-left 1s ease);
         outline: none; 
         cursor: text; 
         appearance: none;
