@@ -1,0 +1,9 @@
+{
+  "global" : true,
+  "content_types" : [ "KNOWLEDGE_BASE", "LANDING_PAGE", "SITE_PAGE", "WEB_INTERACTIVE", "BLOG_POST" ],
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "module_id" : 214590968445,
+  "label" : "KCSIE 2026 Interactive Guide",
+  "is_available_for_new_content" : true
+}
