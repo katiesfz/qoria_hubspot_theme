@@ -1,3 +1,4 @@
+(function () {
 
 const BLOG_LISTING_DEFAULTS = {
     postsPerPage: 6,
@@ -28,7 +29,14 @@ function blogListing(containerId, blogPostsObj, settings = {}) {
     };
 
     // init:
-    const contentsAll = blogPostsObj;
+    // resolve video URLs client-side (avoids depending on a cross-file videoUrl() call at render time)
+    const parsedPosts = JSON.parse(blogPostsObj);
+    parsedPosts.forEach((item) => {
+        if (item.has_video === "true" && item.post_body) {
+            item.video_url = videoUrl(item.post_body);
+        }
+    });
+    const contentsAll = JSON.stringify(parsedPosts);
     let contents = contentsAll;
     const itemsPerPage = config.postsPerPage;
     const outerContainer = document.getElementById(containerId);
@@ -650,3 +658,25 @@ function blogListing(containerId, blogPostsObj, settings = {}) {
         };
     }
 }
+
+// find every blog-listing instance rendered on the page and initialize it
+function initBlogListings() {
+    document
+        .querySelectorAll(".js-blog-listing[data-blog-listing-config]")
+        .forEach((container) => {
+            if (container.dataset.blogListingInitialized) return;
+            container.dataset.blogListingInitialized = "true";
+
+            const settings = JSON.parse(container.dataset.blogListingConfig);
+            const dataScript = document.getElementById(
+                container.dataset.blogpostsId,
+            );
+            const blogPostsObj = dataScript ? dataScript.textContent : "[]";
+
+            blogListing(container.id, blogPostsObj, settings);
+        });
+}
+
+window.addEventListener("load", initBlogListings);
+
+})();
