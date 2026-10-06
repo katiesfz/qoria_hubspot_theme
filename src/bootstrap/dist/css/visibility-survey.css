@@ -24,12 +24,14 @@
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   border: var(--q-btn-border-width) solid var(--q-btn-border-color);
   border-radius: var(--q-btn-border-radius);
   background-color: var(--q-btn-bg);
   box-shadow: var(--q-btn-box-shadow);
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   #visibility-survey .btn, .survey-btn, #visibility-survey .primary-btn, #visibility-survey #app-container .screen-wrapper #screen-result .result-main-card .result-footer-actions .result-footer-btn, #visibility-survey #app-container .screen-wrapper #screen-result .result-main-card .cta-white-box .cta-banner .cta-banner-btn, #visibility-survey #app-container .screen-wrapper .card-survey #question-wrapper .options-grid .option-btn, #visibility-survey #app-container .screen-wrapper #screen-result .result-main-card .personal-results .rec .rec-nav .rec-tab {
@@ -347,7 +349,8 @@
 #visibility-survey #app-container .screen-wrapper .card-survey #question-wrapper .question-icon, #visibility-survey #app-container .screen-wrapper .card-survey #question-wrapper .question-icon-bg {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   display: block;
   margin: 0 auto 0 auto;
   border-radius: 10px;
@@ -730,7 +733,8 @@
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #visibility-survey #app-container .screen-wrapper #screen-result .result-main-card .further-info-section .fi-video-container {
   grid-column: span 2;
@@ -746,7 +750,8 @@
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 #visibility-survey #app-container .screen-wrapper #screen-result .result-main-card .result-footer-actions {
   display: flex;
