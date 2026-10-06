@@ -1,0 +1,301 @@
+{{ require_js("https://js.hsforms.net/forms/embed/v2.js", "head") }}
+
+<!-- Preload images so they're ready when the screen changes -->
+<link rel="preload" as="image" href="{{ resize_image_url("https://smoothwall.com/hubfs/Background-Images/Results-bg.jpg", 0, 0, 1920) }}">
+
+{% if (module.version is none) || (module.version == "schools-mats") %}
+<link rel="preload" as="image" href="{{ resize_image_url("https://smoothwall.com/hubfs/Background-Images/Visibility-Survey-Schools-BG1.jpg", 0, 0, 1920) }}">
+{% elif module.version == "fe-colleges" %}
+    <link rel="preload" as="image" href="{{ resize_image_url("https://smoothwall.com/hubfs/Background-Images/Visibility-Survey-BG1.jpg", 0, 0, 1920) }}">
+{% endif %}
+
+{% require_css %}
+    <style>
+        {% scope_css %}
+            #visibility-survey.bg-results {    
+                background-image: url('{{ resize_image_url("https://smoothwall.com/hubfs/Background-Images/Results-bg.jpg", 0, 0, 1920) }}');
+            }
+            
+            {% if (module.version is none) || (module.version == "schools-mats") %}
+                #visibility-survey.bg-intro::before {
+                    background-image: url('{{ resize_image_url("https://smoothwall.com/hubfs/Background-Images/Visibility-Survey-Schools-BG1.jpg", 0, 0, 1920) }}');
+                    transition: all .5s ease-in-out;
+                }
+            {% elif module.version == "fe-colleges" %}
+                #visibility-survey.bg-intro::before {
+                    background-image: url('{{ resize_image_url("https://smoothwall.com/hubfs/Background-Images/Visibility-Survey-BG1.jpg", 0, 0, 1920) }}');
+                    transition: all .5s ease-in-out;
+                }
+            {% endif %}
+            #visibility-survey.bg-questions::before {
+                filter: blur(10px);
+            }
+        {% end_scope_css %}
+    </style>
+{% end_require_css %}
+
+<div id="visibility-survey" class="bg-intro" data-version="{{module.version|default("schools-mats")}}" {{ 'data-gated' if module.is_gated|default(true) }} {{ 'data-gate=' ~ module.form_gate.form_id if (module.is_gated|default(true)) && (!module.default_gate_form|default(true)) && (module.form_gate.form_id) }}>
+
+    <div id="print-area">
+        <p class="h1">Digital Safeguarding Visibility Check - Results</p>
+        <p class="h2">Visibility Score: <span id="finalScore"></span>/100</p>
+        <p class="fw-bold" id="scoreLeadText"></p>
+        <p id="scoreSummaryText"></p>
+        <div id="printRecommendations"></div>
+        <div class="print-section">
+        <hr><h2>How you answered</h2>
+        <div id="printAnswers"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-gradient-primary rounded-4">
+                <div class="modal-header border-bottom-0 pb-3">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div id="formContainer">
+                        <h2 class="modal-title text-center" id="formModalLabel"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="gateFormModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-lg modal-dialog-centered">
+            <div class="modal-content bg-gradient-primary rounded-4">
+                <div class="modal-header border-bottom-0 pb-3">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div id="gateFormContainer">
+                        <h2 class="modal-title text-center" id="formModalLabel"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container">
+        <div class="screen-wrapper">
+            <div id="screen-intro" class="screen">
+                <div class="card-survey theme-light">
+                    <div class="intro-copy">
+                        <h1>How well can you spot students at risk from their digital activity?</h1>
+                        <p>Answer the following questions to see where you have good visibility and where there are gaps to address.</p>
+                    </div>
+                    <button id="btn-start-survey" class="primary-btn">Start check-in</button>
+                </div>
+                
+                <p class="post-box-text">
+                    “An effective whole school and college approach to online safety (...) establishes mechanisms to identify, intervene in, and escalate any concerns where appropriate.”<br>
+                    <strong>- Keeping Children Safe in Education</strong>
+                </p>
+            </div>
+
+            <div id="screen-question" class="hidden screen" style="display: none;">
+                <div class="card-survey theme-light">
+                    <div class="progress-header">
+                        <div class="progress" role="progressbar" aria-label="Progress bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-gradient-primary" id="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="progress-text">1 / 12</div>
+                    </div>
+
+                    <div id="question-wrapper">
+                        <img id="dynamic-question-icon-bg" class="question-icon-bg" src="" alt="Question Topic">
+                        <img id="dynamic-question-icon" class="question-icon fade show" src="" alt="Question Topic">
+                        <div class="question-text-container" id="question-text-container">
+                            <div id="question-text" class="question-text fade show">Question goes here?</div>
+                        </div>
+                        <div class="options-grid">
+                            <button class="option-btn" data-value="Yes">Yes</button>
+                            <button class="option-btn" data-value="No">No</button>
+                            <button class="option-btn" data-value="Not sure">Not sure</button>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button class="nav-btn hidden" id="btn-back">
+                            <i class="fal fa-arrow-circle-left me-3"></i>
+                            Back
+                        </button>
+                        <button class="nav-btn hidden" id="btn-next">
+                            Next
+                            <i class="fal fa-arrow-circle-right ms-3"></i>
+                        </button>
+                        <button class="nav-btn hidden" id="btn-submit">
+                            Get my results
+                            <i class="fal fa-arrow-circle-right ms-3"></i>
+                        </button>
+                    </div>
+                    {% if module.show_dev %}
+                        {% if is_in_page_editor || request.query_dict.hs_preview %}
+                            <div class="nav-buttons">
+                                <button class="nav-btn" id="btn-skip-0">
+                                Skip to end (0)
+                                </button>
+                                <button class="nav-btn" id="btn-skip-1">
+                                Skip to end (1)
+                                </button>
+                                <button class="nav-btn" id="btn-skip-2">
+                                Skip to end (2)
+                                </button>
+                                <button class="nav-btn" id="btn-skip-3">
+                                Skip to end (3)
+                                </button>
+                                <button class="nav-btn" id="btn-skip-4">
+                                Skip to end (4)
+                                </button>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div id="screen-result" class="screen hidden">
+                <div class="result-main-card">
+                    <div class="score-split-section fade-in-section">
+                        <div class="score-col">
+                            <h2>Your Visibility Score</h2>
+                            <div class="result-circle-container">
+                                <svg viewBox="0 0 180 180">
+                                    <defs>
+                                        <linearGradient id="scoreGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="var(--q-primary)" />
+                                            <stop offset="100%" stop-color="var(--q-secondary)" />
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="circle-bg" cx="90" cy="90" r="80"></circle>
+                                    <circle id="progress-circle" class="circle-progress" cx="90" cy="90" r="80"></circle>
+                                </svg>
+                                <div class="score-text" id="scoreNumber">0</div>
+                            </div>
+                            <p class="score-lead-text" id="scoreLead"></p>
+                        </div>
+                        <div class="summary-vr"></div>
+                        <div class="summary-col" id="scoreSummary">
+                        </div>
+                    </div>
+
+                    <div class="personal-results hidden" id="resultsContainer">
+                        <div class="personal-results-banner fade-in-section" id="personalResultsBanner">
+                            <div class="banner-text-col"><h3>Your personal results</h3></div>
+                        </div>
+
+                        <div class="rec" id="recommendations">
+                            <div class="rec-nav fade-in-section" role="tablist">
+
+                            </div>
+                            <div id="rec-content-window" class="rec-display-area tab-content fade-in-section">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cta-white-box fade-in-section" id="ctaContainer">
+                        <div id="ctaIntro1" class="hidden">
+                            <h2 id="screenCtaTitle" class="text-decoration-partial-underline text-center"></h2>
+                            <div class="cta-intro" id="screenCtaIntro"></div>
+                        </div>
+                        
+                        <div class="benefits-grid row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-4  hidden" id="benefitsGrid1">
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                                <div class="benefit-text">To keep students safe</div>
+                            </div>
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <div class="benefit-text">To protect staff workload</div>
+                            </div>
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                                <div class="benefit-text">To support attendance &amp; wellbeing</div>
+                            </div>
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
+                                <div class="benefit-text">To meet KCSIE expectations</div>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-12 col-md">
+                                <div class="hidden" id="ctaIntro2" class="hidden">
+                                    <h2 class="text-decoration-partial-underline" id="screenCtaTitle2"></h2>
+                                    <div class="cta-intro" id="screenCtaIntro2"></div>
+                                </div>
+                                <div id="ctaBody"></div>
+                            </div>
+                            <div class="col-12 col-md" id="ctaImages">
+                            </div>
+                        </div>
+
+                        <div class="benefits-grid row row-cols-1 row-cols-sm-2 row-cols-lg-4 gy-5 hidden" id="benefitsGrid2" style="margin-top: 3rem;">
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                <div class="benefit-text">Enhance visibility across shared documents and chat platforms</div>
+                            </div>
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                                <div class="benefit-text">Implement rapid alerts with context to understand incident nature</div>
+                            </div>
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                                <div class="benefit-text">Gain insight into behaviour patterns by connecting digital activities</div>
+                            </div>
+                            <div class="benefit-item col">
+                                <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
+                                <div class="benefit-text">Address risks hidden in slang, coded language, or AI conversations</div>
+                            </div>
+                        </div>
+
+                        <div class="cta-banner">
+                            <div class="row g-4 align-items-center">
+                                <div class="col">
+                                    <h3 class="cta-banner-text" id="ctaBannerText"></h3>
+                                </div>
+                                <div class="col-12 col-md-auto text-center">
+                                    <button class="cta-banner-btn" id="ctaBannerBtn"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="further-info-section fade-in-section" id="furtherInfo">
+                        <h3 class="further-info-heading"></h3>
+                        <div class="row g-4 justify-content-center further-info-grid">
+
+                            <div class="col-md-12 col-lg">
+                                <div class="fi-video-container hidden">
+                                    <video controls poster="">
+                                        <source src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/UK%20Product%20Videos/Smoothwall%20Monitor.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-footer-actions fade-in-section">
+                        <button class="result-footer-btn print-btn" id="btn-print">Print/save my results</button>
+                        <button class="result-footer-btn reload-btn" id="btn-reload">Start over</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="row" style="display: flex; align-items: center; gap: 20px;"> 
+  <div class="column" style="flex: 1;"> 
+    <a href="https://smoothwall.com" target="_blank" id="smoothwall-logo"> 
+      <img src="https://smoothwall.com/hubfs/smoothwall__byqoria_white.png" alt="Smoothwall" style="max-width: 300px; height: auto;"> 
+    </a> 
+  </div> 
+  
+  <div class="column" style="flex: 1;"> 
+    <a href="https://commsouth.co.uk" target="_blank" id="communications-south"> 
+      <img src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/communications-south.png" style="max-width: 250px; width: 100%; height: auto;" alt="Communications South"> 
+    </a> 
+  </div> 
+</div>
+    </div>
+</div>
