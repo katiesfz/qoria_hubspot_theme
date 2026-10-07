@@ -1,0 +1,16 @@
+.btn-asg-orange {
+  --q-btn-color: #fff;
+  --q-btn-bg: #da5a38;
+  --q-btn-border-color: transparent;
+  --q-btn-hover-color: #fff;
+  --q-btn-hover-bg: rgb(185.3, 76.5, 47.6);
+  --q-btn-hover-border-color: rgba(0, 0, 0, 0.2);
+  --q-btn-focus-shadow-rgb: 255, 255, 255;
+  --q-btn-active-color: #fff;
+  --q-btn-active-bg: rgb(174.4, 72, 44.8);
+  --q-btn-active-border-color: rgba(0, 0, 0, 0.25);
+  --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --q-btn-disabled-color: #fff;
+  --q-btn-disabled-bg: #da5a38;
+  --q-btn-disabled-border-color: transparent;
+}

@@ -1,0 +1,675 @@
+{# =============================================================================
+   smw-monitoring-interactive-alert-board  |  "SMW Monitoring Interactive Alert Board"
+
+   Left column: three stacked buttons, and
+   the block of text belonging to whichever button is selected. Right side is a
+   dark stage of uniform grey dots. Hovering, focusing or tapping a dot opens
+   its alert record beside it.
+
+     1. scatter   — "No monitoring": dots drift. Cards show the filter log in
+                    full: timestamp, device, category, action, policy group.
+     2. organised — "Unmoderated monitoring": dots settle into a grid. Cards
+                    show the monitoring alert in full, all unreviewed.
+     3. moderated — "Human-moderated monitoring": every dot but the concern
+                    blurs back, the concern is red and pulses, and its card
+                    carries the full escalated record.
+
+   Nothing identifies the concern under the first two tabs — no red, no flag.
+   Working out which alert matters from the information given is the exercise.
+
+   EDITABLE FIELDS (HubL variable names, set in fields.json):
+     module.buttons.button_1.button_text      Button 1 text     (and button_2, button_3)
+     module.buttons.button_1.text_below       Button 1 text below
+   Renaming any of these in Design Manager breaks the reference below unless the
+   template is changed to match.
+
+   ONLY THE LEFT COLUMN IS EDITABLE. The alert records, their field labels, the
+   escalated record and the screen-reader strings are all fixed below, so the
+   content of the exercise can't be changed from the page editor. Changing any
+   of it means editing this file.
+
+   Nothing here relies on a theme helper class. The radio inputs and the legend
+   are hidden by .qsf__vh in module.css, and the dots and the pause control take
+   their names from aria-label rather than a hidden span — so a stylesheet that
+   doesn't load can't leave stray labels on the page.
+
+   Card placement is computed here, not measured in JS. Each dot carries a
+   horizontal shift, vertical offset and tail position for both positioned
+   layouts, chosen so the card stays on the stage.
+
+   Below 992px the dots become a readable list instead: a full alert record is
+   wider than a phone stage, so anchoring one to a drifting dot there would only
+   ever clip.
+   ============================================================================= #}
+
+{% set uid = "qsf-" ~ name %}
+
+{# ---- Fixed content. Not editable from the page editor. ---- #}
+{% set alerts = [
+  {
+    "t1_time": "09:14, 14 Sept",
+    "t1_user": "jdoe22 / iPad-Y8-14",
+    "t1_request_label": "Site requested",
+    "t1_request": "adultcontent-hub23.net",
+    "t1_category": "Adult Content",
+    "t1_action": "Blocked",
+    "t1_policy": "KS3 Students",
+    "t2_time": "08:41, 14 Sept",
+    "t2_student": "J. Doe (Y9)",
+    "t2_device": "Chromebook / Microsoft Word",
+    "t2_trigger": "Keyword: “kill”",
+    "t2_snippet": "“…if looks could kill, honestly this homework is going to be the death of me”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Figure of speech in a piece of coursework. Closed at first read.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "11:47, 14 Sept",
+    "t1_user": "Chromebook-206 (guest)",
+    "t1_request_label": "Site requested",
+    "t1_request": "bet-royale247.com",
+    "t1_category": "Gambling",
+    "t1_action": "Blocked",
+    "t1_policy": "Guest Network",
+    "t2_time": "09:03, 14 Sept",
+    "t2_student": "R. Patel (Y11)",
+    "t2_device": "Chromebook / Google Docs",
+    "t2_trigger": "Keyword: “overdose”",
+    "t2_snippet": "“…the 1918 opioid crisis led to widespread overdose deaths among returning soldiers…”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "History coursework on the post-war opioid crisis. Academic use of the keyword.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "14:38, 15 Sept",
+    "t1_user": "rpatel / iPad-Y10-02",
+    "t1_request_label": "Search term (Bing)",
+    "t1_request": "“how to buy a knife online no ID”",
+    "t1_category": "Weapons/Age-restricted goods",
+    "t1_action": "Results page blocked",
+    "t1_policy": "KS4 Students",
+    "t2_time": "10:15, 14 Sept",
+    "t2_student": "M. Wilson (Y7)",
+    "t2_device": "iPad / Notes app",
+    "t2_trigger": "Keyword: “cutting”",
+    "t2_snippet": "“Miss said we're cutting the class trip short on Friday”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "“Cutting” used about a shortened trip. No self-harm context anywhere in the capture.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "10:58, 18 Sept",
+    "t1_user": "10.4.8.41 (unidentified)",
+    "t1_request_label": "Site requested",
+    "t1_request": "pro-ana-community.net",
+    "t1_category": "Self-Harm/Eating Disorder",
+    "t1_action": "Blocked",
+    "t1_policy": "All Users",
+    "t2_time": "11:22, 14 Sept",
+    "t2_student": "T. Brooks (Y10)",
+    "t2_device": "Chromebook / Gmail",
+    "t2_trigger": "Keyword phrase: “can't take it anymore”",
+    "t2_snippet": "“I literally can't take it anymore, Mr Evans set SO much homework”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Frustration about workload, addressed to a friend. No distress indicators either side.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "09:47, 14 Sept",
+    "t1_user": "jdoe22 / iPad-Y8-14",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "“free adult videos”",
+    "t1_category": "Adult Content",
+    "t1_action": "Results page blocked",
+    "t1_policy": "KS3 Students",
+    "t2_time": "13:08, 14 Sept",
+    "t2_student": "S. Ahmed (Y10)",
+    "t2_device": "Chromebook / Google Chat",
+    "t2_trigger": "Keyword: “starve”",
+    "t2_snippet": "“I'm literally going to starve, lunch isn't for another hour”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Hyperbole about lunchtime. No eating-related flags on this student's record.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "15:22, 16 Sept",
+    "t1_user": "10.4.19.203 (unidentified)",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "“deepfake app free”",
+    "t1_category": "AI Image Manipulation",
+    "t1_action": "Results page blocked",
+    "t1_policy": "KS4 Students",
+    "t2_time": "10:18, 16 Sept",
+    "t2_student": "C. Mensah (Y11)",
+    "t2_device": "Laptop / Microsoft Teams chat",
+    "t2_trigger": "Phrase match: “shut up and go away”",
+    "t2_snippet": "“shut up and go away I'm trying to concentrate!!”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Short-tempered message during a lesson. Both pupils carried on normally afterwards.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "08:55, 15 Sept",
+    "t1_user": "mwilson / Laptop-STF-09",
+    "t1_request_label": "Site requested",
+    "t1_request": "roblox.com",
+    "t1_category": "Gaming",
+    "t1_action": "Blocked (school hours)",
+    "t1_policy": "KS2 Students",
+    "t2_time": "09:05, 16 Sept",
+    "t2_student": "H. Ahmed (Y9)",
+    "t2_device": "Chromebook / WhatsApp Web",
+    "t2_trigger": "Keyword: “idiot”",
+    "t2_snippet": "“you're such an idiot lol I can't believe you forgot your kit again”",
+    "t2_risk": "Low",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Banter between friends, reciprocated in the same thread. No bullying pattern.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "10:20, 16 Sept",
+    "t1_user": "akhan / Chromebook-118",
+    "t1_request_label": "Site requested",
+    "t1_request": "character.ai",
+    "t1_category": "AI Companion Platform",
+    "t1_action": "Blocked",
+    "t1_policy": "KS3 Students",
+    "t2_time": "12:50, 14 Sept",
+    "t2_student": "A. Khan (Y9)",
+    "t2_device": "Chromebook / Google Docs",
+    "t2_trigger": "Keyword: “gun”",
+    "t2_snippet": "“…he pulls the gun on stage as the lights dim…”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Stage direction in a drama script for a set coursework task.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "11:40, 17 Sept",
+    "t1_user": "dsingh / Laptop-STF-22",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "“unblock school wifi proxy”",
+    "t1_category": "Circumvention",
+    "t1_action": "Results page blocked",
+    "t1_policy": "KS4 Students",
+    "t2_time": "09:40, 15 Sept",
+    "t2_student": "E. Novak (Y10)",
+    "t2_device": "Chromebook / Instagram DM",
+    "t2_trigger": "AI sentiment flag: distress language",
+    "t2_snippet": "“I feel like I'm drowning in coursework this week”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "Pastoral follow-up",
+    "t3_note": "Workload stress, not risk of harm. Passed to the head of year for a check-in.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "13:05, 15 Sept",
+    "t1_user": "lgreen / iPad-Y7-31",
+    "t1_request_label": "Site requested",
+    "t1_request": "tiktok.com",
+    "t1_category": "Social Media",
+    "t1_action": "Blocked (school hours)",
+    "t1_policy": "KS3 Students",
+    "t2_time": "09:21, 15 Sept",
+    "t2_student": "L. Green (Y7)",
+    "t2_device": "iPad / Google Slides",
+    "t2_trigger": "Keyword: “blood”",
+    "t2_snippet": "“…the blood vessels carry oxygen around the body…”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Science homework on circulation. Keyword match with no behavioural context.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "09:38, 16 Sept",
+    "t1_user": "Chromebook-114 (guest)",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "“vape pens next day delivery”",
+    "t1_category": "Age-restricted goods",
+    "t1_action": "Results page blocked",
+    "t1_policy": "Guest Network",
+    "t2_time": "14:02, 16 Sept",
+    "t2_student": "B. Osei (Y10)",
+    "t2_device": "Chromebook / Google Docs",
+    "t2_trigger": "Keyword: “hate”",
+    "t2_snippet": "“I hate how long this essay has to be”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Complaint about essay length, written in the essay itself.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "14:12, 17 Sept",
+    "t1_user": "bosei / Laptop-STF-04",
+    "t1_request_label": "Site requested",
+    "t1_request": "1337-torrents.to",
+    "t1_category": "File Sharing",
+    "t1_action": "Blocked",
+    "t1_policy": "KS4 Students",
+    "t2_time": "11:35, 17 Sept",
+    "t2_student": "H. Chen (Y10)",
+    "t2_device": "Chromebook / Google Chat",
+    "t2_trigger": "Keyword: “skinny”",
+    "t2_snippet": "“you look so skinny in that photo!!”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Compliment between friends. Checked against the record — nothing else flagged.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "08:47, 18 Sept",
+    "t1_user": "hchen / Chromebook-092",
+    "t1_request_label": "Search term (Bing)",
+    "t1_request": "“how to lose 10kg in a week”",
+    "t1_category": "Diet/Weight Loss",
+    "t1_action": "Allowed with warning",
+    "t1_policy": "KS4 Students",
+    "t2_time": "08:58, 18 Sept",
+    "t2_student": "D. Singh (Y11)",
+    "t2_device": "Chromebook / Microsoft Word",
+    "t2_trigger": "Keyword: “attack”",
+    "t2_snippet": "“…the attack on Pearl Harbor drew the US into the war…”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "History coursework. Keyword match on a historical event.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "12:26, 14 Sept",
+    "t1_user": "10.4.19.88 (unidentified)",
+    "t1_request_label": "Site requested",
+    "t1_request": "omegle-alternatives.org",
+    "t1_category": "Anonymous Chat",
+    "t1_action": "Blocked",
+    "t1_policy": "All Users",
+    "t2_time": "13:19, 14 Sept",
+    "t2_student": "S. Ahmed (Y10)",
+    "t2_device": "Chromebook / Google Chat",
+    "t2_trigger": "Keyword: “dead”",
+    "t2_snippet": "“I'm dead 😂 that's the funniest thing I've seen all week”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Common slang, used about something funny. Cleared on sight.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "15:51, 16 Sept",
+    "t1_user": "tbrooks / iPad-Y10-07",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "“gcse chemistry past papers”",
+    "t1_category": "Education",
+    "t1_action": "Allowed",
+    "t1_policy": "KS4 Students",
+    "t2_time": "10:07, 16 Sept",
+    "t2_student": "J. Doe (Y9)",
+    "t2_device": "Chromebook / YouTube",
+    "t2_trigger": "Keyword: “fight”",
+    "t2_snippet": "“school fight compilation”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "Behaviour referral",
+    "t3_note": "Searched for fight videos, not involved in one. Passed to the head of year.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "11:09, 17 Sept",
+    "t1_user": "mwilson / Laptop-STF-09",
+    "t1_request_label": "Site requested",
+    "t1_request": "crypto-quickwin.io",
+    "t1_category": "Gambling/Finance",
+    "t1_action": "Blocked",
+    "t1_policy": "KS2 Students",
+    "t2_time": "15:33, 15 Sept",
+    "t2_student": "C. Mensah (Y11)",
+    "t2_device": "Chromebook / Gmail",
+    "t2_trigger": "Phrase match: “meet me after school”",
+    "t2_snippet": "“meet me after school and I'll give you the textbook back”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Arranging to return a borrowed textbook. Both pupils are in the same class.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "10:41, 15 Sept",
+    "t1_user": "enovak / Chromebook-133",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "“first aid for burns”",
+    "t1_category": "Health",
+    "t1_action": "Allowed",
+    "t1_policy": "KS4 Students",
+    "t2_time": "09:52, 17 Sept",
+    "t2_student": "E. Novak (Y10)",
+    "t2_device": "Chromebook / Google Docs",
+    "t2_trigger": "Keyword: “pills”",
+    "t2_snippet": "“…she takes the pills without reading the label, which is where the play turns…”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Plot summary for a set text. Academic context confirmed by the teacher.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "09:12, 18 Sept",
+    "t1_user": "10.4.8.41 (unidentified)",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "[redacted — self-harm method search]",
+    "t1_category": "Self-Harm",
+    "t1_action": "Results page blocked",
+    "t1_policy": "All Users",
+    "t2_time": "10:30, 15 Sept",
+    "t2_student": "K. Lowe (Y11)",
+    "t2_device": "Chromebook / Google Chat",
+    "t2_trigger": "Keyword phrase + AI sentiment flag",
+    "t2_snippet": "“I hurt myself again last night, I don't know why I keep doing it”",
+    "t2_risk": "High",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "Escalated",
+    "t3_note": "Contacted school's Safeguarding Contact by phone",
+    "is_concern": true
+  },
+  {
+    "t1_time": "09:29, 16 Sept",
+    "t1_user": "Chromebook-201 (guest)",
+    "t1_request_label": "Site requested",
+    "t1_request": "freeproxy-uk.net",
+    "t1_category": "Circumvention",
+    "t1_action": "Blocked",
+    "t1_policy": "Guest Network",
+    "t2_time": "12:44, 18 Sept",
+    "t2_student": "T. Brooks (Y10)",
+    "t2_device": "Chromebook / WhatsApp Web",
+    "t2_trigger": "Keyword: “hurt”",
+    "t2_snippet": "“my ankle still hurts from football on Tuesday”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Sports injury, already logged with the school nurse that week.",
+    "is_concern": false
+  },
+  {
+    "t1_time": "13:44, 18 Sept",
+    "t1_user": "klowe / Chromebook-140",
+    "t1_request_label": "Search term (Google)",
+    "t1_request": "“is it normal to feel numb all the time”",
+    "t1_category": "Mental Health",
+    "t1_action": "Allowed with warning",
+    "t1_policy": "KS4 Students",
+    "t2_time": "14:26, 14 Sept",
+    "t2_student": "A. Khan (Y9)",
+    "t2_device": "iPad / Notes app",
+    "t2_trigger": "Keyword: “alone”",
+    "t2_snippet": "“I just want to be left alone for five minutes”",
+    "t2_risk": "Medium",
+    "t2_status": "Unreviewed — sent to DSL",
+    "t3_outcome": "No action required",
+    "t3_note": "Written during a busy lesson. No other indicators on the record.",
+    "is_concern": false
+  }
+] %}
+
+{% set escalated = {
+  "title": "Self-harm risk — escalated",
+  "message_label": "Moderator message",
+  "message": "Message to a friend describes current self-harm intent in the first person. Language is direct rather than hypothetical or academic. Assessed as a genuine and current risk to the student's safety.",
+  "student": "K. Lowe (Y11)", "device": "Chromebook / Google Chat",
+  "event": "10:30, 15 Sept — keyword phrase + AI sentiment flag",
+  "screenshot": "Captured at time of event (attached in Monitor dashboard)",
+  "captures": "Related activity reviewed from 6 hours either side of the event",
+  "grading": "High",
+  "escalation": "Contacted school's Safeguarding Contact by phone"
+} %}
+
+{% set labels = {
+  "timestamp": "Timestamp", 
+  "user": "User / device", 
+  "category": "Category",
+  "action": "Action", 
+  "policy": "Policy group", 
+  "student": "Student",
+  "device": "Device / app", 
+  "trigger": "Trigger", 
+  "snippet": "Content snippet",
+  "risk": "Risk flag", 
+  "status": "Status", 
+  "outcome": "Status",
+  "note": "Moderator note", 
+  "esc_student": "Student", 
+  "esc_device": "Device / app",
+  "esc_event": "Event detected", 
+  "esc_screenshot": "Screenshot",
+  "esc_captures": "Contextual captures", 
+  "esc_grading": "AI risk grading",
+  "esc_escalation": "Escalation"
+} %}
+
+{# Screen-reader only. Every dot looks identical, so the accessible name is a
+   position, and the record is read out from aria-describedby on focus. #}
+{% set legend_text = "Choose a monitoring method" %}
+{% set dot_label   = "Alert" %}
+{% set nojs_note   = "This comparison needs JavaScript. Here is what a human moderator found behind each alert:" %}
+{% set pause_label  = "Pause the moving alerts" %}
+{% set resume_label = "Resume the moving alerts" %}
+
+{% set total = alerts|length %}
+{% set cols  = 5 %}
+{% set rows  = (total + cols - 1) // cols %}
+
+{# The three buttons, in fixed order. Each pairs its own text with itself, so
+   the two can't drift apart. HubL variables come from the "buttons" group in
+   fields.json: module.buttons.button_1.button_text and .text_below, and so on. #}
+{% set buttons = [
+  { "key": "scatter",   "label": module.buttons.button_1.button_text, "text": module.buttons.button_1.text_below },
+  { "key": "organised", "label": module.buttons.button_2.button_text, "text": module.buttons.button_2.text_below },
+  { "key": "moderated", "label": module.buttons.button_3.button_text, "text": module.buttons.button_3.text_below }
+] %}
+
+<section class="qsf"
+         id="{{ uid }}"
+         data-qsf
+         data-qsf-state="scatter"
+         style="--qsf-rows: {{ rows }}; --qsf-cols: {{ cols }};">
+  <div class="content-wrapper">
+    <div class="row-fluid">
+      <div class="span12">
+
+        <div class="qsf__layout">
+
+          <div class="qsf__aside">
+            {# Stacked buttons. A native radio group, so grouping, arrow-key
+               navigation and keyboard operability all come for free. #}
+            <fieldset class="qsf__toggle">
+              <legend class="qsf__vh">{{ legend_text }}</legend>
+              <div class="qsf__toggle-options">
+                {% for button in buttons %}
+                  <input class="qsf__radio-old qsf__vh-old btn-check"
+                         type="radio"
+                         name="{{ uid }}-state"
+                         id="{{ uid }}-state-{{ loop.index }}"
+                         value="{{ button.key }}"
+                         data-qsf-state-input
+                         {{ "checked" if loop.first }}>
+                  <label class="qsf__radio-label-old btn qsf__state-btn" for="{{ uid }}-state-{{ loop.index }}">{{ button.label }}</label>
+                {% endfor %}
+              </div>
+            </fieldset>
+
+          </div>
+
+          <div class="qsf__panel">
+            <div class="qsf__stage">
+            {# WCAG 2.2.2 — the drifting tier moves for longer than 5s, so it
+               needs a way to stop it. Icon only, tucked into the corner, with
+               the name carried in text for screen readers. Hidden until JS runs
+               because it does nothing without it, and hidden by CSS in the two
+               still tiers and when the visitor prefers reduced motion. #}
+            <button class="qsf__pause"
+                    type="button"
+                    hidden
+                    data-qsf-motion
+                    aria-label="{{ pause_label }}"
+                    title="{{ pause_label }}"
+                    data-qsf-pause-label="{{ pause_label }}"
+                    data-qsf-resume-label="{{ resume_label }}">
+              <i class="fa-solid fa-pause qsf__pause-icon qsf__pause-icon--pause" aria-hidden="true"></i>
+              <i class="fa-solid fa-play qsf__pause-icon qsf__pause-icon--play" aria-hidden="true"></i>
+            </button>
+
+            <ul class="qsf__list" role="list">
+              {% for alert in alerts %}
+                {% set col   = (loop.index0 % cols) + 1 %}
+                {% set row   = (loop.index0 // cols) + 1 %}
+                {% set gx    = ((col - 0.5) / cols) * 100 %}
+                {% set gy    = ((row - 0.5) / rows) * 100 %} {# 12.5, 37.5,  #}
+                {# Scatter coordinates: deterministic pseudo-random from the
+                   index, held inside 16–84% so cards stay on the stage. #}
+                {% set sx    = 16 + ((loop.index0 * 37) % 68) %}
+                {% set sy    = 16 + ((loop.index0 * 53) % 68) %}
+
+                {# Card placement. Horizontal: shift inwards past 38%/62% of the
+                   stage. Vertical: below the dot in the upper half, above it in
+                   the lower half. #}
+                {% set btx_s  = "-15%" if sx < 38 else ("-85%" if sx > 62 else "-50%") %}
+                {% set btx_g  = "-15%" if gx < 38 else ("-85%" if gx > 62 else "-50%") %}
+                {% set bty_s  = "var(--qsf-card-gap)" if sy < 50 else "calc(-100% - var(--qsf-card-gap))" %}
+                {% set bty_g  = "var(--qsf-card-gap)" if gy < 50 else "calc(-100% - var(--qsf-card-gap))" %}
+                {% set tail_s = "0" if sy < 50 else "calc(100%)" %}
+                {% set tail_g = "0" if gy < 50 else "calc(100%)" %}
+
+                <li class="qsf__item qsf__item--drift-{{ loop.index0 % 8 + 1 }}{{ " qsf__item--concern" if alert.is_concern }}"
+                    style="--qsf-x: {{ sx }}%; --qsf-y: {{ sy }}%; --qsf-gx: {{ gx }}%; --qsf-gy: {{ gy }}%; --qsf-z: {{ loop.index0 % 5 + 1 }}; --qsf-delay: -{{ (loop.index0 * 1.7)|round(1) }}s; --qsf-btx-s: {{ btx_s }}; --qsf-btx-g: {{ btx_g }}; --qsf-bty-s: {{ bty_s }}; --qsf-bty-g: {{ bty_g }}; --qsf-tail-s: {{ tail_s }}; --qsf-tail-g: {{ tail_g }};">
+
+                  {# A button, not a div: reachable and operable by keyboard, and
+                     tappable on touch where there is no hover. #}
+                  <button class="qsf__dot{{ " qsf__dot--concern" if alert.is_concern }}"
+                          type="button"
+                          id="{{ uid }}-dot-{{ loop.index }}"
+                          aria-label="{{ dot_label }} {{ loop.index }}"
+                          aria-describedby="{{ uid }}-card-{{ loop.index }}"
+                          data-qsf-dot
+                          data-qsf-index="{{ loop.index }}">
+                  </button>
+
+                  <div class="qsf__card"
+                       id="{{ uid }}-card-{{ loop.index }}"
+                       data-qsf-card
+                       data-qsf-index="{{ loop.index }}">
+
+                    {# Tab 1: the filter log, every field kept. #}
+                    <div class="qsf__level" data-qsf-level="scatter">
+                      <dl class="qsf__rows">
+                        <dt>{{ labels.timestamp }}</dt><dd>{{ alert.t1_time }}</dd>
+                        <dt>{{ labels.user }}</dt><dd>{{ alert.t1_user }}</dd>
+                        <dt>{{ alert.t1_request_label }}</dt>
+                        <dd class="qsf__value--strong">{{ alert.t1_request }}</dd>
+                        <dt>{{ labels.category }}</dt><dd>{{ alert.t1_category }}</dd>
+                        <dt>{{ labels.action }}</dt><dd>{{ alert.t1_action }}</dd>
+                        <dt>{{ labels.policy }}</dt><dd>{{ alert.t1_policy }}</dd>
+                      </dl>
+                    </div>
+
+                    {# Tab 2: the monitoring alert, every field kept. #}
+                    <div class="qsf__level" data-qsf-level="organised">
+                      <dl class="qsf__rows">
+                        <dt>{{ labels.timestamp }}</dt><dd>{{ alert.t2_time }}</dd>
+                        <dt>{{ labels.student }}</dt><dd>{{ alert.t2_student }}</dd>
+                        <dt>{{ labels.device }}</dt><dd>{{ alert.t2_device }}</dd>
+                        <dt>{{ labels.trigger }}</dt><dd>{{ alert.t2_trigger }}</dd>
+                        <dt>{{ labels.snippet }}</dt>
+                        <dd class="qsf__value--quote">{{ alert.t2_snippet }}</dd>
+                        <dt>{{ labels.risk }}</dt>
+                        <dd><span class="qsf__risk qsf__risk--{{ alert.t2_risk|lower }}">{{ alert.t2_risk }}</span></dd>
+                        <dt>{{ labels.status }}</dt><dd>{{ alert.t2_status }}</dd>
+                      </dl>
+                    </div>
+
+                    {# Tab 3: the moderator's outcome. The escalated alert gets
+                       the full record — it is the payoff, so it gets the room. #}
+                    <div class="qsf__level{{ " qsf__level--detail" if alert.is_concern }}" data-qsf-level="moderated">
+                      {% if alert.is_concern %}
+                        <span class="qsf__detail-title">
+                          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>{{ escalated.title }}
+                        </span>
+                        <p class="qsf__detail-label">{{ escalated.message_label }}</p>
+                        <div class="qsf__detail-message">
+                          <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+                          <p>{{ escalated.message }}</p>
+                        </div>
+                        <dl class="qsf__rows">
+                          <dt>{{ labels.esc_student }}</dt><dd>{{ escalated.student }}</dd>
+                          <dt>{{ labels.esc_device }}</dt><dd>{{ escalated.device }}</dd>
+                          <dt>{{ labels.esc_event }}</dt><dd>{{ escalated.event }}</dd>
+                          <dt>{{ labels.esc_screenshot }}</dt><dd>{{ escalated.screenshot }}</dd>
+                          <dt>{{ labels.esc_captures }}</dt><dd>{{ escalated.captures }}</dd>
+                          <dt>{{ labels.esc_grading }}</dt>
+                          <dd><span class="qsf__risk qsf__risk--high">{{ escalated.grading }}</span></dd>
+                          <dt>{{ labels.esc_escalation }}</dt>
+                          <dd class="qsf__value--strong">{{ escalated.escalation }}</dd>
+                        </dl>
+                      {% else %}
+                        <dl class="qsf__rows">
+                          <dt>{{ labels.outcome }}</dt>
+                          <dd class="qsf__value--strong">{{ alert.t3_outcome }}</dd>
+                          <dt>{{ labels.note }}</dt><dd>{{ alert.t3_note }}</dd>
+                        </dl>
+                      {% endif %}
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+              </ul>
+            </div>
+
+            {# Each button's own description, under the interactive area. The
+               title is the button's own text, so the two can never disagree. #}
+            <div class="qsf__below"
+                 style="">
+              {% for button in buttons %}
+                {% if button.text %}
+                  <div class="qsf__below-text" data-qsf-below="{{ button.key }}">
+                    <p class="qsf__below-title">{{ button.label }}</p>
+                    <div class="qsf__below-body">{{ button.text }}</div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        {# Without JS the dots can't be positioned or opened, so the moderated
+           outcome is published as plain text instead. #}
+        <noscript>
+          <div class="qsf__noscript">
+            <p>{{ nojs_note }}</p>
+            <ul>
+              {% for alert in alerts %}
+                <li>{{ alert.t1_request }} — {{ alert.t3_outcome }}: {{ alert.t3_note }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </noscript>
+
+      </div>
+    </div>
+  </div>
+</section>

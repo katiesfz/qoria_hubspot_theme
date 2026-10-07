@@ -1,9 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING" ],
-  "host_template_types" : [ "PAGE", "BLOG_LISTING" ],
-  "module_id" : 144006050711,
-  "label" : "Hero",
-  "icon" : "../../images/module-icons/hero-module-icon.svg",
-  "is_available_for_new_content" : true
-}

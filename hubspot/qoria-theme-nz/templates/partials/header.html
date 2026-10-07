@@ -4,36 +4,36 @@ label: Linewize NZ Header
 -->
 
 
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/brands.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/light.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/regular.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/solid.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/thin.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/brands.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/fontawesome.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/light.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/regular.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/solid.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/thin.min.css")) }}
 
   
   {% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
 
-  {% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+  {% module "navigation" path="../../modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
   {% set breakpoint = widget_data.navigation.breakpoint %}
       {% if breakpoint == "always" %}
           {% set navbarExpand = "" %}
       {% elif breakpoint == "never" %}
           {% set navbarExpand = "navbar-expand" %}
       {% else %}
-          {% set navbarExpand = "navbar-expand-" + breakpoint %}
+          {% set navbarExpand = "navbar-expand-" ~ breakpoint %}
       {% endif %}
     
-  {# {% module "module_16790276570878" path="/qoria-theme/modules/notification-bar", label="Notifications", no_wrapper=True %} -#}
+  {# {% module "module_16790276570878" path="/q-theme/modules/notification-bar", label="Notifications", no_wrapper=True %} -#}
 
   <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
     <nav class="navbar {{navbarExpand}}">
       <div class="container-xxl position-relative"> 
-        {% module "logo" path="/qoria-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+        {% module "logo" path="../../modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
           <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
           {% if widget_data.show_language_switcher.value == true %}
             <div class="d-flex d-{{breakpoint}}-none">          
-              {% module "language-switcher" path="/qoria-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False %}
+              {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False %}
             </div>
           {% endif %}
 
@@ -42,28 +42,28 @@ label: Linewize NZ Header
         </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
-          {% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
+          {% module "navigation" path="../../modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
             <div class="navbar-search d-flex ms-{{breakpoint}}-6 mb-3 mb-{{breakpoint}}-0">
-              {% module "search" path="/qoria-theme/modules/search_input", label="Search" no_wrapper=true %}
+              {% module "search" path="../../modules/search_input", label="Search" no_wrapper=true %}
             </div>
-            {% module "cta" path="/qoria-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
+            {% module "cta" path="../../modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
 
             {% if widget_data.cta.link.url != "" %}
               <div class="d-flex d-{{breakpoint}}-none">
-              {% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
+              {% module "cta" path="../../modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
               </div>
             {% endif %}
         </div>
         {% if widget_data.cta.link.url != "" %}
           <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-6">
-          {% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
+          {% module "cta" path="../../modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
 
           </div>
         {% endif %}
         
           {% if widget_data.show_language_switcher.value == true %}
             <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-            {% module "language-switcher" path="/qoria-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}" %}
+            {% module "language-switcher" path="../../modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}" %}
             </div>
           {% endif %}
       </div>

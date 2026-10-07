@@ -1,0 +1,167 @@
+{
+  "crmobjectproperty_field.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.label" : {
+    "message" : "CRM object property",
+    "description" : null,
+    "placeholders" : null
+  },
+  "crmobjectproperty_field.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "follow_up_type_automation.label" : {
+    "message" : "Legg til arbeidsflyt",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.help_text" : {
+    "message" : "Hvis du vil sende en e-post for å følge opp, må du passe på at innstillingen \"Angi kontakter opprettet som markedsføringskontakter\" er slått på. Du kan administrere dette i alternativene. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Finn ut mer</a>",
+    "description" : "",
+    "placeholders" : null
+  },
+  "follow_up_type_simple.label" : {
+    "message" : "Send oppføringsmail",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.default.message" : {
+    "message" : "Takk for at du sendte inn skjemaet.",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form.label" : {
+    "message" : "Skjema",
+    "description" : "",
+    "placeholders" : null
+  },
+  "form_follow_ups_workflow_id.label" : {
+    "message" : "Arbeidsflyt",
+    "description" : "",
+    "placeholders" : null
+  },
+  "name" : {
+    "message" : "form",
+    "description" : null,
+    "placeholders" : null
+  },
+  "notifications_are_overridden.label" : {
+    "message" : "Send skjemavarslinger til spesifiserte e-postadresser i stedet for skjemastandardene",
+    "description" : "",
+    "placeholders" : null
+  },
+  "notifications_override_email_addresses.label" : {
+    "message" : "E-postadresser",
+    "description" : "",
+    "placeholders" : null
+  },
+  "override_values.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.label" : {
+    "message" : "Field group",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.label" : {
+    "message" : "Property ID",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_id.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.default" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.inline_help_text" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.label" : {
+    "message" : "Value",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.placeholder" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "override_values.property_value.validation_regex" : {
+    "message" : "",
+    "description" : null,
+    "placeholders" : null
+  },
+  "sfdc_campaign.label" : {
+    "message" : "Salesforce-kampanje",
+    "description" : "",
+    "placeholders" : null
+  },
+  "simple_email_for_live_id.label" : {
+    "message" : "E-post",
+    "description" : "",
+    "placeholders" : null
+  }
+}

@@ -1,0 +1,223 @@
+{% require_css %}
+  <style>
+  .card-header-cap {position: relative;}
+  .card-header-cap:after {
+    content: "";
+    background-image: url({{ get_asset_url('/q-theme/images/qoria/q_tail_01.svg') }});
+    background-position: calc(100% + 34px) calc(100% + 32px);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 50%;
+}
+  {% scope_css %}
+    .card {
+      --q-card-spacer-y: 1rem;
+      --q-card-spacer-x: 1rem;
+      {% if module.styles.background.background_type == "color" and module.styles.background.color.color %}
+        background-color: rgba({{ module.styles.background.color.color|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+      {% elif module.styles.background.background_type == "gradient" %}
+        background: {{ module.styles.background.gradient.css }};
+      {% elif module.styles.background.background_type == "image" %}
+        background-image: url({{ module.styles.background.image.src }}); 
+        background-size: cover;"
+      {% endif %}
+      border: 2px solid #22475c;
+    }
+    
+    .indicator-light {
+      border: 0.25px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 0 0 currentColor;
+      transition: box-shadow .1s ease-in-out, background-color .1s ease-in-out;
+    }
+
+    .indicator-light.on {
+      background-color: currentColor;
+      box-shadow: 0 0 8px 0 currentColor;
+    }
+
+  {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+{% macro switch(colour, position) %}
+  <div class="ms-auto mt-3 asg-switch asg-switch-{{colour}}">
+    <input type="checkbox" role="switch" id="asgSwitch{{ module.advanced.custom_id if module.advanced.custom_id else "{{name}}" }}-{{loop.index}}" {{"checked" if position}}>
+    <label for="asgSwitch{{ module.advanced.custom_id if module.advanced.custom_id else "{{name}}" }}-{{loop.index}}"></label>
+  </div>
+{% endmacro %}
+
+{% macro card_body()  %}
+
+  {% if card.on_off_switch && card.on_off_switch_position %}
+    {% set switched = true %}
+  {% else %}
+    {% set switched = false %}
+  {% endif %}
+
+  {% if card.text %}
+    <div class="mt-3 asg-text-grey-light card-text flex-grow-1 {{"d-none" if switched}}">
+    {{ card.text }}
+    </div>
+  {% endif %}
+  {% if card.text_switched %}
+    <div class="mt-3 asg-text-grey-light card-text card-text-switched flex-grow-1 {{"d-none" if !switched }}">
+    {{ card.text_switched }}
+    </div>
+  {% endif %}
+  {% if card.link.url.href %}
+    {% if card.cta_style %}
+      {% if card.cta_style != "text-" %}
+        {% set ctaClasses = card.cta_size ~ " " ~ card.cta_style ~ card.cta_colour ~ " mt-3" %}
+      {% else %}
+        {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
+      {% endif %}
+    {% else %}
+      {% set ctaClasses = "text-reset text-decoration-none fw-semibold mt-2" %}
+    {% endif %}
+    {% if (card.cta_alignment) && (card.cta_alignment != "inherit") %}
+      {% if card.cta_alignment == "center" %}
+        {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+      {% elif card.cta_alignment == "end" %}
+        {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+      {% elif card.cta_alignment == "start" %}
+        {% set ctaClasses = ctaClasses ~ " me-auto" %}
+      {% endif %}
+    {% else %}
+      {% if module.styles.textalignment == "center" %}
+        {% set ctaClasses = ctaClasses ~ " mx-auto" %}
+      {% elif module.styles.textalignment == "end" %}
+        {% set ctaClasses = ctaClasses ~ " ms-auto" %}
+      {% elif module.styles.textalignment == "start" %}
+        {% set ctaClasses = ctaClasses ~ " me-auto" %}
+      {% endif %}
+    {% endif %}
+
+    <a href="{{ "#" if card.trigger_modal else card.link.url.href|render}}" 
+    class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
+    {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
+    {% if card.download %}
+      {% if card.download_file %}
+        download="{{card.download_file}}"
+      {% else %}
+          download
+      {% endif %}
+    {% endif %}
+    {% if card.trigger_modal %}
+          data-bs-toggle="modal"
+        data-bs-target="#{{ card.modal_id }}"
+      {% endif %}
+    >
+    {% if (card.link_label|striptags) is string_containing "->" %}
+      {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
+    {% elif (card.link_label|striptags) is string_containing " >" %}
+      {% set linkLabel = card.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
+    {% else %}
+      {% set linkLabel = card.link_label %}
+    {% endif %}
+    {{linkLabel}}</a>
+  {% endif %}
+
+{% endmacro %}
+
+<div class="container-fluid g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}" id="{{ module.advanced.custom_id if module.advanced.custom_id else "cards-{{name}}" }}" {{module.advanced.additional_markup}}>
+<div class="row row-cols-{{module.styles.responsive.mobile.cards}} row-cols-md-{{module.styles.responsive.tablet.cards}} row-cols-lg-{{module.styles.responsive.desktop.cards}} g-3 justify-content-{{module.styles.row_alignment}}">
+  {% for card in module.card %}
+
+    <div class="col {{ card.advanced.col_classes }}">
+      <div class="card {{"animate-card" if module.styles.animate_in }} h-100 d-flex flex-column {{ card.advanced.card_classes }} {{ module.styles.shadow }}">
+        <div class="card-body text-{{ module.styles.textalignment }} d-flex flex-column">
+
+          {% if card.preheader_toggle %}
+            <div class="d-flex align-items-center mb-3 justify-content-between position-relative">
+              {% if card.pre_header != "" %}
+                <div class="{{card.preheader_size if card.preheader_size else "h6"}} mb-0 fw-normal font-monospace asg-text-grey-light">{{ card.pre_header }}</div>
+              {% endif %}
+              {% if card.on_off_switch %}
+                {% if card.on_off_switch_position %}
+                  {% set switched = true %}
+                {% else %}
+                  {% set switched = false %}
+                {% endif %}
+                <span class="d-block rounded-circle indicator-light text-{{ card.accent_colour }} position-absolute top-0 end-0 {{ "on" if switched }}" style="width: 10px; height: 10px;"></span>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if card.title != "" %}
+            <h5 class="text-{{module.styles.textalignment}} {{ card.title_size if card.title_size else "h5" }} mb-2 asg-text-tan-light">{{ card.title }}</h5>
+          {% endif %}
+
+          {{ card_body() }}
+
+          {% if card.image.src %}
+            {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="{{ card.image.loading }}"' : '' %}
+            <div>
+              <img src="{{ resize_image_url(card.image.src, 0, 0, card.image.width) }}" class="img-fluid mb-3 {{ "position-relative card-image-overlap card-image-overlap-margin" if card.image_overlap }}" alt="{{ card.image.alt }}" style="{{ "margin-top: -" ~ card.overlap ~ "rem;" if card.image_overlap }}" {{loadingAttr}}>
+            </div>
+          {% endif %}
+          {% if card.on_off_switch %}
+            {{ switch(card.accent_colour, card.on_off_switch_position) }}
+          {% endif %}
+         </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+</div>
+
+<script>
+  const asgSwitches = document.querySelectorAll('.asg-switch input[type="checkbox"]');
+
+  
+  asgSwitches.forEach(switchEl => {
+    switchEl.addEventListener('change', function() {
+      const card = this.closest('.card');
+      if (!card) return;
+      
+      const normalText = card.querySelector('.card-text:not(.card-text-switched)');
+      const switchedText = card.querySelector('.card-text-switched');
+      const indicator = card.querySelector('.indicator-light');
+
+      if (this.checked) {
+        if (normalText) normalText.classList.add('d-none');
+        if (switchedText) switchedText.classList.remove('d-none');
+        if (indicator) indicator.classList.add('on');
+      } else {
+        if (normalText) normalText.classList.remove('d-none');
+        if (switchedText) switchedText.classList.add('d-none');
+        if (indicator) indicator.classList.remove('on');
+      }
+
+      // Check if ALL checkboxes are checked
+      const allChecked = Array.from(asgSwitches).every(cb => cb.checked);
+      const targetElement = document.querySelector('.activated-button');
+      if (targetElement) {
+        targetElement.classList.toggle('btn-asg-orange', allChecked);
+        targetElement.classList.toggle('btn-asg-blue-dark', !allChecked);
+      }
+    });
+  });
+</script>
+
+
+{% if module.styles.animate_in %}
+  <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+
+      {% if module.styles.no_animate_on_mobile != false %}
+          if (Math.max(window.screen.width, window.screen.height) > 768) {
+      {% endif %}
+          {% if module.styles.animate_in %}
+              cardAnimateHandler();
+          {% endif %}
+
+      {% if module.styles.no_animate_on_mobile != false %}
+          }
+      {% endif %}
+      });
+  </script>
+{% endif %}

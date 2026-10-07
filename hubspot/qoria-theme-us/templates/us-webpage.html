@@ -1,11 +1,12 @@
 <!--
   templateType: page
-  isAvailableForNewContent: true
-  label: Linewize US WP
+  isAvailableForNewContent: false
+  label: Webpage
   screenshotPath: ../../images/template-previews/landing-page.png
 -->
-{% extends "./layouts/base.html" %}
+{% extends "./layouts/base-us.html" %}
 
+{% set header_style = {"background": "default", "search": true, "language_switcher": true, "logo": true, "logo_inverted": false, "cta": true, "navigation": true} %}
 
 {% block body %}
 {% dnd_area "dnd_area"
@@ -14,16 +15,12 @@ class="main p-0 overflow-hidden"
 %}
 
   {% include_dnd_partial
-    path="../../sections/hero-banner.html"
+    path="../sections/hero-banner.html"
   %}
 
   {% include_dnd_partial
-    path="../../sections/introduction.html"
+    path="../sections/introduction.html"
   %}
 
 {% end_dnd_area %}
 {% endblock body %}
-
-{% block footer %}
-  {% global_partial path="./partials/footer.html" %}
-{% endblock footer %}

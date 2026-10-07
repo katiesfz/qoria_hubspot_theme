@@ -1,0 +1,87 @@
+<style>
+    @keyframes trace-mask {
+        0% {
+            offset-distance: 0%;
+        }
+        100% {
+            offset-distance: 100%;
+        }
+    }
+
+    .claw-hero .animated-figure-eight {
+        offset-path: path("M.96,6.22C-5.1-1.77,18.92,1.22,32.53,9.05c8.7,5.01,24.71,9.93,31.37-1.07,6.68-11.03-14.61-10.83-30.59,1.87C21.8,19,7.84,15.29.96,6.22Z");
+        offset-rotate: 12deg;
+        animation: trace-mask 10s infinite linear;
+    }
+
+    .claw-hero {
+        position: relative;
+    }
+
+    #plushie1, #plushie2 {
+        width: 100px;
+    }
+
+    #plushie1 {
+        animation-delay: 0.5s;
+        transform: scale(250%);
+    }
+
+    #plushie2 {
+        transform: scale(300%);
+    }
+
+    #star1, #star2, #star3, #star4 {
+        position: absolute;
+        width: 20px;
+    }
+
+    #star1 {
+        top: -10%;
+        left: -10%;
+    }
+
+    #star2 {
+        bottom: -10%;
+        left: -10%;
+    }
+
+    #star3 {
+        bottom: -10%;
+        right: -10%;
+    }
+
+    #star4 {
+        top: -10%;
+        right: -10%;
+    }
+
+    .claw-hero .plushie1-wrapper {
+        position: absolute;
+        top: 95%;
+        left: -5%;
+        transform: scaleX(-100%) scale(30%);
+    }
+
+    .claw-hero .plushie2-wrapper {
+        position: absolute;
+        top: 95%;
+        right: -5%;
+        transform:  scale(30%);
+    }
+</style>
+
+<div class="claw-hero">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/losing-game-stacked.png') }}" class="img-fluid">
+    <div class="plushie1-wrapper">
+        <img src="{{ get_asset_url('../../../../images/campaigns/claw/plushie.svg') }}" class="animated-figure-eight" id="plushie1">
+    </div>
+    <div class="plushie2-wrapper">
+        <img src="{{ get_asset_url('../../../../images/campaigns/claw/plushie.svg') }}" class="animated-figure-eight" id="plushie2">
+    </div>
+    
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/pixel-1.svg') }}" class="" id="star1">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/pixel-2.svg') }}" class="" id="star2">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/pixel-1.svg') }}" class="" id="star3">
+    <img src="{{ get_asset_url('../../../../images/campaigns/claw/pixel-2.svg') }}" class="" id="star4">
+</div>

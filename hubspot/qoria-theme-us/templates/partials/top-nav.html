@@ -3,56 +3,156 @@ templateType: global_partial
 label: Linewize US Top Nav
 -->
 
-{% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
+{%- boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=True, no_wrapper=True, export_to_template_context=True -%}
 
-{% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
-{% set breakpoint = widget_data.navigation.breakpoint %}
-{% if breakpoint == "always" %}
+{%- module "navigation" path="../../modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True, megamenu_descriptions=[
+  {
+  "description": "<p class='h3'>About Linewize</p>\n<p><span>We're not just a vendor. Linewize's goal is to be a strategic partner to our customers. Our commitment to their long term success drives everything we do.&nbsp;</span></p>",
+  "match_label": "About Linewize"
+  },
+  {
+  "description": "<p class='h3'>Solutions</p>\n<p>We provide the most comprehensive suite of digital safety and wellbeing solutions in the world. We help schools and districts expand beyond our best-in-class filtering to a more robust provision, capable of addressing today's challenges.</p>",
+  "match_label": "Solutions"
+  },
+  {
+  "description": "<p class='h3'>Resources</p>\n<p>Linewize's team of experts produce a wealth of insights to keep our districts and schools informed on all things student digital safety and wellbeing.&nbsp;</p>",
+  "match_label": "Resources"
+  }
+  ],
+  max_levels="3",
+  megamenu=true -%}
+  
+{%- set breakpoint = widget_data.navigation.breakpoint -%}
+{%- if breakpoint == "always" %}
     {% set navbarExpand = "" %}
 {% elif breakpoint == "never" %}
     {% set navbarExpand = "navbar-expand" %}
 {% else %}
-    {% set navbarExpand = "navbar-expand-" + breakpoint %}
-{% endif %}
+    {% set navbarExpand = "navbar-expand-" ~ breakpoint %}
+{% endif -%}
         
-<div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
-{% if widget_data.show_language_switcher.value == true %}
-  <div class="d-flex d-{{breakpoint}}-none">          
-    {% module "language-switcher" path="/qoria-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False %}
+<nav class="navbar {{navbarExpand}}">
+  <div class="container-xxl position-relative"> 
+    {% module "logo-custom" path="../../modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=True, no_wrapper=True, 
+      logo={
+      "alt": "Linewize Logo",
+      "height": 151,
+      "loading": "lazy",
+      "max_height": 45,
+      "max_width": 180,
+      "size_type": "auto_custom_max",
+      "src": "https://www.linewize.com/hubfs/Linewize%20Logos%20(2023)/Linewize_byqoria_teal.png",
+      "width": 600
+      }
+    %}
+      <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
+        {% if widget_data.show_language_switcher.value == true %}
+          <div class="d-flex d-{{breakpoint}}-none">          
+            {% module "language-switcher" path="../../modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False, 
+              language_selection="manual", 
+              breakpoint="lg",
+              manual_item=[
+              {
+              "language": "en",
+              "region": "global",
+              "url": "https://qoria.com/"
+              },
+              {
+              "language": "es",
+              "region": "es",
+              "url": "https://qoria.es/"
+              },
+              {
+              "language": "en",
+              "region": "europe",
+              "url": "https://qoria.eu/"
+              },
+              {
+              "language": "en",
+              "region": "gb",
+              "url": "https://smoothwall.com/"
+              },
+              {
+              "language": "en",
+              "region": "nz",
+              "url": "https://linewize.co.nz/"
+              },
+              {
+              "language": "en",
+              "region": "au",
+              "url": "https://www.linewize.io/anz"
+              },
+              {
+              "language": "en",
+              "region": "nam",
+              "url": "https://www.linewize.com/"
+              }
+              ],
+              cur_region="nam",
+              %}
+          </div>
+        {% endif %}
+    
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="far fa-xl fa-bars"></i>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      {% module "navigation" path="../../modules/dropdown-navigation", label="Navigation", breakpoint="lg", megamenu_descriptions=[
+  {
+  "description": "<p class='h3'>About Linewize</p>\n<p><span>We're not just a vendor. Linewize's goal is to be a strategic partner to our customers. Our commitment to their long term success drives everything we do.&nbsp;</span></p>",
+  "match_label": "About Linewize"
+  },
+  {
+  "description": "<p class='h3'>Solutions</p>\n<p>We provide the most comprehensive suite of digital safety and wellbeing solutions in the world. We help schools and districts expand beyond our best-in-class filtering to a more robust provision, capable of addressing today's challenges.</p>",
+  "match_label": "Solutions"
+  },
+  {
+  "description": "<p class='h3'>Resources</p>\n<p>Linewize's team of experts produce a wealth of insights to keep our districts and schools informed on all things student digital safety and wellbeing.&nbsp;</p>",
+  "match_label": "Resources"
+  }
+  ],
+  max_levels="3",
+  megamenu=true%}
+
+      {% module "cta" path="../../modules/cta", label="CTA", export_to_template_context=True,
+        button_size="btn-sm",
+        button_text="Book a demo",
+        alignment="center",
+        link={
+        "url": {
+        "type": "CONTENT",
+        "content_id": 13047864353,
+        "href": "https://www.linewize.com/demo",
+        "href_with_scheme": null
+        },
+        "open_in_new_tab": true,
+        "no_follow": false,
+        "sponsored": false,
+        "user_generated_content": false,
+        "rel": "noopener"
+        }
+      %}
+
+      {% if widget_data.cta.link.url != "" %}
+        <div class="d-flex d-{{breakpoint}}-none">
+        {% module "cta" path="../../modules/cta", label="CTA", %}
+        </div>
+        <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
+        {% module "cta" path="../../modules/cta", label="CTA" %}
+        </div>
+      {% endif %}
+
+      <div class="navbar-search d-flex ms-{{breakpoint}}-3 my-3 my-{{breakpoint}}-0">
+        {% module "search" path="../../modules/search_input", label="Search" no_wrapper=true, style={"baseline": false}, content_types={"landing_pages": false} %}
+      </div>
+
+      {% if widget_data.show_language_switcher.value == true %}
+        <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
+        {% module "language-switcher" path="../../modules/language-switcher", label="Language switcher" %}
+        </div>
+      {% endif %}
+
+    </div>
   </div>
-{% endif %}
-
-<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  <i class="far fa-xl fa-bars"></i>
-</button>
-</div>
-<div class="collapse navbar-collapse" id="navbarNav">
-{% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
-
-{% module "cta" path="/qoria-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
-
-{% if widget_data.cta.link.url != "" %}
-<div class="d-flex d-{{breakpoint}}-none">
-{% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
-
-</div>
-{% endif %}
-
-{% if widget_data.cta.link.url != "" %}
-<div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-{% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
-
-</div>
-{% endif %}
-
-<div class="navbar-search d-flex ms-{{breakpoint}}-3 my-3 my-{{breakpoint}}-0">
-{% module "search" path="/qoria-theme/modules/search_input", label="Search" no_wrapper=true %}
-</div>
-
-{% if widget_data.show_language_switcher.value == true %}
-<div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-{% module "language-switcher" path="/qoria-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}" %}
-</div>
-{% endif %}
-
-</div>
+</nav>

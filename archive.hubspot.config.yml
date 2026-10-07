@@ -1,0 +1,25 @@
+defaultAccount: placeholder
+accounts:
+  - name: placeholder
+    accountId: 000000
+    env: prod
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          dummy
+    personalAccessKey: >-
+      dummy
+    sandboxAccountType: null
+    parentAccountId: null
+    accountType: STANDARD
+portals:
+  - name: placeholder
+    portalId: 000000
+    authType: personalaccesskey
+    auth:
+      tokenInfo:
+        accessToken: >-
+          dummy
+    personalAccessKey: >-
+      dummy

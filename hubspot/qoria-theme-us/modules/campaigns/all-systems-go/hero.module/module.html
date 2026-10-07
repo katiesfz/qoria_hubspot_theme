@@ -1,0 +1,62 @@
+<style>
+    .all-systems-go-hero {
+        background-image: url("{{ get_asset_url('../../../../images/campaigns/all-systems-go/stars.jpg') }}");
+        position: relative;
+        padding-top: calc(120px + 4rem);
+    }
+
+    .all-systems-go-hero:after {
+        content: '';
+        background-image: url("{{ get_asset_url('../../../../images/campaigns/all-systems-go/astronaut.png') }}");
+        width: 100%;
+        height: 100%;
+        background-position: bottom right;
+        background-size: auto calc(100% - 120px);
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+
+{% if module.form.form_id %}
+{{ require_js("//js.hsforms.net/forms/embed/v2.js", "head") }}
+{% endif %}
+
+<section class="all-systems-go-hero">
+    <div class="container-xxl position-relative">
+        <div class="row align-items-stretch">
+            <div class="col-12 col-md-6 text-center pb-3 pb-md-8">
+                <img src="{{ get_asset_url('../../../../images/campaigns/all-systems-go/all-systems-go-title.svg') }}">
+                <div class="row">
+                    <div class="col-10">
+                    <p class="text-light lead text-start mt-5">Your mission-ready system for unifying student safety solutions. All behind one login.</p>
+                    </div>
+                </div>
+            </div>
+            {% if module.form.form_id %}
+                <div class="col-12 col-md-5 text-center align-self-center py-0 pb-6 py-md-8" id="heroForm">
+                    <div class="">
+                        {% if module.show_title %}
+                            <div id="form-heading">
+                                <h2 class="h2 text-light text-center text-decoration-partial-underline">{{ module.title|default("Get filtering that's smarter than your students. Start your free trial.") }}</h2>
+                            </div>
+                        {% endif %}
+                        <script>
+                            window.addEventListener('load', function() {
+                                if(window.hbspt) {
+                                    hbspt.forms.create({
+                                        region: 'na1',
+                                        portalId: '{{hub_id}}',
+                                        formId: '{{module.form.form_id}}',  
+                                        submitButtonClass: "btn mt-4 btn-light d-block mx-auto",
+                                        cssClass: 'hs-form form-light'
+                                    });
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

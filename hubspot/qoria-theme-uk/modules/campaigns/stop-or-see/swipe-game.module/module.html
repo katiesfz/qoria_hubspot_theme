@@ -1,0 +1,57 @@
+{# Filter or monitor swipe game. All copy and images come from the module fields (fields.json). #}
+{% set sg_scenarios = [] %}
+{% for s in module.scenarios %}
+  {% do sg_scenarios.append({ "a": s.answer, "t": s.scenario_text, "ok": s.correct_text, "no": s.incorrect_text, "img": s.image.src, "alt": s.image.alt }) %}
+{% endfor %}
+{% require_head %}
+  {% for s in module.scenarios %}
+    {% if s.image.src %}
+      <link rel="preload" as="image" href="{{ s.image.src }}">
+    {% endif %}
+  {% endfor %}
+{% end_require_head %}
+{% set sg_config = { "scenarios": sg_scenarios, "counterLabel": module.counter_label, "correctLabel": module.correct_label, "incorrectLabel": module.incorrect_label, "leadStop": module.stop_lead, "leadSee": module.see_lead, "nextLabel": module.next_label, "finishLabel": module.finish_label, "resultLabel": module.result_label, "resultPerfect": module.result_perfect, "resultGood": module.result_good, "resultLow": module.result_low, "resultText": module.result_text, "learnMoreLabel": module.learn_more_label, "learnMoreUrl": module.learn_more_url, "playAgainLabel": module.play_again_label } %}
+<section class="sg-game" tabindex="-1" aria-label="{{ module.stop_title|escape }} or {{ module.see_title|escape }}">
+  <script type="application/json" class="sg-data">{{ sg_config|tojson }}</script>
+  <div class="sg-stage">
+    <div class="sg-side sg-side--stop">
+      <button class="sg-band" type="button" data-choice="stop" aria-keyshortcuts="ArrowLeft" aria-label="{{ module.stop_title|escape }}: {{ module.stop_desc|escape }}">
+        <div class="sg-band__mark--container">
+        <i class="fas sg-band__mark fa-cancel" aria-hidden="true"></i>
+        </div>
+        <span class="sg-band__glow"></span>
+        <span class="sg-band__text" aria-hidden="true">        
+          <span class="sg-band__title"><i class="fas fa fa-chevron-left sg-band__chev--inline"></i> {{ module.stop_title|escape }}</span>
+          <span class="sg-band__desc">{{ module.stop_desc|escape }}</span>
+        </span>
+      </button>
+      <span class="sg-arrow" aria-hidden="true">
+        <i class="fas fa-chevron-left fs-1 text-light"></i>
+      </span>
+      <ul class="sg-tally" data-tally="stop"></ul>
+    </div>
+
+    <div class="sg-deck">
+      <div class="sg-deck__back sg-deck__back--a" aria-hidden="true"></div>
+      <div class="sg-deck__back sg-deck__back--b" aria-hidden="true"></div>
+      <div class="sg-card" tabindex="-1" aria-live="polite"></div>
+    </div>
+
+    <div class="sg-side sg-side--see">
+      <button class="sg-band" type="button" data-choice="see" aria-keyshortcuts="ArrowRight" aria-label="{{ module.see_title|escape }}: {{ module.see_desc|escape }}">
+      <div class="sg-band__mark--container">
+        <i class="fas sg-band__mark fa-eye" aria-hidden="true"></i>
+      </div>
+        <span class="sg-band__glow"></span>
+        <span class="sg-band__text" aria-hidden="true">
+          <span class="sg-band__title">{{ module.see_title|escape }} <i class="fas fa fa-chevron-right sg-band__chev--inline"></i></span>
+          <span class="sg-band__desc">{{ module.see_desc|escape }}</span>
+        </span>
+      </button>
+      <span class="sg-arrow" aria-hidden="true">
+        <i class="fas fa-chevron-right fs-1 text-light"></i>
+      </span>
+      <ul class="sg-tally" data-tally="see"></ul>
+    </div>
+  </div>
+</section>

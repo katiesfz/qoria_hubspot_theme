@@ -11,7 +11,6 @@ label: Linewize NZ Header
   {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
   {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
 
-  
   {% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
 
   {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
@@ -23,7 +22,6 @@ label: Linewize NZ Header
       {% else %}
           {% set navbarExpand = "navbar-expand-" + breakpoint %}
       {% endif %}
-
   <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
     <nav class="navbar {{navbarExpand}}">
       <div class="container-xxl position-relative"> 

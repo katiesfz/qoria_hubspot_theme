@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "BLOG_LISTING", "BLOG_POST" ],
-  "host_template_types" : [ "BLOG_LISTING", "BLOG_POST" ],
-  "module_id" : 131307035457,
-  "label" : "Blog Article Description",
-  "is_available_for_new_content" : false
-}

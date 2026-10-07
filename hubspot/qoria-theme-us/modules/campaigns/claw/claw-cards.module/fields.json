@@ -1,0 +1,486 @@
+[ {
+  "id" : "card",
+  "name" : "card",
+  "display_width" : null,
+  "label" : "Card",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "card.title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "card.back_text",
+    "name" : "back_text",
+    "display_width" : null,
+    "label" : "Back text",
+    "required" : false,
+    "locked" : false,
+    "type" : "text",
+    "default" : "Stick / Twist"
+  }, {
+    "id" : "card.image",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "loading" : "lazy"
+    }
+  },{
+    "id" : "card.pre_header",
+    "name" : "pre_header",
+    "display_width" : null,
+    "label" : "Pre-header",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "standard_emphasis" ],
+    "type" : "richtext",
+    "default" : ""
+  }, {
+    "id" : "card.preheader_size",
+    "name" : "preheader_size",
+    "display_width" : null,
+    "label" : "Pre-header Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [[ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "h6"
+  }, {
+    "id" : "card.title",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "standard_emphasis" ],
+    "type" : "richtext",
+    "default" : "<strong>Linewize</strong> (North America)"
+  }, {
+    "id" : "card.title_size",
+    "name" : "title_size",
+    "display_width" : null,
+    "label" : "Title Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "h5"
+  }, {
+    "id" : "card.text",
+    "name" : "text",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+    "type" : "richtext",
+    "default" : "<h3>This is a title</h3><p>Contextual advertising can be profitable. It can either pay for your hosting and maintenance costs for you website or it can pay for a lot more.</p>"
+  },{
+    "id" : "card.link",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "id" : "card.link_label",
+    "name" : "link_label",
+    "display_width" : null,
+    "label" : "Link Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility_rules" : "ADVANCED",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "card.cta_style",
+    "name" : "cta_style",
+    "display_width" : null,
+    "label" : "CTA Style",
+    "required" : false,
+    "locked" : false,
+    "visibility_rules" : "ADVANCED",
+    "display" : "select",
+    "choices" : [ [ "text-", "Link" ], [ "btn btn-", "Button" ], [ "btn btn-outline-", "Outlined Button" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "text-"
+  }, {
+    "id" : "card.cta_colour",
+    "name" : "cta_colour",
+    "display_width" : null,
+    "label" : "CTA Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "teal", "Teal" ], [ "indigo", "Indigo" ], [ "orange", "Orange" ], [ "red", "Red" ], [ "dark", "Dark" ], [ "light", "Light" ]  ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "primary"
+  }, {
+    "id" : "card.cta_size",
+    "name" : "cta_size",
+    "display_width" : null,
+    "label" : "CTA Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "btn-sm", "Small" ], [ " ", "Medium" ], [ "btn-lg", "Large" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : " "
+  },{
+    "id" : "card.cta_alignment",
+    "name" : "cta_alignment",
+    "display_width" : null,
+    "label" : "CTA alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "inherit", "Inherit" ], [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "type" : "choice",
+    "default" : "inherit"
+  }, {
+    "id" : "card.advanced",
+    "name" : "advanced",
+    "display_width" : null,
+    "label" : "Advanced",
+    "required" : false,
+    "locked" : false,
+    "children" : [{
+      "id" : "card.advanced.col_classes",
+      "name" : "col_classes",
+      "display_width" : null,
+      "label" : "Additional column classes",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "card.advanced.card_classes",
+      "name" : "card_classes",
+      "display_width" : null,
+      "label" : "Additional card classes",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }  ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group"
+  }],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : []
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "display_width" : null,
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing_field",
+    "name" : "spacing_field",
+    "display_width" : null,
+    "label" : "Spacing",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "default" : {
+        "margin" : {
+          "top" : {
+            "value" : 0,
+            "units" : "px"
+          },
+          "bottom" : {
+            "value" : 0,
+            "units" : "px"
+          }
+        }
+      }
+    }, {
+    "id" : "styles.responsive",
+    "name" : "responsive",
+    "display_width" : null,
+    "label" : "Responsive Styles",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.responsive.desktop",
+      "name" : "desktop",
+      "display_width" : null,
+      "label" : "Desktop",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.desktop.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "3"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.tablet",
+      "name" : "tablet",
+      "display_width" : null,
+      "label" : "Tablet",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.tablet.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "2"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    }, {
+      "id" : "styles.responsive.mobile",
+      "name" : "mobile",
+      "display_width" : null,
+      "label" : "Mobile",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.responsive.mobile.cards",
+        "name" : "cards",
+        "display_width" : null,
+        "label" : "Cards",
+        "required" : true,
+        "locked" : false,
+        "display" : "text",
+        "max" : 6,
+        "step" : 1,
+        "suffix" : " cards",
+        "type" : "number",
+        "default" : "1"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "type" : "group"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "type" : "group"
+  }, {
+    "id" : "styles.equal_heights",
+    "name" : "equal_heights",
+    "display_width" : null,
+    "label" : "Equal Heights",
+    "inline_help_text" : "Keep cards at equal heights regardless of content.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "card.shadow",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Shadow",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ " ", "No shadow" ], [ "shadow-sm", "Small shadow" ], [ "shadow", "Medium shadow" ], [ "shadow-lg", "Large shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "shadow"
+  }, {
+    "id" : "card.colour",
+    "name" : "card_colour",
+    "display_width" : null,
+    "label" : "Card Body Colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "bg-transparent", "Transparent" ], [ "bg-white", "White" ], [ "bg-light", "Light" ], [ "bg-gradient-primary text-white", "Primary Gradient" ], [ "bg-secondary text-white", "Secondary" ], [ "bg-indigo text-white", "Indigo" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "bg-white"
+  }, {
+    "id" : "card.alignment",
+    "name" : "textalignment",
+    "display_width" : null,
+    "label" : "Card text alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "start"
+  },{
+    "id" : "row.alignment",
+    "name" : "row_alignment",
+    "display_width" : null,
+    "label" : "Card row alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "start", "Left" ], [ "center", "Center" ], [ "end", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "start"
+  }, {
+    "id" : "styles.animate_in",
+    "name" : "animate_in",
+    "display_width" : null,
+    "label" : "Animate in",
+    "inline_help_text" : "Animate the cards in on scroll",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  },{
+    "id" : "style.no_animate_on_mobile",
+    "name" : "no_animate_on_mobile",
+    "display_width" : null,
+    "label" : "Prevent animation on mobile",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : true
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "responsive" : {
+      "mobile" : {
+        "cards" : "1"
+      },
+      "tablet" : {
+        "cards" : "2"
+      },
+      "desktop" : {
+        "cards" : "3"
+      }
+    },
+    "equal_heights" : true
+  }
+}, {
+  "id" : "advanced",
+  "name" : "advanced",
+  "display_width" : null,
+  "label" : "Advanced",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "advanced.additional_classes",
+    "name" : "additional_classes",
+    "display_width" : null,
+    "label" : "Additional classes",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  },{
+    "id" : "advanced.custom_id",
+    "name" : "custom_id",
+    "display_width" : null,
+    "label" : "Custom ID",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  },{
+    "id" : "advanced.additional_markup",
+    "name" : "additional_markup",
+    "display_width" : null,
+    "label" : "Additional markup",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : { }
+} ]

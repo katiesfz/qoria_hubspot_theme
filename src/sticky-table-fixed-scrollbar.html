@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sticky table + floating scrollbar</title>
+<style>
+  :root {
+    --line: #d8d8d8;
+    --head-bg: #f4f4f4;
+    --accent: #2b6cb0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #1c1c1c;
+    margin: 0;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  h1 { font-size: 1.35rem; margin: 0 0 0.25rem; }
+  p.lede { color: #555; max-width: 60ch; margin: 0 0 2rem; }
+  .spacer { height: 60vh; }
+  .spacer p { color: #999; }
+
+  /* --- table wrapper: this is the element the scrollbar script tracks --- */
+  .table-wrap {
+    /* NOTE: overflow-x:auto always makes this element a scrolling ancestor
+       in Chromium (Chrome/Brave/Edge), which hijacks position:sticky/top
+       for everything inside it — there is no CSS-only way around this while
+       keeping a bounded, independently-scrollable table region. So the
+       header's vertical pinning is done with JS below (see pinHeaders());
+       CSS position:sticky is only used for the horizontal first-column
+       pin, which shares the same x-axis as this overflow-x:auto, so it
+       works normally. */
+    overflow-x: auto;
+    max-width: 100%;
+    border: 1px solid var(--line);
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  th, td {
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    white-space: nowrap;
+    background: #fff;
+  }
+
+  /* header row: vertical pinning is applied via JS transform (pinHeaders),
+     not position:sticky — see the .table-wrap comment above for why */
+  thead th {
+    position: relative;
+    z-index: 2;
+    background: var(--head-bg);
+    font-weight: 600;
+    text-align: right;
+    will-change: transform;
+  }
+
+  /* sticky first column (row labels) */
+  tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--head-bg);
+    text-align: left;
+    font-weight: 600;
+  }
+
+  /* the top-left cell needs to beat everything else; it's horizontally
+     pinned via sticky (works fine — same axis as overflow-x) and
+     vertically pinned via the same JS transform as the rest of the header */
+  thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    text-align: left;
+  }
+
+  td { text-align: right; }
+
+  /* --- floating scrollbar, created by JS --- */
+  #fixed-scrollbar {
+    z-index: 999;
+    background: transparent;
+  }
+  #fixed-scrollbar > div {
+    height: 1px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Sticky header + sticky column, with a scrollbar that follows you</h1>
+<p class="lede">
+  Scroll the page down until the table's native horizontal scrollbar goes off screen —
+  a floating scrollbar will appear pinned to the bottom of the viewport, sized to the
+  table, so you can still scroll it horizontally. The header row and first column stay
+  put the whole time.
+</p>
+
+<div class="spacer"><p>↓ scroll down ↓</p></div>
+
+<div class="table-wrap fixed-scrollbar">
+  <table id="demo-table"></table>
+</div>
+
+<div class="spacer"><p>↓ more page content below, so you can scroll past the table ↓</p></div>
+
+<script>
+  // Generate some wide/tall demo data so the table needs to scroll both ways
+  (function buildTable() {
+    var table = document.getElementById('demo-table');
+    var cols = 16, rows = 24;
+
+    var thead = document.createElement('thead');
+    var headRow = document.createElement('tr');
+    var corner = document.createElement('th');
+    corner.textContent = 'Team';
+    headRow.appendChild(corner);
+    for (var c = 1; c <= cols; c++) {
+      var th = document.createElement('th');
+      th.textContent = 'Inn ' + c;
+      headRow.appendChild(th);
+    }
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    for (var r = 1; r <= rows; r++) {
+      var tr = document.createElement('tr');
+      var rowTh = document.createElement('th');
+      rowTh.textContent = 'Team ' + r;
+      tr.appendChild(rowTh);
+      for (var c2 = 1; c2 <= cols; c2++) {
+        var td = document.createElement('td');
+        td.textContent = ((r * 7 + c2 * 3) % 9);
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+  })();
+</script>
+
+<script>
+  // Vanilla-JS floating scrollbar (converted from the jQuery original)
+  document.addEventListener('DOMContentLoaded', function () {
+    var scrollbar = document.createElement('div');
+    scrollbar.id = 'fixed-scrollbar';
+    var fakecontent = document.createElement('div');
+    scrollbar.appendChild(fakecontent);
+    document.body.appendChild(scrollbar);
+
+    scrollbar.style.display = 'none';
+    scrollbar.style.overflowX = 'auto';
+    scrollbar.style.position = 'fixed';
+    scrollbar.style.width = '100%';
+    scrollbar.style.bottom = '0';
+
+    function offsetTop(el) {
+      return el.getBoundingClientRect().top + window.pageYOffset;
+    }
+    function offsetLeft(el) {
+      return el.getBoundingClientRect().left + window.pageXOffset;
+    }
+    function top(el) { return offsetTop(el); }
+    function bottom(el) { return offsetTop(el) + el.offsetHeight; }
+
+    var active = null;
+
+    function findActive() {
+      scrollbar.style.display = '';
+      var found = null;
+
+      var candidates = document.querySelectorAll('.fixed-scrollbar');
+      for (var i = 0; i < candidates.length; i++) {
+        var el = candidates[i];
+        if (top(el) < top(scrollbar) && bottom(el) > bottom(scrollbar)) {
+          fakecontent.style.width = el.scrollWidth + 'px';
+          fakecontent.style.height = '1px';
+          found = el;
+        }
+      }
+
+      fit(found);
+      return found;
+    }
+
+    function fit(el) {
+      if (!el) {
+        scrollbar.style.display = 'none';
+        return;
+      }
+      scrollbar.style.left = offsetLeft(el) + 'px';
+      scrollbar.style.width = el.offsetWidth + 'px';
+      fakecontent.style.width = el.scrollWidth + 'px';
+      fakecontent.style.height = '1px';
+      lastScroll = undefined;
+    }
+
+    function onscroll() {
+      var oldactive = active;
+      active = findActive();
+
+      if (oldactive && oldactive !== active) {
+        oldactive.removeEventListener('scroll', update);
+      }
+      if (active && active !== oldactive) {
+        active.addEventListener('scroll', update);
+      }
+
+      update();
+    }
+
+    var lastScroll;
+
+    function scroll() {
+      if (!active) return;
+      if (scrollbar.scrollLeft === lastScroll) return;
+      lastScroll = scrollbar.scrollLeft;
+      active.scrollLeft = lastScroll;
+    }
+
+    function update() {
+      if (!active) return;
+      if (active.scrollLeft === lastScroll) return;
+      lastScroll = active.scrollLeft;
+      scrollbar.scrollLeft = lastScroll;
+    }
+
+    scrollbar.addEventListener('scroll', scroll);
+
+    // --- Vertical header pinning (replaces position:sticky/top:0) ---
+    // Chromium turns overflow-x:auto elements into scrolling ancestors,
+    // which breaks position:sticky/top for descendants. We emulate the
+    // same visual effect with a transform that tracks scroll position.
+    function pinHeaders() {
+      var wraps = document.querySelectorAll('.fixed-scrollbar');
+      for (var i = 0; i < wraps.length; i++) {
+        var wrap = wraps[i];
+        var headerRow = wrap.querySelector('thead tr');
+        if (!headerRow) continue;
+
+        var rect = wrap.getBoundingClientRect();
+        var headerHeight = headerRow.offsetHeight;
+        var maxOffset = Math.max(wrap.offsetHeight - headerHeight, 0);
+
+        var offset = 0;
+        if (rect.top < 0) {
+          offset = Math.min(-rect.top, maxOffset);
+        }
+
+        var cells = headerRow.children;
+        var transformValue = offset ? 'translateY(' + offset + 'px)' : '';
+        for (var j = 0; j < cells.length; j++) {
+          cells[j].style.transform = transformValue;
+        }
+      }
+    }
+
+    function onscrollAll() {
+      onscroll();
+      pinHeaders();
+    }
+
+    onscrollAll();
+    window.addEventListener('scroll', onscrollAll);
+    window.addEventListener('resize', onscrollAll);
+  });
+</script>
+
+</body>
+</html>

@@ -629,6 +629,7 @@ $btn-border-radius:     $border-radius;
 $btn-border-radius-sm:  $border-radius;
 $btn-border-radius-lg:  $border-radius;
 
+$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, transform .15s ease-in-out,  !default;
 
 // accordions
 
@@ -649,7 +650,7 @@ $accordion-button-padding-y:              $accordion-padding-y !default;
 $accordion-button-padding-x:              $accordion-padding-x !default;
 $accordion-button-color:                  var(--#{$prefix}body-color);
 $accordion-button-bg:                     var(--#{$prefix}body-bg);
-$accordion-transition:                    height 300ms ease;
+$accordion-transition:                    height 500ms ease, background-color 500ms ease, width 500ms ease;
 $accordion-button-active-bg:              var(--#{$prefix}light);
 $accordion-button-active-color:           $dark;
 
@@ -719,6 +720,16 @@ $form-select-indicator-color:       $gray-800;
 $form-select-indicator-padding:     $form-select-padding-x * 3 !default; // Extra padding for background-image
 $form-date-indicator:               url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="#{$form-select-indicator-color}" stroke-width="2" d="M12.5,14.9h-9c-0.7,0-1.4-0.6-1.4-1.4V6.4V4.6c0-0.7,0.6-1.4,1.4-1.4h9c0.7,0,1.4,0.6,1.4,1.4v9 C13.8,14.3,13.2,14.9,12.5,14.9z"/><line stroke="#{$form-select-indicator-color}" stroke-width="2" stroke-linecap="round" x1="5.2" y1="1.1" x2="5.2" y2="3.2"/><line  stroke="#{$form-select-indicator-color}" stroke-width="2" stroke-linecap="round" x1="10.8" y1="1.1" x2="10.8" y2="3.2"/><rect fill="#{$form-select-indicator-color}" x="2.1" y="3.2" width="11.7" height="3.2"/></svg>');
                
+
+// scss-docs-start form-range-variables
+$form-range-track-width:          100% !default;
+$form-range-track-height:         .5rem !default;
+$form-range-track-cursor:         pointer !default;
+$form-range-track-bg:             var(--#{$prefix}tertiary-bg) !default;
+$form-range-track-border-radius:  1rem !default;
+$form-range-track-box-shadow:     $box-shadow-inset !default;
+$form-range-track-lower-bg:       var(--#{$prefix}secondary-bg) !default;
+
 // modals 
 
 $modal-content-border-radius: 0;

@@ -1,0 +1,398 @@
+[ {
+  "id" : "be31a5e9-6e5a-7340-dfb1-02409d1e447b",
+  "name" : "scenarios",
+  "label" : "Scenarios",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 30,
+    "sorting_label_field" : "df424ea9-de20-c65e-cc29-ec7f65e82ce8",
+    "default" : 10
+  },
+  "children" : [ {
+    "id" : "aad4a97d-ecb2-0385-b0fc-6163a4c96623",
+    "name" : "answer",
+    "label" : "Correct side",
+    "required" : false,
+    "locked" : false,
+    "display" : "radio",
+    "choices" : [ [ "stop", "Can be stopped (filtering, swipe left)" ], [ "see", "Needs to be seen (monitoring, swipe right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "stop"
+  }, {
+    "id" : "df424ea9-de20-c65e-cc29-ec7f65e82ce8",
+    "name" : "scenario_text",
+    "label" : "Scenario text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "c75be2fe-565c-2b20-b1ad-62eae6b239d1",
+    "name" : "image",
+    "label" : "Scenario image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "5bee80e8-c3b2-db42-ded0-b11bde96f524",
+    "name" : "correct_text",
+    "label" : "Text if answered correctly",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "94349cdb-fa3c-1f06-b41e-97cce74cbe92",
+    "name" : "incorrect_text",
+    "label" : "Text if answered incorrectly",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "answer" : "stop",
+    "correct_text" : "This one can be stopped. It falls under a clear category and rule, so a web filter can block access to the site. ",
+    "image" : {
+      "alt" : "scenario-1-swipe",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/scenario-1-swipe.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one can be stopped. It falls under a clear category and rule, so a web filter can block access to the site. ",
+    "scenario_text" : "A student tries to visit a known pornography website using a school laptop."
+  }, {
+    "answer" : "stop",
+    "correct_text" : "This one can be stopped. Content-aware filters can block specific harmful pages within a site while still allowing access to pages approved for educational use.",
+    "image" : {
+      "alt" : "uk_smw_2026_visibilitysurvey-endcards-schools-search",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/uk_smw_2026_visibilitysurvey-endcards-schools-search.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one can be stopped. Content-aware filters can block specific harmful pages within a site while still allowing access to pages approved for educational use.",
+    "scenario_text" : "During a lesson focusing on a specific Reddit post, a student instead navigates to a subreddit linked to incel culture."
+  }, {
+    "answer" : "see",
+    "correct_text" : "This one needs to be seen. Web filtering does not apply to spreadsheets - harmful or inappropriate activities in these spaces are only visible with monitoring.",
+    "image" : {
+      "alt" : "uk_smw_2026_visibilitysurvey-endcards-schools-hiddenmeanings",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/uk_smw_2026_visibilitysurvey-endcards-schools-hiddenmeanings.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one needs to be seen. Web filtering does not apply to spreadsheets - harmful or inappropriate activities in these spaces are only visible with monitoring.",
+    "scenario_text" : "A student working on a group project types racist comments in the cells of a spreadsheet to bully their classmate."
+  }, {
+    "answer" : "stop",
+    "correct_text" : "This one can be stopped. It falls under a clear category and rule, so a web filter can block access to the site.",
+    "image" : {
+      "alt" : "scenario-2-swipe",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/scenario-2-swipe.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one can be stopped. It falls under a clear category and rule, so a web filter can block access to the site.",
+    "scenario_text" : "At lunchtime a group of students attempt to access a gambling site."
+  }, {
+    "answer" : "see",
+    "correct_text" : "This one needs to be seen. Filtering does not apply to documents, but monitoring can detect when harmful words are typed - even if they are deleted.",
+    "image" : {
+      "alt" : "scenario-3-swipe",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/scenario-3-swipe.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one needs to be seen. Filtering does not apply to documents, but monitoring can detect when harmful words are typed on devices - even if they are deleted.",
+    "scenario_text" : "A student using a school device at home drafts a suicide note in a Word document and deletes it."
+  }, {
+    "answer" : "see",
+    "correct_text" : "This one needs to be seen. Filters can block access to specific chatbots, but only monitoring can identify harmful requests within chatbot conversations. ",
+    "image" : {
+      "alt" : "scenario-4-swipe",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/scenario-4-swipe.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one needs to be seen. Filters can block access to specific chatbots, but only monitoring can identify harmful requests within chatbot conversations.",
+    "scenario_text" : "While interacting with an AI chatbot approved for use in school, a student asks for advice on building a bomb."
+  }, {
+    "answer" : "stop",
+    "correct_text" : "This one can be stopped. Provided the filter being used is a content filter that works in real-time. Assessing pages at the point of request, so harmful content can be blocked as soon as it goes live. ",
+    "image" : {
+      "alt" : "uk_smw_2026_visibilitysurvey-endcards-schools-Communication",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/uk_smw_2026_visibilitysurvey-endcards-schools-Communication.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one can be stopped. Provided the filter being used is a content filter that works in real-time. Assessing pages at the point of request, so harmful content can be blocked as soon as it goes live. ",
+    "scenario_text" : "A student tries to access a proxy anonymiser via a website that has only been live for 2 hours."
+  }, {
+    "answer" : "see",
+    "correct_text" : "This one needs to be seen. Only monitoring can detect harmful or inappropriate conversations taking place on messaging apps.",
+    "image" : {
+      "alt" : "uk_smw_2026_visibilitysurvey-endcards-schools-Newrisks",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/uk_smw_2026_visibilitysurvey-endcards-schools-Newrisks.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one needs to be seen. Only monitoring can detect harmful or inappropriate conversations taking place on messaging apps.",
+    "scenario_text" : "Two students in an online chat make increasingly derogatory and violent comments about the girls in their class"
+  }, {
+    "answer" : "stop",
+    "correct_text" : "This one can be stopped. Words and phrases searched on Google appear in the URL, and so results pages can be blocked by a web filter if a risk is detected.",
+    "image" : {
+      "alt" : "scenario-5-swipe",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/scenario-5-swipe.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one can be stopped. Words and phrases searched on Google appear in the URL, and so results pages can be blocked by a web filter if a risk is detected.",
+    "scenario_text" : "A student searches “how to buy mandy online” on Google "
+  }, {
+    "answer" : "see",
+    "correct_text" : "This one needs to be seen. Each search on its own looks harmless, but human-moderated monitoring can pick up on the potential risk in the pattern.",
+    "image" : {
+      "alt" : "scenario-6-swipe",
+      "height" : 576,
+      "loading" : "lazy",
+      "max_height" : 576,
+      "max_width" : 1000,
+      "size_type" : "auto",
+      "src" : "https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/scenario-6-swipe.png",
+      "width" : 1000
+    },
+    "incorrect_text" : "This one needs to be seen. Each search on its own looks harmless, but human-moderated monitoring can pick up on the potential risk in the pattern.",
+    "scenario_text" : "A student’s searches over a week range from nearby bus routes and hotel rates to how much food to pack to last 5+ days."
+  } ]
+}, {
+  "id" : "6dffb05a-8330-16ce-c8b0-e8860a4235d6",
+  "name" : "stop_title",
+  "label" : "Left panel title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Can be stopped"
+}, {
+  "id" : "df0987e8-ec12-ab1a-ef0f-65a70e61e54b",
+  "name" : "stop_desc",
+  "label" : "Left panel description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "A known site, category or file a filter can block"
+}, {
+  "id" : "c7a44c34-bae5-cb3f-ed8c-267af893bcbd",
+  "name" : "see_title",
+  "label" : "Right panel title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Need to see"
+}, {
+  "id" : "6d8c0e70-6a14-4598-7473-6df0d49f84cc",
+  "name" : "see_desc",
+  "label" : "Right panel description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Nothing to block, only monitoring surfaces it"
+}, {
+  "id" : "7d07c266-4caa-aeae-3a39-c4da20e18027",
+  "name" : "counter_label",
+  "label" : "Card counter word",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Scenario"
+}, {
+  "id" : "522ca6ab-caae-4b24-728d-810c23235713",
+  "name" : "correct_label",
+  "label" : "Correct answer heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Correct"
+}, {
+  "id" : "00bc8137-2175-b4b0-80d3-17685ebfbaae",
+  "name" : "incorrect_label",
+  "label" : "Wrong answer heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Not quite"
+}, {
+  "id" : "c3cbe8c3-da3d-7ddc-4357-704e889bdcf6",
+  "name" : "next_label",
+  "label" : "Next button",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Next scenario"
+}, {
+  "id" : "68a81297-e7e3-b257-e34c-5d6e91d05842",
+  "name" : "finish_label",
+  "label" : "Last next button",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "See my result"
+}, {
+  "id" : "c03ee9c9-1cc5-2a49-1ba0-a675520545da",
+  "name" : "result_label",
+  "label" : "Result eyebrow",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Your score"
+}, {
+  "id" : "9f8e4485-0360-9a35-8e8f-2a91746719bf",
+  "name" : "result_perfect",
+  "label" : "Result heading: 10/10",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "A perfect score"
+}, {
+  "id" : "904beb4b-d329-db38-5a58-c447d21f5e32",
+  "name" : "result_good",
+  "label" : "Result heading: 70% or more",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Nicely done"
+}, {
+  "id" : "50308dba-b5a0-9264-b1d6-2854fcce29cd",
+  "name" : "result_low",
+  "label" : "Result heading: under 70%",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Each setting needs both"
+}, {
+  "id" : "b3d31cc6-93b1-dfa6-0809-84debbda2974",
+  "name" : "result_text",
+  "label" : "Result text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Digital monitoring and web filtering both play important roles in limiting exposure to known risks and seeing the risks below the surface in a child’s digital life."
+}, {
+  "id" : "b341acde-d071-a290-c00f-fe9775b83a1c",
+  "name" : "learn_more_label",
+  "label" : "Learn more button label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Learn more below"
+}, {
+  "id" : "9c2e54d5-11a0-6b24-66cc-1b117ebb894f",
+  "name" : "learn_more_url",
+  "label" : "Learn more link",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "#learn-more"
+}, {
+  "id" : "fe34297a-6a70-18e0-3367-8bb96fcca873",
+  "name" : "play_again_label",
+  "label" : "play_again_button_label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Play again"
+} ]

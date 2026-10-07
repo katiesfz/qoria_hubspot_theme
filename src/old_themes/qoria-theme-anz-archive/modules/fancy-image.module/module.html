@@ -45,44 +45,55 @@
             </style>
           {% end_require_css %}
 
-<div class="img-container">
-<img src="{{imgSrc}}" id="{{name}}" alt="{{ module.image.alt }}" style="{{ alignmentCSS }} {{ sizeCSS }}" class="{{ "animate-" ~ module.style.animate_in if module.style.animate_in != " " }} {{ 'filter-grayscale' if module.style.greyscale_filter }} {{roundedClass}} {{module.style.shadow}}" {{ loadingAttr }} {{ sizeAttrs }}>
-</div>
-{% if module.style.animate_in != " " %}
-    <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
+    <div class="img-container">
+        <img src="{{imgSrc}}" id="{{name}}" alt="{{ module.image.alt }}" style="{{ alignmentCSS }} {{ sizeCSS }}" class="{{"parallax-img" if module.style.parallax}} {{ "animate-" ~ module.style.animate_in if module.style.animate_in != " " }} {{ 'filter-grayscale' if module.style.greyscale_filter }} {{roundedClass}} {{module.style.shadow}}" {{ loadingAttr }} {{ sizeAttrs }}>
+    </div>
 
-        {% if module.style.no_animate_on_mobile != false %}
-            if (Math.max(window.screen.width, window.screen.height) > 768) {
+    {% if module.style.parallax %}
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                applyParallaxToImages('.parallax-img', 0.5, 0.1, {{module.style.no_animate_on_mobile|string}});
+            });
+        </script>
+
+    {% else %}
+
+        {% if module.style.animate_in != " " %}
+            <script>
+                document.addEventListener("DOMContentLoaded", function(event) {
+
+                {% if module.style.no_animate_on_mobile != false %}
+                    if (Math.max(window.screen.width, window.screen.height) > 768) {
+                {% endif %}
+                    {% if module.style.animate_in == "fade" %}
+                        fadeInHandler();
+                    {% endif %}
+
+                    {% if module.style.animate_in == "slide slide-right" %}
+                        slideInHandler("right");
+                    {% endif %}
+
+                    {% if module.style.animate_in == "slide slide-left" %}
+                        slideInHandler("left");
+                    {% endif %}
+
+                    {% if module.style.animate_in == "slide slide-top" %}
+                        slideInHandler("top");
+                    {% endif %}
+
+                    {% if module.style.animate_in == "slide slide-bottom" %}
+                        slideInHandler("bottom");
+                    {% endif %}
+
+                {% if module.style.no_animate_on_mobile != false %}
+                    }
+                {% endif %}
+                });
+            </script>
         {% endif %}
-            {% if module.style.animate_in == "fade" %}
-                fadeInHandler();
-            {% endif %}
-
-            {% if module.style.animate_in == "slide slide-right" %}
-                slideInHandler("right");
-            {% endif %}
-
-            {% if module.style.animate_in == "slide slide-left" %}
-                slideInHandler("left");
-            {% endif %}
-
-            {% if module.style.animate_in == "slide slide-top" %}
-                slideInHandler("top");
-            {% endif %}
-
-            {% if module.style.animate_in == "slide slide-bottom" %}
-                slideInHandler("bottom");
-            {% endif %}
-
-        {% if module.style.no_animate_on_mobile != false %}
-            }
-        {% endif %}
-        });
-    </script>
-{% endif %}
-
-
+    
+    {% endif %}
 
 {% else %}
 

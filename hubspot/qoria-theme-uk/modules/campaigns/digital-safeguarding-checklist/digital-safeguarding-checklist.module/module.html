@@ -1,0 +1,315 @@
+<!-- ============================================================
+     Digital Safeguarding Checklist (KCSIE 2026)
+     All copy is hard-coded below (no module fields / JSON).
+     Section questions, recommendations and icons live in module.js.
+     ============================================================ -->
+{{ require_js("//js.hsforms.net/forms/embed/v2.js", "head") }}
+
+<section class="dsc" id="dsc-root" aria-labelledby="dsc-title">
+    <div class="dsc__bg" aria-hidden="true">        
+        <img src="https://smoothwall.com/hubfs/US-Website-Assets/Digital%20Safeguarding%20Checklist/UK_SMW_2026_KCSIE-Best-Practice-Checklist_Page-3-Image1-1.jpg" alt="" class="dsc__bg-top dsc__bg-recs">
+        <img src="https://smoothwall.com/hubfs/US-Website-Assets/Digital%20Safeguarding%20Checklist/UK_SMW_2026_KCSIE-Best-Practice-Checklist_Page-3-Image1-1a.jpg" alt="" class="dsc__bg-top dsc__bg-section">
+        <div class="dsc__bg-middle"></div>
+        <img src="https://smoothwall.com/hubfs/US-Website-Assets/Digital%20Safeguarding%20Checklist/UK_SMW_2026_KCSIE-Best-Practice-Checklist_Page-3-Image1-2.jpg" alt="" class="dsc__bg-bottom">
+    </div>
+    <!-- ======================= GRID VIEW ======================= -->
+    <div
+        class="dsc__view is-active"
+        id="dsc-view-grid"
+        role="region"
+        aria-label="Checklist sections"
+        tabindex="-1"
+        >
+        <header class="container-xxl mb-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <h1 class="text-decoration-partial-underline fw-bold text-center" id="dsc-title">
+                        A Whole-School Approach to Digital Safeguarding
+                    </h1>
+                    <h2 class="h3 text-center">A best practice checklist</h2>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-xxl">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="dsc__intro-card">
+                        <p>
+                            This checklist is designed to help leaders and designated safeguarding leads (DSLs) across schools, multi-academy trusts and further education colleges take a step back and assess what's working, what's missing, and where to focus next.
+                        </p>
+                        <p>
+                            Aligned to KCSIE 2026, it gives you a structured way to review your current digital safeguarding provision: section by section, at your own pace.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="dsc__prompt">
+                        <p>Select a section below to get started</p>
+                        <span class="dsc__prompt-arrow" aria-hidden="true"
+                            ><i class="fa-solid fa-arrow-down"></i
+                        ></span>
+                    </div>
+
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 dsc__grid mb-4" id="dsc-grid" role="list"></div>
+
+                    <div class="dsc__share">
+                        <span class="dsc__share-icon" aria-hidden="true"
+                            ><i class="fa-solid fa-link"></i
+                        ></span>
+                        <p>
+                            Need input from other staff members to answer certain questions? Simply click the "Copy link" button and you can share the checklist (including any progress made) with someone else in your setting. <strong>Note:</strong> When they're done, they'll need to copy their link and send it back to you, otherwise their answers won't appear on your version.
+                        </p>
+                        <button
+                            type="button"
+                            class="dsc__share-btn"
+                            id="dsc-copy-btn"
+                        >
+                            <i class="fa-solid fa-link" aria-hidden="true"></i>
+                            <span class="dsc__share-btn-label">Copy link</span>
+                        </button>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="dsc__cta"
+                        id="dsc-get-recs"
+                        disabled
+                    >
+                        <span>Get my recommendations</span>
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= SECTION VIEW ======================= -->
+    <div
+        class="dsc__view"
+        id="dsc-view-section"
+        role="region"
+        aria-label="Section questions"
+        tabindex="-1"
+    >
+        <div class="container-xxl">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8" id="dsc-section-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= RECOMMENDATIONS VIEW ======================= -->
+    <div
+        class="dsc__view"
+        id="dsc-view-recs"
+        role="region"
+        aria-label="Your recommendations"
+        tabindex="-1"
+        >
+        <div class="container-xxl">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <header class="dsc__rec-header">
+                        <div class="dsc__hero-text">
+                            <h2 class="h1 fw-bold text-decoration-partial-underline text-center" id="dsc-rec-title">
+                                Your Recommendations
+                            </h2>
+                            <div class="dsc__lead text-center">
+                                <p>
+                                    Based on your answers, here's where to focus next. Sections are ordered by priority &mdash; expand any row to see the areas to develop.
+                                </p>
+                            </div>
+                        </div>
+                    </header>
+
+                    <button type="button" class="dsc__back dsc-no-print" data-back>
+                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                        All sections
+                    </button>
+
+                    <div class="dsc__print-head" aria-hidden="true">
+                        <div class="dsc__print-title">
+                            A Whole-School Approach to Digital Safeguarding
+                        </div>
+                        <div class="dsc__print-sub">
+                            Your Recommendations &mdash;
+                            <span id="dsc-print-date"></span>
+                        </div>
+                    </div>
+
+                    <div id="dsc-rec-content"></div>
+
+                    <button
+                        type="button"
+                        class="dsc__cta dsc-no-print"
+                        id="dsc-print-btn"
+                    >
+                        <span>Save or print as PDF</span>
+                    </button>
+                </div>
+            </div>
+            <hr class="dsc__divider dsc-no-print" />
+            <section class="dsc__next dsc-no-print" aria-labelledby="dsc-next-title">
+                <div class="row">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <h2 class="dsc__next-title" id="dsc-next-title">
+                            How to close the gaps in your digital safeguarding
+                        </h2>
+                        <div class="dsc__next-intro">
+                            <p>
+                                The checklist you've just completed reflects how much is now expected of a setting's digital safeguarding: annual filtering and monitoring reviews, a clear approach to AI, updated staff training and regular check-ins with parents.
+                            </p>
+                            <p>
+                                Smoothwall supports schools, colleges and MATs across all these areas, through technology and expert-led support. We help you keep pace with the online risks students face, and act sooner when concerns arise.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 g-4 g-md-6 dsc__products my-3 my-md-5">
+                    <div class="col">
+                        <div class="dsc__product">
+                            <span class="dsc__product-icon" aria-hidden="true"
+                                ><img
+                                    src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Human-moderated-monitoring.png"
+                                    alt=""
+                            /></span>
+                            <div class="dsc__product-body">
+                                <h3 class="dsc__product-title">
+                                    Human-moderated monitoring
+                                </h3>
+                                <p class="dsc__product-text">
+                                    Smoothwall Monitor uses real human insight to quickly flag students who may be at risk online and give your safeguarding team the context they need to step in early.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="dsc__product">
+                            <span class="dsc__product-icon" aria-hidden="true"
+                                ><img
+                                    src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Real-time-Content-Aware-Filtering.png"
+                                    alt=""
+                            /></span>
+                            <div class="dsc__product-body">
+                                <h3 class="dsc__product-title">
+                                    100% real-time content filtering
+                                </h3>
+                                <p class="dsc__product-text">
+                                    Smoothwall Filter analyses online content in real time, including new AI-generated sources, and blocks harmful material before it reaches students, so they can explore and learn freely.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="dsc__product">
+                            <span class="dsc__product-icon" aria-hidden="true"
+                                ><img
+                                    src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Online-Safety-Hub.png"
+                                    alt=""
+                            /></span>
+                            <div class="dsc__product-body">
+                                <h3 class="dsc__product-title">
+                                    Parental / staff engagement and education
+                                </h3>
+                                <p class="dsc__product-text">
+                                    Smoothwall Online Safety Hub gives your wider community practical resources, guides and how-tos on online safety. Share them so parents, carers and staff feel confident having the conversations that matter.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="dsc__product">
+                            <span class="dsc__product-icon" aria-hidden="true"
+                                ><img
+                                    src="https://4139239.fs1.hubspotusercontent-na1.net/hubfs/4139239/Training-1.png"
+                                    alt=""
+                            /></span>
+                            <div class="dsc__product-body">
+                                <h3 class="dsc__product-title">
+                                    Training for your school / college / MAT
+                                </h3>
+                                <p class="dsc__product-text">
+                                    Our dedicated team delivers up-to-date training on student digital safeguarding - virtually or in person. Training is shaped around your setting's needs, helping your community feel confident on all aspects of digital safety.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 g-md-6 align-items-center dsc__book my-5 my-md-7">
+                    <div class="col-12 col-md-4">
+                        <div class="dsc__book-text">
+                            <h2 class="dsc__book-title" id="dsc-book-title">
+                                See how you can close the gaps.
+                            </h2>
+                            <p class="dsc__book-lead">
+                                Select the areas you'd like to speak to us about, and we'll be in touch to arrange a date and time that works best for you. We'll show you how they work, how they might compare to what you have at the moment and answer any questions you may have.
+                            </p>
+                        </div>
+                        </div>
+
+                        <div class="col-12 col-md-8">
+                            <div class="dsc__form-card">
+                                <!-- HubSpot form embed -->
+                            <script>
+                                hbspt.forms.create({
+                                    portalId: "4139239",
+                                    formId: "b75598fc-c559-4fdf-b22f-13d3b126c32d",
+                                    region: "na1",
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ======================= MODAL ======================= -->
+    <div
+        class="modal fade"
+        id="dsc-modal"
+        tabindex="-1"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="dsc-modal-title"
+        aria-describedby="dsc-modal-body"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content dsc__modal-content">
+                <div class="modal-body dsc__modal">
+                    <span class="dsc__modal-icon" aria-hidden="true"
+                        ><i class="fa-solid fa-triangle-exclamation"></i
+                    ></span>
+                    <h2 class="dsc__modal-title" id="dsc-modal-title">
+                        Some sections that you've started have not been completed yet.
+                    </h2>
+                    <p class="dsc__modal-body" id="dsc-modal-body"></p>
+                    <div class="dsc__modal-actions">
+                        <button
+                            type="button"
+                            class="dsc__modal-btn dsc__modal-btn--solid"
+                            id="dsc-modal-return"
+                            data-bs-dismiss="modal"
+                        >
+                            Return to checklist
+                        </button>
+                        <button
+                            type="button"
+                            class="dsc__modal-btn dsc__modal-btn--outline"
+                            id="dsc-modal-continue"
+                        >
+                            Continue anyway
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

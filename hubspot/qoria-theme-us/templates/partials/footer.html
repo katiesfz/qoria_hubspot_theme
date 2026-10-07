@@ -20,12 +20,625 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
   </div>
   <div class="container-xxl pb-4 g-0 position-relative">
     {% dnd_area "dnd_footer"
-    label="Footer"
-    class=""
-    %}
-      {% dnd_section %}
-        {% dnd_column %}
-          {# modules #}
+      label="Footer"
+      class=""
+      %}
+      {% dnd_section
+          full_width=true
+        %}
+        {% dnd_column
+          offset=0,
+          width=3
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/logo",
+              offset=0,
+              width=12,
+              override_default_logo=true,
+              logo={
+                "alt" : "Linewize-byqoria-logo-white",
+                "height" : 123,
+                "loading" : "lazy",
+                "max_height" : 46,
+                "max_width" : 180,
+                "size_type" : "auto_custom_max",
+                "src" : "https://5840292.fs1.hubspotusercontent-na1.net/hubfs/5840292/Linewize-byqoria-logo-white.png",
+                "width" : 480
+              },
+              link_url={
+                "content_id" : 63747662449,
+                "type" : "CONTENT"
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_column
+              offset=0,
+              width=12,
+              padding={
+                "default" : {
+                  "top" : "32px"
+                }
+              }
+            %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/rich_text",
+                  offset=0,
+                  width=12
+                %}
+                  {% module_attribute "html" %}
+                    <p class="h6 mb-3">Registered Office</p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/rich_text",
+                  offset=0,
+                  width=12
+                %}
+                  {% module_attribute "html" %}
+                    <p>10680 Treena Street, Suite 155<br>San Diego, CA 92131<br>USA</p>
+                    <p>Phone: 844 SAFEWEB (​844-723-3932)<br>Email: <a href="mailto:inquiries@linewize.com" class="text-reset">inquiries@linewize.com</a></p>
+                    <p>Registered as Family Zone Inc<br>EIN: 81-4363051</p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/linked_image",
+                  offset=0,
+                  width=12,
+                  horizontal_alignment="LEFT",
+                  img={
+                    "alt" : "GCPartner",
+                    "height" : 288,
+                    "loading" : "lazy",
+                    "max_height" : 46,
+                    "max_width" : 150,
+                    "size_type" : "auto_custom_max",
+                    "src" : "https://5840292.fs1.hubspotusercontent-na1.net/hubfs/5840292/GCPartner.png",
+                    "width" : 947
+                  },
+                  margin={
+                    "default" : {
+                      "top" : "32px",
+                      "bottom": "32px"
+                    }
+                  }
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=3,
+          width=3
+        %}
+          {% dnd_row %}
+            {% dnd_column
+              offset=0,
+              width=12
+            %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/rich_text",
+                  offset=0,
+                  width=12
+                %}
+                  {% module_attribute "html" %}
+                    <p class="h6 mb-3">Solutions</p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/rich_text",
+                  offset=0,
+                  width=12
+                %}
+                  {% module_attribute "html" %}
+                    <p class="fw-bold mb-2">Prevention &amp; Enablement</p>
+                  {% end_module_attribute %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="/qoria-theme-us/modules/simple_menu",
+                  offset=0,
+                  width=12,
+                  menu_tree=[ {
+                    "categoryId" : 1,
+                    "children" : [ ],
+                    "contentType" : "site_page",
+                    "isDeleted" : false,
+                    "isPublished" : true,
+                    "linkLabel" : "Content Filtering Software",
+                    "pageLinkId" : 63851932853,
+                    "pageLinkName" : "Linewize US - Linewize Filter",
+                    "state" : "PUBLISHED_OR_SCHEDULED",
+                    "subCategory" : "site_page",
+                    "type" : "PAGE_LINK"
+                  }, {
+                    "categoryId" : 1,
+                    "children" : [ ],
+                    "contentType" : "site_page",
+                    "isDeleted" : false,
+                    "isPublished" : true,
+                    "linkLabel" : "Classroom Management Software",
+                    "pageLinkId" : 63787854429,
+                    "pageLinkName" : "Linewize US - Classwize",
+                    "state" : "PUBLISHED_OR_SCHEDULED",
+                    "subCategory" : "site_page",
+                    "type" : "PAGE_LINK"
+                  }, {
+                    "categoryId" : 1,
+                    "children" : [ ],
+                    "contentType" : "site_page",
+                    "isDeleted" : false,
+                    "isPublished" : true,
+                    "linkLabel" : "Data Analytics for K-12 Districts",
+                    "pageLinkId" : 184212591622,
+                    "pageLinkName" : "Linewize US - EdTech Insights",
+                    "state" : "PUBLISHED_OR_SCHEDULED",
+                    "subCategory" : "site_page",
+                    "type" : "PAGE_LINK"
+                  } ]
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="fw-bold mb-2">Early Detection &amp; Intervention</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/simple_menu",
+              offset=0,
+              width=12,
+              menu_tree=[ {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isPublished" : true,
+                "linkLabel" : "Digital Threat Monitoring Software",
+                "pageLinkId" : 63854252088,
+                "pageLinkName" : "Linewize US - Monitor",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Chromebook Monitoring Software",
+                "pageLinkId" : 210730163715,
+                "pageLinkName" : "Linewize US - Chromebook Monitoring Software",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "landing_page",
+                "isPublished" : true,
+                "linkLabel" : "Monitor Trial - Student Safety Audit",
+                "pageLinkId" : 72165616384,
+                "pageLinkName" : "Student Safety Audit",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "landing_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isPublished" : true,
+                "linkLabel" : "Student Wellbeing Check-Ins Software",
+                "pageLinkId" : 102671606938,
+                "pageLinkName" : "Linewize US - Pulse",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              } ]
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="fw-bold mb-2">Education &amp; Engagement</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/simple_menu",
+              offset=0,
+              width=12,
+              menu_tree=[ {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Student Courses",
+                "pageLinkId" : 144007927466,
+                "pageLinkName" : "Linewize US - Courses",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Linewize Parent",
+                "pageLinkId" : 63854252048,
+                "pageLinkName" : "Linewize - Parent (School Community)",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Qustodio Parent App",
+                "pageLinkId" : 144007926677,
+                "pageLinkName" : "Linewize US - Qustodio",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Online Safety Hub",
+                "pageLinkId" : 144014688630,
+                "pageLinkName" : "Linewize US - Online Safety Hub",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Parent Webinars",
+                "pageLinkId" : 177028539422,
+                "pageLinkName" : "Linewize US - Webinars",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              } ]
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=6,
+          width=2
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="h6 mb-3">Useful Links</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/simple_menu",
+              offset=0,
+              width=12,
+              menu_tree=[ {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "About Qoria",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Ethical Practices",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/ethical-practices",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Investors",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/investors",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Careers",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/careers",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Trust Center",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/trust",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Media Inquiries",
+                "linkUrl" : "mailto:inquiries@linewize.com",
+                "type" : "URL_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Customer Support",
+                "pageLinkId" : 10227667409,
+                "pageLinkName" : "Linewize US - Support",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Contact Us",
+                "pageLinkId" : 10214472313,
+                "pageLinkName" : "Linewize US - Contact",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              }, {
+                "categoryId" : 1,
+                "children" : [ ],
+                "contentType" : "site_page",
+                "isDeleted" : false,
+                "isPublished" : true,
+                "linkLabel" : "Site Map",
+                "pageLinkId" : 144008937138,
+                "pageLinkName" : "Linewize US - Sitemap",
+                "state" : "PUBLISHED_OR_SCHEDULED",
+                "subCategory" : "site_page",
+                "type" : "PAGE_LINK"
+              } ]
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=8,
+          width=2
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="h6 mb-3">Logins</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/simple_menu",
+              offset=0,
+              width=12,
+              menu_tree=[ {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Linewize Filter",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://us.linewizefilter.qoria.cloud/login",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "{{ classroom_product }}",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://us.classroom.qoria.cloud/login",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Monitor",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://linewize.auth.qoria.cloud/login?redirect_uri=https%3A%2F%2Fportal.linewize.net%2Fmonitor%2F",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "{{ edtech_product }}",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://linewize.auth.qoria.cloud/login?redirect_uri=https%3A%2F%2Fportal.linewize.net",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Parents",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://auth.qustodio.com/en/sso/login/?response_type=code&state=eyIxZGI3MDRkY2M0MzMzNGUwZTQ1NTc4ZmExNDcyNTAwZjdmNTRkYzhjOWFkMDAzNmZjYWQwYmI5MyI6eyJjcmVhdGVkQXQiOiJGcmksIDIyIERlYyAyMDIzIDA5OjI0OjM5IEdNVCIsImV4cGlyZXNPbiI6IkZyaSwgMjIgRGVjIDIwMjMgMDk6MzA6MzkgR01UIn0sImxvY2F0aW9uIjp7InBhdGhuYW1lIjoiLyIsInNlYXJjaCI6IiIsImhhc2giOiIiLCJhY3Rpb24iOiJQT1AiLCJrZXkiOm51bGwsInF1ZXJ5Ijp7fX19&client_id=2zuJslNvMxkfLgLikoS7PsAqILWO2lRSrOLAhjmd&redirect_uri=https%3A%2F%2Ffamily.qustodio.com%2Fparents-app&details=eyJzb3VyY2VfcGxhdGZvcm0iOiJXZWIiLCJzb3VyY2VfZGV0YWlscyI6IlBBUi0xODIuMTkuMS01OC1nYjVmMDg3N2MiLCJzb3VyY2Vfb3NfdmVyc2lvbiI6IjEyMC4wLjAuMCIsInNvdXJjZV90b3VjaHBvaW50IjoiUGFyZW50IERldmljZSJ9&conf=eyJzaG93QmFja0J1dHRvbiI6ZmFsc2V9",
+                "type" : "URL_LINK"
+              } ]
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row
+            margin={
+              "default" : {
+                "top" : "32px"
+              }
+            }
+          %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="h6 mb-3">Legal Information</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/simple_menu",
+              offset=0,
+              width=12,
+              menu_tree=[ {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Privacy Policy",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/privacy",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Terms & Conditions",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/legal",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Accessibility",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/accessibility-guidelines",
+                "type" : "URL_LINK"
+              }, {
+                "children" : [ ],
+                "isPublished" : false,
+                "linkLabel" : "Cookies Policy",
+                "linkTarget" : "_blank",
+                "linkUrl" : "https://qoria.com/privacy/cookies",
+                "type" : "URL_LINK"
+              } ]
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        {% dnd_column
+          offset=10,
+          width=2
+        %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              offset=0,
+              width=12
+            %}
+              {% module_attribute "html" %}
+                <p class="h6 mb-3">Follow Us</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/social-follow",
+              offset=0,
+              width=12,
+              social_links=[ {
+                "accessibility" : {
+                  "title" : "Follow us on Facebook"
+                },
+                "social_account" : "facebook-f",
+                "social_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : true,
+                  "url" : {
+                    "href" : "https://www.facebook.com/linewize/",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              }, {
+                "accessibility" : {
+                  "title" : "Follow us on LinkedIn"
+                },
+                "social_account" : "linkedin-in",
+                "social_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : true,
+                  "url" : {
+                    "href" : "https://ph.linkedin.com/company/linewize-usa",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              }, {
+                "accessibility" : {
+                  "title" : "Subscribe to our YouTube channel"
+                },
+                "social_account" : "youtube",
+                "social_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : true,
+                  "url" : {
+                    "href" : "https://www.youtube.com/@linewize",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              }, {
+                "accessibility" : {
+                  "title" : "Follow us on X"
+                },
+                "social_account" : "twitter",
+                "social_link" : {
+                  "no_follow" : false,
+                  "open_in_new_tab" : true,
+                  "url" : {
+                    "href" : "https://x.com/linewize",
+                    "type" : "EXTERNAL"
+                  }
+                }
+              } ]
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+          {% dnd_row %}
+            {% dnd_module
+              path="/qoria-theme-us/modules/manage-cookies",
+              offset=0,
+              width=12
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
         {% end_dnd_column %}
       {% end_dnd_section %}
     {% end_dnd_area %}
@@ -37,9 +650,16 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
           <span>&copy; {{year}} Linewize. All rights reserved.</span>
         </div>
         <div class="col text-end">
-        <a class="text-reset text-decoration-none" href="https://qoria.com" target="_blank"><span class="align-middle">Linewize is part of the Qoria family</span> <img src="{{get_asset_url('..//qoria-theme/images/qoria/Q-Colour.svg')}}" style="width: 30px;" alt="Q" class="ms-3 align-middle"></a>
+        <a class="text-reset text-decoration-none" href="https://qoria.com" target="_blank"><span class="align-middle">Linewize is part of the Qoria family</span> <img src="{{get_asset_url('../../images/qoria/logos/Q-Colour.svg')}}" style="width: 30px;" alt="Q" class="ms-3 align-middle"></a>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+
+
+
+
+
+

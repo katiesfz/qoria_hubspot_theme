@@ -1,0 +1,414 @@
+{% require_css %}
+    <style>
+      {% scope_css %}
+        .heading-bg-gradient br {
+            display: none !important;
+        }
+        @media (min-width: 768px) {
+            .heading-bg-gradient br {
+                display: block !important;
+            }
+        }
+      {% end_scope_css %}
+    </style>
+  {% end_require_css %}
+
+<section class="hero-{{module.hero_type}}" id="{{name}}">
+
+{% if module.hero_type == "full-video" %}
+    {% if module.poster_image.src %}
+        {% set sizeAttrs = 'width="{{ module.poster_image.width }}" height="{{ module.poster_image.height }}"' %}
+        {% if module.poster_image.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.poster_image.width }}" height="{{ module.poster_image.height }}"' %}
+            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+            {% set imgSrc = resize_image_url(module.poster_image.src, module.poster_image.width) %}
+        {% elif module.poster_image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.poster_image.max_width }}" height="{{ module.poster_image.max_height }}"' %}
+            {% set sizeCSS = "max-width: 100%; height: auto;" %}
+            {% set imgSrc = resize_image_url(module.poster_image.src, module.poster_image.max_width) %}
+        {% endif %}
+        
+<!-- preload video poster -->
+        <link
+        rel="preload"
+        as="image"
+        fetchpriority="high"
+        href="{{imgSrc}}"
+        />
+
+    {% endif %}
+    {% require_css %}
+        <style>
+            {% if module.poster_image.src %}
+
+                /* This prevents the video from showing on mobiles */
+            @media (pointer: coarse) and (hover: none) {
+                .hero-full-video {
+                background: url('{{imgSrc}}') no-repeat center center scroll;
+                background-size: cover;
+                }
+            
+                .hero-full-video video {
+                display: none;
+                }
+            } 
+            
+            {% endif %}
+        </style>
+    {% end_require_css %}
+
+    <div class="video-bg-container {{"parallax" if module.style.parallax }}">
+        <!-- The HTML5 video element that will create the background video on the header -->
+        <video playsinline="playsinline" id="video-bg"  muted="muted" loop="loop" {% if module.poster_image.src %}poster="{{imgSrc}}" {{sizeAttrs}}{% endif %}>
+            <source src="{{module.video}}" data-src="{{module.video}}" type="video/mp4">
+        </video>
+  </div>
+{% elif module.hero_type == "full-image" %}
+    {% require_head %}
+        <link rel="preload" href="{{resize_image_url(module.image.src, 0, 0, 1500)}}">
+    {% end_require_head %}
+{% require_css %}
+    <style>
+     /*   .hero-full-image {
+            background: url("{{resize_image_url(module.image.src, 0, 0, 1500)}}");
+            background-size: cover;
+            background-position: center;
+        } */
+        {% if module.style.filter_image %}
+            .image-bg-container:before {
+                content: " ";
+                height: 100%;
+                width: 100%;
+                display: block;
+                position: absolute;
+                top: 0;
+                backdrop-filter: var(--q-filter-grayscale);
+            }
+        /*    .hero-full-image:before {
+                content: " ";
+                height: 100%;
+                width: 100%;
+                display: block;
+                position: absolute;
+                top: 0;
+                backdrop-filter: var(--q-filter-grayscale);
+            } */
+        {% endif %}
+        {% if module.include_form %}
+            .image-bg-container:after {
+                content: " ";
+                height: 100%;
+                width: 100%;
+                display: block;
+                position: absolute;
+                top: 0;
+                backdrop-filter: brightness(0.5);
+            }
+        /*    .hero-full-image:after {
+                content: " ";
+                height: 100%;
+                width: 100%;
+                display: block;
+                position: absolute;
+                top: 0;
+                backdrop-filter: brightness(0.5);
+            } */
+        {% endif %}
+
+        
+    </style>
+{% end_require_css %}
+
+<div class="image-bg-container {{"parallax" if module.style.parallax }}">
+    <img src="{{resize_image_url(module.image.src, 0, 0, 1500)}}">
+</div>
+
+{% endif %}
+
+
+{% set paddingClasses = "" %}
+{% if module.style.padding_top && module.style.padding_bottom %}
+    {% set paddingClasses = "hero-padding-top-" ~ module.style.padding_top ~ " hero-padding-bottom-" ~ module.style.padding_bottom %}
+{% else %}
+    {% if module.style.heading_location == "top-left" %}
+        {% set paddingClasses = "hero-padding-top-0 hero-padding-bottom-lg" %}
+    {% elif module.style.heading_location == "33-left" %}
+        {% set paddingClasses = "hero-padding-top-sm hero-padding-bottom-md" %}
+    {% elif module.style.heading_location == "middle-left" %}
+        {% set paddingClasses = "hero-padding-top-sm hero-padding-bottom-sm" %}
+    {% elif module.style.heading_location == "66-left" %}
+        {% set paddingClasses = "hero-padding-top-md hero-padding-bottom-sm" %}
+    {% elif module.style.heading_location == "bottom-left" %}
+        {% set paddingClasses = "hero-padding-top-lg hero-padding-bottom-0" %}
+    {% endif %}
+{% endif %}
+
+
+
+  <!-- The header content -->
+<div class="container-xxl g-0 h-100">
+    {% if module.show_breadcrumbs && module.menu %}
+        <div class="row g-0">
+        <div class="col-12 text-end pt-5 position-absolute top-0 end-0 text-white shadow-filter">
+        {% from '../../assets/macros.html' import breadcrumbs %}
+        {{ breadcrumbs(module.menu, "", true) }}
+        </div>
+        </div>
+    {% endif %}
+    {% if module.include_form %}
+        <div class="row h-100 justify-content-center gx-0 mx-0">
+            <div class="col-md-12 col-lg-11 col-xl-10 mb-n7">
+                <div class="row bg-white gx-5 mx-3 shadow">
+                    <div class="col-12 p-0">
+                        <div class="bg-gradient-primary" style="width: 100%; height: 12px;"></div>
+                    </div>
+                    <div class="col-12 col-md-6 p-4 p-md-5">
+                        {% if module.pre_header %}<h5 class="fw-bold text-white shadow-filter ms-4">{{module.pre_header}}</h5> {% endif %}
+                        {% if module.header != "" && module.header %}
+                            {% if module.header_level == "h2" %}
+                                <h2 class="text-decoration-partial-underline">{{module.header}}</h2>
+                            {% else %}
+                                <h1 class="h2 text-decoration-partial-underline">{{module.header}}</h1>
+                            {% endif %}
+                        {% endif %}
+                        {% if module.copy %}
+                            {{module.copy }}
+                        {% endif %}
+                        {% if module.cta|length > 0 %}
+                            <div class="mt-4">
+                                {%for cta in module.cta %}
+                                    {% if cta.cta_type == "default" %}
+                                        <a href="{{cta.cta_link.url.href}}" {% if cta.cta_link.open_in_new_tab %}target="_blank"{% endif %} class="btn mb-1 {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
+                                        </a>
+                                    {% endif %}
+                                    {% if cta.cta_type == "hubspot-cta" %}
+                                        {{ cta(cta.cta_embed) }}
+                                    {% endif %}
+                                {%endfor%}
+                            </div>
+                        {%endif%}
+                    </div>
+                    <div class="col-12 col-md-6 p-4 p-md-5">
+                    <div id="form-{{name}}"></div>
+                                                
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                        <script>
+
+                            hbspt.forms.create({
+                            portalId: "{{hub_id}}",
+                            formId: "{{module.form_settings.form.form_id}}",
+                            target: "#form-{{name}}",
+                                {% if module.form_settings.form.response_type == "redirect" %}
+                                {% if module.form_settings.form.redirect_url != "" && module.form_settings.form.redirect_url %}
+                                redirectUrl: "{{module.form_settings.form.redirect_url}}",
+                                {% else %}
+                                redirectUrl: "{{ content_by_id(module.form_settings.form.redirect_id).absolute_url }}",
+                                {% endif %}
+                                {% else %}
+                                    {% if module.form_settings.form.response_type == "inline" %}
+                                        inlineMessage: "{{module.form_settings.form.message|escapejs}}",
+                                    {% endif %}
+                                {% endif %}
+                            {% if module.form_settings.button_text %}
+                            submitText: "{{module.form_settings.button_text}}",
+                            {% endif %}
+                            submitButtonClass: "btn mt-4 btn-{{module.form_settings.button_colour}}",
+                            cssClass: 'hs-form'
+                            });
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+    <div class="row h-100 gx-0 justify-content-end flex-column">
+        <div class="hero-content-container 
+{% if module.include_form %}hero-form{% else %} {{paddingClasses}}{% endif %} col-12 ">
+            <div class="row gx-0">
+                <div class="col-12 py-5">
+                {% if module.pre_header %}<h5 class="fw-bold text-white shadow-filter ms-4">{{module.pre_header}}</h5> {% endif %}
+                {% if module.header != "" && module.header %}
+                    {% if module.header_level == "h2" %}
+                        <h2 class="{{ module.style.header_background if module.style.header_background != "heading-bg-gradient bg-gradient-primary" else "heading-bg-gradient bg-gradient-primary"}} {{module.style.header_color if module.style.header_color != "text-white" else "text-white"}} h1">{{module.header}}</h2>
+                    {% else %}
+                    <h1 class="{{ module.style.header_background if module.style.header_background != "heading-bg-gradient bg-gradient-primary" else "heading-bg-gradient bg-gradient-primary"}} {{module.style.header_color if module.style.header_color != "text-white" else "text-white"}}">{{module.header}}</h1>
+                    {% endif %}
+                {% endif %}
+                </div>
+                {% if module.cta|length > 0%}
+                <div class="col-12 pb-5">
+                    <div class="ms-4 ms-xxl-0">
+                        {%for cta in module.cta %}
+                            <!-- run macro with link, label, style, colour? -->
+                            {% if cta.cta_type == "default" %}
+                                <a href="{{cta.cta_link.url.href}}" {% if cta.cta_link.open_in_new_tab %}target="_blank"{% endif %} class="btn mb-1 {{cta.size}} btn{{ cta.style }}{{cta.colour}}">{{cta.cta_label}}
+                                </a>
+                            {% endif %}
+                            {% if cta.cta_type == "hubspot-cta" %}
+                                {{ cta(cta.cta_embed) }}
+                            {% endif %}
+                        {%endfor%}
+                    </div>
+                </div>
+                {% endif %}
+                {% if module.show_share_price %}
+                    <div class="text-white">
+                    <hr class="opacity-100">
+                    </div>
+                <div class="col-12 pb-5 text-white text-end">
+                
+                    {% set foundRow = [] %}
+                    {% for row in hubdb_table_rows(module.stock_db, queryparam) %}
+                        {% if row.price|string != "0" and foundRow == [] %}
+                            {% do foundRow.append(row.hs_id) %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% set stockRow = hubdb_table_row(module.stock_db, foundRow[0]) %}
+
+
+                    <p>Stock price: A${{stockRow.price}} {{stockRow.change|format}} ({{stockRow.change_percent}}%)</p>
+                </div>
+                {%endif%}
+            </div>
+        </div>
+        {% if module.contents_listing %}
+            {% if module.contents_listing == "custom" %}
+                {% if module.page_contents|length > 0 %}
+                    <div class="col-10 col-sm-8 col-md-6 col-lg-4 position-relative section-shadow mb-n4 z-3">
+                        <div class="page-contents bg-white p-3 arrow-down">
+                            <div class="list-group list-group-flush" id="pageContents">
+                                {% for contents in module.page_contents %}
+                                    <a href="{{contents.anchor}}" class="fw-semibold list-group-item list-group-item-action {{"active" if loop.first}}">{{contents.content_label}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% elif module.contents_listing == "auto" %}
+                <div class="col-10 col-sm-8 col-md-6 col-lg-4 position-relative section-shadow mb-n4 z-3">
+                    <div class="page-contents bg-white p-3 arrow-down">
+                        <div class="list-group list-group-flush" id="pageContents">
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% else %}
+            {% if module.page_contents|length > 0 %}
+                <div class="col-10 col-sm-8 col-md-6 col-lg-4 position-relative section-shadow mb-n4 z-3">
+                    <div class="page-contents bg-white p-3 arrow-down">
+                        <div class="list-group list-group-flush" id="pageContents">
+                            {% for contents in module.page_contents %}
+                                <a href="{{contents.anchor}}" class="fw-semibold list-group-item list-group-item-action {{"active" if loop.first}}">{{contents.content_label}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+</section>
+
+{%if module.show_share_price%}
+    <script>
+
+    </script>
+{%endif%}
+
+
+
+{% if module.hero_type == "full-video" %}
+    <script>
+        var video = document.getElementById("video-bg");
+        video.addEventListener("canplay", function() {
+    //    setTimeout(function() {
+            video.play();
+     //   }, 5000);
+        });
+    </script>
+{% endif %}
+
+{% if module.style.parallax %}
+<script>
+    const parallaxElements = document.querySelectorAll('.parallax');
+
+    function repositionParallax() {
+        const y = window.scrollY;
+        parallaxElements.forEach((el) => {
+            const position = el.getBoundingClientRect();
+            const top = el.offsetTop;
+            const elDistanceToTop = window.pageYOffset + position.top;
+            //  console.log(el);
+            const transformY = range(
+                (Math.max(0, (elDistanceToTop - el.offsetHeight))),
+                (elDistanceToTop + el.offsetHeight),
+                0,
+                150,
+                window.scrollY
+                );
+        //    console.log("top: " + (Math.max(0, (elDistanceToTop - el.offsetHeight))) + "; bottom: " + (elDistanceToTop + el.offsetHeight) + "; scrollY: " + window.scrollY);
+            el.firstElementChild.style.transform = `translateY(-${transformY}px)`;       
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        if (isInViewport(document.getElementById("{{name}}"), 100)) {
+            repositionParallax();
+        }
+    });
+    window.addEventListener('resize', () => {
+        if (isInViewport(document.getElementById("{{name}}"), 100)) {
+            repositionParallax();
+        }
+    });
+    window.addEventListener('load', () => {
+        if (isInViewport(document.getElementById("{{name}}"), 100)) {
+            repositionParallax();
+        }
+    });
+
+
+</script>
+{% endif %}
+
+{% if module.content_listing == "auto" %}
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", (event) => {
+
+            // collect all the h1s and h2s
+            var headings = [];
+
+            var headingObjects = document.querySelectorAll('.blog-post h1, .blog-post h2');
+
+            // console.log(headingObjects);
+
+            var pageContentsContainer = document.getElementById("pageContents");
+
+            pageContentsContainer.innerHTML = "";
+
+            for (let i=0; i<headingObjects.length; i++) {
+                let newHeading = {
+                "contents" : headingObjects[i].innerText
+                };
+
+                let anchorString = headingObjects[i].innerText.replace(/[^\w\s]|_/g, "");
+                anchorString = anchorString.replace(/\s+/g, "").toLowerCase();
+
+                // console.log(anchorString);
+
+                let anchorTag = "<a id='" + anchorString + "' data-hs-anchor='true'></a>";
+
+                headingObjects[i].insertAdjacentHTML("beforebegin", anchorTag);
+
+                let pageContentsNew = "<a href='#" + anchorString + "' class='fw-semibold list-group-item list-group-item-action'>" + headingObjects[i].innerText + "</a>";
+                pageContentsContainer.insertAdjacentHTML("beforeend", pageContentsNew);
+
+            }
+        });
+    </script>
+{% endif %}

@@ -1,0 +1,121 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* latin-ext */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v30/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v30/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v30/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v30/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+{% if module.profile_image.src %}
+  {% set hasProfileImg = true %}
+{% else %}
+  {% set hasProfileImg = false %}
+{% endif %}
+<table width="700px" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; width: 100%; max-width: 700px">
+	<tr>
+    {% if hasProfileImg -%}
+    <td style="width: 1%; padding: 0 10px 0 0">
+      <img src="{{module.profile_image.src}}" alt="{{module.full_name}}" style="height: 4em; {{"border-radius: 50em;" if module.profile_image_circle}}">
+    </td>
+    {%- endif %}
+		<td style="white-space: nowrap; padding: 5px 5px 0 0;">
+      {% if module.full_name -%}
+      <span style="font-family: 'Quicksand', Arial, Sans-serif !important; font-size: 12pt; font-weight: 800; margin: 0; line-height: 1.3em; white-space: nowrap;">{{module.full_name}}</span>
+      {%- endif %}
+      {% if module.job_title -%}      
+      <br>
+      <span style="font-family: 'Quicksand', Arial, sans-serif !important; font-size: 12pt; line-height: 1.3em; margin: 0; font-weight: 400; white-space: nowrap;">{{module.job_title}}</span>
+      {%- endif %}
+      {% if module.phone -%}
+      <br>
+      <span style="font-family: 'Quicksand', Arial, sans-serif !important; font-size: 12pt; line-height: 1.3em; margin: 0; font-weight: 400; white-space: nowrap;">{{module.phone}}</span>
+      {%- endif %}
+    </td>
+	</tr>
+  {% if module.logo %}
+    <tr>
+      <td {% if hasProfileImg %}colspan="2"{% endif %} style="white-space: nowrap; padding: 25px 5px 20px 0px;">
+        {% if module.logo.override_inherited_src %}
+          {% if module.logo_link != "" %}
+            {% set logoLink = module.logo_link%}
+          {% else %}
+            {% set logoLink = company_domain %}
+          {% endif %}
+          {% if module.logo.src %}
+            <a href="{{logoLink}}">
+              <img src="{{module.logo.src}}" alt="{{module.logo.alt}}" style="width: {{module.logo.width}}px; height: {{module.logo.height}}px;">
+            </a>
+          {% else %}
+            {% if !module.logo.suppress_company_name %}
+              <a href="{{logoLink}}">
+                <h3>{{ module.logo.alt }}</h3>
+              </a>
+            {% endif %}
+          {% endif %}
+        {% else %}
+          <a href="{{brand_settings.logo.link}}">
+            <img src="{{brand_settings.logo.src}}" alt="{{brand_settings.logo.alt}}" style="width: {{brand_settings.logo.width}}px; height: {{brand_settings.logo.height}}px;">
+          </a>
+        {% endif %}
+      </td>
+    </tr>
+  {% endif %}
+  {% if module.facebook_link || module.linkedin_link || module.x_link || module.youtube_link %}
+	<tr>
+		<td {% if hasProfileImg %}colspan="2"{% endif %} valign="bottom" style="vertical-align: bottom; padding: 0; white-space: nowrap; padding: 0 5px 0 0;">
+      {% if module.facebook_link %}
+        <a style="display: inline-block;" href="{{module.facebook_link}}"><img src="https://qoria.com/hubfs/Signatures_Assets/Email-sig-assets-LWZ-FB.png" style="width: 27px; height: auto;"></a>
+      {% endif %} 
+      {% if module.x_link %}
+      <a style="display: inline-block;" href="{{module.x_link}}"><img src="https://www.linewize.io/hubfs/Signatures_Assets/Email-sig-assets-LWZ-TW.png" style="width: 27px; height: auto;"></a>
+      {% endif %}
+      {% if module.linkedin_link %}
+      <a style="display: inline-block;" href="{{module.linkedin_link}}"><img src="https://www.linewize.io/hubfs/Signatures_Assets/Email-sig-assets-LWZ-LNKD.png" style="width: 27px; height: auto;"></a>
+      {% endif %}
+      {% if module.youtube_link %}
+      <a style="display: inline-block;" href="https://www.youtube.com/@linewize1671"><img src="https://www.linewize.io/hubfs/Signatures_Assets/Email-sig-assets-LWZ-YT.png" style="width: 27px; height: auto;"></a>
+      {% endif %}
+    </td>
+	</tr>
+  {% endif %}
+	<tr>
+	  <td {% if hasProfileImg %}colspan="2"{% endif %} style="padding: 0 5px; text-align: left;">
+      <p style="padding: 15px 0; font-family: 'Quicksand', Arial, sans-serif; font-size: 8pt; line-height: 1.2em; margin: 0;">
+        This email is intended for the named recipient only. The information contained in this message may be confidential or commercially sensitive. If you are not the intended recipient you must not reproduce or distribute any part of this email, disclose its contents to any other party, or take any action in reliance on it. If you have received this email in error, please contact the sender immediately and delete it from your computer.
+      </p>
+    </td>
+	</tr>
+</table>

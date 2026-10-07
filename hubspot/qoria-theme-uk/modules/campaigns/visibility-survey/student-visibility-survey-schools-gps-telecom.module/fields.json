@@ -1,0 +1,81 @@
+[ {
+  "id" : "version",
+  "name" : "version",
+  "label" : "Version",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "schools-mats", "Schools/MATs" ], [ "fe-colleges", "FE colleges" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "schools-mats"
+}, {
+  "id" : "is_gated",
+  "name" : "is_gated",
+  "label" : "Is gated",
+  "help_text" : "Gates the quiz results behind a form when toggled on",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "default_gate_form",
+  "name" : "default_gate_form",
+  "label" : "Use default gate forms",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "form_gate",
+  "name" : "form_gate",
+  "label" : "Gate form",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : "is_gated",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : "default_gate_form",
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    } ],
+    "children" : [ ]
+  },
+  "disable_inline_form_editing" : true,
+  "embed_versions" : [ "v2" ],
+  "type" : "form",
+  "display_width" : null,
+  "default" : {
+    "response_type" : "inline",
+    "message" : "Thanks for submitting the form."
+  }
+}, {
+  "id" : "show_dev",
+  "name" : "show_dev",
+  "label" : "Show dev tools",
+  "help_text" : "Show dev buttons on preview and editor pages",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+} ]

@@ -1,0 +1,21 @@
+name: Deploy HubSpot Theme - Sandbox
+
+on:
+  push:
+    branches:
+      - sandbox
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: HubSpot Deploy Action
+        uses: HubSpot/hubspot-cms-deploy-action@v2.0.1
+        with:
+          src_dir: qoria-theme
+          dest_dir: q-theme
+          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_SANDBOX }}
+          personal_access_key: ${{ secrets.HUBSPOT_PAK_ANZ_SB }}

@@ -5,22 +5,21 @@ on:
     branches:
       - sandbox
 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        account:
-          - name: LW-ANZ-SB
+
+    environment: staging
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: HubSpot Deploy Action Sandbox
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
-          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID_SANDBOX }}
-          personal_access_key: ${{ secrets.HUBSPOT_PAK_ANZ_SB }}
+          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
           src_dir: hubspot
           dest_dir: /

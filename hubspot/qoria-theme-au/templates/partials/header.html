@@ -4,40 +4,40 @@ label: Linewize AU Header
 -->
 
 
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/brands.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/light.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/regular.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/solid.min.css")) }}
-  {{ require_css(get_asset_url("/qoria-theme/assets/fontawesome6/css/thin.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/brands.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/fontawesome.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/light.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/regular.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/solid.min.css")) }}
+  {{ require_css(get_asset_url("../../assets/fontawesome/css/thin.min.css")) }}
 
 
-  {% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
+  {% module "navigation" path="../../modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
   {% set breakpoint = widget_data.navigation.breakpoint %}
       {% if breakpoint == "always" %}
           {% set navbarExpand = "" %}
       {% elif breakpoint == "never" %}
           {% set navbarExpand = "navbar-expand" %}
       {% else %}
-          {% set navbarExpand = "navbar-expand-" + breakpoint %}
+          {% set navbarExpand = "navbar-expand-" ~ breakpoint %}
       {% endif %}
 
   <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
     <nav class="navbar {{navbarExpand}}">
       <div class="container-xxl position-relative"> 
-        {% module "logo" path="/qoria-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+        {% module "logo" path="../../modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="far fa-xl fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          {% module "navigation" path="/qoria-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
+          {% module "navigation" path="../../modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
             <div class="navbar-search d-flex ms-{{breakpoint}}-6 mb-3 mb-{{breakpoint}}-0">
-              {% module "search" path="/qoria-theme/modules/search_input", label="Search" no_wrapper=true %}
+              {% module "search" path="../../modules/search_input", label="Search" no_wrapper=true %}
             </div>
-            {% module "cta" path="/qoria-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
+            {% module "cta" path="../../modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
             {% if widget_data.cta.link.url != "" %}
               <div class="d-flex ms-{{breakpoint}}-6">
-              {% module "cta" path="/qoria-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
+              {% module "cta" path="../../modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
 
               </div>
             {% endif %}

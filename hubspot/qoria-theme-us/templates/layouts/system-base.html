@@ -2,12 +2,12 @@
 <!--
     templateType: none
 -->
-{% extends "../../../qoria-theme/templates/layouts/base.html" %}
+{% extends "base.html" %}
 
 {% block head %}
   {# Featured image fallback #}
   {% unless content.featured_image %}
-    <meta name="twitter:image" content="{{ get_asset_url('/qoria-theme/images/qoria/opengraph/Linewize-OG.png') }}">
+    <meta name="twitter:image" content="{{ get_asset_url('/q-theme/images/qoria/opengraph/Linewize-OG.png') }}">
   {% endunless %}
 
   {{ require_js(get_asset_url("../../child.js")) }}
@@ -22,12 +22,12 @@
 
 {% block header %}
   <div class="header-wrapper sticky-top shadow-sm">
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/brands.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/fontawesome.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/light.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/regular.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/solid.min.css")) }}
-    {{ require_css(get_asset_url("/q-theme/assets/fontawesome6/css/thin.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/brands.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/fontawesome.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/light.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/regular.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/solid.min.css")) }}
+    {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/thin.min.css")) }}
     
     {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
     {% set breakpoint = widget_data.navigation.breakpoint %}
@@ -48,7 +48,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
     
-            {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", menu="115248177746" no_wrapper=True %}
+            {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", menu=144245053496 no_wrapper=True %}
     
                 <div class="navbar-search d-flex ms-{{breakpoint}}-6 mb-3 mb-{{breakpoint}}-0">
                   {% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}

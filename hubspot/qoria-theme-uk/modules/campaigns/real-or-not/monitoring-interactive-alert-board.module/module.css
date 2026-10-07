@@ -1,0 +1,846 @@
+/* =============================================================================
+   smw-monitoring-interactive-alert-board
+
+   Layout:
+   - Below 992px everything stacks and the dots become a readable list, each
+     alert record shown in full. A record is seven labelled rows; anchoring that
+     to a drifting dot on a phone-width stage could only ever clip it.
+   - From 992px the aside sits left of the stage, dots are positioned, and
+     records open as cards anchored to the dot.
+
+   Cards open on hover, on keyboard focus, and on tap (a tap fires click, which
+   pins the card — there is no hover on touch). That is what WCAG 1.4.13 asks
+   for: hoverable, because the card sits inside the element you are hovering;
+   persistent, because nothing times out; dismissible, because Escape closes it.
+
+   Nothing is red until the third tab. Under the first two the concern's dot and
+   card are styled exactly like every other one.
+
+   Contrast, all measured:
+     unviewed dot  --q-gray-600 on stage      3.34:1 (WCAG 1.4.11 needs 3:1)
+     viewed dot    --q-gray-500 on stage      7.72:1
+     concern dot   --q-red on stage           3.40:1
+     focus ring    --q-white on stage        16.74:1
+     risk badge    white on --q-red           4.92:1
+     message panel --q-dark on blue-bg-subtle 13.46:1
+     card label    --q-gray-700 on white       8.45:1
+   ============================================================================= */
+
+/* Hides an element visually while leaving it focusable and readable by screen
+   readers. Defined here rather than relying on the theme's helper class, so the
+   radio inputs can't appear on the page if that stylesheet is missing. */
+.qsf__vh {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.qsf {
+  --qsf-stage-bg: var(--q-dark);
+  --qsf-dot-color: var(--q-gray-600);
+  --qsf-dot-viewed: var(--q-gray-500);
+  --qsf-concern-color: var(--q-red);
+  --qsf-focus-color: var(--q-white);
+  --qsf-dot-base: 60px;
+  --qsf-dot-size: var(--qsf-dot-base);
+  --qsf-row-h: 150px;
+  --qsf-card-w: 300px;
+  --qsf-card-w-lg: 460px;
+  /* Clears the dot, whatever size it is set to. */
+  --qsf-card-gap: calc(var(--qsf-dot-size) / 2 + 10px);
+}
+
+/* ---------- Layout ---------- */
+
+.qsf__layout {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+/* ---------- Left column ---------- */
+
+.qsf__section-heading {
+  border-bottom: 3px solid var(--q-primary);
+  color: var(--q-primary-text); /* 6.11:1 on white; --q-primary itself is 2.4:1 */
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 1rem;
+  padding-bottom: 0.375rem;
+  text-transform: uppercase;
+}
+
+/* One rich text block, so the editor controls the heading and the copy
+   together. Weights are set here rather than inherited, so the block looks the
+   same whichever heading level is chosen. */
+.qsf__content h1,
+.qsf__content h2,
+.qsf__content h3,
+.qsf__content h4 {
+  font-weight: 300;
+  margin-bottom: 0.875rem;
+}
+
+.qsf__content strong {
+  font-weight: 700;
+}
+
+.qsf__content p {
+  color: var(--q-gray-700);
+  margin-bottom: 0.75rem;
+}
+
+.qsf__content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Stacked tabs ---------- */
+
+.qsf__toggle {
+  border: 0;
+  margin: 0;
+  min-width: 0; /* stops the fieldset forcing its intrinsic width */
+  padding: 0;
+}
+
+.qsf__toggle-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.qsf__toggle-options .btn-check:not(:checked)+.btn:hover {
+    color: var(--q-btn-hover-color);
+    background-color: var(--q-btn-hover-bg);
+    border-color: var(--q-btn-hover-border-color);
+}
+
+.qsf__state-btn {
+  text-align: left;
+  --q-btn-color: var(--q-dark);
+  --q-btn-bg: var(--q-gray-200);
+  --q-btn-border-color: var(--q-gray-200);
+  --q-btn-hover-color: var(--q-dark);
+  --q-btn-hover-bg: var(--q-gray-300);
+  --q-btn-hover-border-color: var(--q-gray-300);
+  --q-btn-focus-shadow-rgb: 211, 211, 211;
+  --q-btn-active-color: var(--q-white);
+  --q-btn-active-bg: var(--q-indigo);
+  --q-btn-active-border-color: var(--q-indigo);
+  --q-btn-active-shadow: none;
+  --q-btn-disabled-color: var(--q-gray-500);
+  --q-btn-disabled-bg: var(--q-gray-200);
+  --q-btn-disabled-border-color: var(--q-gray-200);
+}
+
+.qsf__radio-label {
+  align-items: center;
+  background-color: var(--q-gray-200);
+  border-radius: var(--q-border-radius);
+  color: var(--q-gray-700);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  min-height: 56px;
+  padding: 0.875rem 1.25rem;
+  transition: background-color 0.15s linear, color 0.15s linear;
+}
+
+.qsf__radio-label:hover {
+  background-color: var(--q-gray-300);
+  color: var(--q-dark);
+}
+
+/* White on --q-secondary is 6.20:1. */
+.qsf__radio:checked + .qsf__radio-label {
+  background-color: var(--q-secondary);
+  box-shadow: var(--q-box-shadow-sm);
+  color: var(--q-white);
+}
+
+/* The input is visually hidden, so the ring is drawn on the label. */
+.qsf__radio:focus + .qsf__radio-label {
+  outline: 3px solid var(--q-secondary);
+  outline-offset: 2px;
+}
+
+.qsf__radio:focus:not(:focus-visible) + .qsf__radio-label {
+  outline: none;
+}
+
+/* Each button's own description, under the interactive area. Only the selected
+   button's block is shown, so the text and the button can never drift apart.
+   The rule down the left runs from the brand green at the bottom to the indigo
+   at the top; it is a pseudo-element rather than a border-image so the corners
+   stay clean. */
+
+.qsf__below {
+  padding: 1.5rem 0 0 0;
+}
+
+.qsf__below-text {
+  display: none;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.qsf__below-text::before {
+  background: linear-gradient(to top, var(--q-primary), var(--q-secondary));
+  border-radius: 2px;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 4px;
+}
+
+.qsf__below-title {
+  color: var(--q-dark);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+}
+
+.qsf[data-qsf-state="scatter"] .qsf__below-text[data-qsf-below="scatter"],
+.qsf[data-qsf-state="organised"] .qsf__below-text[data-qsf-below="organised"],
+.qsf[data-qsf-state="moderated"] .qsf__below-text[data-qsf-below="moderated"] {
+  display: block;
+}
+
+.qsf__below-body > *:last-child {
+  margin-bottom: 0;
+}
+
+.qsf {
+  --qsf-panel-bg: var(--q-gray-200);
+}
+
+.qsf__panel {
+  background-color: var(--qsf-panel-bg);
+  border-radius: var(--q-border-radius-lg);
+  padding: 1rem;
+}
+
+/* ---------- Stage ---------- */
+
+.qsf__stage {
+  background-color: var(--qsf-stage-bg);
+  border-radius: var(--q-border-radius-lg);
+  padding: 1rem;
+  position: relative;
+}
+
+/* ---------- Pause control ---------- */
+/* Icon only, in the corner of the stage. --q-gray-500 on the stage is 7.72:1,
+   well past the 3:1 WCAG 1.4.11 asks of a non-text control, and it goes white
+   on hover or focus. Sits below the cards so an open record covers it rather
+   than the other way round. The 40px box clears the 24px minimum target. */
+
+.qsf__pause {
+  align-items: center;
+  background-color: rgba(var(--q-white-rgb), 0.14);
+  border: 0;
+  border-radius: 50%;
+  color: var(--q-gray-400); /* 6.63:1 on the circle */
+  display: flex;
+  font-size: 0.875rem;
+  height: 40px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  transition: background-color 0.15s linear, color 0.15s linear;
+  width: 40px;
+  z-index: 5;
+}
+
+.qsf__pause:hover,
+.qsf__pause:focus {
+  background-color: rgba(var(--q-white-rgb), 0.28);
+  color: var(--q-white);
+}
+
+.qsf__pause:focus {
+  outline: 3px solid var(--qsf-focus-color);
+  outline-offset: 2px;
+}
+
+.qsf__pause:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.qsf__pause[hidden] {
+  display: none;
+}
+
+/* Nothing moves once the dots are ordered, so the control is meaningless. */
+.qsf[data-qsf-state="organised"] .qsf__pause,
+.qsf[data-qsf-state="moderated"] .qsf__pause {
+  display: none;
+}
+
+.qsf__pause-icon--play {
+  display: none;
+}
+
+.qsf--paused .qsf__pause-icon--pause {
+  display: none;
+}
+
+.qsf--paused .qsf__pause-icon--play {
+  display: block;
+}
+
+.qsf__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.qsf__item {
+  position: relative;
+}
+
+/* ---------- Dots ---------- */
+
+.qsf__dot {
+  background-color: var(--qsf-dot-color);
+  border: 0;
+  border-radius: 50%;
+  display: block;
+  flex: none;
+  height: var(--qsf-dot-size);
+  padding: 0;
+  transition: background-color 0.3s linear, box-shadow 0.2s linear, filter 0.5s ease,
+    opacity 0.5s ease;
+  width: var(--qsf-dot-size);
+}
+
+.qsf__dot:hover,
+.qsf__dot:focus {
+  background-color: var(--qsf-dot-viewed);
+}
+
+.qsf__dot:focus {
+  outline: 3px solid var(--qsf-focus-color);
+  outline-offset: 3px;
+}
+
+.qsf__dot:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Opened at least once. A neutral progress marker — it says nothing about
+   whether the alert mattered. */
+.qsf__dot[data-qsf-viewed="true"] {
+  background-color: var(--qsf-dot-viewed);
+  box-shadow: 0 0 0 2px rgba(var(--q-white-rgb), 0.35);
+}
+
+/* ---------- Moderated tier: everything else falls back ---------- */
+
+.qsf[data-qsf-state="moderated"] .qsf__item:not(.qsf__item--concern) .qsf__dot {
+  filter: blur(4px);
+  opacity: 0.5;
+}
+
+.qsf[data-qsf-state="moderated"] .qsf__item:not(.qsf__item--concern):hover .qsf__dot,
+.qsf[data-qsf-state="moderated"] .qsf__item:not(.qsf__item--concern):focus-within .qsf__dot {
+  filter: none;
+  opacity: 1;
+}
+
+/* Red only once a human has assessed it, and it pulses to draw the eye. Three
+   cycles at roughly 1.1Hz: well under the three flashes per second WCAG 2.3.1
+   allows, and under 5s so it needs no pause control of its own. */
+.qsf[data-qsf-state="moderated"] .qsf__dot--concern {
+  animation: qsf-pulse 0.9s ease-out 3;
+  background-color: var(--qsf-concern-color);
+}
+
+.qsf[data-qsf-state="moderated"] .qsf__item--concern {
+  z-index: 15;
+}
+
+@keyframes qsf-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--q-red-rgb), 0.9);
+  }
+  70% {
+    box-shadow: 0 0 0 22px rgba(var(--q-red-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--q-red-rgb), 0);
+  }
+}
+
+/* ---------- Alert records ---------- */
+
+.qsf__card {
+  background-color: var(--q-white);
+  border-radius: var(--q-border-radius-lg);
+  color: var(--q-dark);
+  padding: 0.875rem 1rem;
+}
+
+
+.qsf__card::after {
+  background-color: var(--q-white);
+  border-color: var(--q-white);
+}
+
+.qsf__level {
+  display: none;
+  margin: 0;
+}
+
+.qsf[data-qsf-state="scatter"] .qsf__level[data-qsf-level="scatter"],
+.qsf[data-qsf-state="organised"] .qsf__level[data-qsf-level="organised"],
+.qsf[data-qsf-state="moderated"] .qsf__level[data-qsf-level="moderated"] {
+  display: block;
+}
+
+.qsf__rows {
+  display: grid;
+  gap: 0.125rem 0.75rem;
+  grid-template-columns: minmax(84px, auto) 1fr;
+  margin: 0;
+}
+
+.qsf__level dt {
+  color: var(--q-gray-700);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.qsf__level dd {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.qsf__value--strong {
+  font-weight: 700;
+}
+
+.qsf__value--quote {
+  font-style: italic;
+}
+
+.qsf__risk {
+  border-radius: var(--q-border-radius);
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 0.125rem 0.4375rem;
+}
+
+/* White on --q-red is 4.92:1; the amber and grey use their dark text tokens. */
+.qsf__risk--high {
+  background-color: var(--q-red);
+  color: var(--q-white);
+}
+
+.qsf__risk--medium {
+  background-color: var(--q-orange-bg-subtle);
+  color: var(--q-orange-text);
+}
+
+.qsf__risk--low {
+  background-color: var(--q-gray-200);
+  color: var(--q-gray-700);
+}
+
+/* ---------- The escalated record, inside the concern's card ---------- */
+/* Laid out like the Monitor alert quick view: title, the moderator's message in
+   a highlighted panel, then the record as labelled rows. This card is wider and
+   more generously spaced than the rest — it is the payoff, and the copy needs
+   the room. */
+
+.qsf__detail-title {
+  align-items: flex-start;
+  border-bottom: var(--q-border-width) solid var(--q-border-color);
+  color: var(--q-red-text); /* 9.39:1 on white */
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  gap: 0.5rem;
+  line-height: 1.35;
+  margin-bottom: 1rem;
+  padding-bottom: 0.875rem;
+}
+
+.qsf__detail-label {
+  color: var(--q-gray-700);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.375rem;
+}
+
+.qsf__detail-message {
+  background-color: var(--q-blue-bg-subtle);
+  border-radius: var(--q-border-radius);
+  display: flex;
+  gap: 0.625rem;
+  margin-bottom: 1.125rem;
+  padding: 0.875rem 1rem;
+}
+
+.qsf__detail-message i {
+  color: var(--q-blue-text);
+  flex: none;
+  margin-top: 0.125rem;
+}
+
+.qsf__detail-message p {
+  color: var(--q-dark); /* 13.46:1 on the blue panel */
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.qsf__level--detail .qsf__rows {
+  gap: 0.625rem 1.25rem;
+}
+
+.qsf__level--detail .qsf__rows dt,
+.qsf__level--detail .qsf__rows dd {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* ---------- No-JS content ---------- */
+
+.qsf__noscript {
+  background-color: var(--q-light);
+  border: var(--q-border-width) solid var(--q-border-color);
+  border-radius: var(--q-border-radius);
+  margin-top: 1rem;
+  padding: 1.25rem;
+}
+
+.qsf__noscript ul {
+  margin-bottom: 0;
+}
+
+/* ---------- Below 992px: a readable list ---------- */
+
+@media (max-width: 991px) {
+  .qsf {
+    --qsf-dot-size: calc(var(--qsf-dot-base) * 0.6);
+  }
+
+  .qsf__item {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .qsf__dot {
+    margin-top: 0.5rem;
+  }
+
+  .qsf__card {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Blur would make the list unreadable, so the cleared alerts simply recede. */
+  .qsf[data-qsf-state="moderated"] .qsf__item:not(.qsf__item--concern) .qsf__dot {
+    filter: none;
+    opacity: 0.55;
+  }
+
+  .qsf[data-qsf-state="moderated"] .qsf__item:not(.qsf__item--concern) .qsf__card {
+    opacity: 0.7;
+  }
+
+  .qsf[data-qsf-state="moderated"] .qsf__item--concern .qsf__card {
+    box-shadow: 0 0 0 2px var(--qsf-concern-color);
+  }
+
+  /* Nothing is moving, so there is nothing to pause. */
+  .qsf__pause {
+    display: none !important;
+  }
+}
+
+/* ---------- From 992px: two columns, positioned dots, anchored cards -------- */
+
+@media (min-width: 992px) {
+  .qsf__layout {
+    align-items: start;
+    gap: 2.5rem;
+    grid-template-columns: minmax(260px, 340px) 1fr;
+  }
+
+  .qsf__stage {
+    padding: 1.5rem;
+  }
+
+  /* The escalated record gets a wider card and room around the rows. Capped so
+     a long moderator message scrolls inside the card rather than running off
+     the stage; the cap sits on the inner level, so the card's tail is not
+     clipped by the overflow. */
+  .qsf--enhanced[data-qsf-state="moderated"] .qsf__item--concern > .qsf__card {
+    padding: 1.25rem 1.375rem;
+    width: var(--qsf-card-w-lg);
+  }
+
+  .qsf--enhanced .qsf__level--detail {
+    max-height: calc(var(--qsf-rows, 4) * var(--qsf-row-h) * 0.5);
+    overflow-y: auto;
+  }
+
+  .qsf__level--detail .qsf__rows {
+    grid-template-columns: minmax(120px, 160px) 1fr;
+  }
+
+  /* The item is sized to the dot and centred with margins rather than a
+     transform, which leaves its transform free for the drift. Because the card
+     lives inside the item, it drifts along with the dot and the tail stays
+     pointing at it. */
+  .qsf--enhanced .qsf__list {
+    display: block;
+    height: calc(var(--qsf-rows, 4) * var(--qsf-row-h));
+    position: relative;
+  }
+
+  .qsf--enhanced .qsf__item {
+    display: block;
+    height: var(--qsf-dot-size);
+    left: var(--qsf-gx, 50%);
+    margin-left: calc(var(--qsf-dot-size) / -2);
+    margin-top: calc(var(--qsf-dot-size) / -2);
+    position: absolute;
+    top: var(--qsf-gy, 50%);
+    transition: left 0.9s cubic-bezier(0.22, 1, 0.36, 1), top 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    width: var(--qsf-dot-size);
+    z-index: var(--qsf-z, 1);
+  }
+
+  .qsf--enhanced .qsf__dot {
+    margin-top: 0;
+  }
+
+  /* Whatever is being read sits above its neighbours. */
+  .qsf--enhanced .qsf__item:hover,
+  .qsf--enhanced .qsf__item:focus-within {
+    z-index: 25;
+  }
+
+  .qsf--enhanced .qsf__item--open {
+    z-index: 30;
+  }
+
+  /* Cards become anchored floating records. */
+  .qsf--enhanced .qsf__card {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.45);
+    display: none;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(var(--qsf-btx, -50%), var(--qsf-bty, calc(-100% - var(--qsf-card-gap))));
+    width: var(--qsf-card-w);
+    z-index: 30;
+  }
+
+  .qsf--enhanced .qsf__item:hover > .qsf__card,
+  .qsf--enhanced .qsf__item:focus-within > .qsf__card,
+  .qsf--enhanced .qsf__item--open > .qsf__card {
+    display: block;
+  }
+
+  /* Escape hides whatever is open until the pointer or focus moves again. */
+  .qsf--enhanced.qsf--dismissed .qsf__item > .qsf__card {
+    display: none;
+  }
+
+  /* Rotated square tail, so one rule serves cards above and below the dot. Its
+     horizontal position mirrors the card's own shift, which keeps it pointing
+     at the dot. */
+  .qsf--enhanced .qsf__card::after, .qsf--enhanced .qsf__card::before {
+    --size: 12px;
+    background-color: inherit;
+    content: "";
+    height: var(--size);
+    width: var(--size);
+    left: calc(-1 * var(--qsf-btx, -50%));
+    position: absolute;
+    /*top: var(--qsf-tail-y, calc(100% - 6px));*/
+    top: calc(var(--size) / 2 * -1);
+    top: var(--qsf-tail-y);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    z-index: -1;
+  }
+
+  .qsf--enhanced .qsf__card::before {
+    --size: 44px;
+    background-color: transparent;
+    position: absolute;
+    z-index: -1;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+
+  .qsf--enhanced[data-qsf-state="scatter"] .qsf__item {
+    --qsf-btx: var(--qsf-btx-s);
+    --qsf-bty: var(--qsf-bty-s);
+    --qsf-tail-y: var(--qsf-tail-s);
+  }
+
+  .qsf--enhanced[data-qsf-state="organised"] .qsf__item,
+  .qsf--enhanced[data-qsf-state="moderated"] .qsf__item {
+    --qsf-btx: var(--qsf-btx-g);
+    --qsf-bty: var(--qsf-bty-g);
+    --qsf-tail-y: var(--qsf-tail-g);
+  }
+
+  /* Tier 1: scattered and drifting. */
+  .qsf--enhanced[data-qsf-state="scatter"] .qsf__item {
+    animation-delay: var(--qsf-delay, 0s);
+    animation-duration: var(--qsf-dur, 14s);
+    animation-iteration-count: infinite;
+    animation-name: var(--qsf-drift, qsf-drift-1);
+    animation-timing-function: ease-in-out;
+    left: var(--qsf-x, 50%);
+    top: var(--qsf-y, 50%);
+    will-change: transform;
+  }
+
+  /* Only the dot you are dealing with stops; the rest carry on drifting behind
+     it. Pausing on approach is also what makes a moving target clickable for
+     anyone with limited fine motor control. */
+  .qsf--enhanced[data-qsf-state="scatter"] .qsf__item:hover,
+  .qsf--enhanced[data-qsf-state="scatter"] .qsf__item:focus-within,
+  .qsf--enhanced[data-qsf-state="scatter"] .qsf__item--open {
+    animation-play-state: paused;
+  }
+
+  /* The corner control stops the whole field. */
+  .qsf--enhanced.qsf--paused .qsf__item {
+    animation-play-state: paused;
+  }
+}
+
+/* ---------- Disorganised drift ---------- */
+/* Circles can't show rotation, so the whole travel budget goes into
+   translation. Four waypoints per path, eight paths, non-harmonic durations and
+   per-dot negative delays, so the field never settles into a shared rhythm.
+   Travel is capped at ~46px against 16–84% start positions. */
+
+.qsf__item--drift-1 { --qsf-drift: qsf-drift-1; --qsf-dur: 13s; }
+.qsf__item--drift-2 { --qsf-drift: qsf-drift-2; --qsf-dur: 17s; }
+.qsf__item--drift-3 { --qsf-drift: qsf-drift-3; --qsf-dur: 11s; }
+.qsf__item--drift-4 { --qsf-drift: qsf-drift-4; --qsf-dur: 19s; }
+.qsf__item--drift-5 { --qsf-drift: qsf-drift-5; --qsf-dur: 15s; }
+.qsf__item--drift-6 { --qsf-drift: qsf-drift-6; --qsf-dur: 21s; }
+.qsf__item--drift-7 { --qsf-drift: qsf-drift-7; --qsf-dur: 12s; }
+.qsf__item--drift-8 { --qsf-drift: qsf-drift-8; --qsf-dur: 18s; }
+
+@keyframes qsf-drift-1 {
+  0%   { transform: translate(0, 0); }
+  21%  { transform: translate(34px, -22px); }
+  46%  { transform: translate(-18px, -40px); }
+  72%  { transform: translate(-40px, 16px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes qsf-drift-2 {
+  0%   { transform: translate(0, 0); }
+  18%  { transform: translate(-36px, 20px); }
+  43%  { transform: translate(16px, 42px); }
+  71%  { transform: translate(42px, -14px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes qsf-drift-3 {
+  0%   { transform: translate(0, 0); }
+  27%  { transform: translate(24px, 36px); }
+  52%  { transform: translate(-30px, 28px); }
+  79%  { transform: translate(-14px, -36px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes qsf-drift-4 {
+  0%   { transform: translate(0, 0); }
+  22%  { transform: translate(-42px, -18px); }
+  48%  { transform: translate(22px, -38px); }
+  75%  { transform: translate(36px, 24px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes qsf-drift-5 {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(14px, -44px); }
+  51%  { transform: translate(38px, 18px); }
+  77%  { transform: translate(-24px, 32px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes qsf-drift-6 {
+  0%   { transform: translate(0, 0); }
+  19%  { transform: translate(-22px, 38px); }
+  47%  { transform: translate(-44px, -16px); }
+  73%  { transform: translate(18px, -32px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes qsf-drift-7 {
+  0%   { transform: translate(0, 0); }
+  29%  { transform: translate(40px, 12px); }
+  54%  { transform: translate(-16px, 40px); }
+  81%  { transform: translate(-34px, -20px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes qsf-drift-8 {
+  0%   { transform: translate(0, 0); }
+  24%  { transform: translate(-26px, -34px); }
+  50%  { transform: translate(32px, -20px); }
+  78%  { transform: translate(24px, 34px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------- Reduced motion ---------- */
+/* Dots still take their positions, the noise still recedes and the concern is
+   still red — every tier stays legible, but nothing drifts, tweens or pulses. */
+
+@media (prefers-reduced-motion: reduce) {
+  .qsf__dot,
+  .qsf__item,
+  .qsf__card,
+  .qsf__radio-label,
+  .qsf__pause {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Nothing is moving, so there is nothing to pause. */
+  .qsf__pause {
+    display: none !important;
+  }
+
+  .qsf--enhanced[data-qsf-state="scatter"] .qsf__item,
+  .qsf[data-qsf-state="moderated"] .qsf__dot--concern {
+    animation-name: none !important;
+  }
+
+}

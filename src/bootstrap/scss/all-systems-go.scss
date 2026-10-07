@@ -1,0 +1,497 @@
+// scss-docs-start import-stack
+// Configuration
+@import "functions";
+
+// Custom variables
+@import "custom-variables";
+
+// asg variables
+
+$asg-orange: #da5a38;
+$asg-tan: #f2e2bf;
+$asg-tan-light: #fbf0d5;
+$asg-tan-dark: #cfb88e;
+$asg-tan-darker: #7b7258;
+$asg-blue: #22475c;
+$asg-blue-dark: #0b2e4A;
+$asg-blue-darker: #12212b;
+$asg-blue-light: #2a69a1;
+
+$asg-grey: #687c87;
+$asg-grey-light: #829aa8;
+
+$font-family-monospace: Courier, monospace;
+
+// form
+// scss-docs-start form-text-variables
+$form-text-margin-top:                  .25rem !default;
+$form-text-font-style:                  null !default;
+$form-text-font-weight:                 null !default;
+//$form-text-color:                       $text-muted !default;
+// scss-docs-end form-text-variables
+
+// scss-docs-start form-label-variables
+$form-label-color:                      $asg-tan-darker;
+// scss-docs-end form-label-variables
+
+// scss-docs-start form-input-variables
+$input-bg:                              $asg-tan;
+$input-disabled-color:                  null !default;
+$input-disabled-bg:                     var(--#{$prefix}form-control-disabled-bg) !default;
+$input-disabled-border-color:           null !default;
+
+$input-border-radius: 4px;
+
+$input-color:                           var(--#{$prefix}body-color) !default;
+$input-border-color:                    $asg-tan-dark;
+$input-border-width:                    1px;
+$input-box-shadow:                      inset 0 0 5px 0 rgba($black, 0.1);
+
+
+$input-focus-bg:                        $input-bg !default;
+$input-focus-border-color:              $asg-orange;
+$input-focus-color:                     $input-color !default;
+$input-btn-focus-width:         .25rem !default;
+$input-btn-focus-blur:          0 !default;
+$input-btn-focus-color-opacity: .25 !default;
+$input-focus-width:                     $input-btn-focus-width !default;
+$input-focus-box-shadow:                0 0 0 .25rem rgba($asg-orange, 0.5);
+
+$form-check-input-border: var(--#{$prefix}border-width) solid $input-border-color;
+$form-check-input-checked-bg-color:   $asg-orange;
+
+$form-feedback-margin-top:          $form-text-margin-top !default;
+$form-feedback-valid-color:         $teal;
+$form-feedback-invalid-color:       $red;
+
+$form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
+$form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+$form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
+$form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+
+
+$form-validation-states: (
+  "valid": (
+    "color": $teal,
+    "icon": $form-feedback-icon-valid,
+    "tooltip-color": #fff,
+    "tooltip-bg-color": $teal-600,
+    "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba($teal, $input-btn-focus-color-opacity),
+    "border-color": $teal,
+  ),
+  "invalid": (
+    "color": var(--#{$prefix}danger-text),
+    "icon": $form-feedback-icon-invalid,
+    "tooltip-color": #fff,
+    "tooltip-bg-color": $red-600,
+    "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba($red, $input-btn-focus-color-opacity),
+    "border-color": $red,
+  )
+);
+// scss-docs-end form-input-variables
+
+:root {
+  --asg-orange: #{$asg-orange};
+  --asg-tan: #{$asg-tan};
+  --asg-tan-light: #{$asg-tan-light};
+  --asg-tan-dark: #{$asg-tan-dark};
+  --asg-tan-darker: #{$asg-tan-darker};
+  --asg-blue: #{$asg-blue};
+  --asg-blue-dark: #{$asg-blue-dark};
+  --asg-blue-darker: #{$asg-blue-darker};
+  --asg-blue-light: #{$asg-blue-light};
+  --asg-grey: #{$asg-grey};
+  --asg-grey-light: #{$asg-grey-light};
+  
+  --q-font-monospace: #{inspect($font-family-monospace)};
+}
+
+// scss-docs-start import-stack
+// Configuration
+@import "variables";
+@import "variables-dark";
+@import "maps";
+//custom maps
+@import "custom-maps";
+@import "mixins";
+@import "custom-mixins";
+@import "utilities";
+
+// Custom overrides
+@import "custom-utilities";
+
+// import elements
+@import "buttons-placeholders";
+
+// import form
+@import "custom-range-slider-placeholder";
+@import "forms/labels-placeholder";
+@import "forms/form-text-placeholder";
+@import "forms/form-control-placeholder";
+@import "forms/form-select-placeholder";
+@import "forms/form-check-placeholder";
+@import "forms/form-range-placeholder";
+@import "forms/floating-labels-placeholder";
+@import "forms/input-group-placeholder";
+@import "forms/validation-placeholder";
+
+// form styling
+.hs-form.asg-form, 
+.hsfc-Form.asg-form {
+    // 1. Form Rows / Layout
+    //.hs-form-row,
+    //.hsfc-Row {
+    // @extend %your-row-placeholder; // e.g., grid or flex layout
+    //}
+
+    // 2. Individual Field Containers
+    //.hs-form-field,
+    //.hsfc-Field {
+        //@extend %your-field-wrapper-placeholder; // e.g., margin-bottom, relative positioning
+    //}
+
+    // 3. Labels
+    label,
+    .hsfc-Label {
+        @extend %form-label; // e.g., font-weight, color, block display
+    }
+
+    // 3.5. Text Inputs
+    .hs-input,
+    .hsfc-Input {
+        // Targets: text, email, tel, textarea
+        @extend %form-control; // e.g., border, border-radius, padding, focus states
+    }
+
+    
+    // 4. Select Inputs
+    .hsfc-Select select, select.hs-input {
+        // Targets: select dropdowns
+        @extend %form-select; // e.g., border, border-radius, padding, focus states
+    }
+
+
+    // 5. Choice Elements (Checkboxes & Radios)
+    .inputs-list,
+    .hsfc-Choice {
+        @extend %form-check;
+        padding-left: 0;
+        
+        label,
+        .hsfc-Choice__label {
+        @extend %form-check-label;
+        }
+        
+        input[type="checkbox"],
+        input[type="radio"],
+        .hsfc-Choice__input {
+        @extend %form-check-input; // e.g., custom checkboxes
+        }
+    }
+
+    // 6. Submit Button Container & Element
+    //.hs-submit,
+    //.hsfc-Action {
+    //  .hs-button,
+    //  .hsfc-Button {
+    //    @extend %your-button-placeholder; // e.g., background-color, hover states, transition
+    //    
+    //    &:hover {
+    //      @extend %your-button-hover-placeholder;
+    //    }
+    //  }
+    //}
+
+    // 1. Style HubSpot's invalid fields using Bootstrap's mixin
+    .invalid,
+    .error,
+    [aria-invalid="true"] {
+        
+        // Inject Bootstrap's invalid borders, focus states, and background icons
+        @include hs-form-validation-state-selector('invalid') {
+        border-color: $form-feedback-invalid-color;
+        padding-right: $input-height-inner;
+        background-image: escape-svg($form-feedback-icon-invalid);
+        background-repeat: no-repeat;
+        background-position: right $input-height-inner-quarter center;
+        background-size: $input-height-inner-half $input-height-inner-half;
+        
+        &:focus {
+            border-color: $form-feedback-invalid-color;
+            box-shadow: 0 0 0 $input-focus-width rgba($form-feedback-invalid-color, .25);
+        }
+        }
+    }
+
+    // 2. Style HubSpot's error text to look exactly like .invalid-feedback
+    .hs-error-msgs,
+    .hsfc-ErrorMessage {
+        display: block; // HubSpot error wrappers are hidden by default layout properties
+        width: 100%;
+        margin-top: $form-feedback-margin-top;
+        @include font-size($form-feedback-font-size);
+        color: $form-feedback-invalid-color;
+        
+        // Strips out HubSpot's default list formatting
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+        
+        // Aligns layout text inside the HubSpot wrapper
+        label, 
+        li {
+        color: inherit;
+        font-size: inherit;
+        margin-bottom: 0;
+        }
+    }
+}
+
+// checkbox/toggle
+
+$asg-form-switch-color:               $primary;
+$asg-form-switch-width:               64px;
+$asg-form-switch-height:              32px;
+$asg-form-switch-padding:             4px;
+$asg-form-switch-shadow:              inset 0 0 8px rgba(0, 0, 0, 0.45);    
+$asg-form-switch-padding-start:       0;
+$asg-form-switch-bg-image:            linear-gradient(to bottom, transparent, rgba($dark, 0.2));
+$asg-form-switch-border-radius:       4px;
+$asg-form-switch-transition:          background-position .15s ease-in-out !default;
+
+$asg-form-switch-focus-color:         $input-focus-border-color !default;
+$asg-form-switch-focus-bg-image:      linear-gradient(to bottom, rgba($dark, 0.2), rgba($dark, 0.4));
+
+$asg-form-switch-checked-color:       $component-active-color !default;
+$asg-form-switch-checked-bg-image:    linear-gradient(to bottom, rgba($white, 0.2), transparent 50%);
+$asg-form-switch-checked-bg-position: right center !default;
+
+
+//
+// Switch
+//
+
+.asg-switch {
+    --asg-form-switch-color: #{$asg-form-switch-color};
+  padding-left: $asg-form-switch-padding-start;
+  line-height: 0.1px;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  input + label {
+    height: $asg-form-switch-height;
+    width: $asg-form-switch-width;
+    box-shadow: $asg-form-switch-shadow;
+    background: transparent;
+    padding: $asg-form-switch-padding;
+    border: 1px solid $asg-grey;
+    @include border-radius($asg-form-switch-border-radius);
+
+    &:before {
+        content: "";
+        display: block;
+        width: $asg-form-switch-height - ($asg-form-switch-padding * 2) - 2px; // subtract 2 for the border
+        height: $asg-form-switch-height - ($asg-form-switch-padding * 2) - 2px; // subtract 2 for the border
+        background-color: $asg-grey;
+        background-image: $asg-form-switch-bg-image;
+        @include border-radius($asg-form-switch-border-radius);
+        @include transition(transform .15s ease-in-out);
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+  }
+
+  input:checked + label {
+    &:before {
+        transform: translateX(($asg-form-switch-width - ($asg-form-switch-padding * 2)) - ($asg-form-switch-height - ($asg-form-switch-padding * 2)));
+        background-color: var(--asg-form-switch-color);
+        background-image: $asg-form-switch-checked-bg-image;
+    }
+  }
+
+  input:active + label {
+    &:before {
+        background-image: $asg-form-switch-focus-bg-image;
+    }
+  }
+
+  input:focus + label, input:focus-visible + label {
+    box-shadow: 0 0 0 2px rgba($asg-grey-light, 0.5), $asg-form-switch-shadow;
+  }
+}
+
+.asg-switch-teal {
+    --asg-form-switch-color: #{$teal};
+}
+
+.asg-switch-indigo {
+    --asg-form-switch-color: #{$indigo};
+}
+
+.asg-switch-red {
+    --asg-form-switch-color: #{$red};
+}
+
+.asg-switch-orange {
+    --asg-form-switch-color: #{$orange};
+}
+
+.asg-switch-blue {
+    --asg-form-switch-color: #{$blue};
+}
+
+.all-systems-go-hero {
+    background-image: url("{{ get_asset_url('../../images/campaigns/all-systems-go/stars.jpg') }}");
+    position: relative;
+}
+
+.all-systems-go-hero:before {
+    content: '';
+    background-image: url("{{ get_asset_url('../../images/campaigns/all-systems-go/astronaut.png') }}");
+    width: 100%;
+    height: 100%;
+    background-position: bottom right;
+    background-size: 90% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    @include media-breakpoint-up(md) {
+        background-size: auto calc(100% - 120px);
+    }
+}
+
+.all-systems-go-hero > div {
+position: relative;
+}
+
+.all-systems-go-footer {
+    background-image: url("{{ get_asset_url('../../images/campaigns/all-systems-go/stars.jpg') }}");
+    position: relative;
+    padding-top: calc(120px + 4rem);
+}
+
+.all-systems-go-footer:before {
+    content: '';
+    background-image: url("{{ get_asset_url('../../images/campaigns/all-systems-go/astronaut-2.png') }}");
+    width: 100%;
+    height: 100%;
+    background-position: bottom left;
+    background-size: auto calc(100% - 120px);
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+}
+
+.all-systems-go-footer > div {
+position: relative;
+}
+
+.asg-image-frame {
+    border: 2px solid $asg-tan-dark;
+}
+
+.asg-text-orange {
+    color: $asg-orange;
+}
+
+.asg-text-tan {
+    color: $asg-tan;
+}
+
+.asg-text-tan-light {
+    color: $asg-tan-light;
+}
+
+.asg-text-tan-dark {
+    color: $asg-tan-dark;
+}
+
+.asg-text-tan-darker {
+    color: $asg-tan-darker;
+}
+
+.asg-text-blue {
+    color: $asg-blue;
+}
+
+.asg-text-blue-dark {
+    color: $asg-blue-dark;
+}
+
+.asg-text-blue-darker {
+    color: $asg-blue-darker;
+}
+
+.asg-text-blue-light {
+    color: $asg-blue-light;
+}
+
+.asg-text-grey-light {
+    color: $asg-grey-light;
+}
+
+.asg-text-grey {
+    color: $asg-grey;
+}
+
+.asg-bg-grid {
+    --asg-grid-color: #{$asg-blue};
+    --asg-grid-size: 16px;
+    background-color: var(--asg-grid-color);
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.1) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 2px, transparent 2px);
+    background-size: var(--asg-grid-size) var(--asg-grid-size);
+}
+.asg-bg-grid-invert {
+    background-color: var(--asg-grid-color);
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 2px, transparent 2px);
+    background-size: var(--asg-grid-size) var(--asg-grid-size);
+}
+
+.asg-bg-grid-lg {
+    --asg-grid-size: 32px;
+}
+
+.asg-bg-grid-blue {
+    --asg-grid-color: #{$asg-blue};
+}
+
+.asg-bg-grid-blue-dark {
+    --asg-grid-color: #{$asg-blue-dark};
+}
+
+.asg-bg-grid-blue-darker {
+    --asg-grid-color: #{$asg-blue-darker};
+}
+
+
+// cta-group
+.btn-asg-orange {
+    @include button-variant(
+        $background: $asg-orange,
+        $border: transparent
+    )
+}
+
+.btn-asg-blue-dark {
+    @include button-variant(
+        $background: $asg-blue-darker,
+        $border: $asg-blue
+    )
+}

@@ -1,0 +1,219 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+{% macro breadcrumbs(menu_id, classes, includeHomeLink)  %}
+    
+{% if menu_id %}
+    {% set navigation = menu(menu_id,"breadcrumb") %}
+{% endif %}
+
+{% if navigation %}
+    <nav aria-label="breadcrumb" class="d-inline-block">
+        <ol class="breadcrumb {{ classes }}">
+    
+    {% if includeHomeLink %}
+        {% if node.level > '0' %}
+            <li class="breadcrumb-item"><a class="text-reset text-decoration-none" href="/">Home</a></li>
+        {% endif %}
+    {% endif %}
+    
+    {%  if node.level > '1' %}
+        <li class="breadcrumb-item">
+        {% if node.parentNode.url %}
+        <a class="text-reset text-decoration-none" href="{{node.parentNode.url}}">{{node.parentNode.label}}</a>
+        {% else %}
+            {{node.parentNode.label}}
+        {% endif %}
+        </li>
+    {% endif %}
+
+    <li class="breadcrumb-item {{"active" if node.activeNode}}">{{node.label}}</li>
+    </ol>
+    </nav>
+    {% endif %}
+
+{% endmacro %}
+
+{% macro timelineSlide(item, location)  %}
+    <div class="timeline-slide px-2">
+    {% if location == "top" %}
+        <div class="shadow-filter d-flex flex-column justify-content-end timeline-slide-top-container">
+            <div class="timeline-slide-top {{item.background_colour}} p-4 gradient-tooltip">
+                {% if item.date%}<h2>{{item.date}}</h2>{%endif%}
+                {% if item.milestone%}<p><strong>{{item.milestone}}</strong></p>{%endif%}
+                {% if item.description%}<p>{{item.description}}</p>{%endif%}
+            </div>
+        </div>
+    {%elif location == "bottom"%}
+        
+        <div class="shadow-filter d-flex flex-column justify-content-end d-md-none timeline-slide-top-container">
+            <div class="timeline-slide-top {{item.background_colour}} p-4 gradient-tooltip">
+                {% if item.date%}<h2>{{item.date}}</h2>{%endif%}
+                {% if item.milestone%}<p><strong>{{item.milestone}}</strong></p>{%endif%}
+                {% if item.description%}<p>{{item.description}}</p>{%endif%}
+            </div>
+        </div>
+
+        <div class="d-none d-md-flex flex-column justify-content-end timeline-slide-top-container">
+            <div class="timeline-slide-top d-flex justify-content-end align-items-center flex-column">
+            <p class="mb-n4 fw-bold">{{item.date_timeline}}</p>
+            </div>
+        </div>
+    {%endif%}
+    <div class="middle align-self-center mx-n2 py-6 position-relative">
+        <hr class="border-4 opacity-100 border-dark {{'w-50 position-absolute start-0 m-0 translate-middle-y' if loop.last}}">
+        {{ '<hr class="border-4 opacity-25 w-50 border-dark position-absolute end-0 m-0 translate-middle-y">' if loop.last}}
+        <span class="fa-stack fa-2x fs-4 position-absolute top-50 start-50 translate-middle">
+          <i class="fa-solid fa-circle fa-stack-2x"></i>
+          <i class="fal fa-calendar-days fa-stack-1x fa-inverse"></i>
+        </span>
+    </div>
+    {% if location == "bottom" %}
+        <div class="shadow-filter d-none d-md-block timeline-slide-bottom">
+            <div class=" {{item.background_colour}} p-4 gradient-tooltip-up">
+                {% if item.date%}<h2>{{item.date}}</h2>{%endif%}
+                {% if item.milestone%}<p><strong>{{item.milestone}}</strong></p>{%endif%}
+                {% if item.description%}<p>{{item.description}}</p>{%endif%}
+            </div>
+        </div>
+        <div class="d-flex d-md-none">
+            <div class="timeline-slide-bottom  w-100 d-flex justify-content-start align-items-center flex-column">
+            <p class="mt-n4 fw-bold">{{item.date_timeline}}</p>
+            </div>
+        </div>
+    {% elif location == "top" %}
+        <div>
+            <div class="timeline-slide-bottom d-flex justify-content-start align-items-center flex-column">
+            <p class="mt-n4 fw-bold">{{item.date_timeline}}</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro regionName(code) -%}
+    {# Build regions object #}
+    {% set regions = {"global": "Corporate", "af": "Afghanistan","al": "Albania","dz": "Algeria","ad": "Andorra","ao": "Angola","ai": "Anguilla","ag": "Antigua and Barbuda","ar": "Argentina","am": "Armenia","aw": "Aruba","au": "Australia","at": "Austria","az": "Azerbaijan","bs": "Bahamas","bh": "Bahrain","bd": "Bangladesh","bb": "Barbados","by": "Belarus","be": "Belgium","bz": "Belize","bj": "Benin","bm": "Bermuda","bt": "Bhutan","bo": "Bolivia","ba": "Bosnia and Herzegovina","bw": "Botswana","br": "Brazil","bn": "Brunei Darussalam","bg": "Bulgaria","bf": "Burkina Faso","bi": "Burundi","kh": "Cambodia","cm": "Cameroon","ca": "Canada","cv": "Cape Verde","ky": "Cayman Islands","cf": "Central African Republic","td": "Chad","cl": "Chile","cn": "China","cx": "Christmas Island","cc": "Cocos (Keeling) Islands","co": "Colombia","km": "Comoros","cg": "Congo","ck": "Cook Islands","cr": "Costa Rica","ci": "Cote D'Ivoire (Ivory Coast)","hr": "Croatia (Hrvatska)","cu": "Cuba","cy": "Cyprus","cz": "Czech Republic","cd": "Democratic Republic of the Congo","dk": "Denmark","dj": "Djibouti","dm": "Dominica","do": "Dominican Republic","ec": "Ecuador","eg": "Egypt","sv": "El Salvador","gq": "Equatorial Guinea","er": "Eritrea","ee": "Estonia","et": "Ethiopia","europe":"Europe","fk": "Falkland Islands (Malvinas)","fo": "Faroe Islands","fm": "Federated States of Micronesia","fj": "Fiji","fi": "Finland","fr": "France","gf": "French Guiana","pf": "French Polynesia","tf": "French Southern Territories","ga": "Gabon","gm": "Gambia","ge": "Georgia","de": "Germany","gh": "Ghana","gi": "Gibraltar","gb": "United Kingdom","gr": "Greece","gl": "Greenland","gd": "Grenada","gp": "Guadeloupe","gt": "Guatemala","gn": "Guinea","gw": "Guinea-Bissau","gy": "Guyana","ht": "Haiti","hn": "Honduras","hk": "Hong Kong","hu": "Hungary","is": "Iceland","in": "India","id": "Indonesia","ir": "Iran","iq": "Iraq","ie": "Ireland","il": "Israel","it": "Italy","jm": "Jamaica","jp": "Japan","jo": "Jordan","kz": "Kazakhstan","ke": "Kenya","ki": "Kiribati","kp": "Korea (North)","kr": "Korea (South)","kw": "Kuwait","kg": "Kyrgyzstan","la": "Laos","lv": "Latvia","lb": "Lebanon","ls": "Lesotho","lr": "Liberia","ly": "Libya","li": "Liechtenstein","lt": "Lithuania","lu": "Luxembourg","mo": "Macao","mk": "Macedonia","mg": "Madagascar","mw": "Malawi","my": "Malaysia","mv": "Maldives","ml": "Mali","mt": "Malta","mh": "Marshall Islands","mq": "Martinique","mr": "Mauritania","mu": "Mauritius","yt": "Mayotte","mx": "Mexico","md": "Moldova","mc": "Monaco","mn": "Mongolia","ms": "Montserrat","ma": "Morocco","mz": "Mozambique","mm": "Myanmar","na": "Namibia","nr": "Nauru","np": "Nepal","nl": "Netherlands","an": "Netherlands Antilles","nc": "New Caledonia","nz": "New Zealand/Aotearoa","ni": "Nicaragua","ne": "Niger","ng": "Nigeria","nu": "Niue","nf": "Norfolk Island","nam":"North America","mp": "Northern Mariana Islands","no": "Norway","gg": "NULL","om": "Oman","pk": "Pakistan","pw": "Palau","ps": "Palestinian Territory","pa": "Panama","pg": "Papua New Guinea","py": "Paraguay","pe": "Peru","ph": "Philippines","pn": "Pitcairn","pl": "Poland","pt": "Portugal","qa": "Qatar","re": "Reunion","ro": "Romania","ru": "Russian Federation","rw": "Rwanda","gs": "S. Georgia and S. Sandwich Islands","sh": "Saint Helena","kn": "Saint Kitts and Nevis","lc": "Saint Lucia","pm": "Saint Pierre and Miquelon","vc": "Saint Vincent and the Grenadines","ws": "Samoa","sm": "San Marino","st": "Sao Tome and Principe","sa": "Saudi Arabia","sn": "Senegal","sc": "Seychelles","sl": "Sierra Leone","sg": "Singapore","sk": "Slovakia","si": "Slovenia","sb": "Solomon Islands","so": "Somalia","za": "South Africa","es": "Spain","lk": "Sri Lanka","sd": "Sudan","sr": "Suriname","sj": "Svalbard and Jan Mayen","sz": "Swaziland","se": "Sweden","ch": "Switzerland","sy": "Syria","tw": "Taiwan","tj": "Tajikistan","tz": "Tanzania","th": "Thailand","tg": "Togo","tk": "Tokelau","to": "Tonga","tt": "Trinidad and Tobago","tn": "Tunisia","tr": "Turkey","tm": "Turkmenistan","tc": "Turks and Caicos Islands","tv": "Tuvalu","ug": "Uganda","ua": "Ukraine","ae": "United Arab Emirates","us": "United States","uy": "Uruguay","uz": "Uzbekistan","vu": "Vanuatu","ve": "Venezuela","vn": "Viet Nam","vg": "Virgin Islands (British)","vi": "Virgin Islands (U.S.)","wf": "Wallis and Futuna","eh": "Western Sahara","ye": "Yemen","zr": "Zaire (former)","zm": "Zambia","zw": "Zimbabwe"} %}
+    {{regions[code]}}
+{%- endmacro %}
+
+{% macro eventStyle1(event) %}
+    <div class="{{ 'border-bottom' if not loop.last }} py-3 event">    
+        <p class="fs-3 fw-semibold mb-0">{{event.event_name}}</p>
+        {% if event.event_date %}
+        <p class="fs-5 mb-0">{{event.event_date}}</p>
+        {% endif %}
+        {% if event.url.href %}
+        <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 d-inline-block">{{event.event_site_label}} <i class="fal fa-arrow-right"></i></a>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro eventStyle2(event) %}
+        <div class="bg-light px-4 py-3 mb-3 event {{event.calendar_object.event_start|format_datetime("MMMM-yyyy")|lower if event.calendar_object.event_start}} {{event.calendar_object.event_end|format_datetime("MMMM-yyyy")|lower if event.calendar_object.event_end}}">
+        <p class="fs-5 fw-bold mb-0">{{event.event_name}}</p>
+        {% if event.event_date %}
+            <p class="fs-5 mb-0">{{event.event_date}}</p>
+        {% endif %}
+        <div class="d-none">
+        {{event.include_calendar_link|pprint}}
+        </div>
+        
+        {% if event.include_calendar_link is defined %}
+            <div class="d-none">
+            include link is defined
+            </div>
+            {% if event.include_calendar_link == false %}
+                {% set calendarItem = false %}
+                <div class="d-none">
+                include link is false
+                </div>
+            {% else %}
+                <div class="d-none">
+                include link is true
+                </div>
+                {% if event.calendar_object.title != "" && event.calendar_object.description != "" && event.calendar_object.location != "" && event.calendar_object.event_start|format_datetime("yyyy") != "" && event.calendar_object.event_end|format_datetime("yyyy") != "" %}
+                    {% set calendarItem = true %}
+                    <div class="d-none">
+                    settings are filled
+                    </div>
+                {% else %}
+                    {% set calendarItem = false %}
+                    <div class="d-none">
+                    settings are unfilled
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <div class="d-none">
+            include link is undefined
+            </div>
+            {% if event.calendar_object.title != "" && event.calendar_object.description != "" && event.calendar_object.location != "" && event.calendar_object.event_start|format_datetime("yyyy") != "" && event.calendar_object.event_end|format_datetime("yyyy") != "" %}
+                {% set calendarItem = true %}
+                <div class="d-none">
+                settings are filled
+                </div>
+            {% else %}
+                {% set calendarItem = false %}
+                <div class="d-none">
+                settings are unfilled
+                </div>
+            {% endif %}
+        {% endif %}
+        
+        <div class="d-none">
+        {{calendarItem|pprint}}
+        </div>
+
+        {% if calendarItem is defined && calendarItem == true %}
+            <div class="dropdown d-inline-block">
+            
+                <a class="p-0 text-decoration-none fs-6 mt-3 fw-semibold text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{module.add_to_diary}} <i class="fas fa-2xs fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{event.calendar_object.title|urlencode}}&details={{event.calendar_object.description|urlencode}}&dates={{ event.calendar_object.event_start|format_datetime("yyyyMMdd'T'HHmmss") }}/{{ event.calendar_object.event_end|format_datetime("yyyyMMdd'T'HHmmss") }}&location={{event.calendar_object.location|urlencode}}">Google Calendar</a></li>
+                <li><a class="dropdown-item" target="_blank" href="https://outlook.live.com/calendar/0/deeplink/compose?subject={{event.calendar_object.title|urlencode}}&body={{event.calendar_object.description|urlencode}}&startdt={{ event.calendar_object.event_start|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx")|urlencode }}&enddt={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx")|urlencode }}&location={{event.calendar_object.location|urlencode}}&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent">Outlook.com</a></li>
+                <li><a class="dropdown-item" target="_blank" href="https://outlook.office.com/calendar/0/deeplink/compose?subject={{event.calendar_object.title|urlencode}}&body={{event.calendar_object.description|urlencode}}&startdt={{ event.calendar_object.event_start|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&enddt={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&location={{event.calendar_object.location|urlencode}}&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent">Office 365</a></li>
+                <li><a class="dropdown-item" target="_blank" href="https://calendar.yahoo.com/?desc={{event.calendar_object.description|urlencode}}&dur=&et={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&in_loc={{event.calendar_object.location|urlencode}}&st={{ event.calendar_object.event_end|format_datetime("yyyy-MM-dd'T'HH:mm:ssxxxxx") }}&title={{event.calendar_object.title|urlencode}}&v=60">Yahoo Calendar</a></li>
+                <li><a class="dropdown-item" href="#" id="downloadICS-{{loop.index}}">Download ICS File</a></li>
+                </ul>
+            </div>
+
+            {% if event.event_site_label %}<span class="d-inline-block mx-2 fs-6 mt-3 fw-semibold text-secondary">|</span>{% endif %}
+        {% endif %}
+        
+        {% if event.event_site_label %}
+            {% if event.url.href %} 
+                <a href="{{event.url.href}}" target="_blank" class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}} <i class="fas fa-2xs fa-chevron-right"></i></a> 
+            {% else %}              
+                <span class="text-decoration-none fs-6 mt-3 fw-semibold text-secondary d-inline-block">{{event.event_site_label}}</span> 
+            {% endif %}
+        {% endif %}
+    </div>
+
+    {% if calendarItem %}
+        <script>
+            document.getElementById('downloadICS-{{loop.index}}').addEventListener('click', () => {
+            
+            createDownloadICSFile(
+                "Western_Australia/Perth",
+                new Date("{{ event.calendar_object.event_start|format_datetime("MMM d, yyyy HH:mm") }} GMT+08:00"),
+                new Date("{{ event.calendar_object.event_end|format_datetime("MMM d, yyyy HH:mm") }} GMT+08:00"),
+                "{{event.calendar_object.title|render|escapejs}}",
+                "{{event.calendar_object.description|render|escapejs}}",
+                "{{event.calendar_object.location|escape}}"
+            );  
+            event.preventDefault();
+            });
+        </script>
+    {% endif %}
+{% endmacro %}
+
+{% macro languageObject() %}
+    {% set languageMap = {
+        "article":          {"en": "article",               "es":"artículo"},
+        "resources":        {"en": "resources",             "es":"recursos"}
+    } %}
+{% endmacro %}

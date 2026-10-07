@@ -1,0 +1,13 @@
+{
+  "global" : false,
+  "icon" : "../../images/module-icons/menu.svg",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 114963711049,
+  "js_assets" : [{
+    "autoload" : false,
+    "path" : "../../js/custom-functions.js",
+    "name" : "custom-functions.js"
+  } ],
+  "label" : "Dropdown navigation",
+  "is_available_for_new_content" : false
+}

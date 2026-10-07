@@ -1,0 +1,137 @@
+[
+    {
+        "children": [
+            {
+                "children": [
+                    {
+                        "allow_new_line": false,
+                        "default": "Web filtering (no monitoring)",
+                        "display_width": null,
+                        "label": "Button text",
+                        "locked": false,
+                        "name": "button_text",
+                        "required": false,
+                        "type": "text"
+                    },
+                    {
+                        "default": "<p>No monitoring in place usually means you're relying on filter logs to surface concerns. These logs provide almost no context for DSLs, and filters (by their design) cannot see a majority of safeguarding risks that appear online. The information is sporadic, incomplete and leaves DSLs at a loss as to what they need to do next.</p>",
+                        "display_width": null,
+                        "label": "Text shown when this button is selected",
+                        "locked": false,
+                        "name": "text_below",
+                        "required": false,
+                        "type": "richtext"
+                    }
+                ],
+                "default": {
+                    "button_text": "Web filtering (no monitoring)",
+                    "text_below": "<p>No monitoring in place usually means you're relying on filter logs to surface concerns. These logs provide almost no context for DSLs, and filters (by their design) cannot see a majority of safeguarding risks that appear online. The information is sporadic, incomplete and leaves DSLs at a loss as to what they need to do next.</p>"
+                },
+                "display_width": null,
+                "expanded": false,
+                "group_occurrence_meta": null,
+                "label": "Button 1",
+                "locked": false,
+                "name": "button_1",
+                "required": false,
+                "tab": "CONTENT",
+                "type": "group"
+            },
+            {
+                "children": [
+                    {
+                        "allow_new_line": false,
+                        "default": "Unmoderated monitoring",
+                        "display_width": null,
+                        "label": "Button text",
+                        "locked": false,
+                        "name": "button_text",
+                        "required": false,
+                        "type": "text"
+                    },
+                    {
+                        "default": "<p>Unmoderated monitoring uses technology to identify risks beyond what a web filter can see. This improves visibility of risks and can provide more insight on individual concerns. However, these systems produce huge numbers of false positives - meaning DSLs waste a lot of time sifting through alerts to identify which are real.</p>",
+                        "display_width": null,
+                        "label": "Text shown when this button is selected",
+                        "locked": false,
+                        "name": "text_below",
+                        "required": false,
+                        "type": "richtext"
+                    }
+                ],
+                "default": {
+                    "button_text": "Unmoderated monitoring",
+                    "text_below": "<p>Unmoderated monitoring uses technology to identify risks beyond what a web filter can see. This improves visibility of risks and can provide more insight on individual concerns. However, these systems produce huge numbers of false positives - meaning DSLs waste a lot of time sifting through alerts to identify which are real.</p>"
+                },
+                "display_width": null,
+                "expanded": false,
+                "group_occurrence_meta": null,
+                "label": "Button 2",
+                "locked": false,
+                "name": "button_2",
+                "required": false,
+                "tab": "CONTENT",
+                "type": "group"
+            },
+            {
+                "children": [
+                    {
+                        "allow_new_line": false,
+                        "default": "Human-moderated monitoring",
+                        "display_width": null,
+                        "label": "Button text",
+                        "locked": false,
+                        "name": "button_text",
+                        "required": false,
+                        "type": "text"
+                    },
+                    {
+                        "default": "<p>With human-moderated monitoring, trained moderators review alerts and remove false positives before they reach your school. This protects DSL workloads and ensures they get straight to the genuine alerts they need to see. If a student's health or life is at risk, your team is contacted directly by phone - supporting fast interventions. </p>",
+                        "display_width": null,
+                        "label": "Text shown when this button is selected",
+                        "locked": false,
+                        "name": "text_below",
+                        "required": false,
+                        "type": "richtext"
+                    }
+                ],
+                "default": {
+                    "button_text": "Human-moderated monitoring",
+                    "text_below": "<p>With human-moderated monitoring, trained moderators review alerts and remove false positives before they reach your school. This protects DSL workloads and ensures they get straight to the genuine alerts they need to see. If a student's health or life is at risk, your team is contacted directly by phone - supporting fast interventions. </p>"
+                },
+                "display_width": null,
+                "expanded": false,
+                "group_occurrence_meta": null,
+                "label": "Button 3",
+                "locked": false,
+                "name": "button_3",
+                "required": false,
+                "tab": "CONTENT",
+                "type": "group"
+            }
+        ],
+        "default": {
+            "button_1": {
+                "button_text": "Web filtering (no monitoring",
+                "text_below": "<p>No monitoring in place usually means you're relying on filter logs to surface concerns. These logs provide almost no context for DSLs, and filters (by their design) cannot see a majority of safeguarding risks that appear online. The information is sporadic, incomplete and leaves DSLs at a loss as to what they need to do next.</p>"
+            },
+            "button_2": {
+                "button_text": "Unmoderated monitoring",
+                "text_below": "<p>Unmoderated monitoring uses technology to identify risks beyond what a web filter can see. This improves visibility of risks and can provide more insight on individual concerns. However, these systems produce huge numbers of false positives - meaning DSLs waste a lot of time sifting through alerts to identify which are real.</p>"
+            },
+            "button_3": {
+                "button_text": "Human-moderated monitoring",
+                "text_below": "<p>With human-moderated monitoring, trained moderators review alerts and remove false positives before they reach your school. This protects DSL workloads and ensures they get straight to the genuine alerts they need to see. If a student's health or life is at risk, your team is contacted directly by phone - supporting fast interventions. </p>"
+            }
+        },
+        "display_width": null,
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "label": "Buttons & their text",
+        "locked": false,
+        "name": "buttons",
+        "required": false,
+        "tab": "CONTENT",
+        "type": "group"
+    }
+]

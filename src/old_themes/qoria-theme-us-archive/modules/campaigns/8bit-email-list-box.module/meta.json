@@ -1,8 +1,0 @@
-{
-  "global" : false,
-  "content_types" : [ "EMAIL" ],
-  "host_template_types" : [ "ANY" ],
-  "module_id" : 196104385317,
-  "label" : "8-bit Email Pullout",
-  "is_available_for_new_content" : true
-}

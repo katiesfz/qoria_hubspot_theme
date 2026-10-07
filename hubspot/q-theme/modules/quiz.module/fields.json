@@ -1,0 +1,199 @@
+[{
+  
+  "id" : "sections",
+  "name" : "sections",
+  "display_width" : null,
+  "label" : "Sections",
+  "required" : false,
+  "locked" : false,
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+  },
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "section_name",
+    "default" : null
+  },
+  "children": [
+    {
+      "id" : "sections.section_name",
+      "name" : "section_name",
+      "display_width" : null,
+      "label" : "Section name",
+      "required" : true,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Section 1"
+    }, {
+      "id" : "questions",
+      "name" : "questions",
+      "display_width" : null,
+      "label" : "Questions",
+      "required" : false,
+      "locked" : false,
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+      },
+      "occurrence" : {
+        "min" : null,
+        "max" : null,
+        "sorting_label_field" : "answers.answer_text",
+        "default" : null
+      },
+      "children" : [ 
+        {
+          "id" : "questions.question_text",
+          "name" : "question_text",
+          "display_width" : null,
+          "label" : "Question text",
+          "required" : true,
+          "locked" : false,
+          "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+          "type" : "richtext",
+          "default" : "Question Text"
+        },
+        {
+          "id" : "questions.question_subtext",
+          "name" : "question_subtext",
+          "display_width" : null,
+          "label" : "Question subtext",
+          "required" : false,
+          "locked" : false,
+          "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+          "type" : "richtext",
+          "default" : ""
+        },{
+        "id" : "questions.answers",
+        "name" : "answers",
+        "display_width" : null,
+        "label" : "Answers",
+        "required" : false,
+        "locked" : false,
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : [{
+            "answer_text": "Yes",
+            "correct": true,
+            "info_correct": "",
+            "info_incorrect": ""
+          },{
+            "answer_text": "No",
+            "correct": false,
+            "info_correct": "",
+            "info_incorrect": ""
+          },{
+            "answer_text": "Not sure",
+            "correct": false,
+            "info_correct": "",
+            "info_incorrect": ""
+          }
+        ],
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : "answer_text",
+          "default" : null
+        },
+        "children" : [
+          {
+            "id" : "questions.answers.answer_text",
+            "name" : "answer_text",
+            "display_width" : null,
+            "label" : "Answer text",
+            "required" : false,
+            "locked" : false,
+            "validation_regex" : "",
+            "allow_new_line" : false,
+            "show_emoji_picker" : false,
+            "type" : "text"
+          },{
+            "id" : "questions.answers.correct",
+            "name" : "correct",
+            "display_width" : null,
+            "label" : "Correct answer",
+            "required" : true,
+            "locked" : false,
+            "display" : "toggle",
+            "type" : "boolean",
+            "default" : true
+          },{
+            "id" : "questions.answers.info_correct",
+            "name" : "info_correct",
+            "display_width" : null,
+            "label" : "Explanation for correct answer",
+            "required" : false,
+            "locked" : false,
+            "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+            "type" : "richtext",
+            "default" : ""
+          },{
+            "id" : "questions.answers.info_incorrect",
+            "name" : "info_incorrect",
+            "display_width" : null,
+            "label" : "Explanation for incorrect answer",
+            "required" : false,
+            "locked" : false,
+            "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+            "type" : "richtext",
+            "default" : ""
+          }
+        ]
+      }, {
+        "id" : "questions.results",
+        "name" : "results",
+        "display_width" : null,
+        "label" : "Results",
+        "required" : false,
+        "locked" : false,
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : {
+        },
+        "occurrence" : {
+          "min" : null,
+          "max" : null,
+          "sorting_label_field" : "results.score",
+          "default" : null
+        },
+        "children" : [
+          {
+            "name": "score",
+            "id": "questions.results.score",
+            "label": "Score",
+            "required": false,
+            "locked": false,
+            "display": "text",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "type": "number",
+            "prefix": "",
+            "suffix": "%",
+            "default": null,
+            "placeholder": "0"
+          },{
+            "id" : "questions.results.summary",
+            "name" : "summary",
+            "display_width" : null,
+            "label" : "Results summary",
+            "required" : false,
+            "locked" : false,
+            "enabled_features" : [ "bulleted_list", "emoji", "underline", "indent", "superscript", "lineheight", "link", "hr", "video", "charmap", "italic", "colors", "advanced_emphasis", "cta", "indents", "standard_emphasis", "outdent", "nonbreaking_space", "block", "strikethrough", "embed", "table", "image", "code_format", "subscript", "visual_blocks", "bold", "personalize", "numbered_list", "background_color", "lists", "anchor", "text_color", "alignment", "source_code" ],
+            "type" : "richtext",
+            "default" : ""
+          }
+        ]
+      }]
+    }
+  ]
+}]
