@@ -18,15 +18,20 @@
       <meta name="twitter:image" content="{{ content.featured_image }}">
     {% endif %}
 
+    {# GNU | DO NOT REMOVE #}
+     <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+
     {# Preload main theme CSS earlier for faster discovery #}
     {{ require_css(get_asset_url('../../css/qoria-theme.min.css'), { async: true }) }}
 
-    {{ require_css(get_asset_url("../../assets/fontawesome6/css/brands.min.css")) }}
-    {{ require_css(get_asset_url("../../assets/fontawesome6/css/fontawesome.min.css")) }}
-    {{ require_css(get_asset_url("../../assets/fontawesome6/css/light.min.css")) }}
-    {{ require_css(get_asset_url("../../assets/fontawesome6/css/regular.min.css")) }}
-    {{ require_css(get_asset_url("../../assets/fontawesome6/css/solid.min.css")) }}
-    {{ require_css(get_asset_url("../../assets/fontawesome6/css/thin.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/brands.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/fontawesome.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/light.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/regular.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/solid.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/thin.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/v5-font-face.min.css")) }}
+    {{ require_css(get_asset_url("../../assets/fontawesome/css/v6-font-face.min.css")) }}
 
     <script>
       window.bootstrapReadyQueue = window.bootstrapReadyQueue || [];
