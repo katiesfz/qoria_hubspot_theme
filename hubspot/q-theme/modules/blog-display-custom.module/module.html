@@ -82,7 +82,7 @@
                             </div>
                         {% endif %}
                     </div>
-                    {% if module.styles.show_dividers %}
+                    {% if module.styles.show_dividers|default(true) %}
                         {% if not loop.last %}
                             <div class="px-3 px-md-5">
                                 <hr class="opacity-25">

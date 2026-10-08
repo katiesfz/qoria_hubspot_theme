@@ -430,7 +430,7 @@ padding-bottom: 6rem;
     text-align: center;
     padding-bottom: 2rem;
     &::before {
-        background-image: url("https://www.linewize.com/hubfs/US-Linewize-Banners-school-manager2.jpg");
+        background-image: url("{{get_asset_url('/q-theme/images/qoria/photos/iStock-539271099_RT.jpg')}}");
         background-size: cover;
         background-position: center right;
         position: absolute;
