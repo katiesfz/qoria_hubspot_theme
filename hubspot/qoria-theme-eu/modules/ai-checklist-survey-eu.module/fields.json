@@ -1,11 +1,12 @@
-[{
+[ {
+  "id" : "gating_form",
   "name" : "gating_form",
-  "display_width" : null,
   "label" : "Gating form",
   "help_text" : "Form that must be submitted before receiving results",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "type" : "form",
+  "display_width" : null,
   "default" : {
     "form_id" : "",
     "response_type" : "redirect",
@@ -14,11 +15,12 @@
     "redirect_url" : "http://www.google.com"
   }
 }, {
-  "name": "follow_up_page",
-  "label": "Follow-up page",
-  "help_text": "Page linked to at the end of the survey",
-  "required": false,
-  "locked": false,
-  "type": "page",
-  "default": null
-}]
+  "id" : "follow_up_page",
+  "name" : "follow_up_page",
+  "label" : "Follow-up page",
+  "help_text" : "Page linked to at the end of the survey",
+  "required" : false,
+  "locked" : true,
+  "type" : "page",
+  "display_width" : null
+} ]

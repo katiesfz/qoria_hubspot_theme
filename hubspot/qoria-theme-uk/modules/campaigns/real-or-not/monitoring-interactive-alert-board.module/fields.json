@@ -112,7 +112,7 @@
         ],
         "default": {
             "button_1": {
-                "button_text": "Web filtering (no monitoring",
+                "button_text": "Web filtering (no monitoring)",
                 "text_below": "<p>No monitoring in place usually means you're relying on filter logs to surface concerns. These logs provide almost no context for DSLs, and filters (by their design) cannot see a majority of safeguarding risks that appear online. The information is sporadic, incomplete and leaves DSLs at a loss as to what they need to do next.</p>"
             },
             "button_2": {

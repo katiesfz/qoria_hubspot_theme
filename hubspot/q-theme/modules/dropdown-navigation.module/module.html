@@ -1,4 +1,4 @@
-{% set breakpoint = module.breakpoint %}
+{% set breakpoint = header_style.breakpoint || module.breakpoint %}
 {% set max_levels = module.max_levels %}
 
 {% if breakpoint == "always" %}
@@ -9,7 +9,6 @@
     {% set navbarExpand = "navbar-expand-" ~ breakpoint %}
 {% endif %}
 
-  
   {# Module styles #}
   
   {% require_css %}
@@ -99,8 +98,12 @@
   
   {% macro megamenu_items() %}
 
-    {% set menu = menu(module.menu, "site_root").children %}
-  
+    {% if module.menu %}
+      {% set menu = menu(module.menu, "site_root").children %}
+    {% else %}
+      {% set menu = menu("default", "site_root").children %}
+    {% endif %}
+
     {% macro render_link_item(link, depth) %}
       {% if link.children and depth < module.max_levels %}
         {% if link.url %}
@@ -130,7 +133,7 @@
                   <div id="metadata" class="metadata">
                     {% for description in module.megamenu_descriptions %}
                       {% if link.label == description.match_label %}
-                        {{ description.description }}
+                        {{ description.description|replace("<h1>","<p class='h1'>")|replace("</h1>","</p>")|replace("<h2>","<p class='h2'>")|replace("</h2>","</p>")|replace("<h3>","<p class='h3'>")|replace("</h3>","</p>")|replace("<h4>","<p class='h4'>")|replace("</h4>","</p>")|replace("<h5>","<p class='h5'>")|replace("</h5>","</p>")|replace("<h6>","<p class='h6'>")|replace("</h6>","</p>") }}
                       {% endif %}
                     {% endfor %}
                   </div>

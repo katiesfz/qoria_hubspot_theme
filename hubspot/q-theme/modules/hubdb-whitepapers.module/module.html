@@ -60,8 +60,6 @@
 
 // build hubdb table object
 const hubdbTable_{{name|replace("-","_")}} = {{ hubdb_table(module.source_table)|tojson }};
-
-    // console.log(hubdbRows_{{name|replace("-","_")}});
 </script>
 
     <div class="container-fluid blog-listing g-0 {{module.advanced.additional_classes}}" style="{{module.styles.spacing_field.css}}  transition-property: height; transition-duration: 500ms;" id="hubdb_resources_{{name|replace("-","_")}}">

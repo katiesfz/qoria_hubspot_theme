@@ -558,12 +558,13 @@ function initCookieConsent() {
     }
 
     const bannerHTML = getBannerHTML(t);
-    // Inject the HTML
+    // Inject the banner HTML
     document.body.insertAdjacentHTML('beforeend', bannerHTML);
-    // Expose the cookieConsentManager globally
+    // Make cookieConsentManager globally available
     window.qoriaCookieConsentManager = cookieConsentManager();
 }
 
+// Trigger cookie consent banner when the page is fully loaded, unless in the editor
 if (!window.qoriaIsInEditor) {
     if (document.readyState === 'complete') {
         initCookieConsent();

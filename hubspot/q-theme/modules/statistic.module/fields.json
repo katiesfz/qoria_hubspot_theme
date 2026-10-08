@@ -371,6 +371,20 @@
     "type" : "choice",
     "default" : "primary"
   }, {
+    "id" : "style.description_colour",
+    "name" : "description_colour",
+    "display_width" : null,
+    "label" : "Description colour",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "default", "Default" ], [ "inherit", "Inherit stat colour" ], [ "dark", "Dark" ], [ "light", "Light" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "default"
+  }, {
     "id" : "style.stat_size",
     "name" : "stat_size",
     "display_width" : null,

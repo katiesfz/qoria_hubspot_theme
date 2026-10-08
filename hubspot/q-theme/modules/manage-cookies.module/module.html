@@ -1,4 +1,4 @@
-<button type="button" class="{{module.classes}} d-none" id="{{name|replace('-','')}}" onClick="qoriaCookieConsentManager.cookieConsentBanner.show()">Your Privacy Choices <img src="{{get_asset_url('../../images/privacyoptions.svg')}}" style="height: 1rem; width: auto; margin-left: .25em; vertical-align: bottom;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon"></button>
+<button type="button" class="{{module.classes}} d-none" id="{{name|replace('-','')}}" onClick="qoriaCookieConsentManager.cookieConsentBanner.show()">{{ module.button_label }} <img src="{{get_asset_url('../../images/privacyoptions.svg')}}" style="height: 1rem; width: auto; margin-left: .25em; vertical-align: bottom;" alt="California Consumer Privacy Act (CCPA) Opt-Out Icon"></button>
 
 {% require_js %}
     <script>

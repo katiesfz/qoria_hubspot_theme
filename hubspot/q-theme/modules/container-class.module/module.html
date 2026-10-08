@@ -36,7 +36,6 @@
                     applyClassesToParent(e, eToFind, cToAdd, window.appliedClassesToParent);
                 } else if (attempts >= maxAttempts) {
                     clearInterval(poll);
-                    // console.log("Global callback not found, using default.");
                     applyClassesToParent(e, eToFind, cToAdd);
                 }
             }, 50);

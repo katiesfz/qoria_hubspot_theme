@@ -69,7 +69,7 @@
               <p class="fs-4 text-{{statColour}} fw-semibold mb-2 lh-1">{{ item.statistic_header }}</p>
           {%endif%}
           {% if item.description != "" %}
-              <p>{{ item.description }}</p>
+              <p class="{{ "text-" ~ statColour if module.style.description_colour == "inherit" }}{{ "text-dark" if module.style.description_colour == "dark" }}{{ "text-light" if module.style.description_colour == "light" }}">{{ item.description }}</p>
           {%endif%}
 
       </div>

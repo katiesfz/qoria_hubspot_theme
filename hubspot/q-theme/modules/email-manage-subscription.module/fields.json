@@ -4,7 +4,7 @@
   "label" : "Email Type",
   "required" : false,
   "locked" : false,
-  "multiple":"false",
+  "multiple":false,
   "display" : "select",
   "choices" : [[ "marketing", "Marketing" ], [ "transactional", "Transactional" ]],
   "type" : "choice",

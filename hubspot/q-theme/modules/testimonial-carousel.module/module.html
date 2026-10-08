@@ -92,7 +92,7 @@
                 {% if item.role%}<p class="card-role fs-6 mt-3 mb-0 lh-sm">{{item.role}}</p> {%endif%}
             </div>
         </div>
-        <div class="position-relative card-body {{ "fw-light" if module.style.quote_weight else "fw-" ~ module.style.quote_weight }}">
+        <div class="position-relative card-body {{ "fw-light" if !module.style.quote_weight else "fw-" ~ module.style.quote_weight }}">
             <!-- quote graphic -->
                 <?xml version="1.0" encoding="utf-8"?>
                 <!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->

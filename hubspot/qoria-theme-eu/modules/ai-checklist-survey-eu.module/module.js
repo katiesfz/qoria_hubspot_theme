@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        const formHeader = document.getElementById("surveyFormModal").getElementById("formHeader");
+        const formHeader = document.getElementById("formHeader");
 
         formHeader.innerHTML = `<h3 class="mb-6 border-top border-bottom border-dark py-3 border-2 fw-semibold px-2 d-none">
                                     Almost there!

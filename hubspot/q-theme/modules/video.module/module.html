@@ -4,7 +4,6 @@
     {% set embed = module.embed_code %}
     {% set embedParts = embed|split('src="', 2) %}
     {% set videoId = "" %}
-    <!-- {{embedParts|pprint}} --> 
     {% if embedParts|length > 1 %}
       {% set embedBefore = embedParts[0] %}
       {% set embedAfterParts = embedParts[1]|split('"', 2) %}

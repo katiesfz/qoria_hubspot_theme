@@ -33,7 +33,7 @@
   "required" : false,
   "locked" : false,
   "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS" ],
-  "show_advanced_rel_options" : false,
+  "show_advanced_rel_options" : true,
   "type" : "link",
   "default" : {
     "url" : {
