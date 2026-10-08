@@ -128,15 +128,16 @@
               return;
             }
             buildDownloadButton();
-            document.getElementById("downloadFile-{{name}}").click(function(){
+            document.getElementById("downloadFile-{{name}}").click();
             {% if module.form.response_type == "redirect" %}
+              setTimeout(function(){
               {% if module.form.redirect_url != "" && module.form.redirect_url %}
                 window.location.href = "{{module.form.redirect_url}}";
               {% else %}
                 window.location.href = "{{ content_by_id(module.form.redirect_id).absolute_url }}";
               {% endif %}
+              }, 500);
             {% endif %}
-              });
           {% endif %}
           {% if module.advanced.on_form_submitted %}
             {{module.advanced.on_form_submitted}}
