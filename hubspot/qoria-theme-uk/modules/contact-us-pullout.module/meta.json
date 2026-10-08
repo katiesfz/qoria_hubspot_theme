@@ -2,6 +2,6 @@
   "global" : true,
   "icon" : "../../images/module-icons/square-quote.svg",
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "label" : "Contact Us Pullout - UK",
+  "label" : "Contact Us Pullout",
   "is_available_for_new_content" : true
 }

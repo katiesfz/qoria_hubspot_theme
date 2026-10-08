@@ -1,17 +1,11 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label:  Landing Page (eSafe)
+  label:  Landing Page (CTA)
   screenshotPath: ../images/template-previews/landing-page.png
 -->
 {% extends "./layouts/base.html" %}
 
-
-{% block header %}
-  <div class="header-wrapper sticky-top shadow-sm">
-    {% global_partial path='./partials/header-esafe.html', label="Header" %}
-  </div>
-{% endblock header %}
 
 {% block body %}
 {% dnd_area "dnd_area"
@@ -31,6 +25,9 @@ class="main p-0 overflow-hidden"
     path="../sections/introduction.html"
   %}
 
+
 {% end_dnd_area %}
+{% global_partial path="./partials/lets-connect.html" %}
 {% endblock body %}
+
 

@@ -1,100 +1,92 @@
 <!--
 templateType: global_partial
-label: Smoothwall Header
+label: Header
 -->
 
-    <!-- resize the top nav - only for Smoothwall -->
-    <style>
-    .navbar-nav .nav-link {
-      --q-nav-link-font-size: 15px;
-      --q-navbar-nav-link-padding-x: 0.8rem;
+<!-- resize the top nav - only for Smoothwall -->
+<style>
+  .navbar-nav .nav-link {
+    --q-nav-link-font-size: 15px;
+    --q-navbar-nav-link-padding-x: 0.8rem;
+  }
+  .navbar-nav .nav-link.active:after {
+    width: calc(100% - 1.6em) !important;
     }
-    .navbar-nav .nav-link.active:after {
-      width: calc(100% - 1.6em) !important;
-      }
-  </style>
-  <!-- end resize code -->
+</style>
+<!-- end resize code -->
 
+{% set header_style = widget_data.header_style|default({"background": "default", "search": true, "language_switcher": true, "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "lg"}) %}
 
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/fontawesome.min.css"),{ defer: true }) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/brands.min.css"),{ async: true }) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/light.min.css"),{ async: true }) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/regular.min.css"),{ async: true }) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/solid.min.css"),{ async: true }) }}
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/thin.min.css"),{ async: true }) }} 
-  {{ require_css(get_asset_url("/q-theme/assets/fontawesome/css/v5-font-face.min.css"),{ async: true }) }} 
-
-  {% boolean "show_language_switcher", label="Show language switcher", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
-
-  {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", export_to_template_context=True %}
-  {% set breakpoint = widget_data.navigation.breakpoint %}
-      {% if breakpoint == "always" %}
-          {% set navbarExpand = "" %}
-      {% elif breakpoint == "never" %}
-          {% set navbarExpand = "navbar-expand" %}
-      {% else %}
-          {% set navbarExpand = "navbar-expand-" + breakpoint %}
-      {% endif %}
+{% set breakpoint = header_style.breakpoint %}
+{% if breakpoint == "always" %}
+    {% set navbarExpand = "" %}
+{% elif breakpoint == "never" %}
+    {% set navbarExpand = "navbar-expand" %}
+{% else %}
+    {% set navbarExpand = "navbar-expand-" ~ breakpoint %}
+{% endif %}
     
-
-
-  <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
-    <nav class="navbar {{navbarExpand}}">
-      <div class="container-xxl position-relative"> 
+<header class="header {{ header_style.background if (header_style.background && header_style.background != "default") else "bg-white" }} py-0 py-sm-1 py-md-2 py-lg-3">
+  <nav class="navbar {{navbarExpand}}">
+    <div class="container-xxl position-relative"> 
+      {% if header_style.logo %}
         {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
-                  <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
-
-        {% if widget_data.show_language_switcher.value == true %}
+      {% endif %}
+      <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
+        {% if header_style.language_switcher %}
           <div class="d-flex d-{{breakpoint}}-none">          
-            {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}", include_button_label=False %}
+            {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint=header_style.breakpoint, include_button_label=False %}
           </div>
         {% endif %}
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="far fa-xl fa-bars"></i>
         </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint="lg", no_wrapper=True %}
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        {% if header_style.navigation %}
+          {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint=header_style.breakpoint, no_wrapper=True %}
+        {% endif %}
 
-            {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"}} %}
-            {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "", "type" : "EXTERNAL"}} %}
+        {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
+        {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "", "type" : "EXTERNAL"} } %}
 
-            {% if widget_data.cta.link.url.href != "" %}
-              <div class="d-flex d-{{breakpoint}}-none my-2">
-              {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
-    
-              </div>
-            {% endif %}
-            {% if widget_data.cta_2.link.url.href != "" %}
-              <div class="d-flex d-{{breakpoint}}-none mb-2">
-              {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"}} %}
-    
-              </div>
-            {% endif %}
+        {% if header_style.cta %}
+          {% if widget_data.cta.link.url.href != "" %}
+            <div class="d-flex d-{{breakpoint}}-none my-2">
+            {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+  
+            </div>
+          {% endif %}
+          {% if widget_data.cta_2.link.url.href != "" %}
+            <div class="d-flex d-{{breakpoint}}-none mb-2">
+            {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"} } %}
+  
+            </div>
+          {% endif %}
           {% if widget_data.cta.link.url.href != "" %}
             <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-            {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"}} %}
-
+            {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
             </div>
           {% endif %}         
           {% if widget_data.cta_2.link.url.href != "" %}
             <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-            {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"}} %}
-
+            {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"} } %}
             </div>
           {% endif %}         
-            
+        {% endif %}
+
+        {% if header_style.search %}
           <div class="navbar-search d-flex ms-{{breakpoint}}-3 mb-3 mb-{{breakpoint}}-0">
             {% module "search" path="/q-theme/modules/search_input", label="Search" no_wrapper=true %}
           </div>
-        
-
-            {% if widget_data.show_language_switcher.value == true %}
-              <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-              {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint="{{breakpoint}}" %}
-              </div>
-            {% endif %}
-        </div>
+        {% endif %}
+      
+        {% if header_style.language_switcher %}
+          <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
+          {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint=header_style.breakpoint %}
+          </div>
+        {% endif %}
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>

@@ -1,17 +1,12 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label:  Landing Page (eSafe)
+  label: Webpage
   screenshotPath: ../images/template-previews/landing-page.png
 -->
 {% extends "./layouts/base.html" %}
 
-
-{% block header %}
-  <div class="header-wrapper sticky-top shadow-sm">
-    {% global_partial path='./partials/header-esafe.html', label="Header" %}
-  </div>
-{% endblock header %}
+{% do widget_data.update({ "header_style": {"background": "default", "search": false, "language_switcher": true, "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "lg"} })%}
 
 {% block body %}
 {% dnd_area "dnd_area"
@@ -22,7 +17,6 @@ class="main p-0 overflow-hidden"
   {% include_dnd_partial
     path="../sections/hero-banner.html"
     context={
-      "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>",
       "breadcrumbMenu": 134668028025
     }
   %}
@@ -34,3 +28,6 @@ class="main p-0 overflow-hidden"
 {% end_dnd_area %}
 {% endblock body %}
 
+{% block footer %}
+  {% global_partial path="./partials/footer.html" %}
+{% endblock footer %}

@@ -1,8 +1,8 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label:  Smoothwall LP with CTA
-  screenshotPath: ../../images/template-previews/landing-page.png
+  label: Webpage (CTA)
+  screenshotPath: ../images/template-previews/landing-page.png
 -->
 {% extends "./layouts/base.html" %}
 
@@ -14,14 +14,14 @@ class="main p-0 overflow-hidden"
 %}
 
   {% include_dnd_partial
-    path="../../sections/hero-banner.html"
+    path="../sections/hero-banner.html"
     context={
-      "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>"
+      "breadcrumbMenu": 134668028025
     }
   %}
 
   {% include_dnd_partial
-    path="../../sections/introduction.html"
+    path="../sections/introduction.html"
   %}
 
 
@@ -29,4 +29,6 @@ class="main p-0 overflow-hidden"
 {% global_partial path="./partials/lets-connect.html" %}
 {% endblock body %}
 
-
+{% block footer %}
+    {% global_partial path="./partials/footer.html" %}
+{% endblock footer %}

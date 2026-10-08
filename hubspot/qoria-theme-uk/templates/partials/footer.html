@@ -19,13 +19,13 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
     <hr class="opacity-100 my-6">
     <div class="row text-start">
       <div class="col-12 col-lg-3 mb-4 me-auto">
-          {% module "module_16793700538024" path="/q-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('/q-theme/images/qoria/Qoria_Logo_White.svg')}}", "size_type" : "auto_custom_max", "alt": "Qoria Logo", "max_width" : "128"} %}
+          {% module "module_16793700538024" path="/q-theme/modules/logo", label="logo", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('/q-theme/images/qoria/logos/Qoria_Logo_White.svg')}}", "size_type" : "auto_custom_max", "alt": "Qoria Logo", "max_width" : "128"} %}
       </div>
       <div class="col-12 col-sm-5 col-lg-3 mb-5">
             <p class="h6 mb-3">
             {% text "address_heading" label="Address heading", value="Registered Office", no_wrapper=True %}
             </p>
-            {% module "address_multiline" path="../../../modules/plaintext-multiline", label="Address Multi-line", export_to_template_context=True %}
+            {% module "address_multiline" path="../../modules/plaintext-multiline", label="Address Multi-line", export_to_template_context=True %}
             {% textarea "address_multiline" label="Address Multiline", value="", export_to_template_context=True %}
             {% text "phone_number" label="Phone", value="08 9322 7600", export_to_template_context=True %}
             {% text "email" label="Email", value="info@qoria.com", export_to_template_context=True %}
@@ -151,7 +151,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
             }
         ]{% end_module_attribute %}
         {% end_module_block %}
-        <a href="https://saferinternet.org.uk/" rel="nofollow"><img src="https://smoothwall.com/hubfs/Partner%20Logos/UKSIC-Accreditation-Mark.png" style="width: 100%; max-width: 80px;"></a>
+        {# <!-- removed 25/8/26 <a href="https://saferinternet.org.uk/" rel="nofollow"><img src="https://smoothwall.com/hubfs/Partner%20Logos/UKSIC-Accreditation-Mark.png" style="width: 100%; max-width: 80px;"></a> --> #}
       </div>
       <div class="col-12 col-sm-3  col-lg-2 mb-5">
         <p class="mb-3 h6">{% text "social_heading" label="Social heading", value="Follow us", no_wrapper=True %}</p>
@@ -167,7 +167,7 @@ screenshotPath: ../images/section-previews/screenshot_Footer.png
           <span>&copy; {{year}} {{site_settings.company_name}}. All rights reserved. </span>
         </div>
         <div class="col text-end">
-        <a class="text-reset text-decoration-none" href="https://qoria.com" target="_blank"><span class="align-middle">{{site_settings.company_name}} is part of the Qoria family</span> <img src="{{get_asset_url('..//q-theme/images/qoria/Q-Colour.svg')}}" width="30" height="30" alt="Qoria Q" style="width: 30px;" class="ms-3 align-middle"></a>
+        <a class="text-reset text-decoration-none" href="https://qoria.com" target="_blank"><span class="align-middle">{{site_settings.company_name}} is part of the Qoria family</span> <img src="{{get_asset_url('/q-theme/images/qoria/logos/Q-Colour.svg')}}" width="30" height="30" alt="Qoria Q" style="width: 30px;" class="ms-3 align-middle"></a>
         </div>
       </div>
     </div>
