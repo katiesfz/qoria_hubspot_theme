@@ -83,22 +83,22 @@
       {{ card.text }}
       </div>
     {% endif %}
-    {% if card.link.url.href %}
-      {% if card.cta_style %}
-        {% if card.cta_style != "text-" %}
-          {% set ctaClasses = card.cta_size ~ " " ~ card.cta_style ~ card.cta_colour ~ " mt-3" %}
+    {% if card.cta.link.url.href %}
+      {% if card.cta.cta_style %}
+        {% if card.cta.cta_style != "text-" %}
+          {% set ctaClasses = card.cta.cta_size ~ " " ~ card.cta.cta_style ~ card.cta.cta_colour ~ " mt-3" %}
         {% else %}
-          {% set ctaClasses = "text-" ~ card.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
+          {% set ctaClasses = "text-" ~ card.cta.cta_colour ~ " mt-3 text-decoration-none fw-semibold" %}
         {% endif %}
       {% else %}
         {% set ctaClasses = "text-reset text-decoration-none fw-semibold mt-2" %}
       {% endif %}
-      {% if (card.cta_alignment) && (card.cta_alignment != "inherit") %}
-        {% if card.cta_alignment == "center" %}
+      {% if (card.cta.cta_alignment) && (card.cta.cta_alignment != "inherit") %}
+        {% if card.cta.cta_alignment == "center" %}
           {% set ctaClasses = ctaClasses ~ " mx-auto" %}
-        {% elif card.cta_alignment == "end" %}
+        {% elif card.cta.cta_alignment == "end" %}
           {% set ctaClasses = ctaClasses ~ " ms-auto" %}
-        {% elif card.cta_alignment == "start" %}
+        {% elif card.cta.cta_alignment == "start" %}
           {% set ctaClasses = ctaClasses ~ " me-auto" %}
         {% endif %}
       {% else %}
@@ -111,27 +111,27 @@
         {% endif %}
       {% endif %}
 
-      <a href="{{ "#" if card.trigger_modal else card.link.url.href|render}}" 
-      class="{{ "stretched-link" if card.stretched_link }} {{ ctaClasses }}"
-      {% if card.link.open_in_new_tab %}target="_blank"{% endif %}
-      {% if card.download %}
-        {% if card.download_file %}
-          download="{{card.download_file}}"
+      <a href="{{ "#" if card.cta.trigger_modal else card.cta.link.url.href|render}}" 
+      class="{{ "stretched-link" if card.cta.stretched_link }} {{ ctaClasses }}"
+      {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+      {% if card.cta.download %}
+        {% if card.cta.download_file %}
+          download="{{card.cta.download_file}}"
         {% else %}
             download
         {% endif %}
       {% endif %}
-      {% if card.trigger_modal %}
+      {% if card.cta.trigger_modal %}
            data-bs-toggle="modal"
-         data-bs-target="#{{ card.modal_id }}"
+         data-bs-target="#{{ card.cta.modal_id }}"
        {% endif %}
       >
-      {% if (card.link_label|striptags) is string_containing "->" %}
-        {% set linkLabel = card.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
-      {% elif (card.link_label|striptags) is string_containing " >" %}
-        {% set linkLabel = card.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
+      {% if (card.cta.link_label|striptags) is string_containing "->" %}
+        {% set linkLabel = card.cta.link_label|replace('->','<i class="fa fa-arrow-right"></i>') %}
+      {% elif (card.cta.link_label|striptags) is string_containing " >" %}
+        {% set linkLabel = card.cta.link_label|replace(' >',' <i class="fa fa-chevron-right"></i>') %}
       {% else %}
-        {% set linkLabel = card.link_label %}
+        {% set linkLabel = card.cta.link_label %}
       {% endif %}
       {{linkLabel}}</a>
     {% endif %}
@@ -140,10 +140,10 @@
 
 {% endmacro %}
 
-{%if module.styles.icon.sizing == "relative" %}
-  {% set globalSizing = module.styles.icon.relative_icon_size %}
-{% elif module.styles.icon.sizing == "absolute" %}
-  {% set globalSizing = module.styles.icon.absolute_icon_size %}
+{% if module.styles.icon.sizing|default("relative") == "relative" %}
+  {% set globalSizing = module.styles.icon.relative_icon_size|default(" ") %}
+{% elif module.styles.icon.sizing|default("relative") == "absolute" %}
+  {% set globalSizing = module.styles.icon.absolute_icon_size|default("fa-3x") %}
 {% endif %}
 
 
@@ -265,10 +265,10 @@
                   {% endif %}
                 </div>
                 {% if icon == true %}
-                  {% if card.icon.icon_colour != "inherit" %}
+                  {% if card.icon.icon_colour|default("inherit") != "inherit" %}
                     {% set iconColour = card.icon.icon_colour %}
                   {% else %}
-                    {% set iconColour = module.styles.icon.icon_colour %}
+                    {% set iconColour = module.styles.icon.icon_colour|default("primary") %}
                   {% endif %}
                   <div class="{{ 'py-3' if card.image_overlap }} flex-shrink-0 ms-auto">
                     {% if card.icon.custom_image.src %}
@@ -288,19 +288,19 @@
                           {% else %}
                             {% set iconCode = "fa-" ~ card.icon.icon_field.name|lower|replace(" ", "-") %}
                           {% endif %}
-                          {% if card.icon.sizing == "inherit" %}
+                          {% if card.icon.sizing|default("inherit") == "inherit" %}
                             {% set sizing = globalSizing %}
-                          {%elif card.icon.sizing == "relative" %}
-                            {% set sizing = card.icon.relative_icon_size %}
-                          {% elif card.icon.sizing == "absolute" %}
-                            {% set sizing = card.icon.absolute_icon_size %}
+                          {% elif card.icon.sizing|default("inherit") == "relative" %}
+                            {% set sizing = card.icon.relative_icon_size|default(" ") %}
+                          {% elif card.icon.sizing|default("inherit") == "absolute" %}
+                            {% set sizing = card.icon.absolute_icon_size|default("fa-3x") %}
                           {% endif %}
-                          {% if card.icon.icon_style != "inherit" %}
+                          {% if card.icon.icon_style|default("inherit") != "inherit" %}
                             {% set iconStyle = card.icon.icon_style %}
                           {% else %}
-                            {% set iconStyle = module.styles.icon.icon_style %}
+                            {% set iconStyle = module.styles.icon.icon_style|default("fal") %}
                           {% endif %}
-                        <i class="text-{{iconColour}} fa-fw {{ "lh-base" if module.styles.icon.sizing == "relative" }} {{ iconStyle }} {{ sizing }} {{ iconCode }}" style="{{ "line-height: " + (card.icon.icon_height * 4) + "px;" if card.icon.custom_icon_height }}"></i>
+                        <i class="text-{{iconColour}} fa-fw {{ "lh-base" if module.styles.icon.sizing|default("relative") == "relative" }} {{ iconStyle }} {{ sizing }} {{ iconCode }}" style="{{ "line-height: " + (card.icon.icon_height * 4) + "px;" if card.icon.custom_icon_height }}"></i>
                         {% endif %}
                       </div>
                     {% endif %}
@@ -355,10 +355,10 @@
               </div>
             
               {% if icon == true %}
-                {% if card.icon.icon_colour != "inherit" %}
+                {% if card.icon.icon_colour|default("inherit") != "inherit" %}
                   {% set iconColour = card.icon.icon_colour %}
                 {% else %}
-                  {% set iconColour = module.styles.icon.icon_colour %}
+                  {% set iconColour = module.styles.icon.icon_colour|default("primary") %}
                 {% endif %}
                 <div class="{{ 'py-3' if card.image_overlap }} flex-shrink-0 ms-auto ps-3">
                   {% if card.icon.custom_image.src %}
@@ -378,19 +378,19 @@
                         {% else %}
                           {% set iconCode = "fa-" ~ card.icon.icon_field.name|lower|replace(" ", "-") %}
                         {% endif %}
-                        {% if card.icon.sizing == "inherit" %}
+                        {% if card.icon.sizing|default("inherit") == "inherit" %}
                           {% set sizing = globalSizing %}
-                        {%elif card.icon.sizing == "relative" %}
-                          {% set sizing = card.icon.relative_icon_size %}
-                        {% elif card.icon.sizing == "absolute" %}
-                          {% set sizing = card.icon.absolute_icon_size %}
+                        {% elif card.icon.sizing|default("inherit") == "relative" %}
+                          {% set sizing = card.icon.relative_icon_size|default(" ") %}
+                        {% elif card.icon.sizing|default("inherit") == "absolute" %}
+                          {% set sizing = card.icon.absolute_icon_size|default("fa-3x") %}
                         {% endif %}
-                        {% if card.icon.icon_style != "inherit" %}
+                        {% if card.icon.icon_style|default("inherit") != "inherit" %}
                           {% set iconStyle = card.icon.icon_style %}
                         {% else %}
-                          {% set iconStyle = module.styles.icon.icon_style %}
+                          {% set iconStyle = module.styles.icon.icon_style|default("fal") %}
                         {% endif %}
-                      <i class="text-{{iconColour}} fa-fw {{ "lh-base" if module.styles.icon.sizing == "relative" }} {{ iconStyle }} {{ sizing }} {{ iconCode }}" style="{{ "line-height: " + (card.icon.icon_height * 4) + "px;" if card.icon.custom_icon_height }}"></i>
+                      <i class="text-{{iconColour}} fa-fw {{ "lh-base" if module.styles.icon.sizing|default("relative") == "relative" }} {{ iconStyle }} {{ sizing }} {{ iconCode }}" style="{{ "line-height: " + (card.icon.icon_height * 4) + "px;" if card.icon.custom_icon_height }}"></i>
                       {% endif %}
                     </div>
                   {% endif %}
@@ -454,7 +454,7 @@
       {% if module.styles.no_animate_on_mobile != false %}
           if (Math.max(window.screen.width, window.screen.height) > 768) {
       {% endif %}
-          {% if module.styles.animate_in %}
+          {% if module.styles.animate_in && !is_in_editor %}
               cardAnimateHandler();
           {% endif %}
 
