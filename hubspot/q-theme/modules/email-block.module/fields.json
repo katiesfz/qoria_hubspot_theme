@@ -11,6 +11,7 @@
     "type": "group",
     "name": "styles",
     "tab": "STYLE",
+    "label": "Styles",
     "children": [
       {
         "name": "img_spacing",
