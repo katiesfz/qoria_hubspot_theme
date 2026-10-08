@@ -38,6 +38,11 @@ function normaliseHeights(classString, screenWidth = "xs") {
     }
 
     screenSizeQuery.addEventListener("change", handleResize);
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(handleResize, 100);
+    });
     handleResize();
 }
 
@@ -80,6 +85,11 @@ function normaliseHeightsMin(classString, screenWidth = "xs") {
     }
 
     screenSizeQuery.addEventListener("change", handleResize);
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(handleResize, 100);
+    });
     handleResize();
 }
 
