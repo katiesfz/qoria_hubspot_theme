@@ -1,25 +1,12 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Linewize US LP
+  label: Landing Page
   screenshotPath: ../../images/template-previews/landing-page.png
 -->
 {% extends "./layouts/base.html" %}
 
-{% block head %}
-{% endblock %}
-
-{% block header %}
-
-  {% boolean "show_language_switcher", label="Show language switcher", overrideable=False, value=False, no_wrapper=True, export_to_template_context=True %}
-  {% boolean "show_search", label="Show search", overrideable=True, value=False, no_wrapper=True, export_to_template_context=True %}
-
-  <div class="header-wrapper sticky-top shadow-sm">
-    <header class="header bg-white py-0 py-sm-1 py-md-2 py-lg-3">
-      {% global_partial path='./partials/header-test.html', label="Header" %}
-    </header>
-  </div>
-{% endblock header %}
+{% set header_style = {"background": "default", "search": false, "language_switcher": false, "logo": true, "logo_inverted": false, "cta": false, "navigation": false} %}
 
 {% block body %}
 {% dnd_area "dnd_area"
@@ -28,14 +15,14 @@ class="main p-0 overflow-hidden"
 %}
 
   {% include_dnd_partial
-    path="../../sections/hero-banner.html"
+    path="../sections/hero-banner.html"
     context={
       "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>"
     }
   %}
 
   {% include_dnd_partial
-    path="../../sections/introduction.html"
+    path="../sections/introduction.html"
   %}
 
 {% end_dnd_area %}

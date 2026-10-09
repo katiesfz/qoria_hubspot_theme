@@ -7,10 +7,33 @@
 
 {% extends "./layouts/base.html" %}
 
+{% block head %}
+  {# Featured image fallback #}
+  {% unless content.featured_image %}
+    <meta name="twitter:image" content="{{ get_asset_url('../images/opengraph/Linewize-OG.png') }}">
+  {% endunless %}
+
+  {{ require_js(get_asset_url("../../child.js")) }}
+  {{ require_css(get_public_template_url("../../child.css")) }}
+
+  {% import '../partials/tokens.html' %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SpeakableSpecification",
+    "@id": "{{ content.absolute_url|escapejson }}#speakable",
+    "cssSelector": [
+      "h1",
+      "#post_body_container"
+    ]
+  }
+  </script>
+{% endblock head %}
 
 {% block body %}
   
-{{ require_js(get_asset_url("../../js/custom-functions.js"), "head") }}
+{{ require_js(get_asset_url("../js/custom-functions.js"), "head") }}
 
 {% if is_listing_view %}
 
@@ -42,6 +65,10 @@
       font-size: 1.5em;
     }
 
+    #post_body_container  #hs_cos_wrapper_post_body p a {
+      font-weight: bold;
+    }
+
   </style>
 
   <section class="hero-article">
@@ -59,7 +86,6 @@
                   {% do topics.append(topic.label) %}
                 {% endfor %}
                 {% set topicsString = topics|join(", ") %}
-                  <span class="d-none">{{topicsString|pprint}}</span>
                 {% choice "main_tag" label="Choose the main tag", choices="{{topicsString}}", value="{{content.topic_list[0].label}}" %}
               </div>
             </div>
@@ -105,8 +131,13 @@
                     <strong>By:</strong> {{ content.blog_post_author.display_name }}</a><br>
                   {% endif %}
                     {% if content.updated != content.created %}
+                      {% if content.language.code %}
+                        <span class="d-none">{{content.language.code}}</span>
+                      <strong>Updated:</strong> {{ content.updated|format_date("long", "Etc/UTC", content.language.code) }}
+                        {% else %}
                       <strong>Updated:</strong> {{ content.updated|format_date('dd MMMM, yyyy') }}
-                    {% else %}
+                      {% endif %}
+                    {% elif content.publish_date %}
                       <strong>Published:</strong> {{ content.publish_date|format_date('d MMMM, yyyy') }}
                     {% endif %}
                   </p>
@@ -134,59 +165,53 @@
           {% endif %}
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="">
-
-      <div class="container-xl">
-
-        <div class="row">
-
-          <div class="col-12 col-lg-4 col-xl-3">
-            <div class="table-of-contents bg-light p-3 arrow-down arrow-light shadow" id="table_of_contents">
-            </div>
-          </div>
-
-          <div class="col-12 col-lg-8 col-xl-9 pt-5 ps-lg-5" id="post_body_container">
-            {{ content.post_body }}
-            
+  <section class="">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-12 col-lg-4 col-xl-3">
+          <div class="table-of-contents bg-light p-3 arrow-down arrow-light shadow" id="table_of_contents">
           </div>
         </div>
-        
-            <div class="row">
-              <div class="col-12 col-lg-9 offset-lg-3 pt-5">
-                {% module "sharing" path="/q-theme/modules/social_sharing" label="Social sharing" %}
-              </div>
-            </div>
-            <div class="row py-5">
-              <div class="col-12 col-lg-9 offset-lg-3">
-                <div class="row">
-                  <div class="col text-start">
-                    {% if content.previous_post_name %}
-                      <p class="">
-                      <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
-                      <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
-                      {{ content.previous_post_name }}
-                      </a>
-                      </p>
-                    {% endif %}
-                  </div>
-                  <div class="col text-end">
-                  {% if content.next_post_name %}
-                    <p class="">
-                    <a href="/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
-                    <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
-                    {{ content.next_post_name }}
-                    </a>
-                    </p>
-                  {% endif %}
-                  </div>
-                </div>
-            </div>
-
+        <div class="col-12 col-lg-8 col-xl-9 pt-5 ps-lg-5" id="post_body_container">
+          {{ content.post_body }}
+        </div>
       </div>
-
-    </section>
+      <div class="row">
+        <div class="col-12 col-lg-9 offset-lg-3 pt-5">
+          {% module "sharing" path="../modules/social_sharing" label="Social sharing" %}
+        </div>
+      </div>
+      <div class="row py-5">
+        <div class="col-12 col-lg-9 offset-lg-3">
+          <div class="row">
+            <div class="col text-start">
+              {% if content.previous_post_name %}
+                <p class="">
+                <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+                <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
+                {{ content.previous_post_name }}
+                </a>
+                </p>
+              {% endif %}
+            </div>
+            <div class="col text-end">
+              {% if content.next_post_name %}
+                <p class="">
+                <a href="/{{ content.next_post_slug }}" class="text-decoration-none text-reset">
+                <strong>Next article <i class="fa fa-chevron-right fa-xs"></i></strong><br>
+                {{ content.next_post_name }}
+                </a>
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="bg-light pt-7 pb-7">
     <div class="container-xxl">
@@ -195,7 +220,7 @@
           <a id="trending" data-hs-anchor="true"></a>
           <h2 class="text-center"><strong>Trending topics</strong></h2>
           <hr class="opacity-25">
-          {% module "trending_topics" path="/q-theme/modules/region-specific/us/trending-topics-us" %}
+          {% module "trending_topics" path="../modules/trending-topics" %}
         </div>
       </div>
     </div>
