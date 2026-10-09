@@ -65,7 +65,7 @@
     "show_loading" : true,
     "type" : "image",
     "visibility" : {
-      "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
+      "controlling_field" : "style.background_image",
       "controlling_field_path" : null,
       "controlling_value_regex" : "custom",
       "property" : null,
@@ -89,7 +89,7 @@
     "preset" : null,
     "type" : "choice",
     "visibility" : {
-      "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
+      "controlling_field" : "style.background_image",
       "controlling_field_path" : null,
       "controlling_value_regex" : "custom",
       "property" : null,
