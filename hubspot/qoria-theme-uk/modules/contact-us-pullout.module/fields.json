@@ -297,7 +297,8 @@
           "loading" : "lazy"
         }
      },{
-      "name" : "row.column.column_styles.background_size",
+      "id" : "row.column.column_styles.background_size",
+      "name" : "background_size",
       "display_width" : null,
       "label" : "Background size",
       "required" : false,
