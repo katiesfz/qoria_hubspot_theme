@@ -1,5 +1,5 @@
 [ {
-  "id" : "22f3fd54-3d57-776f-367c-68dc19c8d063",
+  "id" : "style",
   "name" : "style",
   "display_width" : null,
   "label" : "Style",
@@ -26,7 +26,7 @@
       }
     }
   }, {
-    "id" : "0fb56238-2cad-f53c-f1ad-f0db0e049ecb",
+    "id" : "style.background_colour",
     "name" : "background_colour",
     "display_width" : null,
     "label" : "Background Colour",
@@ -38,9 +38,9 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
-    "default" : "none"
+    "default" : "bg-indigo text-white"
   }, {
-    "id" : "c492c462-0846-371a-acca-7690f05a307d",
+    "id" : "style.background_image",
     "name" : "background_image",
     "display_width" : null,
     "label" : "Background Image",
@@ -54,49 +54,50 @@
     "type" : "choice",
     "default" : "none"
   },{
-        "id" : "background_image_file",
-        "name" : "background_image_file",
-        "display_width" : null,
-        "label" : "Background Image",
-        "required" : false,
-        "locked" : false,
-        "responsive" : true,
-        "resizable" : true,
-        "show_loading" : true,
-        "type" : "image",
-        "visibility" : {
-          "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
-          "controlling_field_path" : null,
-          "controlling_value_regex" : "custom",
-          "property" : null,
-          "operator" : "EQUAL",
-          "access" : null
-        },
-        "default" : {
-          "loading" : "lazy"
-        }
-     },{
-      "name" : "background_size",
-      "display_width" : null,
-      "label" : "Background size",
-      "required" : false,
-      "locked" : false,
-      "display" : "select",
-      "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ]],
-      "multiple" : false,
-      "reordering_enabled" : true,
-      "preset" : null,
-      "type" : "choice",
-      "visibility" : {
-        "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
-        "controlling_field_path" : null,
-        "controlling_value_regex" : "custom",
-        "property" : null,
-        "operator" : "EQUAL",
-        "access" : null
-      },
-      "default" : "cover"
-    }, {
+    "id" : "style.background_image_file",
+    "name" : "background_image_file",
+    "display_width" : null,
+    "label" : "Background Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "visibility" : {
+      "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : {
+      "loading" : "lazy"
+    }
+  },{
+    "id" : "style.background_size",
+    "name" : "background_size",
+    "display_width" : null,
+    "label" : "Background size",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ]],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "visibility" : {
+      "controlling_field" : "c492c462-0846-371a-acca-7690f05a307d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "default" : "cover"
+  }, {
     "id" : "style.overlay",
     "name" : "overlay",
     "display_width" : null,
@@ -105,7 +106,7 @@
     "locked" : false,
     "display" : "toggle",
     "type" : "boolean",
-    "default" : true
+    "default" : false
   }, {
     "id" : "style.shadow",
     "name" : "shadow",
@@ -155,13 +156,13 @@
         }
       }
     },
-    "background_colour" : "none",
+    "background_colour" : "bg-indigo text-white",
     "background_image" : "none",
-    "overlay" : true,
+    "overlay" : false,
     "shadow" : true
   }
 }, {
-  "id" : "2f82f0ae-499b-4598-4d20-5c46cace631e",
+  "id" : "row",
   "name" : "row",
   "display_width" : null,
   "label" : "Row",
@@ -171,10 +172,10 @@
     "min" : null,
     "max" : null,
     "sorting_label_field" : null,
-    "default" : null
+    "default" : 1
   },
   "children" : [ {
-    "id" : "c2b6450b-442b-599a-558c-8c45d1c10554",
+    "id" : "row.column",
     "name" : "column",
     "display_width" : null,
     "label" : "Column",
@@ -184,10 +185,10 @@
       "min" : null,
       "max" : null,
       "sorting_label_field" : null,
-      "default" : null
+      "default" : 2
     },
     "children" : [ {
-      "id" : "text",
+      "id" : "row.column.text",
       "name" : "text",
       "display_width" : null,
       "label" : "Body text",
@@ -197,7 +198,7 @@
       "type" : "richtext",
       "default" : "<p class='fs-6 fw-bold'>Across three continents</p>"
     }, {
-      "id" : "link",
+      "id" : "row.column.link",
       "name" : "link",
       "display_width" : null,
       "label" : "Link",
@@ -218,7 +219,7 @@
         "user_generated_content" : false
       }
     }, {
-      "id" : "link_label",
+      "id" : "row.column.link_label",
       "name" : "link_label",
       "display_width" : null,
       "label" : "Link Label",
@@ -230,7 +231,7 @@
       "type" : "text",
       "default" : ""
     }, {
-      "id" : "link_stretched",
+      "id" : "row.column.link_stretched",
       "name" : "link_stretched",
       "display_width" : null,
       "label" : "Stretched Link",
@@ -240,14 +241,14 @@
       "type" : "boolean",
       "default" : false
     }, {
-      "id" : "989e0bde-a735-330e-90ed-7e93efd63501",
+      "id" : "row.column.column_styles",
       "name" : "column_styles",
       "display_width" : null,
       "label" : "Column styles",
       "required" : false,
       "locked" : false,
       "children" : [ {
-        "id" : "452e7fef-c1c2-0469-b224-d227cbbb5d3d",
+        "id" : "row.column.column_styles.background_colour",
         "name" : "background_colour",
         "display_width" : null,
         "label" : "Background colour",
@@ -261,7 +262,7 @@
         "type" : "choice",
         "default" : "none"
       }, {
-        "id" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+        "id" : "row.column.column_styles.background_image",
         "name" : "background_image",
         "display_width" : null,
         "label" : "Background image",
@@ -274,7 +275,7 @@
         "preset" : null,
         "type" : "choice"
       },{
-        "id" : "col.background_image_file",
+        "id" : "row.column.column_styles.background_image_file",
         "name" : "background_image_file",
         "display_width" : null,
         "label" : "Background Image",
@@ -285,7 +286,7 @@
         "show_loading" : true,
         "type" : "image",
         "visibility" : {
-          "controlling_field" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+          "controlling_field" : "row.column.column_styles.background_image",
           "controlling_field_path" : null,
           "controlling_value_regex" : "custom",
           "property" : null,
@@ -296,7 +297,7 @@
           "loading" : "lazy"
         }
      },{
-      "name" : "background_size",
+      "name" : "row.column.column_styles.background_size",
       "display_width" : null,
       "label" : "Background size",
       "required" : false,
@@ -308,7 +309,7 @@
       "preset" : null,
       "type" : "choice",
       "visibility" : {
-        "controlling_field" : "f5007a3c-f6cb-cc31-92e3-fb3622a2d8d6",
+        "controlling_field" : "row.column.column_styles.background_image",
         "controlling_field_path" : null,
         "controlling_value_regex" : "custom",
         "property" : null,
@@ -325,14 +326,14 @@
         "background_size" : "cover"
       }
     }, {
-      "id" : "8876fed4-374b-c04a-d6e7-7f811d14bf8f",
+      "id" : "row.column.advanced",
       "name" : "advanced",
       "display_width" : null,
       "label" : "Advanced",
       "required" : false,
       "locked" : false,
       "children" : [ {
-        "id" : "2f90eb36-9aa2-7fc5-7a7f-5cd81d343716",
+        "id" : "row.column.advanced.additional_classes",
         "name" : "additional_classes",
         "display_width" : null,
         "label" : "Additional classes",
@@ -343,7 +344,7 @@
         "show_emoji_picker" : false,
         "type" : "text"
       }, {
-        "id" : "col.advanced.additional_col_classes",
+        "id" : "row.column.advanced.additional_col_classes",
         "name" : "additional_col_classes",
         "display_width" : null,
         "label" : "Additional column classes",
@@ -383,14 +384,14 @@
       "advanced" : { }
     }
   }, {
-    "id" : "e542494d-0a99-be46-b594-dd2c2ff2c8ba",
+    "id" : "row.advanced",
     "name" : "advanced",
     "display_width" : null,
     "label" : "Advanced",
     "required" : false,
     "locked" : false,
     "children" : [ {
-      "id" : "297be8cb-b67f-ae5a-8991-f024c147057d",
+      "id" : "row.advanced.additional_classes",
       "name" : "additional_classes",
       "display_width" : null,
       "label" : "Additional classes",
@@ -409,27 +410,50 @@
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
-  "default" : {
-    "column" : {
-      "text" : "<p>Across three continents</p>",
+  "default" : [ {
+    "advanced" : {
+      "additional_classes" : "p-5 row-cols-md-2 row-cols-1 g-5 g-md-0"
+    },
+    "column" : [ {
+      "advanced" : {
+        "additional_classes" : "border-0 border-end-md pe-0 pe-md-5 border-bottom border-bottom-md-0 pb-5 pb-md-0 h-100 d-flex flex-column justify-content-between"
+      },
+      "column_styles" : {
+        "background_colour" : "none"
+      },
       "link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
         "no_follow" : false,
+        "open_in_new_tab" : false,
         "sponsored" : false,
+        "url" : {
+          "href" : "",
+          "type" : "EXTERNAL"
+        },
         "user_generated_content" : false
       },
       "link_label" : "",
       "link_stretched" : false,
+      "text" : "<div><h2><strong>Talk to us<img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/icon_webinar.png' alt='icon_webinar' width='100' height='92' loading='lazy' style='height: auto; max-width: 100%; width: 100px; float: right; opacity: 0.3; margin: 16px;'></strong></h2><p class=''>Talk to an expert or book a demo. Our Digital Wellbeing experts are waiting to help.</p></div><p class=''><a href='/contact-us' rel='noopener' class='btn btn-outline-light mt-4' target='_blank'>Contact us</a></p>"
+    }, {
+      "advanced" : {
+        "additional_classes" : "ps-0 ps-md-5 d-flex flex-column justify-content-between h-100"
+      },
       "column_styles" : {
         "background_colour" : "none"
       },
-      "advanced" : { }
-    },
-    "advanced" : { }
-  }
+      "link" : {
+        "no_follow" : false,
+        "open_in_new_tab" : false,
+        "sponsored" : false,
+        "url" : {
+          "href" : "",
+          "type" : "EXTERNAL"
+        },
+        "user_generated_content" : false
+      },
+      "link_label" : "",
+      "link_stretched" : false,
+      "text" : "<div><h2 class=''><strong>Stay in touch<img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/icon_newsletter.png' alt='icon_newsletter' width='100' height='92' loading='lazy' style='height: auto; max-width: 100%; width: 100px; float: right; opacity: 0.3; margin: 16px;'></strong></h2><p class=''>Sign up for our newsletter to get all the latest product information.&nbsp;</p></div><p class=''><a href='#' data-bs-toggle='modal' data-bs-target='#newsletterModal' rel='noopener' class='btn btn-outline-light mt-4'>Subscribe</a></p>"
+    } ]
+  } ]
 } ]

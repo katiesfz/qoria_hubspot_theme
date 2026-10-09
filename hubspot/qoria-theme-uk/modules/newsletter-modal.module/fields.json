@@ -30,10 +30,10 @@
   "locked" : true,
   "type" : "form",
   "default" : {
-    "form_id" : "cc40c776-7a7f-4644-ae34-4f8d7564ec66",
-    "response_type" : "redirect",
+    "form_id" : "5afd8cc4-30a5-47a1-880b-d2d17d88282a",
+    "response_type" : "inline",
     "message" : "Thanks for submitting the form.",
     "redirect_id" : null,
-    "redirect_url" : "http://www.google.com"
+    "redirect_url" : null
   }
 } ]

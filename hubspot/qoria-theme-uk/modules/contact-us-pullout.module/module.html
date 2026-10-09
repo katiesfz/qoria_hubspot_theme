@@ -5,7 +5,7 @@
             <div class="row g-0 {{row.advanced.additional_classes}}" style="{{ "z-index: 1;" if module.style.background_image != "none" }}">
                 {% for col in row.column %} 
                     {% if col.column_styles.background_image == "custom" %}
-                        {% set bgCode = "background-image: url('" + col.column_styles.background_image_file.src + "'); background-size: " + col.column_styles.background_size + "; background-position: center center;" %}
+                        {% set bgCode = "background-image: url('" ~ col.column_styles.background_image_file.src ~ "'); background-size: " ~ col.column_styles.background_size + "; background-position: center center;" %}
                     {% else %}
                         {% set bgCode = "" %}
                     {% endif %}
