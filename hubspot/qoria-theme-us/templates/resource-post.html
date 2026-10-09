@@ -16,12 +16,12 @@
 
 {% block body %}
 
-  {% module "description" path="/q-theme/modules/blog-description", export_to_template_context=True %}
+  {% module "description" path="../modules/blog-description", export_to_template_context=True %}
 
   {% if widget_data.blog_type.value == "case_study" %}
         
     {% module "hero"
-      path="/q-theme/modules/hero",
+      path="../modules/hero",
       offset=0,
       width=12,
       pre_header="",
@@ -35,10 +35,10 @@
         "max_height" : 1080,
         "max_width" : 1920,
         "size_type" : "auto",
-        "src" : get_asset_url("/qoria-theme/images/qoria/photos/iStock-1253508097-RT.jpg"),
+        "src" : get_asset_url("../images/qoria/photos/iStock-1253508097-RT.jpg"),
         "width" : 1920,
       },
-      menu=115248177746,
+      menu=144245053496,
       cta=[],
       page_contents=[{
             "content_label" : "Featured article",
@@ -72,7 +72,7 @@
             <div class="col-12 offset-0 col-xl-8 offset-xl-2 col-lg-9 offset-md-1 col-md-10 col-sm-11">
               
               {% module "case_study_heading"
-              path="/q-theme/modules/pullout-simple",
+              path="../modules/pullout-simple",
               offset=0,
               width=12,
               row=[ {
@@ -93,7 +93,7 @@
                   "advanced" : { 
                   "additional_col_classes" : "col-12 col-md-10 col-xl-8"
                   },
-                  "text" : "<h1 class='h2'>" + content.name + "</h1>"
+                  "text" : "<h1 class='h2'>" ~ content.name ~ "</h1>"
                 },{
                   "column_styles" : {
                     "background_colour" : "none",
@@ -154,7 +154,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
       </section>
           
       <section class="bg-light pt-7 pb-7">
@@ -164,7 +164,7 @@
               <a id="trending" data-hs-anchor="true"></a>
               <h2 class="text-center"><strong>Trending topics</strong></h2>
               <hr class="opacity-25">
-              {% module "trending_topics" path="/q-theme/modules/region-specific/us/trending-topics-us" %}
+              {% module "trending_topics" path="../modules/trending-topics-us" %}
             </div>
           </div>
         </div>
@@ -258,7 +258,7 @@
   {% else %}
           
     {% module "hero"
-      path="/q-theme/modules/hero",
+      path="../modules/hero",
       offset=0,
       width=12,
       pre_header="",
@@ -272,10 +272,10 @@
         "max_height" : 1080,
         "max_width" : 1920,
         "size_type" : "auto",
-        "src" : get_asset_url("/qoria-theme/images/qoria/photos/iStock-1253508097-RT.jpg"),
+        "src" : get_asset_url("../images/qoria/photos/iStock-1253508097-RT.jpg"),
         "width" : 1920,
       },
-      menu=115248177746,
+      menu=144245053496,
       cta=[],
       page_contents=[{
             "content_label" : "Featured article",
@@ -345,20 +345,20 @@
             </div>
             <div class="row">
               <div class="col pt-5">
-                {% module "sharing" path="/q-theme/modules/social_sharing" label="Social sharing" %}
+                {% module "sharing" path="../modules/social_sharing" label="Social sharing" %}
               </div>
             </div>
             <div class="row py-5">
               <div class="col">
-              {% if content.previous_post_name %}
-                <p class="">
-                <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
-                <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
-                {{ content.previous_post_name }}
-                </a>
-                </p>
-              {% endif %}
-            </div>
+                {% if content.previous_post_name %}
+                  <p class="">
+                  <a href="/{{ content.previous_post_slug }}" class="text-decoration-none text-reset">
+                  <strong><i class="fa fa-chevron-left fa-xs"></i> Previous article</strong><br>
+                  {{ content.previous_post_name }}
+                  </a>
+                  </p>
+                {% endif %}
+              </div>
               <div class="col text-end">
               {% if content.next_post_name %}
                 <p class="">
@@ -372,7 +372,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </section>
         
     <section class="bg-light pt-7 pb-7">
@@ -382,7 +382,7 @@
             <a id="trending" data-hs-anchor="true"></a>
             <h2 class="text-center"><strong>Trending topics</strong></h2>
             <hr class="opacity-25">
-            {% module "trending_topics" path="/q-theme/modules/region-specific/us/trending-topics-us" %}
+            {% module "trending_topics" path="../modules/region-specific/us/trending-topics-us" %}
           </div>
         </div>
       </div>

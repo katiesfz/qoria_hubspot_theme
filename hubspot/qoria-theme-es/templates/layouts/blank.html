@@ -1,26 +1,31 @@
 <!--
     templateType: none
 -->
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    {% if page_meta.html_title or pageTitle %}<title>{{ page_meta.html_title or pageTitle }}</title>{% endif %}
-    <meta name="description" content="{{ content.meta_description }}">
-    {{ require_css(get_asset_url('/q-theme/css/qoria-theme.min.css')) }}
-    {{ standard_header_includes }}
-  </head>
-  <body data-bs-spy="scroll" data-bs-target="#pageContents">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM9LXX6X"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+{% extends "./core-base.html" %}
 
-    {% block body %}
-    {% endblock body %}
-   
-    {{ standard_footer_includes }}
-    {{ require_js(get_asset_url('/q-theme/js/bootstrap.bundle.min.js')) }}
-  </body>
-</html>
+{% block head %}
+  {{ require_js(get_asset_url("../../child.js")) }}
+  {{ require_css(get_public_template_url("../../child.css")) }}
+  {% import '../partials/tokens.html' %}
+{% endblock head %}
+
+{% block body_top %}
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM9LXX6X"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+{% endblock body_top %}
+
+{% block header %}
+{% endblock header %}
+
+{% block body %}
+{% endblock body %}
+  
+{% block footer %}
+  <div class="footer-wrapper">
+    {% global_partial path='../partials/footer.html', label="Footer" %}
+  </div>    
+  {% global_partial path='../partials/region-select-popup.html', label="Region Select Modal" %}
+{% endblock footer %}
