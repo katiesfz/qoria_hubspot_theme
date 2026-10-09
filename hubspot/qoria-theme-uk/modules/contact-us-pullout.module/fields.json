@@ -364,26 +364,47 @@
     "tab" : "CONTENT",
     "expanded" : false,
     "type" : "group",
-    "default" : {
-      "text" : "<p>Across three continents</p>",
+    "default" : [ {
+      "advanced" : {
+        "additional_classes" : "border-0 border-end-md pe-0 pe-md-5 border-bottom border-bottom-md-0 pb-5 pb-md-0 h-100 d-flex flex-column justify-content-between"
+      },
+      "column_styles" : {
+        "background_colour" : "none"
+      },
       "link" : {
-        "url" : {
-          "content_id" : null,
-          "type" : "EXTERNAL",
-          "href" : ""
-        },
-        "open_in_new_tab" : false,
         "no_follow" : false,
+        "open_in_new_tab" : false,
         "sponsored" : false,
+        "url" : {
+          "href" : "",
+          "type" : "EXTERNAL"
+        },
         "user_generated_content" : false
       },
       "link_label" : "",
       "link_stretched" : false,
+      "text" : "<div><h2><strong>Talk to us<img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/icon_webinar.png' alt='icon_webinar' width='100' height='92' loading='lazy' style='height: auto; max-width: 100%; width: 100px; float: right; opacity: 0.3; margin: 16px;'></strong></h2><p class=''>Talk to an expert or book a demo. Our Digital Wellbeing experts are waiting to help.</p></div><p class=''><a href='/contact-us' rel='noopener' class='btn btn-outline-light mt-4' target='_blank'>Contact us</a></p>"
+    }, {
+      "advanced" : {
+        "additional_classes" : "ps-0 ps-md-5 d-flex flex-column justify-content-between h-100"
+      },
       "column_styles" : {
         "background_colour" : "none"
       },
-      "advanced" : { }
-    }
+      "link" : {
+        "no_follow" : false,
+        "open_in_new_tab" : false,
+        "sponsored" : false,
+        "url" : {
+          "href" : "",
+          "type" : "EXTERNAL"
+        },
+        "user_generated_content" : false
+      },
+      "link_label" : "",
+      "link_stretched" : false,
+      "text" : "<div><h2 class=''><strong>Stay in touch<img src='https://7977292.fs1.hubspotusercontent-na1.net/hubfs/7977292/icon_newsletter.png' alt='icon_newsletter' width='100' height='92' loading='lazy' style='height: auto; max-width: 100%; width: 100px; float: right; opacity: 0.3; margin: 16px;'></strong></h2><p class=''>Sign up for our newsletter to get all the latest product information.&nbsp;</p></div><p class=''><a href='#' data-bs-toggle='modal' data-bs-target='#newsletterModal' rel='noopener' class='btn btn-outline-light mt-4'>Subscribe</a></p>"
+    } ]
   }, {
     "id" : "row.advanced",
     "name" : "advanced",
