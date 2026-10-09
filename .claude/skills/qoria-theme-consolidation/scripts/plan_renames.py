@@ -83,6 +83,15 @@ def main():
                      'new_path': str(rel.with_name(new_name)).replace(os.sep, '/'),
                      'old_label': label, 'new_label': new_label, 'flags': []})
 
+    # keep labels / paths the user hand-edited in an earlier plan file
+    prev_file = Path(args.plan_dir) / f'{root.name}-rename-plan.json'
+    if prev_file.exists():
+        prev = {x['old_path']: x for x in json.loads(prev_file.read_text(encoding='utf-8'))}
+        for p in plan:
+            if p['old_path'] in prev:
+                p['new_label'] = prev[p['old_path']]['new_label']
+                p['new_path'] = prev[p['old_path']]['new_path']
+
     targets = {}
     for p in plan:
         targets.setdefault(p['new_path'], []).append(p['old_path'])

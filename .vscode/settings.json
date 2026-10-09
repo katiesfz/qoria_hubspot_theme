@@ -57,9 +57,6 @@
         "/modules\\email-table.module"
     ],
     "editor.hover.enabled": "onKeyboardModifier",
-    "diffEditor.diffAlgorithm": "legacy",
-    "liveSassCompile.settings.autoprefix": [
-
-    ]
+    "diffEditor.diffAlgorithm": "legacy"
   
 }

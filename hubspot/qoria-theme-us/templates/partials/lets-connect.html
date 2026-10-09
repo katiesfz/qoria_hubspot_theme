@@ -5,10 +5,7 @@ description: "Let's Connect section with links to Contact Us and newsletter sign
 screenshotPath: ../images/section-previews/screenshot_Footer.png
 -->
 
-{% dnd_area "dnd_cta"
-label="CTA"
-class="main p-0 overflow-hidden lets-connect"
-%}
+{% dnd_area "dnd_cta" label="CTA" class="main p-0 overflow-hidden lets-connect" %}
     {% dnd_section
     background_color="rgba(255, 255, 255, 1)",
     padding={
@@ -42,7 +39,7 @@ class="main p-0 overflow-hidden lets-connect"
         {% end_dnd_row %}
         {% dnd_row %}
         {% dnd_module
-            path="q-theme/modules/heading",
+            path="/q-theme/modules/heading",
             offset=0,
             width=12,
             heading_tag="h1",

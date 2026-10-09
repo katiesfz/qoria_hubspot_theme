@@ -6,11 +6,16 @@
     "swiper": "^12.1.0"
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "sass": "^1.47.0",
     "terser": "^5.46.1",
     "vite": "^5.4.8"
   },
   "scripts": {
+    "build:js": "vite build",
+    "build:css": "vite build --config vite.config.js",
+    "build:css-min": "cross-env MINIFY_CSS=true vite build --config vite.config.js",
+    "build": "npm run build:js && npm run build:css && npm run build:css-min",
     "hs:sandbox": "hs upload qoria-theme q-theme --account=LW-ANZ-SB",
     "hs:deploy": "hs upload qoria-theme q-theme --account=LW-ANZ && hs upload qoria-theme q-theme --account=LW-US && hs upload qoria-theme q-theme --account=SMW-UK",
     "hs:verify": "hs fetch qoria-theme q-theme --account=LW-ANZ-SB"

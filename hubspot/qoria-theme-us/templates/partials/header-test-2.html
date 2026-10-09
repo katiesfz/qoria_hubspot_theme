@@ -1,0 +1,50 @@
+<!--
+templateType: global_partial
+label: Linewize US Header
+description: "Header with global module to manage content"
+screenshotPath: ../images/section-previews/screenshot_Footer.png
+-->
+
+<!-- resize the top nav - only for Linewize US -->
+<style>
+.navbar-nav .nav-link {
+  --q-nav-link-font-size: 15px;
+  --q-navbar-nav-link-padding-x: 0.8rem;
+}
+.navbar-nav .nav-link.active:after {
+  width: calc(100% - 1.6em) !important;
+  }
+</style>
+<!-- end resize code -->
+
+{{ require_css(get_asset_url("../../assets/fontawesome/css/brands.min.css")) }}
+{{ require_css(get_asset_url("../../assets/fontawesome/css/fontawesome.min.css")) }}
+{{ require_css(get_asset_url("../../assets/fontawesome/css/light.min.css")) }}
+{{ require_css(get_asset_url("../../assets/fontawesome/css/regular.min.css")) }}
+{{ require_css(get_asset_url("../../assets/fontawesome/css/solid.min.css")) }}
+{{ require_css(get_asset_url("../../assets/fontawesome/css/thin.min.css")) }}
+
+<header class="header {% if header_style.background == "default" %}bg-white{% endif %} py-0 py-sm-1 py-md-2 py-lg-3">
+  {% module "header_content" path="../../modules/header-content" no_wrapper=True %}
+</header>
+
+{% if header_style.background == "transparent" %}
+  {% require_js %}
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+
+        var header = document.getElementsByTagName("header")[0];
+
+        header.style.transition = "background-color 300ms";
+
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            header.style.backgroundColor = "#FFFFFF";
+          } else {
+            header.style.backgroundColor = "transparent";
+          }
+        });
+      });
+    </script>
+  {% end_require_js %}
+{% endif %}

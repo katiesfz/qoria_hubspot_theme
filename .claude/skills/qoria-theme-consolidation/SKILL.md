@@ -200,7 +200,9 @@ python <skill>/scripts/check_references.py --theme hubspot/qoria-theme-uk --site
 python <skill>/scripts/check_references.py --theme hubspot/q-theme
 ```
 
-- `escapes-theme`: a leftover extra `../`. The script suggests the fix.
+- `escapes-theme`: a leftover extra `../`. The script suggests the fix. Ignore this for
+  paths inside `sections/*.html`: the script resolves them from the section file, but they
+  are really relative to the embedding template, so don't edit them (see project-map.md).
 - `missing` with "exists in this theme": the module moved into the child but
   the path wasn't updated. Point it at the child path.
 - `missing` with "still in old: …": the file hasn't been reconciled into the

@@ -60,18 +60,26 @@ Items with no obvious owner that need a decision from the user when you reach th
   "Smoothwall - Resource Post" → "Resource Post". The child theme's label
   ("Qoria Child Theme - UK") is what tells sites apart in the template picker.
 - Product names that aren't the site brand (e.g. "eSafe", "EducatorImpact") stay.
-- Site-specific **modules** keep their site suffix (e.g. `trending-topics-uk.module`),
-  since that's how they've been migrated so far. Confirm with the user before renaming modules.
+- Site-specific **modules** used to keep their site suffix (e.g. `trending-topics-uk.module`).
+  The UK child was renamed on 2026-10-07 to drop the "-uk" marker from names and labels
+  (the user's call). Confirm with the user before renaming modules in other children.
 
 ## HubSpot path rules that matter here
 
 - `/q-theme/modules/heading` is an absolute path from the portal's design-manager
   root, and it points at `hubspot/q-theme/modules/heading.module`.
-- Relative paths resolve from the file's own folder. In a child theme, a relative path
-  that isn't found in the child falls back to the same theme-relative path in the parent.
-- Old templates sat one folder deeper (`templates/smoothwall/x.html`), so paths like
-  `../../sections/hero-banner.html` and `../../images/...` now climb out of the theme
-  once a template moves to `templates/x.html`. Use one fewer `../`.
+- Relative paths in templates and partials resolve from the file's own folder. In a child
+  theme, a relative path that isn't found in the child falls back to the same
+  theme-relative path in the parent.
+- **Sections are different.** A section is embedded into a template, so relative paths
+  inside it (`get_asset_url('../../images/...')`, including ones in rich-text fields)
+  resolve from the **template** that embeds it, not from the section file. Do not
+  "fix" them to be relative to `sections/`. They must be correct for the template's depth
+  (`templates/x.html` -> `../images/...`, `templates/initial-upload/x.html` ->
+  `../../images/...`), so leave them alone when moving or renaming sections.
+- Old templates sat one folder deeper (`templates/smoothwall/x.html`), so paths in
+  **templates** like `../../sections/hero-banner.html` and `../../images/...` now climb
+  out of the theme once a template moves to `templates/x.html`. Use one fewer `../`.
 - Modules that moved from the parent's `modules/region-specific/<site>/` into a child
   must be referenced at their new location, e.g. `/qoria-theme-uk/modules/subscribe`.
 - Pages store their **full template path**. Renaming or deleting a template file

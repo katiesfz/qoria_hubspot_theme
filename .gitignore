@@ -6,4 +6,6 @@ archive-modules/
 .vscode/
 /smoothwall/
 .vscode
-src/old_themes
+src/old_themes/
+migration/
+src/old_modules/

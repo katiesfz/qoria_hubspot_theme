@@ -1,0 +1,42 @@
+##name: Deploy HubSpot Theme
+##
+##on:
+##  push:
+##    branches:
+##      - sandbox
+##      - main
+##
+##jobs:
+##  deploy:
+##    runs-on: ubuntu-latest
+##
+##    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+##
+##    steps:
+##      - name: Checkout Code
+##        uses: actions/checkout@v4
+##
+##      - name: HubSpot CMS Deploy ANZ
+##        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+##        with:
+##          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
+##          personal_access_key: ${{ secrets.HS_PAK_KS }}
+##          src_dir: hubspot
+##          dest_dir: /
+##
+##      - name: HubSpot CMS Deploy UK
+##        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+##        with:
+##          account_id: ${{ vars.HS_ACCT_ID_UK }}
+##          personal_access_key: ${{ secrets.HS_PAK_KS }}
+##          src_dir: hubspot
+##          dest_dir: /
+##
+##      - name: HubSpot CMS Deploy US
+##        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+##        with:
+##          account_id: ${{ vars.HS_ACCT_ID_US }}
+##          personal_access_key: ${{ secrets.HS_PAK_KS }}
+##          src_dir: hubspot
+##          dest_dir: /
+##
