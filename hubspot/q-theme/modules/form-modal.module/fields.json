@@ -54,6 +54,14 @@
                 "required": false,
                 "locked": false,
                 "type": "form",
+                "embed_versions": ["v2"],
+                "default": {
+                    "form_id": "",
+                    "response_type": "redirect",
+                    "message": "Thanks for submitting the form.",
+                    "redirect_id": null,
+                    "redirect_url": ""
+                },
                 "aliases_mapping": {
                   "property_aliases_paths": {
                     "form": ["form"]
@@ -65,13 +73,13 @@
                 "name": "button_text",
                 "display_width": null,
                 "label": "Button text",
-                "required": true,
+                "required": false,
                 "locked": false,
                 "validation_regex": "",
                 "allow_new_line": false,
                 "show_emoji_picker": false,
                 "type": "text",
-                "default": ""
+                "default": null
             },
             {
                 "id" : "download",
@@ -96,7 +104,7 @@
                   "boolean_operator" : "AND",
                   "criteria" : [ {
                     "controlling_field" : null,
-                    "controlling_field_path" : "download",
+                    "controlling_field_path" : "form.download",
                     "controlling_value_regex" : "true",
                     "property" : "",
                     "operator" : "EQUAL",
@@ -132,7 +140,7 @@
                   "boolean_operator" : "AND",
                   "criteria" : [ {
                     "controlling_field" : null,
-                    "controlling_field_path" : "download",
+                    "controlling_field_path" : "form.download",
                     "controlling_value_regex" : "true",
                     "property" : "",
                     "operator" : "EQUAL",
