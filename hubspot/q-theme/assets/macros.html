@@ -116,56 +116,7 @@
         {% if event.event_date %}
             <p class="fs-5 mb-0">{{event.event_date}}</p>
         {% endif %}
-        <div class="d-none">
-        {{event.include_calendar_link|pprint}}
-        </div>
         
-        {% if event.include_calendar_link is defined %}
-            <div class="d-none">
-            include link is defined
-            </div>
-            {% if event.include_calendar_link == false %}
-                {% set calendarItem = false %}
-                <div class="d-none">
-                include link is false
-                </div>
-            {% else %}
-                <div class="d-none">
-                include link is true
-                </div>
-                {% if event.calendar_object.title != "" && event.calendar_object.description != "" && event.calendar_object.location != "" && event.calendar_object.event_start|format_datetime("yyyy") != "" && event.calendar_object.event_end|format_datetime("yyyy") != "" %}
-                    {% set calendarItem = true %}
-                    <div class="d-none">
-                    settings are filled
-                    </div>
-                {% else %}
-                    {% set calendarItem = false %}
-                    <div class="d-none">
-                    settings are unfilled
-                    </div>
-                {% endif %}
-            {% endif %}
-        {% else %}
-            <div class="d-none">
-            include link is undefined
-            </div>
-            {% if event.calendar_object.title != "" && event.calendar_object.description != "" && event.calendar_object.location != "" && event.calendar_object.event_start|format_datetime("yyyy") != "" && event.calendar_object.event_end|format_datetime("yyyy") != "" %}
-                {% set calendarItem = true %}
-                <div class="d-none">
-                settings are filled
-                </div>
-            {% else %}
-                {% set calendarItem = false %}
-                <div class="d-none">
-                settings are unfilled
-                </div>
-            {% endif %}
-        {% endif %}
-        
-        <div class="d-none">
-        {{calendarItem|pprint}}
-        </div>
-
         {% if calendarItem is defined && calendarItem == true %}
             <div class="dropdown d-inline-block">
             
