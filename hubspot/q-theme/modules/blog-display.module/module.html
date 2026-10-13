@@ -1,74 +1,116 @@
-{% if module.blog_field %}
-        {% set blogId = module.blog_field %}
+{% set blog_posts = [] %}
+{% if module.display_mode == "manual" %}
+    {% for blog in module.blog_posts %}
+        {% set blog_item = {"blog_title": blog.blog_title|render, "blog_description": blog.blog_description, "blog_tag": blog.blog_tag, "blog_image": blog.blog_image.src|render, "blog_url":blog.blog_link.url.href, "blog_target":blog.blog_link.open_in_new_tab, "blog_badge":blog.badge, "blog_classes":blog.advanced.blog_classes} %}
+        {% do blog_posts.append(blog_item) %}
+    {% endfor %}
+{% else %}
+    {% set blogId = module.blog_field if module.blog_field else "default" %}
+    {% if module.post_type == "popular" %}
+        {% set auto_posts = blog_popular_posts(blogId, module.number_of_posts, module.tag_field, module.timeframe) %}
+    {% elif module.tag_field %}
+        {% set auto_posts = blog_recent_tag_posts(blogId, module.tag_field, module.number_of_posts) %}
     {% else %}
-        {% set blogId = "default" %}
+        {% set auto_posts = blog_recent_posts(blogId, module.number_of_posts) %}
+    {% endif %}
+    {% for blog in auto_posts %}
+        {% set blog_item = {"blog_title": blog.name, "blog_description": "<p>" ~ blog.post_summary|striptags ~ "</p>", "blog_tag": blog.tag_list[0], "blog_image": blog.featured_image, "blog_url":blog.absolute_url, "blog_target":false, "blog_badge":"none", "blog_classes":""} %}
+        {% do blog_posts.append(blog_item) %}
+    {% endfor %}
 {% endif %}
 
-{% if module.post_type == "popular" %}
-    {% set blog_posts = blog_popular_posts(blogId, module.number_of_posts, module.tag_field, module.timeframe) %}
-{% elif module.post_type == "latest" %}
-    {% if module.tag_field %}
-        {% set blog_posts = blog_recent_tag_posts(blogId, module.tag_field, module.number_of_posts) %}
-    {% else %}
-        {% set blog_posts = blog_recent_posts(blogId, module.number_of_posts) %}
-    {% endif %}
-{% endif %}
+{# product names come from the site's tokens.html where the layout imports it #}
+{% set tag_colours = [
+    {"names": ["Filter", filter_product|default("Linewize Filter")], "colour": "teal"},
+    {"names": [checkin_product|default("Pulse"), "Pulse"], "colour": "indigo"},
+    {"names": [classroom_product|default("Classroom Manager"), "Classwize", "Classroom Manager"], "colour": "orange"},
+    {"names": [monitor_product|default("Monitor"), "Monitor"], "colour": "red"},
+    {"names": [parent_product|default("Qustodio"), "Qustodio"], "colour": "blue"}
+] %}
+{% macro tag_colour(tag) %}{% for item in tag_colours %}{% if tag in item.names %}{{ item.colour }}{% endif %}{% endfor %}{% endmacro %}
+
+<style>
+    .before-dot {
+    }
+    .before-dot:before {
+    content: "\2022";
+    font-size: 2em;
+    line-height: calc(var(--q-badge-font-size) / 2);
+    vertical-align: middle;
+    margin-right: 4px;
+    }
+</style>
 
 {# split to columns/arrays #}
-{% if blog_posts|length > 0 %}
-    {% if module.responsive.desktop.columns >= module.responsive.tablet.columns && module.responsive.desktop.columns >= module.responsive.mobile.columns %}
-        {% set numCol = module.responsive.desktop.columns %}
-    {% elif module.responsive.tablet.columns >= module.responsive.desktop.columns && module.responsive.tablet.columns >= module.responsive.mobile.columns %}
-        {% set numCol = module.responsive.tablet.columns %}
-    {% elif module.responsive.mobile.columns >= module.responsive.tablet.columns && module.responsive.mobile.columns >= module.responsive.desktop.columns %}
-        {% set numCol = module.responsive.mobile.columns %}
-    {% else %}
-        {% set numCol = 2 %}
-    {% endif %}
-    {% if numCol < 1 %}
-        {% set numCol = 1 %}
-    {% endif %}
-    {% set numPerCol = (blog_posts|length|divide(numCol))|round(0, "ceil") %}
+{% if module.styles.responsive.desktop.columns >= module.styles.responsive.tablet.columns && module.styles.responsive.desktop.columns >= module.styles.responsive.mobile.columns %}
+    {% set numCol = module.styles.responsive.desktop.columns %}
+{% elif module.styles.responsive.tablet.columns >= module.styles.responsive.desktop.columns && module.styles.responsive.tablet.columns >= module.styles.responsive.mobile.columns %}
+    {% set numCol = module.styles.responsive.tablet.columns %}
+{% elif module.styles.responsive.mobile.columns >= module.styles.responsive.tablet.columns && module.styles.responsive.mobile.columns >= module.styles.responsive.desktop.columns %}
+    {% set numCol = module.styles.responsive.mobile.columns %}
 {% else %}
-    {% set numPerCol = 1 %}
+    {% set numCol = 2 %}
 {% endif %}
-
+{% set numPerCol = ((blog_posts|length)|default(4) / numCol|default(2))|round(0, "ceil") %}
 <div class="container-fluid g-0">
-    <div class="row row-cols-lg-{{module.responsive.desktop.columns|default(2)}} row-cols-md-{{module.responsive.tablet.columns|default(2)}} row-cols-{{module.responsive.mobile.columns|default(1)}} g-3">
-    {% if blog_posts|length > 0 %}
-        {% for column in blog_posts|slice(numPerCol|default(1), "") %}
-            <div class="col">
-                <div class="col-inner px-3 px-md-5 bg-white h-100">
-                {% for blog in column %}
-                    {% if blog != " " %}
-                        <div class="blog py-3 py-md-5 {{"border-bottom" if not loop.last}}">
-                            <div class="row align-items-stretch">
-                                <div class="col d-flex flex-column justify-content-start">
-                                <h5 class="fw-semibold">{{ blog.name }}</h5>
-                                <p class="small fw-semibold">{{ (blog.tag_list[0] + " | ") if blog.tag_list }}{{blog.published_at|format_date('MMMM yyyy')}}</p>
-                                </div>
-                                {% if blog.featured_image %}
-                                    <div class="col-5">
-                                    <img src="{{blog.featured_image}}" alt="{{ blog.name }}" class="img-fluid">
-                                    </div>
+<div class="row row-cols-lg-{{module.styles.responsive.desktop.columns|default(2)}} row-cols-md-{{module.styles.responsive.tablet.columns|default(2)}} row-cols-{{module.styles.responsive.mobile.columns|default(1)}} g-3">
+{% if blog_posts != [] %}
+    {% for column in blog_posts|slice(numPerCol, " ") %}
+        <div class="col">
+            <div class="col-inner bg-white h-100">
+            {% for blog in column %}
+                {% if blog != " " %}
+                    <div class="blog p-3 p-md-5 mb-3 {{blog.blog_classes}}">
+                        <div class="row align-items-stretch">
+                            <div class="col d-flex flex-column justify-content-start">
+                            {% if blog.blog_badge == "new_feature" %}
+                                <span class="d-inline-block badge bg-blue text-blue-emphasis align-self-start mb-2">New feature</span>
+                            {% elif blog.blog_badge == "reminder" %}
+                                <span class="d-inline-block badge bg-blue text-blue-emphasis align-self-start mb-2">Reminder</span>
+                            {% elif blog.blog_badge == "update" %}
+                                <span class="d-inline-block badge bg-blue text-blue-emphasis align-self-start mb-2">Update</span>
+                            {% endif %}
+                            <h3 class="h5 fw-semibold">{{ blog.blog_title }}</h3>
+                            {% if blog.blog_tag %}
+                                {% set tag_colour_name = tag_colour(blog.blog_tag)|trim %}
+                                {% if tag_colour_name %}
+                                    <p class="d-flex flex-row align-items-center badge bg-{{ tag_colour_name }} text-bg-{{ tag_colour_name }} align-self-start rounded-pill mb-2 before-dot">{{ blog.blog_tag }}</p>
+                                {% else %}
+                                    <p class="small fw-semibold">{{ blog.blog_tag }}</p>
                                 {% endif %}
+                            {% endif %}
                             </div>
-                            <div class="row">
-                                <div class="col pt-4">
-                                    <p>{{blog.post_summary|striptags}}</p>
+                            {% if blog.blog_image %}
+                                <div class="col-5">
+                                <img src="{{blog.blog_image}}" alt="{{ blog.blog_title }}" class="img-fluid">
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col pt-3">
-                                    <a href="{{blog.absolute_url}}" class="text-reset fw-semibold text-decoration-none">Read more +</a>
-                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col pt-0 pt-md-4">
+                                {{blog.blog_description}}
                             </div>
                         </div>
+                        {% if blog.blog_url != "" %}
+                            <div class="row">
+                                <div class="col pt-3">
+                                    <a href="{{blog.blog_url}}" {% if blog.blog_target == true %}target="_blank"{% endif %} {% if item.blog_link.rel %}rel="{{ item.blog_link.rel }}"{% endif %} class="text-reset fw-semibold text-decoration-none">Read more +</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if module.styles.show_dividers|default(true) %}
+                        {% if not loop.last %}
+                            <div class="px-3 px-md-5">
+                                <hr class="opacity-25">
+                            </div>
+                        {% endif %}
                     {% endif %}
-                {% endfor %}
-                </div>
+                {% endif %}
+            {% endfor %}
             </div>
-        {% endfor %}
-    {% endif %}
-    </div>
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
 </div>

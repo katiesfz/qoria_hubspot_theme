@@ -157,10 +157,11 @@
     "access" : null
   }
 }, {
-  "name": "file_field",
-  "label": "File",
-  "required": false,
-  "locked": false,
+  "id" : "file_field",
+  "name" : "file_field",
+  "label" : "File",
+  "required" : false,
+  "locked" : false,
   "type": "file",
   "picker": "file",
   "default": null,
@@ -198,7 +199,7 @@
   "id" : "background_image",
   "name" : "background_image",
   "display_width" : null,
-  "label" : "Custom Image",
+  "label" : "Custom Background Image",
   "required" : false,
   "locked" : false,
   "responsive" : true,
@@ -219,6 +220,7 @@
   "type" : "boolean",
   "default" : false
 }, {
+  "id" : "section_title",
   "name" : "section_title",
   "display_width" : null,
   "label" : "Section title",
@@ -254,6 +256,7 @@
     "access" : null
   }
 }, {
+  "id" : "heading",
   "name" : "heading",
   "display_width" : null,
   "label" : "Heading",
@@ -272,25 +275,24 @@
       "controlling_field" : null,
       "controlling_field_path" : "source",
       "controlling_value_regex" : "file",
-      "property": "",
+      "property" : "",
       "operator" : "EQUAL",
       "access" : null
-    }],
-    "children" : [
-      {
+    } ],
+    "children" : [ {
       "boolean_operator" : "AND",
       "criteria" : [ {
         "controlling_field" : null,
         "controlling_field_path" : "source",
         "controlling_value_regex" : "page",
-        "property": "",
+        "property" : "",
         "operator" : "EQUAL",
         "access" : null
       }, {
         "controlling_field" : null,
         "controlling_field_path" : "custom_heading",
         "controlling_value_regex" : "true",
-        "property": "",
+        "property" : "",
         "operator" : "EQUAL",
         "access" : null
       } ]
@@ -316,6 +318,7 @@
     "access" : null
   }
 }, {
+  "id" : "preheader",
   "name" : "preheader",
   "display_width" : null,
   "label" : "Pre-header",
@@ -333,25 +336,24 @@
       "controlling_field" : null,
       "controlling_field_path" : "source",
       "controlling_value_regex" : "file",
-      "property": "",
+      "property" : "",
       "operator" : "EQUAL",
       "access" : null
-    }],
-    "children" : [
-      {
+    } ],
+    "children" : [ {
       "boolean_operator" : "AND",
       "criteria" : [ {
         "controlling_field" : null,
         "controlling_field_path" : "source",
         "controlling_value_regex" : "page",
-        "property": "",
+        "property" : "",
         "operator" : "EQUAL",
         "access" : null
       }, {
         "controlling_field" : null,
         "controlling_field_path" : "custom_preheader",
         "controlling_value_regex" : "true",
-        "property": "",
+        "property" : "",
         "operator" : "EQUAL",
         "access" : null
       } ]
@@ -377,6 +379,7 @@
     "access" : null
   }
 }, {
+  "id" : "min_read",
   "name" : "min_read",
   "display_width" : null,
   "label" : "Min read",
@@ -406,6 +409,7 @@
   "type" : "boolean",
   "default" : false
 }, {
+  "id" : "description",
   "name" : "description",
   "display_width" : null,
   "label" : "Description",
@@ -434,6 +438,7 @@
   "type" : "boolean",
   "default" : false
 }, {
+  "id" : "cta_label",
   "name" : "cta_label",
   "display_width" : null,
   "label" : "CTA label",

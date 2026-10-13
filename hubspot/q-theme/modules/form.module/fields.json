@@ -9,7 +9,7 @@
   "type" : "boolean",
   "default" : false
 }, {
-  "id" : "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
+  "id" : "title",
   "name" : "title",
   "display_width" : null,
   "label" : "Form Title",
@@ -111,7 +111,7 @@
   "type" : "choice",
   "default" : "start"
 }, {
-  "id" : "e4adbe47-d462-2396-c7e7-62d52c812966",
+  "id" : "form",
   "name" : "form",
   "display_width" : null,
   "label" : "Form",
@@ -477,6 +477,7 @@
     "show_emoji_picker" : false,
     "type" : "text"
   },  {
+    "id" : "advanced.on_form_ready",
     "name" : "on_form_ready",
     "display_width" : null,
     "label" : "OnFormReady code",
@@ -488,6 +489,7 @@
     "type" : "text",
     "default" : ""
   },  {
+    "id" : "advanced.on_before_form_submit",
     "name" : "on_before_form_submit",
     "display_width" : null,
     "label" : "onBeforeFormSubmit code",

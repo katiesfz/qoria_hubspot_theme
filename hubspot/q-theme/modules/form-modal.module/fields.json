@@ -39,7 +39,7 @@
         "type": "text"
     },
     {
-        "id": "01f94393-ef1c-b182-0a01-65cfcf8e7b9b",
+        "id": "form_group",
         "name": "form",
         "display_width": null,
         "label": "Form",
@@ -47,7 +47,7 @@
         "locked": false,
         "children": [
             {
-                "id": "e4adbe47-d462-2396-c7e7-62d52c812966",
+                "id": "form_group.form",
                 "name": "form",
                 "display_width": null,
                 "label": "Form",
@@ -69,7 +69,7 @@
                 }
             },
             {
-                "id": "button_text",
+                "id": "form_group.button_text",
                 "name": "button_text",
                 "display_width": null,
                 "label": "Button text",
@@ -82,7 +82,7 @@
                 "default": null
             },
             {
-                "id" : "download",
+                "id" : "form_group.download",
                 "name" : "download",
                 "display_width" : null,
                 "label" : "Download file on submit",
@@ -93,7 +93,7 @@
                 "default" : false
             }, 
             {
-                "id" : "download_file",
+                "id" : "form_group.download_file",
                 "name" : "download_file",
                 "display_width" : null,
                 "label" : "File",
@@ -128,7 +128,7 @@
                 }
             }, 
             {
-                "id" : "download_name",
+                "id" : "form_group.download_name",
                 "name" : "download_name",
                 "display_width" : null,
                 "label" : "Download name",
@@ -153,7 +153,7 @@
                 "type" : "text"
             }, 
             {
-                "id": "7c81c1eb-aa39-6059-92bd-688970a58aa0",
+                "id": "form_group.override_values",
                 "name": "override_values",
                 "display_width": null,
                 "label": "Override values",
@@ -162,12 +162,12 @@
                 "occurrence": {
                     "min": null,
                     "max": null,
-                    "sorting_label_field": "2f3c1c31-56fb-2aa1-917c-ed12d9c70925",
+                    "sorting_label_field": "form_group.override_values.property_id",
                     "default": null
                 },
                 "children": [
                     {
-                        "id": "2f3c1c31-56fb-2aa1-917c-ed12d9c70925",
+                        "id": "form_group.override_values.property_id",
                         "name": "property_id",
                         "display_width": null,
                         "label": "Property ID",
@@ -179,7 +179,7 @@
                         "type": "text"
                     },
                     {
-                        "id": "c13fa3ba-ad38-520f-9d8e-8b88497090b4",
+                        "id": "form_group.override_values.property_value",
                         "name": "property_value",
                         "display_width": null,
                         "label": "Value",
@@ -197,7 +197,7 @@
                 "default": []
             },
             {
-                "id": "advanced",
+                "id": "form_group.advanced",
                 "name": "advanced",
                 "display_width": null,
                 "label": "Advanced",

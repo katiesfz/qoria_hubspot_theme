@@ -4,7 +4,6 @@
     {% endif %}
 {% else %}
 
-  
   <div id="{{name}}">
     {% if module.style.include_filter %}
       {% if module.style.filter_type == "month" %}
@@ -63,7 +62,8 @@
 
 <script>
 
-var eventsModule  = document.getElementById("{{name}}");
+  const eventsModule_{{name|replace("-", "_")}} = document.getElementById("{{name}}");
+  const eventsFilter_{{name|replace("-", "_")}} = document.getElementById("{{name}}_selector");
 
   function filter(container, parentClassToFilter, specificClassToShow, noResultsClass){
     var allItems     = container.querySelectorAll("." + parentClassToFilter);
@@ -85,23 +85,22 @@ var eventsModule  = document.getElementById("{{name}}");
       }
   }
 
-  document.getElementById('{{name}}_selector').addEventListener('change', function() {
+  document.getElementById('{{name|replace("-", "_")}}_selector')?.addEventListener('change', function() {
     let monthCap = this.value.charAt(0).toUpperCase() + this.value.slice(1);
     document.getElementById("monthLabel").innerHTML = monthCap.replace("-", " ");
-    filter(eventsModule, "event", this.value, "no-result");
+    filter(eventsModule_{{name|replace("-", "_")}}, "event", this.value, "no-result");
   });
 
   {% if module.style.include_filter %}
     {% if module.style.filter_type == "month" %}
       document.addEventListener("DOMContentLoaded", function() {
-      
-      var today = new Date();
-      today.setDate(today.getDate());
-      var month = today.toLocaleString('en-US', { month: 'long', year: 'numeric' });
-      var monthClass = month.replace(" ","-").toLowerCase();
-      filter(eventsModule, "event", monthClass, "no-result");
-      let monthCap = month.charAt(0).toUpperCase() + month.slice(1);
-      document.getElementById("monthLabel").innerHTML = monthCap.replace("-"," ");
+        const today = new Date();
+        today.setDate(today.getDate());
+        const month = today.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+        const monthClass = month.replace(" ","-").toLowerCase();
+        filter(eventsModule_{{name|replace("-", "_")}}, "event", monthClass, "no-result");
+        let monthCap = month.charAt(0).toUpperCase() + month.slice(1);
+        document.getElementById("monthLabel").innerHTML = monthCap.replace("-"," ");
       });
     {% endif %}
   {% endif %}

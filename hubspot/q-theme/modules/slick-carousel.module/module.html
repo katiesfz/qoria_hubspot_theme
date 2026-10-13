@@ -337,7 +337,8 @@ document.addEventListener("DOMContentLoaded", () => {
                   {% else %}
                   rows: 1,
                   {% endif -%}
-                  centerMode: false,
+                  {%- if module.style.center_mode %} centerMode: {{ module.style.center_mode }}, 
+                    centerPadding: '{{ module.style.responsive.tablet.center_padding }}%',{% endif -%}
                   slidesToScroll: {{ module.style.responsive.tablet.slides_to_slide }},
                 }
             }

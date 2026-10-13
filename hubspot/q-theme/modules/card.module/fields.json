@@ -824,7 +824,7 @@
         "display" : "toggle",
         "aliases_mapping" : {
           "property_aliases_paths" : {
-            "download_file" : [ "card.download_file" ]
+            "download_file" : [ "card.download" ]
           }
         },
         "type" : "boolean",

@@ -8,7 +8,7 @@
     "type": "text",
     "validation_regex": ""
   }, {
-    "default": "btn btn-link btn-light text-reset p-0 fs-6 border-0 h6 mb-3 mt-5",
+    "default": "btn btn-link btn-light text-reset p-0 fs-6 border-0 h6 mb-3 mt-5 white-space-wrap text-start",
     "label": "Classes",
     "locked": false,
     "name": "classes",

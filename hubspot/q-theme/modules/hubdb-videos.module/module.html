@@ -245,7 +245,7 @@
         {% if module.styles.image_fit == "cover" %}
             cardHeader.classList.add("card-img-top");
         {% else %}
-            cardHeader.classList.add("card-header", "bg-transparent");
+            cardHeader.classList.add("card-header", "bg-transparent", "p-0");
         {% endif %}
 
             const featuredImage = document.createElement("img");
@@ -253,7 +253,6 @@
             
             featuredImage.src = row.thumbnail.url;
             featuredImage.classList.add("img-fluid");
-            featuredImage.classList.add("card-img");
             {% if module.styles.image_fit != "cover" %}
                 featuredImage.classList.add("img-header");
             {% endif %}
@@ -267,12 +266,12 @@
             {% if module.styles.image_fit == "contain" %}
             featuredImage.style = "object-fit: contain";
             {% endif %}
-            
+          
+        let playButton = document.createElement("div");  
         if (row.video) {
             // play button
             {% if module.styles.play_button != "none" %}
                 featuredImageContainer.classList.add("position-relative");
-                let playButton = document.createElement("div");
                 playButton.classList.add("play-button");
                 {% if module.styles.play_button == "light" %}
                     playButton.classList.add("play-button-light");

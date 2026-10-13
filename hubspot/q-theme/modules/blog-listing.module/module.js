@@ -632,7 +632,7 @@ function blogListing(containerId, blogPostsObj, settings = {}) {
             setTimeout(
                 normaliseHeights,
                 300,
-                containerId + " .single-blog .featured-image",
+                "#" + containerId + " .single-blog .featured-image",
             );
         }
         pagination(curPage);
@@ -643,20 +643,6 @@ function blogListing(containerId, blogPostsObj, settings = {}) {
     }
 
     goToPage(1);
-
-    if (config.equalHeights == true) {
-        window.onresize = function () {
-            normaliseHeights(containerId + " .single-blog .featured-image");
-        };
-
-        window.onload = function () {
-            normaliseHeights(containerId + " .single-blog .featured-image");
-        };
-
-        screen.orientation.onchange = function () {
-            normaliseHeights(containerId + " .single-blog .featured-image");
-        };
-    }
 }
 
 // find every blog-listing instance rendered on the page and initialize it
