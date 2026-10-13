@@ -5694,11 +5694,11 @@ textarea.form-control-lg {
   --q-btn-border-color: transparent;
   --q-btn-hover-color: #1d1e1c;
   --q-btn-hover-bg: rgba(29, 30, 28, 0.1);
-  --q-btn-hover-border-color: none;
+  --q-btn-hover-border-color: transparent;
   --q-btn-focus-shadow-rgb: 29, 30, 28;
   --q-btn-active-color: #fff;
   --q-btn-active-bg: #515BA5;
-  --q-btn-active-border-color: none;
+  --q-btn-active-border-color: #515BA5;
   --q-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --q-btn-disabled-color: #fff;
   --q-btn-disabled-bg: transparent;
@@ -7519,7 +7519,7 @@ textarea.form-control-lg {
   padding-bottom: 2rem;
 }
 .blog-tag-header::before {
-  background-image: url("https://www.linewize.com/hubfs/US-Linewize-Banners-school-manager2.jpg");
+  background-image: url("{{get_asset_url('/q-theme/images/qoria/photos/iStock-539271099_RT.jpg')}}");
   background-size: cover;
   background-position: center right;
   position: absolute;
@@ -18906,7 +18906,7 @@ a.slick-disabled {
 
 .slider-indicators li button::before {
   content: "\f111";
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   font-weight: 900;
   font-size: 9px;
   color: var(--q-gray-400);
@@ -18949,7 +18949,7 @@ a[data-hs-anchor=true] {
   height: 1em;
   width: 1em;
   padding: 1em;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   pointer-events: none;
   box-sizing: content-box;
@@ -19079,7 +19079,7 @@ a[data-hs-anchor=true] {
     height: 1em;
     width: 1em;
     padding: 1em;
-    font-family: "Font Awesome 6 Pro";
+    font-family: var(--fa-style-family-classic);
     content: "\f002";
     pointer-events: none;
     box-sizing: content-box;
@@ -19183,7 +19183,7 @@ a[data-hs-anchor=true] {
   height: 1em;
   width: 1em;
   padding: 1em;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   pointer-events: none;
   box-sizing: content-box;
@@ -19313,7 +19313,7 @@ a[data-hs-anchor=true] {
     height: 1em;
     width: 1em;
     padding: 1em;
-    font-family: "Font Awesome 6 Pro";
+    font-family: var(--fa-style-family-classic);
     content: "\f002";
     pointer-events: none;
     box-sizing: content-box;
@@ -19417,7 +19417,7 @@ a[data-hs-anchor=true] {
   height: 1em;
   width: 1em;
   padding: 1em;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   pointer-events: none;
   box-sizing: content-box;
@@ -19547,7 +19547,7 @@ a[data-hs-anchor=true] {
     height: 1em;
     width: 1em;
     padding: 1em;
-    font-family: "Font Awesome 6 Pro";
+    font-family: var(--fa-style-family-classic);
     content: "\f002";
     pointer-events: none;
     box-sizing: content-box;
@@ -19651,7 +19651,7 @@ a[data-hs-anchor=true] {
   height: 1em;
   width: 1em;
   padding: 1em;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   pointer-events: none;
   box-sizing: content-box;
@@ -19781,7 +19781,7 @@ a[data-hs-anchor=true] {
     height: 1em;
     width: 1em;
     padding: 1em;
-    font-family: "Font Awesome 6 Pro";
+    font-family: var(--fa-style-family-classic);
     content: "\f002";
     pointer-events: none;
     box-sizing: content-box;
@@ -19885,7 +19885,7 @@ a[data-hs-anchor=true] {
   height: 1em;
   width: 1em;
   padding: 1em;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   pointer-events: none;
   box-sizing: content-box;
@@ -20015,7 +20015,7 @@ a[data-hs-anchor=true] {
     height: 1em;
     width: 1em;
     padding: 1em;
-    font-family: "Font Awesome 6 Pro";
+    font-family: var(--fa-style-family-classic);
     content: "\f002";
     pointer-events: none;
     box-sizing: content-box;
@@ -20119,7 +20119,7 @@ a[data-hs-anchor=true] {
   height: 1em;
   width: 1em;
   padding: 1em;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   pointer-events: none;
   box-sizing: content-box;
@@ -20246,7 +20246,7 @@ a[data-hs-anchor=true] {
   height: 1em;
   width: 1em;
   padding: 1em;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   pointer-events: none;
   box-sizing: content-box;
@@ -20374,7 +20374,7 @@ a[data-hs-anchor=true] {
   position: relative;
 }
 .hs-search-field form.page-search:before {
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   content: "\f002";
   position: absolute;
   top: 50%;
@@ -20506,7 +20506,7 @@ ul.list-checks-primary li::marker {
   color: #58B78E;
   content: "\f00c";
   list-style-position: outside;
-  font-family: "Font Awesome 6 Pro";
+  font-family: var(--fa-style-family-classic);
   font-weight: 900;
 }
 
