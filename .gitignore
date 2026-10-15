@@ -9,3 +9,4 @@ archive-modules/
 src/old_themes/
 migration/
 src/old_modules/
+.env
