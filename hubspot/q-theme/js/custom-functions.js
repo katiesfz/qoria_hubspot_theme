@@ -1,14 +1,23 @@
+// one resize handler per selector/breakpoint, so repeat calls re-measure instead of adding more listeners
+const normaliseHeightsRegistry = {};
+
 function normaliseHeights(classString, screenWidth = "xs") {
+    const key = "max|" + classString + "|" + screenWidth;
+    if (normaliseHeightsRegistry[key]) {
+        normaliseHeightsRegistry[key]();
+        return;
+    }
+
     const breakpoint = window
         .getComputedStyle(document.documentElement)
         .getPropertyValue(`--q-breakpoint-${screenWidth}`);
 
     const screenSizeQuery = window.matchMedia(`(min-width: ${breakpoint})`);
-    const items = document.querySelectorAll(classString);
 
-    if (items.length === 0) return;
+    if (document.querySelectorAll(classString).length === 0) return;
 
     function handleResize() {
+        const items = document.querySelectorAll(classString);
         items.forEach((item) => {
             item.style.minHeight = "0";
             if (item.tagName === "IMG") {
@@ -37,6 +46,7 @@ function normaliseHeights(classString, screenWidth = "xs") {
         }
     }
 
+    normaliseHeightsRegistry[key] = handleResize;
     screenSizeQuery.addEventListener("change", handleResize);
     let resizeTimer;
     window.addEventListener("resize", () => {
@@ -47,16 +57,22 @@ function normaliseHeights(classString, screenWidth = "xs") {
 }
 
 function normaliseHeightsMin(classString, screenWidth = "xs") {
+    const key = "min|" + classString + "|" + screenWidth;
+    if (normaliseHeightsRegistry[key]) {
+        normaliseHeightsRegistry[key]();
+        return;
+    }
+
     const breakpoint = window
         .getComputedStyle(document.documentElement)
         .getPropertyValue(`--q-breakpoint-${screenWidth}`);
 
     const screenSizeQuery = window.matchMedia(`(min-width: ${breakpoint})`);
-    const items = document.querySelectorAll(classString);
 
-    if (items.length === 0) return;
+    if (document.querySelectorAll(classString).length === 0) return;
 
     function handleResize() {
+        const items = document.querySelectorAll(classString);
         items.forEach((item) => {
             item.style.maxHeight = "";
             if (item.tagName === "IMG") {
@@ -84,6 +100,7 @@ function normaliseHeightsMin(classString, screenWidth = "xs") {
         }
     }
 
+    normaliseHeightsRegistry[key] = handleResize;
     screenSizeQuery.addEventListener("change", handleResize);
     let resizeTimer;
     window.addEventListener("resize", () => {
