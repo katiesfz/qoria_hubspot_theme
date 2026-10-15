@@ -1,64 +1,199 @@
-<div class="container-fluid g-0" style="{{module.style.spacing_field.css}}">
-    <div class="row g-0 border-bottom border-primary border-4 border-dotted align-items-end pb-4">
-        <div class="col d-block d-md-none"> 
-                <div style="float: right;
-                shape-margin: 20px;
-                margin-bottom: 0rem;
-                display: flex;
-                align-items: flex-end;
-                height: 100%;
-                shape-outside: linear-gradient(-52deg, #000 70%, #0000 0%); 
-                width: 60vw;
-                object-fit: contain;
-                margin-right: -16vw;">
-                    <img src="{{ get_asset_url('../../images/qoria/iceberg/Iceberg_Top.svg') }}" alt="Iceberg Tip" style="width: 100%;">
-                </div>
-                <h3 class="fw-normal h4"><strong>Offline risks</strong> <br>you can see</h3>
-                {{ module.offline_risks }}
-        </div>
-        <div class="col d-none d-md-block">
-            <div class="row align-items-end">
-                <div class="col-3">
-                    <h3 class="fw-normal h4"><strong>Offline risks</strong> <br>you can see</h3>
-                </div>
-                <div class="col-3">
-                    <img src="{{ get_asset_url('../../images/qoria/iceberg/Iceberg_Top.svg') }}" alt="Iceberg Tip" style="width: 100%; max-width: 200px;">
-                </div>
-                <div class="col-6">
-                {{ module.offline_risks }}
+{% set icebergConfig = {
+    "offlineHeading": '<p class="h2 mb-3 mb-md-0"><strong>Offline risks</strong> <br class="d-none d-md-block">you can see</p>',
+    "offlineImg": get_asset_url('../../images/qoria/iceberg/iceberg-top.svg'),
+    "onlineHeading": '<p class="h2 mb-3 mb-md-0"><strong>Offline risks</strong> <br class="d-none d-md-block">you can see</p>',
+    "onlineImg": get_asset_url('../../images/qoria/iceberg/iceberg-bottom.svg')
+    } %}
+
+{% require_css %}
+    <style>
+    {% scope_css %}
+        .iceberg-container {
+            display: flex;
+        }
+
+        .iceberg-half-top, .iceberg-half-bottom {
+            --img-w: 60vw;
+            --img-max-w: 300px;
+            flex: 1;
+        }
+
+        .iceberg-half-top {
+            --img-h: calc(var(--img-w) * 0.6);
+            --img-max-h: calc(var(--img-max-w) * 0.6);
+            align-items: end;
+        }
+        
+        .iceberg-half-bottom {
+            --img-h: calc(var(--img-w) * 0.96);
+            --img-max-h: calc(var(--img-max-w) * 0.96);
+        }
+
+        .iceberg-half-top::before {
+            content: "";
+            float: right;
+            height: var(--spacer-h, calc(100% - var(--img-h)));
+        }
+        
+        .iceberg-half-top .iceberg-img-container {
+            shape-outside: linear-gradient(-53deg, #000 67%, #0000 0%);
+
+            float: right;
+            shape-margin: 20px;
+            clear: right;
+            object-fit: contain;
+            margin-right: -16vw;
+
+            width: calc(var(--img-w) + 60px);
+            height: var(--img-h);
+            max-width: calc(var(--img-max-w) + 60px);
+            max-height: var(--img-max-h);
+        }
+
+        .iceberg-half-bottom .iceberg-img-container {
+            shape-outside: linear-gradient(-115deg, #000 70%, #0000 0%);
+
+            float: right;
+            shape-margin: 20px;
+            clear: right;
+            object-fit: contain;
+            margin-right: -16vw;
+
+            width: calc(var(--img-w) + 60px);
+            height: var(--img-h);
+            max-width: calc(var(--img-max-w) + 60px);
+            max-height: var(--img-max-h);
+        }
+
+        .iceberg-half-top .iceberg-img-container img {
+            height: var(--img-h);
+            width: var(--img-w);
+            display: block;
+            margin: auto 0 0 auto;
+            max-width: var(--img-max-w);
+            max-height: var(--img-max-h);
+        }
+        .iceberg-half-bottom .iceberg-img-container img {
+            height: var(--img-h);
+            width: var(--img-w);
+            display: block;
+            margin: 0 0 auto auto;
+            max-width: var(--img-max-w);
+            max-height: var(--img-max-h);
+        }
+
+        .iceberg-title-container, .iceberg-risks-container {
+            display: contents;
+        }
+
+
+
+        @media (min-width: 768px) {
+            .iceberg-half-top, .iceberg-half-bottom {
+                display: grid;
+                gap: var(--q-gutter-y) var(--q-gutter-x);
+                grid-template-columns: 1fr 1fr 2fr;
+                grid-template-areas: "one two three";
+            }
+
+            .iceberg-half-top::before {
+                display: none;
+            }
+
+            .iceberg-title-container { grid-area: one; }
+            .iceberg-half .iceberg-img-container { grid-area: two; width: 100%; height: auto; }
+            .iceberg-half .iceberg-img-container img { width: 100%; height: auto; margin: 0; }
+            .iceberg-risks-container { grid-area: three; }
+        }
+    {% end_scope_css %}
+    </style>
+{% end_require_css%}
+<div style="{{module.style.spacing_field.css}}">
+    <div class="row">
+        <div class="col-12">
+            <div class="iceberg-container">
+                <div class="iceberg-half-top iceberg-half">
+                    <div class="iceberg-img-container">
+                        <img src="{{ icebergConfig.offlineImg }}" class="" width="0" loading="lazy" alt="Iceberg Top" draggable="false">
+                    </div>
+                    <div class="iceberg-title-container align-content-end">
+                        {{ icebergConfig.offlineHeading }}
+                    </div>
+                    <div class="iceberg-risks-container align-content-end">
+                        {{ module.offline_risks }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row align-items-start pt-4">
-        <div class="col d-block d-md-none">
-            <div style="float: right;
-            shape-margin: 20px;
-            margin-top: 0px;
-            display: flex;
-            align-items: flex-start;
-            height: 100%;
-            shape-outside: linear-gradient(-115deg, #000 70%, #0000 0%);
-            width: 60vw;
-            object-fit: contain;
-            margin-right: -16vw;">
-                <img src="{{ get_asset_url('../../images/qoria/iceberg/Iceberg_Bottom.svg') }}" alt="Iceberg Base" style="width: 100%;">
+    <div class="row my-1 my-md-2">
+        <div class="col">
+            <div class="h-100 w-100">
+                <hr class="border-top border-dotted border-4 border-primary">
             </div>
-            <h3 class="fw-normal h4"><strong>Online risks</strong> <br>you can't see</h3>
-            {{ module.online_risks }}
         </div>
-        <div class="col d-none d-md-block">
-            <div class="row">
-                <div class="col-3">
-                    <h3 class="fw-normal h4"><strong>Online risks</strong> <br>you can't see</h3>
-                </div>
-                <div class="col-3">
-                    <img src="{{ get_asset_url('../../images/qoria/iceberg/Iceberg_Bottom.svg') }}" alt="Iceberg Base" style="width: 100%; max-width: 200px;">
-                </div>
-                <div class="col-6">
-                {{ module.online_risks }}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="iceberg-container">
+                <div class="iceberg-half-bottom iceberg-half">
+                    <div class="iceberg-img-container">
+                        <img src="{{ icebergConfig.onlineImg }}" class="" width="0" loading="lazy" alt="Iceberg Bottom" draggable="false">
+                    </div>
+                    <div class="iceberg-title-container">
+                        {{ icebergConfig.onlineHeading }}
+                    </div>
+                    <div class="iceberg-risks-container">
+                        {{ module.online_risks }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Mobile only: the ::before spacer pushes the top image down so its base lines up with the base of the copy.
+    // Its height depends on how the copy wraps around the image, so measure it by iterating rather than using a % height.
+    (function () {
+        var mq = window.matchMedia("(max-width: 767.98px)");
+
+        function fit(half) {
+            var img = half.querySelector(".iceberg-img-container img");
+            var risks = half.querySelector(".iceberg-risks-container");
+            var spacer = 0;
+            // risks is display: contents, so it has no box of its own; measure its contents instead
+            var range = document.createRange();
+            range.selectNodeContents(risks);
+
+            if (!mq.matches) {
+                half.style.removeProperty("--spacer-h");
+                return;
+            }
+
+            for (var i = 0; i < 5; i++) {
+                half.style.setProperty("--spacer-h", spacer + "px");
+                var textBottom = range.getBoundingClientRect().bottom - half.getBoundingClientRect().top;
+                var next = Math.max(0, Math.round(textBottom - img.offsetHeight));
+                if (next === spacer) break;
+                spacer = next;
+            }
+            half.style.setProperty("--spacer-h", spacer + "px");
+        }
+
+        function fitAll() {
+            document.querySelectorAll(".iceberg-half-top").forEach(fit);
+        }
+
+        var lastWidth = window.innerWidth;
+        window.addEventListener("resize", function () {
+            if (window.innerWidth !== lastWidth) {
+                lastWidth = window.innerWidth;
+                fitAll();
+            }
+        });
+        window.addEventListener("load", fitAll);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+        fitAll();
+    })();
+</script>
