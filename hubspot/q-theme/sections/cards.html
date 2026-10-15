@@ -2,13 +2,12 @@
   templateType: section
   label: Cards
   isAvailableForNewContent: true
-  screenshotPath: ../images/section-previews/cards.jpg
-  description: "Two rows with a heading and 5 cards"
+  screenshotPath: ../images/section-previews/cards.png
+  description: "Repeatable cards with a header, image and text. Can be used for values, services, features, etc."
 -->
 
 {% dnd_section
   background_color="rgba(235, 235, 235, 1)",
-  max_width=1280,
   padding={
     "default" : {
       "bottom" : "64px",
@@ -21,178 +20,61 @@
       "top" : "32px"
     }
   },
+  max_width=1280
 %}
-    {% dnd_column
-      offset=0,
-      width=12
-    %}
-      {% dnd_row %}
-        {% dnd_column
-          offset=0,
-          width=4,
-          padding={
-            "default" : {
-              "right" : "30px"
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/heading",
+        offset=0,
+        width=12,
+        heading_underline=true
+      %}
+        {% module_attribute "heading" %}
+          Our <strong>values</strong>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/q-theme/modules/card",
+        offset=0,
+        width=12,
+        card=[ {
+          "accent_colour" : "bg-primary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>We remember the importance of what we do. We don’t just turn up; we show up with integrity and will not give up until:</p>\n<p>\\\\ &nbsp; &nbsp;The job is done<br>\\\\ &nbsp; &nbsp;The customer is happy<br>\\\\ &nbsp; &nbsp;The teammate is supported<br>\\\\ &nbsp; &nbsp;The child is protected</p>\n<p>We own what we do and we stand behind it.</p>",
+          "title" : "<p>Care, <br>always.</p>"
+        }, {
+          "accent_colour" : "bg-secondary text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>We’re curious and we start with questions.</p>\n<p>We're open to new ideas, to taking risks, and to learning from our mistakes.</p>\n<p>We want to be challenged in an ongoing pursuit of excellence.</p>",
+          "title" : "<p>Learn. Solve. Repeat.</p>"
+        }, {
+          "accent_colour" : "bg-red text-white",
+          "image" : {
+            "loading" : "lazy"
+          },
+          "text" : "<p>We want others to win. So we support, challenge and champion them.</p>\n<p>We play our own part, with the team, customers and community front of mind.</p>\n<p>We’re transparent and we communicate openly.</p>\n<p>We trust and believe in each other. So we ask for help, and we get it.</p>",
+          "title" : "<p>Win <br>together.</p>"
+        } ],
+        styles={
+          "responsive" : {
+            "breakpoints" : {
+              "mobile" : 1,
+              "tablet" : 3
             }
           }
-        %}
-          {% dnd_row %}
-            {% dnd_module
-              path="/q-theme/modules/heading",
-              offset=0,
-              width=12,
-              heading_tag="h1",
-              heading_underline=true,
-              style={
-                "heading_underline" : true
-              }
-            %}
-              {% module_attribute "heading" %}
-                Meet our <br><strong>Qoria family</strong>
-              {% end_module_attribute %}
-            {% end_dnd_module %}
-          {% end_dnd_row %}
-          {% dnd_row %}
-            {% dnd_module
-              path="@hubspot/rich_text",
-              offset=0,
-              width=12
-            %}
-              {% module_attribute "html" %}
-                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan.</p>
-                <p>Read more &gt;</p>
-              {% end_module_attribute %}
-            {% end_dnd_module %}
-          {% end_dnd_row %}
-        {% end_dnd_column %}
-        {% dnd_column
-          offset=4,
-          width=8,
-          padding={
-            "default" : {
-              "left" : "5px",
-              "bottom" : "40px"
-            }
-          }
-        %}
-          {% dnd_row %}
-            {% dnd_module
-              path="/q-theme/modules/card",
-              offset=0,
-              width=12,
-              card=[ {
-                "accent_colour" : "bg-indigo text-white",
-                "image" : {
-                  "alt" : "iStock-489592905 RT",
-                  "height" : 859,
-                  "loading" : "lazy",
-                  "max_height" : 859,
-                  "max_width" : 1288,
-                  "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-489592905%20RT.jpg",
-                  "width" : 1288
-                },
-                "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
-                "title" : "<strong>Linewize</strong> (North America)"
-              }, {
-                "accent_colour" : "bg-indigo text-white",
-                "image" : {
-                  "alt" : "iStock-500428859 RT",
-                  "height" : 859,
-                  "loading" : "lazy",
-                  "max_height" : 859,
-                  "max_width" : 1288,
-                  "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-500428859%20RT.jpg",
-                  "width" : 1288
-                },
-                "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
-                "title" : "<strong>Linewize</strong> (Asia Pacific)"
-              } ],
-              styles={
-                "responsive" : {
-                  "desktop" : {
-                    "cards" : 2
-                  }
-                }
-              }
-            %}
-            {% end_dnd_module %}
-          {% end_dnd_row %}
-        {% end_dnd_column %}
-      {% end_dnd_row%}
-      {% dnd_row %}
-            {% dnd_module
-              path="/q-theme/modules/card",
-              offset=0,
-              width=12,
-              card=[
-                {
-                  "accent_colour" : "bg-teal text-white",
-                  "card_link" : {
-                    "no_follow" : false,
-                    "open_in_new_tab" : false,
-                    "sponsored" : false,
-                    "url" : {
-                      "content_id" : 106706114610,
-                      "type" : "CONTENT"
-                    },
-                    "user_generated_content" : false
-                  },
-                  "cta" : {
-                    "link" : {
-                      "no_follow" : false,
-                      "open_in_new_tab" : false,
-                      "sponsored" : false,
-                      "url" : {
-                        "content_id" : 106706114610,
-                        "type" : "CONTENT"
-                      },
-                      "user_generated_content" : false
-                    },
-                    "link_label" : "Visit website >"
-                  },
-                  "image" : {
-                    "alt" : "iStock-539271099 RT",
-                    "height" : 859,
-                    "loading" : "lazy",
-                    "max_height" : 859,
-                    "max_width" : 1288,
-                    "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-539271099%20RT.jpg",
-                    "width" : 1288
-                  },
-                  "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
-                  "title" : "<strong>Smoothwall</strong>"
-                },
-                {
-                  "accent_colour" : "bg-orange text-white",
-                  "image" : {
-                    "alt" : "iStock-1346503979 RT",
-                    "height" : 1288,
-                    "loading" : "lazy",
-                    "max_height" : 1288,
-                    "max_width" : 1932,
-                    "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-1346503979%20RT.jpg",
-                    "width" : 1932
-                  },
-                  "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
-                  "title" : "<strong>Qustodio</strong>"
-                },
-                {
-                  "accent_colour" : "bg-red text-white",
-                  "image" : {
-                    "alt" : "iStock-1065215684 RT",
-                    "height" : 471,
-                    "max_height" : 471,
-                    "max_width" : 707,
-                    "src" : "https://23755621.fs1.hubspotusercontent-na1.net/hubfs/23755621/iStock-1065215684%20RT.jpg",
-                    "width" : 707
-                  },
-                  "text" : "Duis autem vel eum iriure dolor in hend in vulputate velit esse molestie consequat, vel illum dolore.",
-                  "title" : "<strong>ySafe</strong>"
-                }
-              ]
-              styles={ }
-            %}
-            {% end_dnd_module %}
-      {% end_dnd_row %}
-    {% end_dnd_column %}
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
 {% end_dnd_section %}
