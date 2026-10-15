@@ -54,3 +54,15 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+
+## 5. Git Commits
+
+Follow Conventional Commits. The template is `.gitmessage`.
+
+- Format: `<type>(<scope>): <summary>`, or `<type>: <summary>` with no scope. Types: `feat`, `fix`, `chore`, `docs`, `refactor`, `style`, `build`, `ci`.
+- Scope: the child theme only (`uk`, `au`, `nz`, `us`, `corp`, `es`, `eu`). Leave it blank for the parent theme and for anything else.
+- Summary: imperative, sentence case, no full stop, 72 characters or less.
+- One logical change per commit. Never join several changes into one message.
+- Add a body only when the "why" isn't obvious. Name the module, section, template or child theme affected.
+- Commit messages are checked by commitlint (`commitlint.config.js`) via a husky `commit-msg` hook.
+- Only commit when asked. Never skip hooks or amend published commits.
