@@ -23,3 +23,19 @@ jobs:
           personal_access_key: ${{ secrets.HS_PAK_KS }}
           src_dir: hubspot
           dest_dir: /
+
+      - name: HubSpot Deploy Action Sandbox
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_UK }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot
+          dest_dir: /
+
+      - name: HubSpot Deploy Action Sandbox
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_US }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot
+          dest_dir: /
