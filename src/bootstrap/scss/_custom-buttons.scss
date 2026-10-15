@@ -49,10 +49,10 @@
     $border: transparent,
     $color: $dark,
     $hover-background: rgba($dark, 0.1),
-    $hover-border: none,
+    $hover-border: transparent,
     $hover-color: $dark,
     $active-background: $secondary,
-    $active-border: none,
+    $active-border: $secondary,
     $active-color: color-contrast($secondary)
   );
   

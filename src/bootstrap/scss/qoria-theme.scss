@@ -649,7 +649,7 @@ $css-col-counts: 2,3,4,5;
 
 .slider-indicators li button::before {
     content: "\f111";
-    font-family: "Font Awesome 6 Pro";
+    font-family: var(--fa-style-family-classic);
     font-weight: 900;
     font-size: 9px;
     color: var(--#{$prefix}gray-400);
@@ -718,7 +718,7 @@ a[data-hs-anchor="true"]{
                 height: 1em;
                 width: 1em;
                 padding: 1em;
-                font-family: "Font Awesome 6 Pro";    
+                font-family: var(--fa-style-family-classic);    
                 content: "\f002";
                 pointer-events: none;
                 box-sizing: content-box;
@@ -859,7 +859,7 @@ a[data-hs-anchor="true"]{
                     height: 1em;
                     width: 1em;
                     padding: 1em;
-                    font-family: "Font Awesome 6 Pro";    
+                    font-family: var(--fa-style-family-classic);    
                     content: "\f002";
                     pointer-events: none;
                     box-sizing: content-box;
@@ -997,8 +997,8 @@ a[data-hs-anchor="true"]{
 
     form.page-search {
         &:before {
-        font-family: "Font Awesome 6 Pro";
-        content: "";
+        font-family: var(--fa-style-family-classic);
+        content: "\f002";
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -1131,7 +1131,7 @@ ul.list-checks-primary
                 color: $primary;
                 content: "\f00c";
                 list-style-position: outside;
-                font-family: "Font Awesome 6 Pro";
+                font-family: var(--fa-style-family-classic);
                 font-weight: 900;
             }
         }
