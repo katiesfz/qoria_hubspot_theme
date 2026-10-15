@@ -5,8 +5,8 @@
     "email": "marketing@qoria.com",
     "url": "qoria.com"
 	},
-  "documentation_url": "https://developers.hubspot.com/docs/cms/building-blocks/themes/hubspot-cms-boilerplate",
-  "example_url": "https://boilerplate.hubspotcms.com",
+  "documentation_url": "https://github.com/katiesfz/qoria_hubspot_theme/wiki",
+  "example_url": "https://qoria.com",
   "preview_path": "./templates/home.html",
   "screenshot_path": "./images/template-previews/home.png",
   "enable_domain_stylesheets": false,
