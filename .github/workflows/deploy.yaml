@@ -1,42 +1,111 @@
-##name: Deploy HubSpot Theme
-##
-##on:
-##  push:
-##    branches:
-##      - sandbox
-##      - main
-##
-##jobs:
-##  deploy:
-##    runs-on: ubuntu-latest
-##
-##    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
-##
-##    steps:
-##      - name: Checkout Code
-##        uses: actions/checkout@v4
-##
-##      - name: HubSpot CMS Deploy ANZ
-##        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-##        with:
-##          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-##          personal_access_key: ${{ secrets.HS_PAK_KS }}
-##          src_dir: hubspot
-##          dest_dir: /
-##
-##      - name: HubSpot CMS Deploy UK
-##        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-##        with:
-##          account_id: ${{ vars.HS_ACCT_ID_UK }}
-##          personal_access_key: ${{ secrets.HS_PAK_KS }}
-##          src_dir: hubspot
-##          dest_dir: /
-##
-##      - name: HubSpot CMS Deploy US
-##        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-##        with:
-##          account_id: ${{ vars.HS_ACCT_ID_US }}
-##          personal_access_key: ${{ secrets.HS_PAK_KS }}
-##          src_dir: hubspot
-##          dest_dir: /
-##
+name: Deploy HubSpot Theme
+
+on:
+  push:
+    branches:
+      - sandbox
+      - main
+
+# Each portal gets the parent theme plus only the child themes whose pages live there:
+#   ANZ: au, nz, corp    UK: uk, es, eu    US: us
+jobs:
+  deploy-anz:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy q-theme to ANZ
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/q-theme
+          dest_dir: q-theme
+
+      - name: Deploy qoria-theme-au to ANZ
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/qoria-theme-au
+          dest_dir: qoria-theme-au
+
+      - name: Deploy qoria-theme-nz to ANZ
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/qoria-theme-nz
+          dest_dir: qoria-theme-nz
+
+      - name: Deploy qoria-theme-corp to ANZ
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/qoria-theme-corp
+          dest_dir: qoria-theme-corp
+
+  deploy-uk:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy q-theme to UK
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_UK }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/q-theme
+          dest_dir: q-theme
+
+      - name: Deploy qoria-theme-uk to UK
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_UK }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/qoria-theme-uk
+          dest_dir: qoria-theme-uk
+
+      - name: Deploy qoria-theme-es to UK
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_UK }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/qoria-theme-es
+          dest_dir: qoria-theme-es
+
+      - name: Deploy qoria-theme-eu to UK
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_UK }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/qoria-theme-eu
+          dest_dir: qoria-theme-eu
+
+  deploy-us:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy q-theme to US
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_US }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/q-theme
+          dest_dir: q-theme
+
+      - name: Deploy qoria-theme-us to US
+        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+        with:
+          account_id: ${{ vars.HS_ACCT_ID_US }}
+          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          src_dir: hubspot/qoria-theme-us
+          dest_dir: qoria-theme-us
