@@ -6,12 +6,7 @@
 -->
 {% extends "./layouts/base.html" %}
 
-
-{% block header %}
-  <div class="header-wrapper sticky-top shadow-sm">
-    {% global_partial path='./partials/header-esafe.html', label="Header" %}
-  </div>
-{% endblock header %}
+{% do widget_data.update({ "header_style": {"background": "default", "search": false, "language_switcher": false, "brand": "eSafe", "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "xl"} })%}
 
 {% block body %}
 {% dnd_area "dnd_area"

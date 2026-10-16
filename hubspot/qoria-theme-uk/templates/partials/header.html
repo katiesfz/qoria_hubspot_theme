@@ -3,19 +3,101 @@ templateType: global_partial
 label: Header
 -->
 
+{% set header_style = widget_data.header_style|default({"background": "default", "search": true, "language_switcher": true, "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "xl"}) %}
+
 <!-- resize the top nav - only for Smoothwall -->
 <style>
   .navbar-nav .nav-link {
     --q-nav-link-font-size: 15px;
     --q-navbar-nav-link-padding-x: 0.8rem;
   }
+
   .navbar-nav .nav-link.active:after {
     width: calc(100% - 1.6em) !important;
+  }
+
+  .navbar-brand-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    margin-right: var(--q-navbar-brand-margin-end);
+  }
+
+  header.header {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  @media (min-width: 576px) {
+    header.header {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
     }
+  }
+  @media (min-width: 768px) {
+    header.header {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+  @media (min-width: 992px) {
+    header.header {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  {% if header_style.background == "transparent" %}
+
+    header.header {
+      position: absolute;
+      width: 100%;
+    }
+
+    .navbar-brand {
+      filter: brightness(0) invert(1);
+    }
+
+    .navbar-brand {
+      max-width: 200px
+    }
+
+    @media(min-width: 576px) {
+      .navbar-brand {
+          max-width:200px
+      }
+    }
+
+    @media(min-width: 768px) {
+      .navbar-brand {
+          max-width:200px
+      }
+    }
+
+    @media(min-width: 992px) {
+      .navbar-brand {
+          max-width:220px
+      }
+      header.header {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+
+    @media(min-width: 1200px) {
+      .navbar-brand {
+          max-width:220px
+      }
+    }
+  {% endif %}
+
+    {% if header_style.background == "default" || !header_style.background %}
+      header.header {
+        background-color: #ffffff;
+      }
+    {% endif %}
 </style>
 <!-- end resize code -->
-
-{% set header_style = widget_data.header_style|default({"background": "default", "search": true, "language_switcher": true, "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "lg"}) %}
 
 {% set breakpoint = header_style.breakpoint %}
 {% if breakpoint == "always" %}
@@ -25,26 +107,44 @@ label: Header
 {% else %}
     {% set navbarExpand = "navbar-expand-" ~ breakpoint %}
 {% endif %}
-    
-<header class="header {{ header_style.background if (header_style.background && header_style.background != "default") else "bg-white" }} py-0 py-sm-1 py-md-2 py-lg-3">
+
+<header class="header">
   <nav class="navbar {{navbarExpand}}">
-    <div class="container-xxl position-relative"> 
+    <div class="container-xxl position-relative">
       {% if header_style.logo %}
-        {% module "logo" path="/q-theme/modules/logo", label="Logo", expert_settings={custom_classes:"navbar-brand"} override_default_logo=False, no_wrapper=True %}
+        <div class="navbar-brand-container">
+          {% if header_style.brand == "Partner" && widget_data.header_style.logo_partner_html %}
+            {% global_partial path='../partials/logo.html', label="Logo" no_wrapper=True %}
+            {{widget_data.header_style.logo_partner_html|safe}}
+          {% elif header_style.brand == "eSafe" %}
+            {% global_partial path='../partials/logo-esafe.html', label="eSafe Logo" no_wrapper=True %}
+          {% elif header_style.brand == "Schools Broadband" %}
+            {% global_partial path='../partials/logo.html', label="Logo" no_wrapper=True %}
+            {% global_partial path='../partials/logo-schools-broadband.html', label="Schools Broadband Logo" no_wrapper=True %}
+          {% elif header_style.logo_inverted %}
+            {% global_partial path='../partials/logo-invert.html', label="Logo (Inverse)" no_wrapper=True %}
+          {% else %}
+            {% global_partial path='../partials/logo.html', label="Logo" no_wrapper=True %}
+          {% endif %}
+        </div>
       {% endif %}
       <div class="collapsed-menu ms-auto d-flex flex-row align-items-center">
         {% if header_style.language_switcher %}
-          <div class="d-flex d-{{breakpoint}}-none">          
+          <div class="d-flex d-{{breakpoint}}-none">
             {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint=header_style.breakpoint, include_button_label=False %}
           </div>
         {% endif %}
+        {% if header_style.navigation %}
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="far fa-xl fa-bars"></i>
         </button>
+        {% endif %}
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         {% if header_style.navigation %}
           {% module "navigation" path="/q-theme/modules/dropdown-navigation", label="Navigation", breakpoint=header_style.breakpoint, no_wrapper=True %}
+          {% else %}
+            <div class="navbar-spacer ms-auto"></div>
         {% endif %}
 
         {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
@@ -60,7 +160,6 @@ label: Header
           {% if widget_data.cta_2.link.url.href != "" %}
             <div class="d-flex d-{{breakpoint}}-none mb-2">
             {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"} } %}
-  
             </div>
           {% endif %}
           {% if widget_data.cta.link.url.href != "" %}
@@ -90,3 +189,37 @@ label: Header
     </div>
   </nav>
 </header>
+
+{% if header_style.background == "transparent" %}
+  {% require_js %}
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const header = document.getElementsByTagName("header")[0];
+        const navbarBrands = header.querySelectorAll(".navbar-brand");
+        header.style.transition = "background-color 300ms";
+
+        function handleLogoInversion() {
+          if (window.scrollY > 50) {
+            header.style.backgroundColor = "#FFFFFF";
+            navbarBrands.forEach(brand => {
+              brand.style.filter = "none";
+            });
+          } else {
+            header.style.backgroundColor = "transparent";
+            navbarBrands.forEach(brand => {
+              brand.style.filter = "brightness(0) invert(1)";
+            });
+          }
+        }
+
+        window.addEventListener('load', () => {
+          handleLogoInversion();
+        });
+        
+        window.addEventListener('scroll', () => {
+          handleLogoInversion();
+        });
+      });
+    </script>
+  {% end_require_js %}
+{% endif %}

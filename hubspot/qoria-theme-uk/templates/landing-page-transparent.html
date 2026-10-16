@@ -4,21 +4,15 @@
   label:  Landing Page (Transparent)
   screenshotPath: ../images/template-previews/landing-page.png
 -->
-{% extends "./layouts/blank.html" %}
+{% extends "./layouts/base.html" %}
 
-{% block header %}
-  <div class="header-wrapper sticky-top shadow-sm">
-    {% global_partial path='./partials/header-transparent.html', label="Header" %}
-  </div>
-{% endblock header %}
+{% do widget_data.update({ "header_style": {"background": "transparent", "search": false, "language_switcher": false, "logo": true, "cta": false, "navigation": false, "breakpoint": "lg"} })%}
 
 {% block body %}
 {% dnd_area "dnd_area"
 label="Body"
 class="main p-0 overflow-hidden"
 %}
-
-
 
 {% end_dnd_area %}
 {% endblock body %}

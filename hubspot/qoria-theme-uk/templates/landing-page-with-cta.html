@@ -6,28 +6,25 @@
 -->
 {% extends "./layouts/base.html" %}
 
+{% do widget_data.update({ "header_style": {"background": "default", "search": true, "language_switcher": true, "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "xl"} })%}
 
 {% block body %}
-{% dnd_area "dnd_area"
-label="Body"
-class="main p-0 overflow-hidden"
-%}
-
-  {% include_dnd_partial
-    path="../sections/hero-banner.html"
-    context={
-      "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>",
-      "breadcrumbMenu": 134668028025
-    }
+  {% dnd_area "dnd_area"
+  label="Body"
+  class="main p-0 overflow-hidden"
   %}
-
-  {% include_dnd_partial
-    path="../sections/introduction.html"
-  %}
-
-
-{% end_dnd_area %}
-{% global_partial path="./partials/lets-connect.html" %}
+    {% include_dnd_partial
+      path="../sections/hero-banner.html"
+      context={
+        "content": "<h1>Download your free eBook</h1><p>Use this space to tell everyone what your eBook is all about.</p>",
+        "breadcrumbMenu": 134668028025
+      }
+    %}
+    {% include_dnd_partial
+      path="../sections/introduction.html"
+    %}
+  {% end_dnd_area %}
+  {% global_partial path="./partials/lets-connect.html" %}
 {% endblock body %}
 
 

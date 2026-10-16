@@ -5,8 +5,9 @@
   screenshotPath: ../images/template-previews/blog-post.png
 -->
 
-
 {% extends "./layouts/base.html" %}
+
+{% do widget_data.update({ "header_style": {"background": "default", "search": true, "language_switcher": true, "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "xl"} })%}
 
 {% choice "blog_type" label='Blog type', value="regular", choices=[['regular', 'Regular'], ['case_study', 'Case study'], ['video', 'Video'], ['whitepaper', 'Whitepaper']], export_to_template_context=True %}
 {% boolean "custom_heading_toggle" label="Custom heading toggle", value=False, no_wrapper=True, export_to_template_context=True %}
@@ -48,7 +49,7 @@
   </script>
 {% end_require_js %}
 
-    {% block body %}
+{% block body %}
 
 {% module "description" path="/q-theme/modules/blog-description", export_to_template_context=True %}
 {% module "related_articles_setting" path="/q-theme/modules/blog-related-posts-settings", label="Related Articles" %}
