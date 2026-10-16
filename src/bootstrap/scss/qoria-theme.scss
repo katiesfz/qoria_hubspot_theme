@@ -977,6 +977,7 @@ a[data-hs-anchor="true"]{
 );
 
 .navbar-brand {
+    display: inline-block;
     max-width: map-get($navbar-brand-max-widths, "xs");
 }
     

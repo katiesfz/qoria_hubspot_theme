@@ -5023,7 +5023,7 @@ textarea.form-control-lg {
   --q-navbar-hover-color: #000;
   --q-navbar-disabled-color: rgba(var(--q-emphasis-color-rgb), 0.3);
   --q-navbar-active-color: rgba(var(--q-emphasis-color-rgb), 1);
-  --q-navbar-brand-padding-y: 0.90625rem;
+  --q-navbar-brand-padding-y: 0;
   --q-navbar-brand-margin-end: 1rem;
   --q-navbar-brand-font-size: 1.125rem;
   --q-navbar-brand-color: rgba(var(--q-emphasis-color-rgb), 1);
@@ -20343,6 +20343,7 @@ a[data-hs-anchor=true] {
 }
 
 .navbar-brand {
+  display: inline-block;
   max-width: 100px;
 }
 
