@@ -20,7 +20,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_AU_KS }}
           src_dir: hubspot/q-theme
           dest_dir: q-theme
 
@@ -28,7 +28,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_AU_KS }}
           src_dir: hubspot/qoria-theme-au
           dest_dir: qoria-theme-au
 
@@ -36,7 +36,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_AU_KS }}
           src_dir: hubspot/qoria-theme-nz
           dest_dir: qoria-theme-nz
 
@@ -44,7 +44,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_AU_KS }}
           src_dir: hubspot/qoria-theme-corp
           dest_dir: qoria-theme-corp
 
@@ -59,7 +59,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_UK_KS }}
           src_dir: hubspot/q-theme
           dest_dir: q-theme
 
@@ -67,7 +67,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_UK_KS }}
           src_dir: hubspot/qoria-theme-uk
           dest_dir: qoria-theme-uk
 
@@ -75,7 +75,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_UK_KS }}
           src_dir: hubspot/qoria-theme-es
           dest_dir: qoria-theme-es
 
@@ -83,7 +83,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_UK_KS }}
           src_dir: hubspot/qoria-theme-eu
           dest_dir: qoria-theme-eu
 
@@ -98,7 +98,7 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_US }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_US_KS }}
           src_dir: hubspot/q-theme
           dest_dir: q-theme
 
@@ -106,6 +106,6 @@ jobs:
         uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
         with:
           account_id: ${{ vars.HS_ACCT_ID_US }}
-          personal_access_key: ${{ secrets.HS_PAK_KS }}
+          personal_access_key: ${{ secrets.PAK_US_KS }}
           src_dir: hubspot/qoria-theme-us
           dest_dir: qoria-theme-us
