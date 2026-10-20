@@ -7,9 +7,13 @@
 {% extends "./layouts/base.html" %}
 
 {% set logo_partner_html %}{% module "logo_partner" path="/q-theme/modules/logo", label="Partner Logo", expert_settings={custom_classes:"navbar-brand me-auto"} override_default_logo=False, no_wrapper=True %}{% endset %}
+{% set logo_partner_footer_html %}{% module "logo_partner_footer" path="/q-theme/modules/logo", label="Partner Logo (Footer)", expert_settings={custom_classes:""} override_default_logo=False, no_wrapper=True %}{% endset %}
 
 {% do widget_data.update({ "header_style": {"background": "default", "search": false, "language_switcher": false, "brand": "Partner", "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "xl"} })%}
 {% do widget_data.header_style.update({"logo_partner_html": logo_partner_html|escape_jinjava}) %}
+
+{% do widget_data.update({ "footer_style": {"content": "partner"} }) %}
+{% do widget_data.footer_style.update({"logo_partner_html": logo_partner_footer_html|escape_jinjava}) %}
 
 {% block body %}
 {% dnd_area "dnd_area"
@@ -987,48 +991,6 @@ class="main p-0 overflow-hidden"
   {% end_dnd_column %}
 {% end_dnd_section %}
 
-
-
 {% end_dnd_area %}
 {% global_partial path="./partials/lets-connect.html" %}
 {% endblock body %}
-
-{% block footer %}
-
-  <footer class="footer px-0 text-light bg-gradient-primary-reverse">
-    <div class="container-xxl pb-4 position-relative">
-      <div class="row">
-        <div class="col-12">
-          <div class="position-relative">
-            <div class="cursor-pointer d-flex position-absolute top-0 end-0 translate-middle-y bg-secondary align-items-center justify-content-center" style="width: 3rem; height: 3rem;" onclick="topFunction()">
-              <i class="fas fa-chevron-up"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="opacity-100 my-6">
-      <div class="row text-start align-items-center">
-        <div class="col-12 col-sm-7 col-md-6 col-lg-5 col-xl-4 mb-5 me-auto">
-          <p class="h3 mb-3">{% text "footer_copy" label="Footer Copy", value="Keeping every child safe and thriving online—together", no_wrapper=True %}</p>
-            
-        </div>
-        <div class="col-12 col-sm-5 col-md-6 col-lg-7 col-xl-8 mb-5 text-end">
-          {% module "logo_light" path="/q-theme/modules/logo", label="Logo Light", no_wrapper=True, override_default_logo=True, logo={"src" : "{{get_asset_url('/q-theme/images/qoria/logos/Qoria_Logo_White.svg')}}", "size_type" : "auto_custom_max", "alt": "Qoria Logo", "max_width" : "128"} %}
-          {% module "logo-schools-broadband-light" path="/q-theme/modules/logo", label="Schools Broadband Logo Light", override_default_logo=True, no_wrapper=True %}
-        </div>
-      </div>
-    </div>
-    <div class="bg-dark text-light small py-3">
-      <div class="container-xxl">
-        <div class="row d-flex align-items-center">
-          <div class="col">
-            <span>&copy; {{year}} {{site_settings.company_name}}. All rights reserved. </span>
-          </div>
-          <div class="col text-end">
-          <a class="text-reset text-decoration-none" href="https://qoria.com" target="_blank"><span class="align-middle">{{site_settings.company_name}} is part of the Qoria family</span> <img src="{{get_asset_url('/q-theme/images/qoria/logos/Q-Colour.svg')}}" width="30" height="30" alt="Qoria Q" style="width: 30px;" class="ms-3 align-middle"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-{% endblock footer %}

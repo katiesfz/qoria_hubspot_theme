@@ -134,7 +134,7 @@ label: Header
             {% module "language-switcher" path="/q-theme/modules/language-switcher", label="Language switcher", display_mode='localized', breakpoint=header_style.breakpoint, include_button_label=False %}
           </div>
         {% endif %}
-        {% if header_style.navigation %}
+        {% if header_style.navigation || header_style.cta || header_style.search %}
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="far fa-xl fa-bars"></i>
         </button>
@@ -146,32 +146,38 @@ label: Header
           {% else %}
             <div class="navbar-spacer ms-auto"></div>
         {% endif %}
-
+        
         {% module "cta" path="/q-theme/modules/cta", label="CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "/contact", "type" : "EXTERNAL"} } %}
         {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", export_to_template_context=True, alignment="center", button_text="Contact us", link={"url" : {"href" : "", "type" : "EXTERNAL"} } %}
 
         {% if header_style.cta %}
-          {% if widget_data.cta.link.url.href != "" %}
-            <div class="d-flex d-{{breakpoint}}-none my-2">
-            {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
-  
-            </div>
-          {% endif %}
-          {% if widget_data.cta_2.link.url.href != "" %}
-            <div class="d-flex d-{{breakpoint}}-none mb-2">
-            {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"} } %}
-            </div>
-          {% endif %}
-          {% if widget_data.cta.link.url.href != "" %}
-            <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-            {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
-            </div>
-          {% endif %}         
-          {% if widget_data.cta_2.link.url.href != "" %}
-            <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
-            {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"} } %}
-            </div>
-          {% endif %}         
+          
+          {% if header_style.brand == "eSafe" %}
+            {% global_partial path='../partials/cta-esafe.html', label="eSafe CTA" no_wrapper=True %}
+          {% else %}
+
+            {% if widget_data.cta.link.url.href != "" %}
+              <div class="d-flex d-{{breakpoint}}-none my-2">
+              {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+              </div>
+            {% endif %}
+            {% if widget_data.cta_2.link.url.href != "" %}
+              <div class="d-flex d-{{breakpoint}}-none mb-2">
+              {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"} } %}
+              </div>
+            {% endif %}
+            {% if widget_data.cta.link.url.href != "" %}
+              <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
+              {% module "cta" path="/q-theme/modules/cta", label="CTA", alignment="center", button_text="Contact us", link={"url": {"href": "/contact", "type": "EXTERNAL"} } %}
+              </div>
+            {% endif %}         
+            {% if widget_data.cta_2.link.url.href != "" %}
+              <div class="d-none d-{{breakpoint}}-flex ms-{{breakpoint}}-3">
+              {% module "cta_2" path="/q-theme/modules/cta", label="Secondary CTA", alignment="center", button_text="Contact us", link={"url": {"href": "", "type": "EXTERNAL"} } %}
+              </div>
+            {% endif %}        
+
+          {% endif %}     
         {% endif %}
 
         {% if header_style.search %}

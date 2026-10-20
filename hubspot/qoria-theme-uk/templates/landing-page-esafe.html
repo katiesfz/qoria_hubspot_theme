@@ -6,7 +6,7 @@
 -->
 {% extends "./layouts/base.html" %}
 
-{% do widget_data.update({ "header_style": {"background": "default", "search": false, "language_switcher": false, "brand": "eSafe", "logo": true, "logo_inverted": false, "cta": true, "navigation": true, "breakpoint": "xl"} })%}
+{% do widget_data.update({ "header_style": {"background": "default", "search": false, "language_switcher": false, "brand": "eSafe", "logo": true, "logo_inverted": false, "cta": true, "navigation": false, "breakpoint": "xl"} })%}
 
 {% block body %}
 {% dnd_area "dnd_area"
@@ -28,4 +28,3 @@ class="main p-0 overflow-hidden"
 
 {% end_dnd_area %}
 {% endblock body %}
-
