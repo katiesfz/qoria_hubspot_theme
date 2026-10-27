@@ -12,7 +12,7 @@
   --#{$prefix}btn-line-height: #{$btn-line-height};
   --#{$prefix}btn-color: #{$body-color};
   --#{$prefix}btn-bg: transparent;
-  --#{$prefix}btn-border-width: #{$btn-border-width};
+  --#{$prefix}btn-border-width: 0;
   --#{$prefix}btn-border-color: transparent;
   --#{$prefix}btn-border-radius: #{$btn-border-radius};
   --#{$prefix}btn-hover-border-color: transparent;
@@ -148,6 +148,12 @@
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
     @include button-outline-variant($value);
+  }
+}
+
+@each $color, $map in $theme-gradients {
+  .btn-gradient-#{$color} {
+    @include button-gradient-variant(map-get($map, "primary"), map-get($map, "secondary"));
   }
 }
 // scss-docs-end btn-variant-loops

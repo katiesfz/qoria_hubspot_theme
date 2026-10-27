@@ -114,6 +114,10 @@ footer.bg-gradient-primary a {
     color: $white;
 }
 
+.main {
+    overflow-x: clip;
+}
+
 // Text
 
 .heading-bg-gradient {

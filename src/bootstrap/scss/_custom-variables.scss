@@ -630,7 +630,7 @@ $btn-border-radius:     $border-radius;
 $btn-border-radius-sm:  $border-radius;
 $btn-border-radius-lg:  $border-radius;
 
-$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, transform .15s ease-in-out,  !default;
+$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, transform .15s ease-in-out, background-position .3s ease-in-out !default;
 
 // accordions
 

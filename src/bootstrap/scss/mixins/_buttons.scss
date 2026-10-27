@@ -6,32 +6,33 @@
 // scss-docs-start btn-variant-mixin
 @mixin button-variant(
   $background,
-  $border,
+  $border: transparent,
   $color: color-contrast($background),
   $hover-background: if($color == $color-contrast-light, shade-color($background, $btn-hover-bg-shade-amount), tint-color($background, $btn-hover-bg-tint-amount)),
-  $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount)),
+  $hover-border: transparent,
   $hover-color: color-contrast($hover-background),
   $active-background: if($color == $color-contrast-light, shade-color($background, $btn-active-bg-shade-amount), tint-color($background, $btn-active-bg-tint-amount)),
-  $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount)),
+  $active-border: transparent,
   $active-color: color-contrast($active-background),
   $disabled-background: $background,
-  $disabled-border: $border,
+  $disabled-border: transparent,
   $disabled-color: color-contrast($disabled-background)
 ) {
   --#{$prefix}btn-color: #{$color};
   --#{$prefix}btn-bg: #{$background};
-  --#{$prefix}btn-border-color: #{$border};
+  --#{$prefix}btn-border-color: transparent;
+  --#{$prefix}btn-border-width: #{$btn-border-width};
   --#{$prefix}btn-hover-color: #{$hover-color};
   --#{$prefix}btn-hover-bg: #{$hover-background};
-  --#{$prefix}btn-hover-border-color: #{$hover-border};
+  --#{$prefix}btn-hover-border-color: transparent;
   --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
   --#{$prefix}btn-active-color: #{$active-color};
   --#{$prefix}btn-active-bg: #{$active-background};
-  --#{$prefix}btn-active-border-color: #{$active-border};
+  --#{$prefix}btn-active-border-color: transparent;
   --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
   --#{$prefix}btn-disabled-color: #{$disabled-color};
   --#{$prefix}btn-disabled-bg: #{$disabled-background};
-  --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+  --#{$prefix}btn-disabled-border-color: transparent;
 }
 // scss-docs-end btn-variant-mixin
 
@@ -43,6 +44,7 @@
   $active-border: $color,
   $active-color: color-contrast($active-background)
 ) {
+  --#{$prefix}btn-border-width: #{$btn-border-width};
   --#{$prefix}btn-color: #{$color};
   --#{$prefix}btn-border-color: #{$color};
   --#{$prefix}btn-hover-color: #{$color-hover};
@@ -56,7 +58,59 @@
   --#{$prefix}btn-disabled-color: #{$color};
   --#{$prefix}btn-disabled-bg: transparent;
   --#{$prefix}btn-disabled-border-color: #{$color};
-  --#{$prefix}gradient: none;
+}
+// scss-docs-end btn-outline-variant-mixin
+
+
+// scss-docs-start btn-outline-variant-mixin
+@mixin button-gradient-variant(
+  $background-primary,
+  $background-secondary,
+  $border: transparent,
+  $color: color-contrast($background-primary)
+) {
+  --#{$prefix}btn-color: #{$color};
+  --#{$prefix}btn-bg: #{$background-primary};
+  --#{$prefix}btn-gradient: linear-gradient(130deg, #{$background-secondary} 0%, #{$background-primary} 40%, #{$background-primary} 60%, #{$background-secondary} 100%);
+  --#{$prefix}btn-border-color: transparent;
+  --#{$prefix}btn-border-width: #{$btn-border-width};
+  --#{$prefix}btn-hover-color: #{$color};
+  --#{$prefix}btn-hover-bg: #{$background-primary};
+  --#{$prefix}btn-hover-border-color: transparent;
+  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+  --#{$prefix}btn-active-color: #{$color};
+  --#{$prefix}btn-active-bg: #{$background-primary};
+  --#{$prefix}btn-active-border-color: transparent;
+  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
+  --#{$prefix}btn-disabled-border-color: transparent;
+  
+  background-image: var(--#{$prefix}btn-gradient);
+  background-size: 200% auto;
+  
+  &:hover {
+    background-position: right center;
+  }
+
+  .btn-check + &:hover {
+    // override for the checkbox/radio buttons
+    background-position: left center;
+  }
+
+  &:focus-visible {
+    background-position: right center;
+  }
+
+  .btn-check:focus-visible + & {
+    background-position: right center;
+  }
+
+  .btn-check:checked + &,
+  :not(.btn-check) + &:active,
+  &:first-child:active,
+  &.active,
+  &.show {
+    background-position: right center;
+  }
 }
 // scss-docs-end btn-outline-variant-mixin
 

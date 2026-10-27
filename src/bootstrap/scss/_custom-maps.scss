@@ -34,3 +34,10 @@ $fill-colors: map-merge($theme-colors, map-merge(("white": $white), map-merge($t
 
 $fill-colors-rgb: map-loop($fill-colors, to-rgb, "$value");
 $fill-colors-rgba: map-loop($fill-colors, rgba-css-var, "$key", "fill");
+
+$theme-gradients: (
+  "primary": (
+    "primary": $primary,
+    "secondary": $secondary
+  )
+)
