@@ -12,100 +12,83 @@ jobs:
   deploy-anz:
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    env:
+      HUBSPOT_ACCOUNT_ID: ${{ vars.HS_ACCT_ID_ANZ }}
+      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.PAK_AU_KS }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Deploy q-theme to ANZ
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.PAK_AU_KS }}
-          src_dir: hubspot/q-theme
-          dest_dir: q-theme
+          node-version: "22.x"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Deploy q-theme to ANZ
+        run: npx hs cms upload hubspot/q-theme q-theme --use-env --convertFields
 
       - name: Deploy qoria-theme-au to ANZ
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.PAK_AU_KS }}
-          src_dir: hubspot/qoria-theme-au
-          dest_dir: qoria-theme-au
+        run: npx hs cms upload hubspot/qoria-theme-au qoria-theme-au --use-env --convertFields
 
       - name: Deploy qoria-theme-nz to ANZ
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.PAK_AU_KS }}
-          src_dir: hubspot/qoria-theme-nz
-          dest_dir: qoria-theme-nz
+        run: npx hs cms upload hubspot/qoria-theme-nz qoria-theme-nz --use-env --convertFields
 
       - name: Deploy qoria-theme-corp to ANZ
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ vars.HS_ACCT_ID_ANZ }}
-          personal_access_key: ${{ secrets.PAK_AU_KS }}
-          src_dir: hubspot/qoria-theme-corp
-          dest_dir: qoria-theme-corp
+        run: npx hs cms upload hubspot/qoria-theme-corp qoria-theme-corp --use-env --convertFields
 
   deploy-uk:
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    env:
+      HUBSPOT_ACCOUNT_ID: ${{ vars.HS_ACCT_ID_UK }}
+      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.PAK_UK_KS }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Deploy q-theme to UK
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.PAK_UK_KS }}
-          src_dir: hubspot/q-theme
-          dest_dir: q-theme
+          node-version: "22.x"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Deploy q-theme to UK
+        run: npx hs cms upload hubspot/q-theme q-theme --use-env --convertFields
 
       - name: Deploy qoria-theme-uk to UK
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.PAK_UK_KS }}
-          src_dir: hubspot/qoria-theme-uk
-          dest_dir: qoria-theme-uk
+        run: npx hs cms upload hubspot/qoria-theme-uk qoria-theme-uk --use-env --convertFields
 
       - name: Deploy qoria-theme-es to UK
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.PAK_UK_KS }}
-          src_dir: hubspot/qoria-theme-es
-          dest_dir: qoria-theme-es
+        run: npx hs cms upload hubspot/qoria-theme-es qoria-theme-es --use-env --convertFields
 
       - name: Deploy qoria-theme-eu to UK
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ vars.HS_ACCT_ID_UK }}
-          personal_access_key: ${{ secrets.PAK_UK_KS }}
-          src_dir: hubspot/qoria-theme-eu
-          dest_dir: qoria-theme-eu
+        run: npx hs cms upload hubspot/qoria-theme-eu qoria-theme-eu --use-env --convertFields
 
   deploy-us:
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+    env:
+      HUBSPOT_ACCOUNT_ID: ${{ vars.HS_ACCT_ID_US }}
+      HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.PAK_US_KS }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Deploy q-theme to US
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          account_id: ${{ vars.HS_ACCT_ID_US }}
-          personal_access_key: ${{ secrets.PAK_US_KS }}
-          src_dir: hubspot/q-theme
-          dest_dir: q-theme
+          node-version: "22.x"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Deploy q-theme to US
+        run: npx hs cms upload hubspot/q-theme q-theme --use-env --convertFields
 
       - name: Deploy qoria-theme-us to US
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ vars.HS_ACCT_ID_US }}
-          personal_access_key: ${{ secrets.PAK_US_KS }}
-          src_dir: hubspot/qoria-theme-us
-          dest_dir: qoria-theme-us
+        run: npx hs cms upload hubspot/qoria-theme-us qoria-theme-us --use-env --convertFields
