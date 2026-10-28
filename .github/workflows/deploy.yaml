@@ -24,20 +24,20 @@ jobs:
         with:
           node-version: "22.x"
 
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli@7.9.0
 
       - name: Deploy q-theme to ANZ
-        run: npx hs cms upload hubspot/q-theme q-theme --use-env --convertFields
+        run: hs upload hubspot/q-theme q-theme --use-env --convertFields
 
       - name: Deploy qoria-theme-au to ANZ
-        run: npx hs cms upload hubspot/qoria-theme-au qoria-theme-au --use-env --convertFields
+        run: hs upload hubspot/qoria-theme-au qoria-theme-au --use-env --convertFields
 
       - name: Deploy qoria-theme-nz to ANZ
-        run: npx hs cms upload hubspot/qoria-theme-nz qoria-theme-nz --use-env --convertFields
+        run: hs upload hubspot/qoria-theme-nz qoria-theme-nz --use-env --convertFields
 
       - name: Deploy qoria-theme-corp to ANZ
-        run: npx hs cms upload hubspot/qoria-theme-corp qoria-theme-corp --use-env --convertFields
+        run: hs upload hubspot/qoria-theme-corp qoria-theme-corp --use-env --convertFields
 
   deploy-uk:
     runs-on: ubuntu-latest
@@ -54,20 +54,20 @@ jobs:
         with:
           node-version: "22.x"
 
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli@7.9.0
 
       - name: Deploy q-theme to UK
-        run: npx hs cms upload hubspot/q-theme q-theme --use-env --convertFields
+        run: hs upload hubspot/q-theme q-theme --use-env --convertFields
 
       - name: Deploy qoria-theme-uk to UK
-        run: npx hs cms upload hubspot/qoria-theme-uk qoria-theme-uk --use-env --convertFields
+        run: hs upload hubspot/qoria-theme-uk qoria-theme-uk --use-env --convertFields
 
       - name: Deploy qoria-theme-es to UK
-        run: npx hs cms upload hubspot/qoria-theme-es qoria-theme-es --use-env --convertFields
+        run: hs upload hubspot/qoria-theme-es qoria-theme-es --use-env --convertFields
 
       - name: Deploy qoria-theme-eu to UK
-        run: npx hs cms upload hubspot/qoria-theme-eu qoria-theme-eu --use-env --convertFields
+        run: hs upload hubspot/qoria-theme-eu qoria-theme-eu --use-env --convertFields
 
   deploy-us:
     runs-on: ubuntu-latest
@@ -84,11 +84,11 @@ jobs:
         with:
           node-version: "22.x"
 
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli@7.9.0
 
       - name: Deploy q-theme to US
-        run: npx hs cms upload hubspot/q-theme q-theme --use-env --convertFields
+        run: hs upload hubspot/q-theme q-theme --use-env --convertFields
 
       - name: Deploy qoria-theme-us to US
-        run: npx hs cms upload hubspot/qoria-theme-us qoria-theme-us --use-env --convertFields
+        run: hs upload hubspot/qoria-theme-us qoria-theme-us --use-env --convertFields
